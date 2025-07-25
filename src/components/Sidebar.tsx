@@ -155,10 +155,12 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       // Actualizar el estado de la subcategoría activa INMEDIATAMENTE
       setActiveSubcategory(subcategoryName);
 
-      window.scrollTo({
-        top: elementPosition,
-        behavior: 'smooth',
-      });
+      const mainElement = document.querySelector('main');
+      if (mainElement) {
+        mainElement.scrollTo({ top: elementPosition, behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+      }
     }
   };
 
@@ -212,7 +214,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
                 {isActive && <div className="absolute left-0 top-0 bottom-0 w-1 bg-white z-20" />}
                 <a
                   href="#"
-                  className={`flex items-center gap-2 w-full py-2 px-3 font-bold transition-colors relative z-0 hover:bg-zinc-800 rounded-none text-base text-white md:text-sm md:text-white/80`}
+                  className="flex items-center gap-2 w-full py-2 px-3 font-extrabold transition-colors relative z-0 hover:bg-zinc-800 rounded-none text-base text-white md:text-sm md:text-white/90 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]"
                   style={{ borderRadius: 0 }}
                   onClick={(e) => {
                     e.preventDefault();
@@ -229,7 +231,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
           <li className="relative w-full">
             <a
               href="#"
-              className="flex items-center gap-2 w-full py-2 px-3 font-bold transition-colors relative z-0 hover:bg-zinc-800 rounded-none text-base text-white md:text-sm md:text-white/80"
+              className="flex items-center gap-2 w-full py-2 px-3 font-extrabold transition-colors relative z-0 hover:bg-zinc-800 rounded-none text-base text-white md:text-sm md:text-white/90 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]"
               style={{ borderRadius: 0 }}
               onClick={(e) => {
                 e.preventDefault();

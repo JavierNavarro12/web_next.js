@@ -12,13 +12,13 @@ export default function HomePage() {
   const { setSidebarOpen } = React.useContext(SidebarDrawerContext);
   const [isScrolled, setIsScrolled] = useState(false);
   const isProgrammaticScroll = useRef(false);
-  const [activeFilter, setActiveFilter] = useState<'all' | 'free'>('all');
+  const [activeFilter, setActiveFilter] = useState<'all' | 'free' | 'paid'>('all');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [hoveredFilter, setHoveredFilter] = useState<string | null>(null);
 
   // Refs para las filas del header
   const headerRow1Ref = useRef<HTMLDivElement>(null);
   const headerRow2Ref = useRef<HTMLDivElement>(null);
-
-  // 1. Crea un ref para cada tab de subcategoría:
   const tabRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
   const tabsContainerRef = useRef<HTMLDivElement>(null);
 
@@ -45,6 +45,21 @@ export default function HomePage() {
     if (tool.url) {
       window.open(tool.url, '_blank', 'noopener,noreferrer');
     }
+  };
+
+  // Nueva función para filtrar herramientas según el filtro y búsqueda
+  const filterTools = (tools: AITool[]) => {
+    let filtered = tools;
+    if (activeFilter === 'free') filtered = filtered.filter((t) => t.pricing === 'free');
+    if (activeFilter === 'paid') filtered = filtered.filter((t) => t.pricing === 'paid');
+    if (searchTerm.trim()) {
+      filtered = filtered.filter(
+        (t) =>
+          t.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          (t.description && t.description.toLowerCase().includes(searchTerm.toLowerCase())),
+      );
+    }
+    return filtered;
   };
 
   // Manejar scroll para detectar sección activa
@@ -441,10 +456,10 @@ export default function HomePage() {
                 {/* Primera fila: Se oculta al hacer scroll */}
                 <div
                   ref={headerRow1Ref}
-                  className={`flex items-center justify-between bg-black px-8 py-3 border-b border-zinc-800 transition-all duration-300 ${isScrolled ? 'h-0 p-0 m-0 overflow-hidden opacity-0 border-0' : ''}`}
+                  className={`flex items-center bg-black px-4 py-2 border-b border-zinc-800 transition-all duration-300 ${isScrolled ? 'h-0 p-0 m-0 overflow-hidden opacity-0 border-0' : ''}`}
                 >
                   <div
-                    className="text-2xl font-bold text-white cursor-pointer select-none drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]"
+                    className="text-2xl font-bold text-white cursor-pointer select-none drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] ml-2"
                     onClick={() => {
                       setActiveCategory(null);
                       setActiveSubcategory(null);
@@ -458,57 +473,61 @@ export default function HomePage() {
                   >
                     {currentCategory.name}
                   </div>
-                  <div className="flex gap-6">
-                    <button
-                      className={`relative px-4 py-2 text-sm font-semibold text-white transition-colors border-none bg-transparent focus:outline-none hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.4)] ${activeFilter === 'all' ? 'drop-shadow-[0_0_6px_rgba(255,255,255,0.4)]' : ''}`}
-                      onClick={() => setActiveFilter('all')}
-                    >
-                      View All
-                      {activeFilter === 'all' && (
-                        <span className="absolute left-0 right-0 -bottom-3 h-0.5 bg-white rounded drop-shadow-[0_0_4px_rgba(255,255,255,0.6)]" />
-                      )}
-                    </button>
-                    <button
-                      className={`relative px-4 py-2 text-sm font-semibold text-white transition-colors border-none bg-transparent focus:outline-none hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.4)] ${activeFilter === 'free' ? 'drop-shadow-[0_0_6px_rgba(255,255,255,0.4)]' : ''}`}
-                      onClick={() => setActiveFilter('free')}
-                    >
-                      Agentic
-                      {activeFilter === 'free' && (
-                        <span className="absolute left-0 right-0 -bottom-3 h-0.5 bg-white rounded drop-shadow-[0_0_4px_rgba(255,255,255,0.6)]" />
-                      )}
-                    </button>
-                    <button className="relative px-4 py-2 text-sm font-semibold text-white transition-colors border-none bg-transparent focus:outline-none hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.4)]">
-                      Open Source
-                    </button>
+                  <div className="flex-1 flex justify-end">
+                    <div className="flex gap-[0px] mr-0">
+                      {[
+                        { key: 'all', label: 'Ver Todas' },
+                        { key: 'free', label: 'Gratis' },
+                        { key: 'paid', label: 'Pago' },
+                      ].map(({ key, label }) => (
+                        <button
+                          key={key}
+                          className={`relative px-3 py-1.5 text-sm font-semibold text-white transition-colors border-none bg-transparent focus:outline-none hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.4)] ${activeFilter === key ? 'drop-shadow-[0_0_6px_rgba(255,255,255,0.4)]' : ''}`}
+                          onClick={() => setActiveFilter(key as 'all' | 'free' | 'paid')}
+                          onMouseEnter={() => setHoveredFilter(key)}
+                          onMouseLeave={() => setHoveredFilter(null)}
+                        >
+                          {label}
+                          {/* Línea intensa si es activo */}
+                          {activeFilter === key && (
+                            <span className="absolute left-0 right-0 -bottom-2 h-0.5 bg-white rounded drop-shadow-[0_0_4px_rgba(255,255,255,0.6)]" />
+                          )}
+                          {/* Línea tenue si está en hover y no es el activo */}
+                          {hoveredFilter === key && activeFilter !== key && (
+                            <span className="absolute left-0 right-0 -bottom-2 h-0.5 bg-white/40 rounded" />
+                          )}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
                 {/* Segunda fila: Se queda fija arriba al hacer scroll */}
                 <div
                   ref={headerRow2Ref}
-                  className={`flex items-center justify-between bg-black px-8 py-3 border-b border-zinc-800 transition-all duration-300 ${isScrolled ? 'fixed top-0 left-[calc(4px+270px+1px)] right-[calc(12px+1px)] z-50 shadow-lg border-t border-zinc-800' : 'relative z-20'}`}
+                  className={`flex items-center justify-between bg-black px-4 py-2 border-b border-zinc-800 transition-all duration-300 ${isScrolled ? 'fixed top-0 left-[calc(4px+270px+1px)] right-[calc(12px+1px)] z-50 shadow-lg border-t border-zinc-800' : 'relative z-20'}`}
                 >
-                  <div className="flex gap-2">
+                  <div className="flex gap-1 ml-1">
                     {currentCategory.subcategories.map((subcat) => (
                       <button
                         key={subcat.name}
                         onClick={() => handleSubcategoryClick(subcat.name)}
-                        className={`px-4 py-2 text-sm font-semibold transition-all duration-200 cursor-pointer focus:outline-none rounded-full ${activeSubcategory === subcat.name ? 'bg-blue-600 text-white drop-shadow-[0_0_6px_rgba(59,130,246,0.5)]' : 'text-white/90 hover:bg-blue-600 hover:text-white hover:drop-shadow-[0_0_6px_rgba(59,130,246,0.5)]'}`}
+                        className={`px-3 py-1.5 text-sm font-semibold transition-all duration-200 cursor-pointer focus:outline-none rounded-full ${activeSubcategory === subcat.name ? 'bg-blue-600 text-white drop-shadow-[0_0_6px_rgba(59,130,246,0.5)]' : 'text-white/90 hover:bg-blue-600 hover:text-white hover:drop-shadow-[0_0_6px_rgba(59,130,246,0.5)]'}`}
                       >
                         {subcat.name}
                       </button>
                     ))}
                   </div>
-                  <div className="flex items-center w-full max-w-xs ml-4">
+                  <div className="flex items-center w-full max-w-[320px] mr-0">
                     <div className="relative w-full">
-                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none">
+                      <span className="absolute left-2 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
                           strokeWidth="1.5"
                           stroke="currentColor"
-                          className="w-5 h-5"
+                          className="w-4 h-4"
                         >
                           <path
                             strokeLinecap="round"
@@ -519,8 +538,10 @@ export default function HomePage() {
                       </span>
                       <input
                         type="text"
-                        placeholder="Search Tools"
-                        className="w-full bg-black border border-white/10 rounded-lg pl-10 pr-3 py-2 text-sm text-white placeholder-zinc-400 focus:outline-none focus:border-white transition-colors"
+                        placeholder="Buscar IAs"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="w-full bg-black border border-white/10 rounded-lg pl-8 pr-2 py-1.5 text-sm text-white placeholder-zinc-400 focus:outline-none focus:border-white transition-colors"
                       />
                     </div>
                   </div>
@@ -555,25 +576,26 @@ export default function HomePage() {
                         {subcat.name}
                       </h2>
                       <div className="space-y-3">
-                        {subcat.tools.map((tool) => (
-                          <div
-                            key={tool.name}
-                            className="flex items-start gap-3 py-1 pl-1 cursor-pointer hover:bg-zinc-900/50 rounded-lg transition-colors p-2"
-                            onClick={() => handleToolClick(tool)}
-                          >
-                            <img
-                              src={tool.logo || tool.image}
-                              alt={tool.name}
-                              className="w-12 h-12 object-contain rounded-lg flex-shrink-0"
-                            />
-                            <div className="flex-1 min-w-0">
-                              <h3 className="font-bold text-white text-base mb-1">{tool.name}</h3>
-                              <p className="text-zinc-400 text-sm leading-relaxed">
-                                {tool.description}
-                              </p>
+                        {subcat.tools &&
+                          filterTools(subcat.tools).map((tool) => (
+                            <div
+                              key={tool.name}
+                              className="flex items-start gap-3 py-1 pl-1 cursor-pointer hover:bg-zinc-900/50 rounded-lg transition-colors p-2"
+                              onClick={() => handleToolClick(tool)}
+                            >
+                              <img
+                                src={tool.logo || tool.image}
+                                alt={tool.name}
+                                className="w-12 h-12 object-contain rounded-lg flex-shrink-0"
+                              />
+                              <div className="flex-1 min-w-0">
+                                <h3 className="font-bold text-white text-base mb-1">{tool.name}</h3>
+                                <p className="text-zinc-400 text-sm leading-relaxed">
+                                  {tool.description}
+                                </p>
+                              </div>
                             </div>
-                          </div>
-                        ))}
+                          ))}
                       </div>
                     </div>
                   </div>
@@ -585,37 +607,38 @@ export default function HomePage() {
                         {subcat.name}
                       </h2>
                       <div className="grid grid-cols-4 gap-4">
-                        {subcat.tools.map((tool) => (
-                          <div
-                            key={tool.name}
-                            className="group cursor-pointer"
-                            onClick={() => handleToolClick(tool)}
-                          >
-                            {/* Imagen grande con overlay */}
-                            <div className="relative aspect-video bg-zinc-800 rounded mb-3 overflow-hidden">
-                              <img
-                                src={tool.image}
-                                alt={tool.name}
-                                className="w-full h-full object-cover rounded transition-all duration-300 group-hover:scale-105 group-hover:blur-sm"
-                              />
-                              {/* Overlay con pricing */}
-                              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                                <div className="bg-zinc-800/90 text-white px-3 py-1.5 rounded-lg text-sm font-medium">
-                                  {getPricingText(tool.pricing)}
+                        {subcat.tools &&
+                          filterTools(subcat.tools).map((tool) => (
+                            <div
+                              key={tool.name}
+                              className="group cursor-pointer"
+                              onClick={() => handleToolClick(tool)}
+                            >
+                              {/* Imagen grande con overlay */}
+                              <div className="relative aspect-video bg-zinc-800 rounded mb-3 overflow-hidden border border-[#232323]">
+                                <img
+                                  src={tool.image}
+                                  alt={tool.name}
+                                  className="w-full h-full object-cover rounded transition-all duration-300 group-hover:scale-105 group-hover:blur-sm"
+                                />
+                                {/* Overlay con pricing */}
+                                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+                                  <div className="bg-zinc-800/90 text-white px-3 py-1.5 rounded-lg text-sm font-medium">
+                                    {getPricingText(tool.pricing)}
+                                  </div>
                                 </div>
                               </div>
+                              {/* Texto debajo */}
+                              <div>
+                                <h3 className="font-bold text-white text-base mb-1 group-hover:text-blue-400 group-hover:drop-shadow-[0_0_6px_rgba(59,130,246,0.5)] transition-all">
+                                  {tool.name}
+                                </h3>
+                                <p className="text-zinc-400 text-sm leading-relaxed">
+                                  {tool.description}
+                                </p>
+                              </div>
                             </div>
-                            {/* Texto debajo */}
-                            <div>
-                              <h3 className="font-bold text-white text-base mb-1 group-hover:text-blue-400 group-hover:drop-shadow-[0_0_6px_rgba(59,130,246,0.5)] transition-all">
-                                {tool.name}
-                              </h3>
-                              <p className="text-zinc-400 text-sm leading-relaxed">
-                                {tool.description}
-                              </p>
-                            </div>
-                          </div>
-                        ))}
+                          ))}
                       </div>
                     </div>
                   </div>
