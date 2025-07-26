@@ -364,10 +364,10 @@ export default function HomePage() {
       'Claude', // #2 - Anthropic, competidor directo de ChatGPT
       'Midjourney', // #3 - Líder en generación de imágenes
       'DALL·E', // #4 - OpenAI, pionero en generación de imágenes
-      'Gemini', // #5 - Google, competidor principal
-      'Stable Diffusion', // #6 - Open source, muy popular
-      'GitHub Copilot', // #7 - Microsoft, líder en IA para programación
-      'Adobe Firefly', // #8 - Adobe, integrado en Creative Suite
+      'Sora', // #5 - OpenAI, líder en generación de video
+      'Gemini', // #6 - Google, competidor principal
+      'Stable Diffusion', // #7 - Open source, muy popular
+      'GitHub Copilot', // #8 - Microsoft, líder en IA para programación
     ];
 
     const featured = popularToolNames
@@ -850,6 +850,58 @@ export default function HomePage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Video AI Section */}
+          <div className="py-8 md:py-16 px-4 max-w-7xl mx-auto">
+            <div className="flex items-center justify-between mb-6 md:mb-12">
+              <h2 className="text-xl md:text-3xl font-bold text-white">IA de Video</h2>
+              <button
+                onClick={() => {
+                  setActiveCategory('Generativa');
+                }}
+                className="text-blue-400 hover:text-blue-300 transition-colors font-medium text-sm md:text-base"
+              >
+                Ver Todas →
+              </button>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+              {getToolsByCategory('Generativa', 8)
+                .filter(
+                  (tool) =>
+                    tool.name === 'Sora' ||
+                    tool.name === 'Veo' ||
+                    tool.name === 'Runway' ||
+                    tool.name === 'Pika Labs' ||
+                    tool.name === 'Synthesia' ||
+                    tool.name === 'Colossyan' ||
+                    tool.name === 'InVideo' ||
+                    tool.name === 'Fliki',
+                )
+                .slice(0, 8)
+                .map((tool) => (
+                  <div
+                    key={tool.name}
+                    className="group bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-zinc-700 transition-all duration-300 cursor-pointer"
+                    onClick={() => handleToolClick(tool)}
+                  >
+                    <div className="relative aspect-video bg-zinc-800">
+                      <Image
+                        src={tool.image}
+                        alt={tool.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-bold text-white text-base mb-1 group-hover:text-blue-400 transition-colors">
+                        {tool.name}
+                      </h3>
+                      <p className="text-zinc-400 text-sm">{tool.description}</p>
+                    </div>
+                  </div>
+                ))}
             </div>
           </div>
 
