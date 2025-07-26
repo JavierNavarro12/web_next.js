@@ -6,6 +6,12 @@ import Sidebar from './Sidebar';
 const mockSetActiveCategory = jest.fn();
 const mockSetActiveSubcategory = jest.fn();
 
+// Mock window.scrollTo
+Object.defineProperty(window, 'scrollTo', {
+  value: jest.fn(),
+  writable: true,
+});
+
 jest.mock('../app/layout', () => {
   return {
     useAppContext: () => ({

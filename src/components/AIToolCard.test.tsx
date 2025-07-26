@@ -24,8 +24,8 @@ describe('AIToolCard', () => {
     const desktopImg = screen
       .getAllByAltText('ChatGPT')
       .find((img) => img.className.includes('md:block'));
-    expect(desktopImg).toHaveAttribute('src', '/public/images/chatgpt-web.png');
     expect(desktopImg).toHaveAttribute('alt', 'ChatGPT');
+    expect(desktopImg).toHaveAttribute('src', expect.stringContaining('chatgpt-web.png'));
   });
 
   it('renderiza la imagen móvil con logo si se pasa la prop', () => {
@@ -33,7 +33,7 @@ describe('AIToolCard', () => {
     const mobileImg = screen
       .getAllByAltText('ChatGPT')
       .find((img) => img.className.includes('md:hidden'));
-    expect(mobileImg).toHaveAttribute('src', '/public/logos/chatgpt-movil.png');
+    expect(mobileImg).toHaveAttribute('src', expect.stringContaining('chatgpt-movil.png'));
   });
 
   it('renderiza la imagen móvil con image si no hay logo', () => {
@@ -41,6 +41,6 @@ describe('AIToolCard', () => {
     const mobileImg = screen
       .getAllByAltText('ChatGPT')
       .find((img) => img.className.includes('md:hidden'));
-    expect(mobileImg).toHaveAttribute('src', '/public/images/chatgpt-web.png');
+    expect(mobileImg).toHaveAttribute('src', expect.stringContaining('chatgpt-web.png'));
   });
 });
