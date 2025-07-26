@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Sidebar from '../components/Sidebar';
-import React, { useState, createContext, useContext } from 'react';
+import React, { useState, createContext, useContext, useEffect } from 'react';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -62,6 +62,21 @@ export default function RootLayout({
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [activeSubcategory, setActiveSubcategory] = useState<string | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  // Efecto para cargar desde localStorage después de la hidratación
+  useEffect(() => {
+    setIsHydrated(true);
+    const savedCategory = localStorage.getItem('activeCategory');
+    const savedSubcategory = localStorage.getItem('activeSubcategory');
+
+    if (savedCategory) {
+      setActiveCategory(savedCategory);
+    }
+    if (savedSubcategory) {
+      setActiveSubcategory(savedSubcategory);
+    }
+  }, []);
 
   return (
     <html lang="es">

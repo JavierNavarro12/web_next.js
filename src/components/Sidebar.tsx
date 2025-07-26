@@ -205,7 +205,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
         </span>
       </div>
       <nav className="mb-2 px-0 mt-4 md:mt-0">
-        <ul className="space-y-1 w-full">
+        <ul className="space-y-0 w-full">
           {mainSections.map((section) => {
             const Icon = section.icon;
             const isActive = activeSection === section.key && !activeCategory && !activeSubcategory;
@@ -214,7 +214,11 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
                 {isActive && <div className="absolute left-0 top-0 bottom-0 w-1 bg-white z-20" />}
                 <a
                   href="#"
-                  className="flex items-center gap-2 w-full py-2 px-3 font-extrabold transition-colors relative z-0 hover:bg-zinc-800 rounded-none text-base text-white md:text-sm md:text-white/90 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]"
+                  className={`flex items-center gap-2 w-full py-2 px-3 font-extrabold transition-colors relative z-0 rounded-none text-base md:text-sm ${
+                    isActive
+                      ? 'bg-zinc-800 text-white'
+                      : 'text-white md:text-white/90 hover:bg-zinc-800'
+                  }`}
                   style={{ borderRadius: 0 }}
                   onClick={(e) => {
                     e.preventDefault();
@@ -231,7 +235,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
           <li className="relative w-full">
             <a
               href="#"
-              className="flex items-center gap-2 w-full py-2 px-3 font-extrabold transition-colors relative z-0 hover:bg-zinc-800 rounded-none text-base text-white md:text-sm md:text-white/90 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]"
+              className="flex items-center gap-2 w-full py-2 px-3 font-extrabold transition-colors relative z-0 hover:bg-zinc-800 rounded-none text-base text-white md:text-sm md:text-white/90"
               style={{ borderRadius: 0 }}
               onClick={(e) => {
                 e.preventDefault();
