@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { aiCategories } from '../data/ai-tools';
+import { aiCategories } from '../../data/ai-tools';
 import {
   HiOutlineSparkles,
   HiOutlineChat,
@@ -27,7 +27,7 @@ import {
   HiOutlineBookOpen,
 } from 'react-icons/hi';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
-import { useAppContext, useSubcategoryContext, useFeedbackContext } from '../app/layout';
+import { useAppContext, useSubcategoryContext, useFeedbackContext } from '../../app/layout';
 
 const defaultIcon = HiOutlinePlusCircle;
 const icons = [
@@ -72,10 +72,6 @@ const shortCategoryNames = [
   'Ética',
   'Conocimiento',
 ];
-
-function isObjectToolArray(arr: unknown[]): arr is { name: string; examples: string[] }[] {
-  return arr.length > 0 && arr[0] !== null && typeof arr[0] === 'object' && 'name' in arr[0];
-}
 
 const mainSections = [
   { key: 'explorar', label: 'Explorar', icon: HiOutlineGlobeAlt },
