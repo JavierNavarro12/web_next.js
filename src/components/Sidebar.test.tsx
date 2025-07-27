@@ -22,6 +22,10 @@ jest.mock('../app/layout', () => {
       activeSubcategory: null,
       setActiveSubcategory: mockSetActiveSubcategory,
     }),
+    useFeedbackContext: () => ({
+      showFeedback: false,
+      setShowFeedback: jest.fn(),
+    }),
   };
 });
 
