@@ -26,7 +26,8 @@ import {
   HiOutlineExclamationCircle,
   HiOutlineBookOpen,
 } from 'react-icons/hi';
-import { useAppContext, useSubcategoryContext } from '../app/layout';
+import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+import { useAppContext, useSubcategoryContext, useFeedbackContext } from '../app/layout';
 
 const defaultIcon = HiOutlinePlusCircle;
 const icons = [
@@ -84,6 +85,7 @@ const mainSections = [
 export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}) {
   const { activeCategory, setActiveCategory } = useAppContext();
   const { activeSubcategory, setActiveSubcategory } = useSubcategoryContext();
+  const { showFeedback, setShowFeedback } = useFeedbackContext();
   const [openCategory, setOpenCategory] = useState<number | null>(null);
   const [hoveredCategory, setHoveredCategory] = useState<number | null>(null);
   const [hoveredSub, setHoveredSub] = useState<string | null>(null);
@@ -95,7 +97,11 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
 
   // Detectar la categoría activa y abrirla automáticamente
   useEffect(() => {
-    if (activeCategory) {
+    if (showFeedback) {
+      // Si estamos en la página de feedback, no mostrar nada seleccionado
+      setOpenCategory(null);
+      setActiveSection('');
+    } else if (activeCategory) {
       const categoryIndex = aiCategories.findIndex((cat) => cat.name === activeCategory);
       if (categoryIndex !== -1) {
         setOpenCategory(categoryIndex);
@@ -105,7 +111,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setOpenCategory(null);
       setActiveSection('explorar');
     }
-  }, [activeCategory]); // Solo dependemos de activeCategory
+  }, [activeCategory, showFeedback]); // Dependemos de activeCategory y showFeedback
 
   // Establecer la primera subcategoría cuando cambie la categoría
   useEffect(() => {
@@ -136,6 +142,11 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
   }, [hoveredSub]);
 
   const handleCategoryClick = (categoryName: string) => {
+    // Si estamos en feedback, primero cerrarlo
+    if (showFeedback) {
+      setShowFeedback(false);
+    }
+
     if (setActiveCategory) {
       setActiveCategory(categoryName);
     }
@@ -143,6 +154,19 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
 
   // Función para manejar clic en subcategoría
   const handleSubcategoryClick = (subcategoryName: string) => {
+    // Si estamos en feedback, primero cerrarlo
+    if (showFeedback) {
+      setShowFeedback(false);
+      // Dar tiempo para que se cierre el feedback antes de hacer scroll
+      setTimeout(() => {
+        navigateToSubcategory(subcategoryName);
+      }, 100);
+    } else {
+      navigateToSubcategory(subcategoryName);
+    }
+  };
+
+  const navigateToSubcategory = (subcategoryName: string) => {
     const sectionId = subcategoryName.replace(/\s+/g, '-');
     const element = document.getElementById(sectionId);
     if (element) {
@@ -165,9 +189,15 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
   };
 
   const handleSectionClick = (sectionKey: string) => {
+    // Si estamos en feedback, primero cerrarlo
+    if (showFeedback) {
+      setShowFeedback(false);
+    }
+
     setActiveSection(sectionKey);
     if (sectionKey === 'explorar' && setActiveCategory) {
       setActiveCategory(null); // Limpiar categoría activa cuando se va a Explorar
+      setActiveSubcategory(null); // Limpiar subcategoría también
     }
   };
 
@@ -208,7 +238,11 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
         <ul className="space-y-0 w-full">
           {mainSections.map((section) => {
             const Icon = section.icon;
-            const isActive = activeSection === section.key && !activeCategory && !activeSubcategory;
+            const isActive =
+              activeSection === section.key &&
+              !activeCategory &&
+              !activeSubcategory &&
+              !showFeedback;
             return (
               <li key={section.key} className="relative w-full">
                 {isActive && <div className="absolute left-0 top-0 bottom-0 w-1 bg-white z-20" />}
@@ -243,6 +277,20 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
               }}
             >
               <HiOutlinePlusCircle className="w-5 h-5" /> Añadir una IA
+            </a>
+          </li>
+          {/* Herramientas en móvil */}
+          <li className="relative w-full md:hidden">
+            <a
+              href="#"
+              className="flex items-center gap-2 w-full py-2 px-3 font-extrabold transition-colors relative z-0 hover:bg-zinc-800 rounded-none text-base text-white md:text-sm md:text-white/90"
+              style={{ borderRadius: 0 }}
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigate) onNavigate();
+              }}
+            >
+              <HiOutlineWrenchScrewdriver className="w-5 h-5" /> Herramientas
             </a>
           </li>
         </ul>
@@ -283,12 +331,46 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
             })}
           </div>
           <ul className="space-y-1 hidden md:block">
+            {/* Herramientas - sin flecha de despliegue */}
+            <li className="relative">
+              <div
+                className="flex items-center w-full py-1 font-semibold text-sm font-sans transition-colors relative z-10 rounded-none cursor-pointer"
+                style={{ fontFamily: 'Inter, Sora, sans-serif', borderRadius: 0 }}
+                onMouseEnter={() => setHoveredCategory(-1)}
+                onMouseLeave={() => setHoveredCategory(null)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  if (onNavigate) onNavigate();
+                }}
+              >
+                {hoveredCategory === -1 && (
+                  <>
+                    <div className="absolute left-0 w-0.5 h-full bg-white z-20" />
+                    <div className="absolute left-0 right-0 top-0 h-full bg-zinc-800 z-0" />
+                  </>
+                )}
+                <span
+                  className="flex items-center w-full py-1 pl-4 font-semibold text-sm font-sans transition-colors relative z-10 rounded-none cursor-pointer"
+                  style={{ fontFamily: 'Inter, Sora, sans-serif', borderRadius: 0 }}
+                >
+                  <HiOutlineWrenchScrewdriver className="text-white w-4 h-4 mr-2" />
+                  <span
+                    className="font-semibold flex-1 truncate text-[15px]"
+                    style={{ fontFamily: 'Inter, Sora, sans-serif' }}
+                  >
+                    Herramientas
+                  </span>
+                </span>
+              </div>
+            </li>
             {aiCategories.map((cat, i) => {
               const Icon = icons[i] || defaultIcon;
               const shortName = shortCategoryNames[i] || cat.name;
               const isActive = activeCategory === cat.name;
               const isSubActive = cat.subcategories.some((sub) => sub.name === activeSubcategory);
-              const isCategoryActive = isActive || isSubActive || (!activeCategory && isSubActive);
+              const isCategoryActive =
+                (isActive || isSubActive || (!activeCategory && isSubActive)) && !showFeedback;
               const isOpen = openCategory === i;
               const isHovered = hoveredCategory === i;
               return (
@@ -305,9 +387,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
                       e.preventDefault();
                       e.stopPropagation();
                       setOpenCategory(isOpen ? null : i);
-                      if (setActiveCategory) {
-                        setActiveCategory(cat.name);
-                      }
+                      handleCategoryClick(cat.name);
                       if (onNavigate) onNavigate();
                       setActiveSection(''); // Desactiva la sección superior
                     }}
@@ -337,9 +417,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
                           e.preventDefault();
                           e.stopPropagation();
                           setOpenCategory(isOpen ? null : i);
-                          if (setActiveCategory) {
-                            setActiveCategory(cat.name);
-                          }
+                          handleCategoryClick(cat.name);
                         }}
                         tabIndex={-1}
                         aria-label={isOpen ? 'Cerrar' : 'Abrir'}
@@ -376,10 +454,11 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
                             onMouseEnter={() => setHoveredSub(sub.name)}
                             onMouseLeave={() => setHoveredSub(null)}
                           >
-                            {(hoveredSub === sub.name || activeSubcategory === sub.name) && (
+                            {(hoveredSub === sub.name ||
+                              (activeSubcategory === sub.name && !showFeedback)) && (
                               <>
                                 <div
-                                  className={`absolute left-4 right-0 top-0 h-full z-0 ${activeSubcategory === sub.name ? 'bg-zinc-800' : 'bg-white/10'}`}
+                                  className={`absolute left-4 right-0 top-0 h-full z-0 ${activeSubcategory === sub.name && !showFeedback ? 'bg-zinc-800' : 'bg-white/10'}`}
                                 />
                                 <div
                                   className="absolute left-4 w-0.5 bg-white transition-colors z-10"
@@ -393,7 +472,9 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
                                 if (onNavigate) onNavigate();
                               }}
                               className={`block w-full pl-10 py-2 font-semibold text-sm font-sans cursor-pointer transition-colors relative z-10 text-left ${
-                                activeSubcategory === sub.name ? 'text-white' : 'text-zinc-200'
+                                activeSubcategory === sub.name && !showFeedback
+                                  ? 'text-white'
+                                  : 'text-zinc-200'
                               }`}
                               style={{ fontFamily: 'Inter, Sora, sans-serif' }}
                             >
