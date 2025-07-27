@@ -12,7 +12,7 @@ Object.defineProperty(window, 'scrollTo', {
   writable: true,
 });
 
-jest.mock('../app/layout', () => {
+jest.mock('../../app/layout', () => {
   return {
     useAppContext: () => ({
       activeCategory: null,
