@@ -26,6 +26,9 @@ jest.mock('../../app/layout', () => {
       showFeedback: false,
       setShowFeedback: jest.fn(),
     }),
+    useAddAIToolContext: () => ({
+      setShowAddAITool: jest.fn(),
+    }),
   };
 });
 
