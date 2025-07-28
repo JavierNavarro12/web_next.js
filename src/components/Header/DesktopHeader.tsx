@@ -37,20 +37,55 @@ export default function DesktopHeader({
   headerRow2Ref,
   onSubcategoryClick,
 }: DesktopHeaderProps) {
+  const [activeNav, setActiveNav] = React.useState('explorar');
+  const [hoveredNav, setHoveredNav] = React.useState<string | null>(null);
   if (!currentCategory) {
     return (
       <div className="hidden md:block bg-black border-b border-zinc-800">
         <div className="flex items-center justify-between px-6 py-3">
           {/* Navigation */}
           <nav className="flex items-center gap-6">
-            <button className="text-white hover:text-zinc-300 transition-colors font-medium border-b-2 border-white pb-1">
+            <button
+              className={`relative font-medium transition-colors ${
+                activeNav === 'explorar'
+                  ? 'text-white'
+                  : hoveredNav === 'explorar'
+                    ? 'text-white'
+                    : 'text-zinc-400 hover:text-white'
+              }`}
+              onClick={() => setActiveNav('explorar')}
+              onMouseEnter={() => setHoveredNav('explorar')}
+              onMouseLeave={() => setHoveredNav(null)}
+            >
               Explorar
+              {(activeNav === 'explorar' || hoveredNav === 'explorar') && (
+                <span
+                  className={`absolute -left-3 -right-3 -bottom-5 h-0.5 rounded ${
+                    activeNav === 'explorar' ? 'bg-white' : 'bg-white/40'
+                  }`}
+                />
+              )}
             </button>
-            <button className="text-zinc-400 hover:text-white transition-colors font-medium">
-              Códigos de Cupón
-            </button>
-            <button className="text-zinc-400 hover:text-white transition-colors font-medium">
+            <button
+              className={`relative font-medium transition-colors ${
+                activeNav === 'nuevas'
+                  ? 'text-white'
+                  : hoveredNav === 'nuevas'
+                    ? 'text-white'
+                    : 'text-zinc-400 hover:text-white'
+              }`}
+              onClick={() => setActiveNav('nuevas')}
+              onMouseEnter={() => setHoveredNav('nuevas')}
+              onMouseLeave={() => setHoveredNav(null)}
+            >
               Nuevas Adiciones
+              {(activeNav === 'nuevas' || hoveredNav === 'nuevas') && (
+                <span
+                  className={`absolute -left-3 -right-3 -bottom-5 h-0.5 rounded ${
+                    activeNav === 'nuevas' ? 'bg-white' : 'bg-white/40'
+                  }`}
+                />
+              )}
             </button>
           </nav>
 
@@ -126,16 +161,16 @@ export default function DesktopHeader({
                 {label}
                 {/* Línea intensa si es activo */}
                 {activeFilter === key && (
-                  <span className="absolute left-0 right-0 -bottom-2 h-0.5 bg-white rounded drop-shadow-[0_0_4px_rgba(255,255,255,0.6)]" />
+                  <span className="absolute left-0 right-0 -bottom-3 h-0.5 bg-white rounded drop-shadow-[0_0_4px_rgba(255,255,255,0.6)]" />
                 )}
                 {/* Línea tenue si está en hover y no es el activo */}
                 {hoveredFilter === key && activeFilter !== key && (
-                  <span className="absolute left-0 right-0 -bottom-2 h-0.5 bg-white/40 rounded" />
+                  <span className="absolute left-0 right-0 -bottom-3 h-0.5 bg-white/40 rounded" />
                 )}
               </button>
             ))}
             {/* Línea base continua que conecta todos los filtros */}
-            <div className="absolute left-0 right-0 -bottom-2 h-0.5 bg-white/10 rounded" />
+            <div className="absolute left-0 right-0 -bottom-3 h-0.5 bg-white/10 rounded" />
           </div>
         </div>
       </div>

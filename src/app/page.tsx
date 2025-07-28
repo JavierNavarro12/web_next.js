@@ -249,7 +249,11 @@ export default function HomePage() {
 
         <CategoriesGridSection setActiveCategory={setActiveCategory} />
 
-        <Footer setShowFeedback={setShowFeedback} />
+        <Footer
+          setShowFeedback={setShowFeedback}
+          setActiveCategory={setActiveCategory}
+          setActiveSubcategory={setActiveSubcategory}
+        />
       </div>
     );
   }
@@ -292,7 +296,11 @@ export default function HomePage() {
         searchTerm={searchTerm}
       />
 
-      <Footer setShowFeedback={setShowFeedback} />
+      <Footer
+        setShowFeedback={setShowFeedback}
+        setActiveCategory={setActiveCategory}
+        setActiveSubcategory={setActiveSubcategory}
+      />
     </div>
   );
 }

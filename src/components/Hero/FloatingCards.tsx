@@ -90,17 +90,23 @@ export default function FloatingCards({ isMobile = false }: FloatingCardsProps) 
           style={{
             padding: '3px',
             background: card.gradient,
-            borderRadius: '12px',
+            borderRadius: '16px',
             transform: card.transform,
-            boxShadow: `${card.boxShadowMain}, -5px 7px 8px ${card.shadowColor}, -10px 13px 18px rgba(${card.shadowColor.match(/\d+/g)?.join(', ')}, 0.31), -20px 20px 40px rgba(${card.shadowColor.match(/\d+/g)?.join(', ')}, 0.66)`,
-            transition: 'all 0.4s ease',
+            boxShadow: `
+              0 0 40px 12px ${card.shadowColor.replace('0.57', '0.85')},
+              0 8px 32px 0 ${card.shadowColor},
+              0 2px 8px 0 ${card.shadowColor},
+              0 4px 24px 0 rgba(0,0,0,0.45),
+              ${card.boxShadowMain}
+            `,
+            transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
           }}
         >
           <div
             className="w-full h-full flex items-center justify-center rounded-lg font-semibold"
             style={{
               background: card.innerGradient,
-              boxShadow: `inset 0px -6px 10px rgba(${card.shadowColor.match(/\d+/g)?.join(', ')}, 0.3)`,
+              boxShadow: `inset 0 -8px 24px 0 ${card.shadowColor.replace('0.57', '0.35')}`,
               textShadow: card.textShadow,
               fontSize: '10px',
             }}

@@ -27,7 +27,12 @@ import {
   HiOutlineBookOpen,
 } from 'react-icons/hi';
 import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
-import { useAppContext, useSubcategoryContext, useFeedbackContext } from '../../app/layout';
+import {
+  useAppContext,
+  useSubcategoryContext,
+  useFeedbackContext,
+  useAddAIToolContext,
+} from '../../app/layout';
 
 const defaultIcon = HiOutlinePlusCircle;
 const icons = [
@@ -82,6 +87,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
   const { activeCategory, setActiveCategory } = useAppContext();
   const { activeSubcategory, setActiveSubcategory } = useSubcategoryContext();
   const { showFeedback, setShowFeedback } = useFeedbackContext();
+  const { setShowAddAITool } = useAddAIToolContext();
   const [openCategory, setOpenCategory] = useState<number | null>(null);
   const [hoveredCategory, setHoveredCategory] = useState<number | null>(null);
   const [hoveredSub, setHoveredSub] = useState<string | null>(null);
@@ -143,6 +149,11 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setShowFeedback(false);
     }
 
+    // Si estamos en la página "Añadir una IA", cerrarla
+    if (setShowAddAITool) {
+      setShowAddAITool(false);
+    }
+
     if (setActiveCategory) {
       setActiveCategory(categoryName);
     }
@@ -159,6 +170,11 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       }, 100);
     } else {
       navigateToSubcategory(subcategoryName);
+    }
+
+    // Si estamos en la página "Añadir una IA", cerrarla
+    if (setShowAddAITool) {
+      setShowAddAITool(false);
     }
   };
 
@@ -188,6 +204,11 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
     // Si estamos en feedback, primero cerrarlo
     if (showFeedback) {
       setShowFeedback(false);
+    }
+
+    // Si estamos en la página "Añadir una IA", cerrarla
+    if (setShowAddAITool) {
+      setShowAddAITool(false);
     }
 
     setActiveSection(sectionKey);
@@ -269,6 +290,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
               style={{ borderRadius: 0 }}
               onClick={(e) => {
                 e.preventDefault();
+                setShowAddAITool(true);
                 if (onNavigate) onNavigate();
               }}
             >

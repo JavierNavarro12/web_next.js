@@ -1,12 +1,27 @@
 'use client';
 
 import React from 'react';
+import { useAppContext, useSubcategoryContext, useAddAIToolContext } from '../../app/layout';
 
 interface FooterProps {
   setShowFeedback: (show: boolean) => void;
+  setActiveCategory?: (category: string | null) => void;
+  setActiveSubcategory?: (subcategory: string | null) => void;
 }
 
-export default function Footer({ setShowFeedback }: FooterProps) {
+export default function Footer({
+  setShowFeedback,
+  setActiveCategory: propSetActiveCategory,
+  setActiveSubcategory: propSetActiveSubcategory,
+}: FooterProps) {
+  // Usar contextos directamente si las props no están disponibles
+  const { setActiveCategory: contextSetActiveCategory } = useAppContext();
+  const { setActiveSubcategory: contextSetActiveSubcategory } = useSubcategoryContext();
+  const { setShowAddAITool } = useAddAIToolContext();
+
+  // Usar props si están disponibles, sino usar contextos
+  const setActiveCategory = propSetActiveCategory || contextSetActiveCategory;
+  const setActiveSubcategory = propSetActiveSubcategory || contextSetActiveSubcategory;
   const socialLinks = [
     {
       href: 'https://www.linkedin.com/in/javier-navarro-rodríguez-056023331/',
@@ -48,7 +63,6 @@ export default function Footer({ setShowFeedback }: FooterProps) {
     'Salud',
     'Educación',
     'Finanzas',
-    'Legal',
     'Seguridad',
     'Robótica',
     'Multimodal',
@@ -59,6 +73,50 @@ export default function Footer({ setShowFeedback }: FooterProps) {
     'Traducción',
     'Ética',
   ];
+
+  // Mapeo de nombres del footer a nombres reales de categorías
+  const categoryMapping: { [key: string]: string } = {
+    Generativa: 'Generativa',
+    Chatbots: 'Chatbots',
+    Negocios: 'Negocios',
+    DevTools: 'DevTools',
+    Creatividad: 'Creatividad',
+    Salud: 'Salud',
+    Educación: 'Educación',
+    Finanzas: 'Finanzas',
+    Seguridad: 'Seguridad',
+    Robótica: 'Robótica',
+    Multimodal: 'Multimodal',
+    OpenSource: 'OpenSource',
+    Cognitiva: 'Cognitiva',
+    MLOps: 'MLOps',
+    Marketing: 'Marketing',
+    Traducción: 'Traducción',
+    Ética: 'Ética y Detección de IA',
+  };
+
+  const handleCategoryClick = (categoryName: string) => {
+    console.log('Footer: Click en categoría:', categoryName);
+
+    // Cerrar la página "Añadir una IA" si está abierta
+    if (setShowAddAITool) {
+      setShowAddAITool(false);
+    }
+
+    if (setActiveCategory && setActiveSubcategory) {
+      const realCategoryName = categoryMapping[categoryName];
+      console.log('Footer: Nombre real de categoría:', realCategoryName);
+      if (realCategoryName) {
+        console.log('Footer: Navegando a categoría:', realCategoryName);
+        setActiveCategory(realCategoryName);
+        setActiveSubcategory(null);
+      } else {
+        console.log('Footer: No se encontró mapeo para:', categoryName);
+      }
+    } else {
+      console.log('Footer: setActiveCategory o setActiveSubcategory no están disponibles');
+    }
+  };
 
   const tools = [
     'Comparador de IAs',
@@ -204,12 +262,12 @@ export default function Footer({ setShowFeedback }: FooterProps) {
               <ul className="space-y-2">
                 {categories.slice(0, 9).map((category) => (
                   <li key={category}>
-                    <a
-                      href="#"
-                      className="text-zinc-400 hover:text-white transition-colors text-sm"
+                    <button
+                      onClick={() => handleCategoryClick(category)}
+                      className="text-zinc-400 hover:text-white transition-colors text-sm text-left"
                     >
                       {category}
-                    </a>
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -221,12 +279,12 @@ export default function Footer({ setShowFeedback }: FooterProps) {
               <ul className="space-y-2">
                 {categories.slice(9).map((category) => (
                   <li key={category}>
-                    <a
-                      href="#"
-                      className="text-zinc-400 hover:text-white transition-colors text-sm"
+                    <button
+                      onClick={() => handleCategoryClick(category)}
+                      className="text-zinc-400 hover:text-white transition-colors text-sm text-left"
                     >
                       {category}
-                    </a>
+                    </button>
                   </li>
                 ))}
               </ul>
