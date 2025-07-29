@@ -80,7 +80,7 @@ export const useMobileNavigation = (
           const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
           const elementAbsoluteTop = scrollTop + bestRect.top;
           // Ajustar el offset para que vaya un poco más arriba y sea más preciso
-          const targetScrollPosition = Math.max(0, elementAbsoluteTop - headerHeight - 120);
+          const targetScrollPosition = Math.max(0, elementAbsoluteTop - headerHeight - 125);
 
           console.log('📍 Calculated positions:', {
             elementAbsoluteTop: elementAbsoluteTop,
@@ -89,7 +89,7 @@ export const useMobileNavigation = (
             bestRectTop: bestRect.top,
             bestRectBottom: bestRect.bottom,
             headerHeight: headerHeight,
-            offset: 120,
+            offset: 125,
           });
 
           // 6. Hacer scroll hacia la sección

@@ -12,9 +12,18 @@ export const useMobileScrollDetection = (
   const lastActiveSection = useRef<string | null>(null);
 
   useEffect(() => {
+    console.log('🎯 useMobileScrollDetection: Hook initialized', {
+      currentCategory: currentCategory?.name,
+      activeSubcategory,
+      isProgrammaticScroll: isProgrammaticScroll.current,
+    });
+
     const handleScroll = () => {
       // Si es scroll programático, no procesar
-      if (isProgrammaticScroll.current) return;
+      if (isProgrammaticScroll.current) {
+        console.log('⏸️ Skipping scroll detection - programmatic scroll');
+        return;
+      }
 
       const now = Date.now();
       lastScrollTime.current = now;
@@ -134,16 +143,20 @@ export const useMobileScrollDetection = (
 
     const mainElement = document.querySelector('main');
     if (mainElement) {
+      console.log('🎯 Adding scroll listener to main element');
       mainElement.addEventListener('scroll', handleScroll, { passive: true });
       return () => {
+        console.log('🎯 Removing scroll listener from main element');
         mainElement.removeEventListener('scroll', handleScroll);
         if (scrollTimeout.current) {
           clearTimeout(scrollTimeout.current);
         }
       };
     } else {
+      console.log('🎯 Adding scroll listener to window');
       window.addEventListener('scroll', handleScroll, { passive: true });
       return () => {
+        console.log('🎯 Removing scroll listener from window');
         window.removeEventListener('scroll', handleScroll);
         if (scrollTimeout.current) {
           clearTimeout(scrollTimeout.current);
