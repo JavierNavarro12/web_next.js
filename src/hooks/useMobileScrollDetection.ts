@@ -30,52 +30,55 @@ export const useMobileScrollDetection = (
         if (Date.now() - lastScrollTime.current < 200) return;
 
         if (currentCategory) {
-          const sections = currentCategory.subcategories.map((subcat) => ({
-            id: subcat.name.replace(/\s+/g, '-'),
-            name: subcat.name,
-            element: document.getElementById(subcat.name.replace(/\s+/g, '-')),
-          }));
-
-          const mainElement = document.querySelector('main');
-          const scrollTop = mainElement ? mainElement.scrollTop : window.scrollY;
-
           // Calcular altura del header móvil
           const mobileHeader = document.querySelector('.md\\:hidden.fixed');
           const headerHeight = mobileHeader ? mobileHeader.getBoundingClientRect().height : 180;
 
-          // Encontrar la sección activa
+          // Encontrar la sección activa usando la misma lógica que useMobileNavigation
           let closestSection = '';
           let closestDistance = Infinity;
 
-          sections.forEach(({ name, element }) => {
-            if (element) {
-              const rect = element.getBoundingClientRect();
-              const elementTop = rect.top;
-              const elementBottom = rect.bottom;
+          currentCategory.subcategories.forEach((subcat) => {
+            const sectionId = subcat.name.replace(/\s+/g, '-');
 
-              // Si el elemento está visible en el viewport (considerando el header)
-              if (elementTop <= headerHeight + 50 && elementBottom > headerHeight) {
-                const distance = Math.abs(elementTop - headerHeight);
-                if (distance < closestDistance) {
-                  closestDistance = distance;
-                  closestSection = name;
+            // Buscar todos los elementos con el mismo ID y encontrar el que tiene posición real
+            const allElements = document.querySelectorAll(`[id="${sectionId}"]`);
+
+            allElements.forEach((el) => {
+              const rect = el.getBoundingClientRect();
+
+              // Solo considerar elementos con posición real (no 0,0)
+              if (rect.top !== 0 || rect.bottom !== 0) {
+                const elementTop = rect.top;
+                const elementBottom = rect.bottom;
+
+                // Si el elemento está visible en el viewport (considerando el header)
+                if (elementTop <= headerHeight + 50 && elementBottom > headerHeight) {
+                  const distance = Math.abs(elementTop - headerHeight);
+                  if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestSection = subcat.name;
+                  }
                 }
               }
-            }
+            });
           });
 
           // Si no encontramos ninguna sección pero hay secciones disponibles
-          if (!closestSection && sections.length > 0) {
+          if (!closestSection && currentCategory.subcategories.length > 0) {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
             // Si estamos al principio, usar la primera sección
             if (scrollTop < headerHeight) {
-              closestSection = sections[0].name;
+              closestSection = currentCategory.subcategories[0].name;
             }
             // Si estamos al final, usar la última sección
             else if (
               scrollTop + window.innerHeight >=
               document.documentElement.scrollHeight - 100
             ) {
-              closestSection = sections[sections.length - 1].name;
+              closestSection =
+                currentCategory.subcategories[currentCategory.subcategories.length - 1].name;
             }
           }
 
@@ -86,6 +89,7 @@ export const useMobileScrollDetection = (
             closestSection !== lastActiveSection.current &&
             !isProgrammaticScroll.current
           ) {
+            console.log('🔄 Mobile scroll detection: Active section changed to:', closestSection);
             lastActiveSection.current = closestSection;
             setActiveSubcategory(closestSection);
           }

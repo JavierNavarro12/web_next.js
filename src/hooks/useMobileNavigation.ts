@@ -79,7 +79,8 @@ export const useMobileNavigation = (
           // 5. Calcular la posición absoluta del elemento
           const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
           const elementAbsoluteTop = scrollTop + bestRect.top;
-          const targetScrollPosition = Math.max(0, elementAbsoluteTop - headerHeight - 20);
+          // Ajustar el offset para que vaya un poco más arriba y sea más preciso
+          const targetScrollPosition = Math.max(0, elementAbsoluteTop - headerHeight - 60);
 
           console.log('📍 Calculated positions:', {
             elementAbsoluteTop: elementAbsoluteTop,
@@ -87,6 +88,8 @@ export const useMobileNavigation = (
             currentScrollTop: scrollTop,
             bestRectTop: bestRect.top,
             bestRectBottom: bestRect.bottom,
+            headerHeight: headerHeight,
+            offset: 60,
           });
 
           // 6. Hacer scroll hacia la sección
