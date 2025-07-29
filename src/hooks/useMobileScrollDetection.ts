@@ -80,7 +80,8 @@ export const useMobileScrollDetection = (
 
                 // Una sección está visible si su parte superior está cerca del header
                 // y su parte inferior está en el viewport
-                const isVisible = elementTop <= headerHeight + 100 && elementBottom > headerHeight;
+                // Ajustamos para detectar 130px antes (como el offset de navegación)
+                const isVisible = elementTop <= headerHeight + 230 && elementBottom > headerHeight;
 
                 console.log(`🔍 Checking section "${subcat.name}":`, {
                   elementTop: elementTop,
