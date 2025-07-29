@@ -28,29 +28,41 @@ export const useMobileNavigation = (
       if (element) {
         console.log('✅ Found element:', sectionId);
 
-        // 3. Calcular la altura del header móvil
-        const mobileHeader = document.querySelector('.md\\:hidden.fixed');
+        // 3. Calcular la altura del header móvil - MEJORAR DETECCIÓN
         let headerHeight = 120; // altura por defecto
+
+        // Intentar diferentes selectores para el header móvil
+        const mobileHeader =
+          document.querySelector('.md\\:hidden.fixed') ||
+          document.querySelector('.md\\:hidden') ||
+          document.querySelector('[class*="fixed"][class*="md:hidden"]');
 
         if (mobileHeader) {
           headerHeight = mobileHeader.getBoundingClientRect().height;
           console.log('📏 Header height:', headerHeight);
+        } else {
+          console.log('⚠️ Header not found, using default height:', headerHeight);
         }
 
-        // 4. Calcular la posición del elemento
-        const elementPosition = element.offsetTop - headerHeight - 10;
+        // 4. Calcular la posición del elemento con offset mínimo
+        const elementPosition = Math.max(0, element.offsetTop - headerHeight - 20);
         console.log('📍 Element position:', elementPosition);
+        console.log('📍 Element offsetTop:', element.offsetTop);
+        console.log('📍 Calculated position:', elementPosition);
 
         // 5. Hacer scroll hacia la sección usando window.scrollTo
         window.scrollTo({
-          top: Math.max(0, elementPosition),
+          top: elementPosition,
           behavior: 'smooth',
         });
 
-        console.log('🔄 Scrolling to position:', Math.max(0, elementPosition));
+        console.log('🔄 Scrolling to position:', elementPosition);
       } else {
         console.log('❌ Element not found:', sectionId);
-        console.log('🔍 Available elements:', document.querySelectorAll('[id]'));
+        console.log(
+          '🔍 Available elements:',
+          Array.from(document.querySelectorAll('[id]')).map((el) => el.id),
+        );
       }
 
       // 6. Hacer scroll del carrusel de tabs después de un delay
