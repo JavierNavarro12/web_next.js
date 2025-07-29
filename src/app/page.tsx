@@ -47,17 +47,17 @@ export default function HomePage() {
   const headerRow2Ref = useRef<HTMLDivElement | null>(null);
   const tabRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
   const tabsContainerRef = useRef<HTMLDivElement | null>(null);
+  const isProgrammaticScroll = useRef(false);
 
   // Hooks personalizados
-  const { handleSubcategoryClick, handleMobileSubcategoryClick, isProgrammaticScroll } =
-    useSubcategoryHandlers(
-      setActiveSubcategory,
-      setIsScrolled,
-      headerRow1Ref,
-      headerRow2Ref,
-      tabRefs,
-      tabsContainerRef,
-    );
+  const { handleSubcategoryClick, handleMobileSubcategoryClick } = useSubcategoryHandlers(
+    setActiveSubcategory,
+    setIsScrolled,
+    headerRow1Ref,
+    headerRow2Ref,
+    tabRefs,
+    tabsContainerRef,
+  );
 
   // Efecto para asegurar que estamos en el cliente
   useEffect(() => {

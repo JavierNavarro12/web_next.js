@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { scrollToSection } from '../utils/scrollUtils';
+import { useNavigationManager } from './useNavigationManager';
 import { useMobileNavigation } from './useMobileNavigation';
 
 export const useSubcategoryHandlers = (
@@ -12,26 +12,24 @@ export const useSubcategoryHandlers = (
 ) => {
   const isProgrammaticScroll = useRef(false);
 
+  // Usar el hook de navegación centralizada
+  const { navigateToSubcategory } = useNavigationManager(
+    setActiveSubcategory,
+    isProgrammaticScroll,
+  );
+
   // Usar el hook de navegación móvil
   const { handleMobileSubcategoryClick } = useMobileNavigation(
     setActiveSubcategory,
     tabRefs,
     tabsContainerRef,
+    isProgrammaticScroll,
   );
 
   // Función para manejar clic en subcategoría (desktop)
   const handleSubcategoryClick = (subcategoryName: string) => {
-    setActiveSubcategory(subcategoryName);
-    isProgrammaticScroll.current = true;
-    scrollToSection(
-      subcategoryName.replace(/\s+/g, '-'),
-      headerRow1Ref,
-      headerRow2Ref,
-      setIsScrolled,
-    );
-    setTimeout(() => {
-      isProgrammaticScroll.current = false;
-    }, 400);
+    // Usar la función centralizada de navegación
+    navigateToSubcategory(subcategoryName);
   };
 
   return {

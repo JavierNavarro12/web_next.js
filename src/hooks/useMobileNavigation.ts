@@ -1,44 +1,23 @@
 import { useRef, useCallback } from 'react';
+import { useNavigationManager } from './useNavigationManager';
 
 export const useMobileNavigation = (
   setActiveSubcategory: (subcategory: string | null) => void,
   tabRefs: React.MutableRefObject<{ [key: string]: HTMLButtonElement | null }>,
   tabsContainerRef: React.RefObject<HTMLDivElement | null>,
+  isProgrammaticScroll: React.MutableRefObject<boolean>,
 ) => {
-  const isNavigating = useRef(false);
+  const { navigateToSubcategory } = useNavigationManager(
+    setActiveSubcategory,
+    isProgrammaticScroll,
+  );
 
   const handleMobileSubcategoryClick = useCallback(
     (subcategoryName: string) => {
-      // Evitar múltiples clics simultáneos
-      if (isNavigating.current) return;
+      // Usar la función centralizada de navegación
+      navigateToSubcategory(subcategoryName);
 
-      isNavigating.current = true;
-
-      // 1. Actualizar la subcategoría activa
-      setActiveSubcategory(subcategoryName);
-
-      const sectionId = subcategoryName.replace(/\s+/g, '-');
-      const element = document.getElementById(sectionId);
-
-      if (element) {
-        // Calcular la altura real del header móvil
-        const mobileHeader = document.querySelector('.md\\:hidden.fixed');
-        let headerHeight = 120; // altura por defecto
-
-        if (mobileHeader) {
-          headerHeight = mobileHeader.getBoundingClientRect().height;
-        }
-
-        const elementPosition = element.offsetTop - headerHeight - 10; // 10px extra de padding
-
-        // Scroll hacia la sección
-        window.scrollTo({
-          top: Math.max(0, elementPosition),
-          behavior: 'smooth',
-        });
-      }
-
-      // 2. Hacer scroll del carrusel de tabs después de un breve delay
+      // Hacer scroll del carrusel de tabs después de un breve delay
       setTimeout(() => {
         const button = tabRefs.current[subcategoryName];
         const container = tabsContainerRef.current;
@@ -58,18 +37,12 @@ export const useMobileNavigation = (
             });
           }
         }
-
-        // Resetear el flag de navegación
-        setTimeout(() => {
-          isNavigating.current = false;
-        }, 300);
       }, 150);
     },
-    [setActiveSubcategory, tabRefs, tabsContainerRef],
+    [navigateToSubcategory, tabRefs, tabsContainerRef],
   );
 
   return {
     handleMobileSubcategoryClick,
-    isNavigating,
   };
 };
