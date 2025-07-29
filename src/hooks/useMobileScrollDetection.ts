@@ -48,11 +48,16 @@ export const useMobileScrollDetection = (
         });
 
         if (currentCategory) {
+          // Buscar el header móvil con múltiples selectores
           const mobileHeader =
             document.querySelector('.md\\:hidden.fixed') ||
             document.querySelector('.md\\:hidden') ||
-            document.querySelector('[class*="fixed"][class*="md:hidden"]');
-          const headerHeight = mobileHeader ? mobileHeader.getBoundingClientRect().height : 180;
+            document.querySelector('[class*="fixed"][class*="md:hidden"]') ||
+            document.querySelector('header') ||
+            document.querySelector('[class*="header"]');
+
+          // Si no encontramos el header, usar una altura fija más realista
+          const headerHeight = mobileHeader ? mobileHeader.getBoundingClientRect().height : 120;
 
           console.log('📏 Header height for detection:', headerHeight);
 
@@ -70,22 +75,18 @@ export const useMobileScrollDetection = (
                 const elementTop = rect.top;
                 const elementBottom = rect.bottom;
 
+                // Una sección está visible si su parte superior está cerca del header
+                // y su parte inferior está en el viewport
+                const isVisible = elementTop <= headerHeight + 100 && elementBottom > headerHeight;
+
                 console.log(`🔍 Checking section "${subcat.name}":`, {
                   elementTop: elementTop,
                   elementBottom: elementBottom,
                   headerHeight: headerHeight,
-                  isVisible:
-                    elementTop <= headerHeight + 50 &&
-                    elementBottom > headerHeight &&
-                    elementTop > -200,
+                  isVisible: isVisible,
                 });
 
-                // Solo considerar elementos que estén realmente en el viewport (no muy arriba)
-                if (
-                  elementTop <= headerHeight + 50 &&
-                  elementBottom > headerHeight &&
-                  elementTop > -200
-                ) {
+                if (isVisible) {
                   // Calcular qué porcentaje del elemento está visible
                   const visibleTop = Math.max(elementTop, headerHeight);
                   const visibleBottom = Math.min(elementBottom, window.innerHeight);
@@ -99,12 +100,8 @@ export const useMobileScrollDetection = (
                     `  ✅ Section "${subcat.name}" is visible, distance: ${distance}, visibility: ${visibilityPercentage.toFixed(1)}%`,
                   );
 
-                  // Solo considerar elementos con al menos 30% de visibilidad Y que estén realmente en el viewport
-                  if (
-                    visibilityPercentage >= 30 &&
-                    elementTop > -200 &&
-                    distance < closestDistance
-                  ) {
+                  // Solo considerar elementos con al menos 20% de visibilidad
+                  if (visibilityPercentage >= 20 && distance < closestDistance) {
                     closestDistance = distance;
                     closestSection = subcat.name;
                   }
