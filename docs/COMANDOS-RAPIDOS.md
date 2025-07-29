@@ -3,6 +3,7 @@
 Comandos esenciales para uso diario.
 
 ## 🚀 Desarrollo diario
+
 ```bash
 # Iniciar desarrollo
 npm run dev
@@ -12,6 +13,7 @@ npm install
 ```
 
 ## 🧪 Testing
+
 ```bash
 # Tests unitarios
 npm test
@@ -27,6 +29,7 @@ npm run test:all
 ```
 
 ## 🎨 Code Quality
+
 ```bash
 # Linting y formato
 npm run lint
@@ -37,6 +40,7 @@ npm run lint -- --fix
 ```
 
 ## 📦 Build
+
 ```bash
 # Build producción
 npm run build
@@ -46,6 +50,7 @@ npm start
 ```
 
 ## 🔧 Git básico
+
 ```bash
 git status
 git add .
@@ -55,6 +60,7 @@ git pull
 ```
 
 ## 🔥 Comandos de emergencia
+
 ```bash
 # Reset completo
 rm -rf node_modules package-lock.json && npm install
@@ -67,4 +73,5 @@ lsof -ti:3000 | xargs kill -9
 ```
 
 ---
-*Para comandos completos ver [COMANDOS.md](./COMANDOS.md)* 
+
+_Para comandos completos ver [COMANDOS.md](./COMANDOS.md)_

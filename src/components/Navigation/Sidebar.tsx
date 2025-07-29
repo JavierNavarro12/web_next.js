@@ -293,7 +293,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       {/* Título de la sección de categorías */}
       <div className="px-4 pt-2 pb-1">
         <span
-          className="uppercase text-xs tracking-widest text-zinc-400 font-semibold"
+          className="uppercase text-xs tracking-widest text-zinc-300 font-semibold"
           style={{ fontFamily: 'Inter, Sora, sans-serif' }}
         >
           IAs
@@ -374,7 +374,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
                     >
                       <Icon className="text-white w-4 h-4 mr-2" />
                       <span
-                        className="font-semibold flex-1 truncate text-[15px]"
+                        className="font-semibold flex-1 truncate text-[15px] text-white"
                         style={{ fontFamily: 'Inter, Sora, sans-serif' }}
                       >
                         {shortName}

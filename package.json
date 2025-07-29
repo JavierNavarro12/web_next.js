@@ -13,7 +13,9 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "test:e2e": "cypress run",
-    "test:all": "npm run test && npm run test:e2e"
+    "test:all": "npm run test && npm run test:e2e",
+    "docs:open": "open docs/",
+    "clean": "find . -name '.DS_Store' -delete && rm -rf .next coverage"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,md,json}": [

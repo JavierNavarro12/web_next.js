@@ -167,6 +167,7 @@ export default function Footer({
                   target={link.href.startsWith('http') ? '_blank' : undefined}
                   rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className="text-zinc-400 hover:text-white transition-colors"
+                  aria-label={link.label}
                 >
                   {link.icon}
                 </a>
@@ -381,8 +382,18 @@ export default function Footer({
                 </a>
               ))}
             </div>
-            <button className="text-zinc-400 hover:text-white transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button
+              className="text-zinc-400 hover:text-white transition-colors"
+              aria-label="Configuración"
+              title="Configuración"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"

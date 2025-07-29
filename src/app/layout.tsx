@@ -134,7 +134,11 @@ export default function RootLayout({
                           AIFinder
                         </span>
                         <div className="flex items-center gap-3">
-                          <button className="text-zinc-400">
+                          <button
+                            className="text-zinc-400"
+                            aria-label="Buscar herramientas de IA"
+                            title="Buscar herramientas de IA"
+                          >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
@@ -142,6 +146,7 @@ export default function RootLayout({
                               strokeWidth="1.5"
                               stroke="currentColor"
                               className="w-7 h-7"
+                              aria-hidden="true"
                             >
                               <path
                                 strokeLinecap="round"
@@ -153,8 +158,16 @@ export default function RootLayout({
                           <button
                             onClick={() => setSidebarOpen(false)}
                             className="text-white focus:outline-none"
+                            aria-label="Cerrar menú de navegación"
+                            title="Cerrar menú de navegación"
                           >
-                            <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
+                            <svg
+                              width="28"
+                              height="28"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              aria-hidden="true"
+                            >
                               <path
                                 stroke="currentColor"
                                 strokeWidth="2"

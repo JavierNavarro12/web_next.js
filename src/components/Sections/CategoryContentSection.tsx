@@ -72,6 +72,7 @@ export default function CategoryContentSection({
                           src={tool.image}
                           alt={tool.name}
                           fill
+                          sizes="(max-width: 1024px) 25vw, 25vw"
                           className="w-full h-full object-cover rounded transition-all duration-300 group-hover:scale-105 group-hover:blur-sm"
                         />
                         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">

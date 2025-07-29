@@ -51,7 +51,11 @@ export default function MobileHeader({
           AIFinder
         </span>
         <span className="flex-1 flex justify-end gap-4">
-          <button className="text-zinc-400">
+          <button
+            className="text-zinc-400"
+            aria-label="Buscar herramientas de IA"
+            title="Buscar herramientas de IA"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -59,6 +63,7 @@ export default function MobileHeader({
               strokeWidth="1.5"
               stroke="currentColor"
               className="w-7 h-7"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -70,8 +75,10 @@ export default function MobileHeader({
           <button
             onClick={() => setSidebarOpen(true)}
             className="text-white focus:outline-none cursor-pointer"
+            aria-label="Abrir menú de navegación"
+            title="Abrir menú de navegación"
           >
-            <svg width="32" height="32" fill="none" viewBox="0 0 24 24">
+            <svg width="32" height="32" fill="none" viewBox="0 0 24 24" aria-hidden="true">
               <path
                 stroke="currentColor"
                 strokeWidth="2"

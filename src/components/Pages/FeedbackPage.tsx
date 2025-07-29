@@ -37,17 +37,21 @@ export default function FeedbackPage({ onBack }: FeedbackPageProps) {
 
     try {
       // Enviar email usando EmailJS
-      const result = await emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.FEEDBACK_TEMPLATE_ID, {
-        name: formData.name,
-        email: formData.email,
-        message: formData.feedback,
-        time: new Date().toLocaleString('es-ES'),
-      });
+      const result = await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.FEEDBACK_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.feedback,
+          time: new Date().toLocaleString('es-ES'),
+        },
+      );
 
       console.log('Email de feedback enviado exitosamente:', result);
       setShowSuccess(true);
       setFormData({ name: '', email: '', feedback: '' });
-      
+
       // Cerrar después de 3 segundos
       setTimeout(() => {
         setShowSuccess(false);
@@ -100,7 +104,7 @@ export default function FeedbackPage({ onBack }: FeedbackPageProps) {
         {/* Botón Back desktop - movido hacia abajo y izquierda */}
         <button
           onClick={onBack}
-          className="hidden md:flex absolute top-6 left-0 z-50 items-center gap-2 text-white hover:text-zinc-300 transition-colors p-4"
+          className="hidden md:flex absolute top-4 left-0 z-50 items-center gap-2 text-white hover:text-zinc-300 transition-colors p-4"
           aria-label="Volver a la página anterior"
         >
           <svg width="20" height="20" fill="none" viewBox="0 0 24 24" aria-hidden="true">
@@ -164,7 +168,9 @@ export default function FeedbackPage({ onBack }: FeedbackPageProps) {
                   <div className="text-center py-8">
                     <div className="text-green-400 text-6xl mb-4">✓</div>
                     <h3 className="text-white text-xl font-semibold mb-2">¡Feedback enviado!</h3>
-                    <p className="text-zinc-400">Gracias por tu feedback. Te responderemos pronto.</p>
+                    <p className="text-zinc-400">
+                      Gracias por tu feedback. Te responderemos pronto.
+                    </p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
@@ -229,7 +235,9 @@ export default function FeedbackPage({ onBack }: FeedbackPageProps) {
             <div className="hidden md:block">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-center">
                 {/* Columna izquierda - Texto */}
-                <div className="px-16 lg:px-20">
+                <div className="px-16 lg:px-20 relative">
+                  {/* Línea vertical decorativa a la izquierda del título */}
+                  <div className="hidden md:block absolute left-10 lg:left-14 -top-48 -bottom-48 w-px bg-zinc-700 opacity-60"></div>
                   <h1 className="text-2xl lg:text-3xl font-bold text-white mb-3 leading-tight whitespace-nowrap text-center lg:text-left">
                     ¡TU FEEDBACK ES APRECIADO!
                   </h1>
@@ -239,12 +247,16 @@ export default function FeedbackPage({ onBack }: FeedbackPageProps) {
                 </div>
 
                 {/* Columna derecha - Formulario con colores exactos de la foto */}
-                <div className="bg-black rounded-xl p-8 border border-zinc-700 ml-2 lg:ml-6 mr-16 lg:mr-20">
+                <div className="bg-black rounded-xl p-8 border border-zinc-700 ml-2 lg:ml-6 mr-16 lg:mr-20 relative">
+                  {/* Línea vertical decorativa a la derecha del formulario */}
+                  <div className="hidden md:block absolute -right-4 lg:-right-6 -top-4 -bottom-3 w-px bg-zinc-700 opacity-60"></div>
                   {showSuccess ? (
                     <div className="text-center py-12">
                       <div className="text-green-400 text-8xl mb-6">✓</div>
                       <h3 className="text-white text-2xl font-semibold mb-3">¡Feedback enviado!</h3>
-                      <p className="text-zinc-400 text-lg">Gracias por tu feedback. Te responderemos pronto.</p>
+                      <p className="text-zinc-400 text-lg">
+                        Gracias por tu feedback. Te responderemos pronto.
+                      </p>
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
@@ -844,7 +856,7 @@ export default function FeedbackPage({ onBack }: FeedbackPageProps) {
 
         {/* Bottom Section with full-width border */}
         <div className="border-t border-zinc-800">
-          <div className="max-w-7xl mx-auto px-4 pt-6 pb-8">
+          <div className="max-w-7xl mx-auto px-4 pt-1.5 pb-5.5">
             {/* Mobile: single line left-aligned */}
             <div className="md:hidden text-left space-y-2">
               <div className="text-zinc-400 text-sm">© 2025 AIFinder</div>
@@ -884,8 +896,18 @@ export default function FeedbackPage({ onBack }: FeedbackPageProps) {
                   Términos y Condiciones
                 </a>
               </div>
-              <button className="text-zinc-400 hover:text-white transition-colors">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <button
+                className="text-zinc-400 hover:text-white transition-colors"
+                aria-label="Configuración"
+                title="Configuración"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
