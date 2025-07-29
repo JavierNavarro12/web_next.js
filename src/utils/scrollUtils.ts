@@ -9,8 +9,18 @@ export const scrollToSection = (
   if (element) {
     // Calcular la altura real del header
     let offset = 0;
-    if (headerRow1Ref.current) offset += headerRow1Ref.current.offsetHeight;
-    if (headerRow2Ref.current) offset += headerRow2Ref.current.offsetHeight;
+    const isMobile = window.innerWidth < 768;
+
+    if (isMobile) {
+      // En móvil, usar el header fijo
+      const mobileHeader = document.querySelector('.md\\:hidden.fixed');
+      offset = mobileHeader ? mobileHeader.getBoundingClientRect().height : 120;
+    } else {
+      // En desktop, usar los refs del header
+      if (headerRow1Ref.current) offset += headerRow1Ref.current.offsetHeight;
+      if (headerRow2Ref.current) offset += headerRow2Ref.current.offsetHeight;
+    }
+
     const elementPosition = element.offsetTop - offset;
     const mainScrollElement = document.querySelector('main');
     if (mainScrollElement) {
@@ -56,15 +66,26 @@ export const detectActiveSection = (
   }));
 
   let currentSection = '';
-  const viewportCenter = window.innerHeight / 2;
+  const isMobile = window.innerWidth < 768;
+  const mobileHeader = document.querySelector('.md\\:hidden.fixed');
+  const headerOffset = isMobile
+    ? mobileHeader
+      ? mobileHeader.getBoundingClientRect().height
+      : 120
+    : 50;
 
   sections.forEach(({ name, element }: { name: string; element: Element | null }) => {
     if (element) {
       const rect = element.getBoundingClientRect();
-      const elementCenter = rect.top + rect.height / 2;
+      const elementTop = rect.top;
+      const elementBottom = rect.bottom;
 
-      if (Math.abs(elementCenter - viewportCenter) < 300) {
-        currentSection = name;
+      // Si el elemento está visible en el viewport (considerando el header)
+      if (elementTop <= headerOffset + 100 && elementBottom > headerOffset) {
+        const distance = Math.abs(elementTop - headerOffset);
+        if (!currentSection || distance < 100) {
+          currentSection = name;
+        }
       }
     }
   });

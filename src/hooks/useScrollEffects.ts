@@ -14,6 +14,7 @@ export const useScrollEffects = (
   // Manejar scroll para detectar sección activa
   useEffect(() => {
     const handleScroll = () => {
+      // Si es scroll programático, no procesar
       if (isProgrammaticScroll.current) return;
 
       if (currentCategory) {
@@ -28,7 +29,12 @@ export const useScrollEffects = (
 
         // En móvil, el header es fijo, así que necesitamos ajustar el offset
         const isMobile = window.innerWidth < 768;
-        const headerOffset = isMobile ? 180 : 50; // Header móvil fijo es más alto
+        const mobileHeader = document.querySelector('.md\\:hidden.fixed');
+        const headerOffset = isMobile
+          ? mobileHeader
+            ? mobileHeader.getBoundingClientRect().height
+            : 180
+          : 50;
 
         // Encontrar la sección activa considerando también el final de la página
         let closestSection = '';
@@ -91,13 +97,25 @@ export const useScrollEffects = (
       }
     };
 
+    // Usar throttling para mejorar el rendimiento
+    let ticking = false;
+    const throttledHandleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
     const mainElement = document.querySelector('main');
     if (mainElement) {
-      mainElement.addEventListener('scroll', handleScroll, { passive: true });
-      return () => mainElement.removeEventListener('scroll', handleScroll);
+      mainElement.addEventListener('scroll', throttledHandleScroll, { passive: true });
+      return () => mainElement.removeEventListener('scroll', throttledHandleScroll);
     } else {
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      return () => window.removeEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', throttledHandleScroll, { passive: true });
+      return () => window.removeEventListener('scroll', throttledHandleScroll);
     }
   }, [
     currentCategory,
@@ -117,6 +135,9 @@ export const useScrollEffects = (
 
   // Auto-scroll del tab cuando cambie la subcategoría activa
   useEffect(() => {
-    autoScrollTab(activeSubcategory, tabRefs, tabsContainerRef);
-  }, [activeSubcategory, tabRefs, tabsContainerRef]);
+    // Solo hacer auto-scroll si no es programático
+    if (!isProgrammaticScroll.current) {
+      autoScrollTab(activeSubcategory, tabRefs, tabsContainerRef);
+    }
+  }, [activeSubcategory, tabRefs, tabsContainerRef, isProgrammaticScroll]);
 };
