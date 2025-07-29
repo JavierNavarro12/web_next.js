@@ -19,6 +19,8 @@ export const useMobileScrollDetection = (
     });
 
     const handleScroll = () => {
+      console.log('🎯 Scroll event detected!'); // Test simple
+
       // Si es scroll programático, no procesar
       if (isProgrammaticScroll.current) {
         console.log('⏸️ Skipping scroll detection - programmatic scroll');
@@ -145,9 +147,16 @@ export const useMobileScrollDetection = (
     if (mainElement) {
       console.log('🎯 Adding scroll listener to main element');
       mainElement.addEventListener('scroll', handleScroll, { passive: true });
+
+      // También agregar listener a window como backup
+      console.log('🎯 Adding scroll listener to window as backup');
+      window.addEventListener('scroll', handleScroll, { passive: true });
+
       return () => {
         console.log('🎯 Removing scroll listener from main element');
         mainElement.removeEventListener('scroll', handleScroll);
+        console.log('🎯 Removing scroll listener from window');
+        window.removeEventListener('scroll', handleScroll);
         if (scrollTimeout.current) {
           clearTimeout(scrollTimeout.current);
         }
