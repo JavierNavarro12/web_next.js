@@ -72,7 +72,42 @@ export const useMobileNavigation = (
             windowHeight: window.innerHeight,
           });
 
-          // 5. Calcular la posición absoluta del elemento
+          // 5. DEBUGGING: Verificar si el elemento está realmente en el DOM
+          console.log('🔍 DOM Debugging:', {
+            elementExists: !!element,
+            elementParent: element.parentElement?.tagName,
+            elementParentClasses: element.parentElement?.className,
+            elementDisplay: window.getComputedStyle(element).display,
+            elementVisibility: window.getComputedStyle(element).visibility,
+            elementPosition: window.getComputedStyle(element).position,
+            elementTop: window.getComputedStyle(element).top,
+            elementHeight: window.getComputedStyle(element).height,
+            elementOffsetHeight: element.offsetHeight,
+            elementClientHeight: element.clientHeight,
+            elementScrollHeight: element.scrollHeight,
+          });
+
+          // 6. Si el elemento tiene rect.top = 0, intentar buscar elementos similares
+          if (rect.top === 0 && rect.bottom === 0) {
+            console.log('⚠️ Element has rect.top = 0, searching for similar elements...');
+            const allDivs = document.querySelectorAll('div');
+            const similarElements = Array.from(allDivs).filter(
+              (div) => div.className.includes('mb-4') && div.className.includes('md:mb-6'),
+            );
+            console.log('🔍 Similar elements found:', similarElements.length);
+            similarElements.forEach((el, index) => {
+              const elRect = el.getBoundingClientRect();
+              console.log(`  Element ${index}:`, {
+                id: el.id,
+                className: el.className,
+                rectTop: elRect.top,
+                rectBottom: elRect.bottom,
+                offsetTop: el.offsetTop,
+              });
+            });
+          }
+
+          // 7. Calcular la posición absoluta del elemento
           const elementAbsoluteTop = scrollTop + rect.top;
           const targetScrollPosition = Math.max(0, elementAbsoluteTop - headerHeight - 20);
 
@@ -82,7 +117,7 @@ export const useMobileNavigation = (
             currentScrollTop: scrollTop,
           });
 
-          // 6. Hacer scroll hacia la sección
+          // 8. Hacer scroll hacia la sección
           window.scrollTo({
             top: targetScrollPosition,
             behavior: 'smooth',
@@ -97,7 +132,7 @@ export const useMobileNavigation = (
           );
         }
 
-        // 7. Hacer scroll del carrusel de tabs después de un delay
+        // 9. Hacer scroll del carrusel de tabs después de un delay
         setTimeout(() => {
           const button = tabRefs.current[subcategoryName];
           const container = tabsContainerRef.current;
@@ -120,7 +155,7 @@ export const useMobileNavigation = (
           }
         }, 300);
 
-        // 8. Resetear flags después de un tiempo
+        // 10. Resetear flags después de un tiempo
         setTimeout(() => {
           isNavigating.current = false;
           isProgrammaticScroll.current = false;
