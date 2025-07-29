@@ -80,7 +80,12 @@ export const useMobileScrollDetection = (
                 });
 
                 // Si el elemento está visible en el viewport (considerando el header)
-                if (elementTop <= headerHeight + 50 && elementBottom > headerHeight) {
+                // Solo considerar elementos que estén realmente en el viewport (no muy arriba)
+                if (
+                  elementTop <= headerHeight + 50 &&
+                  elementBottom > headerHeight &&
+                  elementTop > -200
+                ) {
                   const distance = Math.abs(elementTop - headerHeight);
                   console.log(`  ✅ Section "${subcat.name}" is visible, distance: ${distance}`);
                   if (distance < closestDistance) {
