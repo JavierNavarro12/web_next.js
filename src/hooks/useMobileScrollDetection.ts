@@ -48,26 +48,24 @@ export const useMobileScrollDetection = (
         });
 
         if (currentCategory) {
-          // Calcular altura del header móvil
-          const mobileHeader = document.querySelector('.md\\:hidden.fixed');
+          const mobileHeader =
+            document.querySelector('.md\\:hidden.fixed') ||
+            document.querySelector('.md\\:hidden') ||
+            document.querySelector('[class*="fixed"][class*="md:hidden"]');
           const headerHeight = mobileHeader ? mobileHeader.getBoundingClientRect().height : 180;
 
           console.log('📏 Header height for detection:', headerHeight);
 
-          // Encontrar la sección activa usando la misma lógica que useMobileNavigation
           let closestSection = '';
           let closestDistance = Infinity;
 
           currentCategory.subcategories.forEach((subcat) => {
             const sectionId = subcat.name.replace(/\s+/g, '-');
-
-            // Buscar todos los elementos con el mismo ID y encontrar el que tiene posición real
             const allElements = document.querySelectorAll(`[id="${sectionId}"]`);
 
             allElements.forEach((el) => {
               const rect = el.getBoundingClientRect();
 
-              // Solo considerar elementos con posición real (no 0,0)
               if (rect.top !== 0 || rect.bottom !== 0) {
                 const elementTop = rect.top;
                 const elementBottom = rect.bottom;
@@ -76,15 +74,17 @@ export const useMobileScrollDetection = (
                   elementTop: elementTop,
                   elementBottom: elementBottom,
                   headerHeight: headerHeight,
-                  isVisible: elementTop <= headerHeight + 50 && elementBottom > headerHeight,
+                  isVisible:
+                    elementTop <= headerHeight + 50 &&
+                    elementBottom > headerHeight &&
+                    elementTop > -200,
                 });
 
-                // Si el elemento está visible en el viewport (considerando el header)
                 // Solo considerar elementos que estén realmente en el viewport (no muy arriba)
                 if (
                   elementTop <= headerHeight + 50 &&
                   elementBottom > headerHeight &&
-                  elementTop > -500
+                  elementTop > -200
                 ) {
                   // Calcular qué porcentaje del elemento está visible
                   const visibleTop = Math.max(elementTop, headerHeight);
