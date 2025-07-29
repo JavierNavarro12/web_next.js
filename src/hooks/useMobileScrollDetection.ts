@@ -99,8 +99,12 @@ export const useMobileScrollDetection = (
                     `  ✅ Section "${subcat.name}" is visible, distance: ${distance}, visibility: ${visibilityPercentage.toFixed(1)}%`,
                   );
 
-                  // Solo considerar elementos con al menos 20% de visibilidad
-                  if (visibilityPercentage >= 20 && distance < closestDistance) {
+                  // Solo considerar elementos con al menos 30% de visibilidad Y que estén realmente en el viewport
+                  if (
+                    visibilityPercentage >= 30 &&
+                    elementTop > -200 &&
+                    distance < closestDistance
+                  ) {
                     closestDistance = distance;
                     closestSection = subcat.name;
                   }
