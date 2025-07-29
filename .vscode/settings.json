@@ -1,0 +1,26 @@
+{
+  "typescript.preferences.includePackageJsonAutoImports": "on",
+  "typescript.suggest.autoImports": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  
+  // Ocultar errores específicos de Jest vs Cypress
+  "typescript.reportStyleChecksAsWarnings": false,
+  "typescript.suggestionActions.enabled": false,
+  
+  // Configuración específica para archivos de test
+  "files.associations": {
+    "*.test.ts": "typescript",
+    "*.test.tsx": "typescript"
+  },
+  
+  // Ocultar errores de TypeScript en archivos de test
+  "[typescript]": {
+    "typescript.validate.enable": true,
+    "typescript.showUnused": false
+  },
+  
+  // Configuración adicional
+  "typescript.surveys.enabled": false,
+  "typescript.suggest.completeFunctionCalls": true,
+  "typescript.format.enable": true
+} 

@@ -30,11 +30,13 @@ export const filterTools = (
   let filtered = tools;
   if (activeFilter === 'free') filtered = filtered.filter((t) => t.pricing === 'free');
   if (activeFilter === 'paid') filtered = filtered.filter((t) => t.pricing === 'paid');
-  if (searchTerm.trim()) {
+  
+  const trimmedSearchTerm = searchTerm.trim();
+  if (trimmedSearchTerm) {
     filtered = filtered.filter(
       (t) =>
-        t.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (t.description && t.description.toLowerCase().includes(searchTerm.toLowerCase())),
+        t.name.toLowerCase().includes(trimmedSearchTerm.toLowerCase()) ||
+        (t.description && t.description.toLowerCase().includes(trimmedSearchTerm.toLowerCase())),
     );
   }
   return filtered;
@@ -81,7 +83,7 @@ export const getFeaturedTools = (): AITool[] => {
     'Sora', // #5 - OpenAI, líder en generación de video
     'Gemini', // #6 - Google, competidor principal
     'Stable Diffusion', // #7 - Open source, muy popular
-    'GitHub Copilot', // #8 - Microsoft, líder en IA para programación
+    'ElevenLabs', // #8 - Líder en síntesis de voz y audio IA
   ];
 
   const featured = popularToolNames

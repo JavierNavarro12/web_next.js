@@ -9,7 +9,11 @@
     "lint": "next lint",
     "format": "prettier --write .",
     "prepare": "husky install",
-    "test": "jest"
+    "test": "jest",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test:e2e": "cypress run",
+    "test:all": "npm run test && npm run test:e2e"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,md,json}": [
@@ -35,6 +39,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cypress": "^14.5.3",
     "eslint": "^9",
     "eslint-config-next": "15.4.2",
     "husky": "^9.1.7",

@@ -1,10 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '../../config/emailjs';
+
+// Inicializar EmailJS una sola vez
+emailjs.init('d0LlJPzXxEJn_vAf4');
 
 interface FeedbackPageProps {
   onBack: () => void;
 }
 
 export default function FeedbackPage({ onBack }: FeedbackPageProps) {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    feedback: '',
+  });
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   // Hacer scroll al top cuando se monta el componente
   useEffect(() => {
     // Intentar hacer scroll en el contenedor principal (desktop) o window (móvil)
@@ -17,6 +30,44 @@ export default function FeedbackPage({ onBack }: FeedbackPageProps) {
       window.scrollTo(0, 0);
     }
   }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // Enviar email usando EmailJS
+      const result = await emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.FEEDBACK_TEMPLATE_ID, {
+        name: formData.name,
+        email: formData.email,
+        message: formData.feedback,
+        time: new Date().toLocaleString('es-ES'),
+      });
+
+      console.log('Email de feedback enviado exitosamente:', result);
+      setShowSuccess(true);
+      setFormData({ name: '', email: '', feedback: '' });
+      
+      // Cerrar después de 3 segundos
+      setTimeout(() => {
+        setShowSuccess(false);
+        onBack();
+      }, 3000);
+    } catch (error) {
+      console.error('Error al enviar email de feedback:', error);
+      alert('Error al enviar el feedback. Por favor, inténtalo de nuevo.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
   return (
     <div className="bg-black">
       {/* Contenido principal con líneas */}
@@ -109,47 +160,68 @@ export default function FeedbackPage({ onBack }: FeedbackPageProps) {
 
               {/* Formulario móvil - ancho completo */}
               <div className="bg-black rounded-xl p-6 border border-zinc-700">
-                <form className="space-y-4">
-                  {/* Nombre */}
-                  <div>
-                    <label className="block text-white font-medium mb-2">Nombre</label>
-                    <input
-                      type="text"
-                      placeholder="Nombre"
-                      className="w-full px-4 py-3 bg-zinc-900 text-white placeholder-zinc-500 border border-zinc-700 rounded-lg focus:outline-none focus:border-zinc-600 transition-colors"
-                    />
+                {showSuccess ? (
+                  <div className="text-center py-8">
+                    <div className="text-green-400 text-6xl mb-4">✓</div>
+                    <h3 className="text-white text-xl font-semibold mb-2">¡Feedback enviado!</h3>
+                    <p className="text-zinc-400">Gracias por tu feedback. Te responderemos pronto.</p>
                   </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    {/* Nombre */}
+                    <div>
+                      <label className="block text-white font-medium mb-2">Nombre</label>
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="Nombre"
+                        className="w-full px-4 py-3 bg-zinc-900 text-white placeholder-zinc-500 border border-zinc-700 rounded-lg focus:outline-none focus:border-zinc-600 transition-colors"
+                        required
+                      />
+                    </div>
 
-                  {/* Email */}
-                  <div>
-                    <label className="block text-white font-medium mb-2">Email</label>
-                    <input
-                      type="email"
-                      placeholder="email@gmail.com"
-                      className="w-full px-4 py-3 bg-zinc-900 text-white placeholder-zinc-500 border border-zinc-700 rounded-lg focus:outline-none focus:border-zinc-600 transition-colors"
-                    />
-                  </div>
+                    {/* Email */}
+                    <div>
+                      <label className="block text-white font-medium mb-2">Email</label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="email@gmail.com"
+                        className="w-full px-4 py-3 bg-zinc-900 text-white placeholder-zinc-500 border border-zinc-700 rounded-lg focus:outline-none focus:border-zinc-600 transition-colors"
+                        required
+                      />
+                    </div>
 
-                  {/* Campo de comentarios */}
-                  <div>
-                    <label className="block text-white font-medium mb-2">
-                      ¡Cuéntanos tus ideas!
-                    </label>
-                    <textarea
-                      rows={4}
-                      placeholder="¡Estoy disfrutando AIFinder! Deberían agregar..."
-                      className="w-full px-4 py-3 bg-zinc-900 text-white placeholder-zinc-500 border border-zinc-700 rounded-lg focus:outline-none focus:border-zinc-600 transition-colors resize-none"
-                    />
-                  </div>
+                    {/* Campo de comentarios */}
+                    <div>
+                      <label className="block text-white font-medium mb-2">
+                        ¡Cuéntanos tus ideas!
+                      </label>
+                      <textarea
+                        name="feedback"
+                        value={formData.feedback}
+                        onChange={handleInputChange}
+                        rows={4}
+                        placeholder="¡Estoy disfrutando AIFinder! Deberían agregar..."
+                        className="w-full px-4 py-3 bg-zinc-900 text-white placeholder-zinc-500 border border-zinc-700 rounded-lg focus:outline-none focus:border-zinc-600 transition-colors resize-none"
+                        required
+                      />
+                    </div>
 
-                  {/* Botón de envío */}
-                  <button
-                    type="submit"
-                    className="w-full bg-white hover:bg-gray-100 text-black font-semibold py-3 px-6 rounded-lg transition-colors"
-                  >
-                    Enviar Sugerencia
-                  </button>
-                </form>
+                    {/* Botón de envío */}
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-white hover:bg-gray-100 disabled:bg-gray-600 disabled:cursor-not-allowed text-black font-semibold py-3 px-6 rounded-lg transition-colors"
+                    >
+                      {isSubmitting ? 'Enviando...' : 'Enviar Sugerencia'}
+                    </button>
+                  </form>
+                )}
               </div>
             </div>
 
@@ -168,47 +240,68 @@ export default function FeedbackPage({ onBack }: FeedbackPageProps) {
 
                 {/* Columna derecha - Formulario con colores exactos de la foto */}
                 <div className="bg-black rounded-xl p-8 border border-zinc-700 ml-2 lg:ml-6 mr-16 lg:mr-20">
-                  <form className="space-y-6">
-                    {/* Fila de Nombre y Email */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {showSuccess ? (
+                    <div className="text-center py-12">
+                      <div className="text-green-400 text-8xl mb-6">✓</div>
+                      <h3 className="text-white text-2xl font-semibold mb-3">¡Feedback enviado!</h3>
+                      <p className="text-zinc-400 text-lg">Gracias por tu feedback. Te responderemos pronto.</p>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      {/* Fila de Nombre y Email */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-white font-medium mb-2">Nombre</label>
+                          <input
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            placeholder="Nombre"
+                            className="w-full px-4 py-3 bg-zinc-900 text-white placeholder-zinc-500 border border-zinc-700 rounded-lg focus:outline-none focus:border-zinc-600 transition-colors"
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-white font-medium mb-2">Email</label>
+                          <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            placeholder="email@gmail.com"
+                            className="w-full px-4 py-3 bg-zinc-900 text-white placeholder-zinc-500 border border-zinc-700 rounded-lg focus:outline-none focus:border-zinc-600 transition-colors"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      {/* Campo de comentarios */}
                       <div>
-                        <label className="block text-white font-medium mb-2">Nombre</label>
-                        <input
-                          type="text"
-                          placeholder="Nombre"
-                          className="w-full px-4 py-3 bg-zinc-900 text-white placeholder-zinc-500 border border-zinc-700 rounded-lg focus:outline-none focus:border-zinc-600 transition-colors"
+                        <label className="block text-white font-medium mb-2">
+                          ¡Cuéntanos tus ideas!
+                        </label>
+                        <textarea
+                          name="feedback"
+                          value={formData.feedback}
+                          onChange={handleInputChange}
+                          rows={6}
+                          placeholder="¡Estoy disfrutando AIFinder! Deberían agregar..."
+                          className="w-full px-4 py-3 bg-zinc-900 text-white placeholder-zinc-500 border border-zinc-700 rounded-lg focus:outline-none focus:border-zinc-600 transition-colors resize-none"
+                          required
                         />
                       </div>
-                      <div>
-                        <label className="block text-white font-medium mb-2">Email</label>
-                        <input
-                          type="email"
-                          placeholder="email@gmail.com"
-                          className="w-full px-4 py-3 bg-zinc-900 text-white placeholder-zinc-500 border border-zinc-700 rounded-lg focus:outline-none focus:border-zinc-600 transition-colors"
-                        />
-                      </div>
-                    </div>
 
-                    {/* Campo de comentarios */}
-                    <div>
-                      <label className="block text-white font-medium mb-2">
-                        ¡Cuéntanos tus ideas!
-                      </label>
-                      <textarea
-                        rows={6}
-                        placeholder="¡Estoy disfrutando AIFinder! Deberían agregar..."
-                        className="w-full px-4 py-3 bg-zinc-900 text-white placeholder-zinc-500 border border-zinc-700 rounded-lg focus:outline-none focus:border-zinc-600 transition-colors resize-none"
-                      />
-                    </div>
-
-                    {/* Botón de envío */}
-                    <button
-                      type="submit"
-                      className="w-full bg-white hover:bg-gray-100 text-black font-semibold py-3 px-6 rounded-lg transition-colors"
-                    >
-                      Enviar Sugerencia
-                    </button>
-                  </form>
+                      {/* Botón de envío */}
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full bg-white hover:bg-gray-100 disabled:bg-gray-600 disabled:cursor-not-allowed text-black font-semibold py-3 px-6 rounded-lg transition-colors"
+                      >
+                        {isSubmitting ? 'Enviando...' : 'Enviar Sugerencia'}
+                      </button>
+                    </form>
+                  )}
                 </div>
               </div>
             </div>

@@ -1,8 +1,9 @@
-// Configuración de EmailJS
-// Reemplaza estos valores con tus credenciales reales de EmailJS
+// Configuración de EmailJS usando variables de entorno
+// Las credenciales están en .env.local
 
 export const EMAILJS_CONFIG = {
-  USER_ID: 'd0LlJPzXxEJn_vAf4', // Tu Public Key correcto de EmailJS
-  SERVICE_ID: 'service_xni914b', // Tu Service ID de Gmail
-  TEMPLATE_ID: 'template_dv6ltut', // Tu Template ID
+  USER_ID: process.env.NEXT_PUBLIC_EMAILJS_USER_ID!,
+  SERVICE_ID: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+  TEMPLATE_ID: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+  FEEDBACK_TEMPLATE_ID: process.env.NEXT_PUBLIC_EMAILJS_FEEDBACK_TEMPLATE_ID!,
 };

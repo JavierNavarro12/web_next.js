@@ -14,4 +14,14 @@ module.exports = {
   transformIgnorePatterns: [
     '/node_modules/(?!react-markdown|remark-gfm|rehype-raw|react-icons|@react-pdf/renderer).+\\.js$',
   ],
+  // Especificar configuración de TypeScript para Jest
+  globals: {
+    'ts-jest': {
+      tsconfig: 'tsconfig.jest.json'
+    }
+  },
+  testMatch: [
+    '<rootDir>/src/**/__tests__/**/*.(ts|tsx|js|jsx)',
+    '<rootDir>/src/**/*.(test|spec).(ts|tsx|js|jsx)'
+  ]
 };
