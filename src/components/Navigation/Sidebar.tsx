@@ -33,6 +33,7 @@ import {
   useFeedbackContext,
   useAddAIToolContext,
 } from '../../app/layout';
+import { useNavigationManager } from '../../hooks/useNavigationManager';
 
 const defaultIcon = HiOutlinePlusCircle;
 const icons = [
@@ -97,6 +98,13 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
     null,
   );
 
+  // Crear una referencia para el scroll programático
+  const isProgrammaticScroll = useRef(false);
+  const { navigateToSubcategory, navigateToTop } = useNavigationManager(
+    setActiveSubcategory,
+    isProgrammaticScroll,
+  );
+
   // Detectar la categoría activa y abrirla automáticamente
   useEffect(() => {
     if (showFeedback) {
@@ -159,7 +167,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
     }
   };
 
-  // Función para manejar clic en subcategoría
+  // Función para manejar clic en subcategoría usando el sistema centralizado
   const handleSubcategoryClick = (subcategoryName: string) => {
     // Si estamos en feedback, primero cerrarlo
     if (showFeedback) {
@@ -178,28 +186,6 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
     }
   };
 
-  const navigateToSubcategory = (subcategoryName: string) => {
-    const sectionId = subcategoryName.replace(/\s+/g, '-');
-    const element = document.getElementById(sectionId);
-    if (element) {
-      // Detectar si se ha hecho scroll para ajustar el offset
-      const scrollTop = window.scrollY;
-      const isScrolled = scrollTop > 50;
-      const offset = isScrolled ? 60 : 140; // Offset dinámico según el estado del header
-      const elementPosition = element.offsetTop - offset;
-
-      // Actualizar el estado de la subcategoría activa INMEDIATAMENTE
-      setActiveSubcategory(subcategoryName);
-
-      const mainElement = document.querySelector('main');
-      if (mainElement) {
-        mainElement.scrollTo({ top: elementPosition, behavior: 'smooth' });
-      } else {
-        window.scrollTo({ top: elementPosition, behavior: 'smooth' });
-      }
-    }
-  };
-
   const handleSectionClick = (sectionKey: string) => {
     // Si estamos en feedback, primero cerrarlo
     if (showFeedback) {
@@ -215,6 +201,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
     if (sectionKey === 'explorar' && setActiveCategory) {
       setActiveCategory(null); // Limpiar categoría activa cuando se va a Explorar
       setActiveSubcategory(null); // Limpiar subcategoría también
+      navigateToTop(); // Ir a la parte superior
     }
   };
 

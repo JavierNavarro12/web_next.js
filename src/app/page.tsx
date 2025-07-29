@@ -28,6 +28,7 @@ import {
   getLegalAITools,
 } from '../utils/toolSectionUtils';
 import { useScrollEffects } from '../hooks/useScrollEffects';
+import { useMobileScrollDetection } from '../hooks/useMobileScrollDetection';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useSubcategoryHandlers } from '../hooks/useSubcategoryHandlers';
 
@@ -47,17 +48,17 @@ export default function HomePage() {
   const headerRow2Ref = useRef<HTMLDivElement | null>(null);
   const tabRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
   const tabsContainerRef = useRef<HTMLDivElement | null>(null);
+  const isProgrammaticScroll = useRef(false);
 
   // Hooks personalizados
-  const { handleSubcategoryClick, handleMobileSubcategoryClick, isProgrammaticScroll } =
-    useSubcategoryHandlers(
-      setActiveSubcategory,
-      setIsScrolled,
-      headerRow1Ref,
-      headerRow2Ref,
-      tabRefs,
-      tabsContainerRef,
-    );
+  const { handleSubcategoryClick, handleMobileSubcategoryClick } = useSubcategoryHandlers(
+    setActiveSubcategory,
+    setIsScrolled,
+    headerRow1Ref,
+    headerRow2Ref,
+    tabRefs,
+    tabsContainerRef,
+  );
 
   // Efecto para asegurar que estamos en el cliente
   useEffect(() => {
@@ -70,6 +71,16 @@ export default function HomePage() {
 
   // Usar hooks personalizados
   useLocalStorage(isClient, activeCategory, activeSubcategory);
+
+  // Usar detección de scroll específica para móvil
+  useMobileScrollDetection(
+    currentCategory,
+    activeSubcategory,
+    setActiveSubcategory,
+    isProgrammaticScroll,
+  );
+
+  // Usar efectos de scroll para desktop
   useScrollEffects(
     currentCategory,
     activeSubcategory,
