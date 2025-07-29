@@ -23,15 +23,26 @@ export const useScrollEffects = (
       const now = Date.now();
       lastScrollTime.current = now;
 
+      // Detectar scroll inmediatamente para el estado isScrolled
+      const mainElement = document.querySelector('main');
+      const scrollTop = mainElement ? mainElement.scrollTop : window.scrollY;
+      const isMobile = window.innerWidth < 768;
+
+      // Actualizar isScrolled inmediatamente sin timeout
+      if (!isMobile) {
+        const shouldBeScrolled = scrollTop > 30;
+        setIsScrolled(shouldBeScrolled);
+      }
+
       // Limpiar timeout anterior
       if (scrollTimeout.current) {
         clearTimeout(scrollTimeout.current);
       }
 
-      // Esperar a que el scroll se estabilice antes de detectar la sección
+      // Reducir el timeout para una respuesta más rápida
       scrollTimeout.current = setTimeout(() => {
         // Verificar que no ha habido más scroll reciente
-        if (Date.now() - lastScrollTime.current < 100) return;
+        if (Date.now() - lastScrollTime.current < 50) return;
 
         if (currentCategory) {
           const sections = currentCategory.subcategories.map((subcat) => ({
@@ -106,27 +117,19 @@ export const useScrollEffects = (
           ) {
             setActiveSubcategory(closestSection);
           }
-
-          // Controlar el estado de scroll para desktop
-          if (!isMobile) {
-            if (scrollTop > 50) {
-              setIsScrolled(true);
-            } else {
-              setIsScrolled(false);
-            }
-          }
         }
-      }, 150); // Esperar 150ms para que el scroll se estabilice
+      }, 100); // Reducir a 100ms para respuesta más rápida
     };
 
-    // Usar throttling para mejorar el rendimiento
+    // Usar throttling más agresivo para mejor rendimiento
     let ticking = false;
     const throttledHandleScroll = () => {
       if (!ticking) {
-        requestAnimationFrame(() => {
+        // Usar setTimeout con 0ms para mejor rendimiento en scroll
+        setTimeout(() => {
           handleScroll();
           ticking = false;
-        });
+        }, 0);
         ticking = true;
       }
     };

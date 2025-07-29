@@ -416,7 +416,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
                       </span>
                     </span>
                     {cat.subcategories.length > 0 && (
-                      <span
+                      <button
                         className={`mx-1 flex items-center justify-center px-1.5 py-0.5 ${isOpen || isHovered || isCategoryActive ? 'bg-white/10' : ''} rounded transition-colors z-10 cursor-pointer`}
                         onClick={(e) => {
                           e.preventDefault();
@@ -424,15 +424,15 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
                           setOpenCategory(isOpen ? null : i);
                           handleCategoryClick(cat.name);
                         }}
-                        tabIndex={-1}
-                        aria-label={isOpen ? 'Cerrar' : 'Abrir'}
+                        aria-label={isOpen ? 'Cerrar subcategorías' : 'Abrir subcategorías'}
+                        type="button"
                       >
                         {isOpen ? (
                           <HiChevronUp className="w-3.5 h-3.5 text-white" />
                         ) : (
                           <HiChevronDown className="w-3.5 h-3.5 text-zinc-400" />
                         )}
-                      </span>
+                      </button>
                     )}
                   </div>
                   {isOpen && cat.subcategories.length > 0 && (

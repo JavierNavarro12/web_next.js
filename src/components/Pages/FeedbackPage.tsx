@@ -24,8 +24,12 @@ export default function FeedbackPage({ onBack }: FeedbackPageProps) {
         {/* Header móvil */}
         <div className="md:hidden fixed top-0 left-0 right-0 z-40 bg-black border-b border-zinc-800">
           <div className="flex items-center justify-between px-4 py-4">
-            <button onClick={onBack} className="text-zinc-400 hover:text-white transition-colors">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <button
+              onClick={onBack}
+              className="text-zinc-400 hover:text-white transition-colors"
+              aria-label="Volver a la página anterior"
+            >
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   stroke="currentColor"
                   strokeWidth="2"
@@ -46,8 +50,9 @@ export default function FeedbackPage({ onBack }: FeedbackPageProps) {
         <button
           onClick={onBack}
           className="hidden md:flex absolute top-6 left-0 z-50 items-center gap-2 text-white hover:text-zinc-300 transition-colors p-4"
+          aria-label="Volver a la página anterior"
         >
-          <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" aria-hidden="true">
             <path
               stroke="currentColor"
               strokeWidth="2"
@@ -267,58 +272,130 @@ export default function FeedbackPage({ onBack }: FeedbackPageProps) {
             <div>
               <h3 className="text-white font-semibold mb-4">Categorías de IAs</h3>
               <div className="grid grid-cols-2 gap-x-8 gap-y-2">
-                <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Explorar categoría Generativa"
+                >
                   Generativa
                 </a>
-                <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Explorar categoría Seguridad"
+                >
                   Seguridad
                 </a>
-                <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Explorar categoría Chatbots"
+                >
                   Chatbots
                 </a>
-                <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Explorar categoría Robótica"
+                >
                   Robótica
                 </a>
-                <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Explorar categoría Negocios"
+                >
                   Negocios
                 </a>
-                <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Explorar categoría Multimodal"
+                >
                   Multimodal
                 </a>
-                <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Explorar categoría DevTools"
+                >
                   DevTools
                 </a>
-                <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Explorar categoría OpenSource"
+                >
                   OpenSource
                 </a>
-                <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Explorar categoría Creatividad"
+                >
                   Creatividad
                 </a>
-                <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Explorar categoría Cognitiva"
+                >
                   Cognitiva
                 </a>
-                <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Explorar categoría Salud"
+                >
                   Salud
                 </a>
-                <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Explorar categoría MLOps"
+                >
                   MLOps
                 </a>
-                <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Explorar categoría Educación"
+                >
                   Educación
                 </a>
-                <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Explorar categoría Marketing"
+                >
                   Marketing
                 </a>
-                <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Explorar categoría Finanzas"
+                >
                   Finanzas
                 </a>
-                <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Explorar categoría Traducción"
+                >
                   Traducción
                 </a>
-                <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Explorar categoría Legal"
+                >
                   Legal
                 </a>
-                <a href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Explorar categoría Ética"
+                >
                   Ética
                 </a>
               </div>
@@ -331,24 +408,28 @@ export default function FeedbackPage({ onBack }: FeedbackPageProps) {
                 <a
                   href="#"
                   className="block text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Acceder al comparador de IAs"
                 >
                   Comparador de IAs
                 </a>
                 <a
                   href="#"
                   className="block text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Acceder a la calculadora de costos"
                 >
                   Calculadora de costos
                 </a>
                 <a
                   href="#"
                   className="block text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Acceder al generador de prompts"
                 >
                   Generador de prompts
                 </a>
                 <a
                   href="#"
                   className="block text-zinc-400 hover:text-white transition-colors text-sm"
+                  aria-label="Acceder al evaluador de calidad"
                 >
                   Evaluador de calidad
                 </a>

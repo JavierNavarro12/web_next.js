@@ -96,6 +96,7 @@ export default function AddAIToolModal({ isOpen, onClose }: AddAIToolModalProps)
           <button
             onClick={onClose}
             className="absolute top-4 right-4 text-zinc-400 hover:text-white transition-colors"
+            aria-label="Cerrar modal"
           >
             <HiOutlineX className="w-6 h-6" />
           </button>

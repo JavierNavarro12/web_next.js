@@ -123,7 +123,7 @@ export default function DesktopHeader({
       {/* Primera fila: Se oculta al hacer scroll */}
       <div
         ref={headerRow1Ref}
-        className={`flex items-center bg-black px-6 py-3 border-b border-zinc-800 transition-all duration-300 ${
+        className={`flex items-center bg-black px-6 py-3 border-b border-zinc-800 transition-all duration-200 ${
           isScrolled ? 'h-0 p-0 m-0 overflow-hidden opacity-0 border-0' : ''
         }`}
       >
@@ -178,7 +178,7 @@ export default function DesktopHeader({
       {/* Segunda fila: Se queda fija arriba al hacer scroll */}
       <div
         ref={headerRow2Ref}
-        className={`flex items-center justify-between bg-black px-6 py-3 border-b border-zinc-800 transition-all duration-300 ${
+        className={`flex items-center justify-between bg-black px-6 py-3 border-b border-zinc-800 transition-all duration-150 ${
           isScrolled
             ? 'fixed top-0 left-[calc(4px+270px+1px)] right-[calc(12px+1px)] z-50 shadow-lg border-t border-zinc-800'
             : 'relative z-20'
