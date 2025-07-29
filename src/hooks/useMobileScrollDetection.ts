@@ -48,15 +48,18 @@ export const useMobileScrollDetection = (
         });
 
         if (currentCategory) {
-          // Buscar el header móvil con múltiples selectores
+          // Buscar el header móvil con el selector correcto
           const mobileHeader =
+            document.querySelector(
+              '.md\\:hidden.fixed.top-0.left-0.right-0.z-40.bg-black.border-b.border-zinc-800.flex.flex-col.w-full.overflow-hidden',
+            ) ||
             document.querySelector('.md\\:hidden.fixed') ||
-            document.querySelector('.md\\:hidden') ||
-            document.querySelector('[class*="fixed"][class*="md:hidden"]') ||
+            document.querySelector('[class*="md:hidden"][class*="fixed"]') ||
             document.querySelector('header') ||
             document.querySelector('[class*="header"]');
 
           // Si no encontramos el header, usar una altura fija más realista
+          // El header móvil tiene: logo + padding + tabs = ~120px
           const headerHeight = mobileHeader ? mobileHeader.getBoundingClientRect().height : 120;
 
           console.log('📏 Header height for detection:', headerHeight);
