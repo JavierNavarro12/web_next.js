@@ -84,11 +84,23 @@ export const useMobileScrollDetection = (
                 if (
                   elementTop <= headerHeight + 50 &&
                   elementBottom > headerHeight &&
-                  elementTop > -200
+                  elementTop > -500
                 ) {
+                  // Calcular qué porcentaje del elemento está visible
+                  const visibleTop = Math.max(elementTop, headerHeight);
+                  const visibleBottom = Math.min(elementBottom, window.innerHeight);
+                  const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+                  const totalHeight = elementBottom - elementTop;
+                  const visibilityPercentage =
+                    totalHeight > 0 ? (visibleHeight / totalHeight) * 100 : 0;
+
                   const distance = Math.abs(elementTop - headerHeight);
-                  console.log(`  ✅ Section "${subcat.name}" is visible, distance: ${distance}`);
-                  if (distance < closestDistance) {
+                  console.log(
+                    `  ✅ Section "${subcat.name}" is visible, distance: ${distance}, visibility: ${visibilityPercentage.toFixed(1)}%`,
+                  );
+
+                  // Solo considerar elementos con al menos 20% de visibilidad
+                  if (visibilityPercentage >= 20 && distance < closestDistance) {
                     closestDistance = distance;
                     closestSection = subcat.name;
                   }
