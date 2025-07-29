@@ -24,19 +24,43 @@ export const useMobileNavigation = (
       // 2. Esperar a que el DOM se actualice y luego buscar el elemento
       requestAnimationFrame(() => {
         const sectionId = subcategoryName.replace(/\s+/g, '-');
-        const element = document.getElementById(sectionId);
 
-        if (element) {
-          console.log('✅ Found element:', sectionId);
-          console.log('🔍 Element details:', {
-            tagName: element.tagName,
-            className: element.className,
-            offsetTop: element.offsetTop,
-            offsetHeight: element.offsetHeight,
-            getBoundingClientRect: element.getBoundingClientRect(),
+        // 3. Buscar todos los elementos con el mismo ID y encontrar el que tiene posición real
+        const allElements = document.querySelectorAll(`[id="${sectionId}"]`);
+        console.log(`🔍 Found ${allElements.length} elements with id "${sectionId}"`);
+
+        let targetElement: Element | null = null;
+        let bestRect = { top: 0, bottom: 0 };
+
+        // Buscar el elemento que tiene la posición más alta (el que está realmente en el viewport)
+        allElements.forEach((el, index) => {
+          const rect = el.getBoundingClientRect();
+          const htmlEl = el as HTMLElement;
+          console.log(`  Element ${index}:`, {
+            id: htmlEl.id,
+            className: el.className,
+            rectTop: rect.top,
+            rectBottom: rect.bottom,
+            offsetTop: htmlEl.offsetTop,
           });
 
-          // 3. Calcular la altura del header móvil
+          // Si este elemento tiene una posición real (no 0,0), usarlo
+          if (rect.top !== 0 || rect.bottom !== 0) {
+            if (!targetElement || rect.top > bestRect.top) {
+              targetElement = el;
+              bestRect = rect;
+            }
+          }
+        });
+
+        if (targetElement) {
+          console.log('✅ Using element with real position:', {
+            id: targetElement.id,
+            rectTop: bestRect.top,
+            rectBottom: bestRect.bottom,
+          });
+
+          // 4. Calcular la altura del header móvil
           let headerHeight = 120; // altura por defecto
 
           // Intentar diferentes selectores para el header móvil
@@ -45,14 +69,6 @@ export const useMobileNavigation = (
             document.querySelector('.md\\:hidden') ||
             document.querySelector('[class*="fixed"][class*="md:hidden"]');
 
-          console.log('🔍 Mobile header search:', {
-            selector1: document.querySelector('.md\\:hidden.fixed'),
-            selector2: document.querySelector('.md\\:hidden'),
-            selector3: document.querySelector('[class*="fixed"][class*="md:hidden"]'),
-            allFixedElements: document.querySelectorAll('[class*="fixed"]'),
-            allMdHiddenElements: document.querySelectorAll('[class*="md:hidden"]'),
-          });
-
           if (mobileHeader) {
             headerHeight = mobileHeader.getBoundingClientRect().height;
             console.log('📏 Header height:', headerHeight);
@@ -60,64 +76,20 @@ export const useMobileNavigation = (
             console.log('⚠️ Header not found, using default height:', headerHeight);
           }
 
-          // 4. Usar getBoundingClientRect para obtener la posición real en el viewport
-          const rect = element.getBoundingClientRect();
+          // 5. Calcular la posición absoluta del elemento
           const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-          console.log('📊 Position calculation:', {
-            rectTop: rect.top,
-            rectBottom: rect.bottom,
-            scrollTop: scrollTop,
-            headerHeight: headerHeight,
-            windowHeight: window.innerHeight,
-          });
-
-          // 5. DEBUGGING: Verificar si el elemento está realmente en el DOM
-          console.log('🔍 DOM Debugging:', {
-            elementExists: !!element,
-            elementParent: element.parentElement?.tagName,
-            elementParentClasses: element.parentElement?.className,
-            elementDisplay: window.getComputedStyle(element).display,
-            elementVisibility: window.getComputedStyle(element).visibility,
-            elementPosition: window.getComputedStyle(element).position,
-            elementTop: window.getComputedStyle(element).top,
-            elementHeight: window.getComputedStyle(element).height,
-            elementOffsetHeight: element.offsetHeight,
-            elementClientHeight: element.clientHeight,
-            elementScrollHeight: element.scrollHeight,
-          });
-
-          // 6. Si el elemento tiene rect.top = 0, intentar buscar elementos similares
-          if (rect.top === 0 && rect.bottom === 0) {
-            console.log('⚠️ Element has rect.top = 0, searching for similar elements...');
-            const allDivs = document.querySelectorAll('div');
-            const similarElements = Array.from(allDivs).filter(
-              (div) => div.className.includes('mb-4') && div.className.includes('md:mb-6'),
-            );
-            console.log('🔍 Similar elements found:', similarElements.length);
-            similarElements.forEach((el, index) => {
-              const elRect = el.getBoundingClientRect();
-              console.log(`  Element ${index}:`, {
-                id: el.id,
-                className: el.className,
-                rectTop: elRect.top,
-                rectBottom: elRect.bottom,
-                offsetTop: el.offsetTop,
-              });
-            });
-          }
-
-          // 7. Calcular la posición absoluta del elemento
-          const elementAbsoluteTop = scrollTop + rect.top;
+          const elementAbsoluteTop = scrollTop + bestRect.top;
           const targetScrollPosition = Math.max(0, elementAbsoluteTop - headerHeight - 20);
 
           console.log('📍 Calculated positions:', {
             elementAbsoluteTop: elementAbsoluteTop,
             targetScrollPosition: targetScrollPosition,
             currentScrollTop: scrollTop,
+            bestRectTop: bestRect.top,
+            bestRectBottom: bestRect.bottom,
           });
 
-          // 8. Hacer scroll hacia la sección
+          // 6. Hacer scroll hacia la sección
           window.scrollTo({
             top: targetScrollPosition,
             behavior: 'smooth',
@@ -125,14 +97,10 @@ export const useMobileNavigation = (
 
           console.log('🔄 Scrolling to position:', targetScrollPosition);
         } else {
-          console.log('❌ Element not found:', sectionId);
-          console.log(
-            '🔍 Available elements:',
-            Array.from(document.querySelectorAll('[id]')).map((el) => el.id),
-          );
+          console.log('❌ No element found with real position for:', sectionId);
         }
 
-        // 9. Hacer scroll del carrusel de tabs después de un delay
+        // 7. Hacer scroll del carrusel de tabs después de un delay
         setTimeout(() => {
           const button = tabRefs.current[subcategoryName];
           const container = tabsContainerRef.current;
@@ -155,7 +123,7 @@ export const useMobileNavigation = (
           }
         }, 300);
 
-        // 10. Resetear flags después de un tiempo
+        // 8. Resetear flags después de un tiempo
         setTimeout(() => {
           isNavigating.current = false;
           isProgrammaticScroll.current = false;
