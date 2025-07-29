@@ -27,6 +27,13 @@ export const useMobileNavigation = (
 
       if (element) {
         console.log('✅ Found element:', sectionId);
+        console.log('🔍 Element details:', {
+          tagName: element.tagName,
+          className: element.className,
+          offsetTop: element.offsetTop,
+          offsetHeight: element.offsetHeight,
+          getBoundingClientRect: element.getBoundingClientRect(),
+        });
 
         // 3. Calcular la altura del header móvil - MEJORAR DETECCIÓN
         let headerHeight = 120; // altura por defecto
@@ -36,6 +43,14 @@ export const useMobileNavigation = (
           document.querySelector('.md\\:hidden.fixed') ||
           document.querySelector('.md\\:hidden') ||
           document.querySelector('[class*="fixed"][class*="md:hidden"]');
+
+        console.log('🔍 Mobile header search:', {
+          selector1: document.querySelector('.md\\:hidden.fixed'),
+          selector2: document.querySelector('.md\\:hidden'),
+          selector3: document.querySelector('[class*="fixed"][class*="md:hidden"]'),
+          allFixedElements: document.querySelectorAll('[class*="fixed"]'),
+          allMdHiddenElements: document.querySelectorAll('[class*="md:hidden"]'),
+        });
 
         if (mobileHeader) {
           headerHeight = mobileHeader.getBoundingClientRect().height;
