@@ -36,7 +36,7 @@ export const useMobileNavigation = (
             getBoundingClientRect: element.getBoundingClientRect(),
           });
 
-          // 3. Calcular la altura del header móvil - MEJORAR DETECCIÓN
+          // 3. Calcular la altura del header móvil
           let headerHeight = 120; // altura por defecto
 
           // Intentar diferentes selectores para el header móvil
@@ -60,50 +60,35 @@ export const useMobileNavigation = (
             console.log('⚠️ Header not found, using default height:', headerHeight);
           }
 
-          // 4. Si el elemento tiene offsetTop = 0, esperar un poco más
-          if (element.offsetTop === 0) {
-            console.log('⏳ Element has offsetTop = 0, waiting for render...');
-            setTimeout(() => {
-              const updatedElement = document.getElementById(sectionId);
-              if (updatedElement && updatedElement.offsetTop > 0) {
-                console.log('✅ Element now has proper offsetTop:', updatedElement.offsetTop);
-                const elementPosition = Math.max(0, updatedElement.offsetTop - headerHeight - 20);
-                console.log('📍 Calculated position:', elementPosition);
+          // 4. Usar getBoundingClientRect para obtener la posición real en el viewport
+          const rect = element.getBoundingClientRect();
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-                window.scrollTo({
-                  top: elementPosition,
-                  behavior: 'smooth',
-                });
-                console.log('🔄 Scrolling to position:', elementPosition);
-              } else {
-                console.log('❌ Element still has offsetTop = 0, using fallback');
-                // Usar getBoundingClientRect como fallback
-                const rect = element.getBoundingClientRect();
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                const elementPosition = scrollTop + rect.top - headerHeight - 20;
+          console.log('📊 Position calculation:', {
+            rectTop: rect.top,
+            rectBottom: rect.bottom,
+            scrollTop: scrollTop,
+            headerHeight: headerHeight,
+            windowHeight: window.innerHeight,
+          });
 
-                window.scrollTo({
-                  top: Math.max(0, elementPosition),
-                  behavior: 'smooth',
-                });
-                console.log('🔄 Fallback scrolling to position:', Math.max(0, elementPosition));
-              }
-            }, 100);
-          } else {
-            // 5. Calcular la posición del elemento con offset mínimo
-            const elementPosition = Math.max(0, element.offsetTop - headerHeight - 20);
-            console.log('📍 Element position:', elementPosition);
-            console.log('📍 Element offsetTop:', element.offsetTop);
-            console.log('📍 Calculated position:', elementPosition);
+          // 5. Calcular la posición absoluta del elemento
+          const elementAbsoluteTop = scrollTop + rect.top;
+          const targetScrollPosition = Math.max(0, elementAbsoluteTop - headerHeight - 20);
 
-            // 6. Hacer scroll hacia la sección usando window.scrollTo
-            window.scrollTo({
-              top: elementPosition,
-              behavior: 'smooth',
-            });
+          console.log('📍 Calculated positions:', {
+            elementAbsoluteTop: elementAbsoluteTop,
+            targetScrollPosition: targetScrollPosition,
+            currentScrollTop: scrollTop,
+          });
 
-            console.log('🔄 Scrolling to position:', elementPosition);
-          }
+          // 6. Hacer scroll hacia la sección
+          window.scrollTo({
+            top: targetScrollPosition,
+            behavior: 'smooth',
+          });
+
+          console.log('🔄 Scrolling to position:', targetScrollPosition);
         } else {
           console.log('❌ Element not found:', sectionId);
           console.log(
