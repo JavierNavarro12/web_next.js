@@ -29,10 +29,19 @@ export const useMobileScrollDetection = (
         // Verificar que no ha habido más scroll reciente
         if (Date.now() - lastScrollTime.current < 200) return;
 
+        console.log('🔄 Mobile scroll detection: Processing scroll event');
+        console.log('📊 Scroll state:', {
+          isProgrammaticScroll: isProgrammaticScroll.current,
+          currentActiveSubcategory: activeSubcategory,
+          lastActiveSection: lastActiveSection.current,
+        });
+
         if (currentCategory) {
           // Calcular altura del header móvil
           const mobileHeader = document.querySelector('.md\\:hidden.fixed');
           const headerHeight = mobileHeader ? mobileHeader.getBoundingClientRect().height : 180;
+
+          console.log('📏 Header height for detection:', headerHeight);
 
           // Encontrar la sección activa usando la misma lógica que useMobileNavigation
           let closestSection = '';
@@ -52,9 +61,17 @@ export const useMobileScrollDetection = (
                 const elementTop = rect.top;
                 const elementBottom = rect.bottom;
 
+                console.log(`🔍 Checking section "${subcat.name}":`, {
+                  elementTop: elementTop,
+                  elementBottom: elementBottom,
+                  headerHeight: headerHeight,
+                  isVisible: elementTop <= headerHeight + 50 && elementBottom > headerHeight,
+                });
+
                 // Si el elemento está visible en el viewport (considerando el header)
                 if (elementTop <= headerHeight + 50 && elementBottom > headerHeight) {
                   const distance = Math.abs(elementTop - headerHeight);
+                  console.log(`  ✅ Section "${subcat.name}" is visible, distance: ${distance}`);
                   if (distance < closestDistance) {
                     closestDistance = distance;
                     closestSection = subcat.name;
@@ -64,13 +81,23 @@ export const useMobileScrollDetection = (
             });
           });
 
+          console.log('🎯 Closest section found:', closestSection);
+
           // Si no encontramos ninguna sección pero hay secciones disponibles
           if (!closestSection && currentCategory.subcategories.length > 0) {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
+            console.log('⚠️ No visible section found, checking scroll position:', {
+              scrollTop: scrollTop,
+              headerHeight: headerHeight,
+              documentHeight: document.documentElement.scrollHeight,
+              windowHeight: window.innerHeight,
+            });
+
             // Si estamos al principio, usar la primera sección
             if (scrollTop < headerHeight) {
               closestSection = currentCategory.subcategories[0].name;
+              console.log('📌 Using first section (at top)');
             }
             // Si estamos al final, usar la última sección
             else if (
@@ -79,6 +106,7 @@ export const useMobileScrollDetection = (
             ) {
               closestSection =
                 currentCategory.subcategories[currentCategory.subcategories.length - 1].name;
+              console.log('📌 Using last section (at bottom)');
             }
           }
 
@@ -92,6 +120,13 @@ export const useMobileScrollDetection = (
             console.log('🔄 Mobile scroll detection: Active section changed to:', closestSection);
             lastActiveSection.current = closestSection;
             setActiveSubcategory(closestSection);
+          } else {
+            console.log('⏸️ No section change needed:', {
+              closestSection: closestSection,
+              activeSubcategory: activeSubcategory,
+              lastActiveSection: lastActiveSection.current,
+              isProgrammaticScroll: isProgrammaticScroll.current,
+            });
           }
         }
       }, 200); // Esperar 200ms para que el scroll se estabilice
