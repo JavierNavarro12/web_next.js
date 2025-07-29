@@ -350,7 +350,7 @@ export default function Footer({
 
       {/* Bottom Section */}
       <div className="border-t border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 pt-6 pb-8">
+        <div className="max-w-7xl mx-auto px-4 pt-1.5 pb-5.5">
           {/* Mobile */}
           <div className="md:hidden text-left space-y-2">
             <div className="text-zinc-400 text-sm">© 2025 AIFinder</div>

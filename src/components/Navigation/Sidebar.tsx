@@ -82,6 +82,7 @@ const shortCategoryNames = [
 const mainSections = [
   { key: 'explorar', label: 'Explorar', icon: HiOutlineGlobeAlt },
   { key: 'articulos', label: 'Artículos', icon: HiOutlineNewspaper },
+  { key: 'herramientas', label: 'Herramientas', icon: HiOutlineWrenchScrewdriver },
 ];
 
 export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}) {
@@ -202,6 +203,10 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setActiveCategory(null); // Limpiar categoría activa cuando se va a Explorar
       setActiveSubcategory(null); // Limpiar subcategoría también
       navigateToTop(); // Ir a la parte superior
+    } else if (sectionKey === 'herramientas' && setActiveCategory) {
+      setActiveCategory(null); // Limpiar categoría activa cuando se va a Herramientas
+      setActiveSubcategory(null); // Limpiar subcategoría también
+      navigateToTop(); // Ir a la parte superior
     }
   };
 
@@ -228,7 +233,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
   ];
 
   return (
-    <aside className="w-full min-h-full flex flex-col px-0 pt-0 pb-0">
+    <aside className="w-full h-screen flex flex-col px-0 pt-0 pb-0">
       {/* Links destacados arriba */}
       <div className="pt-6 pb-6 px-6 hidden md:block">
         <span
@@ -269,21 +274,6 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
               </li>
             );
           })}
-          {/* 1. Haz que 'Añadir una IA' tenga el mismo margen y estilo que los otros links destacados: */}
-          <li className="relative w-full">
-            <a
-              href="#"
-              className="flex items-center gap-2 w-full py-2 px-3 font-extrabold transition-colors relative z-0 hover:bg-zinc-800 rounded-none text-base text-white md:text-sm md:text-white/90"
-              style={{ borderRadius: 0 }}
-              onClick={(e) => {
-                e.preventDefault();
-                setShowAddAITool(true);
-                if (onNavigate) onNavigate();
-              }}
-            >
-              <HiOutlinePlusCircle className="w-5 h-5" /> Añadir una IA
-            </a>
-          </li>
           {/* Herramientas en móvil */}
           <li className="relative w-full md:hidden">
             <a
@@ -309,11 +299,19 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
           IAs
         </span>
       </div>
-      {/* Recuadro de categorías */}
-      <div className="flex-1 flex flex-col bg-black rounded-none border border-zinc-800 p-0 w-full relative min-h-[400px]">
+      {/* Recuadro de categorías con scroll */}
+      <div
+        className="flex-1 flex flex-col bg-black rounded-none border border-zinc-800 p-0 w-full relative overflow-hidden"
+        style={{ maxHeight: 'calc(100vh - 200px)' }}
+      >
         <nav
           className="flex-1 overflow-y-auto pr-0 scrollbar-none"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          style={{
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            maxHeight: 'calc(100% - 0px)',
+            overscrollBehavior: 'contain',
+          }}
         >
           {/* Elimina la lógica de isMobile y renderiza ambos layouts: */}
           <div className="grid grid-cols-2 gap-y-4 gap-x-4 p-2 mt-2 md:hidden">
@@ -335,40 +333,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
               );
             })}
           </div>
-          <ul className="space-y-1 hidden md:block">
-            {/* Herramientas - sin flecha de despliegue */}
-            <li className="relative">
-              <div
-                className="flex items-center w-full py-1 font-semibold text-sm font-sans transition-colors relative z-10 rounded-none cursor-pointer"
-                style={{ fontFamily: 'Inter, Sora, sans-serif', borderRadius: 0 }}
-                onMouseEnter={() => setHoveredCategory(-1)}
-                onMouseLeave={() => setHoveredCategory(null)}
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  if (onNavigate) onNavigate();
-                }}
-              >
-                {hoveredCategory === -1 && (
-                  <>
-                    <div className="absolute left-0 w-0.5 h-full bg-white z-20" />
-                    <div className="absolute left-0 right-0 top-0 h-full bg-zinc-800 z-0" />
-                  </>
-                )}
-                <span
-                  className="flex items-center w-full py-1 pl-4 font-semibold text-sm font-sans transition-colors relative z-10 rounded-none cursor-pointer"
-                  style={{ fontFamily: 'Inter, Sora, sans-serif', borderRadius: 0 }}
-                >
-                  <HiOutlineWrenchScrewdriver className="text-white w-4 h-4 mr-2" />
-                  <span
-                    className="font-semibold flex-1 truncate text-[15px]"
-                    style={{ fontFamily: 'Inter, Sora, sans-serif' }}
-                  >
-                    Herramientas
-                  </span>
-                </span>
-              </div>
-            </li>
+          <ul className="space-y-1 hidden md:block pb-0">
             {aiCategories.map((cat, i) => {
               const Icon = icons[i] || defaultIcon;
               const shortName = shortCategoryNames[i] || cat.name;
@@ -495,6 +460,21 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
             })}
           </ul>
         </nav>
+      </div>
+      {/* Botón Añadir una IA fijo al final del sidebar */}
+      <div className="mt-auto shrink-0 pt-0 pb-6">
+        <div className="border-t border-zinc-800 bg-black rounded-none p-0 w-full">
+          <button
+            onClick={() => {
+              setShowAddAITool(true);
+              if (onNavigate) onNavigate();
+            }}
+            className="flex items-center gap-2 w-full py-3 px-3 font-extrabold transition-colors relative z-0 hover:bg-zinc-800 rounded-none text-base text-white md:text-sm md:text-white/90"
+            style={{ borderRadius: 0 }}
+          >
+            <HiOutlinePlusCircle className="w-5 h-5" /> Añadir una IA
+          </button>
+        </div>
       </div>
       {/* Ocultar scrollbar en webkit */}
       <style jsx global>{`
