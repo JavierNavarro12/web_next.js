@@ -28,6 +28,7 @@ import {
   getLegalAITools,
 } from '../utils/toolSectionUtils';
 import { useScrollEffects } from '../hooks/useScrollEffects';
+import { useMobileScrollDetection } from '../hooks/useMobileScrollDetection';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useSubcategoryHandlers } from '../hooks/useSubcategoryHandlers';
 
@@ -70,6 +71,16 @@ export default function HomePage() {
 
   // Usar hooks personalizados
   useLocalStorage(isClient, activeCategory, activeSubcategory);
+
+  // Usar detección de scroll específica para móvil
+  useMobileScrollDetection(
+    currentCategory,
+    activeSubcategory,
+    setActiveSubcategory,
+    isProgrammaticScroll,
+  );
+
+  // Usar efectos de scroll para desktop
   useScrollEffects(
     currentCategory,
     activeSubcategory,

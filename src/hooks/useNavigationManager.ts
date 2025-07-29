@@ -6,6 +6,7 @@ export const useNavigationManager = (
 ) => {
   const navigationTimeout = useRef<NodeJS.Timeout | null>(null);
   const isNavigating = useRef(false);
+  const navigationStartTime = useRef<number>(0);
 
   // Función centralizada para navegar a una subcategoría
   const navigateToSubcategory = useCallback(
@@ -15,6 +16,7 @@ export const useNavigationManager = (
 
       isNavigating.current = true;
       isProgrammaticScroll.current = true;
+      navigationStartTime.current = Date.now();
 
       // Limpiar timeout anterior si existe
       if (navigationTimeout.current) {
@@ -61,11 +63,14 @@ export const useNavigationManager = (
         }
       }
 
-      // Resetear flags después de un tiempo
+      // Resetear flags después de un tiempo más largo para evitar conflictos
       navigationTimeout.current = setTimeout(() => {
         isNavigating.current = false;
-        isProgrammaticScroll.current = false;
-      }, 500);
+        // Solo resetear isProgrammaticScroll si han pasado al menos 800ms
+        if (Date.now() - navigationStartTime.current >= 800) {
+          isProgrammaticScroll.current = false;
+        }
+      }, 800);
     },
     [setActiveSubcategory, isProgrammaticScroll],
   );
@@ -83,7 +88,7 @@ export const useNavigationManager = (
 
     setTimeout(() => {
       isProgrammaticScroll.current = false;
-    }, 400);
+    }, 600);
   }, [isProgrammaticScroll]);
 
   // Cleanup al desmontar

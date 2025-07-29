@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { detectActiveSection, autoScrollTab } from '../utils/scrollUtils';
 import { AICategory } from '../data/ai-tools';
 
@@ -11,90 +11,112 @@ export const useScrollEffects = (
   tabRefs: React.MutableRefObject<{ [key: string]: HTMLButtonElement | null }>,
   tabsContainerRef: React.RefObject<HTMLDivElement | null>,
 ) => {
+  const lastScrollTime = useRef<number>(0);
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
+
   // Manejar scroll para detectar sección activa
   useEffect(() => {
     const handleScroll = () => {
       // Si es scroll programático, no procesar
       if (isProgrammaticScroll.current) return;
 
-      if (currentCategory) {
-        const sections = currentCategory.subcategories.map((subcat) => ({
-          id: subcat.name.replace(/\s+/g, '-'),
-          name: subcat.name,
-          element: document.getElementById(subcat.name.replace(/\s+/g, '-')),
-        }));
+      const now = Date.now();
+      lastScrollTime.current = now;
 
-        const mainElement = document.querySelector('main');
-        const scrollTop = mainElement ? mainElement.scrollTop : window.scrollY;
+      // Limpiar timeout anterior
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
 
-        // En móvil, el header es fijo, así que necesitamos ajustar el offset
-        const isMobile = window.innerWidth < 768;
-        const mobileHeader = document.querySelector('.md\\:hidden.fixed');
-        const headerOffset = isMobile
-          ? mobileHeader
-            ? mobileHeader.getBoundingClientRect().height
-            : 180
-          : 50;
+      // Esperar a que el scroll se estabilice antes de detectar la sección
+      scrollTimeout.current = setTimeout(() => {
+        // Verificar que no ha habido más scroll reciente
+        if (Date.now() - lastScrollTime.current < 100) return;
 
-        // Encontrar la sección activa considerando también el final de la página
-        let closestSection = '';
-        let closestDistance = Infinity;
+        if (currentCategory) {
+          const sections = currentCategory.subcategories.map((subcat) => ({
+            id: subcat.name.replace(/\s+/g, '-'),
+            name: subcat.name,
+            element: document.getElementById(subcat.name.replace(/\s+/g, '-')),
+          }));
 
-        // Verificar si estamos cerca del final de la página
-        const isNearBottom = mainElement
-          ? mainElement.clientHeight + scrollTop >= mainElement.scrollHeight - 100
-          : window.innerHeight + scrollTop >= document.documentElement.scrollHeight - 100;
+          const mainElement = document.querySelector('main');
+          const scrollTop = mainElement ? mainElement.scrollTop : window.scrollY;
 
-        sections.forEach(
-          ({ name, element }: { name: string; element: Element | null }, index: number) => {
-            if (element) {
-              const rect = element.getBoundingClientRect();
-              const elementTop = rect.top;
-              const elementBottom = rect.bottom;
+          // En móvil, el header es fijo, así que necesitamos ajustar el offset
+          const isMobile = window.innerWidth < 768;
+          const mobileHeader = document.querySelector('.md\\:hidden.fixed');
+          const headerOffset = isMobile
+            ? mobileHeader
+              ? mobileHeader.getBoundingClientRect().height
+              : 180
+            : 50;
 
-              // Si estamos cerca del final, activar la última sección visible
-              if (isNearBottom && index === sections.length - 1) {
-                closestSection = name;
-                return;
-              }
+          // Encontrar la sección activa considerando también el final de la página
+          let closestSection = '';
+          let closestDistance = Infinity;
 
-              // Si el elemento está visible en el viewport (considerando el header)
-              if (elementTop <= headerOffset + 100 && elementBottom > headerOffset) {
-                const distance = Math.abs(elementTop - headerOffset);
-                if (distance < closestDistance) {
-                  closestDistance = distance;
+          // Verificar si estamos cerca del final de la página
+          const isNearBottom = mainElement
+            ? mainElement.clientHeight + scrollTop >= mainElement.scrollHeight - 100
+            : window.innerHeight + scrollTop >= document.documentElement.scrollHeight - 100;
+
+          sections.forEach(
+            ({ name, element }: { name: string; element: Element | null }, index: number) => {
+              if (element) {
+                const rect = element.getBoundingClientRect();
+                const elementTop = rect.top;
+                const elementBottom = rect.bottom;
+
+                // Si estamos cerca del final, activar la última sección visible
+                if (isNearBottom && index === sections.length - 1) {
                   closestSection = name;
+                  return;
+                }
+
+                // Si el elemento está visible en el viewport (considerando el header)
+                if (elementTop <= headerOffset + 100 && elementBottom > headerOffset) {
+                  const distance = Math.abs(elementTop - headerOffset);
+                  if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestSection = name;
+                  }
                 }
               }
+            },
+          );
+
+          // Si no encontramos ninguna sección pero hay secciones disponibles
+          if (!closestSection && sections.length > 0) {
+            // Si estamos al principio, usar la primera sección
+            if (scrollTop < headerOffset) {
+              closestSection = sections[0].name;
             }
-          },
-        );
-
-        // Si no encontramos ninguna sección pero hay secciones disponibles
-        if (!closestSection && sections.length > 0) {
-          // Si estamos al principio, usar la primera sección
-          if (scrollTop < headerOffset) {
-            closestSection = sections[0].name;
+            // Si estamos al final, usar la última sección
+            else if (isNearBottom) {
+              closestSection = sections[sections.length - 1].name;
+            }
           }
-          // Si estamos al final, usar la última sección
-          else if (isNearBottom) {
-            closestSection = sections[sections.length - 1].name;
+
+          // Solo actualizar si la sección es diferente y no estamos en scroll programático
+          if (
+            closestSection &&
+            closestSection !== activeSubcategory &&
+            !isProgrammaticScroll.current
+          ) {
+            setActiveSubcategory(closestSection);
           }
-        }
 
-        if (closestSection && closestSection !== activeSubcategory) {
-          setActiveSubcategory(closestSection);
-        }
-
-        // Controlar el estado de scroll para desktop
-        if (!isMobile) {
-          if (scrollTop > 50) {
-            setIsScrolled(true);
-          } else {
-            setIsScrolled(false);
+          // Controlar el estado de scroll para desktop
+          if (!isMobile) {
+            if (scrollTop > 50) {
+              setIsScrolled(true);
+            } else {
+              setIsScrolled(false);
+            }
           }
         }
-      }
+      }, 150); // Esperar 150ms para que el scroll se estabilice
     };
 
     // Usar throttling para mejorar el rendimiento
@@ -112,10 +134,20 @@ export const useScrollEffects = (
     const mainElement = document.querySelector('main');
     if (mainElement) {
       mainElement.addEventListener('scroll', throttledHandleScroll, { passive: true });
-      return () => mainElement.removeEventListener('scroll', throttledHandleScroll);
+      return () => {
+        mainElement.removeEventListener('scroll', throttledHandleScroll);
+        if (scrollTimeout.current) {
+          clearTimeout(scrollTimeout.current);
+        }
+      };
     } else {
       window.addEventListener('scroll', throttledHandleScroll, { passive: true });
-      return () => window.removeEventListener('scroll', throttledHandleScroll);
+      return () => {
+        window.removeEventListener('scroll', throttledHandleScroll);
+        if (scrollTimeout.current) {
+          clearTimeout(scrollTimeout.current);
+        }
+      };
     }
   }, [
     currentCategory,
