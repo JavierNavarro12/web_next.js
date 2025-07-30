@@ -1,10 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Inicializar Resend solo cuando se necesite, no durante el build
+let resend: Resend;
 
 export async function POST(request: NextRequest) {
   try {
+    // Inicializar Resend aquí, no globalmente
+    if (!resend) {
+      const apiKey = process.env.RESEND_API_KEY;
+      if (!apiKey) {
+        console.error('RESEND_API_KEY no está configurada');
+        return NextResponse.json(
+          { error: 'Configuración de email no disponible' },
+          { status: 500 },
+        );
+      }
+      resend = new Resend(apiKey);
+    }
+
     const { email } = await request.json();
 
     if (!email) {
