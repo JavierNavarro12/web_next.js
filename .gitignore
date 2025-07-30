@@ -40,3 +40,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Large image assets (moved out of Git tracking for size optimization)
+public/images/
+public/logos/
