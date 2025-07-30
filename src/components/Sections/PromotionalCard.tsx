@@ -90,7 +90,7 @@ export default function PromotionalCard() {
               <h2 className="text-lg font-bold text-gray-900 leading-tight mb-3">
                 Transforma ideas simples en
                 <br />
-                <span className="text-blue-600">imágenes profesionales con Leonardo.</span>
+                <span className="text-blue-600">imágenes profesionales con Leonardo AI.</span>
               </h2>
               <button
                 onClick={() => window.open('https://leonardo.ai', '_blank')}

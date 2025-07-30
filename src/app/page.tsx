@@ -16,6 +16,12 @@ import AIRecommendationsSection from '../components/Sections/AIRecommendationsSe
 import AIBootcampsSection from '../components/Sections/AIBootcampsSection';
 import AIAudioSection from '../components/Sections/AIAudioSection';
 import AITextImageSection from '../components/Sections/AITextImageSection';
+import AIFinanceSection from '../components/Sections/AIFinanceSection';
+import AISecuritySection from '../components/Sections/AISecuritySection';
+import AIAutomationChatbotsSection from '../components/Sections/AIAutomationChatbotsSection';
+import AILegalSection from '../components/Sections/AILegalSection';
+import AISymptomsSection from '../components/Sections/AISymptomsSection';
+import AITestingMedicalSection from '../components/Sections/AITestingMedicalSection';
 import CategoryContentSection from '../components/Sections/CategoryContentSection';
 import {
   useAppContext,
@@ -295,6 +301,128 @@ export default function HomePage() {
                     if (window.innerWidth < 768) {
                       setTimeout(() => {
                         handleMobileSubcategoryClick('Imágenes');
+                      }, 200);
+                    }
+                  }, 100);
+                }}
+              />
+
+              <AIFinanceSection
+                onViewAll={() => {
+                  setActiveCategory('Finanzas');
+                  // Usar la función de navegación centralizada
+                  setTimeout(() => {
+                    navigateToSubcategory('Análisis bursátil');
+                    // También usar la función de navegación móvil si es necesario
+                    if (window.innerWidth < 768) {
+                      setTimeout(() => {
+                        handleMobileSubcategoryClick('Análisis bursátil');
+                      }, 200);
+                    }
+                  }, 100);
+                }}
+              />
+
+              <AISecuritySection
+                onViewAll={() => {
+                  setActiveCategory('Seguridad');
+                  // Usar la función de navegación centralizada
+                  setTimeout(() => {
+                    navigateToSubcategory('Detección de amenazas');
+                    // También usar la función de navegación móvil si es necesario
+                    if (window.innerWidth < 768) {
+                      setTimeout(() => {
+                        handleMobileSubcategoryClick('Detección de amenazas');
+                      }, 200);
+                    }
+                  }, 100);
+                }}
+              />
+
+              <AIAutomationChatbotsSection
+                onViewAllAutomatizacion={() => {
+                  setActiveCategory('Negocios');
+                  // Usar la función de navegación centralizada
+                  setTimeout(() => {
+                    navigateToSubcategory('Automatización de flujos');
+                    // También usar la función de navegación móvil si es necesario
+                    if (window.innerWidth < 768) {
+                      setTimeout(() => {
+                        handleMobileSubcategoryClick('Automatización de flujos');
+                      }, 200);
+                    }
+                  }, 100);
+                }}
+                onViewAllChatbots={() => {
+                  setActiveCategory('Chatbots');
+                  // Usar la función de navegación centralizada
+                  setTimeout(() => {
+                    navigateToSubcategory('Chatbots empresariales');
+                    // También usar la función de navegación móvil si es necesario
+                    if (window.innerWidth < 768) {
+                      setTimeout(() => {
+                        handleMobileSubcategoryClick('Chatbots empresariales');
+                      }, 200);
+                    }
+                  }, 100);
+                }}
+              />
+
+              <AILegalSection
+                onViewAll={() => {
+                  setActiveCategory('Negocios');
+                  // Usar la función de navegación centralizada
+                  setTimeout(() => {
+                    navigateToSubcategory('IA legal');
+                    // También usar la función de navegación móvil si es necesario
+                    if (window.innerWidth < 768) {
+                      setTimeout(() => {
+                        handleMobileSubcategoryClick('IA legal');
+                      }, 200);
+                    }
+                  }, 100);
+                }}
+              />
+
+              <AISymptomsSection
+                onViewAll={() => {
+                  setActiveCategory('Salud');
+                  // Usar la función de navegación centralizada
+                  setTimeout(() => {
+                    navigateToSubcategory('Síntomas');
+                    // También usar la función de navegación móvil si es necesario
+                    if (window.innerWidth < 768) {
+                      setTimeout(() => {
+                        handleMobileSubcategoryClick('Síntomas');
+                      }, 200);
+                    }
+                  }, 100);
+                }}
+              />
+
+              <AITestingMedicalSection
+                onViewAllTesting={() => {
+                  setActiveCategory('Desarrollo');
+                  // Usar la función de navegación centralizada
+                  setTimeout(() => {
+                    navigateToSubcategory('Testing y QA');
+                    // También usar la función de navegación móvil si es necesario
+                    if (window.innerWidth < 768) {
+                      setTimeout(() => {
+                        handleMobileSubcategoryClick('Testing y QA');
+                      }, 200);
+                    }
+                  }, 100);
+                }}
+                onViewAllMedical={() => {
+                  setActiveCategory('Salud');
+                  // Usar la función de navegación centralizada
+                  setTimeout(() => {
+                    navigateToSubcategory('Imágenes médicas');
+                    // También usar la función de navegación móvil si es necesario
+                    if (window.innerWidth < 768) {
+                      setTimeout(() => {
+                        handleMobileSubcategoryClick('Imágenes médicas');
                       }, 200);
                     }
                   }, 100);
