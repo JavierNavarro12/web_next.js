@@ -292,20 +292,6 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
               </li>
             );
           })}
-          {/* Herramientas en móvil */}
-          <li className="relative w-full md:hidden">
-            <a
-              href="#"
-              className="flex items-center gap-2 w-full py-2 px-3 font-extrabold transition-colors relative z-0 hover:bg-zinc-800 rounded-none text-base text-white md:text-sm md:text-white/90"
-              style={{ borderRadius: 0 }}
-              onClick={(e) => {
-                e.preventDefault();
-                if (onNavigate) onNavigate();
-              }}
-            >
-              <WrenchScrewdriverIcon className="w-5 h-5" /> Herramientas
-            </a>
-          </li>
         </ul>
       </nav>
       {/* Título de la sección de categorías */}
