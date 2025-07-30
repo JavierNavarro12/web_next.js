@@ -3,30 +3,30 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { aiCategories } from '../../data/ai-tools';
 import {
-  HiOutlineSparkles,
-  HiOutlineChat,
-  HiOutlineBriefcase,
-  HiOutlineCode,
-  HiOutlineHeart,
-  HiOutlineAcademicCap,
-  HiOutlineCurrencyDollar,
-  HiOutlinePencil,
-  HiOutlineShieldCheck,
-  HiOutlineChip,
-  HiOutlineGlobeAlt,
-  HiOutlineCubeTransparent,
-  HiOutlinePlusCircle,
-  HiChevronDown,
-  HiChevronUp,
-  HiOutlineNewspaper,
-  HiOutlineLightBulb,
-  HiOutlineCog,
-  HiOutlineTrendingUp,
-  HiOutlineTranslate,
-  HiOutlineExclamationCircle,
-  HiOutlineBookOpen,
-} from 'react-icons/hi';
-import { HiOutlineWrenchScrewdriver } from 'react-icons/hi2';
+  SparklesIcon,
+  ChatBubbleLeftRightIcon,
+  BriefcaseIcon,
+  CodeBracketIcon,
+  HeartIcon,
+  AcademicCapIcon,
+  CurrencyDollarIcon,
+  PencilIcon,
+  ShieldCheckIcon,
+  CpuChipIcon,
+  GlobeAltIcon,
+  CubeTransparentIcon,
+  PlusCircleIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+  NewspaperIcon,
+  LightBulbIcon,
+  CogIcon,
+  ArrowTrendingUpIcon,
+  LanguageIcon,
+  ExclamationCircleIcon,
+  BookOpenIcon,
+  WrenchScrewdriverIcon,
+} from '@heroicons/react/24/outline';
 import {
   useAppContext,
   useSubcategoryContext,
@@ -35,26 +35,26 @@ import {
 } from '../../app/layout';
 import { useNavigationManager } from '../../hooks/useNavigationManager';
 
-const defaultIcon = HiOutlinePlusCircle;
+const defaultIcon = PlusCircleIcon;
 const icons = [
-  HiOutlineSparkles, // Generativa
-  HiOutlineChat, // Chatbots
-  HiOutlineBriefcase, // Negocios
-  HiOutlineCode, // DevTools
-  HiOutlineHeart, // Salud
-  HiOutlineAcademicCap, // Educación
-  HiOutlineCurrencyDollar, // Finanzas
-  HiOutlinePencil, // Creatividad
-  HiOutlineShieldCheck, // Seguridad
-  HiOutlineChip, // Robótica
-  HiOutlineGlobeAlt, // Multimodal
-  HiOutlineCubeTransparent, // OpenSource
-  HiOutlineLightBulb, // Cognitiva y Razonamiento
-  HiOutlineCog, // MLOps
-  HiOutlineTrendingUp, // Marketing y Ventas
-  HiOutlineTranslate, // Traducción y Localización
-  HiOutlineExclamationCircle, // Ética y Detección
-  HiOutlineBookOpen, // Gestión del Conocimiento
+  SparklesIcon, // Generativa
+  ChatBubbleLeftRightIcon, // Chatbots
+  BriefcaseIcon, // Negocios
+  CodeBracketIcon, // DevTools
+  HeartIcon, // Salud
+  AcademicCapIcon, // Educación
+  CurrencyDollarIcon, // Finanzas
+  PencilIcon, // Creatividad
+  ShieldCheckIcon, // Seguridad
+  CpuChipIcon, // Robótica
+  GlobeAltIcon, // Multimodal
+  CubeTransparentIcon, // OpenSource
+  LightBulbIcon, // Cognitiva y Razonamiento
+  CogIcon, // MLOps
+  ArrowTrendingUpIcon, // Marketing y Ventas
+  LanguageIcon, // Traducción y Localización
+  ExclamationCircleIcon, // Ética y Detección
+  BookOpenIcon, // Gestión del Conocimiento
 ];
 
 // Generar nombres cortos dinámicamente o usar el nombre de la categoría si faltan
@@ -80,9 +80,9 @@ const shortCategoryNames = [
 ];
 
 const mainSections = [
-  { key: 'explorar', label: 'Explorar', icon: HiOutlineGlobeAlt },
-  { key: 'articulos', label: 'Artículos', icon: HiOutlineNewspaper },
-  { key: 'herramientas', label: 'Herramientas', icon: HiOutlineWrenchScrewdriver },
+  { key: 'explorar', label: 'Explorar', icon: GlobeAltIcon },
+  { key: 'articulos', label: 'Artículos', icon: NewspaperIcon },
+  { key: 'herramientas', label: 'Herramientas', icon: WrenchScrewdriverIcon },
 ];
 
 export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}) {
@@ -285,7 +285,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
                 if (onNavigate) onNavigate();
               }}
             >
-              <HiOutlineWrenchScrewdriver className="w-5 h-5" /> Herramientas
+              <WrenchScrewdriverIcon className="w-5 h-5" /> Herramientas
             </a>
           </li>
         </ul>
@@ -393,9 +393,9 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
                         type="button"
                       >
                         {isOpen ? (
-                          <HiChevronUp className="w-3.5 h-3.5 text-white" />
+                          <ChevronUpIcon className="w-3.5 h-3.5 text-white" />
                         ) : (
-                          <HiChevronDown className="w-3.5 h-3.5 text-zinc-400" />
+                          <ChevronDownIcon className="w-3.5 h-3.5 text-zinc-400" />
                         )}
                       </button>
                     )}
@@ -472,7 +472,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
             className="flex items-center gap-2 w-full py-3 px-3 font-extrabold transition-colors relative z-0 hover:bg-zinc-800 rounded-none text-base text-white md:text-sm md:text-white/90"
             style={{ borderRadius: 0 }}
           >
-            <HiOutlinePlusCircle className="w-5 h-5" /> Añadir una IA
+            <PlusCircleIcon className="w-5 h-5" /> Añadir una IA
           </button>
         </div>
       </div>

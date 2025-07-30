@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { HiOutlineX, HiOutlineArrowLeft } from 'react-icons/hi';
+import { XMarkIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../../config/emailjs';
 import MobileHeader from '../Header/MobileHeader';

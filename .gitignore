@@ -41,6 +41,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Large image assets (moved out of Git tracking for size optimization)
-public/images/
-public/logos/
+# Images are now optimized and included in Git (44MB total)
+# public/images/ - optimized PNG files
+# public/logos/ - optimized logo files

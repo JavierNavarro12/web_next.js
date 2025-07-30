@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { HiOutlineX } from 'react-icons/hi';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../../config/emailjs';
 
@@ -98,7 +98,7 @@ export default function AddAIToolModal({ isOpen, onClose }: AddAIToolModalProps)
             className="absolute top-4 right-4 text-zinc-400 hover:text-white transition-colors"
             aria-label="Cerrar modal"
           >
-            <HiOutlineX className="w-6 h-6" />
+            <XMarkIcon className="w-6 h-6" />
           </button>
 
           {/* Contenido */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { HiOutlineSearch } from 'react-icons/hi';
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 export default function Navbar() {
   return (
@@ -28,7 +28,7 @@ export default function Navbar() {
       <div className="flex items-center gap-2">
         <div className="relative">
           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400">
-            <HiOutlineSearch className="w-5 h-5" />
+            <MagnifyingGlassIcon className="w-5 h-5" />
           </span>
           <input
             type="text"
