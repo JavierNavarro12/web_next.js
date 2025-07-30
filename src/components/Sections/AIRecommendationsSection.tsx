@@ -54,7 +54,7 @@ export default function AIRecommendationsSection({
     {
       name: 'Synthesia',
       description: 'Videos con avatares IA',
-      image: '/images/synthesia-web.png',
+      image: '/images/Synthesia-web.png',
       logo: '/logos/synthesia-movil.png',
       url: 'https://www.synthesia.io',
       isNew: false,
