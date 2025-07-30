@@ -7,7 +7,9 @@ interface AIRecommendationsSectionProps {
   onViewAll: () => void;
 }
 
-export default function AIRecommendationsSection({ onViewAll }: AIRecommendationsSectionProps) {
+export default function AIRecommendationsSection({
+  onViewAll: _onViewAll,
+}: AIRecommendationsSectionProps) {
   const recommendations = [
     {
       name: 'Cursor',
@@ -85,7 +87,12 @@ export default function AIRecommendationsSection({ onViewAll }: AIRecommendation
       <div className="bg-zinc-950 rounded-xl p-4 border border-zinc-800">
         {/* Header con título */}
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-white">Recomendaciones IA</h2>
+          <h2
+            className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
+            style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+          >
+            Recomendaciones IA
+          </h2>
         </div>
 
         {/* Vista móvil: Tarjetas tipo Framer Templates */}

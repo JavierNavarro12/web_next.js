@@ -38,9 +38,7 @@ export default function FeaturedToolsSection() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-base md:text-lg mb-1 group-hover:text-blue-400 group-hover:drop-shadow-[0_0_6px_rgba(59,130,246,0.5)] transition-all">
-                    {tool.name}
-                  </h3>
+                  <h3 className="font-bold text-white text-base md:text-lg mb-1">{tool.name}</h3>
                   <p className="text-zinc-400 text-sm md:text-base leading-relaxed">
                     {tool.description}
                   </p>

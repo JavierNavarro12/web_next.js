@@ -14,8 +14,8 @@ import SpotlightSection from '../components/Sections/SpotlightSection';
 import AICoursesSection from '../components/Sections/AICoursesSection';
 import AIRecommendationsSection from '../components/Sections/AIRecommendationsSection';
 import AIBootcampsSection from '../components/Sections/AIBootcampsSection';
-import CategoriesGridSection from '../components/Sections/CategoriesGridSection';
-import ToolSection from '../components/Sections/ToolSection';
+import AIAudioSection from '../components/Sections/AIAudioSection';
+import AITextImageSection from '../components/Sections/AITextImageSection';
 import CategoryContentSection from '../components/Sections/CategoryContentSection';
 import {
   useAppContext,
@@ -23,16 +23,6 @@ import {
   SidebarDrawerContext,
   useFeedbackContext,
 } from './layout';
-import { getToolsByCategory } from '../utils/toolUtils';
-import {
-  getVideoAITools,
-  getCodeAITools,
-  getAutomationTools,
-  getOfficeTools,
-  getDataAnalysisTools,
-  getProjectManagementTools,
-  getLegalAITools,
-} from '../utils/toolSectionUtils';
 import { useScrollEffects } from '../hooks/useScrollEffects';
 import { useMobileScrollDetection } from '../hooks/useMobileScrollDetection';
 import { useLocalStorage } from '../hooks/useLocalStorage';
@@ -231,17 +221,12 @@ export default function HomePage() {
 
               <SpotlightSection
                 onViewAll={() => {
-                  console.log('SpotlightSection: Navegando a Video');
                   setActiveCategory('Generativa');
                   // Usar la función de navegación centralizada
                   setTimeout(() => {
-                    console.log('SpotlightSection: Ejecutando navegación después de 100ms');
                     navigateToSubcategory('Video');
                     // También usar la función de navegación móvil si es necesario
                     if (window.innerWidth < 768) {
-                      console.log(
-                        'SpotlightSection: Detectado móvil, usando handleMobileSubcategoryClick',
-                      );
                       setTimeout(() => {
                         handleMobileSubcategoryClick('Video');
                       }, 200);
@@ -252,7 +237,6 @@ export default function HomePage() {
 
               <AICoursesSection
                 onViewAll={() => {
-                  console.log('AICoursesSection: Navegando a cursos');
                   // Por ahora solo mostrar un mensaje, puedes cambiar esto después
                   alert('Sección de cursos - próximamente');
                 }}
@@ -260,7 +244,6 @@ export default function HomePage() {
 
               <AIRecommendationsSection
                 onViewAll={() => {
-                  console.log('AIRecommendationsSection: Navegando a recomendaciones');
                   // Por ahora solo mostrar un mensaje, puedes cambiar esto después
                   alert('Sección de recomendaciones - próximamente');
                 }}
@@ -268,9 +251,53 @@ export default function HomePage() {
 
               <AIBootcampsSection
                 onViewAll={() => {
-                  console.log('AIBootcampsSection: Navegando a bootcamps');
                   // Por ahora solo mostrar un mensaje, puedes cambiar esto después
                   alert('Sección de bootcamps - próximamente');
+                }}
+              />
+
+              <AIAudioSection
+                onViewAll={() => {
+                  setActiveCategory('Generativa');
+                  // Usar la función de navegación centralizada
+                  setTimeout(() => {
+                    navigateToSubcategory('Audio / Voz');
+                    // También usar la función de navegación móvil si es necesario
+                    if (window.innerWidth < 768) {
+                      setTimeout(() => {
+                        handleMobileSubcategoryClick('Audio / Voz');
+                      }, 200);
+                    }
+                  }, 100);
+                }}
+              />
+
+              <AITextImageSection
+                onViewAllTexto={() => {
+                  setActiveCategory('Generativa');
+                  // Usar la función de navegación centralizada
+                  setTimeout(() => {
+                    navigateToSubcategory('Texto');
+                    // También usar la función de navegación móvil si es necesario
+                    if (window.innerWidth < 768) {
+                      setTimeout(() => {
+                        handleMobileSubcategoryClick('Texto');
+                      }, 200);
+                    }
+                  }, 100);
+                }}
+                onViewAllImagenes={() => {
+                  setActiveCategory('Generativa');
+                  // Usar la función de navegación centralizada
+                  setTimeout(() => {
+                    navigateToSubcategory('Imágenes');
+                    // También usar la función de navegación móvil si es necesario
+                    if (window.innerWidth < 768) {
+                      setTimeout(() => {
+                        handleMobileSubcategoryClick('Imágenes');
+                      }, 200);
+                    }
+                  }, 100);
                 }}
               />
 

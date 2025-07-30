@@ -1,51 +1,55 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 
-interface SpotlightSectionProps {
+interface AIAudioSectionProps {
   onViewAll: () => void;
 }
 
-export default function SpotlightSection({ onViewAll }: SpotlightSectionProps) {
-  const videoTools = [
+export default function AIAudioSection({ onViewAll }: AIAudioSectionProps) {
+  const [displayCount] = useState(4);
+
+  const allAudioTools = [
     {
-      name: 'Sora',
-      image: '/images/sora-web.png',
-      logo: '/logos/sora-movil.png',
-      description: 'Video generativo',
-      category: 'Generación de Video',
-      url: 'https://openai.com/sora',
-      pricing: 'Gratis',
+      name: 'Suno',
+      creator: 'Suno AI',
+      price: 'Freemium',
+      description: 'Generación de música IA',
+      image: '/images/suno-web.png',
+      logo: '/logos/suno-movil.png',
+      url: 'https://suno.ai',
     },
     {
-      name: 'Veo',
-      image: '/images/veo-web.png',
-      logo: '/logos/veo-movil.png',
-      description: 'Video IA',
-      category: 'Video IA',
-      url: 'https://deepmind.google/models/veo/',
-      pricing: 'Freemium',
+      name: 'ElevenLabs',
+      creator: 'ElevenLabs',
+      price: 'Freemium',
+      description: 'Síntesis de voz natural',
+      image: '/images/elevenlabs-web.png',
+      logo: '/logos/elevenlabs-movil.png',
+      url: 'https://elevenlabs.io',
     },
     {
-      name: 'Runway',
-      image: '/images/runway-web.png',
-      logo: '/logos/runway-movil.webp',
-      description: 'Edición de video',
-      category: 'Edición de Video',
-      url: 'https://runwayml.com',
-      pricing: 'Freemium',
+      name: 'Descript',
+      creator: 'Descript',
+      price: 'Freemium',
+      description: 'Edición de audio con IA',
+      image: '/images/descript-web.png',
+      logo: '/logos/descript-movil.png',
+      url: 'https://www.descript.com',
     },
     {
-      name: 'Pika Labs',
-      image: '/images/pikalabs-web.png',
-      logo: '/logos/pikalabs-movil.png',
-      description: 'Video IA',
-      category: 'Video IA',
-      url: 'https://pika.art',
-      pricing: 'Freemium',
+      name: 'Voice.ai',
+      creator: 'Voice.ai',
+      price: 'Freemium',
+      description: 'Clonación de voz IA',
+      image: '/images/voice.ai-web.png',
+      logo: '/logos/voice.ai-movil.png',
+      url: 'https://voice.ai',
     },
   ];
+
+  const displayedTools = allAudioTools.slice(0, displayCount);
 
   const handleToolClick = (url: string) => {
     window.open(url, '_blank');
@@ -61,20 +65,20 @@ export default function SpotlightSection({ onViewAll }: SpotlightSectionProps) {
             className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
             style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
           >
-            Video
+            Audio
           </h2>
           <button
             className="text-sm text-zinc-300 hover:text-white transition-colors cursor-pointer"
             onClick={onViewAll}
           >
-            Ver todo
+            Ver todas
           </button>
         </div>
 
         {/* Vista móvil: Lista vertical con iconos */}
         <div className="md:hidden">
           <div className="space-y-3">
-            {videoTools.map((tool) => (
+            {displayedTools.map((tool) => (
               <div
                 key={tool.name}
                 className="flex items-start gap-3 py-1 pl-1 cursor-pointer hover:bg-zinc-900/50 rounded-lg transition-colors p-2"
@@ -98,7 +102,7 @@ export default function SpotlightSection({ onViewAll }: SpotlightSectionProps) {
 
         {/* Vista desktop: Grid de tarjetas con imágenes */}
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {videoTools.map((tool) => (
+          {displayedTools.map((tool) => (
             <div
               key={tool.name}
               className="group cursor-pointer"
@@ -116,7 +120,7 @@ export default function SpotlightSection({ onViewAll }: SpotlightSectionProps) {
                 {/* Overlay hover con pricing */}
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
                   <div className="bg-zinc-800/90 text-white px-3 py-1.5 rounded-lg text-sm font-medium">
-                    {tool.pricing}
+                    {tool.price}
                   </div>
                 </div>
               </div>
@@ -124,7 +128,7 @@ export default function SpotlightSection({ onViewAll }: SpotlightSectionProps) {
               {/* Título y descripción sueltos */}
               <div>
                 <h3 className="font-bold text-white text-base mb-1">{tool.name}</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed">{tool.category}</p>
+                <p className="text-zinc-400 text-sm leading-relaxed">{tool.description}</p>
               </div>
             </div>
           ))}

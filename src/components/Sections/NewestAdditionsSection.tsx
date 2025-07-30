@@ -123,7 +123,7 @@ export default function NewestAdditionsSection({ onViewAll }: NewestAdditionsSec
 
         {/* Grid de herramientas - Sin tarjetas individuales */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
-          {newestTools.slice(0, 8).map((tool, index) => (
+          {newestTools.slice(0, 8).map((tool, _index) => (
             <div
               key={tool.name}
               className="group cursor-pointer p-3 hover:bg-zinc-900/30 rounded-lg transition-all duration-200"
@@ -144,9 +144,7 @@ export default function NewestAdditionsSection({ onViewAll }: NewestAdditionsSec
                 {/* Contenido */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-semibold text-white text-sm group-hover:text-blue-400 transition-colors truncate">
-                      {tool.name}
-                    </h3>
+                    <h3 className="font-semibold text-white text-sm truncate">{tool.name}</h3>
                     {/* Todas las herramientas tienen badge NUEVO */}
                     <span className="bg-blue-600 text-white text-xs px-2 py-0.5 rounded-full font-medium">
                       NUEVO

@@ -1,9 +1,49 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import FloatingCards from './FloatingCards';
+import { newsletterService } from '../../services/newsletterService';
 
 export default function HeroSection() {
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email.trim()) {
+      setError('Por favor ingresa tu email');
+      return;
+    }
+
+    // Validación básica de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError('Por favor ingresa un email válido');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      await newsletterService.subscribeToNewsletter(email, 'hero');
+      setShowSuccess(true);
+      setEmail('');
+
+      // Ocultar mensaje de éxito después de 5 segundos
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 5000);
+    } catch (error: unknown) {
+      setError((error as Error).message || 'Error al suscribirse. Inténtalo de nuevo.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="pt-20 md:pt-0">
       {/* Hero Section */}
@@ -30,17 +70,32 @@ export default function HeroSection() {
 
               {/* Newsletter signup */}
               <div className="flex justify-center items-center max-w-md mx-auto">
-                <div className="flex w-full gap-2">
+                <form onSubmit={handleSubscribe} className="flex w-full gap-2">
                   <input
                     type="email"
                     placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="flex-1 px-4 py-3 bg-zinc-800 text-white placeholder-zinc-300 focus:outline-none border border-zinc-600 rounded-full text-sm md:text-base"
+                    disabled={isSubmitting}
                   />
-                  <button className="px-4 md:px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-colors rounded-full text-sm md:text-base whitespace-nowrap">
-                    Suscribirse
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="px-4 md:px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 disabled:cursor-not-allowed text-white font-semibold transition-colors rounded-full text-sm md:text-base whitespace-nowrap"
+                  >
+                    {isSubmitting ? 'Enviando...' : 'Suscribirse'}
                   </button>
-                </div>
+                </form>
               </div>
+
+              {/* Mensajes de éxito y error */}
+              {showSuccess && (
+                <div className="mt-3 text-green-400 text-sm">
+                  ¡Suscripción exitosa! Revisa tu email.
+                </div>
+              )}
+              {error && <div className="mt-3 text-red-400 text-sm">{error}</div>}
             </div>
 
             {/* Contenido principal - Vista web */}
@@ -56,17 +111,32 @@ export default function HeroSection() {
 
               {/* Newsletter signup */}
               <div className="flex justify-center items-center max-w-md mx-auto">
-                <div className="flex w-full gap-2">
+                <form onSubmit={handleSubscribe} className="flex w-full gap-2">
                   <input
                     type="email"
                     placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="flex-1 px-4 py-3 bg-zinc-800 text-white placeholder-zinc-300 focus:outline-none border border-zinc-600 rounded-full text-sm md:text-base"
+                    disabled={isSubmitting}
                   />
-                  <button className="px-4 md:px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-colors rounded-full text-sm md:text-base whitespace-nowrap">
-                    Suscribirse
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="px-4 md:px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 disabled:cursor-not-allowed text-white font-semibold transition-colors rounded-full text-sm md:text-base whitespace-nowrap"
+                  >
+                    {isSubmitting ? 'Enviando...' : 'Suscribirse'}
                   </button>
-                </div>
+                </form>
               </div>
+
+              {/* Mensajes de éxito y error */}
+              {showSuccess && (
+                <div className="mt-3 text-green-400 text-sm">
+                  ¡Suscripción exitosa! Revisa tu email.
+                </div>
+              )}
+              {error && <div className="mt-3 text-red-400 text-sm">{error}</div>}
             </div>
           </div>
         </div>

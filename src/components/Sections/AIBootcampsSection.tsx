@@ -7,7 +7,7 @@ interface AIBootcampsSectionProps {
   onViewAll: () => void;
 }
 
-export default function AIBootcampsSection({ onViewAll }: AIBootcampsSectionProps) {
+export default function AIBootcampsSection({ onViewAll: _onViewAll }: AIBootcampsSectionProps) {
   const [displayCount, setDisplayCount] = useState(3);
 
   const allBootcamps = [
@@ -124,7 +124,12 @@ export default function AIBootcampsSection({ onViewAll }: AIBootcampsSectionProp
       <div className="bg-zinc-950 rounded-xl p-4 border border-zinc-800">
         {/* Header con título */}
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-white">Bootcamps de IA</h2>
+          <h2
+            className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
+            style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+          >
+            Bootcamps
+          </h2>
         </div>
 
         {/* Vista móvil: Tarjetas tipo Framer Templates */}
