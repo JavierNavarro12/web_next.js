@@ -8,6 +8,10 @@ import DesktopHeader from '../components/Header/DesktopHeader';
 import HeroSection from '../components/Hero/HeroSection';
 import Footer from '../components/Footer/Footer';
 import FeaturedToolsSection from '../components/Sections/FeaturedToolsSection';
+import NewestAdditionsSection from '../components/Sections/NewestAdditionsSection';
+import PromotionalCard from '../components/Sections/PromotionalCard';
+import SpotlightSection from '../components/Sections/SpotlightSection';
+import AICoursesSection from '../components/Sections/AICoursesSection';
 import CategoriesGridSection from '../components/Sections/CategoriesGridSection';
 import ToolSection from '../components/Sections/ToolSection';
 import CategoryContentSection from '../components/Sections/CategoryContentSection';
@@ -31,6 +35,7 @@ import { useScrollEffects } from '../hooks/useScrollEffects';
 import { useMobileScrollDetection } from '../hooks/useMobileScrollDetection';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useSubcategoryHandlers } from '../hooks/useSubcategoryHandlers';
+import { useNavigationManager } from '../hooks/useNavigationManager';
 
 export default function HomePage() {
   const { activeCategory, setActiveCategory } = useAppContext();
@@ -41,6 +46,7 @@ export default function HomePage() {
   const [activeFilter, setActiveFilter] = useState<'all' | 'free' | 'paid'>('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [hoveredFilter, setHoveredFilter] = useState<string | null>(null);
+  const [activeNav, setActiveNav] = useState('explorar');
   const [isClient, setIsClient] = useState(false);
 
   // Refs para las filas del header
@@ -58,6 +64,12 @@ export default function HomePage() {
     headerRow2Ref,
     tabRefs,
     tabsContainerRef,
+  );
+
+  // Hook de navegación centralizada
+  const { navigateToSubcategory } = useNavigationManager(
+    setActiveSubcategory,
+    isProgrammaticScroll,
   );
 
   // Efecto para asegurar que estamos en el cliente
@@ -198,73 +210,72 @@ export default function HomePage() {
           headerRow1Ref={headerRow1Ref}
           headerRow2Ref={headerRow2Ref}
           onSubcategoryClick={handleSubcategoryClick}
+          activeNav={activeNav}
+          setActiveNav={setActiveNav}
         />
 
-        <HeroSection />
+        {/* Contenido con padding-top para compensar header fijo en desktop */}
+        <div className="pt-0 md:pt-[60px]">
+          {/* Mostrar contenido según la navegación activa */}
+          {activeNav === 'explorar' ? (
+            <>
+              <HeroSection />
 
-        <FeaturedToolsSection />
+              <FeaturedToolsSection />
 
-        <ToolSection
-          title="IA Generativa"
-          tools={getToolsByCategory('Generativa', 8)}
-          onViewAll={() => setActiveCategory('Generativa')}
-        />
+              <NewestAdditionsSection onViewAll={() => setActiveNav('nuevas')} />
 
-        <ToolSection
-          title="IA de Video"
-          tools={getVideoAITools()}
-          onViewAll={() => setActiveCategory('Generativa')}
-        />
+              <PromotionalCard />
 
-        <ToolSection
-          title="IA para Código"
-          tools={getCodeAITools()}
-          onViewAll={() => setActiveCategory('Generativa')}
-        />
+              <SpotlightSection
+                onViewAll={() => {
+                  console.log('SpotlightSection: Navegando a Video');
+                  setActiveCategory('Generativa');
+                  // Usar la función de navegación centralizada
+                  setTimeout(() => {
+                    console.log('SpotlightSection: Ejecutando navegación después de 100ms');
+                    navigateToSubcategory('Video');
+                    // También usar la función de navegación móvil si es necesario
+                    if (window.innerWidth < 768) {
+                      console.log(
+                        'SpotlightSection: Detectado móvil, usando handleMobileSubcategoryClick',
+                      );
+                      setTimeout(() => {
+                        handleMobileSubcategoryClick('Video');
+                      }, 200);
+                    }
+                  }, 100);
+                }}
+              />
 
-        <ToolSection
-          title="Automatización de Flujos"
-          tools={getAutomationTools()}
-          onViewAll={() => setActiveCategory('Negocios')}
-        />
+              <AICoursesSection
+                onViewAll={() => {
+                  console.log('AICoursesSection: Navegando a cursos');
+                  // Por ahora solo mostrar un mensaje, puedes cambiar esto después
+                  alert('Sección de cursos - próximamente');
+                }}
+              />
 
-        <ToolSection
-          title="Ofimática Inteligente"
-          tools={getOfficeTools()}
-          onViewAll={() => setActiveCategory('Negocios')}
-        />
-
-        <ToolSection
-          title="Análisis de Datos"
-          tools={getDataAnalysisTools()}
-          onViewAll={() => setActiveCategory('Negocios')}
-        />
-
-        <ToolSection
-          title="Gestión de Proyectos"
-          tools={getProjectManagementTools()}
-          onViewAll={() => setActiveCategory('Negocios')}
-        />
-
-        <ToolSection
-          title="IA Legal"
-          tools={getLegalAITools()}
-          onViewAll={() => setActiveCategory('Negocios')}
-        />
-
-        <ToolSection
-          title="Negocios y Productividad"
-          tools={getToolsByCategory('Negocios', 4)}
-          onViewAll={() => setActiveCategory('Negocios')}
-        />
-
-        <CategoriesGridSection setActiveCategory={setActiveCategory} />
-
-        <Footer
-          setShowFeedback={setShowFeedback}
-          setActiveCategory={setActiveCategory}
-          setActiveSubcategory={setActiveSubcategory}
-        />
+              <Footer
+                setShowFeedback={setShowFeedback}
+                setActiveCategory={setActiveCategory}
+                setActiveSubcategory={setActiveSubcategory}
+              />
+            </>
+          ) : activeNav === 'nuevas' ? (
+            /* Sección "Nuevas adiciones" - Por ahora en blanco */
+            <div className="py-20 px-4 max-w-7xl mx-auto text-center">
+              <h1 className="text-4xl font-bold text-white mb-4">Nuevas adiciones</h1>
+              <p className="text-zinc-400 text-lg">Esta sección estará disponible próximamente.</p>
+              <button
+                onClick={() => setActiveNav('explorar')}
+                className="mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+              >
+                Volver a Explorar
+              </button>
+            </div>
+          ) : null}
+        </div>
       </div>
     );
   }

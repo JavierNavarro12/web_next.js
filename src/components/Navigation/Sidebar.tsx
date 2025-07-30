@@ -237,8 +237,26 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       {/* Links destacados arriba */}
       <div className="pt-6 pb-6 px-6 hidden md:block">
         <span
-          className="font-extrabold text-2xl tracking-tight text-white font-sans"
+          className="font-extrabold text-2xl tracking-tight text-white font-sans cursor-pointer select-none drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.5)] transition-all duration-200"
           style={{ fontFamily: 'Inter, Sora, sans-serif' }}
+          onClick={() => {
+            setActiveCategory(null);
+            setActiveSubcategory(null);
+            setActiveSection('explorar');
+            // Limpiar localStorage
+            if (typeof window !== 'undefined') {
+              localStorage.removeItem('activeCategory');
+              localStorage.removeItem('activeSubcategory');
+            }
+            // Scroll al inicio
+            const mainElement = document.querySelector('main');
+            if (mainElement) {
+              mainElement.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            if (onNavigate) onNavigate();
+          }}
         >
           AIFinder
         </span>

@@ -19,6 +19,8 @@ interface DesktopHeaderProps {
   headerRow1Ref: React.RefObject<HTMLDivElement | null>;
   headerRow2Ref: React.RefObject<HTMLDivElement | null>;
   onSubcategoryClick: (subcategoryName: string) => void;
+  activeNav?: string;
+  setActiveNav?: (nav: string) => void;
 }
 
 export default function DesktopHeader({
@@ -36,12 +38,13 @@ export default function DesktopHeader({
   headerRow1Ref,
   headerRow2Ref,
   onSubcategoryClick,
+  activeNav = 'explorar',
+  setActiveNav,
 }: DesktopHeaderProps) {
-  const [activeNav, setActiveNav] = React.useState('explorar');
   const [hoveredNav, setHoveredNav] = React.useState<string | null>(null);
   if (!currentCategory) {
     return (
-      <div className="hidden md:block bg-black border-b border-zinc-800">
+      <div className="hidden md:block bg-black border-b border-zinc-800 fixed top-0 left-[calc(4px+270px+1px)] right-[calc(12px+1px)] z-50 shadow-lg">
         <div className="flex items-center justify-between px-6 py-3">
           {/* Navigation */}
           <nav className="flex items-center gap-6">
@@ -53,7 +56,7 @@ export default function DesktopHeader({
                     ? 'text-white'
                     : 'text-zinc-400 hover:text-white'
               }`}
-              onClick={() => setActiveNav('explorar')}
+              onClick={() => setActiveNav && setActiveNav('explorar')}
               onMouseEnter={() => setHoveredNav('explorar')}
               onMouseLeave={() => setHoveredNav(null)}
             >
@@ -74,7 +77,7 @@ export default function DesktopHeader({
                     ? 'text-white'
                     : 'text-zinc-400 hover:text-white'
               }`}
-              onClick={() => setActiveNav('nuevas')}
+              onClick={() => setActiveNav && setActiveNav('nuevas')}
               onMouseEnter={() => setHoveredNav('nuevas')}
               onMouseLeave={() => setHoveredNav(null)}
             >

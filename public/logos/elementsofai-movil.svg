@@ -1,0 +1,9 @@
+<svg width="33" height="25" viewBox="0 0 33 25" xmlns="http://www.w3.org/2000/svg">
+    <title>
+        Logo
+    </title>
+    <g fill="none" fill-rule="evenodd">
+        <circle fill="#FFF" cx="21" cy="12" r="12"/>
+        <circle fill="#FFF" cx="4.5" cy="20.5" r="4.5"/>
+    </g>
+</svg>
