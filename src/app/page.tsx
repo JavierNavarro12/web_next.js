@@ -12,6 +12,8 @@ import NewestAdditionsSection from '../components/Sections/NewestAdditionsSectio
 import PromotionalCard from '../components/Sections/PromotionalCard';
 import SpotlightSection from '../components/Sections/SpotlightSection';
 import AICoursesSection from '../components/Sections/AICoursesSection';
+import AIRecommendationsSection from '../components/Sections/AIRecommendationsSection';
+import AIBootcampsSection from '../components/Sections/AIBootcampsSection';
 import CategoriesGridSection from '../components/Sections/CategoriesGridSection';
 import ToolSection from '../components/Sections/ToolSection';
 import CategoryContentSection from '../components/Sections/CategoryContentSection';
@@ -253,6 +255,22 @@ export default function HomePage() {
                   console.log('AICoursesSection: Navegando a cursos');
                   // Por ahora solo mostrar un mensaje, puedes cambiar esto después
                   alert('Sección de cursos - próximamente');
+                }}
+              />
+
+              <AIRecommendationsSection
+                onViewAll={() => {
+                  console.log('AIRecommendationsSection: Navegando a recomendaciones');
+                  // Por ahora solo mostrar un mensaje, puedes cambiar esto después
+                  alert('Sección de recomendaciones - próximamente');
+                }}
+              />
+
+              <AIBootcampsSection
+                onViewAll={() => {
+                  console.log('AIBootcampsSection: Navegando a bootcamps');
+                  // Por ahora solo mostrar un mensaje, puedes cambiar esto después
+                  alert('Sección de bootcamps - próximamente');
                 }}
               />
 
