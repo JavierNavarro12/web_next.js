@@ -41,9 +41,20 @@ describe('Feedback Tests', () => {
     // Take screenshot before clicking
     cy.screenshot('before-feedback-click');
 
-    // Look specifically for the desktop footer button (not the mobile one with md:hidden)
-    // Target the button in the desktop footer section directly
-    cy.get('footer .hidden').contains('button', 'Feedback').should('exist').click({ force: true });
+    // Look for the Feedback button in the footer - use the correct selector based on screen size
+    // For desktop (md and up), look in the desktop section
+    cy.get('footer').then(($footer) => {
+      // Check if we're in desktop view (md:hidden should be hidden)
+      const isDesktop = $footer.find('.md\\:hidden').length === 0 || $footer.find('.md\\:hidden').is(':hidden');
+      
+      if (isDesktop) {
+        // Desktop view - look for button in desktop section
+        cy.get('footer .hidden.md\\:flex').contains('button', 'Feedback').should('exist').click();
+      } else {
+        // Mobile view - look for button in mobile section
+        cy.get('footer .md\\:hidden').contains('button', 'Feedback').should('exist').click();
+      }
+    });
 
     // Wait for navigation
     cy.wait(3000);
@@ -56,9 +67,20 @@ describe('Feedback Tests', () => {
   });
 
   it('should find form elements', () => {
-    // Navigate to feedback first using the correct desktop button
+    // Navigate to feedback first using the correct button
     cy.scrollTo('bottom');
-    cy.get('footer .hidden').contains('button', 'Feedback').click({ force: true });
+    
+    // Use the same logic as above to find the correct button
+    cy.get('footer').then(($footer) => {
+      const isDesktop = $footer.find('.md\\:hidden').length === 0 || $footer.find('.md\\:hidden').is(':hidden');
+      
+      if (isDesktop) {
+        cy.get('footer .hidden.md\\:flex').contains('button', 'Feedback').click();
+      } else {
+        cy.get('footer .md\\:hidden').contains('button', 'Feedback').click();
+      }
+    });
+    
     cy.wait(3000);
 
     // Debug: Take screenshot to see current state
@@ -77,7 +99,18 @@ describe('Feedback Tests', () => {
   it('should submit feedback successfully', () => {
     // Navigate to feedback
     cy.scrollTo('bottom');
-    cy.get('footer .hidden').contains('button', 'Feedback').click({ force: true });
+    
+    // Use the same logic as above to find the correct button
+    cy.get('footer').then(($footer) => {
+      const isDesktop = $footer.find('.md\\:hidden').length === 0 || $footer.find('.md\\:hidden').is(':hidden');
+      
+      if (isDesktop) {
+        cy.get('footer .hidden.md\\:flex').contains('button', 'Feedback').click();
+      } else {
+        cy.get('footer .md\\:hidden').contains('button', 'Feedback').click();
+      }
+    });
+    
     cy.wait(3000);
 
     // Fill form using visible elements (desktop form should be visible at 1280px)
@@ -150,7 +183,18 @@ describe('Feedback Tests', () => {
   it('should validate required fields', () => {
     // Navigate to feedback
     cy.scrollTo('bottom');
-    cy.get('footer .hidden').contains('button', 'Feedback').click({ force: true });
+    
+    // Use the same logic as above to find the correct button
+    cy.get('footer').then(($footer) => {
+      const isDesktop = $footer.find('.md\\:hidden').length === 0 || $footer.find('.md\\:hidden').is(':hidden');
+      
+      if (isDesktop) {
+        cy.get('footer .hidden.md\\:flex').contains('button', 'Feedback').click();
+      } else {
+        cy.get('footer .md\\:hidden').contains('button', 'Feedback').click();
+      }
+    });
+    
     cy.wait(3000);
 
     // Try to submit without filling fields
@@ -165,7 +209,18 @@ describe('Feedback Tests', () => {
   it('should validate email format', () => {
     // Navigate to feedback
     cy.scrollTo('bottom');
-    cy.get('footer .hidden').contains('button', 'Feedback').click({ force: true });
+    
+    // Use the same logic as above to find the correct button
+    cy.get('footer').then(($footer) => {
+      const isDesktop = $footer.find('.md\\:hidden').length === 0 || $footer.find('.md\\:hidden').is(':hidden');
+      
+      if (isDesktop) {
+        cy.get('footer .hidden.md\\:flex').contains('button', 'Feedback').click();
+      } else {
+        cy.get('footer .md\\:hidden').contains('button', 'Feedback').click();
+      }
+    });
+    
     cy.wait(3000);
 
     // Fill form with invalid email

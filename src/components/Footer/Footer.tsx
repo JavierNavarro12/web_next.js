@@ -1,27 +1,31 @@
 'use client';
 
 import React from 'react';
-import { useAppContext, useSubcategoryContext, useAddAIToolContext } from '../../app/layout';
+import { useAppContext, useSubcategoryContext, useAddAIToolContext, useFeedbackContext, useBugReportContext } from '../../app/layout';
 
 interface FooterProps {
   setShowFeedback: (show: boolean) => void;
+  setShowBugReport?: (show: boolean) => void;
   setActiveCategory?: (category: string | null) => void;
   setActiveSubcategory?: (subcategory: string | null) => void;
 }
 
 export default function Footer({
   setShowFeedback,
-  setActiveCategory: propSetActiveCategory,
-  setActiveSubcategory: propSetActiveSubcategory,
+  setShowBugReport,
+  setActiveCategory: _propSetActiveCategory,
+  setActiveSubcategory: _propSetActiveSubcategory,
 }: FooterProps) {
   // Usar contextos directamente si las props no están disponibles
   const { setActiveCategory: contextSetActiveCategory } = useAppContext();
   const { setActiveSubcategory: contextSetActiveSubcategory } = useSubcategoryContext();
   const { setShowAddAITool } = useAddAIToolContext();
+  const { setShowFeedback: contextSetShowFeedback } = useFeedbackContext();
+  const { setShowBugReport: contextSetShowBugReport } = useBugReportContext();
 
-  // Usar props si están disponibles, sino usar contextos
-  const setActiveCategory = propSetActiveCategory || contextSetActiveCategory;
-  const setActiveSubcategory = propSetActiveSubcategory || contextSetActiveSubcategory;
+  // Usar contextos directamente para asegurar que funcione en todas las páginas
+  const setActiveCategory = contextSetActiveCategory;
+  const setActiveSubcategory = contextSetActiveSubcategory;
   const socialLinks = [
     {
       href: 'https://www.linkedin.com/in/javier-navarro-rodríguez-056023331/',
@@ -97,10 +101,10 @@ export default function Footer({
     Robótica: 'Robótica',
     Multimodal: 'Multimodal',
     OpenSource: 'OpenSource',
-    Cognitiva: 'Cognitiva',
-    MLOps: 'MLOps',
-    Marketing: 'Marketing',
-    Traducción: 'Traducción',
+    Cognitiva: 'IA Cognitiva y Razonamiento',
+    'MLOps': 'MLOps y Desarrollo de Modelos',
+    'Marketing': 'IA para Marketing y Ventas',
+    Traducción: 'Traducción y Localización Automática',
     Ética: 'Ética y Detección de IA',
   };
 
@@ -111,6 +115,10 @@ export default function Footer({
     if (setShowAddAITool) {
       setShowAddAITool(false);
     }
+
+    // Cerrar las páginas de feedback y reportar bug usando contextos directamente
+    contextSetShowFeedback(false);
+    contextSetShowBugReport(false);
 
     if (setActiveCategory && setActiveSubcategory) {
       const realCategoryName = categoryMapping[categoryName];
@@ -136,7 +144,7 @@ export default function Footer({
 
   const connectLinks = [
     { label: 'Feedback', onClick: () => setShowFeedback(true) },
-    { label: 'Reportar Bug', href: '#' },
+    { label: 'Reportar Bug', onClick: () => setShowBugReport?.(true) },
     { label: 'Contactar', href: '#' },
   ];
 
@@ -180,13 +188,14 @@ export default function Footer({
             <h3 className="text-white font-semibold mb-4">Categorías de IAs</h3>
             <div className="grid grid-cols-2 gap-x-8 gap-y-2">
               {categories.map((category) => (
-                <a
+                <button
                   key={category}
-                  href="#"
-                  className="text-zinc-400 hover:text-white transition-colors text-sm"
+                  onClick={() => handleCategoryClick(category)}
+                  className="text-zinc-400 hover:text-white transition-colors text-sm text-left"
+                  aria-label={`Explorar categoría ${category}`}
                 >
                   {category}
-                </a>
+                </button>
               ))}
             </div>
           </div>
@@ -370,8 +379,10 @@ export default function Footer({
 
           {/* Desktop */}
           <div className="hidden md:flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-4 mb-4 md:mb-0">
+            <div className="flex items-center mb-4 md:mb-0">
               <span className="text-zinc-400 text-sm">© 2025 AIFinder</span>
+            </div>
+            <div className="flex items-center space-x-4">
               {legalLinks.map((link) => (
                 <a
                   key={link.label}
@@ -381,33 +392,33 @@ export default function Footer({
                   {link.label}
                 </a>
               ))}
-            </div>
-            <button
-              className="text-zinc-400 hover:text-white transition-colors"
-              aria-label="Configuración"
-              title="Configuración"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
+              <button
+                className="text-zinc-400 hover:text-white transition-colors"
+                aria-label="Configuración"
+                title="Configuración"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-            </button>
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>

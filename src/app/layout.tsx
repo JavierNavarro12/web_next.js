@@ -1,6 +1,6 @@
 'use client';
 
-import type { Metadata } from 'next';
+// import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Sidebar from '../components/Navigation/Sidebar';
@@ -74,6 +74,22 @@ export const useFeedbackContext = () => {
   return context;
 };
 
+// Contexto para el estado de reportar bug
+type BugReportContextType = {
+  showBugReport: boolean;
+  setShowBugReport: (show: boolean) => void;
+};
+
+const BugReportContext = createContext<BugReportContextType | undefined>(undefined);
+
+export const useBugReportContext = () => {
+  const context = useContext(BugReportContext);
+  if (context === undefined) {
+    throw new Error('useBugReportContext must be used within a BugReportProvider');
+  }
+  return context;
+};
+
 // Contexto para el modal de añadir IA
 type AddAIToolContextType = {
   showAddAITool: boolean;
@@ -115,9 +131,10 @@ export default function RootLayout({
   const [activeSubcategory, setActiveSubcategory] = useState<string | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
+  const [showBugReport, setShowBugReport] = useState(false);
   const [showAddAITool, setShowAddAITool] = useState(false);
   const [highlightedTool, setHighlightedTool] = useState<string | null>(null);
-  const [isHydrated, setIsHydrated] = useState(false);
+  const [_isHydrated, setIsHydrated] = useState(false);
 
   // Efecto para cargar desde localStorage después de la hidratación
   useEffect(() => {
@@ -160,10 +177,11 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}>
         <SidebarDrawerContext.Provider value={{ setSidebarOpen }}>
           <FeedbackContext.Provider value={{ showFeedback, setShowFeedback }}>
-            <AddAIToolContext.Provider value={{ showAddAITool, setShowAddAITool }}>
-              <HighlightedToolContext.Provider value={{ highlightedTool, setHighlightedTool }}>
-                <AppContext.Provider value={{ activeCategory, setActiveCategory }}>
-                  <SubcategoryContext.Provider value={{ activeSubcategory, setActiveSubcategory }}>
+            <BugReportContext.Provider value={{ showBugReport, setShowBugReport }}>
+              <AddAIToolContext.Provider value={{ showAddAITool, setShowAddAITool }}>
+                <HighlightedToolContext.Provider value={{ highlightedTool, setHighlightedTool }}>
+                  <AppContext.Provider value={{ activeCategory, setActiveCategory }}>
+                    <SubcategoryContext.Provider value={{ activeSubcategory, setActiveSubcategory }}>
                     {/* Sidebar drawer en móvil */}
                     {sidebarOpen && (
                       <div className="fixed inset-0 z-[60] bg-black/95 flex flex-col md:hidden">
@@ -268,8 +286,9 @@ export default function RootLayout({
                 </AppContext.Provider>
               </HighlightedToolContext.Provider>
             </AddAIToolContext.Provider>
-          </FeedbackContext.Provider>
-        </SidebarDrawerContext.Provider>
+          </BugReportContext.Provider>
+        </FeedbackContext.Provider>
+      </SidebarDrawerContext.Provider>
 
         {/* PWA Install Prompt */}
         <PWAInstallPrompt />

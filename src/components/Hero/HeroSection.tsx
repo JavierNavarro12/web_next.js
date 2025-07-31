@@ -10,6 +10,11 @@ export default function HeroSection() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [error, setError] = useState('');
 
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+    if (error) setError('');
+  };
+
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -75,7 +80,7 @@ export default function HeroSection() {
                     type="email"
                     placeholder="Email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={handleEmailChange}
                     className="flex-1 px-4 py-3 bg-zinc-800 text-white placeholder-zinc-300 focus:outline-none border border-zinc-600 rounded-full text-sm md:text-base"
                     disabled={isSubmitting}
                   />
@@ -116,7 +121,7 @@ export default function HeroSection() {
                     type="email"
                     placeholder="Email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={handleEmailChange}
                     className="flex-1 px-4 py-3 bg-zinc-800 text-white placeholder-zinc-300 focus:outline-none border border-zinc-600 rounded-full text-sm md:text-base"
                     disabled={isSubmitting}
                   />

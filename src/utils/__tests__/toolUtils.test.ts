@@ -127,7 +127,7 @@ describe('toolUtils', () => {
     });
 
     it('should return default "Gratis y pago" for unknown pricing type', () => {
-      expect(getPricingText('unknown' as any)).toBe('Gratis y pago');
+      expect(getPricingText('unknown' as never)).toBe('Gratis y pago');
     });
   });
 

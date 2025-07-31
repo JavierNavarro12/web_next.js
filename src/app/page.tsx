@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { aiCategories } from '../data/ai-tools';
 import FeedbackPage from '../components/Pages/FeedbackPage';
+import BugReportPage from '../components/Pages/BugReportPage';
 import MobileHeader from '../components/Header/MobileHeader';
 import DesktopHeader from '../components/Header/DesktopHeader';
 import HeroSection from '../components/Hero/HeroSection';
@@ -28,6 +29,7 @@ import {
   useSubcategoryContext,
   SidebarDrawerContext,
   useFeedbackContext,
+  useBugReportContext,
 } from './layout';
 import { useScrollEffects } from '../hooks/useScrollEffects';
 import { useMobileScrollDetection } from '../hooks/useMobileScrollDetection';
@@ -40,6 +42,32 @@ export default function HomePage() {
   const { activeSubcategory, setActiveSubcategory } = useSubcategoryContext();
   const { setSidebarOpen } = React.useContext(SidebarDrawerContext);
   const { showFeedback, setShowFeedback } = useFeedbackContext();
+  const { showBugReport, setShowBugReport } = useBugReportContext();
+
+  // Función para navegar entre feedback y reportar bug
+  const navigateBetweenPages = (fromFeedback: boolean) => {
+    if (fromFeedback) {
+      setShowFeedback(false);
+      setShowBugReport(true);
+      // Limpiar categorías activas al navegar a reportar bug
+      setActiveCategory(null);
+      setActiveSubcategory(null);
+      if (isClient) {
+        localStorage.removeItem('activeCategory');
+        localStorage.removeItem('activeSubcategory');
+      }
+    } else {
+      setShowBugReport(false);
+      setShowFeedback(true);
+      // Limpiar categorías activas al navegar a feedback
+      setActiveCategory(null);
+      setActiveSubcategory(null);
+      if (isClient) {
+        localStorage.removeItem('activeCategory');
+        localStorage.removeItem('activeSubcategory');
+      }
+    }
+  };
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeFilter, setActiveFilter] = useState<'all' | 'free' | 'paid'>('all');
   const [searchTerm, setSearchTerm] = useState('');
@@ -173,6 +201,35 @@ export default function HomePage() {
             window.scrollTo(0, 0);
           }
         }}
+        setActiveCategory={setActiveCategory}
+        setActiveSubcategory={setActiveSubcategory}
+        navigateToBugReport={() => navigateBetweenPages(true)}
+      />
+    );
+  }
+
+  // Si showBugReport es true, mostrar la página de reportar bug
+  if (showBugReport) {
+    return (
+      <BugReportPage
+        onBack={() => {
+          setShowBugReport(false);
+          setActiveCategory(null);
+          setActiveSubcategory(null);
+          if (isClient) {
+            localStorage.removeItem('activeCategory');
+            localStorage.removeItem('activeSubcategory');
+          }
+          const mainElement = document.querySelector('main');
+          if (mainElement && mainElement.classList.contains('overflow-y-auto')) {
+            mainElement.scrollTo(0, 0);
+          } else {
+            window.scrollTo(0, 0);
+          }
+        }}
+        setActiveCategory={setActiveCategory}
+        setActiveSubcategory={setActiveSubcategory}
+        navigateToFeedback={() => navigateBetweenPages(false)}
       />
     );
   }
@@ -431,6 +488,7 @@ export default function HomePage() {
 
               <Footer
                 setShowFeedback={setShowFeedback}
+                setShowBugReport={setShowBugReport}
                 setActiveCategory={setActiveCategory}
                 setActiveSubcategory={setActiveSubcategory}
               />
@@ -493,6 +551,7 @@ export default function HomePage() {
 
       <Footer
         setShowFeedback={setShowFeedback}
+        setShowBugReport={setShowBugReport}
         setActiveCategory={setActiveCategory}
         setActiveSubcategory={setActiveSubcategory}
       />

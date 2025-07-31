@@ -26,7 +26,7 @@ export const useMobileNavigation = (
 
         allElements.forEach((el) => {
           const rect = el.getBoundingClientRect();
-          const htmlEl = el as HTMLElement;
+          const _htmlEl = el as HTMLElement;
 
           if (rect.top !== 0 || rect.bottom !== 0) {
             if (!targetElement || rect.top > bestRect.top) {

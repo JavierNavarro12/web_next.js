@@ -32,6 +32,7 @@ import {
   useSubcategoryContext,
   useFeedbackContext,
   useAddAIToolContext,
+  useBugReportContext,
 } from '../../app/layout';
 import { useNavigationManager } from '../../hooks/useNavigationManager';
 
@@ -89,6 +90,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
   const { activeCategory, setActiveCategory } = useAppContext();
   const { activeSubcategory, setActiveSubcategory } = useSubcategoryContext();
   const { showFeedback, setShowFeedback } = useFeedbackContext();
+  const { showBugReport, setShowBugReport } = useBugReportContext();
   const { setShowAddAITool } = useAddAIToolContext();
   const [openCategory, setOpenCategory] = useState<number | null>(null);
   const [hoveredCategory, setHoveredCategory] = useState<number | null>(null);
@@ -108,8 +110,8 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
 
   // Detectar la categoría activa y abrirla automáticamente
   useEffect(() => {
-    if (showFeedback) {
-      // Si estamos en la página de feedback, no mostrar nada seleccionado
+    if (showFeedback || showBugReport) {
+      // Si estamos en la página de feedback o reportar bug, no mostrar nada seleccionado
       setOpenCategory(null);
       setActiveSection('');
     } else if (activeCategory) {
@@ -122,7 +124,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setOpenCategory(null);
       setActiveSection('explorar');
     }
-  }, [activeCategory, showFeedback]); // Dependemos de activeCategory y showFeedback
+  }, [activeCategory, showFeedback, showBugReport]); // Dependemos de activeCategory, showFeedback y showBugReport
 
   // Establecer la primera subcategoría cuando cambie la categoría
   useEffect(() => {
@@ -158,6 +160,11 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setShowFeedback(false);
     }
 
+    // Si estamos en reportar bug, primero cerrarlo
+    if (showBugReport) {
+      setShowBugReport(false);
+    }
+
     // Si estamos en la página "Añadir una IA", cerrarla
     if (setShowAddAITool) {
       setShowAddAITool(false);
@@ -177,6 +184,12 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setTimeout(() => {
         navigateToSubcategory(subcategoryName);
       }, 100);
+    } else if (showBugReport) {
+      setShowBugReport(false);
+      // Dar tiempo para que se cierre el reportar bug antes de hacer scroll
+      setTimeout(() => {
+        navigateToSubcategory(subcategoryName);
+      }, 100);
     } else {
       navigateToSubcategory(subcategoryName);
     }
@@ -191,6 +204,11 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
     // Si estamos en feedback, primero cerrarlo
     if (showFeedback) {
       setShowFeedback(false);
+    }
+
+    // Si estamos en reportar bug, primero cerrarlo
+    if (showBugReport) {
+      setShowBugReport(false);
     }
 
     // Si estamos en la página "Añadir una IA", cerrarla
@@ -269,7 +287,8 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
               activeSection === section.key &&
               !activeCategory &&
               !activeSubcategory &&
-              !showFeedback;
+              !showFeedback &&
+              !showBugReport;
             return (
               <li key={section.key} className="relative w-full">
                 {isActive && <div className="absolute left-0 top-0 bottom-0 w-1 bg-white z-20" />}

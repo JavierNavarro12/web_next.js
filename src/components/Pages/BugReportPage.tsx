@@ -6,23 +6,23 @@ import Footer from '../Footer/Footer';
 // Inicializar EmailJS una sola vez
 emailjs.init('d0LlJPzXxEJn_vAf4');
 
-interface FeedbackPageProps {
+interface BugReportPageProps {
   onBack: () => void;
   setActiveCategory?: (category: string | null) => void;
   setActiveSubcategory?: (subcategory: string | null) => void;
-  navigateToBugReport?: () => void;
+  navigateToFeedback?: () => void;
 }
 
-export default function FeedbackPage({ 
+export default function BugReportPage({ 
   onBack, 
   setActiveCategory, 
   setActiveSubcategory,
-  navigateToBugReport
-}: FeedbackPageProps) {
+  navigateToFeedback
+}: BugReportPageProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    feedback: '',
+    bugDescription: '',
   });
   const [showSuccess, setShowSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -52,14 +52,14 @@ export default function FeedbackPage({
         {
           name: formData.name,
           email: formData.email,
-          message: formData.feedback,
+          message: formData.bugDescription,
           time: new Date().toLocaleString('es-ES'),
         },
       );
 
-      console.log('Email de feedback enviado exitosamente:', result);
+      console.log('Email de reporte de bug enviado exitosamente:', result);
       setShowSuccess(true);
-      setFormData({ name: '', email: '', feedback: '' });
+      setFormData({ name: '', email: '', bugDescription: '' });
 
       // Cerrar después de 3 segundos
       setTimeout(() => {
@@ -67,8 +67,8 @@ export default function FeedbackPage({
         onBack();
       }, 3000);
     } catch (error) {
-      console.error('Error al enviar email de feedback:', error);
-      alert('Error al enviar el feedback. Por favor, inténtalo de nuevo.');
+      console.error('Error al enviar email de reporte de bug:', error);
+      alert('Error al enviar el reporte. Por favor, inténtalo de nuevo.');
     } finally {
       setIsSubmitting(false);
     }
@@ -81,6 +81,7 @@ export default function FeedbackPage({
       [name]: value,
     }));
   };
+
   return (
     <div className="bg-black">
       {/* Contenido principal con líneas */}
@@ -160,14 +161,12 @@ export default function FeedbackPage({
               {/* Título y descripción */}
               <div className="text-center mb-8">
                 <h1 className="text-2xl font-bold text-white mb-4 leading-tight">
-                  ¡TU FEEDBACK ES
-                  <br />
-                  APRECIADO!
+                  ¡REPORTA UN BUG!
                 </h1>
                 <p className="text-base text-zinc-300 leading-relaxed">
-                  Esperamos con ansias leer tus comentarios,
+                  Ayúdanos a mejorar AIFinder
                   <br />
-                  ideas y recomendaciones.
+                  reportando cualquier problema que encuentres.
                 </p>
               </div>
 
@@ -176,9 +175,9 @@ export default function FeedbackPage({
                 {showSuccess ? (
                   <div className="text-center py-8">
                     <div className="text-green-400 text-6xl mb-4">✓</div>
-                    <h3 className="text-white text-xl font-semibold mb-2">¡Feedback enviado!</h3>
+                    <h3 className="text-white text-xl font-semibold mb-2">¡Bug reportado!</h3>
                     <p className="text-zinc-400">
-                      Gracias por tu feedback. Te responderemos pronto.
+                      Gracias por tu reporte. Lo revisaremos pronto.
                     </p>
                   </div>
                 ) : (
@@ -211,17 +210,17 @@ export default function FeedbackPage({
                       />
                     </div>
 
-                    {/* Campo de comentarios */}
+                    {/* Campo de descripción del bug */}
                     <div>
                       <label className="block text-white font-medium mb-2">
-                        ¡Cuéntanos tus ideas!
+                        Describe el problema
                       </label>
                       <textarea
-                        name="feedback"
-                        value={formData.feedback}
+                        name="bugDescription"
+                        value={formData.bugDescription}
                         onChange={handleInputChange}
                         rows={4}
-                        placeholder="¡Estoy disfrutando AIFinder! Deberían agregar..."
+                        placeholder="He encontrado un problema en AIFinder..."
                         className="w-full px-4 py-3 bg-zinc-900 text-white placeholder-zinc-500 border border-zinc-700 rounded-lg focus:outline-none focus:border-zinc-600 transition-colors resize-none"
                         required
                       />
@@ -233,7 +232,7 @@ export default function FeedbackPage({
                       disabled={isSubmitting}
                       className="w-full bg-white hover:bg-gray-100 disabled:bg-gray-600 disabled:cursor-not-allowed text-black font-semibold py-3 px-6 rounded-lg transition-colors"
                     >
-                      {isSubmitting ? 'Enviando...' : 'Enviar Sugerencia'}
+                      {isSubmitting ? 'Enviando...' : 'Reportar Bug'}
                     </button>
                   </form>
                 )}
@@ -246,12 +245,12 @@ export default function FeedbackPage({
                 {/* Columna izquierda - Texto */}
                 <div className="px-16 lg:px-20 relative">
                   {/* Línea vertical decorativa a la izquierda del título */}
-                  <div className="hidden md:block absolute left-10 lg:left-14 -top-48 -bottom-48 w-px bg-zinc-700 opacity-60"></div>
-                  <h1 className="text-2xl lg:text-3xl font-bold text-white mb-3 leading-tight whitespace-nowrap text-center lg:text-left">
-                    ¡TU FEEDBACK ES APRECIADO!
+                  <div className="hidden md:block absolute left-10 lg:left-14 -top-48 -bottom-47 w-px bg-zinc-700 opacity-60"></div>
+                  <h1 className="text-2xl lg:text-3xl font-bold text-white mb-3 leading-tight whitespace-nowrap text-center">
+                    ¡REPORTA UN BUG!
                   </h1>
                   <p className="text-base text-zinc-300 leading-relaxed text-center">
-                    Esperamos con ansias leer tus comentarios, ideas y recomendaciones.
+                    Ayúdanos a mejorar AIFinder reportando cualquier problema que encuentres.
                   </p>
                 </div>
 
@@ -262,9 +261,9 @@ export default function FeedbackPage({
                   {showSuccess ? (
                     <div className="text-center py-12">
                       <div className="text-green-400 text-8xl mb-6">✓</div>
-                      <h3 className="text-white text-2xl font-semibold mb-3">¡Feedback enviado!</h3>
+                      <h3 className="text-white text-2xl font-semibold mb-3">¡Bug reportado!</h3>
                       <p className="text-zinc-400 text-lg">
-                        Gracias por tu feedback. Te responderemos pronto.
+                        Gracias por tu reporte. Lo revisaremos pronto.
                       </p>
                     </div>
                   ) : (
@@ -297,17 +296,17 @@ export default function FeedbackPage({
                         </div>
                       </div>
 
-                      {/* Campo de comentarios */}
+                      {/* Campo de descripción del bug */}
                       <div>
                         <label className="block text-white font-medium mb-2">
-                          ¡Cuéntanos tus ideas!
+                          Describe el problema
                         </label>
                         <textarea
-                          name="feedback"
-                          value={formData.feedback}
+                          name="bugDescription"
+                          value={formData.bugDescription}
                           onChange={handleInputChange}
                           rows={6}
-                          placeholder="¡Estoy disfrutando AIFinder! Deberían agregar..."
+                          placeholder="He encontrado un problema en AIFinder..."
                           className="w-full px-4 py-3 bg-zinc-900 text-white placeholder-zinc-500 border border-zinc-700 rounded-lg focus:outline-none focus:border-zinc-600 transition-colors resize-none"
                           required
                         />
@@ -319,7 +318,7 @@ export default function FeedbackPage({
                         disabled={isSubmitting}
                         className="w-full bg-white hover:bg-gray-100 disabled:bg-gray-600 disabled:cursor-not-allowed text-black font-semibold py-3 px-6 rounded-lg transition-colors"
                       >
-                        {isSubmitting ? 'Enviando...' : 'Enviar Sugerencia'}
+                        {isSubmitting ? 'Enviando...' : 'Reportar Bug'}
                       </button>
                     </form>
                   )}
@@ -332,11 +331,11 @@ export default function FeedbackPage({
 
             {/* Footer */}
       <Footer
-        setShowFeedback={() => {}} // No hacer nada ya que estamos en la página de feedback
-        setShowBugReport={navigateToBugReport || (() => {})} // Navegar a reportar bug
+        setShowFeedback={navigateToFeedback || (() => {})} // Navegar a feedback
+        setShowBugReport={() => {}} // No hacer nada ya que estamos en la página de reportar bug
         setActiveCategory={setActiveCategory}
         setActiveSubcategory={setActiveSubcategory}
       />
     </div>
   );
-}
+} 

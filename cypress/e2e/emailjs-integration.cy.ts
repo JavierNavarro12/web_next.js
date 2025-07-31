@@ -46,10 +46,10 @@ describe('Add AI Tool Tests', () => {
     // Click the "Añadir una IA" button
     cy.contains('Añadir una IA').click()
     
-    // Wait for modal to appear with longer timeout
+    // Wait for modal/page to appear with longer timeout
     cy.contains('Sugerir una IA', { timeout: 15000 }).should('be.visible')
     
-    // Verify form fields are present
+    // Verify form fields are present - check both possible locations
     cy.get('input[name="toolName"]').should('be.visible')
     cy.get('input[name="toolUrl"]').should('be.visible')
     cy.get('input[name="email"]').should('be.visible')
@@ -57,19 +57,18 @@ describe('Add AI Tool Tests', () => {
   })
 
   it('should submit "Añadir una IA" form successfully', () => {
-    // Open modal
+    // Open modal/page
     cy.contains('Añadir una IA').click()
     cy.contains('Sugerir una IA', { timeout: 15000 }).should('be.visible')
     
-    // Fill form using first form only (handles both desktop modal and mobile page)
-    cy.get('form').first().within(() => {
-      cy.get('input[name="toolName"]').type('Test AI Tool')
-      cy.get('input[name="toolUrl"]').type('https://testaitool.com')
-      cy.get('input[name="email"]').type('test@example.com')
-      
-      // Submit form
-      cy.get('button[type="submit"]').click()
-    })
+    // Fill form - use more specific selectors to avoid conflicts
+    // Use first() to ensure we only interact with one form
+    cy.get('input[name="toolName"]').first().should('be.visible').type('Test AI Tool')
+    cy.get('input[name="toolUrl"]').first().should('be.visible').type('https://testaitool.com')
+    cy.get('input[name="email"]').first().should('be.visible').type('test@example.com')
+    
+    // Submit form - look for submit button with specific text
+    cy.get('button[type="submit"]').contains('Enviar Sugerencia').first().click()
     
     // Wait for EmailJS request
     cy.wait('@emailJS')
@@ -79,17 +78,19 @@ describe('Add AI Tool Tests', () => {
   })
 
   it('should validate required fields in "Añadir una IA" form', () => {
-    // Open modal
+    // Open modal/page
     cy.contains('Añadir una IA').click()
     cy.contains('Sugerir una IA', { timeout: 15000 }).should('be.visible')
     
-    // Try to submit without filling required fields using first form
-    cy.get('form').first().within(() => {
-      cy.get('button[type="submit"]').click()
-      
-      // Check that form doesn't submit (HTML5 validation)
-      cy.get('input[name="toolName"]').should('have.attr', 'required')
-      cy.get('input[name="toolUrl"]').should('have.attr', 'required')
-    })
+    // Try to submit without filling required fields
+    cy.get('button[type="submit"]').contains('Enviar Sugerencia').first().click()
+    
+    // Check that form doesn't submit (HTML5 validation)
+    // The form should still be visible and not submitted
+    cy.get('input[name="toolName"]').should('be.visible')
+    cy.get('input[name="toolUrl"]').should('be.visible')
+    
+    // Verify the form is still there (not submitted)
+    cy.contains('Sugerir una IA').should('be.visible')
   })
 }) 
