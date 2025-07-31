@@ -15,7 +15,7 @@ const mockSetShowAddAITool = jest.fn();
 const mockSetShowFeedback = jest.fn();
 const mockSetShowBugReport = jest.fn();
 
-jest.mock('../../app/layout', () => ({
+jest.mock('../../../app/layout', () => ({
   useAddAIToolContext: () => ({
     setShowAddAITool: mockSetShowAddAITool,
   }),
