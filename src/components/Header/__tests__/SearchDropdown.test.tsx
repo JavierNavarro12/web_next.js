@@ -6,52 +6,6 @@ import '@testing-library/jest-dom';
 import SearchDropdown from '../SearchDropdown';
 import { aiCategories } from '../../../data/ai-tools';
 
-// Mock de los contextos
-const mockSetHighlightedTool = jest.fn();
-const mockSetActiveCategory = jest.fn();
-const mockSetActiveSubcategory = jest.fn();
-
-jest.mock('../../../app/layout', () => ({
-  useHighlightedToolContext: () => ({
-    highlightedTool: null,
-    setHighlightedTool: mockSetHighlightedTool,
-  }),
-  useAppContext: () => ({
-    activeCategory: null,
-    setActiveCategory: mockSetActiveCategory,
-  }),
-  useSubcategoryContext: () => ({
-    activeSubcategory: null,
-    setActiveSubcategory: mockSetActiveSubcategory,
-  }),
-}));
-
-// Mock de las herramientas de IA
-const mockTools = [
-  {
-    name: 'ChatGPT',
-    description: 'Asistente de IA conversacional',
-    category: 'Generativa',
-    subcategory: 'Texto',
-    image: '/images/chatgpt-web.png',
-    logo: '/logos/chatgpt-movil.png',
-    url: 'https://chat.openai.com',
-  },
-  {
-    name: 'Midjourney',
-    description: 'Generación de imágenes con IA',
-    category: 'Generativa',
-    subcategory: 'Imagen',
-    image: '/images/midjourney-web.png',
-    logo: '/logos/midjourney-movil.png',
-    url: 'https://midjourney.com',
-  },
-];
-
-jest.mock('../../../data/ai-tools', () => ({
-  aiTools: mockTools,
-}));
-
 // Mock de los datos de herramientas
 jest.mock('../../../data/ai-tools', () => ({
   aiCategories: [
@@ -113,9 +67,6 @@ describe('SearchDropdown', () => {
   };
 
   beforeEach(() => {
-    mockSetHighlightedTool.mockClear();
-    mockSetActiveCategory.mockClear();
-    mockSetActiveSubcategory.mockClear();
     jest.clearAllMocks();
   });
 
@@ -181,7 +132,7 @@ describe('SearchDropdown', () => {
 
   it('should show no tools message when no search and no tools', () => {
     // Mock temporal con categorías vacías
-    const { aiCategories: originalAiCategories } = jest.requireMock('../../../data/ai-tools');
+    const originalAiCategories = require('../../../data/ai-tools').aiCategories;
     jest.doMock('../../../data/ai-tools', () => ({
       aiCategories: [],
     }));

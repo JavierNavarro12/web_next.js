@@ -1,212 +1,329 @@
-// @ts-nocheck
 import React from 'react';
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import HeroSection from '../HeroSection';
 
-// Mock de newsletterService
-const mockSubscribeToNewsletter = jest.fn();
-jest.mock('../../../services/newsletterService', () => ({
-  newsletterService: {
-    subscribeToNewsletter: mockSubscribeToNewsletter,
-  },
-}));
-
-// Mock de FloatingCards
+// Mock FloatingCards component
 jest.mock('../FloatingCards', () => {
   return function MockFloatingCards({ isMobile }: { isMobile: boolean }) {
     return <div data-testid={`floating-cards-${isMobile ? 'mobile' : 'desktop'}`}>Floating Cards</div>;
   };
 });
 
+// Mock newsletterService
+jest.mock('../../../services/newsletterService', () => ({
+  newsletterService: {
+    subscribeToNewsletter: jest.fn(),
+  },
+}));
+
+const mockNewsletterService = require('../../../services/newsletterService').newsletterService;
+
 describe('HeroSection', () => {
   beforeEach(() => {
-    mockSubscribeToNewsletter.mockClear();
+    jest.clearAllMocks();
+    jest.useFakeTimers();
   });
 
-  it('renderiza el título principal', () => {
-    render(<HeroSection />);
-    expect(screen.getByText(/todas las ias/i)).toBeInTheDocument();
-    expect(screen.getByText(/que necesitas en un lugar/i)).toBeInTheDocument();
+  afterEach(() => {
+    jest.useRealTimers();
   });
 
-  it('renderiza el subtítulo', () => {
-    render(<HeroSection />);
-    expect(screen.getByText(/herramientas, recursos y productos de ia/i)).toBeInTheDocument();
-  });
-
-  it('renderiza el formulario de newsletter', () => {
-    render(<HeroSection />);
-    expect(screen.getByPlaceholderText('Email')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Suscribirse' })).toBeInTheDocument();
-  });
-
-  it('maneja el envío del formulario de newsletter exitosamente', async () => {
-    mockSubscribeToNewsletter.mockResolvedValue(undefined);
-    
-    render(<HeroSection />);
-    
-    const emailInput = screen.getByPlaceholderText('Email');
-    const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
-    
-    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-    fireEvent.click(submitButton);
-    
-    await act(async () => {
-      await new Promise(resolve => setTimeout(resolve, 0));
+  describe('Rendering', () => {
+    it('should render the hero section with title and description', () => {
+      render(<HeroSection />);
+      
+      expect(screen.getAllByText('Todas las IAs')).toHaveLength(2);
+      expect(screen.getAllByText('que necesitas en un lugar.')).toHaveLength(2);
+      expect(screen.getAllByText('Herramientas, recursos y productos de IA. Entregado semanalmente.')).toHaveLength(2);
     });
-    
-    expect(mockSubscribeToNewsletter).toHaveBeenCalledWith('test@example.com', 'hero');
-  });
 
-  it('maneja errores en el envío del formulario', async () => {
-    mockSubscribeToNewsletter.mockRejectedValue(new Error('Error de conexión'));
-    
-    render(<HeroSection />);
-    
-    const emailInput = screen.getByPlaceholderText('Email');
-    const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
-    
-    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-    fireEvent.click(submitButton);
-    
-    await act(async () => {
-      await new Promise(resolve => setTimeout(resolve, 0));
+    it('should render newsletter subscription form', () => {
+      render(<HeroSection />);
+      
+      expect(screen.getAllByPlaceholderText('Email')).toHaveLength(2);
+      expect(screen.getAllByRole('button', { name: 'Suscribirse' })).toHaveLength(2);
     });
-    
-    expect(mockSubscribeToNewsletter).toHaveBeenCalledWith('test@example.com', 'hero');
-  });
 
-  it('valida el formato de email', () => {
-    render(<HeroSection />);
-    
-    const emailInput = screen.getByPlaceholderText('Email');
-    expect(emailInput).toHaveAttribute('type', 'email');
-  });
-
-  it('requiere el campo de email', () => {
-    render(<HeroSection />);
-    
-    const emailInput = screen.getByPlaceholderText('Email');
-    expect(emailInput).toHaveAttribute('type', 'email');
-  });
-
-  it('muestra mensaje de éxito después del envío', async () => {
-    mockSubscribeToNewsletter.mockResolvedValue(undefined);
-    
-    render(<HeroSection />);
-    
-    const emailInput = screen.getByPlaceholderText('Email');
-    const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
-    
-    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-    fireEvent.click(submitButton);
-    
-    await act(async () => {
-      await new Promise(resolve => setTimeout(resolve, 0));
+    it('should render FloatingCards components for both mobile and desktop', () => {
+      render(<HeroSection />);
+      
+      expect(screen.getByTestId('floating-cards-mobile')).toBeInTheDocument();
+      expect(screen.getByTestId('floating-cards-desktop')).toBeInTheDocument();
     });
-    
-    // Verificar que aparece el mensaje de éxito
-    expect(screen.getByText('¡Suscripción exitosa! Revisa tu email.')).toBeInTheDocument();
-  });
 
-  it('maneja el estado de loading durante el envío', async () => {
-    mockSubscribeToNewsletter.mockImplementation(() => new Promise(resolve => setTimeout(() => resolve(undefined), 100)));
-    
-    render(<HeroSection />);
-    
-    const emailInput = screen.getByPlaceholderText('Email');
-    const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
-    
-    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-    fireEvent.click(submitButton);
-    
-    // Verificar que el botón está deshabilitado durante el envío
-    expect(submitButton).toBeDisabled();
-    expect(submitButton).toHaveTextContent('Enviando...');
-    
-    await act(async () => {
-      await new Promise(resolve => setTimeout(resolve, 150));
+    it('should render both mobile and desktop layouts', () => {
+      render(<HeroSection />);
+      
+      // Both mobile and desktop versions should be present
+      const titles = screen.getAllByText('Todas las IAs');
+      expect(titles).toHaveLength(2); // One for mobile, one for desktop
     });
   });
 
-  it('renderiza los componentes FloatingCards', () => {
-    render(<HeroSection />);
-    
-    expect(screen.getByTestId('floating-cards-mobile')).toBeInTheDocument();
-    expect(screen.getByTestId('floating-cards-desktop')).toBeInTheDocument();
-  });
+  describe('Newsletter Subscription', () => {
+    it('should handle successful subscription', async () => {
+      mockNewsletterService.subscribeToNewsletter.mockResolvedValueOnce(undefined);
+      
+      render(<HeroSection />);
+      
+      const emailInput = screen.getAllByPlaceholderText('Email')[0]; // Use first input (mobile)
+      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      
+      fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+      fireEvent.click(submitButton);
 
-  it('maneja validación de email vacío', async () => {
-    render(<HeroSection />);
-    
-    const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
-    fireEvent.click(submitButton);
-    
-    await act(async () => {
-      await new Promise(resolve => setTimeout(resolve, 0));
-    });
-    
-    expect(screen.getByText('Por favor ingresa tu email')).toBeInTheDocument();
-  });
+      await waitFor(() => {
+        expect(mockNewsletterService.subscribeToNewsletter).toHaveBeenCalledWith('test@example.com', 'hero');
+      });
 
-  it('maneja validación de email inválido', async () => {
-    render(<HeroSection />);
-    
-    const emailInput = screen.getByPlaceholderText('Email');
-    const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
-    
-    fireEvent.change(emailInput, { target: { value: 'invalid-email' } });
-    fireEvent.click(submitButton);
-    
-    await act(async () => {
-      await new Promise(resolve => setTimeout(resolve, 0));
+      await waitFor(() => {
+        expect(screen.getAllByText('¡Suscripción exitosa! Revisa tu email.')).toHaveLength(2);
+      });
     });
-    
-    expect(screen.getByText('Por favor ingresa un email válido')).toBeInTheDocument();
-  });
 
-  it('limpia el campo de email después del envío exitoso', async () => {
-    mockSubscribeToNewsletter.mockResolvedValue(undefined);
-    
-    render(<HeroSection />);
-    
-    const emailInput = screen.getByPlaceholderText('Email');
-    const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
-    
-    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-    fireEvent.click(submitButton);
-    
-    await act(async () => {
-      await new Promise(resolve => setTimeout(resolve, 0));
-    });
-    
-    expect(emailInput).toHaveValue('');
-  });
+    it('should show loading state during submission', async () => {
+      mockNewsletterService.subscribeToNewsletter.mockImplementation(() => new Promise(resolve => setTimeout(resolve, 100)));
+      
+      render(<HeroSection />);
+      
+      const emailInput = screen.getAllByPlaceholderText('Email')[0];
+      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      
+      fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+      fireEvent.click(submitButton);
 
-  it('oculta el mensaje de éxito después de 5 segundos', async () => {
-    mockSubscribeToNewsletter.mockResolvedValue(undefined);
-    
-    render(<HeroSection />);
-    
-    const emailInput = screen.getByPlaceholderText('Email');
-    const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
-    
-    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-    fireEvent.click(submitButton);
-    
-    await act(async () => {
-      await new Promise(resolve => setTimeout(resolve, 0));
+      expect(screen.getAllByRole('button', { name: 'Enviando...' })).toHaveLength(2);
+      expect(screen.getAllByRole('button', { name: 'Enviando...' })[0]).toBeDisabled();
     });
-    
-    // Verificar que aparece el mensaje de éxito
-    expect(screen.getByText('¡Suscripción exitosa! Revisa tu email.')).toBeInTheDocument();
-    
-    // Avanzar el tiempo 5 segundos
-    act(() => {
+
+    it('should clear email input after successful subscription', async () => {
+      mockNewsletterService.subscribeToNewsletter.mockResolvedValueOnce(undefined);
+      
+      render(<HeroSection />);
+      
+      const emailInput = screen.getAllByPlaceholderText('Email')[0];
+      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      
+      fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+      fireEvent.click(submitButton);
+
+      await waitFor(() => {
+        expect(emailInput).toHaveValue('');
+      });
+    });
+
+    it('should hide success message after 5 seconds', async () => {
+      mockNewsletterService.subscribeToNewsletter.mockResolvedValueOnce(undefined);
+      
+      render(<HeroSection />);
+      
+      const emailInput = screen.getAllByPlaceholderText('Email')[0];
+      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      
+      fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+      fireEvent.click(submitButton);
+
+      await waitFor(() => {
+        expect(screen.getAllByText('¡Suscripción exitosa! Revisa tu email.')).toHaveLength(2);
+      });
+
+      // Advance timers by 5 seconds
       jest.advanceTimersByTime(5000);
+
+      await waitFor(() => {
+        expect(screen.queryAllByText('¡Suscripción exitosa! Revisa tu email.')).toHaveLength(0);
+      });
     });
-    
-    // Verificar que el mensaje desapareció
-    expect(screen.queryByText('¡Suscripción exitosa! Revisa tu email.')).not.toBeInTheDocument();
+  });
+
+  describe('Form Validation', () => {
+    it('should show error for empty email', async () => {
+      render(<HeroSection />);
+      
+      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      fireEvent.click(submitButton);
+
+      await waitFor(() => {
+        expect(screen.getAllByText('Por favor ingresa tu email')).toHaveLength(2);
+      });
+    });
+
+    it('should show error for invalid email format', async () => {
+      render(<HeroSection />);
+      
+      const emailInput = screen.getAllByPlaceholderText('Email')[0];
+      const form = emailInput.closest('form');
+      
+      fireEvent.change(emailInput, { target: { value: 'invalid-email' } });
+      fireEvent.submit(form!);
+
+      await waitFor(() => {
+        expect(screen.getAllByText('Por favor ingresa un email válido')).toHaveLength(2);
+      });
+    });
+
+    it('should accept valid email format', async () => {
+      mockNewsletterService.subscribeToNewsletter.mockResolvedValueOnce(undefined);
+      
+      render(<HeroSection />);
+      
+      const emailInput = screen.getAllByPlaceholderText('Email')[0];
+      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      
+      fireEvent.change(emailInput, { target: { value: 'valid@example.com' } });
+      fireEvent.click(submitButton);
+
+      await waitFor(() => {
+        expect(mockNewsletterService.subscribeToNewsletter).toHaveBeenCalledWith('valid@example.com', 'hero');
+      });
+    });
+  });
+
+  describe('Error Handling', () => {
+    it('should show error message when subscription fails', async () => {
+      const errorMessage = 'Error de conexión';
+      mockNewsletterService.subscribeToNewsletter.mockRejectedValueOnce(new Error(errorMessage));
+      
+      render(<HeroSection />);
+      
+      const emailInput = screen.getAllByPlaceholderText('Email')[0];
+      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      
+      fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+      fireEvent.click(submitButton);
+
+      await waitFor(() => {
+        expect(screen.getAllByText(errorMessage)).toHaveLength(2);
+      });
+    });
+
+    it('should show generic error message when error has no message', async () => {
+      mockNewsletterService.subscribeToNewsletter.mockRejectedValueOnce(new Error());
+      
+      render(<HeroSection />);
+      
+      const emailInput = screen.getAllByPlaceholderText('Email')[0];
+      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      
+      fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+      fireEvent.click(submitButton);
+
+      await waitFor(() => {
+        expect(screen.getAllByText('Error al suscribirse. Inténtalo de nuevo.')).toHaveLength(2);
+      });
+    });
+
+    it('should clear error when user starts typing again', async () => {
+      render(<HeroSection />);
+      
+      const emailInput = screen.getAllByPlaceholderText('Email')[0];
+      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      
+      // Trigger error
+      fireEvent.click(submitButton);
+      
+      await waitFor(() => {
+        expect(screen.getAllByText('Por favor ingresa tu email')).toHaveLength(2);
+      });
+
+      // Start typing to clear error
+      fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+      
+      await waitFor(() => {
+        expect(screen.queryAllByText('Por favor ingresa tu email')).toHaveLength(0);
+      });
+    });
+  });
+
+  describe('Form Interactions', () => {
+    it('should update email input value', () => {
+      render(<HeroSection />);
+      
+      const emailInput = screen.getAllByPlaceholderText('Email')[0];
+      
+      fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+      
+      expect(emailInput).toHaveValue('test@example.com');
+    });
+
+    it('should disable form during submission', async () => {
+      mockNewsletterService.subscribeToNewsletter.mockImplementation(() => new Promise(resolve => setTimeout(resolve, 100)));
+      
+      render(<HeroSection />);
+      
+      const emailInput = screen.getAllByPlaceholderText('Email')[0];
+      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      
+      fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+      fireEvent.click(submitButton);
+
+      expect(emailInput).toBeDisabled();
+      expect(submitButton).toBeDisabled();
+    });
+
+    it('should re-enable form after submission completes', async () => {
+      mockNewsletterService.subscribeToNewsletter.mockResolvedValueOnce(undefined);
+      
+      render(<HeroSection />);
+      
+      const emailInput = screen.getAllByPlaceholderText('Email')[0];
+      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      
+      fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+      fireEvent.click(submitButton);
+
+      await waitFor(() => {
+        expect(emailInput).not.toBeDisabled();
+        expect(submitButton).not.toBeDisabled();
+      });
+    });
+  });
+
+  describe('Accessibility', () => {
+    it('should have proper form structure', () => {
+      render(<HeroSection />);
+      
+      const form = screen.getAllByRole('button', { name: 'Suscribirse' })[0].closest('form');
+      expect(form).toBeInTheDocument();
+    });
+
+    it('should have proper input type and placeholder', () => {
+      render(<HeroSection />);
+      
+      const emailInput = screen.getAllByPlaceholderText('Email')[0];
+      expect(emailInput).toHaveAttribute('type', 'email');
+      expect(emailInput).toHaveAttribute('placeholder', 'Email');
+    });
+
+    it('should have proper button type', () => {
+      render(<HeroSection />);
+      
+      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      expect(submitButton).toHaveAttribute('type', 'submit');
+    });
+  });
+
+  describe('Responsive Design', () => {
+    it('should render mobile layout elements', () => {
+      render(<HeroSection />);
+      
+      // Mobile layout should be present
+      expect(screen.getByTestId('floating-cards-mobile')).toBeInTheDocument();
+    });
+
+    it('should render desktop layout elements', () => {
+      render(<HeroSection />);
+      
+      // Desktop layout should be present
+      expect(screen.getByTestId('floating-cards-desktop')).toBeInTheDocument();
+    });
+
+    it('should have multiple email inputs for different layouts', () => {
+      render(<HeroSection />);
+      
+      const emailInputs = screen.getAllByPlaceholderText('Email');
+      expect(emailInputs.length).toBeGreaterThan(1); // At least mobile and desktop versions
+    });
   });
 }); 

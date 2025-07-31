@@ -5,13 +5,7 @@ import AIToolCard from './AIToolCard';
 
 // Mock de Next.js Image
 jest.mock('next/image', () => {
-  return function MockImage({ src, alt, className, width, height }: {
-    src: string;
-    alt: string;
-    className?: string;
-    width?: number;
-    height?: number;
-  }) {
+  return function MockImage({ src, alt, className, width, height }: any) {
     return <img src={src} alt={alt} className={className} width={width} height={height} />;
   };
 });
