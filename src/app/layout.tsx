@@ -6,6 +6,8 @@ import './globals.css';
 import Sidebar from '../components/Navigation/Sidebar';
 import AddAIToolModal from '../components/Pages/AddAIToolModal';
 import AddAIToolPage from '../components/Pages/AddAIToolPage';
+import PWAInstallPrompt from '../components/PWAInstallPrompt';
+import PWARegistration from '../components/PWARegistration';
 import React, { useState, createContext, useContext, useEffect } from 'react';
 
 const geistSans = Geist({
@@ -136,6 +138,24 @@ export default function RootLayout({
       <head>
         <title>AIFinder</title>
         <meta name="description" content="Descubre y compara las mejores herramientas de IA" />
+
+        {/* PWA Meta Tags */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="AIFinder" />
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+
+        {/* Iconos para diferentes dispositivos */}
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-96x96.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-72x72.png" />
+        <link rel="mask-icon" href="/icons/icon.svg" color="#000000" />
+
+        {/* Meta tags adicionales para PWA */}
+        <meta name="application-name" content="AIFinder" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="msapplication-TileImage" content="/icons/icon-144x144.png" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}>
         <SidebarDrawerContext.Provider value={{ setSidebarOpen }}>
@@ -250,6 +270,12 @@ export default function RootLayout({
             </AddAIToolContext.Provider>
           </FeedbackContext.Provider>
         </SidebarDrawerContext.Provider>
+
+        {/* PWA Install Prompt */}
+        <PWAInstallPrompt />
+
+        {/* PWA Registration */}
+        <PWARegistration />
       </body>
     </html>
   );
