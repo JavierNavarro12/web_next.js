@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
-
-import { AICategory } from '../../data/ai-tools';
+import React, { useState, useRef, useEffect } from 'react';
+import { AICategory, AITool } from '../../data/ai-tools';
+import SearchDropdown from './SearchDropdown';
+import { useHighlightedToolContext } from '../../app/layout';
 
 interface DesktopHeaderProps {
   currentCategory: AICategory | null;
@@ -42,6 +43,45 @@ export default function DesktopHeader({
   setActiveNav,
 }: DesktopHeaderProps) {
   const [hoveredNav, setHoveredNav] = React.useState<string | null>(null);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
+  const { setHighlightedTool } = useHighlightedToolContext();
+
+  // Manejar clics fuera del componente de búsqueda
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setIsSearchFocused(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  // Manejar click en herramienta del dropdown
+  const handleToolClick = (tool: AITool, category: string, subcategory: string) => {
+    // Navegar a la categoría y subcategoría donde está la IA
+    setActiveCategory(category);
+
+    // Usar onSubcategoryClick para navegar correctamente a la subcategoría
+    setTimeout(() => {
+      onSubcategoryClick(subcategory);
+      // Resaltar la IA después de navegar
+      setTimeout(() => {
+        setHighlightedTool(tool.name);
+        // Limpiar el resaltado después de 3 segundos
+        setTimeout(() => {
+          setHighlightedTool(null);
+        }, 3000);
+      }, 500); // Delay para que se complete la navegación
+    }, 100);
+
+    setIsSearchFocused(false);
+    setSearchTerm(''); // Limpiar búsqueda
+  };
   if (!currentCategory) {
     return (
       <div className="hidden md:block bg-black border-b border-zinc-800 fixed top-0 left-[calc(4px+270px+1px)] right-[calc(12px+1px)] z-50 shadow-lg">
@@ -93,8 +133,8 @@ export default function DesktopHeader({
           </nav>
 
           {/* Search */}
-          <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400">
+          <div className="relative" ref={searchRef}>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none z-10">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -113,7 +153,16 @@ export default function DesktopHeader({
             <input
               type="text"
               placeholder="Buscar IAs"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onFocus={() => setIsSearchFocused(true)}
               className="w-64 bg-black border border-zinc-800 rounded-md pl-10 pr-4 py-2 text-sm text-zinc-300 placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors"
+            />
+            <SearchDropdown
+              searchTerm={searchTerm}
+              isVisible={isSearchFocused}
+              onToolClick={handleToolClick}
+              isMobile={false}
             />
           </div>
         </div>
@@ -203,8 +252,8 @@ export default function DesktopHeader({
           ))}
         </div>
         <div className="flex items-center w-full max-w-[280px] mr-0">
-          <div className="relative w-full">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none">
+          <div className="relative w-full" ref={searchRef}>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none z-10">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -225,7 +274,14 @@ export default function DesktopHeader({
               placeholder="Buscar IAs"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              onFocus={() => setIsSearchFocused(true)}
               className="w-full bg-black border border-zinc-600 rounded-md pl-10 pr-3 py-2 text-sm text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500 transition-colors"
+            />
+            <SearchDropdown
+              searchTerm={searchTerm}
+              isVisible={isSearchFocused}
+              onToolClick={handleToolClick}
+              isMobile={false}
             />
           </div>
         </div>

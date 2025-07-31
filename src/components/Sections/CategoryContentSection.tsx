@@ -1,9 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { AITool, AICategory } from '../../data/ai-tools';
 import { filterTools, handleToolClick, getPricingText } from '../../utils/toolUtils';
+import { useHighlightedToolContext } from '../../app/layout';
 
 interface CategoryContentSectionProps {
   currentCategory: AICategory | null;
@@ -16,6 +17,20 @@ export default function CategoryContentSection({
   activeFilter,
   searchTerm,
 }: CategoryContentSectionProps) {
+  const { highlightedTool } = useHighlightedToolContext();
+  const [animatingTool, setAnimatingTool] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (highlightedTool) {
+      setAnimatingTool(highlightedTool);
+      // Quitar la animación después de 2 segundos
+      const timer = setTimeout(() => {
+        setAnimatingTool(null);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [highlightedTool]);
+
   if (!currentCategory) return null;
 
   return (
@@ -33,7 +48,11 @@ export default function CategoryContentSection({
                   filterTools(subcat.tools, activeFilter, searchTerm).map((tool: AITool) => (
                     <div
                       key={tool.name}
-                      className="flex items-start gap-3 py-1 pl-1 cursor-pointer hover:bg-zinc-900/50 rounded-lg transition-colors p-2"
+                      className={`flex items-start gap-3 py-1 pl-1 cursor-pointer hover:bg-zinc-900/50 rounded-lg transition-all duration-300 p-2 ${
+                        animatingTool === tool.name
+                          ? 'scale-107 bg-zinc-700/80 shadow-2xl shadow-blue-500/20'
+                          : ''
+                      }`}
                       onClick={() => handleToolClick(tool)}
                     >
                       <Image
@@ -64,7 +83,11 @@ export default function CategoryContentSection({
                   filterTools(subcat.tools, activeFilter, searchTerm).map((tool: AITool) => (
                     <div
                       key={tool.name}
-                      className="group cursor-pointer"
+                      className={`group cursor-pointer transition-all duration-300 ${
+                        animatingTool === tool.name
+                          ? 'scale-107 shadow-2xl shadow-blue-500/30 rounded-lg bg-zinc-700/50'
+                          : ''
+                      }`}
                       onClick={() => handleToolClick(tool)}
                     >
                       <div className="relative aspect-video bg-zinc-800 rounded mb-3 overflow-hidden border border-[#232323]">

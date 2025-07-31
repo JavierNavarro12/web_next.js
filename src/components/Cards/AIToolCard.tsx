@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 type Props = {
@@ -8,11 +8,35 @@ type Props = {
   image: string;
   logo?: string;
   description: string;
+  isHighlighted?: boolean;
 };
 
-export default function AIToolCard({ name, image, logo, description }: Props) {
+export default function AIToolCard({
+  name,
+  image,
+  logo,
+  description,
+  isHighlighted = false,
+}: Props) {
+  const [showAnimation, setShowAnimation] = useState(false);
+
+  useEffect(() => {
+    if (isHighlighted) {
+      setShowAnimation(true);
+      // Quitar la animación después de 2 segundos
+      const timer = setTimeout(() => {
+        setShowAnimation(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [isHighlighted]);
+
   return (
-    <div className="bg-zinc-900 rounded-lg p-4 flex flex-col items-center shadow hover:shadow-lg transition">
+    <div
+      className={`bg-zinc-900 rounded-lg p-4 flex flex-col items-center shadow hover:shadow-lg transition-all duration-300 ${
+        showAnimation ? 'scale-107 shadow-2xl shadow-blue-500/30 bg-zinc-700' : ''
+      }`}
+    >
       {/* Móvil: logo cuadrado */}
       <Image
         src={logo || image}
