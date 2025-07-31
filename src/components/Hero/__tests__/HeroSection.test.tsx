@@ -3,61 +3,50 @@ import React from 'react';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import HeroSection from '../HeroSection';
 
-// Mock de EmailJS
-const mockSend = jest.fn();
-jest.mock('@emailjs/browser', () => ({
-  send: mockSend,
-  init: jest.fn(),
+// Mock de newsletterService
+const mockSubscribeToNewsletter = jest.fn();
+jest.mock('../../../services/newsletterService', () => ({
+  newsletterService: {
+    subscribeToNewsletter: mockSubscribeToNewsletter,
+  },
 }));
 
-// Mock de los contextos
-const mockSetShowAddAITool = jest.fn();
-const mockSetShowFeedback = jest.fn();
-const mockSetShowBugReport = jest.fn();
-
-jest.mock('../../../app/layout', () => ({
-  useAddAIToolContext: () => ({
-    setShowAddAITool: mockSetShowAddAITool,
-  }),
-  useFeedbackContext: () => ({
-    setShowFeedback: mockSetShowFeedback,
-  }),
-  useBugReportContext: () => ({
-    setShowBugReport: mockSetShowBugReport,
-  }),
-}));
+// Mock de FloatingCards
+jest.mock('../FloatingCards', () => {
+  return function MockFloatingCards({ isMobile }: { isMobile: boolean }) {
+    return <div data-testid={`floating-cards-${isMobile ? 'mobile' : 'desktop'}`}>Floating Cards</div>;
+  };
+});
 
 describe('HeroSection', () => {
   beforeEach(() => {
-    mockSend.mockClear();
-    mockSetShowAddAITool.mockClear();
-    mockSetShowFeedback.mockClear();
-    mockSetShowBugReport.mockClear();
+    mockSubscribeToNewsletter.mockClear();
   });
 
   it('renderiza el título principal', () => {
     render(<HeroSection />);
-    expect(screen.getByText(/descubre las mejores/i)).toBeInTheDocument();
+    expect(screen.getByText(/todas las ias/i)).toBeInTheDocument();
+    expect(screen.getByText(/que necesitas en un lugar/i)).toBeInTheDocument();
   });
 
   it('renderiza el subtítulo', () => {
     render(<HeroSection />);
-    expect(screen.getByText(/todas las herramientas de inteligencia artificial/i)).toBeInTheDocument();
+    expect(screen.getByText(/herramientas, recursos y productos de ia/i)).toBeInTheDocument();
   });
 
   it('renderiza el formulario de newsletter', () => {
     render(<HeroSection />);
-    expect(screen.getByPlaceholderText(/tu email/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /suscribirse/i })).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Email')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Suscribirse' })).toBeInTheDocument();
   });
 
   it('maneja el envío del formulario de newsletter exitosamente', async () => {
-    mockSend.mockResolvedValue({ status: 200 });
+    mockSubscribeToNewsletter.mockResolvedValue(undefined);
     
     render(<HeroSection />);
     
-    const emailInput = screen.getByPlaceholderText(/tu email/i);
-    const submitButton = screen.getByRole('button', { name: /suscribirse/i });
+    const emailInput = screen.getByPlaceholderText('Email');
+    const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
     
     fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
     fireEvent.click(submitButton);
@@ -66,16 +55,16 @@ describe('HeroSection', () => {
       await new Promise(resolve => setTimeout(resolve, 0));
     });
     
-    expect(mockSend).toHaveBeenCalled();
+    expect(mockSubscribeToNewsletter).toHaveBeenCalledWith('test@example.com', 'hero');
   });
 
   it('maneja errores en el envío del formulario', async () => {
-    mockSend.mockRejectedValue(new Error('EmailJS Error'));
+    mockSubscribeToNewsletter.mockRejectedValue(new Error('Error de conexión'));
     
     render(<HeroSection />);
     
-    const emailInput = screen.getByPlaceholderText(/tu email/i);
-    const submitButton = screen.getByRole('button', { name: /suscribirse/i });
+    const emailInput = screen.getByPlaceholderText('Email');
+    const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
     
     fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
     fireEvent.click(submitButton);
@@ -84,30 +73,30 @@ describe('HeroSection', () => {
       await new Promise(resolve => setTimeout(resolve, 0));
     });
     
-    expect(mockSend).toHaveBeenCalled();
+    expect(mockSubscribeToNewsletter).toHaveBeenCalledWith('test@example.com', 'hero');
   });
 
   it('valida el formato de email', () => {
     render(<HeroSection />);
     
-    const emailInput = screen.getByPlaceholderText(/tu email/i);
+    const emailInput = screen.getByPlaceholderText('Email');
     expect(emailInput).toHaveAttribute('type', 'email');
   });
 
   it('requiere el campo de email', () => {
     render(<HeroSection />);
     
-    const emailInput = screen.getByPlaceholderText(/tu email/i);
-    expect(emailInput).toHaveAttribute('required');
+    const emailInput = screen.getByPlaceholderText('Email');
+    expect(emailInput).toHaveAttribute('type', 'email');
   });
 
   it('muestra mensaje de éxito después del envío', async () => {
-    mockSend.mockResolvedValue({ status: 200 });
+    mockSubscribeToNewsletter.mockResolvedValue(undefined);
     
     render(<HeroSection />);
     
-    const emailInput = screen.getByPlaceholderText(/tu email/i);
-    const submitButton = screen.getByRole('button', { name: /suscribirse/i });
+    const emailInput = screen.getByPlaceholderText('Email');
+    const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
     
     fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
     fireEvent.click(submitButton);
@@ -116,66 +105,108 @@ describe('HeroSection', () => {
       await new Promise(resolve => setTimeout(resolve, 0));
     });
     
-    // Avanzar el tiempo para que aparezca el mensaje de éxito
-    act(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    
-    // Verificar que el componente sigue funcionando
-    expect(screen.getByText(/descubre las mejores/i)).toBeInTheDocument();
+    // Verificar que aparece el mensaje de éxito
+    expect(screen.getByText('¡Suscripción exitosa! Revisa tu email.')).toBeInTheDocument();
   });
 
   it('maneja el estado de loading durante el envío', async () => {
-    mockSend.mockImplementation(() => new Promise(resolve => setTimeout(() => resolve({ status: 200 }), 100)));
+    mockSubscribeToNewsletter.mockImplementation(() => new Promise(resolve => setTimeout(() => resolve(undefined), 100)));
     
     render(<HeroSection />);
     
-    const emailInput = screen.getByPlaceholderText(/tu email/i);
-    const submitButton = screen.getByRole('button', { name: /suscribirse/i });
+    const emailInput = screen.getByPlaceholderText('Email');
+    const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
     
     fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
     fireEvent.click(submitButton);
     
     // Verificar que el botón está deshabilitado durante el envío
     expect(submitButton).toBeDisabled();
+    expect(submitButton).toHaveTextContent('Enviando...');
     
     await act(async () => {
       await new Promise(resolve => setTimeout(resolve, 150));
     });
   });
 
-  it('renderiza los botones de acción', () => {
+  it('renderiza los componentes FloatingCards', () => {
     render(<HeroSection />);
     
-    expect(screen.getByRole('button', { name: /añadir una ia/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /feedback/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /reportar bug/i })).toBeInTheDocument();
+    expect(screen.getByTestId('floating-cards-mobile')).toBeInTheDocument();
+    expect(screen.getByTestId('floating-cards-desktop')).toBeInTheDocument();
   });
 
-  it('llama a setShowAddAITool cuando se hace click en "Añadir una IA"', () => {
+  it('maneja validación de email vacío', async () => {
     render(<HeroSection />);
     
-    const addAIButton = screen.getByRole('button', { name: /añadir una ia/i });
-    fireEvent.click(addAIButton);
+    const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
+    fireEvent.click(submitButton);
     
-    expect(mockSetShowAddAITool).toHaveBeenCalledWith(true);
+    await act(async () => {
+      await new Promise(resolve => setTimeout(resolve, 0));
+    });
+    
+    expect(screen.getByText('Por favor ingresa tu email')).toBeInTheDocument();
   });
 
-  it('llama a setShowFeedback cuando se hace click en "Feedback"', () => {
+  it('maneja validación de email inválido', async () => {
     render(<HeroSection />);
     
-    const feedbackButton = screen.getByRole('button', { name: /feedback/i });
-    fireEvent.click(feedbackButton);
+    const emailInput = screen.getByPlaceholderText('Email');
+    const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
     
-    expect(mockSetShowFeedback).toHaveBeenCalledWith(true);
+    fireEvent.change(emailInput, { target: { value: 'invalid-email' } });
+    fireEvent.click(submitButton);
+    
+    await act(async () => {
+      await new Promise(resolve => setTimeout(resolve, 0));
+    });
+    
+    expect(screen.getByText('Por favor ingresa un email válido')).toBeInTheDocument();
   });
 
-  it('llama a setShowBugReport cuando se hace click en "Reportar Bug"', () => {
+  it('limpia el campo de email después del envío exitoso', async () => {
+    mockSubscribeToNewsletter.mockResolvedValue(undefined);
+    
     render(<HeroSection />);
     
-    const bugReportButton = screen.getByRole('button', { name: /reportar bug/i });
-    fireEvent.click(bugReportButton);
+    const emailInput = screen.getByPlaceholderText('Email');
+    const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
     
-    expect(mockSetShowBugReport).toHaveBeenCalledWith(true);
+    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+    fireEvent.click(submitButton);
+    
+    await act(async () => {
+      await new Promise(resolve => setTimeout(resolve, 0));
+    });
+    
+    expect(emailInput).toHaveValue('');
+  });
+
+  it('oculta el mensaje de éxito después de 5 segundos', async () => {
+    mockSubscribeToNewsletter.mockResolvedValue(undefined);
+    
+    render(<HeroSection />);
+    
+    const emailInput = screen.getByPlaceholderText('Email');
+    const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
+    
+    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+    fireEvent.click(submitButton);
+    
+    await act(async () => {
+      await new Promise(resolve => setTimeout(resolve, 0));
+    });
+    
+    // Verificar que aparece el mensaje de éxito
+    expect(screen.getByText('¡Suscripción exitosa! Revisa tu email.')).toBeInTheDocument();
+    
+    // Avanzar el tiempo 5 segundos
+    act(() => {
+      jest.advanceTimersByTime(5000);
+    });
+    
+    // Verificar que el mensaje desapareció
+    expect(screen.queryByText('¡Suscripción exitosa! Revisa tu email.')).not.toBeInTheDocument();
   });
 }); 
