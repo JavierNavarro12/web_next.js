@@ -13,11 +13,11 @@ interface BugReportPageProps {
   navigateToFeedback?: () => void;
 }
 
-export default function BugReportPage({ 
-  onBack, 
-  setActiveCategory, 
+export default function BugReportPage({
+  onBack,
+  setActiveCategory,
   setActiveSubcategory,
-  navigateToFeedback
+  navigateToFeedback,
 }: BugReportPageProps) {
   const [formData, setFormData] = useState({
     name: '',
@@ -45,6 +45,15 @@ export default function BugReportPage({
     setIsSubmitting(true);
 
     try {
+      // Verificar configuración antes de enviar
+      if (!EMAILJS_CONFIG.SERVICE_ID || !EMAILJS_CONFIG.FEEDBACK_TEMPLATE_ID) {
+        console.error('EmailJS Config Error:', {
+          SERVICE_ID: EMAILJS_CONFIG.SERVICE_ID ? 'SET' : 'MISSING',
+          FEEDBACK_TEMPLATE_ID: EMAILJS_CONFIG.FEEDBACK_TEMPLATE_ID ? 'SET' : 'MISSING',
+        });
+        throw new Error('Configuración de EmailJS incompleta. Contacta al administrador.');
+      }
+
       // Enviar email usando EmailJS
       const result = await emailjs.send(
         EMAILJS_CONFIG.SERVICE_ID,
@@ -68,7 +77,11 @@ export default function BugReportPage({
       }, 3000);
     } catch (error) {
       console.error('Error al enviar email de reporte de bug:', error);
-      alert('Error al enviar el reporte. Por favor, inténtalo de nuevo.');
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : 'Error al enviar el reporte. Por favor, inténtalo de nuevo.';
+      alert(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
@@ -176,9 +189,7 @@ export default function BugReportPage({
                   <div className="text-center py-8">
                     <div className="text-green-400 text-6xl mb-4">✓</div>
                     <h3 className="text-white text-xl font-semibold mb-2">¡Bug reportado!</h3>
-                    <p className="text-zinc-400">
-                      Gracias por tu reporte. Lo revisaremos pronto.
-                    </p>
+                    <p className="text-zinc-400">Gracias por tu reporte. Lo revisaremos pronto.</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
@@ -329,7 +340,7 @@ export default function BugReportPage({
         </div>
       </div>
 
-            {/* Footer */}
+      {/* Footer */}
       <Footer
         setShowFeedback={navigateToFeedback || (() => {})} // Navegar a feedback
         setShowBugReport={() => {}} // No hacer nada ya que estamos en la página de reportar bug
@@ -338,4 +349,4 @@ export default function BugReportPage({
       />
     </div>
   );
-} 
+}
