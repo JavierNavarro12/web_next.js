@@ -12,8 +12,8 @@ jest.mock('../useMobileNavigation', () => ({
   }),
 }));
 
-const { scrollToSection } = require('../../utils/scrollUtils');
-const { useMobileNavigation } = require('../useMobileNavigation');
+import { scrollToSection } from '../../utils/scrollUtils';
+import { useMobileNavigation } from '../useMobileNavigation';
 
 describe('useSubcategoryHandlers', () => {
   const setActiveSubcategory = jest.fn();

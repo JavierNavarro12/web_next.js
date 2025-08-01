@@ -43,14 +43,14 @@ describe('Footer', () => {
   });
 
   it('should render footer with logo and tagline', () => {
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     expect(screen.getAllByText('AIFinder')).toHaveLength(2);
     expect(screen.getAllByText('Todas las IAs que necesitas en un solo lugar.')).toHaveLength(2);
   });
 
   it('should render social links', () => {
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     expect(screen.getAllByLabelText('Visitar perfil de LinkedIn')).toHaveLength(2);
     expect(screen.getAllByLabelText('Enviar email')).toHaveLength(2);
@@ -58,7 +58,7 @@ describe('Footer', () => {
   });
 
   it('should render AI categories', () => {
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     expect(screen.getAllByText('Generativa')).toHaveLength(2);
     expect(screen.getAllByText('Chatbots')).toHaveLength(2);
@@ -68,7 +68,7 @@ describe('Footer', () => {
   });
 
   it('should render tools section', () => {
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     expect(screen.getAllByText('Comparador de IAs')).toHaveLength(2);
     expect(screen.getAllByText('Calculadora de costos')).toHaveLength(2);
@@ -77,7 +77,7 @@ describe('Footer', () => {
   });
 
   it('should render connect section', () => {
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     expect(screen.getAllByText('Feedback')).toHaveLength(2);
     expect(screen.getAllByText('Reportar Bug')).toHaveLength(2);
@@ -85,7 +85,7 @@ describe('Footer', () => {
   });
 
   it('should render legal links', () => {
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     expect(screen.getAllByText('Directrices de Listado')).toHaveLength(2);
     expect(screen.getAllByText('Política de Privacidad')).toHaveLength(2);
@@ -93,7 +93,7 @@ describe('Footer', () => {
   });
 
   it('should handle category click', () => {
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     const generativaButtons = screen.getAllByText('Generativa');
     fireEvent.click(generativaButtons[0]);
@@ -106,7 +106,7 @@ describe('Footer', () => {
   });
 
   it('should handle category click with mapping', () => {
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     const cognitivaButtons = screen.getAllByText('Cognitiva');
     fireEvent.click(cognitivaButtons[0]);
@@ -117,7 +117,7 @@ describe('Footer', () => {
 
   it('should handle feedback button click', () => {
     const setShowFeedback = jest.fn();
-    render(<Footer {...defaultProps} setShowFeedback={setShowFeedback} />);
+    render(React.createElement(Footer, { ...defaultProps, setShowFeedback }));
 
     const feedbackButtons = screen.getAllByText('Feedback');
     fireEvent.click(feedbackButtons[0]);
@@ -127,7 +127,7 @@ describe('Footer', () => {
 
   it('should handle bug report button click', () => {
     const setShowBugReport = jest.fn();
-    render(<Footer {...defaultProps} setShowBugReport={setShowBugReport} />);
+    render(React.createElement(Footer, { ...defaultProps, setShowBugReport }));
 
     const bugReportButtons = screen.getAllByText('Reportar Bug');
     fireEvent.click(bugReportButtons[0]);
@@ -136,19 +136,19 @@ describe('Footer', () => {
   });
 
   it('should render copyright notice', () => {
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     expect(screen.getAllByText('© 2025 AIFinder')).toHaveLength(2);
   });
 
   it('should render settings button in desktop', () => {
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     expect(screen.getByLabelText('Configuración')).toBeInTheDocument();
   });
 
   it('should handle multiple category clicks', () => {
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     const generativaButtons = screen.getAllByText('Generativa');
     const chatbotsButtons = screen.getAllByText('Chatbots');
@@ -160,7 +160,7 @@ describe('Footer', () => {
   });
 
   it('should handle category click with non-existent mapping', () => {
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     // Simular una categoría que no existe en el mapeo
     const generativaButtons = screen.getAllByText('Generativa');
@@ -171,34 +171,50 @@ describe('Footer', () => {
   });
 
   it('should render all AI categories', () => {
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     const expectedCategories = [
-      'Generativa', 'Chatbots', 'Negocios', 'DevTools', 'Creatividad',
-      'Salud', 'Educación', 'Finanzas', 'Seguridad', 'Robótica',
-      'Multimodal', 'OpenSource', 'Cognitiva', 'MLOps', 'Marketing',
-      'Traducción', 'Ética'
+      'Generativa',
+      'Chatbots',
+      'Negocios',
+      'DevTools',
+      'Creatividad',
+      'Salud',
+      'Educación',
+      'Finanzas',
+      'Seguridad',
+      'Robótica',
+      'Multimodal',
+      'OpenSource',
+      'Cognitiva',
+      'MLOps',
+      'Marketing',
+      'Traducción',
+      'Ética',
     ];
 
-    expectedCategories.forEach(category => {
+    expectedCategories.forEach((category) => {
       expect(screen.getAllByText(category)).toHaveLength(2);
     });
   });
 
   it('should handle social link clicks', () => {
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     const linkedinLinks = screen.getAllByLabelText('Visitar perfil de LinkedIn');
     const emailLinks = screen.getAllByLabelText('Enviar email');
     const whatsappLinks = screen.getAllByLabelText('Contactar por WhatsApp');
 
-    expect(linkedinLinks[0]).toHaveAttribute('href', 'https://www.linkedin.com/in/javier-navarro-rodríguez-056023331/');
+    expect(linkedinLinks[0]).toHaveAttribute(
+      'href',
+      'https://www.linkedin.com/in/javier-navarro-rodríguez-056023331/',
+    );
     expect(emailLinks[0]).toHaveAttribute('href', 'mailto:navarrojavi107@gmail.com');
     expect(whatsappLinks[0]).toHaveAttribute('href', 'https://wa.me/34693744798');
   });
 
   it('should apply correct responsive classes', () => {
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     const aifinderElements = screen.getAllByText('AIFinder');
     const footer = aifinderElements[0].closest('footer');
@@ -206,7 +222,7 @@ describe('Footer', () => {
   });
 
   it('should handle category click and close all modals', () => {
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     // Usar getAllByText y seleccionar el primero
     const generativaButtons = screen.getAllByText('Generativa');
@@ -219,7 +235,7 @@ describe('Footer', () => {
   });
 
   it('should render mobile layout elements', () => {
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     // Verificar elementos específicos del layout móvil
     expect(screen.getAllByText('Categorías de IAs')).toHaveLength(2);
@@ -228,7 +244,7 @@ describe('Footer', () => {
   });
 
   it('should render desktop layout elements', () => {
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     // Verificar elementos específicos del layout desktop
     expect(screen.getAllByText('Categorías de IAs')).toHaveLength(2);
@@ -238,7 +254,7 @@ describe('Footer', () => {
 
   it('should handle category click with console logging', () => {
     const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
-    render(<Footer {...defaultProps} />);
+    render(React.createElement(Footer, defaultProps));
 
     const generativaButtons = screen.getAllByText('Generativa');
     fireEvent.click(generativaButtons[0]);
@@ -252,9 +268,9 @@ describe('Footer', () => {
 
   it('should handle category click when context functions are not available', () => {
     const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
-    
+
     // Renderizar sin props de navegación
-    render(<Footer setShowFeedback={jest.fn()} />);
+    render(React.createElement(Footer, { setShowFeedback: jest.fn() }));
 
     const generativaButtons = screen.getAllByText('Generativa');
     fireEvent.click(generativaButtons[0]);
@@ -264,4 +280,4 @@ describe('Footer', () => {
 
     consoleSpy.mockRestore();
   });
-}); 
+});

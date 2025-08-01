@@ -71,7 +71,7 @@ describe('SearchDropdown', () => {
   });
 
   it('should render in desktop mode', () => {
-    render(<SearchDropdown {...defaultProps} />);
+    render(React.createElement(SearchDropdown, { ...defaultProps }));
 
     expect(screen.getByText('Test Tool 1')).toBeInTheDocument();
     expect(screen.getByText('Another Tool')).toBeInTheDocument();
@@ -79,7 +79,7 @@ describe('SearchDropdown', () => {
   });
 
   it('should render in mobile mode', () => {
-    render(<SearchDropdown {...defaultProps} isMobile={true} />);
+    render(React.createElement(SearchDropdown, { ...defaultProps, isMobile: true }));
 
     expect(screen.getByText('Test Tool 1')).toBeInTheDocument();
     expect(screen.getByText('Another Tool')).toBeInTheDocument();
@@ -87,14 +87,14 @@ describe('SearchDropdown', () => {
   });
 
   it('should not render when not visible', () => {
-    render(<SearchDropdown {...defaultProps} isVisible={false} />);
+    render(React.createElement(SearchDropdown, { ...defaultProps, isVisible: false }));
 
     expect(screen.queryByText('Test Tool 1')).not.toBeInTheDocument();
   });
 
   it('should handle tool click', () => {
     const onToolClick = jest.fn();
-    render(<SearchDropdown {...defaultProps} onToolClick={onToolClick} />);
+    render(React.createElement(SearchDropdown, { ...defaultProps, onToolClick }));
 
     fireEvent.click(screen.getByText('Test Tool 1'));
 
@@ -110,7 +110,7 @@ describe('SearchDropdown', () => {
   });
 
   it('should search tools by name', () => {
-    render(<SearchDropdown {...defaultProps} searchTerm="Search Tool" />);
+    render(React.createElement(SearchDropdown, { ...defaultProps, searchTerm: 'Search Tool' }));
 
     expect(screen.getByText('Search Tool')).toBeInTheDocument();
     expect(screen.queryByText('Test Tool 1')).not.toBeInTheDocument();
@@ -118,28 +118,31 @@ describe('SearchDropdown', () => {
   });
 
   it('should search tools by description', () => {
-    render(<SearchDropdown {...defaultProps} searchTerm="matches search term" />);
+    render(
+      React.createElement(SearchDropdown, { ...defaultProps, searchTerm: 'matches search term' }),
+    );
 
     expect(screen.getByText('Search Tool')).toBeInTheDocument();
     expect(screen.queryByText('Test Tool 1')).not.toBeInTheDocument();
   });
 
   it('should show no results message when search has no matches', () => {
-    render(<SearchDropdown {...defaultProps} searchTerm="NonExistentTool" />);
+    render(React.createElement(SearchDropdown, { ...defaultProps, searchTerm: 'NonExistentTool' }));
 
     expect(screen.getByText('No se encontraron resultados')).toBeInTheDocument();
   });
 
   it('should show no tools message when no search and no tools', () => {
     // Mock temporal con categorías vacías
-    const originalAiCategories = require('../../../data/ai-tools').aiCategories;
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { aiCategories: originalAiCategories } = require('../../../data/ai-tools');
     jest.doMock('../../../data/ai-tools', () => ({
       aiCategories: [],
     }));
 
     // Re-renderizar con el nuevo mock
-    const { rerender } = render(<SearchDropdown {...defaultProps} />);
-    
+    const { rerender } = render(React.createElement(SearchDropdown, defaultProps));
+
     // Restaurar el mock original
     jest.doMock('../../../data/ai-tools', () => ({
       aiCategories: originalAiCategories,
@@ -150,36 +153,36 @@ describe('SearchDropdown', () => {
   });
 
   it('should show load more button when not searching and more tools available', () => {
-    render(<SearchDropdown {...defaultProps} />);
+    render(React.createElement(SearchDropdown, { ...defaultProps }));
 
     // Con solo 3 herramientas en el mock, no debería mostrar "Cargar más"
     expect(screen.queryByText('Cargar más')).not.toBeInTheDocument();
   });
 
   it('should handle load more click', () => {
-    render(<SearchDropdown {...defaultProps} />);
+    render(React.createElement(SearchDropdown, { ...defaultProps }));
 
     // Con solo 3 herramientas en el mock, no debería mostrar "Cargar más"
     expect(screen.queryByText('Cargar más')).not.toBeInTheDocument();
   });
 
   it('should not show load more button when searching', () => {
-    render(<SearchDropdown {...defaultProps} searchTerm="Test" />);
+    render(React.createElement(SearchDropdown, { ...defaultProps, searchTerm: 'Test' }));
 
     expect(screen.queryByText('Cargar más')).not.toBeInTheDocument();
   });
 
   it('should show search results count', () => {
-    render(<SearchDropdown {...defaultProps} searchTerm="Tool" />);
+    render(React.createElement(SearchDropdown, { ...defaultProps, searchTerm: 'Tool' }));
 
     expect(screen.getByText(/resultado.*encontrado/)).toBeInTheDocument();
   });
 
   it('should handle image error gracefully', () => {
-    render(<SearchDropdown {...defaultProps} />);
+    render(React.createElement(SearchDropdown, { ...defaultProps }));
 
     const images = screen.getAllByAltText(/Test Tool|Another Tool|Search Tool/);
-    
+
     // Simular error en la primera imagen
     fireEvent.error(images[0]);
 
@@ -188,7 +191,7 @@ describe('SearchDropdown', () => {
   });
 
   it('should apply correct mobile styles', () => {
-    render(<SearchDropdown {...defaultProps} isMobile={true} />);
+    render(React.createElement(SearchDropdown, { ...defaultProps, isMobile: true }));
 
     // Verificar que el componente se renderiza correctamente en modo móvil
     expect(screen.getByText('Test Tool 1')).toBeInTheDocument();
@@ -197,7 +200,7 @@ describe('SearchDropdown', () => {
   });
 
   it('should apply correct desktop styles', () => {
-    render(<SearchDropdown {...defaultProps} isMobile={false} />);
+    render(React.createElement(SearchDropdown, { ...defaultProps, isMobile: false }));
 
     // Verificar que el componente se renderiza correctamente en modo desktop
     expect(screen.getByText('Test Tool 1')).toBeInTheDocument();
@@ -206,14 +209,14 @@ describe('SearchDropdown', () => {
   });
 
   it('should display tool information correctly', () => {
-    render(<SearchDropdown {...defaultProps} />);
+    render(React.createElement(SearchDropdown, { ...defaultProps }));
 
     expect(screen.getByText('Test Tool 1')).toBeInTheDocument();
     expect(screen.getByText('Test Tool Description 1')).toBeInTheDocument();
   });
 
   it('should handle empty search term', () => {
-    render(<SearchDropdown {...defaultProps} searchTerm="" />);
+    render(React.createElement(SearchDropdown, { ...defaultProps, searchTerm: '' }));
 
     // Debería mostrar herramientas aleatorias
     expect(screen.getByText('Test Tool 1')).toBeInTheDocument();
@@ -222,7 +225,7 @@ describe('SearchDropdown', () => {
   });
 
   it('should handle whitespace-only search term', () => {
-    render(<SearchDropdown {...defaultProps} searchTerm="   " />);
+    render(React.createElement(SearchDropdown, { ...defaultProps, searchTerm: '   ' }));
 
     // Debería mostrar herramientas aleatorias
     expect(screen.getByText('Test Tool 1')).toBeInTheDocument();
@@ -231,23 +234,23 @@ describe('SearchDropdown', () => {
   });
 
   it('should search case-insensitively', () => {
-    render(<SearchDropdown {...defaultProps} searchTerm="test tool" />);
+    render(React.createElement(SearchDropdown, { ...defaultProps, searchTerm: 'test tool' }));
 
     expect(screen.getByText('Test Tool 1')).toBeInTheDocument();
     expect(screen.queryByText('Another Tool')).not.toBeInTheDocument();
   });
 
   it('should reset show count when dropdown becomes invisible', () => {
-    const { rerender } = render(<SearchDropdown {...defaultProps} />);
+    const { rerender } = render(React.createElement(SearchDropdown, defaultProps));
 
     // Hacer visible el dropdown
-    rerender(<SearchDropdown {...defaultProps} isVisible={true} />);
+    rerender(React.createElement(SearchDropdown, { ...defaultProps, isVisible: true }));
 
     // Hacer invisible el dropdown
-    rerender(<SearchDropdown {...defaultProps} isVisible={false} />);
+    rerender(React.createElement(SearchDropdown, { ...defaultProps, isVisible: false }));
 
     // Hacer visible nuevamente
-    rerender(<SearchDropdown {...defaultProps} isVisible={true} />);
+    rerender(React.createElement(SearchDropdown, { ...defaultProps, isVisible: true }));
 
     // Debería mostrar el número inicial de herramientas
     expect(screen.getByText('Test Tool 1')).toBeInTheDocument();
@@ -257,7 +260,7 @@ describe('SearchDropdown', () => {
 
   it('should handle multiple tool clicks', () => {
     const onToolClick = jest.fn();
-    render(<SearchDropdown {...defaultProps} onToolClick={onToolClick} />);
+    render(React.createElement(SearchDropdown, { ...defaultProps, onToolClick }));
 
     fireEvent.click(screen.getByText('Test Tool 1'));
     fireEvent.click(screen.getByText('Another Tool'));
@@ -266,16 +269,16 @@ describe('SearchDropdown', () => {
   });
 
   it('should display correct number of results for search', () => {
-    render(<SearchDropdown {...defaultProps} searchTerm="Tool" />);
+    render(React.createElement(SearchDropdown, { ...defaultProps, searchTerm: 'Tool' }));
 
     // Debería encontrar 3 herramientas que contengan "Tool"
     expect(screen.getByText(/3 resultado.*encontrado/)).toBeInTheDocument();
   });
 
   it('should display singular form for single result', () => {
-    render(<SearchDropdown {...defaultProps} searchTerm="Search Tool" />);
+    render(React.createElement(SearchDropdown, { ...defaultProps, searchTerm: 'Search Tool' }));
 
     // Debería encontrar 1 herramienta
     expect(screen.getByText(/1 resultado.*encontrado/)).toBeInTheDocument();
   });
-}); 
+});

@@ -16,23 +16,30 @@ jest.mock('../../../app/layout', () => ({
 
 // Mock del componente SearchDropdown
 jest.mock('../SearchDropdown', () => {
-  return function MockSearchDropdown({ searchTerm, isVisible, onToolClick, isMobile }: {
+  return function MockSearchDropdown({
+    searchTerm,
+    isVisible,
+    onToolClick,
+    isMobile,
+  }: {
     searchTerm?: string;
     isVisible?: boolean;
     onToolClick?: (tool: { name: string }, category: string, subcategory: string) => void;
     isMobile?: boolean;
   }) {
     if (!isVisible) return null;
-    return (
-      <div data-testid="search-dropdown">
-        <div data-testid="search-term">{searchTerm}</div>
-        <button
-          data-testid="mock-tool-click"
-          onClick={() => onToolClick({ name: 'Test Tool' }, 'Test Category', 'Test Subcategory')}
-        >
-          Click Tool
-        </button>
-      </div>
+    return React.createElement(
+      'div',
+      { 'data-testid': 'search-dropdown' },
+      React.createElement('div', { 'data-testid': 'search-term' }, searchTerm),
+      React.createElement(
+        'button',
+        {
+          'data-testid': 'mock-tool-click',
+          onClick: () => onToolClick({ name: 'Test Tool' }, 'Test Category', 'Test Subcategory'),
+        },
+        'Click Tool',
+      ),
     );
   };
 });
@@ -86,7 +93,7 @@ describe('DesktopHeader', () => {
   });
 
   it('should render without current category', () => {
-    render(<DesktopHeader {...defaultProps} />);
+    render(React.createElement(DesktopHeader, defaultProps));
 
     expect(screen.getByText('Explorar')).toBeInTheDocument();
     expect(screen.getByText('Nuevas Adiciones')).toBeInTheDocument();
@@ -94,7 +101,7 @@ describe('DesktopHeader', () => {
   });
 
   it('should render with current category', () => {
-    render(<DesktopHeader {...defaultProps} currentCategory={mockCategory} />);
+    render(React.createElement(DesktopHeader, { ...defaultProps, currentCategory: mockCategory }));
 
     expect(screen.getByText('Test Category')).toBeInTheDocument();
     expect(screen.getByText('Subcategory 1')).toBeInTheDocument();
@@ -106,7 +113,7 @@ describe('DesktopHeader', () => {
 
   it('should handle navigation clicks', () => {
     const setActiveNav = jest.fn();
-    render(<DesktopHeader {...defaultProps} setActiveNav={setActiveNav} />);
+    render(React.createElement(DesktopHeader, { ...defaultProps, setActiveNav }));
 
     fireEvent.click(screen.getByText('Nuevas Adiciones'));
     expect(setActiveNav).toHaveBeenCalledWith('nuevas');
@@ -115,11 +122,11 @@ describe('DesktopHeader', () => {
   it('should handle subcategory clicks', () => {
     const onSubcategoryClick = jest.fn();
     render(
-      <DesktopHeader
-        {...defaultProps}
-        currentCategory={mockCategory}
-        onSubcategoryClick={onSubcategoryClick}
-      />,
+      React.createElement(DesktopHeader, {
+        ...defaultProps,
+        currentCategory: mockCategory,
+        onSubcategoryClick,
+      }),
     );
 
     fireEvent.click(screen.getByText('Subcategory 1'));
@@ -129,11 +136,11 @@ describe('DesktopHeader', () => {
   it('should handle filter clicks', () => {
     const setActiveFilter = jest.fn();
     render(
-      <DesktopHeader
-        {...defaultProps}
-        currentCategory={mockCategory}
-        setActiveFilter={setActiveFilter}
-      />,
+      React.createElement(DesktopHeader, {
+        ...defaultProps,
+        currentCategory: mockCategory,
+        setActiveFilter,
+      }),
     );
 
     fireEvent.click(screen.getByText('Gratis'));
@@ -142,7 +149,7 @@ describe('DesktopHeader', () => {
 
   it('should handle search input changes', () => {
     const setSearchTerm = jest.fn();
-    render(<DesktopHeader {...defaultProps} setSearchTerm={setSearchTerm} />);
+    render(React.createElement(DesktopHeader, { ...defaultProps, setSearchTerm }));
 
     const searchInput = screen.getByPlaceholderText('Buscar IAs');
     fireEvent.change(searchInput, { target: { value: 'test search' } });
@@ -152,7 +159,7 @@ describe('DesktopHeader', () => {
 
   it('should show search dropdown when focused', () => {
     const setSearchTerm = jest.fn();
-    render(<DesktopHeader {...defaultProps} setSearchTerm={setSearchTerm} />);
+    render(React.createElement(DesktopHeader, { ...defaultProps, setSearchTerm }));
 
     const searchInput = screen.getByPlaceholderText('Buscar IAs');
     fireEvent.focus(searchInput);
@@ -166,12 +173,12 @@ describe('DesktopHeader', () => {
     const onSubcategoryClick = jest.fn();
 
     render(
-      <DesktopHeader
-        {...defaultProps}
-        setActiveCategory={setActiveCategory}
-        setSearchTerm={setSearchTerm}
-        onSubcategoryClick={onSubcategoryClick}
-      />,
+      React.createElement(DesktopHeader, {
+        ...defaultProps,
+        setActiveCategory,
+        setSearchTerm,
+        onSubcategoryClick,
+      }),
     );
 
     const searchInput = screen.getByPlaceholderText('Buscar IAs');
@@ -198,12 +205,12 @@ describe('DesktopHeader', () => {
     const setActiveSubcategory = jest.fn();
 
     render(
-      <DesktopHeader
-        {...defaultProps}
-        currentCategory={mockCategory}
-        setActiveCategory={setActiveCategory}
-        setActiveSubcategory={setActiveSubcategory}
-      />,
+      React.createElement(DesktopHeader, {
+        ...defaultProps,
+        currentCategory: mockCategory,
+        setActiveCategory,
+        setActiveSubcategory,
+      }),
     );
 
     fireEvent.click(screen.getByText('Test Category'));
@@ -215,7 +222,7 @@ describe('DesktopHeader', () => {
 
   it('should handle hover states for navigation', () => {
     const setHoveredNav = jest.fn();
-    render(<DesktopHeader {...defaultProps} />);
+    render(React.createElement(DesktopHeader, defaultProps));
 
     const explorarButton = screen.getByText('Explorar');
     fireEvent.mouseEnter(explorarButton);
@@ -227,11 +234,11 @@ describe('DesktopHeader', () => {
   it('should handle hover states for filters', () => {
     const setHoveredFilter = jest.fn();
     render(
-      <DesktopHeader
-        {...defaultProps}
-        currentCategory={mockCategory}
-        setHoveredFilter={setHoveredFilter}
-      />,
+      React.createElement(DesktopHeader, {
+        ...defaultProps,
+        currentCategory: mockCategory,
+        setHoveredFilter,
+      }),
     );
 
     const gratisButton = screen.getByText('Gratis');
@@ -242,25 +249,32 @@ describe('DesktopHeader', () => {
 
   it('should apply correct styles when scrolled', () => {
     render(
-      <DesktopHeader
-        {...defaultProps}
-        currentCategory={mockCategory}
-        isScrolled={true}
-      />,
+      React.createElement(DesktopHeader, {
+        ...defaultProps,
+        currentCategory: mockCategory,
+        isScrolled: true,
+      }),
     );
 
     // Buscar el div que contiene las clases de scroll (el primer div después del div principal)
     const headerContainer = screen.getByText('Test Category').closest('div')?.parentElement;
-    expect(headerContainer).toHaveClass('h-0', 'p-0', 'm-0', 'overflow-hidden', 'opacity-0', 'border-0');
+    expect(headerContainer).toHaveClass(
+      'h-0',
+      'p-0',
+      'm-0',
+      'overflow-hidden',
+      'opacity-0',
+      'border-0',
+    );
   });
 
   it('should apply correct styles for active subcategory', () => {
     render(
-      <DesktopHeader
-        {...defaultProps}
-        currentCategory={mockCategory}
-        activeSubcategory="Subcategory 1"
-      />,
+      React.createElement(DesktopHeader, {
+        ...defaultProps,
+        currentCategory: mockCategory,
+        activeSubcategory: 'Subcategory 1',
+      }),
     );
 
     const activeButton = screen.getByText('Subcategory 1');
@@ -269,11 +283,11 @@ describe('DesktopHeader', () => {
 
   it('should apply correct styles for active filter', () => {
     render(
-      <DesktopHeader
-        {...defaultProps}
-        currentCategory={mockCategory}
-        activeFilter="free"
-      />,
+      React.createElement(DesktopHeader, {
+        ...defaultProps,
+        currentCategory: mockCategory,
+        activeFilter: 'free',
+      }),
     );
 
     const activeFilterButton = screen.getByText('Gratis');
@@ -282,7 +296,7 @@ describe('DesktopHeader', () => {
 
   it('should handle click outside to close search', () => {
     const setSearchTerm = jest.fn();
-    render(<DesktopHeader {...defaultProps} setSearchTerm={setSearchTerm} />);
+    render(React.createElement(DesktopHeader, { ...defaultProps, setSearchTerm }));
 
     const searchInput = screen.getByPlaceholderText('Buscar IAs');
     fireEvent.focus(searchInput);
@@ -297,7 +311,7 @@ describe('DesktopHeader', () => {
   });
 
   it('should handle search term display in dropdown', () => {
-    render(<DesktopHeader {...defaultProps} searchTerm="test search" />);
+    render(React.createElement(DesktopHeader, { ...defaultProps, searchTerm: 'test search' }));
 
     const searchInput = screen.getByPlaceholderText('Buscar IAs');
     fireEvent.focus(searchInput);
@@ -311,16 +325,16 @@ describe('DesktopHeader', () => {
     const setActiveSubcategory = jest.fn();
 
     render(
-      <DesktopHeader
-        {...defaultProps}
-        currentCategory={mockCategory}
-        setActiveCategory={setActiveCategory}
-        setActiveSubcategory={setActiveSubcategory}
-      />,
+      React.createElement(DesktopHeader, {
+        ...defaultProps,
+        currentCategory: mockCategory,
+        setActiveCategory,
+        setActiveSubcategory,
+      }),
     );
 
     fireEvent.click(screen.getByText('Test Category'));
 
     expect(window.scrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
   });
-}); 
+});

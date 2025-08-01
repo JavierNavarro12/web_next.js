@@ -84,7 +84,7 @@ Object.defineProperty(document.documentElement, 'scrollHeight', {
 describe('useScrollEffects', () => {
   const mockSetActiveSubcategory = jest.fn();
   const mockSetIsScrolled = jest.fn();
-  
+
   const mockCategory: AICategory = {
     name: 'Test Category',
     subcategories: [
@@ -106,7 +106,7 @@ describe('useScrollEffects', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     jest.useFakeTimers();
-    
+
     // Reset DOM mocks
     mockMainElement.scrollTop = 0;
     mockIsProgrammaticScroll.current = false;
@@ -147,11 +147,9 @@ describe('useScrollEffects', () => {
       ),
     );
 
-    expect(mockMainElement.addEventListener).toHaveBeenCalledWith(
-      'scroll',
-      expect.any(Function),
-      { passive: true },
-    );
+    expect(mockMainElement.addEventListener).toHaveBeenCalledWith('scroll', expect.any(Function), {
+      passive: true,
+    });
   });
 
   it('should add scroll event listener to window when main element is not found', () => {
@@ -173,11 +171,9 @@ describe('useScrollEffects', () => {
       ),
     );
 
-    expect(addEventListenerSpy).toHaveBeenCalledWith(
-      'scroll',
-      expect.any(Function),
-      { passive: true },
-    );
+    expect(addEventListenerSpy).toHaveBeenCalledWith('scroll', expect.any(Function), {
+      passive: true,
+    });
 
     // Restore original
     document.querySelector = originalQuerySelector;
@@ -270,8 +266,8 @@ describe('useScrollEffects', () => {
     expect(mockSetIsScrolled).not.toHaveBeenCalled();
   });
 
-  it('should call detectActiveSection when category changes', () => {
-    const { detectActiveSection } = require('../../utils/scrollUtils');
+  it('should call detectActiveSection when category changes', async () => {
+    const { detectActiveSection } = await import('../../utils/scrollUtils');
 
     renderHook(() =>
       useScrollEffects(
@@ -288,8 +284,8 @@ describe('useScrollEffects', () => {
     expect(detectActiveSection).toHaveBeenCalledWith(mockCategory, mockSetActiveSubcategory);
   });
 
-  it('should call autoScrollTab when activeSubcategory changes', () => {
-    const { autoScrollTab } = require('../../utils/scrollUtils');
+  it('should call autoScrollTab when activeSubcategory changes', async () => {
+    const { autoScrollTab } = await import('../../utils/scrollUtils');
 
     renderHook(() =>
       useScrollEffects(
@@ -310,8 +306,8 @@ describe('useScrollEffects', () => {
     );
   });
 
-  it('should not call autoScrollTab when isProgrammaticScroll is true', () => {
-    const { autoScrollTab } = require('../../utils/scrollUtils');
+  it('should not call autoScrollTab when isProgrammaticScroll is true', async () => {
+    const { autoScrollTab } = await import('../../utils/scrollUtils');
     mockIsProgrammaticScroll.current = true;
 
     renderHook(() =>
@@ -393,4 +389,4 @@ describe('useScrollEffects', () => {
     // Should handle throttling without errors
     expect(mockMainElement.addEventListener).toHaveBeenCalledTimes(1);
   });
-}); 
+});

@@ -48,19 +48,19 @@ describe('Sidebar', () => {
   });
 
   it('renderiza las secciones principales', () => {
-    render(<Sidebar />);
+    render(React.createElement(Sidebar));
     expect(screen.getByText('Explorar')).toBeInTheDocument();
     expect(screen.getByText('Artículos')).toBeInTheDocument();
   });
 
   it('renderiza al menos una categoría', () => {
-    render(<Sidebar />);
+    render(React.createElement(Sidebar));
     const generativaLinks = screen.getAllByText('Generativa');
     expect(generativaLinks.length).toBeGreaterThan(0);
   });
 
   it('llama a setActiveCategory al hacer click en una categoría', () => {
-    render(<Sidebar />);
+    render(React.createElement(Sidebar));
     // Buscar todos los enlaces y botones
     const linksAndButtons = [...screen.queryAllByRole('link'), ...screen.queryAllByRole('button')];
     // Buscar el que contenga el texto 'Generativa' en cualquier parte de su contenido
@@ -71,7 +71,7 @@ describe('Sidebar', () => {
   });
 
   it('despliega subcategorías y permite seleccionar una', () => {
-    render(<Sidebar />);
+    render(React.createElement(Sidebar));
     // Buscar todos los elementos de categoría (en desktop es un <span> con el nombre)
     const generativaElements = screen.getAllByText('Generativa');
     // Buscar el elemento de la lista de categorías (que tiene un ancestro <li>)
@@ -95,7 +95,7 @@ describe('Sidebar', () => {
   });
 
   it('cierra la subcategoría al hacer click de nuevo en la misma categoría', () => {
-    render(<Sidebar />);
+    render(React.createElement(Sidebar));
     // Buscar todos los elementos de categoría (en desktop es un <span> con el nombre)
     const generativaElements = screen.getAllByText('Generativa');
     const catElement = generativaElements.find((el) => el.closest('li'));
@@ -112,54 +112,54 @@ describe('Sidebar', () => {
 
   // Nuevos tests para cubrir líneas faltantes
   it('maneja eventos de mouse enter y leave en categorías', () => {
-    render(<Sidebar />);
+    render(React.createElement(Sidebar));
     const generativaElements = screen.getAllByText('Generativa');
     const catElement = generativaElements.find((el) => el.closest('li'));
     expect(catElement).toBeTruthy();
-    
+
     const categoryContainer = catElement!.closest('div');
     expect(categoryContainer).toBeTruthy();
-    
+
     // Simular mouse enter
     fireEvent.mouseEnter(categoryContainer!);
     // Simular mouse leave
     fireEvent.mouseLeave(categoryContainer!);
-    
+
     // Verificar que el componente sigue funcionando
     expect(screen.getByText('Explorar')).toBeInTheDocument();
   });
 
   it('maneja eventos de mouse enter y leave en subcategorías', () => {
-    render(<Sidebar />);
+    render(React.createElement(Sidebar));
     const generativaElements = screen.getAllByText('Generativa');
     const catElement = generativaElements.find((el) => el.closest('li'));
     expect(catElement).toBeTruthy();
-    
+
     // Abrir subcategorías
     fireEvent.click(catElement!.closest('div')!);
-    
+
     // Buscar subcategoría
     const subcatButton = screen.getByRole('button', { name: 'Texto' });
     expect(subcatButton).toBeInTheDocument();
-    
+
     // Simular mouse enter en subcategoría
     fireEvent.mouseEnter(subcatButton);
     // Simular mouse leave en subcategoría
     fireEvent.mouseLeave(subcatButton);
-    
+
     // Verificar que el componente sigue funcionando
     expect(screen.getByText('Explorar')).toBeInTheDocument();
   });
 
   it('renderiza y maneja el botón "Añadir una IA"', () => {
-    render(<Sidebar onNavigate={mockOnNavigate} />);
-    
+    render(React.createElement(Sidebar, { onNavigate: mockOnNavigate }));
+
     const addAIButton = screen.getByRole('button', { name: /añadir una ia/i });
     expect(addAIButton).toBeInTheDocument();
-    
+
     // Simular click en el botón
     fireEvent.click(addAIButton);
-    
+
     // Verificar que se llama a setShowAddAITool
     expect(mockSetShowAddAITool).toHaveBeenCalledWith(true);
     // Verificar que se llama a onNavigate si está disponible
@@ -167,14 +167,14 @@ describe('Sidebar', () => {
   });
 
   it('maneja el botón "Añadir una IA" sin onNavigate', () => {
-    render(<Sidebar />);
-    
+    render(React.createElement(Sidebar));
+
     const addAIButton = screen.getByRole('button', { name: /añadir una ia/i });
     expect(addAIButton).toBeInTheDocument();
-    
+
     // Simular click en el botón
     fireEvent.click(addAIButton);
-    
+
     // Verificar que se llama a setShowAddAITool
     expect(mockSetShowAddAITool).toHaveBeenCalledWith(true);
     // Verificar que el componente sigue funcionando
@@ -182,61 +182,63 @@ describe('Sidebar', () => {
   });
 
   it('maneja clicks en botones de expandir/contraer subcategorías', () => {
-    render(<Sidebar />);
+    render(React.createElement(Sidebar));
     const generativaElements = screen.getAllByText('Generativa');
     const catElement = generativaElements.find((el) => el.closest('li'));
     expect(catElement).toBeTruthy();
-    
+
     // Buscar el botón de expandir (chevron)
-    const expandButton = catElement!.closest('li')!.querySelector('button[aria-label*="subcategorías"]');
+    const expandButton = catElement!
+      .closest('li')!
+      .querySelector('button[aria-label*="subcategorías"]');
     expect(expandButton).toBeTruthy();
-    
+
     // Simular click en el botón de expandir
     fireEvent.click(expandButton!);
-    
+
     // Verificar que se llama a setActiveCategory
     expect(mockSetActiveCategory).toHaveBeenCalledWith('Generativa');
   });
 
   it('previene propagación de eventos en clicks de categorías', () => {
-    render(<Sidebar />);
+    render(React.createElement(Sidebar));
     const generativaElements = screen.getAllByText('Generativa');
     const catElement = generativaElements.find((el) => el.closest('li'));
     expect(catElement).toBeTruthy();
-    
+
     const categoryContainer = catElement!.closest('div');
     expect(categoryContainer).toBeTruthy();
-    
+
     // Crear un mock event con preventDefault y stopPropagation
     const mockEvent = {
       preventDefault: jest.fn(),
       stopPropagation: jest.fn(),
     };
-    
+
     // Simular click con el evento mock
     fireEvent.click(categoryContainer!, mockEvent);
-    
+
     // Verificar que se llama a setActiveCategory
     expect(mockSetActiveCategory).toHaveBeenCalledWith('Generativa');
   });
 
   it('maneja refs para subcategorías correctamente', () => {
-    render(<Sidebar />);
+    render(React.createElement(Sidebar));
     const generativaElements = screen.getAllByText('Generativa');
     const catElement = generativaElements.find((el) => el.closest('li'));
     expect(catElement).toBeTruthy();
-    
+
     // Abrir subcategorías
     fireEvent.click(catElement!.closest('div')!);
-    
+
     // Buscar elementos de subcategoría
     const subcatElements = screen.getAllByRole('button');
-    const subcatButton = subcatElements.find(button => button.textContent === 'Texto');
+    const subcatButton = subcatElements.find((button) => button.textContent === 'Texto');
     expect(subcatButton).toBeTruthy();
-    
+
     // Simular mouse enter para activar el hover
     fireEvent.mouseEnter(subcatButton!);
-    
+
     // Verificar que el componente sigue funcionando
     expect(screen.getByText('Explorar')).toBeInTheDocument();
   });
@@ -268,8 +270,8 @@ describe('Sidebar', () => {
     // Usar jest.doMock de manera diferente
     jest.doMock('../../app/layout', () => mockWithShowFeedback);
 
-    render(<Sidebar />);
-    
+    render(React.createElement(Sidebar));
+
     // Verificar que el componente se renderiza sin errores
     expect(screen.getByText('Explorar')).toBeInTheDocument();
   });

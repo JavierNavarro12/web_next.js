@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
+import Image from 'next/image';
 import { aiCategories, AITool } from '../../data/ai-tools';
 
 interface SearchDropdownProps {
@@ -105,9 +106,11 @@ export default function SearchDropdown({
               onClick={() => onToolClick(tool, tool.category, tool.subcategory)}
             >
               <div className={`flex-shrink-0 ${isMobile ? 'w-10 h-10 mr-3' : 'w-14 h-14 mr-5'}`}>
-                <img
+                <Image
                   src={tool.logo || tool.image}
                   alt={tool.name}
+                  width={isMobile ? 40 : 56}
+                  height={isMobile ? 40 : 56}
                   className={`rounded-lg object-cover ${isMobile ? 'w-10 h-10' : 'w-14 h-14'}`}
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;

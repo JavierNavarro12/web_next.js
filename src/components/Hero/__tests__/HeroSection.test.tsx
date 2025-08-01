@@ -6,7 +6,11 @@ import HeroSection from '../HeroSection';
 // Mock FloatingCards component
 jest.mock('../FloatingCards', () => {
   return function MockFloatingCards({ isMobile }: { isMobile: boolean }) {
-    return <div data-testid={`floating-cards-${isMobile ? 'mobile' : 'desktop'}`}>Floating Cards</div>;
+    return React.createElement(
+      'div',
+      { 'data-testid': `floating-cards-${isMobile ? 'mobile' : 'desktop'}` },
+      'Floating Cards',
+    );
   };
 });
 
@@ -17,7 +21,8 @@ jest.mock('../../../services/newsletterService', () => ({
   },
 }));
 
-const mockNewsletterService = require('../../../services/newsletterService').newsletterService;
+import { newsletterService } from '../../../services/newsletterService';
+const mockNewsletterService = newsletterService as jest.Mocked<typeof newsletterService>;
 
 describe('HeroSection', () => {
   beforeEach(() => {
@@ -31,30 +36,32 @@ describe('HeroSection', () => {
 
   describe('Rendering', () => {
     it('should render the hero section with title and description', () => {
-      render(<HeroSection />);
-      
+      render(React.createElement(HeroSection));
+
       expect(screen.getAllByText('Todas las IAs')).toHaveLength(2);
       expect(screen.getAllByText('que necesitas en un lugar.')).toHaveLength(2);
-      expect(screen.getAllByText('Herramientas, recursos y productos de IA. Entregado semanalmente.')).toHaveLength(2);
+      expect(
+        screen.getAllByText('Herramientas, recursos y productos de IA. Entregado semanalmente.'),
+      ).toHaveLength(2);
     });
 
     it('should render newsletter subscription form', () => {
-      render(<HeroSection />);
-      
+      render(React.createElement(HeroSection));
+
       expect(screen.getAllByPlaceholderText('Email')).toHaveLength(2);
       expect(screen.getAllByRole('button', { name: 'Suscribirse' })).toHaveLength(2);
     });
 
     it('should render FloatingCards components for both mobile and desktop', () => {
-      render(<HeroSection />);
-      
+      render(React.createElement(HeroSection));
+
       expect(screen.getByTestId('floating-cards-mobile')).toBeInTheDocument();
       expect(screen.getByTestId('floating-cards-desktop')).toBeInTheDocument();
     });
 
     it('should render both mobile and desktop layouts', () => {
-      render(<HeroSection />);
-      
+      render(React.createElement(HeroSection));
+
       // Both mobile and desktop versions should be present
       const titles = screen.getAllByText('Todas las IAs');
       expect(titles).toHaveLength(2); // One for mobile, one for desktop
@@ -63,18 +70,21 @@ describe('HeroSection', () => {
 
   describe('Newsletter Subscription', () => {
     it('should handle successful subscription', async () => {
-      mockNewsletterService.subscribeToNewsletter.mockResolvedValueOnce(undefined);
-      
-      render(<HeroSection />);
-      
+      mockNewsletterService.subscribeToNewsletter.mockResolvedValueOnce(true);
+
+      render(React.createElement(HeroSection));
+
       const emailInput = screen.getAllByPlaceholderText('Email')[0]; // Use first input (mobile)
       const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
-      
+
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.click(submitButton);
 
       await waitFor(() => {
-        expect(mockNewsletterService.subscribeToNewsletter).toHaveBeenCalledWith('test@example.com', 'hero');
+        expect(mockNewsletterService.subscribeToNewsletter).toHaveBeenCalledWith(
+          'test@example.com',
+          'hero',
+        );
       });
 
       await waitFor(() => {
@@ -83,13 +93,15 @@ describe('HeroSection', () => {
     });
 
     it('should show loading state during submission', async () => {
-      mockNewsletterService.subscribeToNewsletter.mockImplementation(() => new Promise(resolve => setTimeout(resolve, 100)));
-      
-      render(<HeroSection />);
-      
+      mockNewsletterService.subscribeToNewsletter.mockImplementation(
+        () => new Promise((resolve) => setTimeout(resolve, 100)),
+      );
+
+      render(React.createElement(HeroSection));
+
       const emailInput = screen.getAllByPlaceholderText('Email')[0];
       const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
-      
+
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.click(submitButton);
 
@@ -98,13 +110,13 @@ describe('HeroSection', () => {
     });
 
     it('should clear email input after successful subscription', async () => {
-      mockNewsletterService.subscribeToNewsletter.mockResolvedValueOnce(undefined);
-      
-      render(<HeroSection />);
-      
+      mockNewsletterService.subscribeToNewsletter.mockResolvedValueOnce(true);
+
+      render(React.createElement(HeroSection));
+
       const emailInput = screen.getAllByPlaceholderText('Email')[0];
       const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
-      
+
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.click(submitButton);
 
@@ -114,13 +126,13 @@ describe('HeroSection', () => {
     });
 
     it('should hide success message after 5 seconds', async () => {
-      mockNewsletterService.subscribeToNewsletter.mockResolvedValueOnce(undefined);
-      
-      render(<HeroSection />);
-      
+      mockNewsletterService.subscribeToNewsletter.mockResolvedValueOnce(true);
+
+      render(React.createElement(HeroSection));
+
       const emailInput = screen.getAllByPlaceholderText('Email')[0];
       const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
-      
+
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.click(submitButton);
 
@@ -139,8 +151,8 @@ describe('HeroSection', () => {
 
   describe('Form Validation', () => {
     it('should show error for empty email', async () => {
-      render(<HeroSection />);
-      
+      render(React.createElement(HeroSection));
+
       const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
       fireEvent.click(submitButton);
 
@@ -150,11 +162,11 @@ describe('HeroSection', () => {
     });
 
     it('should show error for invalid email format', async () => {
-      render(<HeroSection />);
-      
+      render(React.createElement(HeroSection));
+
       const emailInput = screen.getAllByPlaceholderText('Email')[0];
       const form = emailInput.closest('form');
-      
+
       fireEvent.change(emailInput, { target: { value: 'invalid-email' } });
       fireEvent.submit(form!);
 
@@ -164,18 +176,21 @@ describe('HeroSection', () => {
     });
 
     it('should accept valid email format', async () => {
-      mockNewsletterService.subscribeToNewsletter.mockResolvedValueOnce(undefined);
-      
-      render(<HeroSection />);
-      
+      mockNewsletterService.subscribeToNewsletter.mockResolvedValueOnce(true);
+
+      render(React.createElement(HeroSection));
+
       const emailInput = screen.getAllByPlaceholderText('Email')[0];
       const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
-      
+
       fireEvent.change(emailInput, { target: { value: 'valid@example.com' } });
       fireEvent.click(submitButton);
 
       await waitFor(() => {
-        expect(mockNewsletterService.subscribeToNewsletter).toHaveBeenCalledWith('valid@example.com', 'hero');
+        expect(mockNewsletterService.subscribeToNewsletter).toHaveBeenCalledWith(
+          'valid@example.com',
+          'hero',
+        );
       });
     });
   });
@@ -184,12 +199,12 @@ describe('HeroSection', () => {
     it('should show error message when subscription fails', async () => {
       const errorMessage = 'Error de conexión';
       mockNewsletterService.subscribeToNewsletter.mockRejectedValueOnce(new Error(errorMessage));
-      
-      render(<HeroSection />);
-      
+
+      render(React.createElement(HeroSection));
+
       const emailInput = screen.getAllByPlaceholderText('Email')[0];
       const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
-      
+
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.click(submitButton);
 
@@ -200,12 +215,12 @@ describe('HeroSection', () => {
 
     it('should show generic error message when error has no message', async () => {
       mockNewsletterService.subscribeToNewsletter.mockRejectedValueOnce(new Error());
-      
-      render(<HeroSection />);
-      
+
+      render(React.createElement(HeroSection));
+
       const emailInput = screen.getAllByPlaceholderText('Email')[0];
       const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
-      
+
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.click(submitButton);
 
@@ -215,21 +230,21 @@ describe('HeroSection', () => {
     });
 
     it('should clear error when user starts typing again', async () => {
-      render(<HeroSection />);
-      
+      render(React.createElement(HeroSection));
+
       const emailInput = screen.getAllByPlaceholderText('Email')[0];
       const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
-      
+
       // Trigger error
       fireEvent.click(submitButton);
-      
+
       await waitFor(() => {
         expect(screen.getAllByText('Por favor ingresa tu email')).toHaveLength(2);
       });
 
       // Start typing to clear error
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-      
+
       await waitFor(() => {
         expect(screen.queryAllByText('Por favor ingresa tu email')).toHaveLength(0);
       });
@@ -238,23 +253,25 @@ describe('HeroSection', () => {
 
   describe('Form Interactions', () => {
     it('should update email input value', () => {
-      render(<HeroSection />);
-      
+      render(React.createElement(HeroSection));
+
       const emailInput = screen.getAllByPlaceholderText('Email')[0];
-      
+
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-      
+
       expect(emailInput).toHaveValue('test@example.com');
     });
 
     it('should disable form during submission', async () => {
-      mockNewsletterService.subscribeToNewsletter.mockImplementation(() => new Promise(resolve => setTimeout(resolve, 100)));
-      
-      render(<HeroSection />);
-      
+      mockNewsletterService.subscribeToNewsletter.mockImplementation(
+        () => new Promise((resolve) => setTimeout(resolve, 100)),
+      );
+
+      render(React.createElement(HeroSection));
+
       const emailInput = screen.getAllByPlaceholderText('Email')[0];
       const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
-      
+
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.click(submitButton);
 
@@ -263,13 +280,13 @@ describe('HeroSection', () => {
     });
 
     it('should re-enable form after submission completes', async () => {
-      mockNewsletterService.subscribeToNewsletter.mockResolvedValueOnce(undefined);
-      
-      render(<HeroSection />);
-      
+      mockNewsletterService.subscribeToNewsletter.mockResolvedValueOnce(true);
+
+      render(React.createElement(HeroSection));
+
       const emailInput = screen.getAllByPlaceholderText('Email')[0];
       const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
-      
+
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.click(submitButton);
 
@@ -282,23 +299,23 @@ describe('HeroSection', () => {
 
   describe('Accessibility', () => {
     it('should have proper form structure', () => {
-      render(<HeroSection />);
-      
+      render(React.createElement(HeroSection));
+
       const form = screen.getAllByRole('button', { name: 'Suscribirse' })[0].closest('form');
       expect(form).toBeInTheDocument();
     });
 
     it('should have proper input type and placeholder', () => {
-      render(<HeroSection />);
-      
+      render(React.createElement(HeroSection));
+
       const emailInput = screen.getAllByPlaceholderText('Email')[0];
       expect(emailInput).toHaveAttribute('type', 'email');
       expect(emailInput).toHaveAttribute('placeholder', 'Email');
     });
 
     it('should have proper button type', () => {
-      render(<HeroSection />);
-      
+      render(React.createElement(HeroSection));
+
       const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
       expect(submitButton).toHaveAttribute('type', 'submit');
     });
@@ -306,24 +323,24 @@ describe('HeroSection', () => {
 
   describe('Responsive Design', () => {
     it('should render mobile layout elements', () => {
-      render(<HeroSection />);
-      
+      render(React.createElement(HeroSection));
+
       // Mobile layout should be present
       expect(screen.getByTestId('floating-cards-mobile')).toBeInTheDocument();
     });
 
     it('should render desktop layout elements', () => {
-      render(<HeroSection />);
-      
+      render(React.createElement(HeroSection));
+
       // Desktop layout should be present
       expect(screen.getByTestId('floating-cards-desktop')).toBeInTheDocument();
     });
 
     it('should have multiple email inputs for different layouts', () => {
-      render(<HeroSection />);
-      
+      render(React.createElement(HeroSection));
+
       const emailInputs = screen.getAllByPlaceholderText('Email');
       expect(emailInputs.length).toBeGreaterThan(1); // At least mobile and desktop versions
     });
   });
-}); 
+});

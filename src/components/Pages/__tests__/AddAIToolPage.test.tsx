@@ -12,13 +12,13 @@ jest.mock('@emailjs/browser', () => ({
 // Mock components
 jest.mock('../../Header/MobileHeader', () => {
   return function MockMobileHeader() {
-    return <div data-testid="mobile-header">Mobile Header</div>;
+    return React.createElement('div', { 'data-testid': 'mobile-header' }, 'Mobile Header');
   };
 });
 
 jest.mock('../../Footer/Footer', () => {
   return function MockFooter() {
-    return <div data-testid="footer">Footer</div>;
+    return React.createElement('div', { 'data-testid': 'footer' }, 'Footer');
   };
 });
 
@@ -30,7 +30,8 @@ jest.mock('../../../config/emailjs', () => ({
   },
 }));
 
-const mockEmailJS = require('@emailjs/browser');
+import * as emailJS from '@emailjs/browser';
+const mockEmailJS = emailJS as jest.Mocked<typeof emailJS>;
 
 describe('AddAIToolPage', () => {
   const defaultProps = {
@@ -52,15 +53,17 @@ describe('AddAIToolPage', () => {
 
   describe('Rendering', () => {
     it('should not render when isOpen is false', () => {
-      render(<AddAIToolPage {...defaultProps} isOpen={false} />);
+      render(React.createElement(AddAIToolPage, { ...defaultProps, isOpen: false }));
       expect(screen.queryByText('Sugerir una IA')).not.toBeInTheDocument();
     });
 
     it('should render the form when isOpen is true', () => {
-      render(<AddAIToolPage {...defaultProps} />);
-      
+      render(React.createElement(AddAIToolPage, defaultProps));
+
       expect(screen.getByText('Sugerir una IA')).toBeInTheDocument();
-      expect(screen.getByText('¡Apreciamos que tomes el tiempo para sugerir una IA a AIFinder!')).toBeInTheDocument();
+      expect(
+        screen.getByText('¡Apreciamos que tomes el tiempo para sugerir una IA a AIFinder!'),
+      ).toBeInTheDocument();
       expect(screen.getByLabelText('Nombre de la IA')).toBeInTheDocument();
       expect(screen.getByLabelText('URL de la IA')).toBeInTheDocument();
       expect(screen.getByLabelText('Email (Opcional)')).toBeInTheDocument();
@@ -69,8 +72,8 @@ describe('AddAIToolPage', () => {
     });
 
     it('should render MobileHeader and Footer components', () => {
-      render(<AddAIToolPage {...defaultProps} />);
-      
+      render(React.createElement(AddAIToolPage, defaultProps));
+
       expect(screen.getByTestId('mobile-header')).toBeInTheDocument();
       expect(screen.getByTestId('footer')).toBeInTheDocument();
     });
@@ -78,8 +81,8 @@ describe('AddAIToolPage', () => {
 
   describe('Form Interactions', () => {
     it('should update form data when inputs change', () => {
-      render(<AddAIToolPage {...defaultProps} />);
-      
+      render(React.createElement(AddAIToolPage, defaultProps));
+
       const toolNameInput = screen.getByLabelText('Nombre de la IA');
       const toolUrlInput = screen.getByLabelText('URL de la IA');
       const emailInput = screen.getByLabelText('Email (Opcional)');
@@ -97,10 +100,10 @@ describe('AddAIToolPage', () => {
     });
 
     it('should handle form submission successfully', async () => {
-      mockEmailJS.send.mockResolvedValueOnce({ status: 200 });
-      
-      render(<AddAIToolPage {...defaultProps} />);
-      
+      mockEmailJS.send.mockResolvedValueOnce({ status: 200, text: 'OK' });
+
+      render(React.createElement(AddAIToolPage, defaultProps));
+
       const toolNameInput = screen.getByLabelText('Nombre de la IA');
       const toolUrlInput = screen.getByLabelText('URL de la IA');
       const submitButton = screen.getByRole('button', { name: 'Enviar Sugerencia' });
@@ -110,24 +113,20 @@ describe('AddAIToolPage', () => {
       fireEvent.click(submitButton);
 
       await waitFor(() => {
-        expect(mockEmailJS.send).toHaveBeenCalledWith(
-          'test-service-id',
-          'test-template-id',
-          {
-            tool_name: 'Test AI Tool',
-            tool_url: 'https://test.com',
-            user_email: '',
-            is_own_tool: 'No',
-          }
-        );
+        expect(mockEmailJS.send).toHaveBeenCalledWith('test-service-id', 'test-template-id', {
+          tool_name: 'Test AI Tool',
+          tool_url: 'https://test.com',
+          user_email: '',
+          is_own_tool: 'No',
+        });
       });
     });
 
     it('should handle form submission with all fields filled', async () => {
-      mockEmailJS.send.mockResolvedValueOnce({ status: 200 });
-      
-      render(<AddAIToolPage {...defaultProps} />);
-      
+      mockEmailJS.send.mockResolvedValueOnce({ status: 200, text: 'OK' });
+
+      render(React.createElement(AddAIToolPage, defaultProps));
+
       const toolNameInput = screen.getByLabelText('Nombre de la IA');
       const toolUrlInput = screen.getByLabelText('URL de la IA');
       const emailInput = screen.getByLabelText('Email (Opcional)');
@@ -141,26 +140,22 @@ describe('AddAIToolPage', () => {
       fireEvent.click(submitButton);
 
       await waitFor(() => {
-        expect(mockEmailJS.send).toHaveBeenCalledWith(
-          'test-service-id',
-          'test-template-id',
-          {
-            tool_name: 'My AI Tool',
-            tool_url: 'https://myai.com',
-            user_email: 'user@example.com',
-            is_own_tool: 'Sí',
-          }
-        );
+        expect(mockEmailJS.send).toHaveBeenCalledWith('test-service-id', 'test-template-id', {
+          tool_name: 'My AI Tool',
+          tool_url: 'https://myai.com',
+          user_email: 'user@example.com',
+          is_own_tool: 'Sí',
+        });
       });
     });
   });
 
   describe('Success State', () => {
     it('should show success message after successful submission', async () => {
-      mockEmailJS.send.mockResolvedValueOnce({ status: 200 });
-      
-      render(<AddAIToolPage {...defaultProps} />);
-      
+      mockEmailJS.send.mockResolvedValueOnce({ status: 200, text: 'OK' });
+
+      render(React.createElement(AddAIToolPage, defaultProps));
+
       const toolNameInput = screen.getByLabelText('Nombre de la IA');
       const toolUrlInput = screen.getByLabelText('URL de la IA');
       const submitButton = screen.getByRole('button', { name: 'Enviar Sugerencia' });
@@ -171,15 +166,17 @@ describe('AddAIToolPage', () => {
 
       await waitFor(() => {
         expect(screen.getByText('¡Enviado con Éxito!')).toBeInTheDocument();
-        expect(screen.getByText('Tu sugerencia ha sido enviada. Te notificaremos cuando sea revisada.')).toBeInTheDocument();
+        expect(
+          screen.getByText('Tu sugerencia ha sido enviada. Te notificaremos cuando sea revisada.'),
+        ).toBeInTheDocument();
       });
     });
 
     it('should close the page after 3 seconds on success', async () => {
-      mockEmailJS.send.mockResolvedValueOnce({ status: 200 });
-      
-      render(<AddAIToolPage {...defaultProps} />);
-      
+      mockEmailJS.send.mockResolvedValueOnce({ status: 200, text: 'OK' });
+
+      render(React.createElement(AddAIToolPage, defaultProps));
+
       const toolNameInput = screen.getByLabelText('Nombre de la IA');
       const toolUrlInput = screen.getByLabelText('URL de la IA');
       const submitButton = screen.getByRole('button', { name: 'Enviar Sugerencia' });
@@ -205,11 +202,11 @@ describe('AddAIToolPage', () => {
     it('should show alert on EmailJS error', async () => {
       const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
       const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => {});
-      
+
       mockEmailJS.send.mockRejectedValueOnce(new Error('EmailJS Error'));
-      
-      render(<AddAIToolPage {...defaultProps} />);
-      
+
+      render(React.createElement(AddAIToolPage, defaultProps));
+
       const toolNameInput = screen.getByLabelText('Nombre de la IA');
       const toolUrlInput = screen.getByLabelText('URL de la IA');
       const submitButton = screen.getByRole('button', { name: 'Enviar Sugerencia' });
@@ -220,7 +217,9 @@ describe('AddAIToolPage', () => {
 
       await waitFor(() => {
         expect(consoleSpy).toHaveBeenCalledWith('Error al enviar email:', expect.any(Error));
-        expect(alertSpy).toHaveBeenCalledWith('Error al enviar la sugerencia. Por favor, inténtalo de nuevo.');
+        expect(alertSpy).toHaveBeenCalledWith(
+          'Error al enviar la sugerencia. Por favor, inténtalo de nuevo.',
+        );
       });
 
       consoleSpy.mockRestore();
@@ -230,8 +229,8 @@ describe('AddAIToolPage', () => {
 
   describe('Form Validation', () => {
     it('should require tool name and URL', () => {
-      render(<AddAIToolPage {...defaultProps} />);
-      
+      render(React.createElement(AddAIToolPage, defaultProps));
+
       const toolNameInput = screen.getByLabelText('Nombre de la IA');
       const toolUrlInput = screen.getByLabelText('URL de la IA');
 
@@ -240,8 +239,8 @@ describe('AddAIToolPage', () => {
     });
 
     it('should have correct input types', () => {
-      render(<AddAIToolPage {...defaultProps} />);
-      
+      render(React.createElement(AddAIToolPage, defaultProps));
+
       const toolNameInput = screen.getByLabelText('Nombre de la IA');
       const toolUrlInput = screen.getByLabelText('URL de la IA');
       const emailInput = screen.getByLabelText('Email (Opcional)');
@@ -254,8 +253,8 @@ describe('AddAIToolPage', () => {
 
   describe('Accessibility', () => {
     it('should have proper labels and placeholders', () => {
-      render(<AddAIToolPage {...defaultProps} />);
-      
+      render(React.createElement(AddAIToolPage, defaultProps));
+
       const toolNameInput = screen.getByLabelText('Nombre de la IA');
       const toolUrlInput = screen.getByLabelText('URL de la IA');
       const emailInput = screen.getByLabelText('Email (Opcional)');
@@ -266,10 +265,10 @@ describe('AddAIToolPage', () => {
     });
 
     it('should have proper form structure', () => {
-      render(<AddAIToolPage {...defaultProps} />);
-      
+      render(React.createElement(AddAIToolPage, defaultProps));
+
       const form = screen.getByRole('button', { name: 'Enviar Sugerencia' }).closest('form');
       expect(form).toBeInTheDocument();
     });
   });
-}); 
+});
