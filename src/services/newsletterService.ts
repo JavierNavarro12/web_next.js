@@ -47,6 +47,7 @@ export const newsletterService = {
   // Enviar email de bienvenida con API route
   async sendWelcomeEmail(email: string): Promise<void> {
     try {
+      console.log('Enviando email de bienvenida a:', email);
       const response = await fetch('/api/send-welcome-email', {
         method: 'POST',
         headers: {
@@ -55,13 +56,25 @@ export const newsletterService = {
         body: JSON.stringify({ email }),
       });
 
+      const responseData = await response.json();
+      console.log('Respuesta del API:', responseData);
+
       if (!response.ok) {
-        throw new Error('Error al enviar email de bienvenida');
+        throw new Error(`Error al enviar email: ${responseData.error || 'Unknown error'}`);
       }
 
-      console.log('Email de bienvenida enviado exitosamente');
+      console.log(
+        'Email de bienvenida enviado exitosamente a:',
+        email,
+        'ID:',
+        responseData.emailId,
+      );
     } catch (error) {
-      console.error('Error al enviar email de bienvenida:', error);
+      console.error('Error detallado al enviar email de bienvenida:', {
+        email,
+        error: error instanceof Error ? error.message : error,
+        stack: error instanceof Error ? error.stack : undefined,
+      });
       // No lanzamos error aquí para no afectar la suscripción
     }
   },

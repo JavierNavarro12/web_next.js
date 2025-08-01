@@ -45,15 +45,6 @@ export default function BugReportPage({
     setIsSubmitting(true);
 
     try {
-      // Verificar configuración antes de enviar
-      if (!EMAILJS_CONFIG.SERVICE_ID || !EMAILJS_CONFIG.FEEDBACK_TEMPLATE_ID) {
-        console.error('EmailJS Config Error:', {
-          SERVICE_ID: EMAILJS_CONFIG.SERVICE_ID ? 'SET' : 'MISSING',
-          FEEDBACK_TEMPLATE_ID: EMAILJS_CONFIG.FEEDBACK_TEMPLATE_ID ? 'SET' : 'MISSING',
-        });
-        throw new Error('Configuración de EmailJS incompleta. Contacta al administrador.');
-      }
-
       // Enviar email usando EmailJS
       const result = await emailjs.send(
         EMAILJS_CONFIG.SERVICE_ID,
@@ -77,11 +68,7 @@ export default function BugReportPage({
       }, 3000);
     } catch (error) {
       console.error('Error al enviar email de reporte de bug:', error);
-      const errorMessage =
-        error instanceof Error
-          ? error.message
-          : 'Error al enviar el reporte. Por favor, inténtalo de nuevo.';
-      alert(errorMessage);
+      alert('Error al enviar el reporte. Por favor, inténtalo de nuevo.');
     } finally {
       setIsSubmitting(false);
     }

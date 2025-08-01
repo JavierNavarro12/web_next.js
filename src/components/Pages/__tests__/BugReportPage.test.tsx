@@ -280,7 +280,9 @@ describe('BugReportPage', () => {
           'Error al enviar email de reporte de bug:',
           expect.any(Error),
         );
-        expect(alertSpy).toHaveBeenCalledWith('EmailJS Error');
+        expect(alertSpy).toHaveBeenCalledWith(
+          'Error al enviar el reporte. Por favor, inténtalo de nuevo.',
+        );
       });
 
       consoleSpy.mockRestore();

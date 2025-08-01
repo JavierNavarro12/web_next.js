@@ -26,7 +26,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Enviar email de bienvenida
-    await resend.emails.send({
+    console.log('Intentando enviar email a:', email);
+    const result = await resend.emails.send({
       from: 'AIFinder <onboarding@resend.dev>',
       to: [email],
       subject: 'Bienvenido a AIFinder',
@@ -135,7 +136,13 @@ export async function POST(request: NextRequest) {
       `,
     });
 
-    return NextResponse.json({ success: true });
+    console.log('Email enviado exitosamente:', {
+      id: result.data?.id,
+      to: email,
+      status: 'success',
+    });
+
+    return NextResponse.json({ success: true, emailId: result.data?.id });
   } catch (error) {
     console.error('Error al enviar email:', error);
     return NextResponse.json({ error: 'Error al enviar email' }, { status: 500 });
