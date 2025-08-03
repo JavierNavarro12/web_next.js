@@ -39,6 +39,13 @@ export async function POST(request: NextRequest) {
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <title>Bienvenido a AIFinder</title>
           <style>
+            /* Desktop styles - email más grande */
+            .container { 
+              width: 800px !important; 
+              max-width: 90% !important; 
+            }
+            
+            /* Mobile responsive */
             @media only screen and (max-width: 600px) {
               .container { width: 95% !important; padding: 10px !important; }
               .title { font-size: 28px !important; line-height: 1.2 !important; }
@@ -50,50 +57,50 @@ export async function POST(request: NextRequest) {
             }
           </style>
         </head>
-        <body style="margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; background-color: #000000;">
-          <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #000000;">
+        <body style="margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; background-color: #f8fafc;">
+          <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #f8fafc;">
             <tr>
               <td align="center" style="padding: 40px 20px;">
-                <table cellpadding="0" cellspacing="0" border="0" width="600" style="max-width: 600px; background-color: #000000; border: 1px solid #3f3f46; border-radius: 16px;">
+                <table cellpadding="0" cellspacing="0" border="0" width="800" class="container" style="max-width: 90%; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
                   
                   <!-- Header -->
                   <tr>
                     <td style="padding: 32px 32px 24px; text-align: center;">
-                      <h1 class="title" style="margin: 0; color: #ffffff; font-size: 32px; font-weight: bold;">AIFinder</h1>
-                      <p class="subtitle" style="margin: 8px 0 0; color: #a1a1aa; font-size: 18px;">Todas las IAs que necesitas en un lugar</p>
+                      <h1 class="title" style="margin: 0; color: #1e293b; font-size: 32px; font-weight: bold;">AIFinder</h1>
+                      <p class="subtitle" style="margin: 8px 0 0; color: #64748b; font-size: 18px;">Todas las IAs que necesitas en un lugar</p>
                     </td>
                   </tr>
 
                   <!-- Main Content -->
                   <tr>
-                    <td style="padding: 0 32px 32px;">
-                      <h2 class="title" style="margin: 0 0 16px; color: #ffffff; font-size: 24px; font-weight: bold; white-space: nowrap;">
+                    <td style="padding: 0 32px 32px; text-align: left;">
+                      <h2 class="title" style="margin: 0 0 16px; color: #1e293b; font-size: 24px; font-weight: bold; white-space: nowrap; text-align: center;">
                         ¡Gracias por suscribirte!
                       </h2>
                       
-                      <p style="margin: 0 0 24px; color: #a1a1aa; font-size: 16px; line-height: 1.6;">
+                      <p style="margin: 0 0 24px; color: #64748b; font-size: 16px; line-height: 1.6;">
                         Herramientas, recursos y productos de IA. Entregado semanalmente.
                       </p>
 
                       <!-- Benefits Cards -->
                       <div style="margin: 24px 0;">
-                        <div style="background-color: #18181b; border: 1px solid #3f3f46; border-radius: 12px; padding: 20px; margin-bottom: 16px;">
-                          <h3 class="section-title" style="margin: 0 0 8px; color: #ffffff; font-size: 18px; font-weight: bold; white-space: nowrap;">🛠️ Herramientas verificadas</h3>
-                          <p class="section-desc" style="margin: 0; color: #a1a1aa; font-size: 14px; line-height: 1.5;">
+                        <div style="background-color: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 16px;">
+                          <h3 class="section-title" style="margin: 0 0 8px; color: #1e293b; font-size: 18px; font-weight: bold; white-space: nowrap;">🛠️ Herramientas verificadas</h3>
+                          <p class="section-desc" style="margin: 0; color: #64748b; font-size: 14px; line-height: 1.5;">
                             Accede a más de 200+ herramientas de IA curadas y categorizadas
                           </p>
                         </div>
                         
-                        <div style="background-color: #18181b; border: 1px solid #3f3f46; border-radius: 12px; padding: 20px; margin-bottom: 16px;">
-                          <h3 class="section-title" style="margin: 0 0 8px; color: #ffffff; font-size: 18px; font-weight: bold; white-space: nowrap;">📈 Actualizaciones semanales</h3>
-                          <p class="section-desc" style="margin: 0; color: #a1a1aa; font-size: 14px; line-height: 1.5;">
+                        <div style="background-color: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 16px;">
+                          <h3 class="section-title" style="margin: 0 0 8px; color: #1e293b; font-size: 18px; font-weight: bold; white-space: nowrap;">📈 Actualizaciones semanales</h3>
+                          <p class="section-desc" style="margin: 0; color: #64748b; font-size: 14px; line-height: 1.5;">
                             Las últimas herramientas y tendencias directo en tu email
                           </p>
                         </div>
                         
-                        <div style="background-color: #18181b; border: 1px solid #3f3f46; border-radius: 12px; padding: 20px;">
-                          <h3 class="section-title" style="margin: 0 0 8px; color: #ffffff; font-size: 18px; font-weight: bold; white-space: nowrap;">🎯 Categorías especializadas</h3>
-                          <p class="section-desc" style="margin: 0; color: #a1a1aa; font-size: 14px; line-height: 1.5;">
+                        <div style="background-color: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px;">
+                          <h3 class="section-title" style="margin: 0 0 8px; color: #1e293b; font-size: 18px; font-weight: bold; white-space: nowrap;">🎯 Categorías especializadas</h3>
+                          <p class="section-desc" style="margin: 0; color: #64748b; font-size: 14px; line-height: 1.5;">
                             Encuentra herramientas por categoría: texto, imágenes, audio, video y más
                           </p>
                         </div>
@@ -107,18 +114,18 @@ export async function POST(request: NextRequest) {
                       </div>
 
                       <!-- Stats -->
-                      <div style="background-color: #18181b; border: 1px solid #3f3f46; border-radius: 12px; padding: 24px; text-align: center;">
+                      <div style="background-color: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; text-align: center;">
                         <div style="display: inline-block; width: 30%; margin: 0 1.5%; min-width: 80px;">
-                          <h3 class="stats-number" style="margin: 0 0 4px; color: #ffffff; font-size: 24px; font-weight: bold; white-space: nowrap;">200+</h3>
-                          <p class="stats-label" style="margin: 0; color: #a1a1aa; font-size: 14px; white-space: nowrap;">Herramientas</p>
+                          <h3 class="stats-number" style="margin: 0 0 4px; color: #1e293b; font-size: 24px; font-weight: bold; white-space: nowrap;">200+</h3>
+                          <p class="stats-label" style="margin: 0; color: #64748b; font-size: 14px; white-space: nowrap;">Herramientas</p>
                         </div>
                         <div style="display: inline-block; width: 30%; margin: 0 1.5%; min-width: 80px;">
-                          <h3 class="stats-number" style="margin: 0 0 4px; color: #ffffff; font-size: 24px; font-weight: bold; white-space: nowrap;">18</h3>
-                          <p class="stats-label" style="margin: 0; color: #a1a1aa; font-size: 14px; white-space: nowrap;">Categorías</p>
+                          <h3 class="stats-number" style="margin: 0 0 4px; color: #1e293b; font-size: 24px; font-weight: bold; white-space: nowrap;">18</h3>
+                          <p class="stats-label" style="margin: 0; color: #64748b; font-size: 14px; white-space: nowrap;">Categorías</p>
                         </div>
                         <div style="display: inline-block; width: 30%; margin: 0 1.5%; min-width: 80px;">
-                          <h3 class="stats-number" style="margin: 0 0 4px; color: #ffffff; font-size: 24px; font-weight: bold; white-space: nowrap;">Gratis</h3>
-                          <p class="stats-label" style="margin: 0; color: #a1a1aa; font-size: 14px; white-space: nowrap;">Siempre</p>
+                          <h3 class="stats-number" style="margin: 0 0 4px; color: #1e293b; font-size: 24px; font-weight: bold; white-space: nowrap;">Gratis</h3>
+                          <p class="stats-label" style="margin: 0; color: #64748b; font-size: 14px; white-space: nowrap;">Siempre</p>
                         </div>
                       </div>
                     </td>
@@ -126,14 +133,14 @@ export async function POST(request: NextRequest) {
 
                   <!-- Footer -->
                   <tr>
-                    <td style="padding: 24px 32px 32px; text-align: center; border-top: 1px solid #3f3f46;">
-                      <p style="margin: 0 0 12px; color: #71717a; font-size: 14px;">
+                    <td style="padding: 24px 32px 32px; text-align: center; border-top: 1px solid #e2e8f0;">
+                      <p style="margin: 0 0 12px; color: #64748b; font-size: 14px;">
                         Este email fue enviado a ${email}
                       </p>
-                      <p style="margin: 0; color: #52525b; font-size: 12px;">
-                        <a href="https://aifinder-five.vercel.app/unsubscribe" style="color: #71717a; text-decoration: none;">Cancelar suscripción</a>
+                      <p style="margin: 0; color: #64748b; font-size: 12px;">
+                        <a href="https://aifinder.es/unsubscribe" style="color: #64748b; text-decoration: none;">Cancelar suscripción</a>
                       </p>
-                      <p style="margin: 16px 0 0; color: #52525b; font-size: 12px;">
+                      <p style="margin: 16px 0 0; color: #64748b; font-size: 12px;">
                         © 2024 AIFinder
                       </p>
                     </td>
