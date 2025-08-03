@@ -38,6 +38,17 @@ export async function POST(request: NextRequest) {
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <title>Bienvenido a AIFinder</title>
+          <style>
+            @media only screen and (max-width: 600px) {
+              .container { width: 95% !important; padding: 10px !important; }
+              .title { font-size: 28px !important; line-height: 1.2 !important; }
+              .subtitle { font-size: 18px !important; line-height: 1.3 !important; }
+              .section-title { font-size: 18px !important; word-break: keep-all !important; }
+              .section-desc { font-size: 14px !important; line-height: 1.4 !important; }
+              .stats-number { font-size: 32px !important; }
+              .stats-label { font-size: 12px !important; word-break: keep-all !important; }
+            }
+          </style>
         </head>
         <body style="margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; background-color: #000000;">
           <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #000000;">
@@ -48,15 +59,15 @@ export async function POST(request: NextRequest) {
                   <!-- Header -->
                   <tr>
                     <td style="padding: 32px 32px 24px; text-align: center;">
-                      <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: bold;">AIFinder</h1>
-                      <p style="margin: 8px 0 0; color: #a1a1aa; font-size: 18px;">Todas las IAs que necesitas en un lugar</p>
+                      <h1 class="title" style="margin: 0; color: #ffffff; font-size: 32px; font-weight: bold;">AIFinder</h1>
+                      <p class="subtitle" style="margin: 8px 0 0; color: #a1a1aa; font-size: 18px;">Todas las IAs que necesitas en un lugar</p>
                     </td>
                   </tr>
 
                   <!-- Main Content -->
                   <tr>
                     <td style="padding: 0 32px 32px;">
-                      <h2 style="margin: 0 0 16px; color: #ffffff; font-size: 24px; font-weight: bold;">
+                      <h2 class="title" style="margin: 0 0 16px; color: #ffffff; font-size: 24px; font-weight: bold; white-space: nowrap;">
                         ¡Gracias por suscribirte!
                       </h2>
                       
@@ -67,22 +78,22 @@ export async function POST(request: NextRequest) {
                       <!-- Benefits Cards -->
                       <div style="margin: 24px 0;">
                         <div style="background-color: #18181b; border: 1px solid #3f3f46; border-radius: 12px; padding: 20px; margin-bottom: 16px;">
-                          <h3 style="margin: 0 0 8px; color: #ffffff; font-size: 18px; font-weight: bold;">🛠️ Herramientas verificadas</h3>
-                          <p style="margin: 0; color: #a1a1aa; font-size: 14px; line-height: 1.5;">
+                          <h3 class="section-title" style="margin: 0 0 8px; color: #ffffff; font-size: 18px; font-weight: bold; white-space: nowrap;">🛠️ Herramientas verificadas</h3>
+                          <p class="section-desc" style="margin: 0; color: #a1a1aa; font-size: 14px; line-height: 1.5;">
                             Accede a más de 200+ herramientas de IA curadas y categorizadas
                           </p>
                         </div>
                         
                         <div style="background-color: #18181b; border: 1px solid #3f3f46; border-radius: 12px; padding: 20px; margin-bottom: 16px;">
-                          <h3 style="margin: 0 0 8px; color: #ffffff; font-size: 18px; font-weight: bold;">📈 Actualizaciones semanales</h3>
-                          <p style="margin: 0; color: #a1a1aa; font-size: 14px; line-height: 1.5;">
+                          <h3 class="section-title" style="margin: 0 0 8px; color: #ffffff; font-size: 18px; font-weight: bold; white-space: nowrap;">📈 Actualizaciones semanales</h3>
+                          <p class="section-desc" style="margin: 0; color: #a1a1aa; font-size: 14px; line-height: 1.5;">
                             Las últimas herramientas y tendencias directo en tu email
                           </p>
                         </div>
                         
                         <div style="background-color: #18181b; border: 1px solid #3f3f46; border-radius: 12px; padding: 20px;">
-                          <h3 style="margin: 0 0 8px; color: #ffffff; font-size: 18px; font-weight: bold;">🎯 Categorías especializadas</h3>
-                          <p style="margin: 0; color: #a1a1aa; font-size: 14px; line-height: 1.5;">
+                          <h3 class="section-title" style="margin: 0 0 8px; color: #ffffff; font-size: 18px; font-weight: bold; white-space: nowrap;">🎯 Categorías especializadas</h3>
+                          <p class="section-desc" style="margin: 0; color: #a1a1aa; font-size: 14px; line-height: 1.5;">
                             Encuentra herramientas por categoría: texto, imágenes, audio, video y más
                           </p>
                         </div>
@@ -90,24 +101,24 @@ export async function POST(request: NextRequest) {
 
                       <!-- CTA Button -->
                       <div style="text-align: center; margin: 32px 0;">
-                        <a href="https://aifinder-five.vercel.app" style="display: inline-block; padding: 12px 24px; background-color: #2563eb; color: #ffffff; text-decoration: none; border-radius: 9999px; font-size: 16px; font-weight: 600;">
+                        <a href="https://aifinder.es" style="display: inline-block; padding: 12px 24px; background-color: #2563eb; color: #ffffff; text-decoration: none; border-radius: 9999px; font-size: 16px; font-weight: 600;">
                           Explorar herramientas
                         </a>
                       </div>
 
                       <!-- Stats -->
                       <div style="background-color: #18181b; border: 1px solid #3f3f46; border-radius: 12px; padding: 24px; text-align: center;">
-                        <div style="display: inline-block; width: 30%; margin: 0 1.5%;">
-                          <h3 style="margin: 0 0 4px; color: #ffffff; font-size: 24px; font-weight: bold;">200+</h3>
-                          <p style="margin: 0; color: #a1a1aa; font-size: 14px;">Herramientas</p>
+                        <div style="display: inline-block; width: 30%; margin: 0 1.5%; min-width: 80px;">
+                          <h3 class="stats-number" style="margin: 0 0 4px; color: #ffffff; font-size: 24px; font-weight: bold; white-space: nowrap;">200+</h3>
+                          <p class="stats-label" style="margin: 0; color: #a1a1aa; font-size: 14px; white-space: nowrap;">Herramientas</p>
                         </div>
-                        <div style="display: inline-block; width: 30%; margin: 0 1.5%;">
-                          <h3 style="margin: 0 0 4px; color: #ffffff; font-size: 24px; font-weight: bold;">18</h3>
-                          <p style="margin: 0; color: #a1a1aa; font-size: 14px;">Categorías</p>
+                        <div style="display: inline-block; width: 30%; margin: 0 1.5%; min-width: 80px;">
+                          <h3 class="stats-number" style="margin: 0 0 4px; color: #ffffff; font-size: 24px; font-weight: bold; white-space: nowrap;">18</h3>
+                          <p class="stats-label" style="margin: 0; color: #a1a1aa; font-size: 14px; white-space: nowrap;">Categorías</p>
                         </div>
-                        <div style="display: inline-block; width: 30%; margin: 0 1.5%;">
-                          <h3 style="margin: 0 0 4px; color: #ffffff; font-size: 24px; font-weight: bold;">Gratis</h3>
-                          <p style="margin: 0; color: #a1a1aa; font-size: 14px;">Siempre</p>
+                        <div style="display: inline-block; width: 30%; margin: 0 1.5%; min-width: 80px;">
+                          <h3 class="stats-number" style="margin: 0 0 4px; color: #ffffff; font-size: 24px; font-weight: bold; white-space: nowrap;">Gratis</h3>
+                          <p class="stats-label" style="margin: 0; color: #a1a1aa; font-size: 14px; white-space: nowrap;">Siempre</p>
                         </div>
                       </div>
                     </td>
