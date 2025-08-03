@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
                         ¡Gracias por suscribirte!
                       </h2>
                       
-                      <p style="margin: 0 0 24px; color: #64748b; font-size: 16px; line-height: 1.6;">
+                      <p style="margin: 0 0 24px; color: #64748b; font-size: 16px; line-height: 1.6; text-align: center;">
                         Herramientas, recursos y productos de IA. Entregado semanalmente.
                       </p>
 
@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
                         <div style="background-color: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 16px;">
                           <h3 class="section-title" style="margin: 0 0 8px; color: #1e293b; font-size: 18px; font-weight: bold; white-space: nowrap;">🛠️ Herramientas verificadas</h3>
                           <p class="section-desc" style="margin: 0; color: #64748b; font-size: 14px; line-height: 1.5;">
-                            Accede a más de 200+ herramientas de IA curadas y categorizadas
+                            Accede a más de 200+ herramientas de IA seleccionadas y categorizadas
                           </p>
                         </div>
                         
