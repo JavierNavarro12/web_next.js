@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
     // Enviar email de bienvenida
     console.log('Intentando enviar email a:', email);
     const result = await resend.emails.send({
-      from: 'AIFinder <onboarding@resend.dev>',
+      from: 'AIFinder <newsletter@aifinder.es>',
       to: [email],
       subject: 'Bienvenido a AIFinder',
       html: `
