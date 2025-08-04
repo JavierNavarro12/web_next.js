@@ -645,7 +645,7 @@ export const aiCategories: AICategory[] = [
           },
           {
             name: 'Drift',
-            logo: '/logos/drift-movil',
+            logo: '/logos/drift-movil.webp',
             image: '/images/drift-web.png',
             description: 'Chatbot empresarial',
             pricing: 'paid',
@@ -1351,7 +1351,7 @@ export const aiCategories: AICategory[] = [
         tools: [
           {
             name: 'Khanmigo',
-            logo: '/logos/khanmigo-movil',
+            logo: '/logos/khanmigo-movil.png',
             image: '/images/khanmigo-web.png',
             description: 'Tutor virtual',
             pricing: 'free',

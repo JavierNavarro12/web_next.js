@@ -60,7 +60,7 @@ export default function AIAutomationChatbotsSection({
     },
     {
       name: 'Drift',
-      logo: '/logos/drift-movil',
+      logo: '/logos/drift-movil.webp',
       description: 'Chatbot de ventas',
       url: 'https://www.drift.com',
     },
