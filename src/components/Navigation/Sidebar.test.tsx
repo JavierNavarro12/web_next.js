@@ -36,6 +36,10 @@ jest.mock('../../app/layout', () => {
       showBugReport: false,
       setShowBugReport: jest.fn(),
     }),
+    useActiveNavContext: () => ({
+      activeNav: 'explorar',
+      setActiveNav: jest.fn(),
+    }),
   };
 });
 
