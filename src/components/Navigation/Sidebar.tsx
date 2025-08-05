@@ -33,6 +33,7 @@ import {
   useFeedbackContext,
   useAddAIToolContext,
   useBugReportContext,
+  useActiveNavContext,
 } from '../../app/layout';
 import { useNavigationManager } from '../../hooks/useNavigationManager';
 
@@ -92,6 +93,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
   const { showFeedback, setShowFeedback } = useFeedbackContext();
   const { showBugReport, setShowBugReport } = useBugReportContext();
   const { setShowAddAITool } = useAddAIToolContext();
+  const { activeNav, setActiveNav } = useActiveNavContext();
   const [openCategory, setOpenCategory] = useState<number | null>(null);
   const [hoveredCategory, setHoveredCategory] = useState<number | null>(null);
   const [hoveredSub, setHoveredSub] = useState<string | null>(null);
@@ -217,13 +219,21 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
     }
 
     setActiveSection(sectionKey);
+
+    // Manejar navegación directamente usando el contexto
     if (sectionKey === 'explorar' && setActiveCategory) {
       setActiveCategory(null); // Limpiar categoría activa cuando se va a Explorar
       setActiveSubcategory(null); // Limpiar subcategoría también
+      setActiveNav('explorar'); // Cambiar navegación
       navigateToTop(); // Ir a la parte superior
     } else if (sectionKey === 'herramientas' && setActiveCategory) {
       setActiveCategory(null); // Limpiar categoría activa cuando se va a Herramientas
       setActiveSubcategory(null); // Limpiar subcategoría también
+      navigateToTop(); // Ir a la parte superior
+    } else if (sectionKey === 'articulos' && setActiveCategory) {
+      setActiveCategory(null); // Limpiar categoría activa cuando se va a Artículos
+      setActiveSubcategory(null); // Limpiar subcategoría también
+      setActiveNav('articulos'); // Cambiar navegación a artículos
       navigateToTop(); // Ir a la parte superior
     }
   };
@@ -284,11 +294,13 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
           {mainSections.map((section) => {
             const Icon = section.icon;
             const isActive =
-              activeSection === section.key &&
-              !activeCategory &&
-              !activeSubcategory &&
-              !showFeedback &&
-              !showBugReport;
+              section.key === 'articulos'
+                ? activeNav === 'articulos' && !activeCategory && !showFeedback && !showBugReport
+                : (activeSection === section.key || activeNav === section.key) &&
+                  !activeCategory &&
+                  !activeSubcategory &&
+                  !showFeedback &&
+                  !showBugReport;
             return (
               <li key={section.key} className="relative w-full">
                 {isActive && <div className="absolute left-0 top-0 bottom-0 w-1 bg-white z-20" />}

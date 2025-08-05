@@ -15,6 +15,8 @@ interface MobileHeaderProps {
   tabRefs: React.MutableRefObject<{ [key: string]: HTMLButtonElement | null }>;
   tabsContainerRef: React.RefObject<HTMLDivElement | null>;
   onSubcategoryClick: (subcategoryName: string) => void;
+  activeNav?: string;
+  setActiveNav?: (nav: string) => void;
 }
 
 export default function MobileHeader({
@@ -27,6 +29,8 @@ export default function MobileHeader({
   tabRefs,
   tabsContainerRef,
   onSubcategoryClick,
+  activeNav = 'explorar',
+  setActiveNav,
 }: MobileHeaderProps) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -87,6 +91,10 @@ export default function MobileHeader({
           onClick={() => {
             setActiveCategory(null);
             setActiveSubcategory(null);
+            // Navegar a explorar si existe setActiveNav
+            if (setActiveNav) {
+              setActiveNav('explorar');
+            }
             // Limpiar localStorage al regresar a Explorar
             if (isClient) {
               localStorage.removeItem('activeCategory');
@@ -198,6 +206,34 @@ export default function MobileHeader({
               onToolClick={handleToolClick}
               isMobile={true}
             />
+          </div>
+        </div>
+      )}
+
+      {/* Navegación principal móvil - solo cuando no hay categoría activa */}
+      {!currentCategory && (
+        <div className="w-full bg-black border-b border-zinc-800">
+          <div className="flex gap-1 overflow-x-auto scrollbar-none px-4 py-3">
+            <button
+              className={`px-4 py-2 text-sm font-medium whitespace-nowrap rounded-full transition-all ${
+                activeNav === 'explorar'
+                  ? 'bg-blue-600 text-white'
+                  : 'text-zinc-400 hover:text-white hover:bg-zinc-800'
+              }`}
+              onClick={() => setActiveNav && setActiveNav('explorar')}
+            >
+              Explorar
+            </button>
+            <button
+              className={`px-4 py-2 text-sm font-medium whitespace-nowrap rounded-full transition-all ${
+                activeNav === 'nuevas'
+                  ? 'bg-blue-600 text-white'
+                  : 'text-zinc-400 hover:text-white hover:bg-zinc-800'
+              }`}
+              onClick={() => setActiveNav && setActiveNav('nuevas')}
+            >
+              Nuevas Adiciones
+            </button>
           </div>
         </div>
       )}

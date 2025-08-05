@@ -24,12 +24,14 @@ import AILegalSection from '../components/Sections/AILegalSection';
 import AISymptomsSection from '../components/Sections/AISymptomsSection';
 import AITestingMedicalSection from '../components/Sections/AITestingMedicalSection';
 import CategoryContentSection from '../components/Sections/CategoryContentSection';
+import ArticlesSection from '../components/Sections/ArticlesSection';
 import {
   useAppContext,
   useSubcategoryContext,
   SidebarDrawerContext,
   useFeedbackContext,
   useBugReportContext,
+  useActiveNavContext,
 } from './layout';
 import { useScrollEffects } from '../hooks/useScrollEffects';
 import { useMobileScrollDetection } from '../hooks/useMobileScrollDetection';
@@ -43,6 +45,7 @@ export default function HomePage() {
   const { setSidebarOpen } = React.useContext(SidebarDrawerContext);
   const { showFeedback, setShowFeedback } = useFeedbackContext();
   const { showBugReport, setShowBugReport } = useBugReportContext();
+  const { activeNav, setActiveNav } = useActiveNavContext();
 
   // Función para navegar entre feedback y reportar bug
   const navigateBetweenPages = (fromFeedback: boolean) => {
@@ -72,7 +75,6 @@ export default function HomePage() {
   const [activeFilter, setActiveFilter] = useState<'all' | 'free' | 'paid'>('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [hoveredFilter, setHoveredFilter] = useState<string | null>(null);
-  const [activeNav, setActiveNav] = useState('explorar');
   const [isClient, setIsClient] = useState(false);
 
   // Refs para las filas del header
@@ -248,6 +250,8 @@ export default function HomePage() {
           tabRefs={tabRefs}
           tabsContainerRef={tabsContainerRef}
           onSubcategoryClick={handleMobileSubcategoryClick}
+          activeNav={activeNav}
+          setActiveNav={setActiveNav}
         />
 
         <DesktopHeader
@@ -505,6 +509,9 @@ export default function HomePage() {
                 Volver a Explorar
               </button>
             </div>
+          ) : activeNav === 'articulos' ? (
+            /* Sección de artículos */
+            <ArticlesSection />
           ) : null}
         </div>
       </div>
@@ -524,6 +531,8 @@ export default function HomePage() {
         tabRefs={tabRefs}
         tabsContainerRef={tabsContainerRef}
         onSubcategoryClick={handleMobileSubcategoryClick}
+        activeNav={activeNav}
+        setActiveNav={setActiveNav}
       />
 
       <DesktopHeader
