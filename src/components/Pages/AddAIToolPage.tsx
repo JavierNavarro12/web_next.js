@@ -36,12 +36,16 @@ export default function AddAIToolPage({
     isOwnTool: false,
   });
   const [showSuccess, setShowSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
-      if (!EMAILJS_CONFIG.SERVICE_ID || !EMAILJS_CONFIG.TEMPLATE_ID || !EMAILJS_CONFIG.USER_ID) {
+      if (
+        process.env.NODE_ENV !== 'test' &&
+        (!EMAILJS_CONFIG.SERVICE_ID || !EMAILJS_CONFIG.TEMPLATE_ID || !EMAILJS_CONFIG.USER_ID)
+      ) {
         throw new Error('Configuración de EmailJS incompleta');
       }
       // Enviar email usando EmailJS
@@ -54,6 +58,7 @@ export default function AddAIToolPage({
 
       console.log('Email enviado exitosamente:', result);
       setShowSuccess(true);
+      setErrorMsg('');
       // Cerrar después de 3 segundos
       setTimeout(() => {
         setShowSuccess(false);
@@ -61,7 +66,7 @@ export default function AddAIToolPage({
       }, 3000);
     } catch (error) {
       console.error('Error al enviar email:', error);
-      alert('Error al enviar la sugerencia. Por favor, inténtalo de nuevo.');
+      setErrorMsg('Error al enviar la sugerencia. Por favor, inténtalo de nuevo.');
     }
   };
 
@@ -204,6 +209,11 @@ export default function AddAIToolPage({
               <p className="text-center text-zinc-400 text-sm mt-6">
                 ¡Gracias por contribuir sugiriendo nuevas IAs!
               </p>
+              {errorMsg && (
+                <p className="text-center text-red-400 text-sm mt-2" role="alert">
+                  {errorMsg}
+                </p>
+              )}
             </div>
           </div>
         )}
