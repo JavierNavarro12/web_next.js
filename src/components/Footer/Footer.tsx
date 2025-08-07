@@ -118,9 +118,7 @@ export default function Footer({
     console.log('Footer: Click en categoría:', categoryName);
 
     // Cerrar la página "Añadir una IA" si está abierta
-    if (setShowAddAITool) {
-      setShowAddAITool(false);
-    }
+    if (setShowAddAITool) setShowAddAITool(false);
 
     // Cerrar las páginas de feedback y reportar bug usando contextos directamente
     contextSetShowFeedback(false);

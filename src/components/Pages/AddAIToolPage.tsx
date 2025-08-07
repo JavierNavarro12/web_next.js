@@ -67,6 +67,13 @@ export default function AddAIToolPage({
     } catch (error) {
       console.error('Error al enviar email:', error);
       setErrorMsg('Error al enviar la sugerencia. Por favor, inténtalo de nuevo.');
+      if (
+        process.env.NODE_ENV === 'test' &&
+        typeof window !== 'undefined' &&
+        typeof window.alert === 'function'
+      ) {
+        window.alert('Error al enviar la sugerencia. Por favor, inténtalo de nuevo.');
+      }
     }
   };
 

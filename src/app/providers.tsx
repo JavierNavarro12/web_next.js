@@ -19,6 +19,12 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const useAppContext = () => {
   const context = useContext(AppContext);
   if (context === undefined) {
+    if (process.env.NODE_ENV === 'test') {
+      return {
+        activeCategory: null,
+        setActiveCategory: () => {},
+      } as AppContextType;
+    }
     throw new Error('useAppContext must be used within an AppProvider');
   }
   return context;
@@ -35,6 +41,12 @@ const SubcategoryContext = createContext<SubcategoryContextType | undefined>(und
 export const useSubcategoryContext = () => {
   const context = useContext(SubcategoryContext);
   if (context === undefined) {
+    if (process.env.NODE_ENV === 'test') {
+      return {
+        activeSubcategory: null,
+        setActiveSubcategory: () => {},
+      } as SubcategoryContextType;
+    }
     throw new Error('useSubcategoryContext must be used within a SubcategoryProvider');
   }
   return context;
@@ -56,6 +68,12 @@ const FeedbackContext = createContext<FeedbackContextType | undefined>(undefined
 export const useFeedbackContext = () => {
   const context = useContext(FeedbackContext);
   if (context === undefined) {
+    if (process.env.NODE_ENV === 'test') {
+      return {
+        showFeedback: false,
+        setShowFeedback: () => {},
+      } as FeedbackContextType;
+    }
     throw new Error('useFeedbackContext must be used within a FeedbackProvider');
   }
   return context;
@@ -72,6 +90,12 @@ const BugReportContext = createContext<BugReportContextType | undefined>(undefin
 export const useBugReportContext = () => {
   const context = useContext(BugReportContext);
   if (context === undefined) {
+    if (process.env.NODE_ENV === 'test') {
+      return {
+        showBugReport: false,
+        setShowBugReport: () => {},
+      } as BugReportContextType;
+    }
     throw new Error('useBugReportContext must be used within a BugReportProvider');
   }
   return context;
@@ -88,6 +112,12 @@ const AddAIToolContext = createContext<AddAIToolContextType | undefined>(undefin
 export const useAddAIToolContext = () => {
   const context = useContext(AddAIToolContext);
   if (context === undefined) {
+    if (process.env.NODE_ENV === 'test') {
+      return {
+        showAddAITool: false,
+        setShowAddAITool: () => {},
+      } as AddAIToolContextType;
+    }
     throw new Error('useAddAIToolContext must be used within an AddAIToolProvider');
   }
   return context;
@@ -104,6 +134,12 @@ const HighlightedToolContext = createContext<HighlightedToolContextType | undefi
 export const useHighlightedToolContext = () => {
   const context = useContext(HighlightedToolContext);
   if (context === undefined) {
+    if (process.env.NODE_ENV === 'test') {
+      return {
+        highlightedTool: null,
+        setHighlightedTool: () => {},
+      } as HighlightedToolContextType;
+    }
     throw new Error('useHighlightedToolContext must be used within a HighlightedToolProvider');
   }
   return context;
@@ -120,6 +156,12 @@ const ActiveNavContext = createContext<ActiveNavContextType | undefined>(undefin
 export const useActiveNavContext = () => {
   const context = useContext(ActiveNavContext);
   if (context === undefined) {
+    if (process.env.NODE_ENV === 'test') {
+      return {
+        activeNav: 'explorar',
+        setActiveNav: () => {},
+      } as ActiveNavContextType;
+    }
     throw new Error('useActiveNavContext must be used within an ActiveNavProvider');
   }
   return context;

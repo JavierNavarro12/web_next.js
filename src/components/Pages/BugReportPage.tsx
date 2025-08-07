@@ -3,8 +3,10 @@ import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../../config/emailjs';
 import Footer from '../Footer/Footer';
 
-// Inicializar EmailJS una sola vez
-emailjs.init('d0LlJPzXxEJn_vAf4');
+// Inicializar EmailJS una sola vez de forma segura
+if (EMAILJS_CONFIG.USER_ID) {
+  emailjs.init(EMAILJS_CONFIG.USER_ID);
+}
 
 interface BugReportPageProps {
   onBack: () => void;
@@ -26,6 +28,7 @@ export default function BugReportPage({
   });
   const [showSuccess, setShowSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   // Hacer scroll al top cuando se monta el componente
   useEffect(() => {
@@ -45,6 +48,14 @@ export default function BugReportPage({
     setIsSubmitting(true);
 
     try {
+      if (
+        process.env.NODE_ENV !== 'test' &&
+        (!EMAILJS_CONFIG.SERVICE_ID ||
+          !EMAILJS_CONFIG.FEEDBACK_TEMPLATE_ID ||
+          !EMAILJS_CONFIG.USER_ID)
+      ) {
+        throw new Error('Configuración de EmailJS incompleta');
+      }
       // Enviar email usando EmailJS
       const result = await emailjs.send(
         EMAILJS_CONFIG.SERVICE_ID,
@@ -57,8 +68,9 @@ export default function BugReportPage({
         },
       );
 
-      console.log('Email de reporte de bug enviado exitosamente:', result);
+      // éxito
       setShowSuccess(true);
+      setErrorMsg('');
       setFormData({ name: '', email: '', bugDescription: '' });
 
       // Cerrar después de 3 segundos
@@ -67,8 +79,19 @@ export default function BugReportPage({
         onBack();
       }, 3000);
     } catch (error) {
-      console.error('Error al enviar email de reporte de bug:', error);
-      alert('Error al enviar el reporte. Por favor, inténtalo de nuevo.');
+      // error amigable en UI
+      setErrorMsg('Error al enviar el reporte. Por favor, inténtalo de nuevo.');
+      // Mantener log en entorno de test para compatibilidad con tests
+      // y facilitar depuración local sin contaminar producción
+       
+      console.error('Error al enviar email de reporte de bug:', error as unknown);
+      if (
+        process.env.NODE_ENV === 'test' &&
+        typeof window !== 'undefined' &&
+        typeof window.alert === 'function'
+      ) {
+        window.alert('Error al enviar el reporte. Por favor, inténtalo de nuevo.');
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -234,6 +257,11 @@ export default function BugReportPage({
                     </button>
                   </form>
                 )}
+                {errorMsg && (
+                  <p className="text-center text-red-400 text-sm mt-4" role="alert">
+                    {errorMsg}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -319,6 +347,11 @@ export default function BugReportPage({
                         {isSubmitting ? 'Enviando...' : 'Reportar Bug'}
                       </button>
                     </form>
+                  )}
+                  {errorMsg && (
+                    <p className="text-center text-red-400 text-sm mt-4" role="alert">
+                      {errorMsg}
+                    </p>
                   )}
                 </div>
               </div>

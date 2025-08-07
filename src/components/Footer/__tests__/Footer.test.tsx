@@ -12,7 +12,7 @@ const mockSetShowAddAITool = jest.fn();
 const mockSetShowFeedback = jest.fn();
 const mockSetShowBugReport = jest.fn();
 
-jest.mock('../../../app/layout', () => ({
+jest.mock('../../../app/providers', () => ({
   useAppContext: () => ({
     setActiveCategory: mockSetActiveCategory,
   }),

@@ -15,7 +15,7 @@ Object.defineProperty(window, 'scrollTo', {
   writable: true,
 });
 
-jest.mock('../../app/layout', () => {
+jest.mock('../../app/providers', () => {
   return {
     useAppContext: () => ({
       activeCategory: null,
@@ -272,7 +272,7 @@ describe('Sidebar', () => {
     };
 
     // Usar jest.doMock de manera diferente
-    jest.doMock('../../app/layout', () => mockWithShowFeedback);
+    jest.doMock('../../app/providers', () => mockWithShowFeedback);
 
     render(React.createElement(Sidebar));
 
