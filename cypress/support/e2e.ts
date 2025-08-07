@@ -14,7 +14,18 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
 
 // Alternatively you can use CommonJS syntax:
-// require('./commands') 
+// require('./commands')
+
+// Globally ignore a noisy React dev-only error that can happen under Cypress time-travel
+Cypress.on('uncaught:exception', (err) => {
+  if (err && typeof err.message === 'string') {
+    if (err.message.includes('Cannot commit the same tree as before')) {
+      return false;
+    }
+  }
+  // Let other errors fail the test
+  return undefined as unknown as boolean;
+});

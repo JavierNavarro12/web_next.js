@@ -15,7 +15,9 @@
     "test:e2e": "cypress run",
     "test:all": "npm run test && npm run test:e2e",
     "docs:open": "open docs/",
-    "clean": "find . -name '.DS_Store' -delete && rm -rf .next coverage"
+    "clean": "find . -name '.DS_Store' -delete && rm -rf .next coverage",
+    "start:prod": "PORT=3000 next start",
+    "e2e:prod": "npm run build && PORT=3000 next start & npx wait-on http://localhost:3000 && npx cypress run --headless --browser chrome"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,md,json}": [

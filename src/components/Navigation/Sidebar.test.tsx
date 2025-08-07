@@ -9,39 +9,55 @@ const mockSetActiveSubcategory = jest.fn();
 const mockSetShowAddAITool = jest.fn();
 const mockOnNavigate = jest.fn();
 
+let mockShowFeedback = false;
+let mockShowBugReport = false;
+const mockSetShowFeedback = jest.fn();
+const mockSetShowBugReport = jest.fn();
+let mockActiveNav = 'explorar';
+const mockSetActiveNav = jest.fn();
+
+// Navigation manager spies
+const navigateToTopMock = jest.fn();
+const navigateToSubcategoryMock = jest.fn();
+
 // Mock window.scrollTo
 Object.defineProperty(window, 'scrollTo', {
   value: jest.fn(),
   writable: true,
 });
 
-jest.mock('../../app/providers', () => {
-  return {
-    useAppContext: () => ({
-      activeCategory: null,
-      setActiveCategory: mockSetActiveCategory,
-    }),
-    useSubcategoryContext: () => ({
-      activeSubcategory: null,
-      setActiveSubcategory: mockSetActiveSubcategory,
-    }),
-    useFeedbackContext: () => ({
-      showFeedback: false,
-      setShowFeedback: jest.fn(),
-    }),
-    useAddAIToolContext: () => ({
-      setShowAddAITool: mockSetShowAddAITool,
-    }),
-    useBugReportContext: () => ({
-      showBugReport: false,
-      setShowBugReport: jest.fn(),
-    }),
-    useActiveNavContext: () => ({
-      activeNav: 'explorar',
-      setActiveNav: jest.fn(),
-    }),
-  };
-});
+jest.mock('../../app/providers', () => ({
+  useAppContext: () => ({
+    activeCategory: null,
+    setActiveCategory: mockSetActiveCategory,
+  }),
+  useSubcategoryContext: () => ({
+    activeSubcategory: null,
+    setActiveSubcategory: mockSetActiveSubcategory,
+  }),
+  useFeedbackContext: () => ({
+    showFeedback: mockShowFeedback,
+    setShowFeedback: mockSetShowFeedback,
+  }),
+  useAddAIToolContext: () => ({
+    setShowAddAITool: mockSetShowAddAITool,
+  }),
+  useBugReportContext: () => ({
+    showBugReport: mockShowBugReport,
+    setShowBugReport: mockSetShowBugReport,
+  }),
+  useActiveNavContext: () => ({
+    activeNav: mockActiveNav,
+    setActiveNav: mockSetActiveNav,
+  }),
+}));
+
+jest.mock('../../hooks/useNavigationManager', () => ({
+  useNavigationManager: () => ({
+    navigateToSubcategory: navigateToSubcategoryMock,
+    navigateToTop: navigateToTopMock,
+  }),
+}));
 
 describe('Sidebar', () => {
   beforeEach(() => {
@@ -49,6 +65,14 @@ describe('Sidebar', () => {
     mockSetActiveSubcategory.mockClear();
     mockSetShowAddAITool.mockClear();
     mockOnNavigate.mockClear();
+    mockSetShowFeedback.mockClear();
+    mockSetShowBugReport.mockClear();
+    mockSetActiveNav.mockClear();
+    navigateToTopMock.mockClear();
+    navigateToSubcategoryMock.mockClear();
+    mockShowFeedback = false;
+    mockShowBugReport = false;
+    mockActiveNav = 'explorar';
   });
 
   it('renderiza las secciones principales', () => {
@@ -92,8 +116,8 @@ describe('Sidebar', () => {
     document.body.appendChild(section);
     // Simular click en la subcategoría
     fireEvent.click(subcatButton);
-    // Verificar que se llama al contexto de subcategoría
-    expect(mockSetActiveSubcategory).toHaveBeenCalledWith('Texto');
+    // Verificar que se dispara la navegación a la subcategoría
+    expect(navigateToSubcategoryMock).toHaveBeenCalledWith('Texto');
     // Limpiar el DOM
     document.body.removeChild(section);
   });
@@ -247,36 +271,98 @@ describe('Sidebar', () => {
     expect(screen.getByText('Explorar')).toBeInTheDocument();
   });
 
-  it('maneja estados activos de subcategorías con showFeedback', () => {
-    // Mock con showFeedback true usando un mock diferente
-    const mockWithShowFeedback = {
-      useAppContext: () => ({
-        activeCategory: null,
-        setActiveCategory: mockSetActiveCategory,
-      }),
-      useSubcategoryContext: () => ({
-        activeSubcategory: 'Texto',
-        setActiveSubcategory: mockSetActiveSubcategory,
-      }),
-      useFeedbackContext: () => ({
-        showFeedback: true,
-        setShowFeedback: jest.fn(),
-      }),
-      useAddAIToolContext: () => ({
-        setShowAddAITool: mockSetShowAddAITool,
-      }),
-      useBugReportContext: () => ({
-        showBugReport: false,
-        setShowBugReport: jest.fn(),
-      }),
-    };
-
-    // Usar jest.doMock de manera diferente
-    jest.doMock('../../app/providers', () => mockWithShowFeedback);
-
+  it('cierra feedback y navega a subcategoría con retardo', () => {
+    jest.useFakeTimers();
+    mockShowFeedback = true;
     render(React.createElement(Sidebar));
 
-    // Verificar que el componente se renderiza sin errores
-    expect(screen.getByText('Explorar')).toBeInTheDocument();
+    const generativaElements = screen.getAllByText('Generativa');
+    const catElement = generativaElements.find((el) => el.closest('li'));
+    fireEvent.click(catElement!.closest('div')!);
+
+    const subcatButton = screen.getByRole('button', { name: 'Texto' });
+    fireEvent.click(subcatButton);
+
+    expect(mockSetShowFeedback).toHaveBeenCalledWith(false);
+    // Espera al retardo de 100ms
+    jest.advanceTimersByTime(120);
+    expect(navigateToSubcategoryMock).toHaveBeenCalledWith('Texto');
+    jest.useRealTimers();
+  });
+
+  it('cierra bug report y navega a subcategoría con retardo', () => {
+    jest.useFakeTimers();
+    mockShowBugReport = true;
+    render(React.createElement(Sidebar));
+
+    const generativaElements = screen.getAllByText('Generativa');
+    const catElement = generativaElements.find((el) => el.closest('li'));
+    fireEvent.click(catElement!.closest('div')!);
+
+    const subcatButton = screen.getByRole('button', { name: 'Texto' });
+    fireEvent.click(subcatButton);
+
+    expect(mockSetShowBugReport).toHaveBeenCalledWith(false);
+    jest.advanceTimersByTime(120);
+    expect(navigateToSubcategoryMock).toHaveBeenCalledWith('Texto');
+    jest.useRealTimers();
+  });
+
+  it('maneja click en secciones principales: Explorar, Herramientas y Artículos', () => {
+    render(React.createElement(Sidebar, { onNavigate: mockOnNavigate }));
+
+    // Explorar
+    fireEvent.click(screen.getByText('Explorar'));
+    expect(mockSetActiveCategory).toHaveBeenCalledWith(null);
+    expect(mockSetActiveSubcategory).toHaveBeenCalledWith(null);
+    expect(mockSetActiveNav).toHaveBeenCalledWith('explorar');
+    expect(navigateToTopMock).toHaveBeenCalled();
+    expect(mockOnNavigate).toHaveBeenCalled();
+
+    mockSetActiveCategory.mockClear();
+    mockSetActiveSubcategory.mockClear();
+    mockSetActiveNav.mockClear();
+    navigateToTopMock.mockClear();
+    mockOnNavigate.mockClear();
+
+    // Herramientas
+    fireEvent.click(screen.getByText('Herramientas'));
+    expect(mockSetActiveCategory).toHaveBeenCalledWith(null);
+    expect(mockSetActiveSubcategory).toHaveBeenCalledWith(null);
+    expect(navigateToTopMock).toHaveBeenCalled();
+    expect(mockOnNavigate).toHaveBeenCalled();
+
+    mockSetActiveCategory.mockClear();
+    mockSetActiveSubcategory.mockClear();
+    navigateToTopMock.mockClear();
+    mockOnNavigate.mockClear();
+
+    // Artículos
+    fireEvent.click(screen.getByText('Artículos'));
+    expect(mockSetActiveCategory).toHaveBeenCalledWith(null);
+    expect(mockSetActiveSubcategory).toHaveBeenCalledWith(null);
+    expect(mockSetActiveNav).toHaveBeenCalledWith('articulos');
+    expect(navigateToTopMock).toHaveBeenCalled();
+    expect(mockOnNavigate).toHaveBeenCalled();
+  });
+
+  it('al hacer click en AIFinder limpia storage y hace scroll al inicio', () => {
+    // preparar main con scrollTo
+    const main = document.createElement('main');
+    // @ts-ignore
+    main.scrollTo = jest.fn();
+    document.body.appendChild(main);
+    localStorage.setItem('activeCategory', 'Generativa');
+    localStorage.setItem('activeSubcategory', 'Texto');
+
+    render(React.createElement(Sidebar, { onNavigate: mockOnNavigate }));
+    fireEvent.click(screen.getByText('AIFinder'));
+
+    expect(localStorage.getItem('activeCategory')).toBeNull();
+    expect(localStorage.getItem('activeSubcategory')).toBeNull();
+    expect(mockOnNavigate).toHaveBeenCalled();
+    expect(main.scrollTo as any).toHaveBeenCalled();
+
+    document.body.removeChild(main);
   });
 });

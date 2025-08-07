@@ -33,7 +33,9 @@ describe('newsletterService', () => {
     it('should subscribe successfully and send welcome email', async () => {
       getDocs.mockResolvedValueOnce({ empty: true });
       addDoc.mockResolvedValueOnce({});
-      const sendWelcomeEmailSpy = jest.spyOn(newsletterService, 'sendWelcomeEmail').mockResolvedValue();
+      const sendWelcomeEmailSpy = jest
+        .spyOn(newsletterService, 'sendWelcomeEmail')
+        .mockResolvedValue();
 
       const result = await newsletterService.subscribeToNewsletter('test@example.com', 'hero');
       expect(result).toBe(true);
@@ -44,14 +46,18 @@ describe('newsletterService', () => {
 
     it('should throw error if email already subscribed', async () => {
       getDocs.mockResolvedValueOnce({ empty: false });
-      await expect(newsletterService.subscribeToNewsletter('test@example.com', 'hero')).rejects.toThrow('Este email ya está suscrito');
+      await expect(
+        newsletterService.subscribeToNewsletter('test@example.com', 'hero'),
+      ).rejects.toThrow('Este email ya está suscrito');
       expect(addDoc).not.toHaveBeenCalled();
     });
 
     it('should throw error if addDoc fails', async () => {
       getDocs.mockResolvedValueOnce({ empty: true });
       addDoc.mockRejectedValueOnce(new Error('Firestore error'));
-      await expect(newsletterService.subscribeToNewsletter('test@example.com', 'hero')).rejects.toThrow('Firestore error');
+      await expect(
+        newsletterService.subscribeToNewsletter('test@example.com', 'hero'),
+      ).rejects.toThrow('Firestore error');
     });
 
     it('should not throw if sendWelcomeEmail fails', async () => {
@@ -61,7 +67,9 @@ describe('newsletterService', () => {
         // Simula error pero nunca rechaza la promesa
         return Promise.resolve(undefined);
       });
-      await expect(newsletterService.subscribeToNewsletter('test@example.com', 'hero')).resolves.toBe(true);
+      await expect(
+        newsletterService.subscribeToNewsletter('test@example.com', 'hero'),
+      ).resolves.toBe(true);
     });
   });
 
@@ -77,13 +85,18 @@ describe('newsletterService', () => {
     });
 
     it('should call fetch with correct params and resolve on success', async () => {
-      global.fetch.mockResolvedValueOnce({ ok: true });
+      global.fetch.mockResolvedValueOnce({
+        ok: true,
+        json: jest.fn().mockResolvedValue({ emailId: 'email-123' }),
+      });
       await expect(newsletterService.sendWelcomeEmail('test@example.com')).resolves.toBeUndefined();
-      // Eliminada la aserción estricta sobre la llamada a fetch
     });
 
-    it('should not throw error if fetch fails', async () => {
-      global.fetch.mockResolvedValueOnce({ ok: false });
+    it('should not throw error if fetch fails (ok false with error json)', async () => {
+      global.fetch.mockResolvedValueOnce({
+        ok: false,
+        json: jest.fn().mockResolvedValue({ error: 'bad request' }),
+      });
       await expect(newsletterService.sendWelcomeEmail('test@example.com')).resolves.toBeUndefined();
     });
 
@@ -108,6 +121,27 @@ describe('newsletterService', () => {
       getDocs.mockRejectedValueOnce(new Error('fail'));
       const stats = await newsletterService.getSubscriptionStats();
       expect(stats).toEqual({ total: 0, thisMonth: 0 });
+    });
+
+    it('should ignore docs without subscribedAt', async () => {
+      const now = new Date();
+      const docWithMissing = { data: () => ({}) };
+      const docWithSub = { data: () => ({ subscribedAt: { toDate: () => new Date(now) } }) };
+      getDocs.mockResolvedValueOnce({ size: 2, docs: [docWithMissing, docWithSub] });
+      const stats = await newsletterService.getSubscriptionStats();
+      expect(stats.total).toBe(2);
+      expect(stats.thisMonth).toBe(1);
+    });
+  });
+
+  describe('subscribeToNewsletter with welcome email failure', () => {
+    it('should reject if sendWelcomeEmail rejects (post-persist failure)', async () => {
+      getDocs.mockResolvedValueOnce({ empty: true });
+      addDoc.mockResolvedValueOnce({});
+      jest.spyOn(newsletterService, 'sendWelcomeEmail').mockRejectedValueOnce(new Error('boom'));
+      await expect(
+        newsletterService.subscribeToNewsletter('test@example.com', 'footer'),
+      ).rejects.toThrow('boom');
     });
   });
 });
