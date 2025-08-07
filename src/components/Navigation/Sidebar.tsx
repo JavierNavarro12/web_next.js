@@ -34,7 +34,7 @@ import {
   useAddAIToolContext,
   useBugReportContext,
   useActiveNavContext,
-} from '../../app/layout';
+} from '../../app/providers';
 import { useNavigationManager } from '../../hooks/useNavigationManager';
 
 const defaultIcon = PlusCircleIcon;

@@ -17,9 +17,7 @@ export default function PWAInstallPrompt() {
 
   useEffect(() => {
     const handler = (e: Event) => {
-      // Prevenir que Chrome muestre el prompt automático
       e.preventDefault();
-      // Guardar el evento para usarlo después
       setDeferredPrompt(e as BeforeInstallPromptEvent);
       setShowInstallPrompt(true);
     };
@@ -33,20 +31,13 @@ export default function PWAInstallPrompt() {
 
   const handleInstallClick = async () => {
     if (!deferredPrompt) return;
-
-    // Mostrar el prompt de instalación
     deferredPrompt.prompt();
-
-    // Esperar la respuesta del usuario
     const { outcome } = await deferredPrompt.userChoice;
-
     if (outcome === 'accepted') {
       console.log('Usuario aceptó la instalación PWA');
     } else {
       console.log('Usuario rechazó la instalación PWA');
     }
-
-    // Limpiar el prompt
     setDeferredPrompt(null);
     setShowInstallPrompt(false);
   };

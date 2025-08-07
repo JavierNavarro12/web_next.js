@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { AICategory, AITool } from '../../data/ai-tools';
 import SearchDropdown from './SearchDropdown';
-import { useHighlightedToolContext } from '../../app/layout';
+import { useHighlightedToolContext } from '../../app/providers';
 
 interface MobileHeaderProps {
   currentCategory: AICategory | null;

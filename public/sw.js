@@ -1,15 +1,22 @@
 // Service Worker para AIFinder PWA
-const CACHE_NAME = 'aifinder-v1';
-const urlsToCache = ['/', '/manifest.json', '/icons/icon-192x192.png', '/icons/icon-512x512.png'];
+const CACHE_NAME = 'aifinder-v2';
+const ASSET_CACHE_URLS = [
+  '/',
+  '/manifest.json',
+  '/icons/icon-192x192.png',
+  '/icons/icon-512x512.png',
+  '/offline.html',
+];
 
 // Instalación del Service Worker
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('Cache abierto');
-      return cache.addAll(urlsToCache);
+      return cache.addAll(ASSET_CACHE_URLS);
     }),
   );
+  // Actualiza inmediatamente a la nueva versión
+  self.skipWaiting();
 });
 
 // Activación del Service Worker
@@ -19,40 +26,69 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
           if (cacheName !== CACHE_NAME) {
-            console.log('Eliminando cache antiguo:', cacheName);
             return caches.delete(cacheName);
           }
         }),
       );
     }),
   );
+  // Tomar control de los clientes inmediatamente
+  self.clients.claim();
 });
 
 // Interceptar peticiones
 self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      // Devolver desde cache si existe
-      if (response) {
-        return response;
-      }
+  const { request } = event;
+  const url = new URL(request.url);
 
-      // Si no está en cache, hacer la petición a la red
-      return fetch(event.request).then((response) => {
-        // Verificar que la respuesta sea válida
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return response;
-        }
+  // Solo manejar GET
+  if (request.method !== 'GET') return;
 
-        // Clonar la respuesta para poder usarla en cache
-        const responseToCache = response.clone();
+  // Estrategia: cache-first para assets estáticos, network-first para HTML/API
+  if (url.origin === self.location.origin) {
+    // Assets: imágenes, CSS, JS, iconos
+    const isStaticAsset =
+      request.destination === 'style' ||
+      request.destination === 'script' ||
+      request.destination === 'image' ||
+      request.destination === 'font' ||
+      request.destination === 'manifest';
 
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache);
-        });
+    if (isStaticAsset) {
+      event.respondWith(
+        caches.match(request).then((cached) => {
+          if (cached) return cached;
+          return fetch(request).then((response) => {
+            if (response && response.status === 200) {
+              const clone = response.clone();
+              caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+            }
+            return response;
+          });
+        }),
+      );
+      return;
+    }
 
-        return response;
-      });
-    }),
-  );
+    // HTML: network-first para evitar servir HTML obsoleto
+    if (request.destination === 'document') {
+      event.respondWith(
+        fetch(request)
+          .then((response) => {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+            return response;
+          })
+          .catch(() => caches.match(request)),
+      );
+      return;
+    }
+  }
+
+  // Para otras solicitudes (incluye APIs externas), dejar pasar a la red
+  // Fallback offline para documentos
+  if (request.destination === 'document') {
+    event.respondWith(fetch(request).catch(() => caches.match('/offline.html')));
+    return;
+  }
 });

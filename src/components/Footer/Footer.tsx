@@ -1,7 +1,13 @@
 'use client';
 
 import React from 'react';
-import { useAppContext, useSubcategoryContext, useAddAIToolContext, useFeedbackContext, useBugReportContext } from '../../app/layout';
+import {
+  useAppContext,
+  useSubcategoryContext,
+  useAddAIToolContext,
+  useFeedbackContext,
+  useBugReportContext,
+} from '../../app/providers';
 
 interface FooterProps {
   setShowFeedback: (show: boolean) => void;
@@ -102,8 +108,8 @@ export default function Footer({
     Multimodal: 'Multimodal',
     OpenSource: 'OpenSource',
     Cognitiva: 'IA Cognitiva y Razonamiento',
-    'MLOps': 'MLOps y Desarrollo de Modelos',
-    'Marketing': 'IA para Marketing y Ventas',
+    MLOps: 'MLOps y Desarrollo de Modelos',
+    Marketing: 'IA para Marketing y Ventas',
     Traducción: 'Traducción y Localización Automática',
     Ética: 'Ética y Detección de IA',
   };

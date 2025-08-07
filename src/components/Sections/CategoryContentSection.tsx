@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { AITool, AICategory } from '../../data/ai-tools';
 import { filterTools, handleToolClick, getPricingText } from '../../utils/toolUtils';
-import { useHighlightedToolContext } from '../../app/layout';
+import { useHighlightedToolContext } from '../../app/providers';
 
 interface CategoryContentSectionProps {
   currentCategory: AICategory | null;

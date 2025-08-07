@@ -8,7 +8,11 @@ import MobileHeader from '../Header/MobileHeader';
 import Footer from '../Footer/Footer';
 
 // Inicializar EmailJS una sola vez
-emailjs.init('d0LlJPzXxEJn_vAf4');
+if (EMAILJS_CONFIG.USER_ID) {
+  emailjs.init(EMAILJS_CONFIG.USER_ID);
+} else {
+  console.warn('EmailJS USER_ID no configurado');
+}
 
 interface AddAIToolPageProps {
   isOpen: boolean;
@@ -37,6 +41,9 @@ export default function AddAIToolPage({
     e.preventDefault();
 
     try {
+      if (!EMAILJS_CONFIG.SERVICE_ID || !EMAILJS_CONFIG.TEMPLATE_ID || !EMAILJS_CONFIG.USER_ID) {
+        throw new Error('Configuración de EmailJS incompleta');
+      }
       // Enviar email usando EmailJS
       const result = await emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_ID, {
         tool_name: formData.toolName,

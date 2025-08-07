@@ -4,8 +4,34 @@ import { Resend } from 'resend';
 // Inicializar Resend solo cuando se necesite, no durante el build
 let resend: Resend;
 
+const WINDOW_MS = 60_000; // 1 minuto
+const MAX_REQUESTS = 10; // 10 por minuto por IP
+const ipBuckets = new Map<string, { count: number; startsAt: number }>();
+
+function isRateLimited(ip: string | null) {
+  if (!ip) return false;
+  const now = Date.now();
+  const bucket = ipBuckets.get(ip);
+  if (!bucket || now - bucket.startsAt > WINDOW_MS) {
+    ipBuckets.set(ip, { count: 1, startsAt: now });
+    return false;
+  }
+  bucket.count += 1;
+  if (bucket.count > MAX_REQUESTS) return true;
+  return false;
+}
+
 export async function POST(request: NextRequest) {
   try {
+    const ipHeader = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip');
+    const ip = ipHeader?.split(',')[0]?.trim() || null;
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        { error: 'Demasiadas solicitudes. Inténtalo más tarde.' },
+        { status: 429 },
+      );
+    }
+
     // Inicializar Resend aquí, no globalmente
     if (!resend) {
       const apiKey = process.env.RESEND_API_KEY;
@@ -26,7 +52,6 @@ export async function POST(request: NextRequest) {
     }
 
     // Enviar email de bienvenida
-    console.log('Intentando enviar email a:', email);
     const result = await resend.emails.send({
       from: 'AIFinder <newsletter@aifinder.es>',
       to: [email],
@@ -154,15 +179,9 @@ export async function POST(request: NextRequest) {
       `,
     });
 
-    console.log('Email enviado exitosamente:', {
-      id: result.data?.id,
-      to: email,
-      status: 'success',
-    });
-
     return NextResponse.json({ success: true, emailId: result.data?.id });
-  } catch (error) {
-    console.error('Error al enviar email:', error);
+  } catch {
+    console.error('Error al enviar email');
     return NextResponse.json({ error: 'Error al enviar email' }, { status: 500 });
   }
 }

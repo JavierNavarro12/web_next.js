@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { AICategory, AITool } from '../../data/ai-tools';
 import SearchDropdown from './SearchDropdown';
-import { useHighlightedToolContext } from '../../app/layout';
+import { useHighlightedToolContext } from '../../app/providers';
 
 interface DesktopHeaderProps {
   currentCategory: AICategory | null;
@@ -99,6 +99,7 @@ export default function DesktopHeader({
               onClick={() => setActiveNav && setActiveNav('explorar')}
               onMouseEnter={() => setHoveredNav('explorar')}
               onMouseLeave={() => setHoveredNav(null)}
+              aria-current={activeNav === 'explorar' ? 'page' : undefined}
             >
               Explorar
               {(activeNav === 'explorar' || hoveredNav === 'explorar') && (
@@ -120,6 +121,7 @@ export default function DesktopHeader({
               onClick={() => setActiveNav && setActiveNav('nuevas')}
               onMouseEnter={() => setHoveredNav('nuevas')}
               onMouseLeave={() => setHoveredNav(null)}
+              aria-current={activeNav === 'nuevas' ? 'page' : undefined}
             >
               Nuevas Adiciones
               {(activeNav === 'nuevas' || hoveredNav === 'nuevas') && (
@@ -156,6 +158,7 @@ export default function DesktopHeader({
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onFocus={() => setIsSearchFocused(true)}
+              aria-label="Buscar herramientas de IA"
               className="w-64 bg-black border border-zinc-800 rounded-md pl-10 pr-4 py-2 text-sm text-zinc-300 placeholder-zinc-500 focus:outline-none focus:border-zinc-600 transition-colors"
             />
             <SearchDropdown
