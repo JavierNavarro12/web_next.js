@@ -27,7 +27,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'ChatGPT',
             logo: '/logos/chatgpt-movil.png',
-            image: '/images/chatpgt-web.png',
+            image: '/images/chatpgt-web.webp',
             description: 'Generador de texto',
             pricing: 'freemium',
             url: 'https://chat.openai.com',
@@ -35,7 +35,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Claude',
             logo: '/logos/claude-movil.png',
-            image: '/images/claude-web.png',
+            image: '/images/claude-web.webp',
             description: 'IA conversacional',
             pricing: 'freemium',
             url: 'https://claude.ai',
@@ -43,7 +43,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Gemini',
             logo: '/logos/gemini-movil.png',
-            image: '/images/gemini-web.png',
+            image: '/images/gemini-web.webp',
             description: 'IA multimodal',
             pricing: 'freemium',
             url: 'https://gemini.google.com',
@@ -51,7 +51,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'LLaMA',
             logo: '/logos/llama-movil.webp',
-            image: '/images/llama-web.png',
+            image: '/images/llama-web.webp',
             description: 'Modelo open source',
             pricing: 'free',
             url: 'https://llama.meta.com',
@@ -59,7 +59,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Qwen',
             logo: '/logos/qwen-movil.webp',
-            image: '/images/qwen-web.png',
+            image: '/images/qwen-web.webp',
             description: 'Modelo de texto',
             pricing: 'freemium',
             url: 'https://qwenlm.github.io',
@@ -67,7 +67,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Mistral',
             logo: '/logos/mistral-movil.png',
-            image: '/images/mistral-web.png',
+            image: '/images/mistral-web.webp',
             description: 'Modelo open source',
             pricing: 'free',
             url: 'https://mistral.ai',
@@ -75,7 +75,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Falcon',
             logo: '/logos/falcon-movil.jpeg',
-            image: '/images/falcon-web.png',
+            image: '/images/falcon-web.webp',
             description: 'Modelo open source',
             pricing: 'free',
             url: 'https://falcons.ai',
@@ -83,7 +83,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Grok',
             logo: '/logos/grok-movil.png',
-            image: '/images/grok-web.png',
+            image: '/images/grok-web.webp',
             description: 'IA conversacional',
             pricing: 'freemium',
             url: 'https://x.ai',
@@ -91,7 +91,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'BioGPT',
             logo: '/logos/biogpt-movil.png',
-            image: '/images/biogpt-web.png',
+            image: '/images/biogpt-web.webp',
             description: 'Texto biomédico',
             pricing: 'free',
             url: 'https://github.com/microsoft/BioGPT',
@@ -99,7 +99,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Jasper',
             logo: '/logos/jasper-movil.png',
-            image: '/images/jasper-web.png',
+            image: '/images/jasper-web.webp',
             description: 'Copywriting AI',
             pricing: 'paid',
             url: 'https://jasper.ai',
@@ -107,7 +107,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Copy.ai',
             logo: '/logos/copyai-movil.jpg',
-            image: '/images/copyai-web.png',
+            image: '/images/copyai-web.webp',
             description: 'Copywriting AI',
             pricing: 'paid',
             url: 'https://copy.ai',
@@ -115,7 +115,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Sudowrite',
             logo: '/logos/sudowrite-movil.webp',
-            image: '/images/sudowrite-web.png',
+            image: '/images/sudowrite-web.webp',
             description: 'Asistente de escritura',
             pricing: 'paid',
             url: 'https://sudowrite.com',
@@ -123,7 +123,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'YouWrite',
             logo: '/logos/youwrite-movil.jpg',
-            image: '/images/youwirite-web.png',
+            image: '/images/youwirite-web.webp',
             description: 'Generador de texto',
             pricing: 'paid',
             url: 'https://youwrite.ai',
@@ -131,7 +131,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'DeepSeek',
             logo: '/logos/deepseek-movil.png',
-            image: '/images/deepseek-web.png',
+            image: '/images/deepseek-web.webp',
             description: 'IA de texto',
             pricing: 'freemium',
             url: 'https://deepseek.com',
@@ -144,7 +144,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Midjourney',
             logo: '/logos/midjourney-movil.png',
-            image: '/images/midjourney-web.png',
+            image: '/images/midjourney-web.webp',
             description: 'Arte generativo',
             pricing: 'paid',
             url: 'https://www.midjourney.com',
@@ -152,7 +152,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'DALL·E',
             logo: '/logos/dall.e-movil.png',
-            image: '/images/dall.e-web.png',
+            image: '/images/dall.e-web.webp',
             description: 'Imágenes IA',
             pricing: 'freemium',
             url: 'https://openai.com/dall-e-2',
@@ -160,7 +160,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Stable Diffusion',
             logo: '/logos/stablediffusion-movil.png',
-            image: '/images/stablediffusion-web.png',
+            image: '/images/stablediffusion-web.webp',
             description: 'Modelo open source',
             pricing: 'free',
             url: 'https://stablediffusionweb.com/',
@@ -168,7 +168,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Adobe Firefly',
             logo: '/logos/adobefirefly-logo.png',
-            image: '/images/adobefirefly-web.png',
+            image: '/images/adobefirefly-web.webp',
             description: 'Imágenes creativas',
             pricing: 'freemium',
             url: 'https://firefly.adobe.com/?media=featured',
@@ -176,7 +176,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Imagen',
             logo: '/logos/imagen-movil.svg',
-            image: '/images/imagen-web.png',
+            image: '/images/imagen-web.webp',
             description: 'Modelo de Google',
             pricing: 'free',
             url: 'https://deepmind.google/models/imagen/',
@@ -184,7 +184,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'FLUX',
             logo: '/logos/flux-movil.png',
-            image: '/images/flux-web.png',
+            image: '/images/flux-web.webp',
             description: 'Arte generativo',
             pricing: 'free',
             url: 'https://flux1.ai/es',
@@ -192,7 +192,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Ideogram',
             logo: '/logos/ideogram-movil.jpg',
-            image: '/images/ideogram-web.png',
+            image: '/images/ideogram-web.webp',
             description: 'Texto a imagen',
             pricing: 'freemium',
             url: 'https://ideogram.ai',
@@ -200,7 +200,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Recraft',
             logo: '/logos/recraft-movil.png',
-            image: '/images/recraft-web.png',
+            image: '/images/recraft-web.webp',
             description: 'Diseño IA',
             pricing: 'freemium',
             url: 'https://recraft.ai',
@@ -208,7 +208,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Leonardo AI',
             logo: '/logos/leonardoai-movil.jpg',
-            image: '/images/leonardoai-web.png',
+            image: '/images/leonardoai-web.webp',
             description: 'Arte generativo',
             pricing: 'freemium',
             url: 'https://leonardo.ai',
@@ -216,7 +216,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Seedream',
             logo: '/logos/seedream-movil.jpeg',
-            image: '/images/seedream-web.png',
+            image: '/images/seedream-web.webp',
             description: 'Imágenes IA',
             pricing: 'free',
             url: 'https://seed.bytedance.com/en/tech/seedream3_0',
@@ -224,7 +224,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Aurora',
             logo: '/logos/aurora-movil.png',
-            image: '/images/aurora-web.png',
+            image: '/images/aurora-web.webp',
             description: 'Arte generativo',
             pricing: 'paid',
             url: 'https://x.ai/news/grok-image-generation-release',
@@ -232,7 +232,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Playground AI',
             logo: '/logos/playgroundai-movil.png',
-            image: '/images/playgroundai-web.png',
+            image: '/images/playgroundai-web.webp',
             description: 'Imágenes IA',
             pricing: 'freemium',
             url: 'https://playgroundai.com',
@@ -245,7 +245,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'ElevenLabs',
             logo: '/logos/elevenlabs-movil.png',
-            image: '/images/elevenlabs-web.png',
+            image: '/images/elevenlabs-web.webp',
             description: 'Voz sintética',
             pricing: 'freemium',
             url: 'https://elevenlabs.io',
@@ -253,7 +253,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Voicemod',
             logo: '/logos/voicemods-movil.png',
-            image: '/images/voicemods-web.png',
+            image: '/images/voicemods-web.webp',
             description: 'Modificador de voz',
             pricing: 'freemium',
             url: 'https://www.voicemod.net',
@@ -261,7 +261,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Descript',
             logo: '/logos/descript-movil.png',
-            image: '/images/descript-web.png',
+            image: '/images/descript-web.webp',
             description: 'Edición de audio',
             pricing: 'freemium',
             url: 'https://www.descript.com',
@@ -269,7 +269,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Resemble AI',
             logo: '/logos/resembleai-movil.png',
-            image: '/images/resembleai-web.png',
+            image: '/images/resembleai-web.webp',
             description: 'Voz IA',
             pricing: 'freemium',
             url: 'https://www.resemble.ai',
@@ -277,7 +277,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Murf',
             logo: '/logos/murfai-movil.png',
-            image: '/images/murfai-web.png',
+            image: '/images/murfai-web.webp',
             description: 'Voz sintética',
             pricing: 'freemium',
             url: 'https://murf.ai',
@@ -285,7 +285,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Play.ht',
             logo: '/logos/play.ht-movil.png',
-            image: '/images/play.ht-web.png',
+            image: '/images/play.ht-web.webp',
             description: 'Texto a voz',
             pricing: 'freemium',
             url: 'https://play.ht',
@@ -293,7 +293,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Speechify',
             logo: '/logos/speechlify-movil.png',
-            image: '/images/speechlify-web.png',
+            image: '/images/speechlify-web.webp',
             description: 'Lectura de texto',
             pricing: 'freemium',
             url: 'https://speechify.com',
@@ -301,7 +301,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Lovo',
             logo: '/logos/lovo-movil.png',
-            image: '/images/lovo-web.png',
+            image: '/images/lovo-web.webp',
             description: 'Voz IA',
             pricing: 'freemium',
             url: 'https://lovo.ai',
@@ -309,7 +309,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Dubverse',
             logo: '/logos/dubverse-movil.jpeg',
-            image: '/images/dubverse-web.png',
+            image: '/images/dubverse-web.webp',
             description: 'Doblaje IA',
             pricing: 'freemium',
             url: 'https://dubverse.ai',
@@ -317,7 +317,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Voice.ai',
             logo: '/logos/voice.ai-movil.png',
-            image: '/images/voice.ai-web.png',
+            image: '/images/voice.ai-web.webp',
             description: 'Voz IA',
             pricing: 'freemium',
             url: 'https://voice.ai',
@@ -325,7 +325,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Suno',
             logo: '/logos/suno-movil.png',
-            image: '/images/suno-web.png',
+            image: '/images/suno-web.webp',
             description: 'Música IA',
             pricing: 'freemium',
             url: 'https://suno.ai',
@@ -333,7 +333,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'AudioCraft',
             logo: '/logos/audiocraft-movil.jpeg',
-            image: '/images/audiocraft-web.png',
+            image: '/images/audiocraft-web.webp',
             description: 'Música IA',
             pricing: 'free',
             url: 'https://github.com/facebookresearch/audiocraft',
@@ -341,7 +341,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Colossyan',
             logo: '/logos/colossyam-movil.jpeg',
-            image: '/images/colossyam-web.png',
+            image: '/images/colossyam-web.webp',
             description: 'Voz y video IA',
             pricing: 'paid',
             url: 'https://colossyan.com',
@@ -354,7 +354,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Sora',
             logo: '/logos/sora-movil.png',
-            image: '/images/sora-web.png',
+            image: '/images/sora-web.webp',
             description: 'Video generativo',
             pricing: 'free',
             url: 'https://openai.com/sora',
@@ -362,7 +362,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Veo',
             logo: '/logos/veo-movil.png',
-            image: '/images/veo-web.png',
+            image: '/images/veo-web.webp',
             description: 'Video IA',
             pricing: 'free',
             url: 'https://deepmind.google/models/veo/',
@@ -370,7 +370,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Runway',
             logo: '/logos/runway-movil.webp',
-            image: '/images/runway-web.png',
+            image: '/images/runway-web.webp',
             description: 'Edición de video',
             pricing: 'freemium',
             url: 'https://runwayml.com',
@@ -378,7 +378,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Pika Labs',
             logo: '/logos/pikalabs-movil.png',
-            image: '/images/pikalabs-web.png',
+            image: '/images/pikalabs-web.webp',
             description: 'Video IA',
             pricing: 'freemium',
             url: 'https://pika.art',
@@ -386,7 +386,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Synthesia',
             logo: '/logos/Synthesia-movil.png',
-            image: '/images/Synthesia-web.png',
+            image: '/images/Synthesia-web.webp',
             description: 'Avatares IA',
             pricing: 'paid',
             url: 'https://synthesia.io',
@@ -394,7 +394,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Colossyan',
             logo: '/logos/colossyam-movil.jpeg',
-            image: '/images/colossyam-web.png',
+            image: '/images/colossyam-web.webp',
             description: 'Voz y video IA',
             pricing: 'paid',
             url: 'https://colossyan.com',
@@ -402,7 +402,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'InVideo',
             logo: '/logos/invideo-movil.webp',
-            image: '/images/invideo-web.png',
+            image: '/images/invideo-web.webp',
             description: 'Video IA',
             pricing: 'freemium',
             url: 'https://invideo.io',
@@ -410,7 +410,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Fliki',
             logo: '/logos/fliki-movil.png',
-            image: '/images/fliki-web.png',
+            image: '/images/fliki-web.webp',
             description: 'Video IA',
             pricing: 'freemium',
             url: 'https://fliki.ai',
@@ -418,7 +418,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Kling',
             logo: '/logos/fling-movil.png',
-            image: '/images/kling-web.png',
+            image: '/images/kling-web.webp',
             description: 'Video IA',
             pricing: 'free',
             url: 'https://klingai.org/?utm_source=chatgpt.com',
@@ -426,7 +426,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'MiniMax',
             logo: '/logos/minimax-movil.png',
-            image: '/images/minimax-web.png',
+            image: '/images/minimax-web.webp',
             description: 'Video IA',
             pricing: 'free',
             url: 'https://minimaxaivideo.com',
@@ -434,7 +434,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'VideoFX',
             logo: '/logos/videofx-movil.png',
-            image: '/images/videofx-web.png',
+            image: '/images/videofx-web.webp',
             description: 'Video IA',
             pricing: 'free',
             url: 'https://labs.google/fx/tools/flow',
@@ -447,7 +447,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'GitHub Copilot',
             logo: '/logos/githubcopilto-movil.png',
-            image: '/images/githubcopilot-web.png',
+            image: '/images/githubcopilot-web.webp',
             description: 'Asistente de código',
             pricing: 'paid',
             url: 'https://github.com/features/copilot',
@@ -455,7 +455,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Claude',
             logo: '/logos/claude-movil.png',
-            image: '/images/claude-web.png',
+            image: '/images/claude-web.webp',
             description: 'IA conversacional',
             pricing: 'freemium',
             url: 'https://claude.ai',
@@ -463,7 +463,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Gemini',
             logo: '/logos/gemini-movil.png',
-            image: '/images/gemini-web.png',
+            image: '/images/gemini-web.webp',
             description: 'IA multimodal',
             pricing: 'freemium',
             url: 'https://gemini.google.com',
@@ -471,7 +471,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Cursor',
             logo: '/logos/cursor-movil.png',
-            image: '/images/cursor-web.png',
+            image: '/images/cursor-web.webp',
             description: 'Editor IA',
             pricing: 'freemium',
             url: 'https://cursor.sh',
@@ -479,7 +479,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Tabnine',
             logo: '/logos/tabnine-movil.png',
-            image: '/images/tabnine-web.png',
+            image: '/images/tabnine-web.webp',
             description: 'Autocompletado IA',
             pricing: 'freemium',
             url: 'https://www.tabnine.com',
@@ -487,7 +487,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Codium',
             logo: '/logos/codium-movil.png',
-            image: '/images/codium-web.png',
+            image: '/images/codium-web.webp',
             description: 'Testing IA',
             pricing: 'freemium',
             url: 'https://www.codium.ai',
@@ -495,7 +495,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'AskTheCode',
             logo: '/logos/askthecode-movil.jpg',
-            image: '/images/askthecode-movil.png',
+            image: '/images/askthecode-movil.webp',
             description: 'QA IA',
             pricing: 'free',
             url: 'https://askthecode.ai',
@@ -503,7 +503,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Testim',
             logo: '/logos/testim-movil.jpeg',
-            image: '/images/testing-web.png',
+            image: '/images/testing-web.webp',
             description: 'Testing IA',
             pricing: 'freemium',
             url: 'https://www.testim.io',
@@ -511,7 +511,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Diffblue',
             logo: '/logos/diffblue-movil.png',
-            image: '/images/diffblue-web.png',
+            image: '/images/diffblue-web.webp',
             description: 'Testing IA',
             pricing: 'freemium',
             url: 'https://www.diffblue.com',
@@ -519,7 +519,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Jules',
             logo: '/logos/jules-movil.png',
-            image: '/images/jules-web.png',
+            image: '/images/jules-web.webp',
             description: 'Asistente de código',
             pricing: 'freemium',
             url: 'https://jules.google',
@@ -527,7 +527,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'DeepSource',
             logo: '/logos/deepsource-movil.png',
-            image: '/images/deepsource-web.png',
+            image: '/images/deepsource-web.webp',
             description: 'Análisis estático',
             pricing: 'freemium',
             url: 'https://deepsource.io',
@@ -535,7 +535,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'LangChain',
             logo: '/logos/langchain-movil.png',
-            image: '/images/langchain-web.png',
+            image: '/images/langchain-web.webp',
             description: 'Framework IA',
             pricing: 'free',
             url: 'https://www.langchain.com',
@@ -553,7 +553,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'ChatGPT',
             logo: '/logos/chatgpt-movil.png',
-            image: '/images/chatpgt-web.png',
+            image: '/images/chatpgt-web.webp',
             description: 'Asistente personal',
             pricing: 'freemium',
             url: 'https://chat.openai.com',
@@ -561,7 +561,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Gemini',
             logo: '/logos/gemini-movil.png',
-            image: '/images/gemini-web.png',
+            image: '/images/gemini-web.webp',
             description: 'Asistente personal',
             pricing: 'freemium',
             url: 'https://gemini.google.com',
@@ -569,7 +569,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Claude',
             logo: '/logos/claude-movil.png',
-            image: '/images/claude-web.png',
+            image: '/images/claude-web.webp',
             description: 'Asistente personal',
             pricing: 'freemium',
             url: 'https://claude.ai',
@@ -577,15 +577,15 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Grok',
             logo: '/logos/grok-movil.png',
-            image: '/images/grok-web.png',
+            image: '/images/grok-web.webp',
             description: 'Asistente personal',
             pricing: 'freemium',
             url: 'https://x.ai',
           },
           {
             name: 'Siri',
-            logo: '/logos/siri-movil.png',
-            image: '/images/siri-web.png',
+            logo: '/logos/siri-movil.webp',
+            image: '/images/siri-web.webp',
             description: 'Asistente personal',
             pricing: 'free',
             url: 'https://www.apple.com/siri/',
@@ -593,7 +593,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Alexa',
             logo: '/logos/alexa-web.png',
-            image: '/images/alexa-web.png',
+            image: '/images/alexa-web.webp',
             description: 'Asistente personal',
             pricing: 'free',
             url: 'https://alexa.amazon.com',
@@ -601,7 +601,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Assistant',
             logo: '/logos/assistant-movil.png',
-            image: '/images/asisstant-web.png',
+            image: '/images/asisstant-web.webp',
             description: 'Asistente personal',
             pricing: 'free',
             url: 'https://assistant.google.com',
@@ -609,7 +609,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Pi',
             logo: '/logos/pi-movil.png',
-            image: '/images/pi-web.png',
+            image: '/images/pi-web.webp',
             description: 'Asistente personal',
             pricing: 'freemium',
             url: 'https://pi.ai',
@@ -617,7 +617,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Perplexity',
             logo: '/logos/perplexity-movil.png',
-            image: '/images/perplexity-web.png',
+            image: '/images/perplexity-web.webp',
             description: 'Asistente personal',
             pricing: 'freemium',
             url: 'https://www.perplexity.ai',
@@ -625,7 +625,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Replika',
             logo: '/logos/replika-movil.jpg',
-            image: '/images/replika-web.png',
+            image: '/images/replika-web.webp',
             description: 'Asistente personal',
             pricing: 'freemium',
             url: 'https://replika.com',
@@ -638,7 +638,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Intercom',
             logo: '/logos/intercom-movil.png',
-            image: '/images/intercom-web.png',
+            image: '/images/intercom-web.webp',
             description: 'Chatbot empresarial',
             pricing: 'paid',
             url: 'https://www.intercom.com',
@@ -646,7 +646,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Drift',
             logo: '/logos/drift-movil.webp',
-            image: '/images/drift-web.png',
+            image: '/images/drift-web.webp',
             description: 'Chatbot empresarial',
             pricing: 'paid',
             url: 'https://www.drift.com',
@@ -654,7 +654,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Ada',
             logo: '/logos/ada-movil.jpeg',
-            image: '/images/ada-web.png',
+            image: '/images/ada-web.webp',
             description: 'Chatbot empresarial',
             pricing: 'paid',
             url: 'https://ada.cx',
@@ -662,7 +662,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'LivePerson',
             logo: '/logos/liveperson-movil.png',
-            image: '/images/liveperson-web.png',
+            image: '/images/liveperson-web.webp',
             description: 'Chatbot empresarial',
             pricing: 'paid',
             url: 'https://www.liveperson.com',
@@ -670,7 +670,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Einstein',
             logo: '/logos/einstein-movil.jpeg',
-            image: '/images/einstein-web.png',
+            image: '/images/einstein-web.webp',
             description: 'Chatbot empresarial',
             pricing: 'paid',
             url: 'https://www.salesforce.com/products/einstein/',
@@ -678,7 +678,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'ChatSpot',
             logo: '/logos/chatspot-movil.png',
-            image: '/images/chatspot-web.png',
+            image: '/images/chatspot-web.webp',
             description: 'Chatbot empresarial',
             pricing: 'freemium',
             url: 'https://chatspot.ai',
@@ -686,7 +686,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Zendesk',
             logo: '/logos/zendesk-movil.png',
-            image: '/images/zendesk-web.png',
+            image: '/images/zendesk-web.webp',
             description: 'Chatbot empresarial',
             pricing: 'paid',
             url: 'https://www.zendesk.com',
@@ -694,7 +694,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Qwen',
             logo: '/logos/qwen-movil.webp',
-            image: '/images/qwen-web.png',
+            image: '/images/qwen-web.webp',
             description: 'Chatbot empresarial',
             pricing: 'freemium',
             url: 'https://qwenlm.github.io',
@@ -702,7 +702,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'DeepSeek',
             logo: '/logos/deepseek-movil.png',
-            image: '/images/deepseek-web.png',
+            image: '/images/deepseek-web.webp',
             description: 'Chatbot empresarial',
             pricing: 'freemium',
             url: 'https://deepseek.com',
@@ -715,7 +715,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'AutoGPT',
             logo: '/logos/autogpt-movil.jpeg',
-            image: '/images/autogpt-web.png',
+            image: '/images/autogpt-web.webp',
             description: 'Agente autónomo',
             pricing: 'free',
             url: 'https://agpt.co',
@@ -723,7 +723,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'AgentGPT',
             logo: '/logos/agentgpt-movil.png',
-            image: '/images/agentgpt-web.png',
+            image: '/images/agentgpt-web.webp',
             description: 'Agente autónomo',
             pricing: 'free',
             url: 'https://agentgpt.reworkd.ai',
@@ -731,7 +731,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'MetaGPT',
             logo: '/logos/metagpt-movil.png',
-            image: '/images/metapgt-web.png',
+            image: '/images/metapgt-web.webp',
             description: 'Agente autónomo',
             pricing: 'free',
             url: 'https://www.deepwisdom.ai',
@@ -739,7 +739,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'ChatGPT Agents',
             logo: '/logos/chatpgptagents-movil.jpg',
-            image: '/images/chatpgtagents-web.png',
+            image: '/images/chatpgtagents-web.webp',
             description: 'Agente autónomo',
             pricing: 'freemium',
             url: 'https://chatgpt.com',
@@ -747,7 +747,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Copilot Agents',
             logo: '/logos/copilotagents-movil.avif',
-            image: '/images/copilotagents-web.png',
+            image: '/images/copilotagents-web.webp',
             description: 'Agente autónomo',
             pricing: 'paid',
             url: 'https://www.microsoft.com/en-us/microsoft-copilot/agents',
@@ -755,7 +755,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'LangChain Agents',
             logo: '/logos/langchain-movil.png',
-            image: '/images/langchainagents-web.png',
+            image: '/images/langchainagents-web.webp',
             description: 'Agente autónomo',
             pricing: 'free',
             url: 'https://www.langchain.com/agents?utm_source=chatgpt.com',
@@ -763,7 +763,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'xAI Agents',
             logo: '/logos/xaiagents-movil.png',
-            image: '/images/xaiagents-web.png',
+            image: '/images/xaiagents-web.webp',
             description: 'Agente autónomo',
             pricing: 'freemium',
             url: 'https://xaiagent.io/es/home/',
@@ -781,7 +781,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Zapier',
             logo: '/logos/zapier-movil.jpeg',
-            image: '/images/zapier-web.png',
+            image: '/images/zapier-web.webp',
             description: 'Automatización',
             pricing: 'freemium',
             url: 'https://zapier.com',
@@ -789,7 +789,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'n8n',
             logo: '/logos/n8n-movil.png',
-            image: '/images/n8n-web.png',
+            image: '/images/n8n-web.webp',
             description: 'Automatización',
             pricing: 'free',
             url: 'https://n8n.io',
@@ -797,7 +797,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Make',
             logo: '/logos/make-movil.svg',
-            image: '/images/make-web.png',
+            image: '/images/make-web.webp',
             description: 'Automatización',
             pricing: 'freemium',
             url: 'https://www.make.com',
@@ -805,7 +805,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Power Automate',
             logo: '/logos/powerautomate-movil.png',
-            image: '/images/powerautomate-web.png',
+            image: '/images/powerautomate-web.webp',
             description: 'Automatización',
             pricing: 'freemium',
             url: 'https://powerautomate.microsoft.com',
@@ -813,7 +813,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'IFTTT',
             logo: '/logos/ifttt-movil.png',
-            image: '/images/ifttt-web.png',
+            image: '/images/ifttt-web.webp',
             description: 'Automatización',
             pricing: 'freemium',
             url: 'https://ifttt.com',
@@ -821,7 +821,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Manus',
             logo: '/logos/manus-movil.png',
-            image: '/images/manus.png',
+            image: '/images/manus.webp',
             description: 'Automatización',
             pricing: 'freemium',
             url: 'https://manus.ai',
@@ -829,7 +829,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Trigger.dev',
             logo: '/logos/trigger.dev-web.jpeg',
-            image: '/images/trigger.dev-web.png',
+            image: '/images/trigger.dev-web.webp',
             description: 'Automatización',
             pricing: 'free',
             url: 'https://trigger.dev',
@@ -842,7 +842,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Notion AI',
             logo: '/logos/notion-movil.jpg',
-            image: '/images/notion-web.png',
+            image: '/images/notion-web.webp',
             description: 'Ofimática IA',
             pricing: 'freemium',
             url: 'https://www.notion.so',
@@ -850,7 +850,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Microsoft 365 Copilot',
             logo: '/logos/microsoft365ai-movil.png',
-            image: '/images/microsoft365ai-web.png',
+            image: '/images/microsoft365ai-web.webp',
             description: 'Ofimática IA',
             pricing: 'paid',
             url: 'https://m365.cloud.microsoft/chat/?omkt=es-es&auth=2',
@@ -858,7 +858,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Google Workspace Duet',
             logo: '/logos/duet-movil.png',
-            image: '/images/duet-web.png',
+            image: '/images/duet-web.webp',
             description: 'Ofimática IA',
             pricing: 'paid',
             url: 'https://workspace.google.com/blog/product-announcements/duet-ai',
@@ -866,7 +866,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Gamma',
             logo: '/logos/gamma-movil.jpeg',
-            image: '/images/gamma-web.png',
+            image: '/images/gamma-web.webp',
             description: 'Ofimática IA',
             pricing: 'freemium',
             url: 'https://gamma.app',
@@ -874,7 +874,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Magic Write',
             logo: '/logos/magicwrite-movil.jpg',
-            image: '/images/magicwrite-web.png',
+            image: '/images/magicwrite-web.webp',
             description: 'Ofimática IA',
             pricing: 'freemium',
             url: 'https://www.canva.com/magic-write/',
@@ -882,7 +882,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Canva Magic Studio',
             logo: '/logos/magicstudio-movil.png',
-            image: '/images/magicstudio-web.png',
+            image: '/images/magicstudio-web.webp',
             description: 'Ofimática IA',
             pricing: 'freemium',
             url: 'https://www.canva.com/es_es/magia/',
@@ -895,7 +895,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Power BI',
             logo: '/logos/powerbi-movil.png',
-            image: '/images/powerbi-web.png',
+            image: '/images/powerbi-web.webp',
             description: 'Análisis de datos',
             pricing: 'freemium',
             url: 'https://powerbi.microsoft.com',
@@ -903,7 +903,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Tableau',
             logo: '/logos/tableau-movil.png',
-            image: '/images/tableau-web.png',
+            image: '/images/tableau-web.webp',
             description: 'Análisis de datos',
             pricing: 'paid',
             url: 'https://www.tableau.com/es-es/products/artificial-intelligence',
@@ -911,7 +911,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'ThoughtSpot',
             logo: '/logos/thoughtspot-movil.png',
-            image: '/images/thoughtspot-web.png',
+            image: '/images/thoughtspot-web.webp',
             description: 'Análisis de datos',
             pricing: 'paid',
             url: 'https://www.thoughtspot.com',
@@ -919,7 +919,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Perplexity',
             logo: '/logos/perplexity-movil.png',
-            image: '/images/perplexity-web.png',
+            image: '/images/perplexity-web.webp',
             description: 'Análisis de datos',
             pricing: 'freemium',
             url: 'https://www.perplexity.ai',
@@ -927,7 +927,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'AlphaSense',
             logo: '/logos/alphasense-movil.png',
-            image: '/images/alphasense-web.png',
+            image: '/images/alphasense-web.webp',
             description: 'Análisis de datos',
             pricing: 'paid',
             url: 'https://www.alpha-sense.com',
@@ -935,7 +935,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Kavout',
             logo: '/logos/kavout-movil.png',
-            image: '/images/kavout-web.png',
+            image: '/images/kavout-web.webp',
             description: 'Análisis de datos',
             pricing: 'paid',
             url: 'https://www.kavout.com',
@@ -948,7 +948,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'ClickUp',
             logo: '/logos/clickup-movil.jpeg',
-            image: '/images/clickup-web.png',
+            image: '/images/clickup-web.webp',
             description: 'Gestión proyectos',
             pricing: 'freemium',
             url: 'https://clickup.com/brain',
@@ -956,7 +956,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Asana',
             logo: '/logos/asana-movil.png',
-            image: '/images/asana-web.png',
+            image: '/images/asana-web.webp',
             description: 'Gestión proyectos',
             pricing: 'freemium',
             url: 'https://asana.com/es/product/ai',
@@ -964,7 +964,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Monday.com',
             logo: '/logos/monday.com-movil.png',
-            image: '/images/monday.com-web.png',
+            image: '/images/monday.com-web.webp',
             description: 'Gestión proyectos',
             pricing: 'freemium',
             url: 'https://monday.com/w/ai',
@@ -972,7 +972,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Trello',
             logo: '/logos/trello-movil.png',
-            image: '/images/trello-web.png',
+            image: '/images/trello-web.webp',
             description: 'Gestión proyectos',
             pricing: 'freemium',
             url: 'https://trello.com',
@@ -985,7 +985,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Harvey',
             logo: '/logos/harvey-movil.jpeg',
-            image: '/images/harvey-web.png',
+            image: '/images/harvey-web.webp',
             description: 'IA legal',
             pricing: 'paid',
             url: 'https://www.harvey.ai',
@@ -993,7 +993,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Luminance',
             logo: '/logos/luminance-movil.jpeg',
-            image: '/images/luminance-web.png',
+            image: '/images/luminance-web.webp',
             description: 'IA legal',
             pricing: 'paid',
             url: 'https://www.luminance.com',
@@ -1001,7 +1001,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'DoNotPay',
             logo: '/logos/donotpay-movil.webp',
-            image: '/images/donotpay-web.png',
+            image: '/images/donotpay-web.webp',
             description: 'IA legal',
             pricing: 'freemium',
             url: 'https://donotpay.com',
@@ -1009,7 +1009,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Spellbook',
             logo: '/logos/spellbook-movil.jpeg',
-            image: '/images/spellbook-web.png',
+            image: '/images/spellbook-web.webp',
             description: 'IA legal',
             pricing: 'paid',
             url: 'https://www.spellbook.legal',
@@ -1017,7 +1017,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Evisort',
             logo: '/logos/evisort-movil.png',
-            image: '/images/evisort-web.png',
+            image: '/images/evisort-web.webp',
             description: 'IA legal',
             pricing: 'paid',
             url: 'https://www.evisort.com',
@@ -1025,7 +1025,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'LawGeex',
             logo: '/logos/lawgeex-movil.png',
-            image: '/images/lawgeex-web.png',
+            image: '/images/lawgeex-web.webp',
             description: 'IA legal',
             pricing: 'paid',
             url: 'https://www.lawgeex.com',
@@ -1043,7 +1043,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'GitHub Copilot',
             logo: '/logos/githubcopilto-movil.png',
-            image: '/images/githubcopilot-web.png',
+            image: '/images/githubcopilot-web.webp',
             description: 'Asistente código',
             pricing: 'paid',
             url: 'https://github.com/features/copilot',
@@ -1051,7 +1051,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Claude',
             logo: '/logos/claude-movil.png',
-            image: '/images/claude-web.png',
+            image: '/images/claude-web.webp',
             description: 'Asistente código',
             pricing: 'freemium',
             url: 'https://claude.ai',
@@ -1059,7 +1059,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Tabnine',
             logo: '/logos/tabnine-movil.png',
-            image: '/images/tabnine-web.png',
+            image: '/images/tabnine-web.webp',
             description: 'Asistente código',
             pricing: 'freemium',
             url: 'https://www.tabnine.com',
@@ -1067,7 +1067,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Ghostwriter',
             logo: '/logos/ghostwriter-moivil.png',
-            image: '/images/ghostwriter-web.png',
+            image: '/images/ghostwriter-web.webp',
             description: 'Asistente código',
             pricing: 'freemium',
             url: 'https://replit.com',
@@ -1075,7 +1075,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Cursor',
             logo: '/logos/cursor-movil.png',
-            image: '/images/cursor-web.png',
+            image: '/images/cursor-web.webp',
             description: 'Asistente código',
             pricing: 'freemium',
             url: 'https://cursor.sh',
@@ -1083,7 +1083,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Bolt',
             logo: '/logos/bolt-movil.png',
-            image: '/images/bolt-web.png',
+            image: '/images/bolt-web.webp',
             description: 'Asistente código',
             pricing: 'freemium',
             url: 'https://bolt.new',
@@ -1096,7 +1096,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Codium',
             logo: '/logos/codium-movil.png',
-            image: '/images/codium-web.png',
+            image: '/images/codium-web.webp',
             description: 'Testing IA',
             pricing: 'freemium',
             url: 'https://www.codium.ai',
@@ -1104,7 +1104,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Testim',
             logo: '/logos/testim-movil.jpeg',
-            image: '/images/testing-web.png',
+            image: '/images/testing-web.webp',
             description: 'Testing IA',
             pricing: 'freemium',
             url: 'https://www.testim.io',
@@ -1112,7 +1112,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Diffblue',
             logo: '/logos/diffblue-movil.png',
-            image: '/images/diffblue-web.png',
+            image: '/images/diffblue-web.webp',
             description: 'Testing IA',
             pricing: 'freemium',
             url: 'https://www.diffblue.com',
@@ -1120,7 +1120,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Testbot',
             logo: '/logos/testingbot-movil.svg',
-            image: '/images/testbot-web.png',
+            image: '/images/testbot-web.webp',
             description: 'Testing IA',
             pricing: 'freemium',
             url: 'https://testingbot.com',
@@ -1128,7 +1128,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Mabl',
             logo: '/logos/mabl-movil.jpeg',
-            image: '/images/mabl-web.png',
+            image: '/images/mabl-web.webp',
             description: 'Testing IA',
             pricing: 'freemium',
             url: 'https://www.mabl.com',
@@ -1141,7 +1141,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'DeepSource',
             logo: '/logos/deepsource-movil.png',
-            image: '/images/deepsource-web.png',
+            image: '/images/deepsource-web.webp',
             description: 'Análisis estático',
             pricing: 'freemium',
             url: 'https://deepsource.io',
@@ -1149,7 +1149,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'SonarQube',
             logo: '/logos/sonarqube-movil.jpeg',
-            image: '/images/sonarqube-web.png',
+            image: '/images/sonarqube-web.webp',
             description: 'Análisis estático',
             pricing: 'freemium',
             url: 'https://www.sonarqube.org',
@@ -1157,7 +1157,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'CodeClimate',
             logo: '/logos/codeclimate-movil.png',
-            image: '/images/codeclimate-web.png',
+            image: '/images/codeclimate-web.webp',
             description: 'Análisis estático',
             pricing: 'freemium',
             url: 'https://codeclimate.com',
@@ -1165,7 +1165,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'CodeFactor',
             logo: '/logos/codefactor-movil.png',
-            image: '/images/codefactor-web.png',
+            image: '/images/codefactor-web.webp',
             description: 'Análisis estático',
             pricing: 'freemium',
             url: 'https://www.codefactor.io',
@@ -1183,7 +1183,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Aidoc',
             logo: '/logos/aidoc-movil.png',
-            image: '/images/aidoc-web.png',
+            image: '/images/aidoc-web.webp',
             description: 'Diagnóstico IA',
             pricing: 'paid',
             url: 'https://www.aidoc.com',
@@ -1191,7 +1191,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'PathAI',
             logo: '/logos/pathai-movil.png',
-            image: '/images/pathai-web.png',
+            image: '/images/pathai-web.webp',
             description: 'Diagnóstico IA',
             pricing: 'paid',
             url: 'https://pathai.com',
@@ -1199,7 +1199,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'MedPaLM',
             logo: '/logos/medpalm-movil.png',
-            image: '/images/medpalm-web.png',
+            image: '/images/medpalm-web.webp',
             description: 'Diagnóstico IA',
             pricing: 'free',
             url: 'https://sites.research.google/med-palm/',
@@ -1207,7 +1207,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Zebra Medical',
             logo: '/logos/zebra-movil.png',
-            image: '/images/zebra-web.png',
+            image: '/images/zebra-web.webp',
             description: 'Diagnóstico IA',
             pricing: 'paid',
             url: 'http://www.zebra-med.com',
@@ -1215,7 +1215,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Lunit',
             logo: '/logos/lunit-movil.webp',
-            image: '/images/lunit-web.png',
+            image: '/images/lunit-web.webp',
             description: 'Diagnóstico IA',
             pricing: 'paid',
             url: 'https://www.lunit.io',
@@ -1228,7 +1228,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Aidoc',
             logo: '/logos/aidoc-movil.png',
-            image: '/images/aidoc-web.png',
+            image: '/images/aidoc-web.webp',
             description: 'Imágenes médicas',
             pricing: 'paid',
             url: 'https://www.aidoc.com',
@@ -1236,7 +1236,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'PathAI',
             logo: '/logos/pathai-movil.png',
-            image: '/images/pathai-web.png',
+            image: '/images/pathai-web.webp',
             description: 'Imágenes médicas',
             pricing: 'paid',
             url: 'https://pathai.com',
@@ -1244,7 +1244,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Zebra Medical',
             logo: '/logos/zebra-movil.png',
-            image: '/images/zebra-web.png',
+            image: '/images/zebra-web.webp',
             description: 'Imágenes médicas',
             pricing: 'paid',
             url: 'http://www.zebra-med.com',
@@ -1252,7 +1252,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Lunit',
             logo: '/logos/lunit-movil.webp',
-            image: '/images/lunit-web.png',
+            image: '/images/lunit-web.webp',
             description: 'Imágenes médicas',
             pricing: 'paid',
             url: 'https://www.lunit.io',
@@ -1260,7 +1260,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Enlitic',
             logo: '/logos/enlitic-movil.png',
-            image: '/images/enlitic-web.png',
+            image: '/images/enlitic-web.webp',
             description: 'Imágenes médicas',
             pricing: 'paid',
             url: 'https://www.enlitic.com',
@@ -1273,7 +1273,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Ada Health',
             logo: '/logos/adahealt-movil.jpg',
-            image: '/images/adahealth-web.png',
+            image: '/images/adahealth-web.webp',
             description: 'Triage IA',
             pricing: 'freemium',
             url: 'https://ada.com',
@@ -1281,7 +1281,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'eMed',
             logo: '/logos/emed-movil.jpg',
-            image: '/images/emed-web.png',
+            image: '/images/emed-web.webp',
             description: 'Triage IA',
             pricing: 'freemium',
             url: 'https://emed.com',
@@ -1289,7 +1289,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Buoy Health',
             logo: '/logos/buoy-movil.png',
-            image: '/images/buoy-web.png',
+            image: '/images/buoy-web.webp',
             description: 'Triage IA',
             pricing: 'freemium',
             url: 'https://www.buoyhealth.com',
@@ -1297,7 +1297,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Your.MD',
             logo: '/logos/your.md-movil.png',
-            image: '/images/your.md-web.png',
+            image: '/images/your.md-web.webp',
             description: 'Triage IA',
             pricing: 'free',
             url: 'https://your.md',
@@ -1310,7 +1310,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'AlphaFold',
             logo: '/logos/alphafold-movil.png',
-            image: '/images/alphafold-web.png',
+            image: '/images/alphafold-web.webp',
             description: 'Investigación biomédica',
             pricing: 'free',
             url: 'https://deepmind.google/science/alphafold/',
@@ -1318,7 +1318,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'BioGPT',
             logo: '/logos/biogpt-movil.png',
-            image: '/images/biogpt-web.png',
+            image: '/images/biogpt-web.webp',
             description: 'Investigación biomédica',
             pricing: 'free',
             url: 'https://huggingface.co/docs/transformers/en/model_doc/biogpt',
@@ -1326,7 +1326,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'AlphaMissense',
             logo: '/logos/alphamissense-movil.webp',
-            image: '/images/alphamissense-web.png',
+            image: '/images/alphamissense-web.webp',
             description: 'Investigación biomédica',
             pricing: 'free',
             url: 'https://alphamissense.depthmind.com',
@@ -1334,7 +1334,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'BenevolentAI',
             logo: '/logos/benevolent-movil.webp',
-            image: '/images/benevolent-web.png',
+            image: '/images/benevolent-web.webp',
             description: 'Investigación biomédica',
             pricing: 'paid',
             url: 'https://www.benevolent.com',
@@ -1352,7 +1352,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Khanmigo',
             logo: '/logos/khanmigo-movil.png',
-            image: '/images/khanmigo-web.png',
+            image: '/images/khanmigo-web.webp',
             description: 'Tutor virtual',
             pricing: 'free',
             url: 'https://www.khanacademy.org/khan-labs',
@@ -1360,7 +1360,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Socratic',
             logo: '/logos/socratic-movil.png',
-            image: '/images/socratic-web.png',
+            image: '/images/socratic-web.webp',
             description: 'Tutor virtual',
             pricing: 'free',
             url: 'https://socratic.org',
@@ -1368,7 +1368,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Scribe AI',
             logo: '/logos/scribe-movil.png',
-            image: '/images/scribe-web.png',
+            image: '/images/scribe-web.webp',
             description: 'Tutor virtual',
             pricing: 'freemium',
             url: 'https://scribehow.com/scribe-ai',
@@ -1376,7 +1376,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'MagicSchool AI',
             logo: '/logos/magicschool-movil.webp',
-            image: '/images/magicschool-web.png',
+            image: '/images/magicschool-web.webp',
             description: 'Tutor virtual',
             pricing: 'freemium',
             url: 'https://www.magicschool.ai',
@@ -1389,7 +1389,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Grammarly',
             logo: '/logos/grammarly-movil.png',
-            image: '/images/grammarly-web.png',
+            image: '/images/grammarly-web.webp',
             description: 'Corrección IA',
             pricing: 'freemium',
             url: 'https://www.grammarly.com',
@@ -1397,7 +1397,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Writable',
             logo: '/logos/writable-movil.jpeg',
-            image: '/images/writable-web.png',
+            image: '/images/writable-web.webp',
             description: 'Corrección IA',
             pricing: 'freemium',
             url: 'https://www.writable.com',
@@ -1405,7 +1405,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Eduaide',
             logo: '/logos/eduaide-movil.png',
-            image: '/images/eduaide-web.png',
+            image: '/images/eduaide-web.webp',
             description: 'Corrección IA',
             pricing: 'freemium',
             url: 'https://eduaide.ai',
@@ -1418,7 +1418,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Quizlet',
             logo: '/logos/quizlet-movil.png',
-            image: '/images/quizlet-web.png',
+            image: '/images/quizlet-web.webp',
             description: 'Generación exámenes',
             pricing: 'freemium',
             url: 'https://quizlet.com/ai-practice-test-generator',
@@ -1426,7 +1426,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'QuestionWell',
             logo: '/logos/questionwell-movil.jpeg',
-            image: '/images/questionwell-web.png',
+            image: '/images/questionwell-web.webp',
             description: 'Generación exámenes',
             pricing: 'freemium',
             url: 'https://questionwell.org',
@@ -1434,7 +1434,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Curipod',
             logo: '/logos/curipod-movil.avif',
-            image: '/images/curipod-web.png',
+            image: '/images/curipod-web.webp',
             description: 'Generación exámenes',
             pricing: 'freemium',
             url: 'https://curipod.com',
@@ -1447,7 +1447,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'TeachMate AI',
             logo: '/logos/teachmate-movil.jpeg',
-            image: '/images/teachmate-web.png',
+            image: '/images/teachmate-web.webp',
             description: 'Asistente docentes',
             pricing: 'freemium',
             url: 'https://teachmateai.com',
@@ -1455,7 +1455,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Diffit',
             logo: '/logos/diffit-movil.png',
-            image: '/images/diffit-web.png',
+            image: '/images/diffit-web.webp',
             description: 'Asistente docentes',
             pricing: 'freemium',
             url: 'https://diffit.me',
@@ -1463,7 +1463,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Speaker Coach',
             logo: '/logos/speakercoach-movil.jpg',
-            image: '/images/speakercoach-web.png',
+            image: '/images/speakercoach-web.webp',
             description: 'Asistente docentes',
             pricing: 'free',
             url: 'https://support.microsoft.com/en-us/office/rehearse-your-slide-show-with-speaker-coach-cd7fc941-5c3b-498c-a225-83ef3f64f07b?utm_source=chatgpt.com',
@@ -1481,7 +1481,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Kavout',
             logo: '/logos/kavout-movil.png',
-            image: '/images/kavout-web.png',
+            image: '/images/kavout-web.webp',
             description: 'Análisis bursátil',
             pricing: 'paid',
             url: 'https://www.kavout.com',
@@ -1489,7 +1489,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Numerai',
             logo: '/logos/numerai-movil.png',
-            image: '/images/numerai-web.png',
+            image: '/images/numerai-web.webp',
             description: 'Análisis bursátil',
             pricing: 'free',
             url: 'https://numerai.com',
@@ -1497,7 +1497,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'EquBot',
             logo: '/logos/equbot-movil.png',
-            image: '/images/equbot-web.png',
+            image: '/images/equbot-web.webp',
             description: 'Análisis bursátil',
             pricing: 'paid',
             url: 'https://equbot.com/ai-indices?utm_source=chatgpt.com',
@@ -1510,7 +1510,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Zest AI',
             logo: '/logos/zest-movil.jpeg',
-            image: '/images/zest-web.png',
+            image: '/images/zest-web.webp',
             description: 'Scoring crediticio',
             pricing: 'paid',
             url: 'https://www.zest.ai',
@@ -1518,7 +1518,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Upstart',
             logo: '/logos/upstart-movil.png',
-            image: '/images/upstart-web.png',
+            image: '/images/upstart-web.webp',
             description: 'Scoring crediticio',
             pricing: 'paid',
             url: 'https://www.upstart.com',
@@ -1526,7 +1526,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'CredoLab',
             logo: '/logos/credolab-movil.png',
-            image: '/images/credolab-web.png',
+            image: '/images/credolab-web.webp',
             description: 'Scoring crediticio',
             pricing: 'paid',
             url: 'https://credolab.com',
@@ -1539,7 +1539,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Cleo',
             logo: '/logos/cleo-movil.png',
-            image: '/images/cleo-web.png',
+            image: '/images/cleo-web.webp',
             description: 'Asesor financiero',
             pricing: 'freemium',
             url: 'https://meetcleo.com',
@@ -1547,7 +1547,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Plum',
             logo: '/logos/plum-movil.jpg',
-            image: '/images/plum-web.png',
+            image: '/images/plum-web.webp',
             description: 'Asesor financiero',
             pricing: 'freemium',
             url: 'https://withplum.com',
@@ -1555,7 +1555,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Wallet AI',
             logo: '/logos/walletai-movil.jpeg',
-            image: '/images/walletai-web.png',
+            image: '/images/walletai-web.webp',
             description: 'Asesor financiero',
             pricing: 'paid',
             url: 'https://wallet.ai',
@@ -1568,7 +1568,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'FICO',
             logo: '/logos/fico-movil.png',
-            image: '/images/fico-web.png',
+            image: '/images/fico-web.webp',
             description: 'Prevención fraude',
             pricing: 'paid',
             url: 'https://www.fico.com',
@@ -1576,7 +1576,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Feedzai',
             logo: '/logos/feedzai-movil.svg',
-            image: '/images/feedzai-web.png',
+            image: '/images/feedzai-web.webp',
             description: 'Prevención fraude',
             pricing: 'paid',
             url: 'https://feedzai.com',
@@ -1584,7 +1584,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Darktrace',
             logo: '/logos/darktrace-movil.png',
-            image: '/images/darktrace-web.png',
+            image: '/images/darktrace-web.webp',
             description: 'Prevención fraude',
             pricing: 'paid',
             url: 'https://www.darktrace.com',
@@ -1602,7 +1602,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Canva Magic Studio',
             logo: '/logos/canvamagicstudio-movil.webp',
-            image: '/images/canvamagicstudio-web.png',
+            image: '/images/canvamagicstudio-web.webp',
             description: 'Diseño gráfico',
             pricing: 'freemium',
             url: 'https://www.canva.com/es_es/magia/',
@@ -1610,7 +1610,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Adobe Firefly',
             logo: '/logos/adobefirefly-logo.png',
-            image: '/images/adobefirefly-web.png',
+            image: '/images/adobefirefly-web.webp',
             description: 'Diseño gráfico',
             pricing: 'freemium',
             url: 'https://firefly.adobe.com/?media=featured',
@@ -1618,7 +1618,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Fotor',
             logo: '/logos/fotor-movil.png',
-            image: '/images/fotor-web.png',
+            image: '/images/fotor-web.webp',
             description: 'Diseño gráfico',
             pricing: 'freemium',
             url: 'https://www.fotor.com/images/create/',
@@ -1631,7 +1631,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Figma AI',
             logo: '/logos/figmaai-movil.svg',
-            image: '/images/figmaai-web.png',
+            image: '/images/figmaai-web.webp',
             description: 'UX/UI asistido',
             pricing: 'freemium',
             url: 'https://www.figma.com/es-es/ai/',
@@ -1639,7 +1639,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Uizard',
             logo: '/logos/uizard-movil.png',
-            image: '/images/uizard-web.png',
+            image: '/images/uizard-web.webp',
             description: 'UX/UI asistido',
             pricing: 'freemium',
             url: 'https://uizard.io',
@@ -1647,7 +1647,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Galileo AI',
             logo: '/logos/galileoai-movil.webp',
-            image: '/images/galileoai-web.png',
+            image: '/images/galileoai-web.webp',
             description: 'UX/UI asistido',
             pricing: 'freemium',
             url: 'https://stitch.withgoogle.com/projects/7135214756829568731-example',
@@ -1660,7 +1660,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Looka',
             logo: '/logos/looka-movil.png',
-            image: '/images/looka-web.png',
+            image: '/images/looka-web.webp',
             description: 'Branding y logos',
             pricing: 'freemium',
             url: 'https://looka.com',
@@ -1668,7 +1668,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Brandmark',
             logo: '/logos/brandmark-movil.png',
-            image: '/images/brandmark-web.png',
+            image: '/images/brandmark-web.webp',
             description: 'Branding y logos',
             pricing: 'freemium',
             url: 'https://brandmark.io',
@@ -1676,7 +1676,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Hatchful',
             logo: '/logos/hatchful-movil.png',
-            image: '/images/hatchful-web.png',
+            image: '/images/hatchful-web.webp',
             description: 'Branding y logos',
             pricing: 'free',
             url: 'https://hatchful.shopify.com',
@@ -1689,7 +1689,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Durable',
             logo: '/logos/durable-movil.png',
-            image: '/images/durable-web.png',
+            image: '/images/durable-web.webp',
             description: 'Diseño web',
             pricing: 'freemium',
             url: 'https://durable.co',
@@ -1697,7 +1697,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Wix ADI',
             logo: '/logos/wix-movil.png',
-            image: '/images/wix-web.png',
+            image: '/images/wix-web.webp',
             description: 'Diseño web',
             pricing: 'freemium',
             url: 'https://www.wix.com/adi',
@@ -1705,7 +1705,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Framer AI',
             logo: '/logos/framerai-movil.webp',
-            image: '/images/framerai-web.png',
+            image: '/images/framerai-web.webp',
             description: 'Diseño web',
             pricing: 'freemium',
             url: 'https://framer.com',
@@ -1723,7 +1723,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Darktrace',
             logo: '/logos/darktrace-movil.png',
-            image: '/images/darktrace-web.png',
+            image: '/images/darktrace-web.webp',
             description: 'Detección amenazas',
             pricing: 'paid',
             url: 'https://www.darktrace.com',
@@ -1731,7 +1731,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Vectra AI',
             logo: '/logos/vectra-movil.png',
-            image: '/images/vectra-web.png',
+            image: '/images/vectra-web.webp',
             description: 'Detección amenazas',
             pricing: 'paid',
             url: 'https://www.vectra.ai',
@@ -1739,7 +1739,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Cylance',
             logo: '/logos/cylance-movil.png',
-            image: '/images/cylance-web.png',
+            image: '/images/cylance-web.webp',
             description: 'Detección amenazas',
             pricing: 'paid',
             url: 'https://www.cylance.com',
@@ -1752,7 +1752,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Exabeam',
             logo: '/logos/exabeam-movil.png',
-            image: '/images/exabeam-web.png',
+            image: '/images/exabeam-web.webp',
             description: 'Análisis comportamiento',
             pricing: 'paid',
             url: 'https://www.exabeam.com',
@@ -1760,7 +1760,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Securonix',
             logo: '/logos/securonix-movil.jpeg',
-            image: '/images/securonix-web.png',
+            image: '/images/securonix-web.webp',
             description: 'Análisis comportamiento',
             pricing: 'paid',
             url: 'https://www.securonix.com',
@@ -1768,7 +1768,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'LogRhythm',
             logo: '/logos/exabeam-movil.png',
-            image: '/images/exabeam-web.png',
+            image: '/images/exabeam-web.webp',
             description: 'Análisis comportamiento',
             pricing: 'paid',
             url: 'https://logrhythm.com',
@@ -1781,7 +1781,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'SentinelOne',
             logo: '/logos/sentinelone-movil.png',
-            image: '/images/sentinelone-web.png',
+            image: '/images/sentinelone-web.webp',
             description: 'Respuesta automática',
             pricing: 'paid',
             url: 'https://www.sentinelone.com',
@@ -1789,7 +1789,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'CrowdStrike',
             logo: '/logos/crowdstrike-movil.webp',
-            image: '/images/crowdstrike-web.png',
+            image: '/images/crowdstrike-web.webp',
             description: 'Respuesta automática',
             pricing: 'paid',
             url: 'https://www.crowdstrike.com',
@@ -1807,7 +1807,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Siemens MindSphere',
             logo: '/logos/siemensmindsphere-movil.webp',
-            image: '/images/siemensmindsphere-web.png',
+            image: '/images/siemensmindsphere-web.webp',
             description: 'Automatización industrial',
             pricing: 'paid',
             url: 'https://www.siemens.com/es/es/productos/software/mindsphere.html',
@@ -1815,7 +1815,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Predix',
             logo: '/logos/predix-movil.png',
-            image: '/images/predix-web.png',
+            image: '/images/predix-web.webp',
             description: 'Automatización industrial',
             pricing: 'paid',
             url: 'https://www.ge.com/digital/predix',
@@ -1823,7 +1823,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Uptake',
             logo: '/logos/uptake-movil.jpg',
-            image: '/images/uptake-web.png',
+            image: '/images/uptake-web.webp',
             description: 'Automatización industrial',
             pricing: 'paid',
             url: 'https://uptake.com',
@@ -1836,7 +1836,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Spot',
             logo: '/logos/spot-movil.png',
-            image: '/images/spot-web.png',
+            image: '/images/spot-web.webp',
             description: 'Robótica IA',
             pricing: 'paid',
             url: 'https://www.bostondynamics.com/products/spot',
@@ -1844,7 +1844,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Covariant',
             logo: '/logos/covariant-movil.jpeg',
-            image: '/images/covariant-web.png',
+            image: '/images/covariant-web.webp',
             description: 'Robótica IA',
             pricing: 'paid',
             url: 'https://covariant.ai',
@@ -1852,7 +1852,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Osaro',
             logo: '/logos/osaro-movil.png',
-            image: '/images/osaro-web.png',
+            image: '/images/osaro-web.webp',
             description: 'Robótica IA',
             pricing: 'paid',
             url: 'https://www.osaro.com',
@@ -1865,7 +1865,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Augury',
             logo: '/logos/augury-movil.png',
-            image: '/images/augury-web.png',
+            image: '/images/augury-web.webp',
             description: 'Mantenimiento predictivo',
             pricing: 'paid',
             url: 'https://www.augury.com',
@@ -1873,7 +1873,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Senseye',
             logo: '/logos/senseye-movil.png',
-            image: '/images/senseye-web.png',
+            image: '/images/senseye-web.webp',
             description: 'Mantenimiento predictivo',
             pricing: 'paid',
             url: 'https://www.siemens.com/global/en/products/services/digital-enterprise-services/analytics-artificial-intelligence-services/senseye-predictive-maintenance.html',
@@ -1881,7 +1881,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'SparkCognition',
             logo: '/logos/sparkcognition-movil.png',
-            image: '/images/sparkcognition-web.png',
+            image: '/images/sparkcognition-web.webp',
             description: 'Mantenimiento predictivo',
             pricing: 'paid',
             url: 'https://avathon.com',
@@ -1894,7 +1894,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'LandingLens',
             logo: '/logos/landinglens-movil.jpg',
-            image: '/images/landinglens-web.png',
+            image: '/images/landinglens-web.webp',
             description: 'Visión artificial',
             pricing: 'paid',
             url: 'https://landing.ai/landinglens/',
@@ -1902,7 +1902,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Matroid',
             logo: '/logos/matroid-movil.png',
-            image: '/images/matroid-web.png',
+            image: '/images/matroid-web.webp',
             description: 'Visión artificial',
             pricing: 'paid',
             url: 'https://www.matroid.com',
@@ -1910,7 +1910,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Cognex',
             logo: '/logos/cognex-movil.png',
-            image: '/images/cognex-web.png',
+            image: '/images/cognex-web.webp',
             description: 'Visión artificial',
             pricing: 'paid',
             url: 'https://www.cognex.com',
@@ -1928,7 +1928,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'ChatGPT',
             logo: '/logos/chatgpt-movil.png',
-            image: '/images/chatpgt-web.png',
+            image: '/images/chatpgt-web.webp',
             description: 'IA multimodal',
             pricing: 'freemium',
             url: 'https://chat.openai.com',
@@ -1936,7 +1936,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Gemini',
             logo: '/logos/gemini-movil.png',
-            image: '/images/gemini-web.png',
+            image: '/images/gemini-web.webp',
             description: 'IA multimodal',
             pricing: 'freemium',
             url: 'https://gemini.google.com',
@@ -1944,7 +1944,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Claude',
             logo: '/logos/claude-movil.png',
-            image: '/images/claude-web.png',
+            image: '/images/claude-web.webp',
             description: 'IA multimodal',
             pricing: 'freemium',
             url: 'https://claude.ai',
@@ -1957,7 +1957,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'LLaVA',
             logo: '/logos/llava-movil.png',
-            image: '/images/llava-web.png',
+            image: '/images/llava-web.webp',
             description: 'Entrada mixta',
             pricing: 'free',
             url: 'https://llava-vl.github.io',
@@ -1965,7 +1965,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Fuyu',
             logo: '/logos/fuyu-movil.jpg',
-            image: '/images/fuyu-web.png',
+            image: '/images/fuyu-web.webp',
             description: 'Entrada mixta',
             pricing: 'free',
             url: 'https://huggingface.co/adept/fuyu-8b',
@@ -1973,7 +1973,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Kosmos',
             logo: '/logos/kosmos-movil.jpeg',
-            image: '/images/kosmos-web.png',
+            image: '/images/kosmos-web.webp',
             description: 'Entrada mixta',
             pricing: 'free',
             url: 'https://www.microsoft.com/en-us/research/publication/kosmos-2-grounding-multimodal-large-language-models-to-the-world/',
@@ -1981,7 +1981,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Flamingo',
             logo: '/logos/flamingo-movil.webp',
-            image: '/images/flamingo-web.png',
+            image: '/images/flamingo-web.webp',
             description: 'Entrada mixta',
             pricing: 'free',
             url: 'https://deepmind.google/discover/blog/tackling-multiple-tasks-with-a-single-visual-language-model/?utm_source=chatgpt.com',
@@ -1999,7 +1999,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'LLaMA',
             logo: '/logos/llama-movil.webp',
-            image: '/images/llama-web.png',
+            image: '/images/llama-web.webp',
             description: 'Modelo open source',
             pricing: 'free',
             url: 'https://llama.meta.com',
@@ -2007,7 +2007,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Mistral',
             logo: '/logos/mistral-movil.png',
-            image: '/images/mistral-web.png',
+            image: '/images/mistral-web.webp',
             description: 'Modelo open source',
             pricing: 'free',
             url: 'https://mistral.ai',
@@ -2015,7 +2015,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Falcon',
             logo: '/logos/falcon-movil.jpeg',
-            image: '/images/falcon-web.png',
+            image: '/images/falcon-web.webp',
             description: 'Modelo open source',
             pricing: 'free',
             url: 'https://falcons.ai',
@@ -2023,7 +2023,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'BLOOM',
             logo: '/logos/bloom-movil.webp',
-            image: '/images/bloom-web.png',
+            image: '/images/bloom-web.webp',
             description: 'Modelo open source',
             pricing: 'free',
             url: 'https://huggingface.co/bigscience/bloom',
@@ -2036,7 +2036,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'LLaVA',
             logo: '/logos/llava-movil.png',
-            image: '/images/llava-web.png',
+            image: '/images/llava-web.webp',
             description: 'Multimodal open source',
             pricing: 'free',
             url: 'https://llava-vl.github.io',
@@ -2044,7 +2044,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Fuyu',
             logo: '/logos/fuyu-movil.jpg',
-            image: '/images/fuyu-web.png',
+            image: '/images/fuyu-web.webp',
             description: 'Multimodal open source',
             pricing: 'free',
             url: 'https://huggingface.co/adept/fuyu-8b',
@@ -2052,7 +2052,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'IDEFICS',
             logo: '/logos/idefics-movil.png',
-            image: '/images/idefics-web.png',
+            image: '/images/idefics-web.webp',
             description: 'Multimodal open source',
             pricing: 'free',
             url: 'https://huggingface.co/HuggingFaceM4/idefics-9b',
@@ -2065,7 +2065,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Transformers',
             logo: '/logos/transformers-movil.png',
-            image: '/images/transformers-web.png',
+            image: '/images/transformers-web.webp',
             description: 'Framework IA',
             pricing: 'free',
             url: 'https://huggingface.co/docs/transformers',
@@ -2073,7 +2073,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'LangChain',
             logo: '/logos/langchain-movil.png',
-            image: '/images/langchain-web.png',
+            image: '/images/langchain-web.webp',
             description: 'Framework IA',
             pricing: 'free',
             url: 'https://www.langchain.com',
@@ -2081,7 +2081,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'OpenLLM',
             logo: '/logos/openllm-movil.jpg',
-            image: '/images/openllm-web.png',
+            image: '/images/openllm-web.webp',
             description: 'Framework IA',
             pricing: 'free',
             url: 'https://github.com/bentoml/OpenLLM',
@@ -2099,7 +2099,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'MemGPT',
             logo: '/logos/mempgt-movil.jpeg',
-            image: '/images/memgpt-web.png',
+            image: '/images/memgpt-web.webp',
             description: 'Memoria IA',
             pricing: 'free',
             url: 'https://memgpt.ai',
@@ -2107,7 +2107,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'MemO',
             logo: '/logos/mem0-movil.webp',
-            image: '/images/mem0-web.png',
+            image: '/images/mem0-web.webp',
             description: 'Memoria IA',
             pricing: 'freemium',
             url: 'https://mem0.ai',
@@ -2115,7 +2115,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Zep AI',
             logo: '/logos/zepai-movil.png',
-            image: '/images/zepai-web.png',
+            image: '/images/zepai-web.webp',
             description: 'Memoria IA',
             pricing: 'freemium',
             url: 'https://www.getzep.com',
@@ -2128,7 +2128,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Tree-of-Thought',
             logo: '/logos/Tree-of-Thought-movil.png',
-            image: '/images/Tree-of-Thought-web.png',
+            image: '/images/Tree-of-Thought-web.webp',
             description: 'Razonamiento IA',
             pricing: 'free',
             url: 'https://github.com/princeton-nlp/tree-of-thought-llm',
@@ -2136,7 +2136,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'GraphGPT',
             logo: '/logos/graphgpt-movil.png',
-            image: '/images/graphgpt-web.png',
+            image: '/images/graphgpt-web.webp',
             description: 'Razonamiento IA',
             pricing: 'free',
             url: 'https://graphgpt.vercel.app',
@@ -2144,7 +2144,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'DSPy',
             logo: '/logos/dspy-movil.png',
-            image: '/images/dspy-web.png',
+            image: '/images/dspy-web.webp',
             description: 'Razonamiento IA',
             pricing: 'free',
             url: 'https://dspy.ai',
@@ -2165,7 +2165,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'AutoGen',
             logo: '/logos/autogen-movil.png',
-            image: '/images/autogen-movil.png',
+            image: '/images/autogen-movil.webp',
             description: 'Agente cognitivo',
             pricing: 'free',
             url: 'https://microsoft.github.io/autogen/',
@@ -2173,7 +2173,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'CrewAI',
             logo: '/logos/crewai-movil.png',
-            image: '/images/crewai-web.png',
+            image: '/images/crewai-web.webp',
             description: 'Agente cognitivo',
             pricing: 'free',
             url: 'https://www.crewai.com',
@@ -2181,7 +2181,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'LangGraph',
             logo: '/logos/langgraph-movil.png',
-            image: '/images/langgraph-web.png',
+            image: '/images/langgraph-web.webp',
             description: 'Agente cognitivo',
             pricing: 'free',
             url: 'https://www.langchain.com/langgraph',
@@ -2207,7 +2207,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'ClearML',
             logo: '/logos/clearml-movil.jpg',
-            image: '/images/clearml-web.png',
+            image: '/images/clearml-web.webp',
             description: 'MLOps',
             pricing: 'freemium',
             url: 'https://clear.ml',
@@ -2215,7 +2215,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'MLflow',
             logo: '/logos/mlflow-movil.png',
-            image: '/images/mlflow-web.png',
+            image: '/images/mlflow-web.webp',
             description: 'MLOps',
             pricing: 'free',
             url: 'https://mlflow.org',
@@ -2223,7 +2223,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'SageMaker',
             logo: '/logos/sagemaker-movil.jpg',
-            image: '/images/sagemaker-web.png',
+            image: '/images/sagemaker-web.webp',
             description: 'MLOps',
             pricing: 'paid',
             url: 'https://aws.amazon.com/sagemaker/',
@@ -2236,7 +2236,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'TruLens',
             logo: '/logos/trulens-movil.png',
-            image: '/images/trulens-web.png',
+            image: '/images/trulens-web.webp',
             description: 'Monitoreo IA',
             pricing: 'free',
             url: 'https://www.trulens.org',
@@ -2244,15 +2244,15 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Helicone',
             logo: '/logos/helicone-movil.png',
-            image: '/images/helicone-web.png',
+            image: '/images/helicone-web.webp',
             description: 'Monitoreo IA',
             pricing: 'freemium',
             url: 'https://helicone.ai',
           },
           {
             name: 'PromptLayer',
-            logo: '/logos/promptlayer-movil.jpeg',
-            image: '/images/promptlayer-web.png',
+            logo: '/logos/promptlayer-movil.webp',
+            image: '/images/promptlayer-web.webp',
             description: 'Monitoreo IA',
             pricing: 'freemium',
             url: 'https://promptlayer.com',
@@ -2260,7 +2260,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Arize AI',
             logo: '/logos/arizeai-movil.webp',
-            image: '/images/arizeai-web.png',
+            image: '/images/arizeai-web.webp',
             description: 'Monitoreo IA',
             pricing: 'freemium',
             url: 'https://arize.com',
@@ -2273,7 +2273,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'LoRA',
             logo: '/logos/lora-movil.jpg',
-            image: '/images/lora-web.png',
+            image: '/images/lora-web.webp',
             description: 'Fine-tuning',
             pricing: 'free',
             url: 'https://huggingface.co/docs/peft/main/en/conceptual_guides/lora',
@@ -2281,7 +2281,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'LangChain',
             logo: '/logos/langchain-movil.png',
-            image: '/images/langchain-web.png',
+            image: '/images/langchain-web.webp',
             description: 'RAG',
             pricing: 'free',
             url: 'https://www.langchain.com',
@@ -2289,7 +2289,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Haystack',
             logo: '/logos/haystack-movil.jpg',
-            image: '/images/haystack-web.png',
+            image: '/images/haystack-web.webp',
             description: 'RAG',
             pricing: 'free',
             url: 'https://haystack.deepset.ai',
@@ -2297,15 +2297,15 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Unstructured',
             logo: '/logos/unstructured-movil.webp',
-            image: '/images/unstructured-web.png',
+            image: '/images/unstructured-web.webp',
             description: 'RAG',
             pricing: 'free',
             url: 'https://unstructured.io',
           },
           {
             name: 'RAGAS',
-            logo: '/logos/ragas-movil.ico',
-            image: '/images/ragas-web.png',
+            logo: '/logos/ragas-movil.webp',
+            image: '/images/ragas-web.webp',
             description: 'RAG',
             pricing: 'free',
             url: 'https://www.ragas.io',
@@ -2323,7 +2323,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Writesonic',
             logo: '/logos/writesonic-movil.png',
-            image: '/images/writesonic-web.png',
+            image: '/images/writesonic-web.webp',
             description: 'Marketing IA',
             pricing: 'freemium',
             url: 'https://writesonic.com',
@@ -2331,7 +2331,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Copy.ai',
             logo: '/logos/copyai-movil.jpg',
-            image: '/images/copyai-web.png',
+            image: '/images/copyai-web.webp',
             description: 'Marketing IA',
             pricing: 'paid',
             url: 'https://copy.ai',
@@ -2339,7 +2339,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Jasper',
             logo: '/logos/jasper-movil.png',
-            image: '/images/jasper-web.png',
+            image: '/images/jasper-web.webp',
             description: 'Marketing IA',
             pricing: 'paid',
             url: 'https://jasper.ai',
@@ -2347,7 +2347,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Hypotenuse AI',
             logo: '/logos/hypotenuseai-movil.jpeg',
-            image: '/images/hypotenuseai-web.png',
+            image: '/images/hypotenuseai-web.webp',
             description: 'Marketing IA',
             pricing: 'freemium',
             url: 'https://hypotenuse.ai',
@@ -2360,7 +2360,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'HubSpot AI',
             logo: '/logos/hubspot-movil.webp',
-            image: '/images/hubspot-web.png',
+            image: '/images/hubspot-web.webp',
             description: 'CRM IA',
             pricing: 'freemium',
             url: 'https://www.hubspot.com/ai',
@@ -2368,7 +2368,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Salesforce Einstein AI',
             logo: '/logos/salesforce-movil.png',
-            image: '/images/salesforce-web.png',
+            image: '/images/salesforce-web.webp',
             description: 'CRM IA',
             pricing: 'paid',
             url: 'https://www.salesforce.com/products/einstein/',
@@ -2376,7 +2376,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'ChatSpot',
             logo: '/logos/chatspot-movil.png',
-            image: '/images/chatspot-web.png',
+            image: '/images/chatspot-web.webp',
             description: 'CRM IA',
             pricing: 'freemium',
             url: 'https://chatspot.ai',
@@ -2397,7 +2397,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'GetResponse AI',
             logo: '/logos/getresponse-movil.png',
-            image: '/images/getresponse-web.png',
+            image: '/images/getresponse-web.webp',
             description: 'Email marketing',
             pricing: 'freemium',
             url: 'https://www.getresponse.com/features/email-marketing/email-assistant?utm_source=chatgpt.com',
@@ -2405,7 +2405,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Mailchimp AI',
             logo: '/logos/mailchimp-movil.jpg',
-            image: '/images/mailchimp-web.png',
+            image: '/images/mailchimp-web.webp',
             description: 'Email marketing',
             pricing: 'freemium',
             url: 'https://mailchimp.com',
@@ -2423,7 +2423,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'DeepL',
             logo: '/logos/deepl-movil.png',
-            image: '/images/deepl-web.png',
+            image: '/images/deepl-web.webp',
             description: 'Traducción IA',
             pricing: 'freemium',
             url: 'https://www.deepl.com',
@@ -2431,7 +2431,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Google Translate',
             logo: '/logos/googletranslate-movil.png',
-            image: '/images/googletranslate-web.png',
+            image: '/images/googletranslate-web.webp',
             description: 'Traducción IA',
             pricing: 'free',
             url: 'https://translate.google.com',
@@ -2439,7 +2439,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'ModernMT',
             logo: '/logos/modernmt-movil.png',
-            image: '/images/modernmt-web.png',
+            image: '/images/modernmt-web.webp',
             description: 'Traducción IA',
             pricing: 'freemium',
             url: 'https://www.modernmt.com',
@@ -2447,7 +2447,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Amazon Translate',
             logo: '/logos/amazontranslate-movil.png',
-            image: '/images/amazontranslate-web.png',
+            image: '/images/amazontranslate-web.webp',
             description: 'Traducción IA',
             pricing: 'paid',
             url: 'https://aws.amazon.com/translate/',
@@ -2460,7 +2460,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Papercup',
             logo: '/logos/papercup-movil.png',
-            image: '/images/papercup-web.png',
+            image: '/images/papercup-web.webp',
             description: 'Doblaje IA',
             pricing: 'paid',
             url: 'https://www.papercup.com',
@@ -2468,7 +2468,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Dubverse',
             logo: '/logos/dubverse-movil.jpeg',
-            image: '/images/dubverse-web.png',
+            image: '/images/dubverse-web.webp',
             description: 'Doblaje IA',
             pricing: 'freemium',
             url: 'https://dubverse.ai',
@@ -2476,7 +2476,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'HeyGen',
             logo: '/logos/heygen-movil.png',
-            image: '/images/heygen-web.png',
+            image: '/images/heygen-web.webp',
             description: 'Doblaje IA',
             pricing: 'freemium',
             url: 'https://www.heygen.com/translate',
@@ -2484,7 +2484,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Subly AI',
             logo: '/logos/subly-movil.png',
-            image: '/images/subly-web.png',
+            image: '/images/subly-web.webp',
             description: 'Subtitulación IA',
             pricing: 'freemium',
             url: 'https://www.getsubly.com',
@@ -2502,7 +2502,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Hive AI',
             logo: '/logos/hive-movil.png',
-            image: '/images/hive-web.png',
+            image: '/images/hive-web.webp',
             description: 'Detección IA',
             pricing: 'paid',
             url: 'https://thehive.ai',
@@ -2510,7 +2510,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'AI or Not',
             logo: '/logos/aiornot-movil.svg',
-            image: '/images/aiornot-web.png',
+            image: '/images/aiornot-web.webp',
             description: 'Detección IA',
             pricing: 'freemium',
             url: 'https://www.aiornot.com',
@@ -2518,7 +2518,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Sensity AI',
             logo: '/logos/sensity-movil.webp',
-            image: '/images/sensity-web.png',
+            image: '/images/sensity-web.webp',
             description: 'Detección IA',
             pricing: 'paid',
             url: 'https://sensity.ai',
@@ -2531,7 +2531,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'TruEra',
             logo: '/logos/truera-movil.png',
-            image: '/images/truera-web.png',
+            image: '/images/truera-web.webp',
             description: 'Auditoría IA',
             pricing: 'freemium',
             url: 'https://truera.com',
@@ -2539,7 +2539,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Fiddler AI',
             logo: '/logos/fiddler-movil.jpeg',
-            image: '/images/fiddler-web.png',
+            image: '/images/fiddler-web.webp',
             description: 'Auditoría IA',
             pricing: 'freemium',
             url: 'https://www.fiddler.ai/auditor',
@@ -2547,7 +2547,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Credo AI',
             logo: '/logos/credoai-movil.png',
-            image: '/images/credoai-web.png',
+            image: '/images/credoai-web.webp',
             description: 'Auditoría IA',
             pricing: 'freemium',
             url: 'https://credo.ai',
@@ -2565,7 +2565,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'ChatPDF',
             logo: '/logos/chatpdf-movil.png',
-            image: '/images/chatpdf-web.png',
+            image: '/images/chatpdf-web.webp',
             description: 'QA documentos',
             pricing: 'freemium',
             url: 'https://www.chatpdf.com',
@@ -2573,7 +2573,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'AskYourPDF',
             logo: '/logos/askyourpdf-movil.jpg',
-            image: '/images/askyourpdf-web.png',
+            image: '/images/askyourpdf-web.webp',
             description: 'QA documentos',
             pricing: 'freemium',
             url: 'https://askyourpdf.com',
@@ -2581,7 +2581,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Glean',
             logo: '/logos/glean-movil.jpeg',
-            image: '/images/glean-web.png',
+            image: '/images/glean-web.webp',
             description: 'QA documentos',
             pricing: 'freemium',
             url: 'https://www.glean.com',
@@ -2589,7 +2589,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Klu',
             logo: '/logos/klu-movil.jpeg',
-            image: '/images/klu-web.png',
+            image: '/images/klu-web.webp',
             description: 'QA documentos',
             pricing: 'freemium',
             url: 'https://klu.ai',
@@ -2597,7 +2597,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Danswer',
             logo: '/logos/danswer-movil.jpg',
-            image: '/images/danswer-web.png',
+            image: '/images/danswer-web.webp',
             description: 'QA documentos',
             pricing: 'free',
             url: 'https://danswer.ai',
@@ -2610,7 +2610,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Perplexity',
             logo: '/logos/perplexity-movil.png',
-            image: '/images/perplexity-web.png',
+            image: '/images/perplexity-web.webp',
             description: 'Buscador IA',
             pricing: 'freemium',
             url: 'https://www.perplexity.ai',
@@ -2618,7 +2618,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'You.com',
             logo: '/logos/you.com-movil.jpg',
-            image: '/images/you.com-web.png',
+            image: '/images/you.com-web.webp',
             description: 'Buscador IA',
             pricing: 'freemium',
             url: 'https://you.com',
@@ -2626,7 +2626,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Phind',
             logo: '/logos/phind-movil.webp',
-            image: '/images/phind-web.png',
+            image: '/images/phind-web.webp',
             description: 'Buscador IA',
             pricing: 'freemium',
             url: 'https://phind.com',

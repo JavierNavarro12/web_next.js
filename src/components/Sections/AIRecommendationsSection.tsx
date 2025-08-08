@@ -14,7 +14,7 @@ export default function AIRecommendationsSection({
     {
       name: 'Cursor',
       description: 'Editor de código IA',
-      image: '/images/cursor-web.png',
+      image: '/images/cursor-web.webp',
       logo: '/logos/cursor-movil.png',
       url: 'https://cursor.sh',
       isNew: true,
@@ -22,7 +22,7 @@ export default function AIRecommendationsSection({
     {
       name: 'Descript',
       description: 'Edición de video con IA',
-      image: '/images/descript-web.png',
+      image: '/images/descript-web.webp',
       logo: '/logos/descript-movil.png',
       url: 'https://www.descript.com',
       isNew: true,
@@ -30,7 +30,7 @@ export default function AIRecommendationsSection({
     {
       name: 'Make',
       description: 'Automatización visual',
-      image: '/images/make-web.png',
+      image: '/images/make-web.webp',
       logo: '/logos/make-movil.png',
       url: 'https://www.make.com',
       isNew: false,
@@ -38,7 +38,7 @@ export default function AIRecommendationsSection({
     {
       name: 'Midjourney',
       description: 'Generación de imágenes',
-      image: '/images/midjourney-web.png',
+      image: '/images/midjourney-web.webp',
       logo: '/logos/midjourney-movil.png',
       url: 'https://www.midjourney.com',
       isNew: false,
@@ -46,7 +46,7 @@ export default function AIRecommendationsSection({
     {
       name: 'ElevenLabs',
       description: 'Síntesis de voz IA',
-      image: '/images/elevenlabs-web.png',
+      image: '/images/elevenlabs-web.webp',
       logo: '/logos/elevenlabs-movil.png',
       url: 'https://elevenlabs.io',
       isNew: false,
@@ -54,7 +54,7 @@ export default function AIRecommendationsSection({
     {
       name: 'Synthesia',
       description: 'Videos con avatares IA',
-      image: '/images/Synthesia-web.png',
+      image: '/images/Synthesia-web.webp',
       logo: '/logos/synthesia-movil.png',
       url: 'https://www.synthesia.io',
       isNew: false,
@@ -62,7 +62,7 @@ export default function AIRecommendationsSection({
     {
       name: 'Pika Labs',
       description: 'Generación de video',
-      image: '/images/pikalabs-web.png',
+      image: '/images/pikalabs-web.webp',
       logo: '/logos/pikalabs-movil.png',
       url: 'https://pika.art',
       isNew: true,
@@ -70,7 +70,7 @@ export default function AIRecommendationsSection({
     {
       name: 'ClickUp',
       description: 'Gestión de tareas',
-      image: '/images/clickup-web.png',
+      image: '/images/clickup-web.webp',
       logo: '/logos/clickup-movil.jpeg',
       url: 'https://clickup.com',
       isNew: true,

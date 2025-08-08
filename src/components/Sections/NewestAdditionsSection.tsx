@@ -10,7 +10,7 @@ const getNewestTools = () => {
     {
       name: 'ChatGPT',
       description: 'Asistente IA conversacional',
-      image: '/images/chatpgt-web.png',
+      image: '/images/chatpgt-web.webp',
       logo: '/logos/chatgpt-movil.png',
       url: 'https://chatgpt.com',
       pricing: 'freemium' as const,
@@ -18,7 +18,7 @@ const getNewestTools = () => {
     {
       name: 'Claude',
       description: 'IA avanzada para conversación',
-      image: '/images/claude-web.png',
+      image: '/images/claude-web.webp',
       logo: '/logos/claude-movil.png',
       url: 'https://claude.ai',
       pricing: 'freemium' as const,
@@ -26,7 +26,7 @@ const getNewestTools = () => {
     {
       name: 'Midjourney',
       description: 'Generación de imágenes IA',
-      image: '/images/midjourney-web.png',
+      image: '/images/midjourney-web.webp',
       logo: '/logos/midjourney-movil.png',
       url: 'https://midjourney.com',
       pricing: 'paid' as const,
@@ -34,7 +34,7 @@ const getNewestTools = () => {
     {
       name: 'GitHub Copilot',
       description: 'Asistente de código IA',
-      image: '/images/githubcopilot-web.png',
+      image: '/images/githubcopilot-web.webp',
       logo: '/logos/githubcopilto-movil.png',
       url: 'https://github.com/features/copilot',
       pricing: 'paid' as const,
@@ -42,7 +42,7 @@ const getNewestTools = () => {
     {
       name: 'Perplexity',
       description: 'Buscador con IA',
-      image: '/images/perplexity-web.png',
+      image: '/images/perplexity-web.webp',
       logo: '/logos/perplexity-movil.png',
       url: 'https://perplexity.ai',
       pricing: 'freemium' as const,
@@ -50,7 +50,7 @@ const getNewestTools = () => {
     {
       name: 'Cursor',
       description: 'Editor de código IA',
-      image: '/images/cursor-web.png',
+      image: '/images/cursor-web.webp',
       logo: '/logos/cursor-movil.png',
       url: 'https://cursor.sh',
       pricing: 'freemium' as const,
@@ -58,7 +58,7 @@ const getNewestTools = () => {
     {
       name: 'Notion',
       description: 'Workspace inteligente',
-      image: '/images/notion-web.png',
+      image: '/images/notion-web.webp',
       logo: '/logos/notion-movil.jpg',
       url: 'https://notion.so',
       pricing: 'freemium' as const,
@@ -66,7 +66,7 @@ const getNewestTools = () => {
     {
       name: 'Gamma',
       description: 'Presentaciones con IA',
-      image: '/images/gamma-web.png',
+      image: '/images/gamma-web.webp',
       logo: '/logos/gamma-movil.jpeg',
       url: 'https://gamma.app',
       pricing: 'freemium' as const,
@@ -74,7 +74,7 @@ const getNewestTools = () => {
     {
       name: 'Runway',
       description: 'Video generativo IA',
-      image: '/images/runway-web.png',
+      image: '/images/runway-web.webp',
       logo: '/logos/runway-movil.webp',
       url: 'https://runwayml.com',
       pricing: 'freemium' as const,
@@ -82,7 +82,7 @@ const getNewestTools = () => {
     {
       name: 'Jasper',
       description: 'Escritura con IA',
-      image: '/images/jasper-web.png',
+      image: '/images/jasper-web.webp',
       logo: '/logos/jasper-movil.png',
       url: 'https://jasper.ai',
       pricing: 'paid' as const,

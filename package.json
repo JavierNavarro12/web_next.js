@@ -26,10 +26,10 @@
     ]
   },
   "dependencies": {
-    "hls.js": "^1.5.17",
     "@emailjs/browser": "^4.4.1",
     "@heroicons/react": "^2.2.0",
     "firebase": "^12.0.0",
+    "hls.js": "^1.5.17",
     "next": "15.4.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@squoosh/cli": "^0.7.1",
     "@swc/jest": "^0.2.39",
     "@tailwindcss/postcss": "^4",
     "@testing-library/jest-dom": "^6.6.3",

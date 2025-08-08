@@ -2,7 +2,14 @@
 /// <reference types="jest" />
 /// <reference types="@testing-library/jest-dom" />
 
-import { filterTools, getPricingText, handleToolClick, getToolsByCategory, getToolsCount, getFeaturedTools } from '../toolUtils';
+import {
+  filterTools,
+  getPricingText,
+  handleToolClick,
+  getToolsByCategory,
+  getToolsCount,
+  getFeaturedTools,
+} from '../toolUtils';
 import { AITool } from '../../data/ai-tools';
 
 // Mock aiCategories data
@@ -18,18 +25,18 @@ const mockAICategories = [
             image: '/images/chatgpt-web.png',
             description: 'Conversational AI',
             pricing: 'freemium' as const,
-            url: 'https://chatgpt.com'
+            url: 'https://chatgpt.com',
           },
           {
             name: 'Claude',
-            image: '/images/claude-web.png', 
+            image: '/images/claude-web.webp',
             description: 'AI Assistant',
             pricing: 'freemium' as const,
-            url: 'https://claude.ai'
-          }
-        ]
-      }
-    ]
+            url: 'https://claude.ai',
+          },
+        ],
+      },
+    ],
   },
   {
     name: 'DevTools',
@@ -42,12 +49,12 @@ const mockAICategories = [
             image: '/images/github-web.png',
             description: 'AI pair programmer',
             pricing: 'paid' as const,
-            url: 'https://copilot.github.com'
-          }
-        ]
-      }
-    ]
-  }
+            url: 'https://copilot.github.com',
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 // Mock the data import - debe estar antes de los imports que usan los datos
@@ -64,18 +71,18 @@ jest.mock('../../data/ai-categories', () => ({
               image: '/images/chatgpt-web.png',
               description: 'Conversational AI',
               pricing: 'freemium',
-              url: 'https://chatgpt.com'
+              url: 'https://chatgpt.com',
             },
             {
               name: 'Claude',
-              image: '/images/claude-web.png', 
+              image: '/images/claude-web.webp',
               description: 'AI Assistant',
               pricing: 'freemium',
-              url: 'https://claude.ai'
-            }
-          ]
-        }
-      ]
+              url: 'https://claude.ai',
+            },
+          ],
+        },
+      ],
     },
     {
       name: 'DevTools',
@@ -88,13 +95,13 @@ jest.mock('../../data/ai-categories', () => ({
               image: '/images/github-web.png',
               description: 'AI pair programmer',
               pricing: 'paid',
-              url: 'https://copilot.github.com'
-            }
-          ]
-        }
-      ]
-    }
-  ]
+              url: 'https://copilot.github.com',
+            },
+          ],
+        },
+      ],
+    },
+  ],
 }));
 
 // Mock window.open
@@ -115,11 +122,11 @@ describe('toolUtils', () => {
     });
 
     it('should return correct text for paid pricing', () => {
-      expect(getPricingText('paid')).toBe('Pago');  // Ajustado según implementación real
+      expect(getPricingText('paid')).toBe('Pago'); // Ajustado según implementación real
     });
 
     it('should return correct text for freemium pricing', () => {
-      expect(getPricingText('freemium')).toBe('Gratis y pago');  // Ajustado según implementación real
+      expect(getPricingText('freemium')).toBe('Gratis y pago'); // Ajustado según implementación real
     });
 
     it('should return default text when no pricing provided', () => {
@@ -146,7 +153,7 @@ describe('toolUtils', () => {
       expect(mockWindowOpen).toHaveBeenCalledWith(
         'https://example.com',
         '_blank',
-        'noopener,noreferrer'
+        'noopener,noreferrer',
       );
     });
 
@@ -160,7 +167,7 @@ describe('toolUtils', () => {
 
       // Should not throw error
       expect(() => handleToolClick(toolWithoutUrl)).not.toThrow();
-      
+
       // Should not call window.open
       expect(mockWindowOpen).not.toHaveBeenCalled();
     });
@@ -187,28 +194,28 @@ describe('toolUtils', () => {
         image: '/images/free-web.png',
         pricing: 'free',
         description: 'A free testing tool',
-        url: 'https://free.com'
+        url: 'https://free.com',
       },
       {
         name: 'Paid Tool',
         image: '/images/paid-web.png',
         pricing: 'paid',
         description: 'A premium solution',
-        url: 'https://paid.com'
+        url: 'https://paid.com',
       },
       {
         name: 'Freemium Tool',
         image: '/images/freemium-web.png',
         pricing: 'freemium',
         description: 'Basic free, premium paid',
-        url: 'https://freemium.com'
+        url: 'https://freemium.com',
       },
       {
         name: 'Another Free',
         image: '/images/another-web.png',
         pricing: 'free',
         description: 'Another free option',
-        url: 'https://another.com'
+        url: 'https://another.com',
       },
     ];
 
@@ -233,22 +240,22 @@ describe('toolUtils', () => {
     it('should filter by search term in name', () => {
       const result = filterTools(tools, 'all', 'Freemium');
       expect(result).toHaveLength(1);
-      expect(result.map(t => t.name)).toContain('Freemium Tool');
+      expect(result.map((t) => t.name)).toContain('Freemium Tool');
     });
 
     it('should filter by search term in description', () => {
       const result = filterTools(tools, 'all', 'premium');
       expect(result).toHaveLength(2);
-      expect(result.map(t => t.name)).toContain('Paid Tool');
-      expect(result.map(t => t.name)).toContain('Freemium Tool');
+      expect(result.map((t) => t.name)).toContain('Paid Tool');
+      expect(result.map((t) => t.name)).toContain('Freemium Tool');
     });
 
     it('should ignore whitespace in search term', () => {
       const result = filterTools(tools, 'all', '  free  ');
       expect(result).toHaveLength(3); // "Free Tool", "Freemium Tool", "Another Free"
-      expect(result.map(t => t.name)).toContain('Free Tool');
-      expect(result.map(t => t.name)).toContain('Freemium Tool');
-      expect(result.map(t => t.name)).toContain('Another Free');
+      expect(result.map((t) => t.name)).toContain('Free Tool');
+      expect(result.map((t) => t.name)).toContain('Freemium Tool');
+      expect(result.map((t) => t.name)).toContain('Another Free');
     });
 
     it('should return all tools when search term is empty', () => {
@@ -275,7 +282,7 @@ describe('toolUtils', () => {
       const result = getToolsByCategory('Generativa');
       // Ajustado para trabajar con o sin mock
       expect(result.length).toBeGreaterThan(0);
-      expect(result.some(tool => tool.name === 'ChatGPT')).toBe(true);
+      expect(result.some((tool) => tool.name === 'ChatGPT')).toBe(true);
     });
 
     it('should return empty array for non-existing category', () => {
@@ -314,7 +321,7 @@ describe('toolUtils', () => {
 
     it('should include popular tools', () => {
       const featured = getFeaturedTools();
-      const toolNames = featured.map(tool => tool.name);
+      const toolNames = featured.map((tool) => tool.name);
       expect(toolNames).toContain('ChatGPT');
       expect(toolNames).toContain('Claude');
       // Removido GitHub Copilot ya que no está en featured tools reales
@@ -326,4 +333,4 @@ describe('toolUtils', () => {
       expect(featured.length).toBeLessThanOrEqual(20); // Límite razonable
     });
   });
-}); 
+});

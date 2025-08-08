@@ -163,13 +163,13 @@ const allArticles: Article[] = [
     title: 'OpenAI presenta GPT-5, su LLM más avanzado',
     description:
       'GPT-5 llega como el modelo más inteligente, rápido y preciso de OpenAI, con planes gratuitos y de pago para usuarios y empresas.',
-    image: '/images/articulo2.jpg',
+    image: '/images/articulo2.webp',
     category: 'spotlight',
     categoryLabel: 'A FONDO',
     date: '08 Aug 2025',
     readTime: '9 min',
     author: 'Jose Montes',
-    authorImage: '/images/articulo2autor.jpeg',
+    authorImage: '/images/articulo2autor.webp',
     featured: true,
     featuredOrder: 1,
     contentSections: [
@@ -184,7 +184,7 @@ const allArticles: Article[] = [
         ],
       },
       {
-        image: '/images/articulo2.1.jpg',
+        image: '/images/articulo2.1.webp',
       },
       // Bloque de texto entre articulo2.1 y el video de YouTube
       {
@@ -256,7 +256,7 @@ const allArticles: Article[] = [
     date: '31 Jul 2025',
     readTime: '4 min',
     author: 'Redacción KeepCoding',
-    authorImage: '/images/articulo3autor.png',
+    authorImage: '/images/articulo3autor.webp',
     featured: true,
     featuredOrder: 3,
     contentSections: [
@@ -273,7 +273,7 @@ const allArticles: Article[] = [
         title: '¿Qué es DALL-E y para quién está hecho?',
       },
       {
-        image: '/images/dall.e-web.png',
+        image: '/images/dall.e-web.webp',
       },
       {
         paragraphs: [
@@ -306,7 +306,7 @@ const allArticles: Article[] = [
         title: 'Midjourney: el laboratorio creativo para artistas y diseñadores',
       },
       {
-        image: '/images/midjourney-web.png',
+        image: '/images/midjourney-web.webp',
       },
       {
         paragraphs: [
@@ -341,7 +341,7 @@ const allArticles: Article[] = [
         ],
       },
       {
-        image: '/images/stablediffusion-web.png',
+        image: '/images/stablediffusion-web.webp',
       },
       {
         title: 'Fortalezas de Stable Diffusion',
@@ -422,7 +422,7 @@ const allArticles: Article[] = [
     date: '06 Aug 2025',
     readTime: '4 min',
     author: 'Antonio Cáceres Flores',
-    authorImage: '/images/articulo3autor.png',
+    authorImage: '/images/articulo3autor.webp',
     featured: true,
     featuredOrder: 4,
     contentSections: [

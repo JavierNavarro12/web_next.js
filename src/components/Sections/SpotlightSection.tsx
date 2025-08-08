@@ -11,7 +11,7 @@ export default function SpotlightSection({ onViewAll }: SpotlightSectionProps) {
   const videoTools = [
     {
       name: 'Sora',
-      image: '/images/sora-web.png',
+      image: '/images/sora-web.webp',
       logo: '/logos/sora-movil.png',
       description: 'Video generativo',
       category: 'Generación de Video',
@@ -20,7 +20,7 @@ export default function SpotlightSection({ onViewAll }: SpotlightSectionProps) {
     },
     {
       name: 'Veo',
-      image: '/images/veo-web.png',
+      image: '/images/veo-web.webp',
       logo: '/logos/veo-movil.png',
       description: 'Video IA',
       category: 'Video IA',
@@ -29,7 +29,7 @@ export default function SpotlightSection({ onViewAll }: SpotlightSectionProps) {
     },
     {
       name: 'Runway',
-      image: '/images/runway-web.png',
+      image: '/images/runway-web.webp',
       logo: '/logos/runway-movil.webp',
       description: 'Edición de video',
       category: 'Edición de Video',
@@ -38,7 +38,7 @@ export default function SpotlightSection({ onViewAll }: SpotlightSectionProps) {
     },
     {
       name: 'Pika Labs',
-      image: '/images/pikalabs-web.png',
+      image: '/images/pikalabs-web.webp',
       logo: '/logos/pikalabs-movil.png',
       description: 'Video IA',
       category: 'Video IA',

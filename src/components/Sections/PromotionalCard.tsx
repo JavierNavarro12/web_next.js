@@ -219,7 +219,7 @@ export default function PromotionalCard() {
                     ) : (
                       /* Estado 2: Resultado generado */
                       <Image
-                        src="/images/leonardofinal.jpg"
+                        src="/images/leonardofinal.webp"
                         alt="Leonardo AI generated result"
                         fill
                         sizes="280px"
@@ -369,7 +369,7 @@ export default function PromotionalCard() {
                   ) : (
                     /* Estado 2: Resultado generado */
                     <Image
-                      src="/images/leonardofinal.jpg"
+                      src="/images/leonardofinal.webp"
                       alt="Leonardo AI generated result"
                       fill
                       sizes="(max-width: 1024px) 280px, 320px"
