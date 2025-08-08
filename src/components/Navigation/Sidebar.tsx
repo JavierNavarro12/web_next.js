@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { aiCategories } from '../../data/ai-tools';
 import {
   SparklesIcon,
@@ -88,6 +89,7 @@ const mainSections = [
 ];
 
 export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}) {
+  const router = useRouter();
   const { activeCategory, setActiveCategory } = useAppContext();
   const { activeSubcategory, setActiveSubcategory } = useSubcategoryContext();
   const { showFeedback, setShowFeedback } = useFeedbackContext();
@@ -176,11 +178,9 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setActiveCategory(categoryName);
     }
 
-    // Al seleccionar una categoría desde un artículo, volver al home (navegación cliente)
-    if (typeof window !== 'undefined' && window.location.pathname.startsWith('/articles/')) {
-      setActiveNav('explorar');
-      window.location.href = '/';
-    }
+    // Navegar al home para mostrar la vista de categorías desde cualquier ruta (incluye /herramientas)
+    setActiveNav('explorar');
+    router.push('/');
   };
 
   // Función para manejar clic en subcategoría usando el sistema centralizado
@@ -199,7 +199,12 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
         navigateToSubcategory(subcategoryName);
       }, 100);
     } else {
-      navigateToSubcategory(subcategoryName);
+      // Para asegurar navegación desde cualquier ruta (incluye /herramientas),
+      // establecemos la subcategoría y navegamos al home.
+      setActiveSubcategory(subcategoryName);
+      setActiveNav('explorar');
+      router.push('/');
+      return;
     }
 
     // Si estamos en la página "Añadir una IA", cerrarla
@@ -231,22 +236,17 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setActiveCategory(null); // Limpiar categoría activa cuando se va a Explorar
       setActiveSubcategory(null); // Limpiar subcategoría también
       setActiveNav('explorar'); // Cambiar navegación
-      navigateToTop(); // Ir a la parte superior
-      if (typeof window !== 'undefined' && window.location.pathname.startsWith('/articles/')) {
-        window.location.href = '/';
-      }
+      router.push('/');
     } else if (sectionKey === 'herramientas' && setActiveCategory) {
-      setActiveCategory(null); // Limpiar categoría activa cuando se va a Herramientas
-      setActiveSubcategory(null); // Limpiar subcategoría también
-      navigateToTop(); // Ir a la parte superior
+      setActiveCategory(null);
+      setActiveSubcategory(null);
+      setActiveNav('herramientas');
+      router.push('/herramientas');
     } else if (sectionKey === 'articulos' && setActiveCategory) {
       setActiveCategory(null); // Limpiar categoría activa cuando se va a Artículos
       setActiveSubcategory(null); // Limpiar subcategoría también
       setActiveNav('articulos'); // Cambiar navegación a artículos
-      navigateToTop(); // Ir a la parte superior
-      if (typeof window !== 'undefined' && window.location.pathname.startsWith('/articles/')) {
-        window.location.href = '/';
-      }
+      router.push('/');
     }
   };
 

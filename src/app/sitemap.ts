@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
   const now = new Date();
 
-  const routes = ['/', '/#herramientas', '/#articulos'];
+  const routes = ['/', '/herramientas', '/#articulos'];
   const articleRoutes = articles.map((a) => `/articles/${a.slug}`);
 
   return [...routes, ...articleRoutes].map((route) => ({
