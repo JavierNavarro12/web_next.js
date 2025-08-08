@@ -423,8 +423,8 @@ export default function Footer({
                 <button
                   onClick={() => setShowCookieMenu((v) => !v)}
                   className="text-zinc-400 hover:text-white transition-colors"
-                  aria-label="Preferencias de cookies"
-                  title="Preferencias de cookies"
+                  aria-label="Configuración"
+                  title="Configuración"
                 >
                   {/* Icono de cookie */}
                   <svg
