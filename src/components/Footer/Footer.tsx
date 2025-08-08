@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   useAppContext,
   useSubcategoryContext,
@@ -156,11 +156,30 @@ export default function Footer({
 
   const legalLinks = [
     { label: 'Directrices de Listado', href: '/directrices' },
-    { label: 'Política de Privacidad', href: '#' },
-    { label: 'Términos y Condiciones', href: '#' },
+    { label: 'Política de Privacidad', href: '/privacidad' },
+    { label: 'Términos y Condiciones', href: '/terminos' },
   ];
 
   const footerClassName = `bg-black border-t border-zinc-800 ${className ?? 'mt-16'}`;
+
+  // Estado de cookies (consentimiento) y panel
+  type CookieConsent = 'accepted' | 'rejected' | null;
+  const [showCookieMenu, setShowCookieMenu] = useState(false);
+  const [cookieConsent, setCookieConsent] = useState<CookieConsent>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const saved = window.localStorage.getItem('cookieConsent') as CookieConsent | null;
+    if (saved === 'accepted' || saved === 'rejected') setCookieConsent(saved);
+  }, []);
+
+  const handleConsent = (value: Exclude<CookieConsent, null>) => {
+    setCookieConsent(value);
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('cookieConsent', value);
+    }
+    setShowCookieMenu(false);
+  };
 
   return (
     <footer className={footerClassName}>
@@ -368,9 +387,9 @@ export default function Footer({
 
       {/* Bottom Section */}
       <div className="border-t border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 pt-1.5 pb-5.5">
+        <div className="max-w-7xl mx-auto px-4 pt-1.5 pb-8 md:pb-4">
           {/* Mobile */}
-          <div className="md:hidden text-left space-y-2">
+          <div className="md:hidden text-left space-y-2 mb-6">
             <div className="text-zinc-400 text-sm">© 2025 AIFinder</div>
             <div className="space-y-1">
               {legalLinks.map((link) => (
@@ -386,7 +405,7 @@ export default function Footer({
           </div>
 
           {/* Desktop */}
-          <div className="hidden md:flex flex-col md:flex-row justify-between items-center">
+          <div className="hidden md:flex flex-col md:flex-row justify-between items-center relative">
             <div className="flex items-center mb-4 md:mb-0">
               <span className="text-zinc-400 text-sm">© 2025 AIFinder</span>
             </div>
@@ -400,32 +419,56 @@ export default function Footer({
                   {link.label}
                 </a>
               ))}
-              <button
-                className="text-zinc-400 hover:text-white transition-colors"
-                aria-label="Configuración"
-                title="Configuración"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
+              <div className="relative">
+                <button
+                  onClick={() => setShowCookieMenu((v) => !v)}
+                  className="text-zinc-400 hover:text-white transition-colors"
+                  aria-label="Preferencias de cookies"
+                  title="Preferencias de cookies"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
-              </button>
+                  {/* Icono de cookie */}
+                  <svg
+                    className="w-5 h-5"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M21 12a9 9 0 11-9-9 3 3 0 003 3 3 3 0 003 3 3 3 0 003 3z" />
+                    <circle cx="9" cy="10" r="1.25" fill="black" />
+                    <circle cx="13.5" cy="7.5" r="1.25" fill="black" />
+                    <circle cx="14" cy="13.5" r="1.25" fill="black" />
+                  </svg>
+                </button>
+
+                {showCookieMenu && (
+                  <div className="absolute right-0 bottom-8 mb-2 w-80 bg-black/95 backdrop-blur border border-zinc-800 rounded-xl shadow-xl p-4 z-50">
+                    <h4 className="text-white font-semibold mb-2">Cookies</h4>
+                    <p className="text-zinc-300 text-sm mb-3">
+                      Usamos cookies y tecnologías similares para analizar el uso del sitio y
+                      mejorar tu experiencia. Puedes aceptar o rechazar su uso.
+                    </p>
+                    <div className="flex items-center justify-end gap-2">
+                      <button
+                        onClick={() => handleConsent('rejected')}
+                        className="px-3 py-2 text-sm rounded-md border border-zinc-700 text-zinc-200 hover:bg-zinc-800"
+                      >
+                        Rechazar
+                      </button>
+                      <button
+                        onClick={() => handleConsent('accepted')}
+                        className="px-3 py-2 text-sm rounded-md bg-blue-600 hover:bg-blue-700 text-white"
+                      >
+                        Aceptar todas
+                      </button>
+                    </div>
+                    {cookieConsent && (
+                      <div className="mt-2 text-xs text-zinc-500">
+                        Estado actual: {cookieConsent === 'accepted' ? 'aceptadas' : 'rechazadas'}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
