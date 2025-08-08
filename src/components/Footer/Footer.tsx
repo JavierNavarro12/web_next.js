@@ -402,6 +402,23 @@ export default function Footer({
                 </a>
               ))}
             </div>
+            {/* Botón de cookies en móvil */}
+            <div className="pt-2">
+              <button
+                onClick={() => setShowCookieMenu((v) => !v)}
+                className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors"
+                aria-label="Preferencias de cookies"
+                title="Preferencias de cookies"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M21 12a9 9 0 11-9-9 3 3 0 003 3 3 3 0 003 3 3 3 0 003 3z" />
+                  <circle cx="9" cy="10" r="1.25" fill="black" />
+                  <circle cx="13.5" cy="7.5" r="1.25" fill="black" />
+                  <circle cx="14" cy="13.5" r="1.25" fill="black" />
+                </svg>
+                <span className="text-sm">Cookies</span>
+              </button>
+            </div>
           </div>
 
           {/* Desktop */}
@@ -471,6 +488,36 @@ export default function Footer({
               </div>
             </div>
           </div>
+
+          {/* Panel de cookies reutilizable (visible en móvil o desktop) */}
+          {showCookieMenu && (
+            <div className="md:hidden fixed left-4 right-4 bottom-20 z-50 bg-black/95 backdrop-blur border border-zinc-800 rounded-xl shadow-xl p-4">
+              <h4 className="text-white font-semibold mb-2">Cookies</h4>
+              <p className="text-zinc-300 text-sm mb-3">
+                Usamos cookies y tecnologías similares para analizar el uso del sitio y mejorar tu
+                experiencia. Puedes aceptar o rechazar su uso.
+              </p>
+              <div className="flex items-center justify-end gap-2">
+                <button
+                  onClick={() => handleConsent('rejected')}
+                  className="px-3 py-2 text-sm rounded-md border border-zinc-700 text-zinc-200 hover:bg-zinc-800"
+                >
+                  Rechazar
+                </button>
+                <button
+                  onClick={() => handleConsent('accepted')}
+                  className="px-3 py-2 text-sm rounded-md bg-blue-600 hover:bg-blue-700 text-white"
+                >
+                  Aceptar todas
+                </button>
+              </div>
+              {cookieConsent && (
+                <div className="mt-2 text-xs text-zinc-500">
+                  Estado actual: {cookieConsent === 'accepted' ? 'aceptadas' : 'rechazadas'}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </footer>
