@@ -204,7 +204,8 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setActiveSubcategory(subcategoryName);
       setActiveNav('explorar');
       router.push('/');
-      return;
+      // Asegurar scroll/navegación programática a la subcategoría
+      navigateToSubcategory(subcategoryName);
     }
 
     // Si estamos en la página "Añadir una IA", cerrarla
@@ -237,16 +238,19 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setActiveSubcategory(null); // Limpiar subcategoría también
       setActiveNav('explorar'); // Cambiar navegación
       router.push('/');
+      navigateToTop();
     } else if (sectionKey === 'herramientas' && setActiveCategory) {
       setActiveCategory(null);
       setActiveSubcategory(null);
       setActiveNav('herramientas');
       router.push('/herramientas');
+      navigateToTop();
     } else if (sectionKey === 'articulos' && setActiveCategory) {
       setActiveCategory(null); // Limpiar categoría activa cuando se va a Artículos
       setActiveSubcategory(null); // Limpiar subcategoría también
       setActiveNav('articulos'); // Cambiar navegación a artículos
       router.push('/');
+      navigateToTop();
     }
   };
 
