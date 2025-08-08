@@ -41,7 +41,7 @@ describe('newsletterService', () => {
       expect(result).toBe(true);
       expect(getDocs).toHaveBeenCalled();
       expect(addDoc).toHaveBeenCalled();
-      expect(sendWelcomeEmailSpy).toHaveBeenCalledWith('test@example.com');
+      expect(sendWelcomeEmailSpy).toHaveBeenCalledWith('test@example.com', 'hero');
     });
 
     it('should throw error if email already subscribed', async () => {
@@ -89,7 +89,9 @@ describe('newsletterService', () => {
         ok: true,
         json: jest.fn().mockResolvedValue({ emailId: 'email-123' }),
       });
-      await expect(newsletterService.sendWelcomeEmail('test@example.com')).resolves.toBeUndefined();
+      await expect(
+        newsletterService.sendWelcomeEmail('test@example.com', 'hero'),
+      ).resolves.toBeUndefined();
     });
 
     it('should not throw error if fetch fails (ok false with error json)', async () => {
@@ -97,12 +99,16 @@ describe('newsletterService', () => {
         ok: false,
         json: jest.fn().mockResolvedValue({ error: 'bad request' }),
       });
-      await expect(newsletterService.sendWelcomeEmail('test@example.com')).resolves.toBeUndefined();
+      await expect(
+        newsletterService.sendWelcomeEmail('test@example.com', 'hero'),
+      ).resolves.toBeUndefined();
     });
 
     it('should not throw error if fetch throws', async () => {
       global.fetch.mockRejectedValueOnce(new Error('network error'));
-      await expect(newsletterService.sendWelcomeEmail('test@example.com')).resolves.toBeUndefined();
+      await expect(
+        newsletterService.sendWelcomeEmail('test@example.com', 'hero'),
+      ).resolves.toBeUndefined();
     });
   });
 

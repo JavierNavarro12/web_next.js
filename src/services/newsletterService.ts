@@ -4,20 +4,21 @@ import { collection, addDoc, query, where, getDocs } from 'firebase/firestore';
 export interface NewsletterSubscription {
   email: string;
   subscribedAt: Date;
-  source: 'hero' | 'footer' | 'modal';
+  source: 'hero' | 'footer' | 'modal' | 'articles';
 }
 
 export const newsletterService = {
   // Guardar suscripción en Firebase
   async subscribeToNewsletter(
     email: string,
-    source: 'hero' | 'footer' | 'modal' = 'hero',
+    source: 'hero' | 'footer' | 'modal' | 'articles' = 'hero',
   ): Promise<boolean> {
     try {
-      // Verificar si el email ya existe
+      // Verificar si el email ya está suscrito en esta lista (diferenciamos por source)
       const emailQuery = query(
         collection(db, 'newsletter_subscriptions'),
         where('email', '==', email),
+        where('source', '==', source),
       );
       const emailSnapshot = await getDocs(emailQuery);
 
@@ -35,7 +36,7 @@ export const newsletterService = {
       await addDoc(collection(db, 'newsletter_subscriptions'), subscription);
 
       // Enviar email de bienvenida con Resend
-      await this.sendWelcomeEmail(email);
+      await this.sendWelcomeEmail(email, source);
 
       return true;
     } catch (error) {
@@ -45,15 +46,18 @@ export const newsletterService = {
   },
 
   // Enviar email de bienvenida con API route
-  async sendWelcomeEmail(email: string): Promise<void> {
+  async sendWelcomeEmail(
+    email: string,
+    source: 'hero' | 'footer' | 'modal' | 'articles' = 'hero',
+  ): Promise<void> {
     try {
-      console.log('Enviando email de bienvenida a:', email);
+      console.log('Enviando email de bienvenida a:', email, `source=${source}`);
       const response = await fetch('/api/send-welcome-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, source }),
       });
 
       const responseData = await response.json();
@@ -66,12 +70,15 @@ export const newsletterService = {
       console.log(
         'Email de bienvenida enviado exitosamente a:',
         email,
+        'source=',
+        source,
         'ID:',
         responseData.emailId,
       );
     } catch (error) {
       console.error('Error detallado al enviar email de bienvenida:', {
         email,
+        source,
         error: error instanceof Error ? error.message : error,
         stack: error instanceof Error ? error.stack : undefined,
       });

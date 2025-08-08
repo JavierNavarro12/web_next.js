@@ -26,6 +26,7 @@
     ]
   },
   "dependencies": {
+    "hls.js": "^1.5.17",
     "@emailjs/browser": "^4.4.1",
     "@heroicons/react": "^2.2.0",
     "firebase": "^12.0.0",

@@ -22,12 +22,16 @@ const nextConfig: NextConfig = {
               "default-src 'self'",
               "base-uri 'self'",
               "frame-ancestors 'none'",
+              // permitir imágenes
               "img-src 'self' data: blob: https:",
               "font-src 'self' https:",
-              // Next inyecta scripts; permitir eval/inline en dev/prod por compatibilidad
+              // scripts y estilos
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https:",
               "style-src 'self' 'unsafe-inline' https:",
-              "connect-src 'self' https:",
+              // HLS remotos (Mux) y locales
+              "media-src 'self' blob: https://*.mux.com",
+              // conexiones para hls.js y fetch (incluye Mux)
+              "connect-src 'self' https: blob: https://*.mux.com",
             ].join('; '),
           },
         ],

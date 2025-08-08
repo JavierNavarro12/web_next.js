@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { newsletterService } from '../../services/newsletterService';
 import { articles, articleCategories } from '../../data/articles';
 import { ArticleCategory } from '../../types/article';
 import ArticleCard from '../Cards/ArticleCard';
@@ -12,6 +13,10 @@ type Props = {
 export default function ArticlesSection({ className = '' }: Props) {
   const [activeCategory, setActiveCategory] = useState<ArticleCategory['id']>('all');
   const [searchTerm, setSearchTerm] = useState('');
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [error, setError] = useState('');
 
   // Filtrar artículos basado en categoría y búsqueda
   const filteredArticles = useMemo(() => {
@@ -47,15 +52,81 @@ export default function ArticlesSection({ className = '' }: Props) {
 
   return (
     <div className={`min-h-screen bg-black ${className}`}>
-      {/* Header simple en tarjeta centrado */}
+      {/* Header en tarjeta: título a la izquierda, formulario a la derecha */}
       <div className="flex justify-center px-4 py-6 bg-black">
-        <div className="w-full max-w-4xl">
-          <div className="bg-black rounded-lg p-6 border border-zinc-800 text-center">
-            <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">Artículos</h1>
-            <p className="text-zinc-300 text-base">
-              Todo sobre herramientas de IA, tendencias y análisis profundos. Mantente actualizado
-              con el mundo de la inteligencia artificial.
-            </p>
+        <div className="w-full max-w-7xl">
+          <div className="bg-black rounded-2xl md:rounded-3xl pt-8 pb-6 px-6 md:p-8 border border-zinc-800 mb-6 md:mb-8">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              {/* Columna izquierda: título y descripción */}
+              <div className="flex-1 min-w-0">
+                <h1 className="text-3xl md:text-3xl font-bold text-white mb-5 md:mb-3 mt-1 text-center md:text-left">
+                  Una newsletter sobre herramientas de IA
+                </h1>
+                <p className="text-zinc-300 text-lg md:text-base text-center md:text-left">
+                  Todo sobre herramientas, recursos y productos digitales de IA.
+                </p>
+              </div>
+              {/* Columna derecha: newsletter */}
+              <div className="w-full md:w-auto mt-4 md:mt-0">
+                <form
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    if (!email.trim()) {
+                      setError('Por favor ingresa tu email');
+                      return;
+                    }
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                      setError('Por favor ingresa un email válido');
+                      return;
+                    }
+                    setIsSubmitting(true);
+                    setError('');
+                    try {
+                      await newsletterService.subscribeToNewsletter(email, 'articles');
+                      setShowSuccess(true);
+                      setEmail('');
+                      setTimeout(() => setShowSuccess(false), 5000);
+                    } catch (err) {
+                      setError(
+                        (err as Error).message || 'Error al suscribirse. Inténtalo de nuevo.',
+                      );
+                    } finally {
+                      setIsSubmitting(false);
+                    }
+                  }}
+                  className="flex flex-col md:flex-row items-stretch md:items-center justify-start md:justify-end gap-3 md:gap-2 w-full md:max-w-none"
+                >
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (error) setError('');
+                    }}
+                    className="w-full md:flex-none md:w-52 px-4 py-2.5 md:py-3 bg-zinc-800 text-white placeholder-zinc-300 focus:outline-none focus:ring-0 rounded-full text-base md:text-sm"
+                    disabled={isSubmitting}
+                    aria-label="Email para suscripción a artículos"
+                  />
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full md:w-auto px-5 py-2.5 md:py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 disabled:cursor-not-allowed text-white font-semibold rounded-full text-base md:text-sm whitespace-nowrap"
+                  >
+                    {isSubmitting ? 'Enviando...' : 'Suscribirse'}
+                  </button>
+                </form>
+                {showSuccess && (
+                  <div className="mt-3 text-green-400 text-sm text-left md:text-right">
+                    ¡Suscripción exitosa! Revisa tu email.
+                  </div>
+                )}
+                {error && (
+                  <div className="mt-3 text-red-400 text-sm text-left md:text-right">{error}</div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -63,6 +134,11 @@ export default function ArticlesSection({ className = '' }: Props) {
       {/* Artículos destacados iniciales - centrado */}
       <div className="flex justify-center px-4 bg-black">
         <div className="w-full max-w-7xl">
+          {/* Título de destacados */}
+          <h2 className="text-xl md:text-2xl font-semibold text-white mb-4 md:mb-6">
+            Artículos destacados
+          </h2>
+
           {/* 2 artículos grandes */}
           <div className="grid md:grid-cols-2 gap-6 mb-6">
             {largeArticles.map((article) => (

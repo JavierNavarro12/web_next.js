@@ -45,17 +45,38 @@ export async function POST(request: NextRequest) {
       resend = new Resend(apiKey);
     }
 
-    const { email } = await request.json();
+    const { email, source } = await request.json();
 
     if (!email) {
       return NextResponse.json({ error: 'Email es requerido' }, { status: 400 });
     }
 
+    // Elige asunto y contenido según source
+    const isArticles = source === 'articles';
+
+    const subject = isArticles ? 'Bienvenido a AIFinder Artículos' : 'Bienvenido a AIFinder';
+
+    const articlesIntro = `
+      <h2 class="title" style="margin: 0 0 16px; color: #1e293b; font-size: 24px; font-weight: bold; white-space: nowrap; text-align: center;">
+        ¡Gracias por suscribirte a Artículos!
+      </h2>
+      <p style="margin: 0 0 24px; color: #64748b; font-size: 16px; line-height: 1.6; text-align: center;">
+        Recibe comparativas, guías y noticias del mundo de la IA. Curado para mantenerte al día.
+      </p>`;
+
+    const heroIntro = `
+      <h2 class="title" style="margin: 0 0 16px; color: #1e293b; font-size: 24px; font-weight: bold; white-space: nowrap; text-align: center;">
+        ¡Gracias por suscribirte!
+      </h2>
+      <p style="margin: 0 0 24px; color: #64748b; font-size: 16px; line-height: 1.6; text-align: center;">
+        Herramientas, recursos y productos de IA. Entregado semanalmente.
+      </p>`;
+
     // Enviar email de bienvenida
     const result = await resend.emails.send({
       from: 'AIFinder <newsletter@aifinder.es>',
       to: [email],
-      subject: 'Bienvenido a AIFinder',
+      subject,
       html: `
         <!DOCTYPE html>
         <html lang="es">
@@ -99,13 +120,7 @@ export async function POST(request: NextRequest) {
                   <!-- Main Content -->
                   <tr>
                     <td style="padding: 0 32px 32px; text-align: left;">
-                      <h2 class="title" style="margin: 0 0 16px; color: #1e293b; font-size: 24px; font-weight: bold; white-space: nowrap; text-align: center;">
-                        ¡Gracias por suscribirte!
-                      </h2>
-                      
-                      <p style="margin: 0 0 24px; color: #64748b; font-size: 16px; line-height: 1.6; text-align: center;">
-                        Herramientas, recursos y productos de IA. Entregado semanalmente.
-                      </p>
+                      ${isArticles ? articlesIntro : heroIntro}
 
                       <!-- Benefits Cards -->
                       <div style="margin: 24px 0;">
@@ -132,27 +147,42 @@ export async function POST(request: NextRequest) {
                       </div>
 
                       <!-- CTA Button -->
-                      <div style="text-align: center; margin: 32px 0;">
-                        <a href="https://aifinder.es" style="display: inline-block; padding: 12px 24px; background-color: #2563eb; color: #ffffff; text-decoration: none; border-radius: 9999px; font-size: 16px; font-weight: 600;">
-                          Explorar herramientas
-                        </a>
-                      </div>
+                       <div style="text-align: center; margin: 32px 0;">
+                         ${
+                           isArticles
+                             ? '<a href="https://aifinder.es/#articulos" style="display: inline-block; padding: 12px 24px; background-color: #2563eb; color: #ffffff; text-decoration: none; border-radius: 9999px; font-size: 16px; font-weight: 600;">Leer artículos</a>'
+                             : '<a href="https://aifinder.es" style="display: inline-block; padding: 12px 24px; background-color: #2563eb; color: #ffffff; text-decoration: none; border-radius: 9999px; font-size: 16px; font-weight: 600;">Explorar herramientas</a>'
+                         }
+                       </div>
 
                       <!-- Stats -->
-                      <div style="background-color: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; text-align: center;">
-                        <div style="display: inline-block; width: 30%; margin: 0 1.5%; min-width: 80px;">
-                          <h3 class="stats-number" style="margin: 0 0 4px; color: #1e293b; font-size: 24px; font-weight: bold; white-space: nowrap;">200+</h3>
-                          <p class="stats-label" style="margin: 0; color: #64748b; font-size: 14px; white-space: nowrap;">Herramientas</p>
-                        </div>
-                        <div style="display: inline-block; width: 30%; margin: 0 1.5%; min-width: 80px;">
-                          <h3 class="stats-number" style="margin: 0 0 4px; color: #1e293b; font-size: 24px; font-weight: bold; white-space: nowrap;">18</h3>
-                          <p class="stats-label" style="margin: 0; color: #64748b; font-size: 14px; white-space: nowrap;">Categorías</p>
-                        </div>
-                        <div style="display: inline-block; width: 30%; margin: 0 1.5%; min-width: 80px;">
-                          <h3 class="stats-number" style="margin: 0 0 4px; color: #1e293b; font-size: 24px; font-weight: bold; white-space: nowrap;">Gratis</h3>
-                          <p class="stats-label" style="margin: 0; color: #64748b; font-size: 14px; white-space: nowrap;">Siempre</p>
-                        </div>
-                      </div>
+                       ${
+                         isArticles
+                           ? `
+                       <div style="background-color: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px;">
+                         <h3 class="section-title" style="margin: 0 0 12px; color: #1e293b; font-size: 18px; font-weight: bold;">Qué recibirás</h3>
+                         <ul style="margin: 0; padding-left: 20px; color: #64748b; font-size: 14px; line-height: 1.6;">
+                           <li>Comparativas claras entre IAs populares</li>
+                           <li>Noticias relevantes y resúmenes rápidos</li>
+                           <li>Guías y tutoriales paso a paso</li>
+                         </ul>
+                       </div>`
+                           : `
+                       <div style="background-color: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; text-align: center;">
+                         <div style=\"display: inline-block; width: 30%; margin: 0 1.5%; min-width: 80px;\">
+                           <h3 class=\"stats-number\" style=\"margin: 0 0 4px; color: #1e293b; font-size: 24px; font-weight: bold; white-space: nowrap;\">200+</h3>
+                           <p class=\"stats-label\" style=\"margin: 0; color: #64748b; font-size: 14px; white-space: nowrap;\">Herramientas</p>
+                         </div>
+                         <div style=\"display: inline-block; width: 30%; margin: 0 1.5%; min-width: 80px;\">
+                           <h3 class=\"stats-number\" style=\"margin: 0 0 4px; color: #1e293b; font-size: 24px; font-weight: bold; white-space: nowrap;\">18</h3>
+                           <p class=\"stats-label\" style=\"margin: 0; color: #64748b; font-size: 14px; white-space: nowrap;\">Categorías</p>
+                         </div>
+                         <div style=\"display: inline-block; width: 30%; margin: 0 1.5%; min-width: 80px;\">
+                           <h3 class=\"stats-number\" style=\"margin: 0 0 4px; color: #1e293b; font-size: 24px; font-weight: bold; white-space: nowrap;\">Gratis</h3>
+                           <p class=\"stats-label\" style=\"margin: 0; color: #64748b; font-size: 14px; white-space: nowrap;\">Siempre</p>
+                         </div>
+                       </div>`
+                       }
                     </td>
                   </tr>
 

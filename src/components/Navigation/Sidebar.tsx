@@ -293,14 +293,14 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
         <ul className="space-y-0 w-full">
           {mainSections.map((section) => {
             const Icon = section.icon;
+            // En móvil, cuando estamos en 'articulos', no marcar también 'explorar'.
+            // Simplificamos: resaltamos solo el que coincide con activeNav.
             const isActive =
-              section.key === 'articulos'
-                ? activeNav === 'articulos' && !activeCategory && !showFeedback && !showBugReport
-                : (activeSection === section.key || activeNav === section.key) &&
-                  !activeCategory &&
-                  !activeSubcategory &&
-                  !showFeedback &&
-                  !showBugReport;
+              activeNav === section.key &&
+              !activeCategory &&
+              !activeSubcategory &&
+              !showFeedback &&
+              !showBugReport;
             return (
               <li key={section.key} className="relative w-full">
                 {isActive && <div className="absolute left-0 top-0 bottom-0 w-1 bg-white z-20" />}

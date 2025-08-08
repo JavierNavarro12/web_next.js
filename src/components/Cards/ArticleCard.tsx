@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Article } from '../../types/article';
 
 type Props = {
@@ -62,8 +63,9 @@ export default function ArticleCard({
   };
 
   return (
-    <div
-      className={`bg-black rounded-lg overflow-hidden hover:bg-zinc-900 transition-all duration-300 cursor-pointer group border border-zinc-800 hover:border-zinc-700 ${className}`}
+    <Link
+      href={`/articles/${article.slug}`}
+      className={`block bg-black rounded-lg overflow-hidden hover:bg-zinc-900 transition-all duration-300 cursor-pointer group border border-zinc-800 hover:border-zinc-700 ${className}`}
     >
       {/* Imagen del artículo */}
       <div className={`relative w-full ${getImageClasses()} overflow-hidden`}>
@@ -77,27 +79,19 @@ export default function ArticleCard({
         {/* Overlay con gradiente */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-        {/* Categoría badge */}
-        {showCategory && (
-          <div className="absolute top-3 left-3">
-            <span className="bg-blue-600 text-white text-xs font-medium px-2 py-1 rounded-full">
-              {article.categoryLabel}
-            </span>
-          </div>
-        )}
-
-        {/* Badge de featured */}
-        {article.featured && (
-          <div className="absolute top-3 right-3">
-            <span className="bg-yellow-500 text-black text-xs font-bold px-2 py-1 rounded-full">
-              Destacado
-            </span>
-          </div>
-        )}
+        {/* Badges ocultados en la vista actual */}
       </div>
 
       {/* Contenido del artículo */}
       <div className={getSizeClasses()}>
+        {/* Logos destacados (para el primer artículo comparativo) */}
+        {article.slug === 'chatgpt-vs-claude-vs-gemini-best-model-2025' && (
+          <div className="flex items-center gap-2 mb-3">
+            <Image src="/logos/claude-movil.png" alt="Claude" width={24} height={24} />
+            <Image src="/logos/chatgpt-movil.png" alt="ChatGPT" width={24} height={24} />
+            <Image src="/logos/gemini-movil.png" alt="Gemini" width={24} height={24} />
+          </div>
+        )}
         {/* Título */}
         <h3
           className={`font-bold text-white mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors ${getTitleClasses()}`}
@@ -143,7 +137,7 @@ export default function ArticleCard({
           )}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

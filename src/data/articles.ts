@@ -12,19 +12,153 @@ export const articleCategories: ArticleCategory[] = [
 export const articles: Article[] = [
   {
     id: '1',
-    title: 'ChatGPT vs Claude vs Gemini: La comparación definitiva 2024',
+    slug: 'chatgpt-vs-claude-vs-gemini-best-model-2025',
+    title: 'ChatGPT vs Claude vs Gemini: El mejor modelo para cada caso de uso (2025)',
     description:
-      'Análisis completo de las tres IAs más populares del mercado. Descubre cuál se adapta mejor a tus necesidades.',
-    image: '/images/chatpgt-web.png',
+      'Comparando ChatGPT, Claude y Gemini en programación, escritura, investigación, imagen, voz y video.',
+    image: '/images/articulo1.webp',
     category: 'comparisons',
     categoryLabel: 'Comparaciones',
-    date: '15 Nov 2024',
-    readTime: '8 min',
-    author: 'AIFinder Team',
+    date: '04 Jun 2025',
+    readTime: '10 min',
+    author: 'Peter Yang',
+    authorImage: '/images/articulo1autor.webp',
+    url: 'https://creatoreconomy.so/p/chatgpt-vs-claude-vs-gemini-the-best-ai-model-for-each-use-case-2025',
     featured: true,
+    contentSections: [
+      {
+        title: 'Programación: Claude es el mejor, pero Gemini es el más rentable',
+        paragraphs: [
+          'Para programar, pedí a cada modelo: "Crea un Tetris completo con gráficos bonitos y buenos controles". Esto fue lo que pasó (demo en video):',
+        ],
+        bullets: [
+          'Claude hizo un juego precioso con puntuación, vista previa de la siguiente pieza y controles muy buenos.',
+          'ChatGPT O3 creó un clon básico que funciona pero carece de funciones.',
+          'Gemini 2.5 hizo un juego sólido, aunque menos pulido visualmente que Claude.',
+        ],
+        image: '/images/articulo1.1.webp',
+      },
+      {
+        paragraphs: [
+          'Para llevar a Claude más lejos, le pedí: "Crea un Mario 2D". Tras 10-15 minutos de iteraciones, construyó un Nivel 1 jugable con setas, goombas y más. Ni Gemini ni O3 se acercaron.',
+        ],
+        video: { src: '/images/articulo1.2.m3u8', type: 'application/x-mpegURL' },
+      },
+      {
+        paragraphs: [
+          'Ahora bien: Claude 4 Sonnet cuesta 20× más que Gemini 2.5 Flash. Si el coste importa para tu producto de IA, quizá te convenga Gemini.',
+        ],
+        image: '/images/articulo1.3.webp',
+      },
+      {
+        paragraphs: ['Google no ha parado de lanzar novedades últimamente:'],
+        bullets: [
+          'Gemini 2.5 Pro y Flash: modelos muy sólidos por su precio.',
+          'Jules: un agente de programación asíncrono al estilo de OpenAI Codex.',
+          'Gemini Diffusion: nuevo modelo que permite “vibe coding” tan rápido que se siente instantáneo.',
+        ],
+        video: { src: '/images/articulo1.4.m3u8', type: 'application/x-mpegURL' },
+      },
+      {
+        paragraphs: [
+          'Resumen para programación: elige Claude 4 para el mejor resultado. Elige Gemini 2.5 para la mejor relación calidad‑precio.',
+        ],
+      },
+      {
+        title: 'Escritura: Claude clava tu estilo',
+        image: '/images/articulo1.5.webp',
+        paragraphs: [
+          'Uso la IA sobre todo para editar mi escritura: newsletters, docs de estrategia y párrafos cortos. Mi proceso es simple (demo en video): primero le doy mis mejores ejemplos y luego le pido que edite mi borrador según ese estilo.',
+          'Probé los tres modelos para editar este post usando mi prompt de edición (disponible para suscriptores):',
+          'Claude clavó mi estilo conversacional y el formato.',
+          'ChatGPT recortó demasiado y perdió detalles importantes.',
+          'La edición de Gemini 2.5 fue demasiado verbosa y fría.',
+          'Por eso Claude sigue siendo mi herramienta diaria: captura mi estilo mejor que cualquier otro, sobre todo si le doy ejemplos.',
+        ],
+        bullets: [],
+      },
+      {
+        title: 'Respuestas del día a día: ChatGPT te entiende',
+        image: '/images/articulo1.6.webp',
+        paragraphs: [
+          'Los tres pueden responder preguntas cotidianas, pero ChatGPT tiene una función clave: Memoria.',
+          'Esto crea momentos “mágicos”. Por ejemplo, me sugirió preguntar por los mejores lugares de Francia porque recordó que planeo un viaje.',
+          'También es genial para la introspección. Prueba este prompt (demo en video):',
+          'Dime algo único que notes de mí y que yo aún no haya percibido. No tiene que ser positivo; solo sé sincero.',
+          'Me sorprende que Claude y Gemini sigan sin memoria en 2025. ChatGPT es el modelo que te “entiende”: úsalo para descubrir talentos y puntos ciegos.',
+        ],
+      },
+      {
+        title: 'Investigación profunda: ChatGPT encuentra el punto ideal',
+        image: '/images/articulo1.7.webp',
+        paragraphs: [
+          'Casi todos ofrecen “investigación profunda”, así que probé: “Investiga el mercado de IA para desarrollo y comparte la estrategia de Bolt para competir”.',
+          'Resultados (demo en video):',
+          'Claude: informe de 7 páginas con 427 fuentes. Buenas síntesis, pero recomendaciones algo genéricas.',
+          'ChatGPT: 36 páginas y 25 fuentes. Recomendaciones concretas alineadas con la estrategia de Bolt (usuarios no técnicos, velocidad e integraciones).',
+          'Gemini: 48 páginas y 100 fuentes. Muy completo pero demasiado verboso, con tono corporativo.',
+          'Confesión: casi nunca leo esos informes enteros; los hojeo y luego los cargo en un proyecto de IA para que me ayude a pulir documentos.',
+          'Para este caso, ChatGPT da en el punto medio: ni demasiado corto (Claude) ni demasiado largo (Gemini).',
+        ],
+      },
+      {
+        title: 'Generación de imágenes: ChatGPT sigue dominando',
+        image: '/images/articulo1.8.webp',
+        paragraphs: [
+          'La función de imágenes de ChatGPT me sigue sorprendiendo (video).',
+          'Sigue instrucciones mejor y renderiza texto con más calidad. Lo uso para creatividades, infografías e incluso cómics con mi hija.',
+          'La clave: darle ejemplos de estilo y pedir ajustes específicos. Aquí tienes un video de 5 minutos con mis 5 casos favoritos.',
+        ],
+      },
+      {
+        title: 'Voz: ChatGPT tiene personalidad (y canta)',
+        video: { src: '/images/articulo1.9.m3u8', type: 'application/x-mpegURL' },
+        paragraphs: [
+          'ChatGPT tiene la voz más natural y con más personalidad. Incluso puede cantar (mal), lo cual es bastante gracioso.',
+          'Eso sí, tanto ChatGPT como Gemini a veces te interrumpen. Puedes decirle “No me interrumpas hasta que termine”, pero para dictado prefiero apps como Superwhisper.',
+        ],
+      },
+      {
+        title: 'Video: Veo 3 de Gemini es asombroso',
+        video: { src: '/images/articulo1.10.m3u8', type: 'application/x-mpegURL' },
+        paragraphs: [
+          'En video, Gemini va por delante.',
+          'Veo 3 convierte prompts de texto en videos de 8 segundos con sonido y voces. Merece la pena un mes de Gemini Pro para probar. Por ejemplo, hice un corgi cantando al piano.',
+          'El video con IA va a explotar en calidad y cantidad. Escribiré más sobre esto pronto.',
+        ],
+      },
+      {
+        title: 'Cámara en vivo y uso del ordenador: aún verde',
+        image: '/images/articulo1.11.webp',
+        paragraphs: [
+          'Para cerrar, hablemos de cámara en vivo y uso del ordenador (video).',
+          "La cámara en vivo permite que la IA vea tu pantalla. Me gusta tener la de Gemini mientras 'vibe coding' para pedirle que depure problemas en tiempo real.",
+          'El uso del ordenador permite a la IA controlar tu teclado y tu ratón. Prefiero Operator de OpenAI porque usa O3, el mejor modelo de razonamiento. Puedes usarlo para buscar viajes o hacer reservas en restaurantes.',
+          'Ambas funciones aún están verdes, pero merece la pena probarlas si te interesan los agentes de IA.',
+          'Entonces, ¿qué modelo deberías usar?',
+        ],
+      },
+      {
+        title: 'Entonces, ¿qué modelo usar?',
+        image: '/images/articulo1.12.webp',
+        paragraphs: [
+          'Es interesante cómo las funciones anteriores revelan la estrategia de cada empresa:',
+        ],
+        bullets: [
+          'OpenAI quiere convertirse en tu asistente personal. Domina el mercado de consumo y está avanzando en coding con su agente (rumores de Windsurf).',
+          'Claude quiere liderar el coding para empresas. Su primera conferencia fue totalmente para desarrolladores; sigue siendo el modelo por defecto en Cursor y Anthropic mejora Claude Code.',
+          'Gemini por fin ha despertado. La cantidad de funciones que Google lanzó en I/O es increíble: tiene la mejor relación coste‑prestaciones y capacidades multimodales de primer nivel con Veo 3.',
+          'Entonces, ¿qué usar y cuándo?',
+          'Para asistencia personal del día a día, usa ChatGPT.',
+          'Para escritura y coding profesional, Claude merece el premium.',
+          'Para video y cuando el presupuesto importe, prueba Gemini.',
+        ],
+      },
+    ],
   },
   {
     id: '2',
+    slug: '10-mejores-herramientas-ia-automatizar-flujo',
     title: 'Las 10 mejores herramientas de IA para automatizar tu flujo de trabajo',
     description:
       'Descubre las herramientas que están revolucionando la productividad empresarial en 2024.',
@@ -34,9 +168,33 @@ export const articles: Article[] = [
     date: '12 Nov 2024',
     readTime: '6 min',
     author: 'AIFinder Team',
+    contentSections: [
+      {
+        title: 'Introducción',
+        paragraphs: [
+          'En esta guía revisamos las herramientas que mejor funcionan hoy para automatizar tareas repetitivas con IA.',
+          'Nos centramos en facilidad de uso, coste y calidad de resultados para crear un stack eficiente.',
+        ],
+      },
+      {
+        title: 'Herramientas clave',
+        bullets: [
+          'Zapier: automatizaciones multi‑app con IA en pasos',
+          'Make: escenarios visuales y conectores avanzados',
+          'n8n: open‑source y autoalojable',
+        ],
+      },
+      {
+        title: 'Conclusión',
+        paragraphs: [
+          'Empieza simple con un flujo de alto impacto y ve iterando. La clave está en medir y mejorar prompts y disparadores.',
+        ],
+      },
+    ],
   },
   {
     id: '3',
+    slug: 'openai-anuncia-gpt-5-lo-que-sabemos',
     title: 'OpenAI anuncia GPT-5: Todo lo que sabemos hasta ahora',
     description:
       'Las últimas noticias sobre el próximo modelo de lenguaje de OpenAI y sus capacidades esperadas.',
@@ -50,6 +208,7 @@ export const articles: Article[] = [
   },
   {
     id: '4',
+    slug: 'midjourney-vs-dalle-vs-stablediffusion',
     title: 'Midjourney vs DALL-E vs Stable Diffusion: ¿Cuál elegir?',
     description: 'Comparamos las tres plataformas líderes en generación de imágenes por IA.',
     image: '/images/midjourney-web.png',
@@ -62,6 +221,7 @@ export const articles: Article[] = [
   },
   {
     id: '5',
+    slug: 'ia-transformando-desarrollo-software',
     title: 'Cómo la IA está transformando el desarrollo de software',
     description:
       'Un vistazo profundo a las herramientas de IA que están cambiando la forma en que desarrollamos aplicaciones.',
@@ -75,6 +235,7 @@ export const articles: Article[] = [
   },
   {
     id: '6',
+    slug: 'historia-anthropic-y-claude',
     title: 'De startup a unicornio: La historia de Anthropic y Claude',
     description: 'La increíble historia detrás de una de las IAs más avanzadas del mundo.',
     image: '/images/claude-web.png',
@@ -86,6 +247,7 @@ export const articles: Article[] = [
   },
   {
     id: '7',
+    slug: '5-trucos-de-prompting',
     title: '5 trucos de prompting que mejorarán tus resultados con IA',
     description: 'Técnicas avanzadas para obtener mejores respuestas de cualquier modelo de IA.',
     image: '/images/chatpgt-web.png',
@@ -97,6 +259,7 @@ export const articles: Article[] = [
   },
   {
     id: '8',
+    slug: 'google-gemini-2-0-nuevas-capacidades',
     title: 'Google lanza Gemini 2.0: Las nuevas capacidades que debes conocer',
     description: 'Análisis completo de las mejoras y nuevas funcionalidades del modelo de Google.',
     image: '/images/gemini-web.png',
@@ -108,6 +271,7 @@ export const articles: Article[] = [
   },
   {
     id: '9',
+    slug: 'runwayml-vs-pika-labs',
     title: 'RunwayML vs Pika Labs: La batalla por el video generativo',
     description: 'Comparamos las dos plataformas líderes en generación de video por IA.',
     image: '/images/runway-web.png',
@@ -119,6 +283,7 @@ export const articles: Article[] = [
   },
   {
     id: '10',
+    slug: 'predicciones-ia-2025',
     title: 'El futuro de la IA: Predicciones para 2025',
     description:
       'Nuestras predicciones sobre las tendencias y avances que veremos en el próximo año.',
@@ -132,6 +297,7 @@ export const articles: Article[] = [
   },
   {
     id: '11',
+    slug: 'primera-automatizacion-n8n-ia',
     title: 'Cómo configurar tu primera automatización con n8n y IA',
     description:
       'Guía paso a paso para crear flujos de trabajo automatizados usando herramientas de IA.',
@@ -144,6 +310,7 @@ export const articles: Article[] = [
   },
   {
     id: '12',
+    slug: 'historia-sam-altman-openai',
     title: 'La historia de Sam Altman y la revolución de OpenAI',
     description: 'El fascinante viaje del CEO que cambió el mundo de la inteligencia artificial.',
     image: '/images/chatpgt-web.png',

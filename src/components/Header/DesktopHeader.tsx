@@ -86,53 +86,59 @@ export default function DesktopHeader({
     return (
       <div className="hidden md:block bg-black border-b border-zinc-800 fixed top-0 left-[calc(4px+270px+1px)] right-[calc(12px+1px)] z-50 shadow-lg">
         <div className="flex items-center justify-between px-6 py-3">
-          {/* Navigation */}
-          <nav className="flex items-center gap-6">
-            <button
-              className={`relative font-medium transition-colors ${
-                activeNav === 'explorar'
-                  ? 'text-white'
-                  : hoveredNav === 'explorar'
+          {/* Navigation / Title for Artículos */}
+          {activeNav === 'articulos' ? (
+            <div className="text-white font-bold text-2xl md:text-3xl tracking-tight">
+              Artículos
+            </div>
+          ) : (
+            <nav className="flex items-center gap-6">
+              <button
+                className={`relative font-medium transition-colors ${
+                  activeNav === 'explorar'
                     ? 'text-white'
-                    : 'text-zinc-400 hover:text-white'
-              }`}
-              onClick={() => setActiveNav && setActiveNav('explorar')}
-              onMouseEnter={() => setHoveredNav('explorar')}
-              onMouseLeave={() => setHoveredNav(null)}
-              aria-current={activeNav === 'explorar' ? 'page' : undefined}
-            >
-              Explorar
-              {(activeNav === 'explorar' || hoveredNav === 'explorar') && (
-                <span
-                  className={`absolute -left-3 -right-3 -bottom-5 h-0.5 rounded ${
-                    activeNav === 'explorar' ? 'bg-white' : 'bg-white/40'
-                  }`}
-                />
-              )}
-            </button>
-            <button
-              className={`relative font-medium transition-colors ${
-                activeNav === 'nuevas'
-                  ? 'text-white'
-                  : hoveredNav === 'nuevas'
+                    : hoveredNav === 'explorar'
+                      ? 'text-white'
+                      : 'text-zinc-400 hover:text-white'
+                }`}
+                onClick={() => setActiveNav && setActiveNav('explorar')}
+                onMouseEnter={() => setHoveredNav('explorar')}
+                onMouseLeave={() => setHoveredNav(null)}
+                aria-current={activeNav === 'explorar' ? 'page' : undefined}
+              >
+                Explorar
+                {(activeNav === 'explorar' || hoveredNav === 'explorar') && (
+                  <span
+                    className={`absolute -left-3 -right-3 -bottom-5 h-0.5 rounded ${
+                      activeNav === 'explorar' ? 'bg-white' : 'bg-white/40'
+                    }`}
+                  />
+                )}
+              </button>
+              <button
+                className={`relative font-medium transition-colors ${
+                  activeNav === 'nuevas'
                     ? 'text-white'
-                    : 'text-zinc-400 hover:text-white'
-              }`}
-              onClick={() => setActiveNav && setActiveNav('nuevas')}
-              onMouseEnter={() => setHoveredNav('nuevas')}
-              onMouseLeave={() => setHoveredNav(null)}
-              aria-current={activeNav === 'nuevas' ? 'page' : undefined}
-            >
-              Nuevas Adiciones
-              {(activeNav === 'nuevas' || hoveredNav === 'nuevas') && (
-                <span
-                  className={`absolute -left-3 -right-3 -bottom-5 h-0.5 rounded ${
-                    activeNav === 'nuevas' ? 'bg-white' : 'bg-white/40'
-                  }`}
-                />
-              )}
-            </button>
-          </nav>
+                    : hoveredNav === 'nuevas'
+                      ? 'text-white'
+                      : 'text-zinc-400 hover:text-white'
+                }`}
+                onClick={() => setActiveNav && setActiveNav('nuevas')}
+                onMouseEnter={() => setHoveredNav('nuevas')}
+                onMouseLeave={() => setHoveredNav(null)}
+                aria-current={activeNav === 'nuevas' ? 'page' : undefined}
+              >
+                Nuevas Adiciones
+                {(activeNav === 'nuevas' || hoveredNav === 'nuevas') && (
+                  <span
+                    className={`absolute -left-3 -right-3 -bottom-5 h-0.5 rounded ${
+                      activeNav === 'nuevas' ? 'bg-white' : 'bg-white/40'
+                    }`}
+                  />
+                )}
+              </button>
+            </nav>
+          )}
 
           {/* Search */}
           <div className="relative" ref={searchRef}>

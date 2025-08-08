@@ -158,7 +158,7 @@ export default function ExploreView({
         setActiveNav={setActiveNav}
       />
 
-      <div className="pt-0 md:pt-[60px]">
+      <div className={`${activeNav === 'articulos' ? 'pt-[56px]' : 'pt-0'} md:pt-[60px]`}>
         <React.Suspense fallback={<LoadingBlock />}>
           {activeNav === 'explorar' ? (
             <>

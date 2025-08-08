@@ -210,8 +210,8 @@ export default function MobileHeader({
         </div>
       )}
 
-      {/* Navegación principal móvil - solo cuando no hay categoría activa */}
-      {!currentCategory && (
+      {/* Navegación principal móvil - ocultar header "Artículos" */}
+      {!currentCategory && activeNav !== 'articulos' && activeNav !== 'explorar' && (
         <div className="w-full bg-black border-b border-zinc-800">
           <div className="flex gap-1 overflow-x-auto scrollbar-none px-4 py-3">
             <button
