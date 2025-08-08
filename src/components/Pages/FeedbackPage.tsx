@@ -13,11 +13,11 @@ interface FeedbackPageProps {
   navigateToBugReport?: () => void;
 }
 
-export default function FeedbackPage({ 
-  onBack, 
-  setActiveCategory, 
+export default function FeedbackPage({
+  onBack,
+  setActiveCategory,
   setActiveSubcategory,
-  navigateToBugReport
+  navigateToBugReport,
 }: FeedbackPageProps) {
   const [formData, setFormData] = useState({
     name: '',
@@ -330,12 +330,13 @@ export default function FeedbackPage({
         </div>
       </div>
 
-            {/* Footer */}
+      {/* Footer */}
       <Footer
         setShowFeedback={() => {}} // No hacer nada ya que estamos en la página de feedback
         setShowBugReport={navigateToBugReport || (() => {})} // Navegar a reportar bug
         setActiveCategory={setActiveCategory}
         setActiveSubcategory={setActiveSubcategory}
+        className="mt-0"
       />
     </div>
   );

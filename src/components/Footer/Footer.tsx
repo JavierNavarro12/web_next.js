@@ -14,6 +14,7 @@ interface FooterProps {
   setShowBugReport?: (show: boolean) => void;
   setActiveCategory?: (category: string | null) => void;
   setActiveSubcategory?: (subcategory: string | null) => void;
+  className?: string;
 }
 
 export default function Footer({
@@ -21,6 +22,7 @@ export default function Footer({
   setShowBugReport,
   setActiveCategory: _propSetActiveCategory,
   setActiveSubcategory: _propSetActiveSubcategory,
+  className,
 }: FooterProps) {
   // Usar contextos directamente si las props no están disponibles
   const { setActiveCategory: contextSetActiveCategory } = useAppContext();
@@ -149,17 +151,19 @@ export default function Footer({
   const connectLinks = [
     { label: 'Feedback', onClick: () => setShowFeedback(true) },
     { label: 'Reportar Bug', onClick: () => setShowBugReport?.(true) },
-    { label: 'Contactar', href: '#' },
+    { label: 'Contactar', href: 'mailto:navarrojavi107@gmail.com' },
   ];
 
   const legalLinks = [
-    { label: 'Directrices de Listado', href: '#' },
+    { label: 'Directrices de Listado', href: '/directrices' },
     { label: 'Política de Privacidad', href: '#' },
     { label: 'Términos y Condiciones', href: '#' },
   ];
 
+  const footerClassName = `bg-black border-t border-zinc-800 ${className ?? 'mt-16'}`;
+
   return (
-    <footer className="bg-black border-t border-zinc-800 mt-16">
+    <footer className={footerClassName}>
       <div className="max-w-7xl mx-auto px-4 py-12">
         {/* Mobile Layout */}
         <div className="md:hidden space-y-8">

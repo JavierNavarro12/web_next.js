@@ -83,7 +83,7 @@ export default function BugReportPage({
       setErrorMsg('Error al enviar el reporte. Por favor, inténtalo de nuevo.');
       // Mantener log en entorno de test para compatibilidad con tests
       // y facilitar depuración local sin contaminar producción
-       
+
       console.error('Error al enviar email de reporte de bug:', error as unknown);
       if (
         process.env.NODE_ENV === 'test' &&
@@ -366,6 +366,7 @@ export default function BugReportPage({
         setShowBugReport={() => {}} // No hacer nada ya que estamos en la página de reportar bug
         setActiveCategory={setActiveCategory}
         setActiveSubcategory={setActiveSubcategory}
+        className="mt-0"
       />
     </div>
   );

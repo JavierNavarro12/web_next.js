@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
+import type { Article } from '../../../types/article';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { articles } from '../../../data/articles';
@@ -18,7 +20,7 @@ export default function ArticleDetailPage() {
   const slug = Array.isArray(params?.slug) ? params.slug[0] : params?.slug;
 
   // Contextos necesarios para montar el MobileHeader fijo
-  const { activeCategory, setActiveCategory } = useAppContext();
+  const { activeCategory: _activeCategory, setActiveCategory } = useAppContext();
   const { activeSubcategory, setActiveSubcategory } = useSubcategoryContext();
   const { setActiveNav, activeNav } = useActiveNavContext();
   const { setSidebarOpen } = React.useContext(SidebarDrawerContext);
@@ -27,10 +29,20 @@ export default function ArticleDetailPage() {
   const isClient = typeof window !== 'undefined';
 
   const article = articles.find((a) => a.slug === slug);
-  const currentIndex = articles.findIndex((a) => a.slug === slug);
-  const prevArticle = currentIndex > 0 ? articles[currentIndex - 1] : null;
+  const _currentIndex = articles.findIndex((a) => a.slug === slug);
+  // Navegación por destacados en portada según featuredOrder
+  const featuredOrdered = articles
+    .filter((a) => a.featured)
+    .slice()
+    .sort(
+      (a: Article, b: Article) => (a.featuredOrder ?? Infinity) - (b.featuredOrder ?? Infinity),
+    );
+  const idxInFeatured = featuredOrdered.findIndex((a) => a.slug === slug);
+  const prevArticle = idxInFeatured > 0 ? featuredOrdered[idxInFeatured - 1] : null;
   const nextArticle =
-    currentIndex >= 0 && currentIndex < articles.length - 1 ? articles[currentIndex + 1] : null;
+    idxInFeatured >= 0 && idxInFeatured < featuredOrdered.length - 1
+      ? featuredOrdered[idxInFeatured + 1]
+      : null;
 
   // Asegurar estado de navegación en 'articulos' al entrar en detalle
   useEffect(() => {
@@ -75,12 +87,12 @@ export default function ArticleDetailPage() {
         {/* Header superior con volver y navegación */}
         <div className="flex items-center justify-between mb-3">
           <button
-            onClick={() => router.back()}
-            className="text-zinc-300 hover:text-white ml-[-8px] md:ml-[-70px]"
+            onClick={() => router.push('/?active=articulos')}
+            className="text-zinc-300 hover:text-white ml-[-8px] md:ml-[-70px] relative top-[2px] md:top-[6px]"
           >
             ← Volver
           </button>
-          <div className="flex items-center gap-2 mr-[-8px] md:mr-[-70px]">
+          <div className="flex items-center gap-2 mr-[-8px] md:mr-[-70px] relative top-[2px] md:top-[6px]">
             <button
               disabled={!prevArticle}
               onClick={() => prevArticle && router.push(`/articles/${prevArticle.slug}`)}
@@ -138,9 +150,9 @@ export default function ArticleDetailPage() {
           {/* Logos sobre el título para el comparativo */}
           {article.slug === 'chatgpt-vs-claude-vs-gemini-best-model-2025' && (
             <div className="flex items-center justify-center gap-2 mb-2">
-              <img src="/logos/claude-movil.png" alt="Claude" width={28} height={28} />
-              <img src="/logos/chatgpt-movil.png" alt="ChatGPT" width={28} height={28} />
-              <img src="/logos/gemini-movil.png" alt="Gemini" width={28} height={28} />
+              <Image src="/logos/claude-movil.png" alt="Claude" width={28} height={28} />
+              <Image src="/logos/chatgpt-movil.png" alt="ChatGPT" width={28} height={28} />
+              <Image src="/logos/gemini-movil.png" alt="Gemini" width={28} height={28} />
             </div>
           )}
           <h1 className="text-3xl md:text-4xl font-extrabold leading-tight mb-3">
@@ -149,9 +161,11 @@ export default function ArticleDetailPage() {
           {article.author && (
             <div className="flex items-center justify-center gap-3 text-zinc-400 text-sm">
               {article.authorImage && (
-                <img
+                <Image
                   src={article.authorImage}
                   alt={article.author}
+                  width={32}
+                  height={32}
                   className="w-8 h-8 rounded-full border border-zinc-700"
                 />
               )}
@@ -164,9 +178,14 @@ export default function ArticleDetailPage() {
 
         {/* Imagen principal a tamaño natural */}
         <div className="mb-8 overflow-auto">
-          <img
+          <Image
             src={article.image}
             alt={article.title}
+            width={1200}
+            height={630}
+            priority
+            sizes="100vw"
+            style={{ width: '100%', height: 'auto' }}
             className="rounded-xl border border-zinc-800"
           />
         </div>
@@ -195,27 +214,71 @@ export default function ArticleDetailPage() {
                   ))}
                 </ul>
               )}
+              {section.table && (
+                <div className="mt-4 overflow-x-auto">
+                  <table className="min-w-full text-left border-collapse border border-zinc-800">
+                    <thead>
+                      <tr className="bg-zinc-900/60">
+                        {section.table.headers.map((h, i) => (
+                          <th key={i} className="px-4 py-2 border border-zinc-800 text-zinc-200">
+                            {h}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {section.table.rows.map((row, ri) => (
+                        <tr key={ri} className={ri % 2 === 0 ? 'bg-black' : 'bg-zinc-900/40'}>
+                          {row.map((cell, ci) => (
+                            <td
+                              key={ci}
+                              className="px-4 py-2 border border-zinc-800 text-zinc-300 align-top"
+                            >
+                              {cell}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
               {section.image && (
                 <div className="mt-4 overflow-auto">
-                  <img
+                  <Image
                     src={section.image}
                     alt={section.title || 'Imagen del artículo'}
+                    width={1200}
+                    height={630}
                     loading="lazy"
-                    decoding="async"
+                    sizes="100vw"
+                    style={{ width: '100%', height: 'auto' }}
                     className="rounded-lg border border-zinc-800"
                   />
                 </div>
               )}
               {section.video && (
                 <div className="w-full mt-4">
-                  <video
-                    controls
-                    className="w-full rounded-lg border border-zinc-800 hls-video"
-                    preload="metadata"
-                    data-src={section.video.src}
-                  >
-                    Tu navegador no soporta la reproducción de video.
-                  </video>
+                  {section.video.type === 'youtube' ? (
+                    <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
+                      <iframe
+                        src={section.video.src}
+                        title="YouTube video player"
+                        className="absolute top-0 left-0 w-full h-full rounded-lg border border-zinc-800"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      />
+                    </div>
+                  ) : (
+                    <video
+                      controls
+                      className="w-full rounded-lg border border-zinc-800 hls-video"
+                      preload="metadata"
+                      data-src={section.video.src}
+                    >
+                      Tu navegador no soporta la reproducción de video.
+                    </video>
+                  )}
                 </div>
               )}
             </section>

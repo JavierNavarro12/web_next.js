@@ -12,12 +12,15 @@ export type Article = {
   authorImage?: string;
   url?: string;
   featured?: boolean;
+  // Orden manual para destacados en portada (1 primero, 2 segundo, ...)
+  featuredOrder?: number;
   contentSections?: Array<{
     title?: string;
     paragraphs?: string[];
     bullets?: string[];
     image?: string;
     video?: { src: string; type?: string };
+    table?: { headers: string[]; rows: string[][] };
   }>;
 };
 

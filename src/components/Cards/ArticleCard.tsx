@@ -10,6 +10,7 @@ type Props = {
   size?: 'small' | 'medium' | 'large';
   showCategory?: boolean;
   className?: string;
+  showImage?: boolean;
 };
 
 export default function ArticleCard({
@@ -17,7 +18,9 @@ export default function ArticleCard({
   size = 'medium',
   showCategory = true,
   className = '',
+  showImage = true,
 }: Props) {
+  const logoSize = showImage ? 24 : 36;
   const getSizeClasses = () => {
     switch (size) {
       case 'small':
@@ -43,11 +46,11 @@ export default function ArticleCard({
   const getTitleClasses = () => {
     switch (size) {
       case 'small':
-        return 'text-lg md:text-xl';
+        return 'text-base md:text-lg';
       case 'large':
-        return 'text-xl md:text-2xl lg:text-3xl';
+        return 'text-lg md:text-xl lg:text-2xl';
       default:
-        return 'text-lg md:text-xl';
+        return 'text-base md:text-lg';
     }
   };
 
@@ -67,29 +70,76 @@ export default function ArticleCard({
       href={`/articles/${article.slug}`}
       className={`block bg-black rounded-lg overflow-hidden hover:bg-zinc-900 transition-all duration-300 cursor-pointer group border border-zinc-800 hover:border-zinc-700 ${className}`}
     >
-      {/* Imagen del artículo */}
-      <div className={`relative w-full ${getImageClasses()} overflow-hidden`}>
-        <Image
-          src={article.image}
-          alt={article.title}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-300"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-        {/* Overlay con gradiente */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+      {/* Imagen del artículo (opcional) */}
+      {showImage && (
+        <div className={`relative w-full ${getImageClasses()} overflow-hidden`}>
+          <Image
+            src={article.image}
+            alt={article.title}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+          {/* Overlay con gradiente */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-        {/* Badges ocultados en la vista actual */}
-      </div>
+          {/* Badges ocultados en la vista actual */}
+        </div>
+      )}
 
       {/* Contenido del artículo */}
       <div className={getSizeClasses()}>
         {/* Logos destacados (para el primer artículo comparativo) */}
         {article.slug === 'chatgpt-vs-claude-vs-gemini-best-model-2025' && (
           <div className="flex items-center gap-2 mb-3">
-            <Image src="/logos/claude-movil.png" alt="Claude" width={24} height={24} />
-            <Image src="/logos/chatgpt-movil.png" alt="ChatGPT" width={24} height={24} />
-            <Image src="/logos/gemini-movil.png" alt="Gemini" width={24} height={24} />
+            <Image src="/logos/claude-movil.png" alt="Claude" width={logoSize} height={logoSize} />
+            <Image
+              src="/logos/chatgpt-movil.png"
+              alt="ChatGPT"
+              width={logoSize}
+              height={logoSize}
+            />
+            <Image src="/logos/gemini-movil.png" alt="Gemini" width={logoSize} height={logoSize} />
+          </div>
+        )}
+        {/* Logo para el artículo 4 (DeepMind/Google) */}
+        {article.slug === 'genie-3-google-mundos-3d-interactivos-2025' && (
+          <div className="flex items-center gap-2 mb-3">
+            <Image
+              src="/logos/imagen-movil.svg"
+              alt="DeepMind"
+              width={logoSize}
+              height={logoSize}
+            />
+          </div>
+        )}
+        {/* Logo destacado para el artículo 2 (solo ChatGPT) */}
+        {article.slug === 'openai-presenta-gpt-5-afondo-2025' && (
+          <div className="flex items-center gap-2 mb-3">
+            <Image
+              src="/logos/chatgpt-movil.png"
+              alt="ChatGPT"
+              width={logoSize}
+              height={logoSize}
+            />
+          </div>
+        )}
+        {/* Logos para el artículo 3 (DALL-E, Midjourney, Stable Diffusion) */}
+        {article.slug === 'dall-e-vs-midjourney-vs-stable-diffusion-2025' && (
+          <div className="flex items-center gap-2 mb-3">
+            <Image src="/logos/dall.e-movil.png" alt="DALL-E" width={logoSize} height={logoSize} />
+            <Image
+              src="/logos/midjourney-movil.png"
+              alt="Midjourney"
+              width={logoSize}
+              height={logoSize}
+            />
+            <Image
+              src="/logos/stablediffusion-movil.png"
+              alt="Stable Diffusion"
+              width={logoSize}
+              height={logoSize}
+            />
           </div>
         )}
         {/* Título */}

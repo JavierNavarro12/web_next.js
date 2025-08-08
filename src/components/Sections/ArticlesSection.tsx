@@ -1,8 +1,10 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import Footer from '../Footer/Footer';
 import { newsletterService } from '../../services/newsletterService';
 import { articles, articleCategories } from '../../data/articles';
+import type { Article } from '../../types/article';
 import { ArticleCategory } from '../../types/article';
 import ArticleCard from '../Cards/ArticleCard';
 
@@ -41,12 +43,39 @@ export default function ArticlesSection({ className = '' }: Props) {
     return filtered;
   }, [activeCategory, searchTerm]);
 
+  // util para ordenar por fecha descendente (más reciente primero)
+  const sortByDateDesc = (a: { date: string }, b: { date: string }) => {
+    const da = new Date(a.date).getTime();
+    const db = new Date(b.date).getTime();
+    return db - da;
+  };
+
   // Artículos destacados (featured) para mostrar primero
-  const featuredArticles = filteredArticles.filter((article) => article.featured);
-  const regularArticles = filteredArticles.filter((article) => !article.featured);
+  const featuredArticles: Article[] = filteredArticles
+    .filter((article) => article.featured)
+    .slice()
+    .sort((a, b) => {
+      const ao = a.featuredOrder ?? Infinity;
+      const bo = b.featuredOrder ?? Infinity;
+      if (ao !== bo) return ao - bo; // prioridad manual primero
+      return sortByDateDesc(a, b); // luego por fecha
+    });
+  const regularArticles: Article[] = filteredArticles
+    .filter((article) => !article.featured)
+    .slice()
+    .sort(sortByDateDesc);
 
   // Separar artículos para la vista inicial (sin filtros)
-  const initialFeaturedArticles = articles.filter((article) => article.featured).slice(0, 5);
+  const initialFeaturedArticles: Article[] = articles
+    .filter((article) => article.featured)
+    .slice()
+    .sort((a, b) => {
+      const ao = a.featuredOrder ?? Infinity;
+      const bo = b.featuredOrder ?? Infinity;
+      if (ao !== bo) return ao - bo;
+      return sortByDateDesc(a, b);
+    })
+    .slice(0, 5);
   const largeArticles = initialFeaturedArticles.slice(0, 2);
   const smallArticles = initialFeaturedArticles.slice(2, 5);
 
@@ -157,8 +186,8 @@ export default function ArticlesSection({ className = '' }: Props) {
         </div>
       </div>
 
-      {/* Filtros y búsqueda - centrado */}
-      <div className="border-b border-zinc-800 bg-black sticky top-0 z-40">
+      {/* Filtros - centrado (sin fondo ni barra de búsqueda) */}
+      <div className="sticky top-0 z-40">
         <div className="flex justify-center px-4 py-4">
           <div className="w-full max-w-7xl">
             <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
@@ -168,42 +197,19 @@ export default function ArticlesSection({ className = '' }: Props) {
                   <button
                     key={category.id}
                     onClick={() => setActiveCategory(category.id)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
+                    className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all border ${
                       activeCategory === category.id
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white'
+                        ? 'bg-blue-600 text-white border-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.45)]'
+                        : 'text-white border-transparent hover:bg-blue-600 hover:text-white hover:border-blue-600'
                     }`}
                   >
-                    {category.name}
+                    <span className="align-middle">{category.name}</span>
                   </button>
                 ))}
               </div>
-
-              {/* Buscador */}
-              <div className="relative w-full md:w-auto">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-zinc-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                  />
-                </svg>
-                <input
-                  type="text"
-                  placeholder="Buscar artículos..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 pr-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-blue-500 w-full md:w-64"
-                />
-              </div>
             </div>
+            {/* Línea de separación con los artículos (a ancho de viewport) */}
+            <div className="mt-3 relative left-1/2 -translate-x-1/2 w-screen border-b border-zinc-800" />
           </div>
         </div>
       </div>
@@ -240,13 +246,13 @@ export default function ArticlesSection({ className = '' }: Props) {
               {/* Artículos destacados filtrados */}
               {featuredArticles.length > 0 && (
                 <div>
-                  <h2 className="text-2xl font-bold text-white mb-6">Artículos destacados</h2>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
                     {featuredArticles.map((article) => (
                       <ArticleCard
                         key={article.id}
                         article={article}
                         size="large"
+                        showImage={false}
                         className="md:col-span-1 lg:col-span-1"
                       />
                     ))}
@@ -260,26 +266,24 @@ export default function ArticlesSection({ className = '' }: Props) {
                   {featuredArticles.length > 0 && (
                     <h2 className="text-2xl font-bold text-white mb-6">Más artículos</h2>
                   )}
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
                     {regularArticles.map((article) => (
-                      <ArticleCard key={article.id} article={article} size="medium" />
+                      <ArticleCard
+                        key={article.id}
+                        article={article}
+                        size="large"
+                        showImage={false}
+                      />
                     ))}
                   </div>
                 </div>
               )}
             </div>
           )}
-
-          {/* Botón cargar más (placeholder) */}
-          {filteredArticles.length > 0 && (
-            <div className="text-center mt-12">
-              <button className="px-6 py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg transition-colors border border-zinc-700">
-                Cargar más artículos
-              </button>
-            </div>
-          )}
         </div>
       </div>
+      {/* Footer global: usar contextos internos para props requeridas */}
+      <Footer setShowFeedback={() => {}} />
     </div>
   );
 }
