@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { aiCategories } from '../../data/ai-tools';
 import {
   SparklesIcon,
@@ -89,7 +88,6 @@ const mainSections = [
 ];
 
 export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}) {
-  const router = useRouter();
   const { activeCategory, setActiveCategory } = useAppContext();
   const { activeSubcategory, setActiveSubcategory } = useSubcategoryContext();
   const { showFeedback, setShowFeedback } = useFeedbackContext();
@@ -181,7 +179,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
     // Al seleccionar una categoría desde un artículo, volver al home (navegación cliente)
     if (typeof window !== 'undefined' && window.location.pathname.startsWith('/articles/')) {
       setActiveNav('explorar');
-      router.push('/');
+      window.location.href = '/';
     }
   };
 
@@ -235,7 +233,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setActiveNav('explorar'); // Cambiar navegación
       navigateToTop(); // Ir a la parte superior
       if (typeof window !== 'undefined' && window.location.pathname.startsWith('/articles/')) {
-        router.push('/');
+        window.location.href = '/';
       }
     } else if (sectionKey === 'herramientas' && setActiveCategory) {
       setActiveCategory(null); // Limpiar categoría activa cuando se va a Herramientas
@@ -247,7 +245,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setActiveNav('articulos'); // Cambiar navegación a artículos
       navigateToTop(); // Ir a la parte superior
       if (typeof window !== 'undefined' && window.location.pathname.startsWith('/articles/')) {
-        router.push('/');
+        window.location.href = '/';
       }
     }
   };

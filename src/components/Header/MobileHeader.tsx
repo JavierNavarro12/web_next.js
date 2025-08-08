@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { AICategory, AITool } from '../../data/ai-tools';
 import SearchDropdown from './SearchDropdown';
 import { useHighlightedToolContext } from '../../app/providers';
@@ -33,7 +32,6 @@ export default function MobileHeader({
   activeNav = 'explorar',
   setActiveNav,
 }: MobileHeaderProps) {
-  const router = useRouter();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const searchRef = useRef<HTMLDivElement>(null);
@@ -98,14 +96,12 @@ export default function MobileHeader({
               setActiveNav('explorar');
             }
             // Asegurar navegación a la home si estamos en /articles/[slug]
-            try {
-              if (
-                typeof window !== 'undefined' &&
-                window.location.pathname.startsWith('/articles/')
-              ) {
-                router.push('/');
-              }
-            } catch {}
+            if (
+              typeof window !== 'undefined' &&
+              window.location.pathname.startsWith('/articles/')
+            ) {
+              window.location.href = '/';
+            }
             // Limpiar localStorage al regresar a Explorar
             if (isClient) {
               localStorage.removeItem('activeCategory');
@@ -243,14 +239,12 @@ export default function MobileHeader({
               }`}
               onClick={() => {
                 setActiveNav && setActiveNav('nuevas');
-                try {
-                  if (
-                    typeof window !== 'undefined' &&
-                    window.location.pathname.startsWith('/articles/')
-                  ) {
-                    router.push('/');
-                  }
-                } catch {}
+                if (
+                  typeof window !== 'undefined' &&
+                  window.location.pathname.startsWith('/articles/')
+                ) {
+                  window.location.href = '/';
+                }
               }}
             >
               Nuevas Adiciones
