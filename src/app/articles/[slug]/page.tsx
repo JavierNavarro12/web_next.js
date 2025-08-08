@@ -199,7 +199,9 @@ export default function ArticleDetailPage() {
                 <div className="mt-4 overflow-auto">
                   <img
                     src={section.image}
-                    alt="section"
+                    alt={section.title || 'Imagen del artículo'}
+                    loading="lazy"
+                    decoding="async"
                     className="rounded-lg border border-zinc-800"
                   />
                 </div>

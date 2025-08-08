@@ -18,6 +18,7 @@ const geistMono = Geist_Mono({
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: 'AIFinder',
   description: 'Descubre y compara las mejores herramientas de IA',
   applicationName: 'AIFinder',
@@ -60,6 +61,14 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es">
+      <head>
+        <link rel="preconnect" href="https://mux.com" />
+        <link rel="dns-prefetch" href="https://mux.com" />
+        <link rel="preconnect" href="https://manifest-gcp-us-east1-vop1.fastly.mux.com" />
+        <link rel="dns-prefetch" href="https://manifest-gcp-us-east1-vop1.fastly.mux.com" />
+        <link rel="preconnect" href="https://chunk-gcp-us-east1-vop1.fastly.mux.com" />
+        <link rel="dns-prefetch" href="https://chunk-gcp-us-east1-vop1.fastly.mux.com" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}>
         <AppProviders>{children}</AppProviders>
       </body>

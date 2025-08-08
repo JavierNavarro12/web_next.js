@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { aiCategories } from '../../data/ai-tools';
 import {
   SparklesIcon,
@@ -88,6 +89,7 @@ const mainSections = [
 ];
 
 export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}) {
+  const router = useRouter();
   const { activeCategory, setActiveCategory } = useAppContext();
   const { activeSubcategory, setActiveSubcategory } = useSubcategoryContext();
   const { showFeedback, setShowFeedback } = useFeedbackContext();
@@ -175,6 +177,12 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
     if (setActiveCategory) {
       setActiveCategory(categoryName);
     }
+
+    // Al seleccionar una categoría desde un artículo, volver al home (navegación cliente)
+    if (typeof window !== 'undefined' && window.location.pathname.startsWith('/articles/')) {
+      setActiveNav('explorar');
+      router.push('/');
+    }
   };
 
   // Función para manejar clic en subcategoría usando el sistema centralizado
@@ -226,6 +234,9 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setActiveSubcategory(null); // Limpiar subcategoría también
       setActiveNav('explorar'); // Cambiar navegación
       navigateToTop(); // Ir a la parte superior
+      if (typeof window !== 'undefined' && window.location.pathname.startsWith('/articles/')) {
+        router.push('/');
+      }
     } else if (sectionKey === 'herramientas' && setActiveCategory) {
       setActiveCategory(null); // Limpiar categoría activa cuando se va a Herramientas
       setActiveSubcategory(null); // Limpiar subcategoría también
@@ -235,6 +246,9 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setActiveSubcategory(null); // Limpiar subcategoría también
       setActiveNav('articulos'); // Cambiar navegación a artículos
       navigateToTop(); // Ir a la parte superior
+      if (typeof window !== 'undefined' && window.location.pathname.startsWith('/articles/')) {
+        router.push('/');
+      }
     }
   };
 

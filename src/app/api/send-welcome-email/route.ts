@@ -50,6 +50,15 @@ export async function POST(request: NextRequest) {
     if (!email) {
       return NextResponse.json({ error: 'Email es requerido' }, { status: 400 });
     }
+    // Validaciones de entrada
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json({ error: 'Email inválido' }, { status: 400 });
+    }
+    const validSources = new Set(['hero', 'footer', 'modal', 'articles']);
+    if (source && !validSources.has(source)) {
+      return NextResponse.json({ error: 'Parámetro source inválido' }, { status: 400 });
+    }
 
     // Elige asunto y contenido según source
     const isArticles = source === 'articles';

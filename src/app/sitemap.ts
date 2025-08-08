@@ -1,12 +1,14 @@
 import type { MetadataRoute } from 'next';
+import { articles } from '../data/articles';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
   const now = new Date();
 
   const routes = ['/', '/#herramientas', '/#articulos'];
+  const articleRoutes = articles.map((a) => `/articles/${a.slug}`);
 
-  return routes.map((route) => ({
+  return [...routes, ...articleRoutes].map((route) => ({
     url: `${base}${route}`,
     lastModified: now,
     changeFrequency: 'weekly',
