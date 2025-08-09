@@ -1,7 +1,11 @@
 // @ts-nocheck
 /// <reference types="jest" />
-global.fetch = () => Promise.resolve({ ok: true });
-jest.spyOn(global, 'fetch').mockImplementation(() => Promise.resolve({ ok: true }));
+global.fetch = () => Promise.resolve({ ok: true, json: async () => ({ success: true }) });
+jest
+  .spyOn(global, 'fetch')
+  .mockImplementation(() =>
+    Promise.resolve({ ok: true, json: async () => ({ success: true, id: 'test-id' }) }),
+  );
 import { newsletterService } from './newsletterService';
 
 jest.mock('../config/firebase', () => ({
@@ -20,8 +24,13 @@ jest.mock('firebase/firestore', () => ({
 describe('newsletterService', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    global.fetch = () => Promise.resolve({ ok: true });
-    jest.spyOn(global, 'fetch').mockImplementation(() => Promise.resolve({ ok: true }));
+    global.fetch = () =>
+      Promise.resolve({ ok: true, json: async () => ({ success: true, id: 'test-id' }) });
+    jest
+      .spyOn(global, 'fetch')
+      .mockImplementation(() =>
+        Promise.resolve({ ok: true, json: async () => ({ success: true, id: 'test-id' }) }),
+      );
   });
   afterAll(() => {
     if (global.fetch.mockRestore) {
@@ -31,30 +40,36 @@ describe('newsletterService', () => {
 
   describe('subscribeToNewsletter', () => {
     it('should subscribe successfully and send welcome email', async () => {
-      getDocs.mockResolvedValueOnce({ empty: true });
-      addDoc.mockResolvedValueOnce({});
+      // API subscribe ok
+      global.fetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ success: true, id: 'abc' }),
+      });
       const sendWelcomeEmailSpy = jest
         .spyOn(newsletterService, 'sendWelcomeEmail')
         .mockResolvedValue();
 
       const result = await newsletterService.subscribeToNewsletter('test@example.com', 'hero');
       expect(result).toBe(true);
-      expect(getDocs).toHaveBeenCalled();
-      expect(addDoc).toHaveBeenCalled();
+      expect(global.fetch).toHaveBeenCalledWith('/api/subscribe', expect.any(Object));
       expect(sendWelcomeEmailSpy).toHaveBeenCalledWith('test@example.com', 'hero');
     });
 
     it('should throw error if email already subscribed', async () => {
-      getDocs.mockResolvedValueOnce({ empty: false });
+      global.fetch.mockResolvedValueOnce({
+        ok: false,
+        json: async () => ({ error: 'Ya suscrito' }),
+      });
       await expect(
         newsletterService.subscribeToNewsletter('test@example.com', 'hero'),
       ).rejects.toThrow('Este email ya está suscrito');
-      expect(addDoc).not.toHaveBeenCalled();
     });
 
-    it('should throw error if addDoc fails', async () => {
-      getDocs.mockResolvedValueOnce({ empty: true });
-      addDoc.mockRejectedValueOnce(new Error('Firestore error'));
+    it('should throw error if API returns generic error', async () => {
+      global.fetch.mockResolvedValueOnce({
+        ok: false,
+        json: async () => ({ error: 'Firestore error' }),
+      });
       await expect(
         newsletterService.subscribeToNewsletter('test@example.com', 'hero'),
       ).rejects.toThrow('Firestore error');
@@ -75,8 +90,13 @@ describe('newsletterService', () => {
 
   describe('sendWelcomeEmail', () => {
     beforeEach(() => {
-      global.fetch = () => Promise.resolve({ ok: true });
-      jest.spyOn(global, 'fetch').mockImplementation(() => Promise.resolve({ ok: true }));
+      global.fetch = () =>
+        Promise.resolve({ ok: true, json: async () => ({ success: true, id: 'id-1' }) });
+      jest
+        .spyOn(global, 'fetch')
+        .mockImplementation(() =>
+          Promise.resolve({ ok: true, json: async () => ({ success: true, id: 'id-1' }) }),
+        );
     });
     afterEach(() => {
       if (global.fetch.mockRestore) {
@@ -114,26 +134,29 @@ describe('newsletterService', () => {
 
   describe('getSubscriptionStats', () => {
     it('should return stats correctly', async () => {
+      getDocs.mockReset();
       const now = new Date();
       const thisMonth = new Date(now.getFullYear(), now.getMonth(), 1);
       const doc1 = { data: () => ({ subscribedAt: { toDate: () => new Date(now) } }) };
       const doc2 = { data: () => ({ subscribedAt: { toDate: () => new Date(thisMonth) } }) };
-      getDocs.mockResolvedValueOnce({ size: 2, docs: [doc1, doc2] });
+      getDocs.mockResolvedValue({ size: 2, docs: [doc1, doc2] });
       const stats = await newsletterService.getSubscriptionStats();
       expect(stats.total).toBe(2);
       expect(stats.thisMonth).toBeGreaterThanOrEqual(1);
     });
     it('should return zero stats on error', async () => {
-      getDocs.mockRejectedValueOnce(new Error('fail'));
+      getDocs.mockReset();
+      getDocs.mockRejectedValue(new Error('fail'));
       const stats = await newsletterService.getSubscriptionStats();
       expect(stats).toEqual({ total: 0, thisMonth: 0 });
     });
 
     it('should ignore docs without subscribedAt', async () => {
+      getDocs.mockReset();
       const now = new Date();
       const docWithMissing = { data: () => ({}) };
       const docWithSub = { data: () => ({ subscribedAt: { toDate: () => new Date(now) } }) };
-      getDocs.mockResolvedValueOnce({ size: 2, docs: [docWithMissing, docWithSub] });
+      getDocs.mockResolvedValue({ size: 2, docs: [docWithMissing, docWithSub] });
       const stats = await newsletterService.getSubscriptionStats();
       expect(stats.total).toBe(2);
       expect(stats.thisMonth).toBe(1);
@@ -142,8 +165,7 @@ describe('newsletterService', () => {
 
   describe('subscribeToNewsletter with welcome email failure', () => {
     it('should reject if sendWelcomeEmail rejects (post-persist failure)', async () => {
-      getDocs.mockResolvedValueOnce({ empty: true });
-      addDoc.mockResolvedValueOnce({});
+      global.fetch.mockResolvedValueOnce({ ok: true, json: async () => ({ success: true }) });
       jest.spyOn(newsletterService, 'sendWelcomeEmail').mockRejectedValueOnce(new Error('boom'));
       await expect(
         newsletterService.subscribeToNewsletter('test@example.com', 'footer'),

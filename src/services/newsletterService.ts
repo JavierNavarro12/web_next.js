@@ -14,26 +14,19 @@ export const newsletterService = {
     source: 'hero' | 'footer' | 'modal' | 'articles' = 'hero',
   ): Promise<boolean> {
     try {
-      // Verificar si el email ya está suscrito en esta lista (diferenciamos por source)
-      const emailQuery = query(
-        collection(db, 'newsletter_subscriptions'),
-        where('email', '==', email),
-        where('source', '==', source),
-      );
-      const emailSnapshot = await getDocs(emailQuery);
-
-      if (!emailSnapshot.empty) {
+      // Hacer la creación desde API server-side (evita rules del cliente)
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source }),
+      });
+      const data = await res.json();
+      if (!res.ok && data?.error === 'Ya suscrito') {
         throw new Error('Este email ya está suscrito');
       }
-
-      // Agregar nueva suscripción
-      const subscription: NewsletterSubscription = {
-        email,
-        subscribedAt: new Date(),
-        source,
-      };
-
-      await addDoc(collection(db, 'newsletter_subscriptions'), subscription);
+      if (!res.ok) {
+        throw new Error(data?.error || 'Error al suscribirse');
+      }
 
       // Enviar email de bienvenida con Resend
       await this.sendWelcomeEmail(email, source);
