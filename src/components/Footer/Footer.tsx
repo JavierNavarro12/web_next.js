@@ -179,9 +179,6 @@ export default function Footer({
     setActiveCategory(null);
     setActiveSubcategory(null);
     try {
-      setActiveNav('explorar');
-    } catch {}
-    try {
       router.push('/');
     } catch {}
   };
@@ -196,9 +193,6 @@ export default function Footer({
     contextSetShowBugReport(true);
     setActiveCategory(null);
     setActiveSubcategory(null);
-    try {
-      setActiveNav('explorar');
-    } catch {}
     try {
       router.push('/');
     } catch {}
