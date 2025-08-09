@@ -9,7 +9,6 @@ function isStandaloneDisplay(): boolean {
   // matchMedia para PWA instaladas y navigator.standalone para iOS
   return (
     window.matchMedia('(display-mode: standalone)').matches ||
-    // @ts-expect-error: property 'standalone' solo existe en Safari iOS
     (typeof navigator !== 'undefined' &&
       (navigator as unknown as { standalone?: boolean }).standalone === true)
   );
