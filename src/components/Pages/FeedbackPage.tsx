@@ -57,7 +57,9 @@ export default function FeedbackPage({
         },
       );
 
-      console.log('Email de feedback enviado exitosamente:', result);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Email de feedback enviado exitosamente:', result);
+      }
       setShowSuccess(true);
       setFormData({ name: '', email: '', feedback: '' });
 

@@ -34,7 +34,9 @@ export default function AddAIToolModal({ isOpen, onClose }: AddAIToolModalProps)
         is_own_tool: formData.isOwnTool ? 'Sí' : 'No',
       });
 
-      console.log('Email enviado exitosamente:', result);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Email enviado exitosamente:', result);
+      }
       setShowSuccess(true);
       // Cerrar después de 3 segundos
       setTimeout(() => {
