@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { generateUnsubscribeToken } from '../unsubscribe/route';
+import { generateUnsubscribeToken } from '../../../utils/unsubscribeToken';
 import crypto from 'crypto';
 
 // Inicializar Resend solo cuando se necesite, no durante el build
