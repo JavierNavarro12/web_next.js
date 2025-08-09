@@ -100,25 +100,21 @@ describe('Sidebar', () => {
 
   it('despliega subcategorías y permite seleccionar una', () => {
     render(React.createElement(Sidebar));
-    // Buscar todos los elementos de categoría (en desktop es un <span> con el nombre)
     const generativaElements = screen.getAllByText('Generativa');
-    // Buscar el elemento de la lista de categorías (que tiene un ancestro <li>)
     const catElement = generativaElements.find((el) => el.closest('li'));
     expect(catElement).toBeTruthy();
-    // Simular click en la categoría para desplegar subcategorías
     fireEvent.click(catElement!.closest('div')!);
-    // Ahora debería aparecer la subcategoría "Texto"
     const subcatButton = screen.getByRole('button', { name: 'Texto' });
     expect(subcatButton).toBeInTheDocument();
-    // Simular el elemento de destino en el DOM para que handleSubcategoryClick funcione
     const section = document.createElement('div');
     section.id = 'Texto';
     document.body.appendChild(section);
-    // Simular click en la subcategoría
+    jest.useFakeTimers();
     fireEvent.click(subcatButton);
-    // Verificar que se dispara la navegación a la subcategoría
+    // Avanzar el retardo interno (100ms) antes de invocar navigateToSubcategory
+    jest.advanceTimersByTime(120);
     expect(navigateToSubcategoryMock).toHaveBeenCalledWith('Texto');
-    // Limpiar el DOM
+    jest.useRealTimers();
     document.body.removeChild(section);
   });
 

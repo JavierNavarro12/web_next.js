@@ -276,7 +276,7 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
                       <div className="hidden md:block min-h-screen w-full max-w-[1400px] mx-auto pt-2 pr-3 pb-3 pl-1">
                         <div className="flex min-h-[calc(100vh-1.25rem)] border-l border-t border-b border-zinc-800 bg-black relative overflow-hidden">
                           {/* Sidebar */}
-                          <div className="min-w-[270px] max-w-[300px] flex-col border-r border-zinc-800 bg-black fixed left-[calc(4px+1px)] top-[calc(8px+1px)] h-[calc(100vh-1.25rem-2px)] z-40 overflow-y-auto">
+                          <div className="min-w-[270px] max-w-[300px] flex-col border-r border-zinc-800 bg-black fixed left-[calc(4px+1px)] top-[calc(8px+1px)] h-[calc(100vh-1.25rem-2px)] z-40 overflow-hidden">
                             <Sidebar />
                           </div>
                           {/* Contenido principal */}

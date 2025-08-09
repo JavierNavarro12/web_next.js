@@ -82,10 +82,14 @@ const shortCategoryNames = [
   'Conocimiento',
 ];
 
-const mainSections = [
+// Navegación principal: en móvil incluye "Añadir una IA"; en desktop no
+const mainSectionsDesktop = [
   { key: 'explorar', label: 'Explorar', icon: GlobeAltIcon },
   { key: 'articulos', label: 'Artículos', icon: NewspaperIcon },
   { key: 'herramientas', label: 'Herramientas', icon: WrenchScrewdriverIcon },
+];
+const mainSectionsMobile = [
+  ...mainSectionsDesktop,
   { key: 'addtool', label: 'Añadir una IA', icon: PlusCircleIcon },
 ];
 
@@ -220,8 +224,10 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setActiveSubcategory(subcategoryName);
       setActiveNav('explorar');
       router.push('/');
-      // Asegurar scroll/navegación programática a la subcategoría
-      navigateToSubcategory(subcategoryName);
+      // Dar un pequeño margen para que el DOM tenga el id de la sección
+      setTimeout(() => {
+        navigateToSubcategory(subcategoryName);
+      }, 100);
     }
 
     // Si estamos en la página "Añadir una IA", cerrarla
@@ -339,15 +345,12 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
           AIFinder
         </span>
       </div>
+      {/* Navegación principal única: base + 'Añadir una IA' visible solo en móvil */}
       <nav className="mb-2 px-0 mt-4 md:mt-0">
         <ul className="space-y-0 w-full">
-          {mainSections.map((section) => {
+          {mainSectionsDesktop.map((section) => {
             const Icon = section.icon;
-            // Resaltar el ítem principal:
-            // - 'explorar' solo cuando NO hay categoría/subcategoría activas
-            // - otros (artículos/herramientas) como antes
             const isActive =
-              section.key !== 'addtool' &&
               activeNav === section.key &&
               !showFeedback &&
               !showBugReport &&
@@ -374,6 +377,21 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
               </li>
             );
           })}
+          {/* Ítem 'Añadir una IA' solo visible en móvil */}
+          <li className="relative w-full md:hidden">
+            <a
+              href="#"
+              className="flex items-center gap-2 w-full py-2 px-3 font-extrabold transition-colors relative z-0 rounded-none text-base md:text-sm text-white hover:bg-zinc-800"
+              style={{ borderRadius: 0 }}
+              onClick={(e) => {
+                e.preventDefault();
+                handleSectionClick('addtool');
+                if (onNavigate) onNavigate();
+              }}
+            >
+              <PlusCircleIcon className="w-5 h-5" /> Añadir una IA
+            </a>
+          </li>
         </ul>
       </nav>
       {/* Título de la sección de categorías */}
@@ -385,13 +403,13 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
           IAs
         </span>
       </div>
-      {/* Recuadro de categorías con scroll */}
+      {/* Recuadro de categorías con scroll interno (desktop) */}
       <div
         className="flex-1 flex flex-col bg-black rounded-none border border-zinc-800 p-0 w-full relative"
         style={{ maxHeight: 'none', overflow: 'hidden' }}
       >
         <nav
-          className="flex-1 pr-0 scrollbar-none"
+          className="flex-1 pr-0 scrollbar-none md:overflow-y-auto"
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
@@ -547,7 +565,21 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
           </ul>
         </nav>
       </div>
-      {/* Eliminado el botón inferior de "Añadir una IA" en móvil/desktop */}
+      {/* Botón Añadir una IA fijo al final del sidebar (solo desktop), igual que antes */}
+      <div className="hidden md:block mt-auto shrink-0 pt-0 pb-6">
+        <div className="border-t border-zinc-800 bg-black rounded-none p-0 w-full">
+          <button
+            onClick={() => {
+              if (setShowAddAITool) setShowAddAITool(true);
+              if (onNavigate) onNavigate();
+            }}
+            className="flex items-center gap-2 w-full py-3 px-3 font-extrabold transition-colors relative z-0 hover:bg-zinc-800 rounded-none text-base text-white md:text-sm md:text-white/90"
+            style={{ borderRadius: 0 }}
+          >
+            <PlusCircleIcon className="w-5 h-5" /> Añadir una IA
+          </button>
+        </div>
+      </div>
       {/* Ocultar scrollbar en webkit */}
       <style jsx global>{`
         .scrollbar-none::-webkit-scrollbar {
