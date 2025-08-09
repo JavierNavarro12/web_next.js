@@ -179,14 +179,14 @@ describe('Sidebar', () => {
     expect(screen.getByText('Explorar')).toBeInTheDocument();
   });
 
-  it('renderiza y maneja el botón "Añadir una IA"', () => {
+  it('renderiza y maneja el ítem "Añadir una IA" en el menú principal', () => {
     render(React.createElement(Sidebar, { onNavigate: mockOnNavigate }));
 
-    const addAIButton = screen.getByRole('button', { name: /añadir una ia/i });
-    expect(addAIButton).toBeInTheDocument();
+    const addAILink = screen.getByRole('link', { name: /añadir una ia/i });
+    expect(addAILink).toBeInTheDocument();
 
     // Simular click en el botón
-    fireEvent.click(addAIButton);
+    fireEvent.click(addAILink);
 
     // Verificar que se llama a setShowAddAITool
     expect(mockSetShowAddAITool).toHaveBeenCalledWith(true);
@@ -194,14 +194,14 @@ describe('Sidebar', () => {
     expect(mockOnNavigate).toHaveBeenCalled();
   });
 
-  it('maneja el botón "Añadir una IA" sin onNavigate', () => {
+  it('maneja el ítem "Añadir una IA" sin onNavigate', () => {
     render(React.createElement(Sidebar));
 
-    const addAIButton = screen.getByRole('button', { name: /añadir una ia/i });
-    expect(addAIButton).toBeInTheDocument();
+    const addAILink = screen.getByRole('link', { name: /añadir una ia/i });
+    expect(addAILink).toBeInTheDocument();
 
     // Simular click en el botón
-    fireEvent.click(addAIButton);
+    fireEvent.click(addAILink);
 
     // Verificar que se llama a setShowAddAITool
     expect(mockSetShowAddAITool).toHaveBeenCalledWith(true);

@@ -58,7 +58,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/favicon.ico',
-        destination: '/icons/icon-96x96.png',
+        destination: '/icons/icon-32x32.png',
         permanent: false,
       },
     ];

@@ -177,6 +177,19 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
   const [highlightedTool, setHighlightedTool] = useState<string | null>(null);
   const [activeNav, setActiveNav] = useState('explorar');
 
+  // Bloquear scroll de fondo cuando el drawer está abierto
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    if (sidebarOpen) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = prev;
+      };
+    }
+    return;
+  }, [sidebarOpen]);
+
   // Cargar desde localStorage tras hidratación
   useEffect(() => {
     const savedCategory =
@@ -198,7 +211,10 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
                   <SubcategoryContext.Provider value={{ activeSubcategory, setActiveSubcategory }}>
                     {/* Sidebar drawer en móvil */}
                     {sidebarOpen && (
-                      <div className="fixed inset-0 z-[60] bg-black/95 flex flex-col md:hidden">
+                      <div
+                        className="fixed inset-0 z-[60] bg-black/95 flex flex-col md:hidden"
+                        style={{ overflow: 'hidden' }}
+                      >
                         <div className="flex items-center justify-between px-4 py-5 border-b border-zinc-800">
                           <span className="font-extrabold text-3xl tracking-tight text-white font-sans">
                             AIFinder
@@ -249,7 +265,7 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
                             </button>
                           </div>
                         </div>
-                        <div className="flex-1 overflow-y-auto">
+                        <div className="flex-1" style={{ overflow: 'hidden' }}>
                           <Sidebar onNavigate={() => setSidebarOpen(false)} />
                         </div>
                       </div>

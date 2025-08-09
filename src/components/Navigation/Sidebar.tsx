@@ -86,6 +86,7 @@ const mainSections = [
   { key: 'explorar', label: 'Explorar', icon: GlobeAltIcon },
   { key: 'articulos', label: 'Artículos', icon: NewspaperIcon },
   { key: 'herramientas', label: 'Herramientas', icon: WrenchScrewdriverIcon },
+  { key: 'addtool', label: 'Añadir una IA', icon: PlusCircleIcon },
 ];
 
 export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}) {
@@ -240,8 +241,9 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setShowBugReport(false);
     }
 
-    // Si estamos en la página "Añadir una IA", cerrarla
-    if (setShowAddAITool) {
+    // Cerrar overlay de "Añadir una IA" si estuviera abierto,
+    // excepto cuando el destino es precisamente 'addtool'
+    if (sectionKey !== 'addtool' && setShowAddAITool) {
       setShowAddAITool(false);
     }
 
@@ -277,6 +279,12 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setActiveNav('articulos'); // Cambiar navegación a artículos
       router.push('/');
       navigateToTop();
+    } else if (sectionKey === 'addtool') {
+      // Abrir el overlay/modal de "Añadir una IA" y mantenernos en la vista actual
+      if (setShowAddAITool) setShowAddAITool(true);
+      setActiveNav('explorar');
+      setActiveCategory && setActiveCategory(null);
+      setActiveSubcategory && setActiveSubcategory(null);
     }
   };
 
@@ -339,6 +347,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
             // - 'explorar' solo cuando NO hay categoría/subcategoría activas
             // - otros (artículos/herramientas) como antes
             const isActive =
+              section.key !== 'addtool' &&
               activeNav === section.key &&
               !showFeedback &&
               !showBugReport &&
@@ -378,16 +387,16 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       </div>
       {/* Recuadro de categorías con scroll */}
       <div
-        className="flex-1 flex flex-col bg-black rounded-none border border-zinc-800 p-0 w-full relative overflow-hidden"
-        style={{ maxHeight: 'calc(100vh - 200px)' }}
+        className="flex-1 flex flex-col bg-black rounded-none border border-zinc-800 p-0 w-full relative"
+        style={{ maxHeight: 'none', overflow: 'hidden' }}
       >
         <nav
-          className="flex-1 overflow-y-auto pr-0 scrollbar-none"
+          className="flex-1 pr-0 scrollbar-none"
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
-            maxHeight: 'calc(100% - 0px)',
-            overscrollBehavior: 'contain',
+            maxHeight: 'none',
+            overscrollBehavior: 'auto',
           }}
         >
           {/* Elimina la lógica de isMobile y renderiza ambos layouts: */}
@@ -538,21 +547,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
           </ul>
         </nav>
       </div>
-      {/* Botón Añadir una IA fijo al final del sidebar */}
-      <div className="mt-auto shrink-0 pt-0 pb-6">
-        <div className="border-t border-zinc-800 bg-black rounded-none p-0 w-full">
-          <button
-            onClick={() => {
-              setShowAddAITool(true);
-              if (onNavigate) onNavigate();
-            }}
-            className="flex items-center gap-2 w-full py-3 px-3 font-extrabold transition-colors relative z-0 hover:bg-zinc-800 rounded-none text-base text-white md:text-sm md:text-white/90"
-            style={{ borderRadius: 0 }}
-          >
-            <PlusCircleIcon className="w-5 h-5" /> Añadir una IA
-          </button>
-        </div>
-      </div>
+      {/* Eliminado el botón inferior de "Añadir una IA" en móvil/desktop */}
       {/* Ocultar scrollbar en webkit */}
       <style jsx global>{`
         .scrollbar-none::-webkit-scrollbar {

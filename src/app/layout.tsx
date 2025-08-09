@@ -24,11 +24,11 @@ export const metadata: Metadata = {
   applicationName: 'AIFinder',
   icons: {
     icon: [
-      { url: '/icons/icon-96x96.png', sizes: '96x96', type: 'image/png' },
-      { url: '/icons/icon-72x72.png', sizes: '72x72', type: 'image/png' },
+      { url: '/icons/icon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/icons/icon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icons/icon-64x64.png', sizes: '64x64', type: 'image/png' },
     ],
-    apple: [{ url: '/icons/icon-192x192.png', sizes: '192x192' }],
-    other: [{ rel: 'mask-icon', url: '/icons/icon.svg', color: '#000000' }],
+    apple: [{ url: '/icons/icon-180x180.png', sizes: '180x180' }],
   },
   manifest: '/manifest.json',
   openGraph: {
@@ -37,14 +37,7 @@ export const metadata: Metadata = {
     siteName: 'AIFinder',
     url: baseUrl,
     type: 'website',
-    images: [
-      {
-        url: '/icons/icon-512x512.png',
-        width: 512,
-        height: 512,
-        alt: 'AIFinder',
-      },
-    ],
+    images: [{ url: '/icons/icon-512x512.png', width: 512, height: 512, alt: 'AIFinder' }],
   },
   twitter: {
     card: 'summary_large_image',
