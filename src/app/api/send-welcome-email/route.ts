@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { generateUnsubscribeToken } from '../unsubscribe/route';
 import crypto from 'crypto';
 
 // Inicializar Resend solo cuando se necesite, no durante el build
@@ -162,6 +163,9 @@ export async function POST(request: NextRequest) {
         Herramientas, recursos y productos de IA. Entregado semanalmente.
       </p>`;
 
+    // Generar token de baja
+    const unsubscribeToken = generateUnsubscribeToken(email);
+
     // Enviar email de bienvenida
     const result = await resend.emails.send({
       from: 'AIFinder <newsletter@aifinder.es>',
@@ -283,7 +287,7 @@ export async function POST(request: NextRequest) {
                         Este email fue enviado a ${email}
                       </p>
           <p style="margin: 0; color: #64748b; font-size: 12px;">
-            <a href="https://aifinder.es/unsubscribe?email=${encodeURIComponent(email)}" style="color: #64748b; text-decoration: none;">Cancelar suscripción</a>
+            <a href="https://aifinder.es/unsubscribe?token=${unsubscribeToken}" style="color: #64748b; text-decoration: none;">Cancelar suscripción</a>
           </p>
                       <p style="margin: 16px 0 0; color: #64748b; font-size: 12px;">
                         © 2024 AIFinder

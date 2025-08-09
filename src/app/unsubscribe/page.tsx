@@ -35,35 +35,55 @@ export default function UnsubscribePage() {
         return;
       }
 
-      // Buscar todas las suscripciones con este email (cualquier source)
-      const q = query(collection(db, 'newsletter_subscriptions'), where('email', '==', trimmed));
-      const snapshot = await getDocs(q);
-
-      if (snapshot.empty) {
-        setSuccessMsg('No encontramos suscripciones activas para este email.');
-        setDeletedCount(0);
-        setIsSubmitting(false);
+      // Llamar al endpoint seguro con token
+      const token = new URLSearchParams(window.location.search).get('token');
+      if (token) {
+        const res = await fetch('/api/unsubscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data?.error || 'Error de servidor');
+        setDeletedCount(data.deleted ?? 0);
+        setSuccessMsg(
+          (data.deleted ?? 0) > 0
+            ? 'Tu email ha sido dado de baja de nuestra newsletter.'
+            : 'No encontramos suscripciones activas para este email.',
+        );
         return;
       }
 
-      let deleted = 0;
-      await Promise.all(
-        snapshot.docs.map(async (d) => {
-          try {
-            await deleteDoc(d.ref);
-            deleted += 1;
-          } catch {
-            // continuar con las demás
-          }
-        }),
-      );
-
-      setDeletedCount(deleted);
-      setSuccessMsg(
-        deleted > 0
-          ? 'Tu email ha sido dado de baja de nuestra newsletter.'
-          : 'No se pudieron eliminar suscripciones. Inténtalo más tarde.',
-      );
+      // Fallback: si no hay token, intentar baja manual sólo en cliente (puede fallar por reglas)
+      try {
+        const q = query(collection(db, 'newsletter_subscriptions'), where('email', '==', trimmed));
+        const snapshot = await getDocs(q);
+        if (snapshot.empty) {
+          setSuccessMsg('No encontramos suscripciones activas para este email.');
+          setDeletedCount(0);
+        } else {
+          let deleted = 0;
+          await Promise.all(
+            snapshot.docs.map(async (d) => {
+              try {
+                await deleteDoc(d.ref);
+                deleted += 1;
+              } catch {}
+            }),
+          );
+          setDeletedCount(deleted);
+          setSuccessMsg(
+            deleted > 0
+              ? 'Tu email ha sido dado de baja de nuestra newsletter.'
+              : 'No se pudieron eliminar suscripciones. Inténtalo más tarde.',
+          );
+        }
+      } catch {
+        // Si falla por reglas, avisar al usuario
+        setErrorMsg(
+          'No se pudo procesar la baja automáticamente. Revisa el enlace de baja del email o inténtalo más tarde.',
+        );
+      }
     } catch {
       setErrorMsg('Ha ocurrido un error al procesar tu baja. Inténtalo de nuevo.');
     } finally {
