@@ -44,7 +44,9 @@ export const newsletterService = {
     source: 'hero' | 'footer' | 'modal' | 'articles' = 'hero',
   ): Promise<void> {
     try {
-      console.log('Enviando email de bienvenida a:', email, `source=${source}`);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Enviando email de bienvenida a:', email, `source=${source}`);
+      }
       const response = await fetch('/api/send-welcome-email', {
         method: 'POST',
         headers: {
@@ -54,20 +56,24 @@ export const newsletterService = {
       });
 
       const responseData = await response.json();
-      console.log('Respuesta del API:', responseData);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Respuesta del API:', responseData);
+      }
 
       if (!response.ok) {
         throw new Error(`Error al enviar email: ${responseData.error || 'Unknown error'}`);
       }
 
-      console.log(
-        'Email de bienvenida enviado exitosamente a:',
-        email,
-        'source=',
-        source,
-        'ID:',
-        responseData.emailId,
-      );
+      if (process.env.NODE_ENV !== 'production') {
+        console.log(
+          'Email de bienvenida enviado exitosamente a:',
+          email,
+          'source=',
+          source,
+          'ID:',
+          responseData.emailId,
+        );
+      }
     } catch (error) {
       console.error('Error detallado al enviar email de bienvenida:', {
         email,
