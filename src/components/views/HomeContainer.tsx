@@ -79,6 +79,22 @@ export default function HomeContainer() {
     setIsClient(true);
   }, []);
 
+  // Al cambiar de sección principal (explorar, artículos, herramientas en home),
+  // resetea el scroll y el estado isScrolled para que el hero/primera tarjeta sea visible
+  useEffect(() => {
+    // Retrasar un frame para esperar al cambio de vista/layout
+    const id = requestAnimationFrame(() => {
+      const mainElement = document.querySelector('main');
+      if (mainElement && (mainElement as HTMLElement).scrollTop !== 0) {
+        (mainElement as HTMLElement).scrollTo({ top: 0, behavior: 'auto' });
+      } else if (typeof window !== 'undefined' && window.scrollY !== 0) {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      }
+      setIsScrolled(false);
+    });
+    return () => cancelAnimationFrame(id);
+  }, [activeNav]);
+
   const currentCategory = activeCategory
     ? aiCategories.find((cat) => cat.name === activeCategory) || null
     : null;

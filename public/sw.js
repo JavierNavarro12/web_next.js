@@ -36,6 +36,34 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
+// Permitir precachear URLs bajo demanda (e.g., imágenes de próximas secciones)
+self.addEventListener('message', (event) => {
+  try {
+    const data = event.data;
+    if (!data || !data.type) return;
+    if (data.type === 'PRECACHE_URLS' && Array.isArray(data.urls)) {
+      const urls = data.urls.filter((u) => {
+        try {
+          const url = new URL(u, self.location.origin);
+          // Por seguridad, solo precachear del mismo origen
+          return url.origin === self.location.origin;
+        } catch {
+          return false;
+        }
+      });
+      event.waitUntil(
+        caches.open(CACHE_NAME).then((cache) => {
+          return Promise.all(
+            urls.map((u) =>
+              cache.match(u).then((hit) => (hit ? null : cache.add(u).catch(() => null))),
+            ),
+          );
+        }),
+      );
+    }
+  } catch (_) {}
+});
+
 // Interceptar peticiones
 self.addEventListener('fetch', (event) => {
   const { request } = event;

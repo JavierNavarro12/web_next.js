@@ -183,6 +183,19 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
     // Navegar al home para mostrar la vista de categorías desde cualquier ruta (incluye /herramientas)
     setActiveNav('explorar');
     router.push('/');
+
+    // Forzar scroll al inicio del contenedor principal para evitar pantalla negra
+    try {
+      // Ejecutar en el siguiente frame para asegurar que el DOM esté listo
+      requestAnimationFrame(() => {
+        const mainElement = document.querySelector('main');
+        if (mainElement && mainElement.classList.contains('overflow-y-auto')) {
+          (mainElement as HTMLElement).scrollTo({ top: 0, behavior: 'auto' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+      });
+    } catch {}
   };
 
   // Función para manejar clic en subcategoría usando el sistema centralizado
@@ -239,7 +252,18 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setActiveCategory(null); // Limpiar categoría activa cuando se va a Explorar
       setActiveSubcategory(null); // Limpiar subcategoría también
       setActiveNav('explorar'); // Cambiar navegación
+      // Reset inmediato de scroll antes de navegar para evitar parpadeos/negros
+      try {
+        const mainElement = document.querySelector('main');
+        if (mainElement && (mainElement as HTMLElement).scrollTop !== 0) {
+          (mainElement as HTMLElement).scrollTo({ top: 0, behavior: 'auto' });
+        }
+        if (typeof window !== 'undefined' && window.scrollY !== 0) {
+          window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+      } catch {}
       router.push('/');
+      // Refuerzo tras la navegación
       navigateToTop();
     } else if (sectionKey === 'herramientas' && setActiveCategory) {
       setActiveCategory(null);
@@ -311,8 +335,14 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
         <ul className="space-y-0 w-full">
           {mainSections.map((section) => {
             const Icon = section.icon;
-            // Resaltar el ítem principal según activeNav, independientemente de subcategorías
-            const isActive = activeNav === section.key && !showFeedback && !showBugReport;
+            // Resaltar el ítem principal:
+            // - 'explorar' solo cuando NO hay categoría/subcategoría activas
+            // - otros (artículos/herramientas) como antes
+            const isActive =
+              activeNav === section.key &&
+              !showFeedback &&
+              !showBugReport &&
+              (section.key !== 'explorar' || (!activeCategory && !activeSubcategory));
             return (
               <li key={section.key} className="relative w-full">
                 {isActive && <div className="absolute left-0 top-0 bottom-0 w-1 bg-white z-20" />}

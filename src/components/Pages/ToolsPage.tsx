@@ -17,6 +17,7 @@ import {
 } from '../../app/providers';
 import { type AITool } from '../../data/ai-tools';
 import { handleToolClick, getPricingText } from '../../utils/toolUtils';
+import { prefetchImages, withBase } from '../../utils/imagePrefetch';
 
 type ToolsGroup = {
   name: string;
@@ -428,6 +429,25 @@ export default function ToolsPage() {
 
   useEffect(() => setIsClient(true), []);
 
+  // Prefetch imágenes del grupo activo y el siguiente para que aparezcan instantáneas al navegar
+  useEffect(() => {
+    try {
+      const currentIndex = toolsGroups.findIndex((g) => g.name === activeTab);
+      const groupsToPrefetch = [toolsGroups[currentIndex], toolsGroups[currentIndex + 1]].filter(
+        Boolean,
+      ) as ToolsGroup[];
+
+      const urls: string[] = [];
+      for (const g of groupsToPrefetch) {
+        for (const t of g.tools) {
+          if (t.logo) urls.push(withBase(t.logo));
+          if (t.image) urls.push(withBase(t.image));
+        }
+      }
+      prefetchImages(urls);
+    } catch {}
+  }, [activeTab]);
+
   // Sincronizar activeTab local con activeSubcategory global
   useEffect(() => {
     if (activeSubcategory && activeSubcategory !== activeTab) {
@@ -648,7 +668,7 @@ export default function ToolsPage() {
                     {group.name}
                   </h2>
                   <div className="grid grid-cols-4 gap-4">
-                    {list.map((tool) => (
+                    {list.map((tool, i) => (
                       <div
                         key={tool.name}
                         className="group cursor-pointer transition-all duration-300"
@@ -660,6 +680,8 @@ export default function ToolsPage() {
                             alt={tool.name}
                             fill
                             sizes="(max-width: 1024px) 25vw, 25vw"
+                            priority={group.name === toolsGroups[0].name && i < 8}
+                            loading={group.name === toolsGroups[0].name && i < 8 ? 'eager' : 'lazy'}
                             className="w-full h-full object-cover rounded transition-all duration-300 group-hover:scale-105 group-hover:blur-sm"
                           />
                           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
