@@ -83,6 +83,28 @@ self.addEventListener('fetch', (event) => {
       request.destination === 'manifest';
 
     if (isStaticAsset) {
+      // Imágenes: stale-while-revalidate (rápido desde caché, actualiza en segundo plano)
+      if (request.destination === 'image') {
+        event.respondWith(
+          (async () => {
+            const cache = await caches.open(CACHE_NAME);
+            const cached = await cache.match(request);
+            const networkFetch = fetch(request)
+              .then((response) => {
+                if (response && response.status === 200) {
+                  cache.put(request, response.clone());
+                }
+                return response;
+              })
+              .catch(() => undefined);
+
+            return cached || (await networkFetch) || Response.error();
+          })(),
+        );
+        return;
+      }
+
+      // Otros assets estáticos: cache-first con actualización
       event.respondWith(
         caches.match(request).then((cached) => {
           if (cached) return cached;

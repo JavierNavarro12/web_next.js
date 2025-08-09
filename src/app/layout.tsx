@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import AppProviders from './providers';
 import React from 'react';
-import '../app/(sentry)/instrumentation';
+import { initBrowserSentry } from '../app/(sentry)/instrumentation';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -55,6 +55,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="es">
       <head>
+        {/* Sentry (navegador) inicializado de forma segura en cliente */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(${initBrowserSentry.toString()})();`,
+          }}
+        />
         <link rel="preconnect" href="https://mux.com" />
         <link rel="dns-prefetch" href="https://mux.com" />
         <link rel="preconnect" href="https://manifest-gcp-us-east1-vop1.fastly.mux.com" />
