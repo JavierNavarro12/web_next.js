@@ -23,22 +23,37 @@ export default function PWAStartupRedirect() {
 
   useEffect(() => {
     if (!isStandaloneDisplay()) return;
+    if (typeof window === 'undefined') return;
+    // Solo forzar la página inicial una vez por sesión de la PWA
+    const alreadyRedirected = sessionStorage.getItem('pwaInitRedirect');
+    if (alreadyRedirected) return;
+    sessionStorage.setItem('pwaInitRedirect', '1');
+
+    // Reset de estado SIEMPRE al inicio de la sesión de la PWA,
+    // aunque ya estemos en '/': evita reabrir con categoría almacenada
+    setActiveCategory(null);
+    setActiveSubcategory(null);
+    setActiveNav('explorar');
+    try {
+      localStorage.removeItem('activeCategory');
+      localStorage.removeItem('activeSubcategory');
+    } catch {}
+
+    // Si no estamos en '/', navegar a inicio (Explorar)
     if (pathname !== '/') {
-      // Reset de estado y navegación a inicio (Explorar)
-      setActiveCategory(null);
-      setActiveSubcategory(null);
-      setActiveNav('explorar');
       router.replace('/');
-      requestAnimationFrame(() => {
-        const mainElement = document.querySelector('main');
-        if (mainElement) {
-          (mainElement as HTMLElement).scrollTo({ top: 0, behavior: 'auto' });
-        } else {
-          window.scrollTo({ top: 0, behavior: 'auto' });
-        }
-      });
     }
-  }, [pathname, router, setActiveCategory, setActiveSubcategory, setActiveNav]);
+
+    // Asegurar scroll al top tras el arranque
+    requestAnimationFrame(() => {
+      const mainElement = document.querySelector('main');
+      if (mainElement) {
+        (mainElement as HTMLElement).scrollTo({ top: 0, behavior: 'auto' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      }
+    });
+  }, []);
 
   return null;
 }
