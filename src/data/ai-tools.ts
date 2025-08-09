@@ -155,7 +155,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/dall.e-web.webp',
             description: 'Imágenes IA',
             pricing: 'freemium',
-            url: 'https://openai.com/dall-e-2',
+            url: 'https://openai.com/index/dall-e-3/',
           },
           {
             name: 'Stable Diffusion',
