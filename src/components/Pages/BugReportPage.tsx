@@ -57,7 +57,7 @@ export default function BugReportPage({
         throw new Error('Configuración de EmailJS incompleta');
       }
       // Enviar email usando EmailJS
-      const result = await emailjs.send(
+      const _result = await emailjs.send(
         EMAILJS_CONFIG.SERVICE_ID,
         EMAILJS_CONFIG.FEEDBACK_TEMPLATE_ID,
         {

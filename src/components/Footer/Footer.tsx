@@ -1,12 +1,14 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   useAppContext,
   useSubcategoryContext,
   useAddAIToolContext,
   useFeedbackContext,
   useBugReportContext,
+  useActiveNavContext,
 } from '../../app/providers';
 
 interface FooterProps {
@@ -24,12 +26,14 @@ export default function Footer({
   setActiveSubcategory: _propSetActiveSubcategory,
   className,
 }: FooterProps) {
+  const router = useRouter();
   // Usar contextos directamente si las props no están disponibles
   const { setActiveCategory: contextSetActiveCategory } = useAppContext();
   const { setActiveSubcategory: contextSetActiveSubcategory } = useSubcategoryContext();
   const { setShowAddAITool } = useAddAIToolContext();
   const { setShowFeedback: contextSetShowFeedback } = useFeedbackContext();
   const { setShowBugReport: contextSetShowBugReport } = useBugReportContext();
+  const { setActiveNav } = useActiveNavContext();
 
   // Usar contextos directamente para asegurar que funcione en todas las páginas
   const setActiveCategory = contextSetActiveCategory;
@@ -117,7 +121,9 @@ export default function Footer({
   };
 
   const handleCategoryClick = (categoryName: string) => {
-    console.log('Footer: Click en categoría:', categoryName);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('Footer: Click en categoría:', categoryName);
+    }
 
     // Cerrar la página "Añadir una IA" si está abierta
     if (setShowAddAITool) setShowAddAITool(false);
@@ -128,31 +134,93 @@ export default function Footer({
 
     if (setActiveCategory && setActiveSubcategory) {
       const realCategoryName = categoryMapping[categoryName];
-      console.log('Footer: Nombre real de categoría:', realCategoryName);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Footer: Nombre real de categoría:', realCategoryName);
+      }
       if (realCategoryName) {
-        console.log('Footer: Navegando a categoría:', realCategoryName);
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('Footer: Navegando a categoría:', realCategoryName);
+        }
         setActiveCategory(realCategoryName);
         setActiveSubcategory(null);
+        // Asegurar navegación a la vista principal de categorías
+        try {
+          setActiveNav('explorar');
+        } catch {}
+        try {
+          router.push('/');
+        } catch {}
       } else {
-        console.log('Footer: No se encontró mapeo para:', categoryName);
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('Footer: No se encontró mapeo para:', categoryName);
+        }
       }
     } else {
-      console.log('Footer: setActiveCategory o setActiveSubcategory no están disponibles');
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Footer: setActiveCategory o setActiveSubcategory no están disponibles');
+      }
     }
   };
 
   const tools = [
-    'Comparador de IAs',
-    'Calculadora de costos',
-    'Generador de prompts',
-    'Evaluador de calidad',
+    { label: 'Comparador de IAs', onClick: () => navigateToTools() },
+    { label: 'Calculadora de costos', onClick: () => navigateToTools() },
+    { label: 'Generador de prompts', onClick: () => navigateToTools() },
+    { label: 'Evaluador de calidad', onClick: () => navigateToTools() },
   ];
 
+  const openFeedback = () => {
+    // Cerrar modales/páginas superpuestas
+    if (setShowAddAITool) setShowAddAITool(false);
+    contextSetShowBugReport(false);
+    contextSetShowFeedback(true);
+    // Reset navegación a home
+    setActiveCategory(null);
+    setActiveSubcategory(null);
+    try {
+      setActiveNav('explorar');
+    } catch {}
+    try {
+      router.push('/');
+    } catch {}
+  };
+
+  const openBugReport = () => {
+    if (setShowAddAITool) setShowAddAITool(false);
+    contextSetShowFeedback(false);
+    contextSetShowBugReport(true);
+    setActiveCategory(null);
+    setActiveSubcategory(null);
+    try {
+      setActiveNav('explorar');
+    } catch {}
+    try {
+      router.push('/');
+    } catch {}
+  };
+
   const connectLinks = [
-    { label: 'Feedback', onClick: () => setShowFeedback(true) },
-    { label: 'Reportar Bug', onClick: () => setShowBugReport?.(true) },
+    { label: 'Feedback', onClick: openFeedback },
+    { label: 'Reportar Bug', onClick: openBugReport },
     { label: 'Contactar', href: 'mailto:navarrojavi107@gmail.com' },
   ];
+
+  const navigateToTools = () => {
+    // Cerrar overlays
+    if (setShowAddAITool) setShowAddAITool(false);
+    contextSetShowFeedback(false);
+    contextSetShowBugReport(false);
+    // Limpiar selección de categorías
+    setActiveCategory && setActiveCategory(null);
+    setActiveSubcategory && setActiveSubcategory(null);
+    // Ir a Herramientas
+    try {
+      setActiveNav('herramientas');
+    } catch {}
+    try {
+      router.push('/herramientas');
+    } catch {}
+  };
 
   const legalLinks = [
     { label: 'Directrices de Listado', href: '/directrices' },
@@ -233,11 +301,15 @@ export default function Footer({
             <div className="space-y-2">
               {tools.map((tool) => (
                 <a
-                  key={tool}
+                  key={tool.label}
                   href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    tool.onClick();
+                  }}
                   className="block text-zinc-400 hover:text-white transition-colors text-sm"
                 >
-                  {tool}
+                  {tool.label}
                 </a>
               ))}
             </div>
@@ -344,12 +416,16 @@ export default function Footer({
               <h3 className="text-white font-semibold mb-4">Herramientas</h3>
               <ul className="space-y-2">
                 {tools.map((tool) => (
-                  <li key={tool}>
+                  <li key={tool.label}>
                     <a
                       href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        tool.onClick();
+                      }}
                       className="text-zinc-400 hover:text-white transition-colors text-sm"
                     >
-                      {tool}
+                      {tool.label}
                     </a>
                   </li>
                 ))}

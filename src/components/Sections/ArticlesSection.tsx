@@ -14,7 +14,6 @@ type Props = {
 
 export default function ArticlesSection({ className = '' }: Props) {
   const [activeCategory, setActiveCategory] = useState<ArticleCategory['id']>('all');
-  const [searchTerm, setSearchTerm] = useState('');
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -29,19 +28,8 @@ export default function ArticlesSection({ className = '' }: Props) {
       filtered = filtered.filter((article) => article.category === activeCategory);
     }
 
-    // Filtrar por término de búsqueda
-    if (searchTerm.trim()) {
-      const searchLower = searchTerm.toLowerCase();
-      filtered = filtered.filter(
-        (article) =>
-          article.title.toLowerCase().includes(searchLower) ||
-          article.description.toLowerCase().includes(searchLower) ||
-          article.categoryLabel.toLowerCase().includes(searchLower),
-      );
-    }
-
     return filtered;
-  }, [activeCategory, searchTerm]);
+  }, [activeCategory]);
 
   // util para ordenar por fecha descendente (más reciente primero)
   const sortByDateDesc = (a: { date: string }, b: { date: string }) => {

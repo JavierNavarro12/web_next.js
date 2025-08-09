@@ -179,11 +179,9 @@ export default function ExploreView({
                   }, 100);
                 }}
               />
-              <AICoursesSection onViewAll={() => alert('Sección de cursos - próximamente')} />
-              <AIRecommendationsSection
-                onViewAll={() => alert('Sección de recomendaciones - próximamente')}
-              />
-              <AIBootcampsSection onViewAll={() => alert('Sección de bootcamps - próximamente')} />
+              <AICoursesSection onViewAll={undefined as never} />
+              <AIRecommendationsSection onViewAll={undefined as never} />
+              <AIBootcampsSection onViewAll={undefined as never} />
               <AIAudioSection
                 onViewAll={() => {
                   setActiveCategory('Generativa');

@@ -3,8 +3,8 @@ import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../../config/emailjs';
 import Footer from '../Footer/Footer';
 
-// Inicializar EmailJS una sola vez
-emailjs.init('d0LlJPzXxEJn_vAf4');
+// Inicializar EmailJS una sola vez desde configuración (sin hardcodear claves)
+emailjs.init(EMAILJS_CONFIG.USER_ID);
 
 interface FeedbackPageProps {
   onBack: () => void;
@@ -68,7 +68,16 @@ export default function FeedbackPage({
       }, 3000);
     } catch (error) {
       console.error('Error al enviar email de feedback:', error);
-      alert('Error al enviar el feedback. Por favor, inténtalo de nuevo.');
+      // Mostrar notificación no bloqueante
+      setShowSuccess(false);
+      // Reutilizamos el botón de envío deshabilitado como indicativo y mensaje visual via estado local
+      // Puedes integrar un sistema de toasts global en el futuro
+      const el = document.createElement('div');
+      el.textContent = 'Error al enviar el feedback. Por favor, inténtalo de nuevo.';
+      el.className =
+        'fixed bottom-6 left-1/2 -translate-x-1/2 bg-red-600 text-white px-4 py-2 rounded shadow-lg z-[1000]';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 3000);
     } finally {
       setIsSubmitting(false);
     }

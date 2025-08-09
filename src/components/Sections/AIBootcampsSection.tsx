@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 
 interface AIBootcampsSectionProps {
-  onViewAll: () => void;
+  onViewAll?: () => void;
 }
 
 export default function AIBootcampsSection({ onViewAll: _onViewAll }: AIBootcampsSectionProps) {

@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import { articles } from '../../../data/articles';
 import React from 'react';
 
-type Props = { children: React.ReactNode; params: Promise<{ slug: string }> };
+type Props = { children: React.ReactNode; params: { slug: string } };
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug } = params;
   const article = articles.find((a) => a.slug === slug);
   if (!article) return {};
 
@@ -41,7 +41,7 @@ export async function generateMetadata({
 }
 
 export default async function ArticleLayout({ children, params }: Props) {
-  const { slug } = await params;
+  const { slug } = params;
   const article = articles.find((a) => a.slug === slug);
   const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
 
@@ -64,7 +64,6 @@ export default async function ArticleLayout({ children, params }: Props) {
       {jsonLd && (
         <script
           type="application/ld+json"
-           
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       )}

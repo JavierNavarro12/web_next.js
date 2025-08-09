@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Footer from '../Footer/Footer';
 import MobileHeader from '../Header/MobileHeader';
 import ReactCtx from 'react';
 import { AICategory } from '../../data/ai-tools';
-import { useMobileNavigation } from '../../hooks/useMobileNavigation';
+// import { useMobileNavigation } from '../../hooks/useMobileNavigation';
 import { useSubcategoryHandlers } from '../../hooks/useSubcategoryHandlers';
 import { useScrollEffects } from '../../hooks/useScrollEffects';
 import {
@@ -402,7 +402,9 @@ export default function ToolsPage() {
         if (entry.isIntersecting) {
           const sectionName = entry.target.getAttribute('data-section-name');
           if (sectionName && sectionName !== activeTab) {
-            console.log('ToolsPage - Sección visible:', sectionName);
+            if (process.env.NODE_ENV !== 'production') {
+              console.log('ToolsPage - Sección visible:', sectionName);
+            }
             setActiveTab(sectionName);
             setActiveSubcategory(sectionName);
           }

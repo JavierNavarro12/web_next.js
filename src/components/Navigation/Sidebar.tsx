@@ -99,7 +99,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
   const [openCategory, setOpenCategory] = useState<number | null>(null);
   const [hoveredCategory, setHoveredCategory] = useState<number | null>(null);
   const [hoveredSub, setHoveredSub] = useState<string | null>(null);
-  const [activeSection, setActiveSection] = useState<string>('explorar');
+  const [_activeSection, setActiveSection] = useState<string>('explorar');
   const subcatRefs = useRef<{ [key: string]: HTMLLIElement | null }>({});
   const [hoverLineStyle, setHoverLineStyle] = useState<{ top: number; height: number } | null>(
     null,
@@ -128,7 +128,9 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       setOpenCategory(null);
       setActiveSection('explorar');
     }
-  }, [activeCategory, showFeedback, showBugReport]); // Dependemos de activeCategory, showFeedback y showBugReport
+    // Mantener el resaltado del ítem principal acorde a activeNav
+    // No lo borres al hacer scroll o al abrir/cerrar categorías
+  }, [activeCategory, showFeedback, showBugReport]);
 
   // Establecer la primera subcategoría cuando cambie la categoría
   useEffect(() => {
@@ -309,14 +311,8 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
         <ul className="space-y-0 w-full">
           {mainSections.map((section) => {
             const Icon = section.icon;
-            // En móvil, cuando estamos en 'articulos', no marcar también 'explorar'.
-            // Simplificamos: resaltamos solo el que coincide con activeNav.
-            const isActive =
-              activeNav === section.key &&
-              !activeCategory &&
-              !activeSubcategory &&
-              !showFeedback &&
-              !showBugReport;
+            // Resaltar el ítem principal según activeNav, independientemente de subcategorías
+            const isActive = activeNav === section.key && !showFeedback && !showBugReport;
             return (
               <li key={section.key} className="relative w-full">
                 {isActive && <div className="absolute left-0 top-0 bottom-0 w-1 bg-white z-20" />}

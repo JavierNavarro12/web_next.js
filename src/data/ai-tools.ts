@@ -2152,7 +2152,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Program-Aided Reasoning',
             logo: '/logos/Program-Aided Reasoning-movil.png',
-            image: '/images/Program-Aided Reasoning-web.png',
+            image: '/images/Program-Aided Reasoning-web.webp',
             description: 'Razonamiento IA',
             pricing: 'free',
             url: 'https://reasonwithpal.com',
@@ -2199,7 +2199,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Weights & Biases',
             logo: '/logos/Weights & Biases-movil.png',
-            image: '/images/Weights & Biases-web.png',
+            image: '/images/Weights & Biases-web.webp',
             description: 'MLOps',
             pricing: 'freemium',
             url: 'https://wandb.ai',
@@ -2389,7 +2389,7 @@ export const aiCategories: AICategory[] = [
           {
             name: 'Unbounce Smart Copy',
             logo: '/logos/Unbounce Smart Copy-movil.webp',
-            image: '/images/Unbounce Smart Copy-web.png',
+            image: '/images/Unbounce Smart Copy-web.webp',
             description: 'Email marketing',
             pricing: 'freemium',
             url: 'https://unbounce.com/product/smart-copy/?utm_source=chatgpt.com',

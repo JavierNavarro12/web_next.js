@@ -16,7 +16,7 @@ type Props = {
 export default function ArticleCard({
   article,
   size = 'medium',
-  showCategory = true,
+  showCategory: _showCategory = true,
   className = '',
   showImage = true,
 }: Props) {

@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 
 interface AIRecommendationsSectionProps {
-  onViewAll: () => void;
+  onViewAll?: () => void;
 }
 
 export default function AIRecommendationsSection({

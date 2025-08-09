@@ -60,7 +60,7 @@ export default function MobileHeader({
         document.removeEventListener('mousedown', handleClickOutside);
       };
     }
-  }, [isSearchOpen]);
+  }, [isSearchOpen, setIsSearchOpen, setSearchTerm]);
 
   // Manejar click en herramienta del dropdown
   const handleToolClick = (tool: AITool, category: string, subcategory: string) => {

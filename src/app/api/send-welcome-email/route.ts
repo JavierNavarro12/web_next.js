@@ -1,14 +1,67 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import crypto from 'crypto';
 
 // Inicializar Resend solo cuando se necesite, no durante el build
 let resend: Resend;
 
 const WINDOW_MS = 60_000; // 1 minuto
-const MAX_REQUESTS = 10; // 10 por minuto por IP
+const MAX_REQUESTS = 10; // 10 por minuto por cliente
 const ipBuckets = new Map<string, { count: number; startsAt: number }>();
 
-function isRateLimited(ip: string | null) {
+// Cookie-based, stateless rate limiting (HMAC firmado) para entornos serverless
+const RL_COOKIE_NAME = 'rl_sw';
+const RL_SECRET = process.env.RATE_LIMIT_SECRET || '';
+
+type Bucket = { count: number; startsAt: number };
+
+function sign(data: string): string {
+  if (!RL_SECRET) return '';
+  return crypto.createHmac('sha256', RL_SECRET).update(data).digest('base64url');
+}
+
+function encodeBucket(bucket: Bucket): string {
+  const payload = Buffer.from(JSON.stringify(bucket)).toString('base64url');
+  const signature = sign(payload);
+  return `${payload}.${signature}`;
+}
+
+function decodeBucket(raw: string | undefined): Bucket | null {
+  if (!raw) return null;
+  const [payload, signature] = raw.split('.');
+  if (!payload || signature === undefined) return null;
+  if (RL_SECRET) {
+    const expected = sign(payload);
+    if (expected !== signature) return null;
+  }
+  try {
+    const json = Buffer.from(payload, 'base64url').toString('utf8');
+    const parsed = JSON.parse(json) as Bucket;
+    if (typeof parsed.count === 'number' && typeof parsed.startsAt === 'number') return parsed;
+  } catch {}
+  return null;
+}
+
+function getClientKey(request: NextRequest): string {
+  // Prefer cookie-based bucket; fallback a IP
+  const ipHeader = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip');
+  const ip = ipHeader?.split(',')[0]?.trim() || '';
+  return ip;
+}
+
+function nextBucket(bucket: Bucket | null): Bucket {
+  const now = Date.now();
+  if (!bucket || now - bucket.startsAt > WINDOW_MS) {
+    return { count: 1, startsAt: now };
+  }
+  return { count: bucket.count + 1, startsAt: bucket.startsAt };
+}
+
+function isLimited(bucket: Bucket): boolean {
+  return bucket.count > MAX_REQUESTS;
+}
+
+function isRateLimitedLegacy(ip: string | null) {
   if (!ip) return false;
   const now = Date.now();
   const bucket = ipBuckets.get(ip);
@@ -17,30 +70,38 @@ function isRateLimited(ip: string | null) {
     return false;
   }
   bucket.count += 1;
-  if (bucket.count > MAX_REQUESTS) return true;
-  return false;
+  return bucket.count > MAX_REQUESTS;
 }
 
 export async function POST(request: NextRequest) {
   try {
-    const ipHeader = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip');
-    const ip = ipHeader?.split(',')[0]?.trim() || null;
-    if (isRateLimited(ip)) {
+    // Rate limit: cookie-based firmado si hay secreto; si no, fallback IP en memoria
+    const clientKey = getClientKey(request);
+    const bucketCookieRaw = request.cookies.get(RL_COOKIE_NAME)?.value;
+    let bucket = RL_SECRET ? decodeBucket(bucketCookieRaw) : null;
+    if (!RL_SECRET && isRateLimitedLegacy(clientKey || null)) {
       return NextResponse.json(
         { error: 'Demasiadas solicitudes. Inténtalo más tarde.' },
         { status: 429 },
       );
     }
+    bucket = nextBucket(bucket);
+    const limited = isLimited(bucket);
+    const responseInit = { status: limited ? 429 : 200 } as const;
+    const cookieValue = encodeBucket(bucket);
 
     // Inicializar Resend aquí, no globalmente
     if (!resend) {
       const apiKey = process.env.RESEND_API_KEY;
       if (!apiKey) {
         console.error('RESEND_API_KEY no está configurada');
-        return NextResponse.json(
+        const res = NextResponse.json(
           { error: 'Configuración de email no disponible' },
           { status: 500 },
         );
+        if (cookieValue)
+          res.cookies.set(RL_COOKIE_NAME, cookieValue, { httpOnly: true, path: '/', maxAge: 300 });
+        return res;
       }
       resend = new Resend(apiKey);
     }
@@ -48,16 +109,36 @@ export async function POST(request: NextRequest) {
     const { email, source } = await request.json();
 
     if (!email) {
-      return NextResponse.json({ error: 'Email es requerido' }, { status: 400 });
+      const res = NextResponse.json({ error: 'Email es requerido' }, { status: 400 });
+      if (cookieValue)
+        res.cookies.set(RL_COOKIE_NAME, cookieValue, { httpOnly: true, path: '/', maxAge: 300 });
+      return res;
     }
     // Validaciones de entrada
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return NextResponse.json({ error: 'Email inválido' }, { status: 400 });
+      const res = NextResponse.json({ error: 'Email inválido' }, { status: 400 });
+      if (cookieValue)
+        res.cookies.set(RL_COOKIE_NAME, cookieValue, { httpOnly: true, path: '/', maxAge: 300 });
+      return res;
     }
     const validSources = new Set(['hero', 'footer', 'modal', 'articles']);
     if (source && !validSources.has(source)) {
-      return NextResponse.json({ error: 'Parámetro source inválido' }, { status: 400 });
+      const res = NextResponse.json({ error: 'Parámetro source inválido' }, { status: 400 });
+      if (cookieValue)
+        res.cookies.set(RL_COOKIE_NAME, cookieValue, { httpOnly: true, path: '/', maxAge: 300 });
+      return res;
+    }
+
+    // Si está rate limitado, responder ahora con cookie actualizada
+    if (limited) {
+      const res = NextResponse.json(
+        { error: 'Demasiadas solicitudes. Inténtalo más tarde.' },
+        responseInit,
+      );
+      if (cookieValue)
+        res.cookies.set(RL_COOKIE_NAME, cookieValue, { httpOnly: true, path: '/', maxAge: 300 });
+      return res;
     }
 
     // Elige asunto y contenido según source
@@ -201,9 +282,9 @@ export async function POST(request: NextRequest) {
                       <p style="margin: 0 0 12px; color: #64748b; font-size: 14px;">
                         Este email fue enviado a ${email}
                       </p>
-                      <p style="margin: 0; color: #64748b; font-size: 12px;">
-                        <a href="https://aifinder.es/unsubscribe" style="color: #64748b; text-decoration: none;">Cancelar suscripción</a>
-                      </p>
+          <p style="margin: 0; color: #64748b; font-size: 12px;">
+            <a href="https://aifinder.es/unsubscribe?email=${encodeURIComponent(email)}" style="color: #64748b; text-decoration: none;">Cancelar suscripción</a>
+          </p>
                       <p style="margin: 16px 0 0; color: #64748b; font-size: 12px;">
                         © 2024 AIFinder
                       </p>
@@ -218,9 +299,13 @@ export async function POST(request: NextRequest) {
       `,
     });
 
-    return NextResponse.json({ success: true, emailId: result.data?.id });
+    const ok = NextResponse.json({ success: true, emailId: result.data?.id });
+    if (cookieValue)
+      ok.cookies.set(RL_COOKIE_NAME, cookieValue, { httpOnly: true, path: '/', maxAge: 300 });
+    return ok;
   } catch {
     console.error('Error al enviar email');
-    return NextResponse.json({ error: 'Error al enviar email' }, { status: 500 });
+    const res = NextResponse.json({ error: 'Error al enviar email' }, { status: 500 });
+    return res;
   }
 }

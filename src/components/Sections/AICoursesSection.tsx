@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 
 interface AICoursesSectionProps {
-  onViewAll: () => void;
+  onViewAll?: () => void;
 }
 
 export default function AICoursesSection({ onViewAll }: AICoursesSectionProps) {
@@ -130,12 +130,14 @@ export default function AICoursesSection({ onViewAll }: AICoursesSectionProps) {
           >
             Cursos IA
           </h2>
-          <button
-            className="hidden md:block text-sm text-zinc-300 hover:text-white transition-colors cursor-pointer"
-            onClick={onViewAll}
-          >
-            Ver todo
-          </button>
+          {onViewAll && (
+            <button
+              className="hidden md:block text-sm text-zinc-300 hover:text-white transition-colors cursor-pointer"
+              onClick={onViewAll}
+            >
+              Ver todo
+            </button>
+          )}
         </div>
 
         {/* Vista móvil: Tarjetas tipo Framer Templates */}
