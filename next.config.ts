@@ -1,6 +1,62 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  // ⚠️ Configuración de optimización de imágenes con CDN - ¡IMPLEMENTADO! ✅
+  images: {
+    // Permitir dominios para CDN (remotePatterns es la nueva API recomendada)
+    remotePatterns: [
+      // CDN principal (cuando esté configurado)
+      {
+        protocol: 'https',
+        hostname: 'cdn.aifinder.es',
+        port: '',
+        pathname: '/**',
+      },
+      // Fallback a Vercel (tu servidor actual)
+      {
+        protocol: 'https',
+        hostname: 'aifinder.es',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.aifinder.es',
+        port: '',
+        pathname: '/**',
+      },
+      // Preview deployments
+      {
+        protocol: 'https',
+        hostname: 'vercel.app',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.vercel.app',
+        port: '',
+        pathname: '/**',
+      },
+      // Desarrollo local
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3000',
+        pathname: '/**',
+      },
+    ],
+    // Configuración de formato y calidad
+    formats: ['image/webp', 'image/avif'], // Formatos modernos y optimizados
+    minimumCacheTTL: 60 * 60 * 24 * 30, // Cache por 30 días
+    // Optimización automática
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
+
+  // 🔄 Static Generation para categorías - NO IMPLEMENTADO (futura optimización)
+  // Para implementar después: crear páginas con generateStaticParams()
+  // Ejemplo: /app/categorias/[categoria]/page.tsx
   async headers() {
     const isProd = process.env.NODE_ENV === 'production';
     return [
