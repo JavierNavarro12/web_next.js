@@ -43,7 +43,7 @@ const allArticles: Article[] = [
         paragraphs: [
           'Para llevar a Claude más lejos, le pedí: "Crea un Mario 2D". Tras 10-15 minutos de iteraciones, construyó un Nivel 1 jugable con setas, goombas y más. Ni Gemini ni O3 se acercaron.',
         ],
-        video: { src: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ', type: 'youtube' },
+        video: { src: '/images/articulo1.2.m3u8', type: 'application/x-mpegURL' },
       },
       {
         paragraphs: [
@@ -58,7 +58,7 @@ const allArticles: Article[] = [
           'Jules: un agente de programación asíncrono al estilo de OpenAI Codex.',
           'Gemini Diffusion: nuevo modelo que permite “vibe coding” tan rápido que se siente instantáneo.',
         ],
-        video: { src: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ', type: 'youtube' },
+        video: { src: '/images/articulo1.4.m3u8', type: 'application/x-mpegURL' },
       },
       {
         paragraphs: [
@@ -113,7 +113,7 @@ const allArticles: Article[] = [
       },
       {
         title: 'Voz: ChatGPT tiene personalidad (y canta)',
-        video: { src: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ', type: 'youtube' },
+        video: { src: '/images/articulo1.9.m3u8', type: 'application/x-mpegURL' },
         paragraphs: [
           'ChatGPT tiene la voz más natural y con más personalidad. Incluso puede cantar (mal), lo cual es bastante gracioso.',
           'Eso sí, tanto ChatGPT como Gemini a veces te interrumpen. Puedes decirle “No me interrumpas hasta que termine”, pero para dictado prefiero apps como Superwhisper.',
@@ -121,7 +121,7 @@ const allArticles: Article[] = [
       },
       {
         title: 'Video: Veo 3 de Gemini es asombroso',
-        video: { src: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ', type: 'youtube' },
+        video: { src: '/images/articulo1.10.m3u8', type: 'application/x-mpegURL' },
         paragraphs: [
           'En video, Gemini va por delante.',
           'Veo 3 convierte prompts de texto en videos de 8 segundos con sonido y voces. Merece la pena un mes de Gemini Pro para probar. Por ejemplo, hice un corgi cantando al piano.',
