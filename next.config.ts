@@ -1,6 +1,12 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  // ✅ Optimización de performance - Configuración de compresión
+  compress: true, // Habilita compresión gzip/brotli automática
+
+  // ✅ Optimización del bundle y carga
+  poweredByHeader: false, // Remueve header X-Powered-By
+
   // ⚠️ Configuración de optimización de imágenes con CDN - ¡IMPLEMENTADO! ✅
   images: {
     // Permitir dominios para CDN (remotePatterns es la nueva API recomendada)
