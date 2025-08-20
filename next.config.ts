@@ -73,6 +73,18 @@ const nextConfig: NextConfig = {
   async headers() {
     const isProd = process.env.NODE_ENV === 'production';
     return [
+      // Headers específicos para archivos HLS (.m3u8)
+      {
+        source: '/images/:path*.m3u8',
+        headers: [
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+          { key: 'Access-Control-Allow-Methods', value: 'GET, HEAD, OPTIONS' },
+          { key: 'Access-Control-Allow-Headers', value: 'Content-Type, Range' },
+          { key: 'Content-Type', value: 'application/x-mpegURL' },
+          { key: 'Cache-Control', value: 'public, max-age=3600' },
+          { key: 'Accept-Ranges', value: 'bytes' },
+        ],
+      },
       {
         source: '/:path*',
         headers: [
@@ -104,7 +116,7 @@ const nextConfig: NextConfig = {
               // bloquear plugins antiguos
               "object-src 'none'",
               // HLS remotos (Mux) y locales
-              "media-src 'self' blob: https://*.mux.com https://stream.mux.com",
+              "media-src 'self' blob: https://*.mux.com https://stream.mux.com data:",
               // conexiones para hls.js y fetch (incluye Mux y HMR ws en dev)
               `connect-src 'self' https: blob: ${isProd ? '' : 'ws:'} https://*.mux.com https://stream.mux.com`,
             ].join('; '),
