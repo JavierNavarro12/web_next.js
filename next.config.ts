@@ -45,6 +45,19 @@ const nextConfig: NextConfig = {
         port: '3000',
         pathname: '/**',
       },
+      // Mux para videos
+      {
+        protocol: 'https',
+        hostname: '*.mux.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'stream.mux.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
     // Configuración de formato y calidad
     formats: ['image/webp', 'image/avif'], // Formatos modernos y optimizados
@@ -82,8 +95,8 @@ const nextConfig: NextConfig = {
               "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://*.youtube.com https://*.youtube-nocookie.com",
               // no permitir ser embebidos por otros
               "frame-ancestors 'none'",
-              // permitir imágenes
-              "img-src 'self' data: blob: https:",
+              // permitir imágenes (incluye thumbnails de Mux)
+              "img-src 'self' data: blob: https: https://*.mux.com https://stream.mux.com",
               "font-src 'self' https:",
               // scripts y estilos (permitir eval solo en desarrollo para HMR)
               `script-src 'self' 'unsafe-inline' ${isProd ? '' : "'unsafe-eval'"} https:`,
@@ -91,9 +104,9 @@ const nextConfig: NextConfig = {
               // bloquear plugins antiguos
               "object-src 'none'",
               // HLS remotos (Mux) y locales
-              "media-src 'self' blob: https://*.mux.com",
+              "media-src 'self' blob: https://*.mux.com https://stream.mux.com",
               // conexiones para hls.js y fetch (incluye Mux y HMR ws en dev)
-              `connect-src 'self' https: blob: ${isProd ? '' : 'ws:'} https://*.mux.com`,
+              `connect-src 'self' https: blob: ${isProd ? '' : 'ws:'} https://*.mux.com https://stream.mux.com`,
             ].join('; '),
           },
         ],
