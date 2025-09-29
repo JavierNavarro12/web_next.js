@@ -122,6 +122,7 @@ export default function AIAutomationChatbotsSection({
                   width={48}
                   height={48}
                   className="w-12 h-12 object-contain rounded-lg flex-shrink-0"
+                  loading="lazy"
                 />
                 <div className="flex-1 min-w-0">
                   <h3 className="font-bold text-white text-base mb-1">{tool.name}</h3>
@@ -156,6 +157,7 @@ export default function AIAutomationChatbotsSection({
                   width={48}
                   height={48}
                   className="w-12 h-12 object-contain rounded-lg flex-shrink-0"
+                  loading="lazy"
                 />
                 <div className="flex-1 min-w-0">
                   <h3 className="font-bold text-white text-base mb-1">{tool.name}</h3>
@@ -197,6 +199,7 @@ export default function AIAutomationChatbotsSection({
                       fill
                       sizes="48px"
                       className="w-full h-full object-cover rounded-lg"
+                      loading="lazy"
                     />
                   </div>
 
@@ -241,6 +244,7 @@ export default function AIAutomationChatbotsSection({
                       fill
                       sizes="48px"
                       className="w-full h-full object-cover rounded-lg"
+                      loading="lazy"
                     />
                   </div>
 

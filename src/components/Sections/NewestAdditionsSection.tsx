@@ -138,6 +138,7 @@ export default function NewestAdditionsSection({ onViewAll }: NewestAdditionsSec
                     fill
                     sizes="48px"
                     className="w-full h-full object-cover rounded-lg"
+                    loading="lazy"
                   />
                 </div>
 

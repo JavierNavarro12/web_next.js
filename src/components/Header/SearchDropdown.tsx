@@ -112,6 +112,7 @@ export default function SearchDropdown({
                   width={isMobile ? 40 : 56}
                   height={isMobile ? 40 : 56}
                   className={`rounded-lg object-cover ${isMobile ? 'w-10 h-10' : 'w-14 h-14'}`}
+                  loading="lazy"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.style.display = 'none';

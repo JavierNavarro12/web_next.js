@@ -79,6 +79,7 @@ export default function ArticleCard({
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            loading="lazy"
           />
           {/* Overlay con gradiente */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -92,14 +93,27 @@ export default function ArticleCard({
         {/* Logos destacados (para el primer artículo comparativo) */}
         {article.slug === 'chatgpt-vs-claude-vs-gemini-best-model-2025' && (
           <div className="flex items-center gap-2 mb-3">
-            <Image src="/logos/claude-movil.png" alt="Claude" width={logoSize} height={logoSize} />
+            <Image
+              src="/logos/claude-movil.png"
+              alt="Claude"
+              width={logoSize}
+              height={logoSize}
+              loading="lazy"
+            />
             <Image
               src="/logos/chatgpt-movil.png"
               alt="ChatGPT"
               width={logoSize}
               height={logoSize}
+              loading="lazy"
             />
-            <Image src="/logos/gemini-movil.png" alt="Gemini" width={logoSize} height={logoSize} />
+            <Image
+              src="/logos/gemini-movil.png"
+              alt="Gemini"
+              width={logoSize}
+              height={logoSize}
+              loading="lazy"
+            />
           </div>
         )}
         {/* Logo para el artículo 4 (DeepMind/Google) */}
@@ -110,6 +124,7 @@ export default function ArticleCard({
               alt="DeepMind"
               width={logoSize}
               height={logoSize}
+              loading="lazy"
             />
           </div>
         )}
@@ -121,24 +136,33 @@ export default function ArticleCard({
               alt="ChatGPT"
               width={logoSize}
               height={logoSize}
+              loading="lazy"
             />
           </div>
         )}
         {/* Logos para el artículo 3 (DALL-E, Midjourney, Stable Diffusion) */}
         {article.slug === 'dall-e-vs-midjourney-vs-stable-diffusion-2025' && (
           <div className="flex items-center gap-2 mb-3">
-            <Image src="/logos/dall.e-movil.png" alt="DALL-E" width={logoSize} height={logoSize} />
+            <Image
+              src="/logos/dall.e-movil.png"
+              alt="DALL-E"
+              width={logoSize}
+              height={logoSize}
+              loading="lazy"
+            />
             <Image
               src="/logos/midjourney-movil.png"
               alt="Midjourney"
               width={logoSize}
               height={logoSize}
+              loading="lazy"
             />
             <Image
               src="/logos/stablediffusion-movil.png"
               alt="Stable Diffusion"
               width={logoSize}
               height={logoSize}
+              loading="lazy"
             />
           </div>
         )}

@@ -39,6 +39,7 @@ export default function ToolSection({ title, tools, onViewAll }: ToolSectionProp
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
               />
             </div>
             <div className="p-4">

@@ -1,5 +1,6 @@
 import { db } from '../config/firebase';
-import { collection, addDoc, query, where, getDocs } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
+import { logger } from '../utils/logger';
 
 export interface NewsletterSubscription {
   email: string;
@@ -33,7 +34,7 @@ export const newsletterService = {
 
       return true;
     } catch (error) {
-      console.error('Error al suscribirse:', error);
+      logger.error('Error al suscribirse', error);
       throw error;
     }
   },
@@ -44,9 +45,8 @@ export const newsletterService = {
     source: 'hero' | 'footer' | 'modal' | 'articles' = 'hero',
   ): Promise<void> {
     try {
-      if (process.env.NODE_ENV !== 'production') {
-        console.log('Enviando email de bienvenida a:', email, `source=${source}`);
-      }
+      logger.debug('Enviando email de bienvenida a:', email, `source=${source}`);
+
       const response = await fetch('/api/send-welcome-email', {
         method: 'POST',
         headers: {
@@ -56,31 +56,19 @@ export const newsletterService = {
       });
 
       const responseData = await response.json();
-      if (process.env.NODE_ENV !== 'production') {
-        console.log('Respuesta del API:', responseData);
-      }
+      logger.debug('Respuesta del API:', responseData);
 
       if (!response.ok) {
         throw new Error(`Error al enviar email: ${responseData.error || 'Unknown error'}`);
       }
 
-      if (process.env.NODE_ENV !== 'production') {
-        console.log(
-          'Email de bienvenida enviado exitosamente a:',
-          email,
-          'source=',
-          source,
-          'ID:',
-          responseData.emailId,
-        );
-      }
-    } catch (error) {
-      console.error('Error detallado al enviar email de bienvenida:', {
+      logger.info('Email de bienvenida enviado exitosamente', {
         email,
         source,
-        error: error instanceof Error ? error.message : error,
-        stack: error instanceof Error ? error.stack : undefined,
+        id: responseData.emailId,
       });
+    } catch (error) {
+      logger.error('Error detallado al enviar email de bienvenida', error, { email, source });
       // No lanzamos error aquí para no afectar la suscripción
     }
   },
@@ -105,7 +93,7 @@ export const newsletterService = {
         thisMonth: thisMonthSubscriptions.length,
       };
     } catch (error) {
-      console.error('Error al obtener estadísticas:', error);
+      logger.error('Error al obtener estadísticas', error);
       return { total: 0, thisMonth: 0 };
     }
   },

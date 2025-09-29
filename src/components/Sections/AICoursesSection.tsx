@@ -157,6 +157,7 @@ export default function AICoursesSection({ onViewAll }: AICoursesSectionProps) {
                     fill
                     sizes="100vw"
                     className="object-cover transition-all duration-300 group-hover:scale-105 group-hover:blur-sm"
+                    loading="lazy"
                   />
                   {/* Overlay hover con descripción */}
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
@@ -197,6 +198,7 @@ export default function AICoursesSection({ onViewAll }: AICoursesSectionProps) {
                         width={16}
                         height={16}
                         className="w-4 h-4 object-contain rounded"
+                        loading="lazy"
                       />
                       <span>{course.creator}</span>
                     </div>
@@ -223,6 +225,7 @@ export default function AICoursesSection({ onViewAll }: AICoursesSectionProps) {
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 33vw"
                   className="object-cover transition-all duration-300 group-hover:scale-105 group-hover:blur-sm"
+                  loading="lazy"
                 />
                 {/* Overlay hover con descripción */}
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
@@ -263,6 +266,7 @@ export default function AICoursesSection({ onViewAll }: AICoursesSectionProps) {
                       width={16}
                       height={16}
                       className="w-4 h-4 object-contain rounded"
+                      loading="lazy"
                     />
                     <span>{course.creator}</span>
                   </div>

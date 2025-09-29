@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { initializeApp, getApps, cert, App } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import crypto from 'crypto';
+import { validateEmail, normalizeEmail, validateNewsletterSource } from '../../../utils/validation';
+import { logger } from '../../../utils/logger';
 
 let adminApp: App | null = null;
 
@@ -38,31 +40,43 @@ function getAdmin() {
 export async function POST(request: NextRequest) {
   try {
     const { email, source } = await request.json();
-    if (!email) return NextResponse.json({ error: 'Email requerido' }, { status: 400 });
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email))
+
+    if (!email) {
+      return NextResponse.json({ error: 'Email requerido' }, { status: 400 });
+    }
+
+    if (!validateEmail(email)) {
       return NextResponse.json({ error: 'Email inválido' }, { status: 400 });
-    const validSources = new Set(['hero', 'footer', 'modal', 'articles']);
-    if (source && !validSources.has(source)) {
+    }
+
+    if (source && !validateNewsletterSource(source)) {
       return NextResponse.json({ error: 'Parámetro source inválido' }, { status: 400 });
     }
 
     const app = getAdmin();
     const db = getFirestore(app);
-    const normalizedEmail = String(email).toLowerCase();
+    const emailNormalized = normalizeEmail(email);
     const id = crypto
       .createHash('sha256')
-      .update(`${normalizedEmail}|${source || 'hero'}`)
+      .update(`${emailNormalized}|${source || 'hero'}`)
       .digest('hex');
+
     const ref = db.collection('newsletter_subscriptions').doc(id);
     const snap = await ref.get();
+
     if (snap.exists) {
       return NextResponse.json({ error: 'Ya suscrito' }, { status: 409 });
     }
-    await ref.set({ email: normalizedEmail, createdAt: new Date(), source: source || 'hero' });
+
+    await ref.set({
+      email: emailNormalized,
+      createdAt: new Date(),
+      source: source || 'hero',
+    });
+
     return NextResponse.json({ success: true, id });
   } catch (e) {
-    console.error('Error en subscribe:', e);
+    logger.error('Error en subscribe', e);
     return NextResponse.json({ error: 'Error interno' }, { status: 500 });
   }
 }

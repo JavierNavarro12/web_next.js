@@ -107,7 +107,7 @@ export default function PromotionalCard() {
             <div className="col-span-1 row-span-1"></div>
 
             {/* Demo abajo derecha */}
-            <div className="col-span-1 row-span-1 flex justify-end items-start -mt-12">
+            <div className="col-span-1 row-span-1 flex justify-end items-start -mt-4">
               <div className="relative">
                 {/* Efecto blur decorativo - Tamaño normal */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-blue-400 via-purple-500 to-green-500 rounded-2xl blur-xl opacity-30 transform rotate-6"></div>
@@ -128,6 +128,7 @@ export default function PromotionalCard() {
                               width={20}
                               height={20}
                               className="w-full h-full object-cover rounded"
+                              loading="lazy"
                             />
                           </div>
                           <span className="text-sm font-medium">Leonardo AI</span>
@@ -200,6 +201,7 @@ export default function PromotionalCard() {
                               width={20}
                               height={20}
                               className="w-full h-full object-cover rounded"
+                              loading="lazy"
                             />
                           </div>
                           <span className="text-sm font-medium">Leonardo AI</span>
@@ -224,6 +226,7 @@ export default function PromotionalCard() {
                         fill
                         sizes="280px"
                         className="object-cover rounded-2xl"
+                        loading="lazy"
                       />
                     )}
                   </div>
@@ -275,6 +278,7 @@ export default function PromotionalCard() {
                             width={24}
                             height={24}
                             className="w-full h-full object-cover rounded"
+                            loading="lazy"
                           />
                         </div>
                         <span className="text-sm font-medium">Leonardo AI</span>
@@ -347,6 +351,7 @@ export default function PromotionalCard() {
                             width={24}
                             height={24}
                             className="w-full h-full object-cover rounded"
+                            loading="lazy"
                           />
                         </div>
                         <span className="text-sm font-medium">Leonardo AI</span>
@@ -374,6 +379,7 @@ export default function PromotionalCard() {
                       fill
                       sizes="(max-width: 1024px) 280px, 320px"
                       className="object-cover rounded-2xl"
+                      loading="lazy"
                     />
                   )}
                 </div>

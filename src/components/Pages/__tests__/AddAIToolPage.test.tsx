@@ -216,7 +216,12 @@ describe('AddAIToolPage', () => {
       fireEvent.click(submitButton);
 
       await waitFor(() => {
-        expect(consoleSpy).toHaveBeenCalledWith('Error al enviar email:', expect.any(Error));
+        expect(consoleSpy).toHaveBeenCalledWith(
+          '[ERROR]',
+          'Error al enviar email',
+          expect.any(Error),
+          undefined,
+        );
         expect(alertSpy).toHaveBeenCalledWith(
           'Error al enviar la sugerencia. Por favor, inténtalo de nuevo.',
         );

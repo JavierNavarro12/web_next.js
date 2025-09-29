@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../../config/emailjs';
 import Footer from '../Footer/Footer';
+import { logger } from '../../utils/logger';
 
 // Inicializar EmailJS una sola vez de forma segura
 if (EMAILJS_CONFIG.USER_ID) {
@@ -79,12 +80,9 @@ export default function BugReportPage({
         onBack();
       }, 3000);
     } catch (error) {
-      // error amigable en UI
       setErrorMsg('Error al enviar el reporte. Por favor, inténtalo de nuevo.');
-      // Mantener log en entorno de test para compatibilidad con tests
-      // y facilitar depuración local sin contaminar producción
+      logger.error('Error al enviar email de reporte de bug', error);
 
-      console.error('Error al enviar email de reporte de bug:', error as unknown);
       if (
         process.env.NODE_ENV === 'test' &&
         typeof window !== 'undefined' &&

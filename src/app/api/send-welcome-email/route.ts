@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { generateUnsubscribeToken } from '../../../utils/unsubscribeToken';
 import crypto from 'crypto';
+import { validateEmail, validateNewsletterSource } from '../../../utils/validation';
+import { logger } from '../../../utils/logger';
 
 // Inicializar Resend solo cuando se necesite, no durante el build
 let resend: Resend;
@@ -95,7 +97,7 @@ export async function POST(request: NextRequest) {
     if (!resend) {
       const apiKey = process.env.RESEND_API_KEY;
       if (!apiKey) {
-        console.error('RESEND_API_KEY no está configurada');
+        logger.error('RESEND_API_KEY no está configurada');
         const res = NextResponse.json(
           { error: 'Configuración de email no disponible' },
           { status: 500 },
@@ -115,16 +117,15 @@ export async function POST(request: NextRequest) {
         res.cookies.set(RL_COOKIE_NAME, cookieValue, { httpOnly: true, path: '/', maxAge: 300 });
       return res;
     }
-    // Validaciones de entrada
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+
+    if (!validateEmail(email)) {
       const res = NextResponse.json({ error: 'Email inválido' }, { status: 400 });
       if (cookieValue)
         res.cookies.set(RL_COOKIE_NAME, cookieValue, { httpOnly: true, path: '/', maxAge: 300 });
       return res;
     }
-    const validSources = new Set(['hero', 'footer', 'modal', 'articles']);
-    if (source && !validSources.has(source)) {
+
+    if (source && !validateNewsletterSource(source)) {
       const res = NextResponse.json({ error: 'Parámetro source inválido' }, { status: 400 });
       if (cookieValue)
         res.cookies.set(RL_COOKIE_NAME, cookieValue, { httpOnly: true, path: '/', maxAge: 300 });
@@ -307,8 +308,8 @@ export async function POST(request: NextRequest) {
     if (cookieValue)
       ok.cookies.set(RL_COOKIE_NAME, cookieValue, { httpOnly: true, path: '/', maxAge: 300 });
     return ok;
-  } catch {
-    console.error('Error al enviar email');
+  } catch (error) {
+    logger.error('Error al enviar email', error);
     const res = NextResponse.json({ error: 'Error al enviar email' }, { status: 500 });
     return res;
   }

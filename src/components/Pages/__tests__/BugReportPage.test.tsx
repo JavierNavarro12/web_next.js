@@ -277,8 +277,10 @@ describe('BugReportPage', () => {
 
       await waitFor(() => {
         expect(consoleSpy).toHaveBeenCalledWith(
-          'Error al enviar email de reporte de bug:',
+          '[ERROR]',
+          'Error al enviar email de reporte de bug',
           expect.any(Error),
+          undefined,
         );
         expect(alertSpy).toHaveBeenCalledWith(
           'Error al enviar el reporte. Por favor, inténtalo de nuevo.',

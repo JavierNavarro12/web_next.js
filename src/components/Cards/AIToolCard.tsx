@@ -43,6 +43,7 @@ export default function AIToolCard({
         alt={name}
         width={64}
         height={64}
+        loading="lazy"
         className="w-16 h-16 object-contain mb-2 rounded md:hidden"
       />
       {/* Desktop: imagen grande */}
@@ -51,6 +52,7 @@ export default function AIToolCard({
         alt={name}
         width={64}
         height={64}
+        loading="lazy"
         className="w-16 h-16 object-contain mb-2 rounded hidden md:block"
       />
       <div className="font-bold text-white text-lg">{name}</div>

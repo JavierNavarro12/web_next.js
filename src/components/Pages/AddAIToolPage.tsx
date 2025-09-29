@@ -6,12 +6,13 @@ import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../../config/emailjs';
 import MobileHeader from '../Header/MobileHeader';
 import Footer from '../Footer/Footer';
+import { logger } from '../../utils/logger';
 
 // Inicializar EmailJS una sola vez
 if (EMAILJS_CONFIG.USER_ID) {
   emailjs.init(EMAILJS_CONFIG.USER_ID);
 } else {
-  console.warn('EmailJS USER_ID no configurado');
+  logger.warn('EmailJS USER_ID no configurado');
 }
 
 interface AddAIToolPageProps {
@@ -56,9 +57,7 @@ export default function AddAIToolPage({
         is_own_tool: formData.isOwnTool ? 'Sí' : 'No',
       });
 
-      if (process.env.NODE_ENV !== 'production') {
-        console.log('Email enviado exitosamente:', result);
-      }
+      logger.info('Email enviado exitosamente:', result);
       setShowSuccess(true);
       setErrorMsg('');
       // Cerrar después de 3 segundos
@@ -67,7 +66,7 @@ export default function AddAIToolPage({
         onClose();
       }, 3000);
     } catch (error) {
-      console.error('Error al enviar email:', error);
+      logger.error('Error al enviar email', error);
       setErrorMsg('Error al enviar la sugerencia. Por favor, inténtalo de nuevo.');
       if (
         process.env.NODE_ENV === 'test' &&

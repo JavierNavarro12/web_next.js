@@ -150,9 +150,27 @@ export default function ArticleDetailPage() {
           {/* Logos sobre el título para el comparativo */}
           {article.slug === 'chatgpt-vs-claude-vs-gemini-best-model-2025' && (
             <div className="flex items-center justify-center gap-2 mb-2">
-              <Image src="/logos/claude-movil.png" alt="Claude" width={28} height={28} />
-              <Image src="/logos/chatgpt-movil.png" alt="ChatGPT" width={28} height={28} />
-              <Image src="/logos/gemini-movil.png" alt="Gemini" width={28} height={28} />
+              <Image
+                src="/logos/claude-movil.png"
+                alt="Claude"
+                width={28}
+                height={28}
+                loading="lazy"
+              />
+              <Image
+                src="/logos/chatgpt-movil.png"
+                alt="ChatGPT"
+                width={28}
+                height={28}
+                loading="lazy"
+              />
+              <Image
+                src="/logos/gemini-movil.png"
+                alt="Gemini"
+                width={28}
+                height={28}
+                loading="lazy"
+              />
             </div>
           )}
           <h1 className="text-3xl md:text-4xl font-extrabold leading-tight mb-3">
@@ -167,6 +185,7 @@ export default function ArticleDetailPage() {
                   width={32}
                   height={32}
                   className="w-8 h-8 rounded-full border border-zinc-700"
+                  loading="lazy"
                 />
               )}
               <span>{article.author}</span>

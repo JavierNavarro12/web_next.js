@@ -4,8 +4,8 @@
     "types": ["jest", "@testing-library/jest-dom", "node"],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
-    "typeRoots": ["./node_modules/@types", "./src/types"]
+    "skipLibCheck": false,
+    "typeRoots": ["./src/types", "./node_modules/@types"]
   },
   "include": [
     "src/**/__tests__/**/*",
@@ -16,6 +16,9 @@
   ],
   "exclude": [
     "cypress/**/*",
-    "node_modules"
+    "cypress.config.ts",
+    "tsconfig.cypress.json",
+    "node_modules",
+    "**/*.cy.ts"
   ]
-} 
+}

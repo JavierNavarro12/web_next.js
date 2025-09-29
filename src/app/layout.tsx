@@ -5,6 +5,7 @@ import AppProviders from './providers';
 import React from 'react';
 import { initBrowserSentry } from '../app/(sentry)/instrumentation';
 import PWAStartupRedirect from '../components/PWA/PWAStartupRedirect';
+import { ErrorBoundary } from '../components/ErrorBoundary/ErrorBoundary';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -70,10 +71,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="dns-prefetch" href="https://chunk-gcp-us-east1-vop1.fastly.mux.com" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}>
-        <AppProviders>
-          <PWAStartupRedirect />
-          {children}
-        </AppProviders>
+        <ErrorBoundary>
+          <AppProviders>
+            <PWAStartupRedirect />
+            {children}
+          </AppProviders>
+        </ErrorBoundary>
       </body>
     </html>
   );

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../../config/emailjs';
 import Footer from '../Footer/Footer';
+import Toast from '../Toast/Toast';
+import { logger } from '../../utils/logger';
 
 // Inicializar EmailJS una sola vez desde configuración (sin hardcodear claves)
 emailjs.init(EMAILJS_CONFIG.USER_ID);
@@ -26,6 +28,7 @@ export default function FeedbackPage({
   });
   const [showSuccess, setShowSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Hacer scroll al top cuando se monta el componente
   useEffect(() => {
@@ -69,17 +72,9 @@ export default function FeedbackPage({
         onBack();
       }, 3000);
     } catch (error) {
-      console.error('Error al enviar email de feedback:', error);
-      // Mostrar notificación no bloqueante
+      logger.error('Error al enviar email de feedback', error);
       setShowSuccess(false);
-      // Reutilizamos el botón de envío deshabilitado como indicativo y mensaje visual via estado local
-      // Puedes integrar un sistema de toasts global en el futuro
-      const el = document.createElement('div');
-      el.textContent = 'Error al enviar el feedback. Por favor, inténtalo de nuevo.';
-      el.className =
-        'fixed bottom-6 left-1/2 -translate-x-1/2 bg-red-600 text-white px-4 py-2 rounded shadow-lg z-[1000]';
-      document.body.appendChild(el);
-      setTimeout(() => el.remove(), 3000);
+      setErrorMessage('Error al enviar el feedback. Por favor, inténtalo de nuevo.');
     } finally {
       setIsSubmitting(false);
     }
@@ -349,6 +344,16 @@ export default function FeedbackPage({
         setActiveSubcategory={setActiveSubcategory}
         className="mt-0"
       />
+
+      {/* Toast para errores */}
+      {errorMessage && (
+        <Toast
+          message={errorMessage}
+          type="error"
+          duration={3000}
+          onClose={() => setErrorMessage(null)}
+        />
+      )}
     </div>
   );
 }
