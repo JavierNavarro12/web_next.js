@@ -6,6 +6,8 @@ import React from 'react';
 import { initBrowserSentry } from '../app/(sentry)/instrumentation';
 import PWAStartupRedirect from '../components/PWA/PWAStartupRedirect';
 import { ErrorBoundary } from '../components/ErrorBoundary/ErrorBoundary';
+import GoogleAnalytics from '../components/Analytics/GoogleAnalytics';
+import MicrosoftClarity from '../components/Analytics/MicrosoftClarity';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -24,6 +26,9 @@ export const metadata: Metadata = {
   title: 'AIFinder',
   description: 'Descubre y compara las mejores herramientas de IA',
   applicationName: 'AIFinder',
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
   icons: {
     icon: [
       { url: '/icons/icon-16x16.png', sizes: '16x16', type: 'image/png' },
@@ -71,6 +76,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="dns-prefetch" href="https://chunk-gcp-us-east1-vop1.fastly.mux.com" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}>
+        <GoogleAnalytics />
+        <MicrosoftClarity />
         <ErrorBoundary>
           <AppProviders>
             <PWAStartupRedirect />
