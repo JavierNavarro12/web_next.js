@@ -231,24 +231,6 @@ export default function MobileHeader({
             >
               Explorar
             </button>
-            <button
-              className={`px-4 py-2 text-sm font-medium whitespace-nowrap rounded-full transition-all ${
-                activeNav === 'nuevas'
-                  ? 'bg-blue-600 text-white'
-                  : 'text-zinc-400 hover:text-white hover:bg-zinc-800'
-              }`}
-              onClick={() => {
-                setActiveNav && setActiveNav('nuevas');
-                if (
-                  typeof window !== 'undefined' &&
-                  window.location.pathname.startsWith('/articles/')
-                ) {
-                  window.location.href = '/';
-                }
-              }}
-            >
-              Nuevas Adiciones
-            </button>
           </div>
         </div>
       )}

@@ -92,33 +92,19 @@ const getNewestTools = () => {
   return newestTools;
 };
 
-interface NewestAdditionsSectionProps {
-  onViewAll?: () => void;
-}
-
-export default function NewestAdditionsSection({ onViewAll }: NewestAdditionsSectionProps = {}) {
+export default function NewestAdditionsSection() {
   const newestTools = getNewestTools();
 
   return (
     <div className="py-6 px-4 max-w-7xl mx-auto">
       <div className="bg-black rounded-2xl border border-zinc-700 p-4 md:p-6">
-        <div className="flex items-center justify-between mb-6">
+        <div className="mb-6">
           <h2
             className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
             style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
           >
             Nuevas adiciones
           </h2>
-          <button
-            className="text-sm text-zinc-300 hover:text-white transition-colors cursor-pointer"
-            onClick={() => {
-              if (onViewAll) {
-                onViewAll();
-              }
-            }}
-          >
-            Ver Todo
-          </button>
         </div>
 
         {/* Grid de herramientas - Sin tarjetas individuales */}

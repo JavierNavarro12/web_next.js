@@ -96,7 +96,6 @@ describe('DesktopHeader', () => {
     render(React.createElement(DesktopHeader, defaultProps));
 
     expect(screen.getByText('Explorar')).toBeInTheDocument();
-    expect(screen.getByText('Nuevas Adiciones')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Buscar IAs')).toBeInTheDocument();
   });
 
@@ -115,8 +114,8 @@ describe('DesktopHeader', () => {
     const setActiveNav = jest.fn();
     render(React.createElement(DesktopHeader, { ...defaultProps, setActiveNav }));
 
-    fireEvent.click(screen.getByText('Nuevas Adiciones'));
-    expect(setActiveNav).toHaveBeenCalledWith('nuevas');
+    fireEvent.click(screen.getByText('Explorar'));
+    expect(setActiveNav).toHaveBeenCalledWith('explorar');
   });
 
   it('should handle subcategory clicks', () => {

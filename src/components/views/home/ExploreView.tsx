@@ -164,7 +164,7 @@ export default function ExploreView({
             <>
               <HeroSection />
               <FeaturedToolsSection />
-              <NewestAdditionsSection onViewAll={() => setActiveNav('nuevas')} />
+              <NewestAdditionsSection />
               <PromotionalCard />
               <SpotlightSection
                 onViewAll={() => {
@@ -326,17 +326,6 @@ export default function ExploreView({
                 setActiveSubcategory={setActiveSubcategory}
               />
             </>
-          ) : activeNav === 'nuevas' ? (
-            <div className="py-20 px-4 max-w-7xl mx-auto text-center">
-              <h1 className="text-4xl font-bold text-white mb-4">Nuevas adiciones</h1>
-              <p className="text-zinc-400 text-lg">Esta sección estará disponible próximamente.</p>
-              <button
-                onClick={() => setActiveNav('explorar')}
-                className="mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
-              >
-                Volver a Explorar
-              </button>
-            </div>
           ) : activeNav === 'articulos' ? (
             <ArticlesSection />
           ) : null}

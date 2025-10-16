@@ -115,28 +115,6 @@ export default function DesktopHeader({
                   />
                 )}
               </button>
-              <button
-                className={`relative font-medium transition-colors ${
-                  activeNav === 'nuevas'
-                    ? 'text-white'
-                    : hoveredNav === 'nuevas'
-                      ? 'text-white'
-                      : 'text-zinc-400 hover:text-white'
-                }`}
-                onClick={() => setActiveNav && setActiveNav('nuevas')}
-                onMouseEnter={() => setHoveredNav('nuevas')}
-                onMouseLeave={() => setHoveredNav(null)}
-                aria-current={activeNav === 'nuevas' ? 'page' : undefined}
-              >
-                Nuevas Adiciones
-                {(activeNav === 'nuevas' || hoveredNav === 'nuevas') && (
-                  <span
-                    className={`absolute -left-3 -right-3 -bottom-5 h-0.5 rounded ${
-                      activeNav === 'nuevas' ? 'bg-white' : 'bg-white/40'
-                    }`}
-                  />
-                )}
-              </button>
             </nav>
           )}
 
