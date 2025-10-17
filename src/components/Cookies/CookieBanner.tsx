@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCookieConsent } from '../../store/cookieConsent';
 
 export default function CookieBanner() {
   const {
     status,
+    consent,
     isBannerOpen,
     isPreferencesOpen,
     openPreferences,
@@ -15,7 +16,22 @@ export default function CookieBanner() {
     savePreferences,
   } = useCookieConsent();
 
-  const [form, setForm] = useState({ analytics: true, marketing: false, preferences: true });
+  const [form, setForm] = useState({
+    analytics: consent.analytics,
+    marketing: consent.marketing,
+    preferences: consent.preferences,
+  });
+
+  // Mantener el formulario sincronizado con el consentimiento actual cuando se abre preferencias
+  useEffect(() => {
+    if (isPreferencesOpen) {
+      setForm({
+        analytics: consent.analytics,
+        marketing: consent.marketing,
+        preferences: consent.preferences,
+      });
+    }
+  }, [isPreferencesOpen, consent.analytics, consent.marketing, consent.preferences]);
 
   // Render only when the banner or preferences modal should actually be visible
   if (!isBannerOpen && !isPreferencesOpen) return null;
