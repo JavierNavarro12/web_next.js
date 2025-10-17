@@ -8,6 +8,8 @@ import PWAStartupRedirect from '../components/PWA/PWAStartupRedirect';
 import { ErrorBoundary } from '../components/ErrorBoundary/ErrorBoundary';
 import GoogleAnalytics from '../components/Analytics/GoogleAnalytics';
 import MicrosoftClarity from '../components/Analytics/MicrosoftClarity';
+import { CookieConsentProvider } from '../store/cookieConsent';
+import CookieBanner from '../components/Cookies/CookieBanner';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -76,14 +78,17 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="dns-prefetch" href="https://chunk-gcp-us-east1-vop1.fastly.mux.com" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}>
-        <GoogleAnalytics />
-        <MicrosoftClarity />
-        <ErrorBoundary>
-          <AppProviders>
-            <PWAStartupRedirect />
-            {children}
-          </AppProviders>
-        </ErrorBoundary>
+        <CookieConsentProvider>
+          <GoogleAnalytics />
+          <MicrosoftClarity />
+          <ErrorBoundary>
+            <AppProviders>
+              <PWAStartupRedirect />
+              {children}
+            </AppProviders>
+          </ErrorBoundary>
+          <CookieBanner />
+        </CookieConsentProvider>
       </body>
     </html>
   );

@@ -15,6 +15,7 @@ import AppProviders, {
   useHighlightedToolContext,
   useActiveNavContext,
 } from '../providers';
+import { CookieConsentProvider } from '../../store/cookieConsent';
 
 function ConsumersDemo() {
   const { activeCategory, setActiveCategory } = useAppContext();
@@ -52,9 +53,11 @@ function ConsumersDemo() {
 describe('AppProviders contexts', () => {
   test('provides and updates contexts, renders drawer and add-ai UI', async () => {
     render(
-      <AppProviders>
-        <ConsumersDemo />
-      </AppProviders>,
+      <CookieConsentProvider>
+        <AppProviders>
+          <ConsumersDemo />
+        </AppProviders>
+      </CookieConsentProvider>,
     );
 
     // Initial values (children appears twice due to desktop+mobile containers)
@@ -118,9 +121,11 @@ describe('AppProviders contexts', () => {
     }
 
     render(
-      <AppProviders>
-        <Reader />
-      </AppProviders>,
+      <CookieConsentProvider>
+        <AppProviders>
+          <Reader />
+        </AppProviders>
+      </CookieConsentProvider>,
     );
 
     await waitFor(() => {

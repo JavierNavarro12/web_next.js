@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { useCookieConsent } from '../../store/cookieConsent';
 import { useRouter } from 'next/navigation';
 import {
   useAppContext,
@@ -226,24 +228,8 @@ export default function Footer({
 
   const footerClassName = `bg-black border-t border-zinc-800 ${className ?? 'mt-16'}`;
 
-  // Estado de cookies (consentimiento) y panel
-  type CookieConsent = 'accepted' | 'rejected' | null;
+  const { openPreferences, status } = useCookieConsent();
   const [showCookieMenu, setShowCookieMenu] = useState(false);
-  const [cookieConsent, setCookieConsent] = useState<CookieConsent>(null);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const saved = window.localStorage.getItem('cookieConsent') as CookieConsent | null;
-    if (saved === 'accepted' || saved === 'rejected') setCookieConsent(saved);
-  }, []);
-
-  const handleConsent = (value: Exclude<CookieConsent, null>) => {
-    setCookieConsent(value);
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem('cookieConsent', value);
-    }
-    setShowCookieMenu(false);
-  };
 
   return (
     <footer className={footerClassName}>
@@ -465,19 +451,22 @@ export default function Footer({
             <div className="text-zinc-400 text-sm">© 2025 AIFinder</div>
             <div className="space-y-1">
               {legalLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
                   href={link.href}
                   className="block text-zinc-400 hover:text-white transition-colors text-sm"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </div>
             {/* Botón de cookies en móvil */}
             <div className="pt-2">
               <button
-                onClick={() => setShowCookieMenu((v) => !v)}
+                onClick={() => {
+                  setShowCookieMenu(false);
+                  openPreferences();
+                }}
                 className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors"
                 aria-label="Preferencias de cookies"
                 title="Preferencias de cookies"
@@ -500,17 +489,20 @@ export default function Footer({
             </div>
             <div className="flex items-center space-x-4">
               {legalLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
                   href={link.href}
                   className="text-zinc-400 hover:text-white transition-colors text-sm"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <div className="relative">
                 <button
-                  onClick={() => setShowCookieMenu((v) => !v)}
+                  onClick={() => {
+                    setShowCookieMenu(false);
+                    openPreferences();
+                  }}
                   className="text-zinc-400 hover:text-white transition-colors"
                   aria-label="Configuración"
                   title="Configuración"
@@ -528,68 +520,12 @@ export default function Footer({
                     <circle cx="14" cy="13.5" r="1.25" fill="black" />
                   </svg>
                 </button>
-
-                {showCookieMenu && (
-                  <div className="absolute right-0 bottom-8 mb-2 w-80 bg-black/95 backdrop-blur border border-zinc-800 rounded-xl shadow-xl p-4 z-50">
-                    <h4 className="text-white font-semibold mb-2">Cookies</h4>
-                    <p className="text-zinc-300 text-sm mb-3">
-                      Usamos cookies y tecnologías similares para analizar el uso del sitio y
-                      mejorar tu experiencia. Puedes aceptar o rechazar su uso.
-                    </p>
-                    <div className="flex items-center justify-end gap-2">
-                      <button
-                        onClick={() => handleConsent('rejected')}
-                        className="px-3 py-2 text-sm rounded-md border border-zinc-700 text-zinc-200 hover:bg-zinc-800"
-                      >
-                        Rechazar
-                      </button>
-                      <button
-                        onClick={() => handleConsent('accepted')}
-                        className="px-3 py-2 text-sm rounded-md bg-blue-600 hover:bg-blue-700 text-white"
-                      >
-                        Aceptar todas
-                      </button>
-                    </div>
-                    {cookieConsent && (
-                      <div className="mt-2 text-xs text-zinc-500">
-                        Estado actual: {cookieConsent === 'accepted' ? 'aceptadas' : 'rechazadas'}
-                      </div>
-                    )}
-                  </div>
-                )}
+                {/* El panel inline se reemplaza por el modal global de preferencias */}
               </div>
             </div>
           </div>
 
-          {/* Panel de cookies reutilizable (visible en móvil o desktop) */}
-          {showCookieMenu && (
-            <div className="md:hidden fixed left-4 right-4 bottom-20 z-50 bg-black/95 backdrop-blur border border-zinc-800 rounded-xl shadow-xl p-4">
-              <h4 className="text-white font-semibold mb-2">Cookies</h4>
-              <p className="text-zinc-300 text-sm mb-3">
-                Usamos cookies y tecnologías similares para analizar el uso del sitio y mejorar tu
-                experiencia. Puedes aceptar o rechazar su uso.
-              </p>
-              <div className="flex items-center justify-end gap-2">
-                <button
-                  onClick={() => handleConsent('rejected')}
-                  className="px-3 py-2 text-sm rounded-md border border-zinc-700 text-zinc-200 hover:bg-zinc-800"
-                >
-                  Rechazar
-                </button>
-                <button
-                  onClick={() => handleConsent('accepted')}
-                  className="px-3 py-2 text-sm rounded-md bg-blue-600 hover:bg-blue-700 text-white"
-                >
-                  Aceptar todas
-                </button>
-              </div>
-              {cookieConsent && (
-                <div className="mt-2 text-xs text-zinc-500">
-                  Estado actual: {cookieConsent === 'accepted' ? 'aceptadas' : 'rechazadas'}
-                </div>
-              )}
-            </div>
-          )}
+          {/* El panel móvil inline también se reemplaza por el modal global */}
         </div>
       </div>
     </footer>
