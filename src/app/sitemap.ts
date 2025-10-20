@@ -5,13 +5,57 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
   const now = new Date();
 
-  const routes = ['/', '/herramientas'];
-  const articleRoutes = articles.map((a) => `/articles/${a.slug}`);
+  // Página principal
+  const mainPages: MetadataRoute.Sitemap = [
+    {
+      url: `${base}/`,
+      lastModified: now,
+      changeFrequency: 'daily',
+      priority: 1.0,
+    },
+    {
+      url: `${base}/herramientas`,
+      lastModified: now,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+  ];
 
-  return [...routes, ...articleRoutes].map((route) => ({
-    url: `${base}${route}`,
+  // Artículos
+  const articlePages: MetadataRoute.Sitemap = articles.map((article) => ({
+    url: `${base}/articles/${article.slug}`,
     lastModified: now,
-    changeFrequency: 'weekly',
-    priority: route === '/' ? 1 : 0.6,
+    changeFrequency: 'monthly',
+    priority: 0.8,
   }));
+
+  // Páginas institucionales
+  const institutionalPages: MetadataRoute.Sitemap = [
+    {
+      url: `${base}/directrices`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.7,
+    },
+    {
+      url: `${base}/privacidad`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
+    {
+      url: `${base}/terminos`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
+    {
+      url: `${base}/unsubscribe`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+  ];
+
+  return [...mainPages, ...articlePages, ...institutionalPages];
 }
