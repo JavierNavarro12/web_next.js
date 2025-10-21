@@ -55,7 +55,7 @@ export default function HeroSection() {
       <div className="relative bg-black overflow-hidden py-4 md:py-8">
         {/* Hero Card con elementos flotantes dentro */}
         <div className="relative z-10 max-w-7xl mx-auto px-4">
-          <div className="relative bg-black border border-zinc-700 rounded-2xl p-6 md:p-8 text-center overflow-hidden min-h-[450px] md:min-h-[320px]">
+          <div className="relative bg-black border border-zinc-700 rounded-2xl p-6 md:p-8 text-center overflow-hidden min-h-[600px] md:min-h-[320px]">
             {/* Tarjetas flotantes para móvil */}
             <FloatingCards isMobile={true} />
 
@@ -63,7 +63,7 @@ export default function HeroSection() {
             <FloatingCards isMobile={false} />
 
             {/* Contenido principal - Vista móvil */}
-            <div className="md:hidden absolute top-[70%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 px-4 text-center max-w-3xl">
+            <div className="md:hidden absolute top-[66%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 px-4 text-center max-w-3xl">
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 md:mb-4 leading-tight">
                 Todas las IAs
                 <br />
@@ -75,7 +75,7 @@ export default function HeroSection() {
               </p>
 
               {/* Newsletter signup */}
-              <div className="flex justify-center items-center max-w-md mx-auto">
+              <div className="flex justify-center items-center max-w-md mx-auto mt-6">
                 <form onSubmit={handleSubscribe} className="flex w-full gap-2">
                   <input
                     type="email"
