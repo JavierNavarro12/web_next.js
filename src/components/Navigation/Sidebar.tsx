@@ -407,6 +407,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       <div
         className="flex-1 flex flex-col bg-black rounded-none border border-zinc-800 p-0 w-full relative"
         style={{ maxHeight: 'none', overflow: 'hidden' }}
+        data-nosnippet
       >
         <nav
           className="flex-1 pr-0 scrollbar-none md:overflow-y-auto"
@@ -418,7 +419,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
           }}
         >
           {/* Elimina la lógica de isMobile y renderiza ambos layouts: */}
-          <div className="grid grid-cols-2 gap-y-4 gap-x-4 p-2 mt-2 md:hidden">
+          <div className="grid grid-cols-2 gap-y-4 gap-x-4 p-2 mt-2 md:hidden" data-nosnippet>
             {aiCategories.map((cat, i) => {
               const Icon = icons[i] || defaultIcon;
               const shortName = mobileCategoryNames[i] || cat.name;

@@ -26,8 +26,13 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: 'AIFinder',
-  description: 'Descubre y compara las mejores herramientas de IA',
+  description:
+    'AIFinder: descubre y compara las mejores herramientas de IA por categorías. Reseñas claras, comparativas y filtros para decidir rápido.',
   applicationName: 'AIFinder',
+  alternates: {
+    canonical: baseUrl,
+  },
+  robots: 'index, follow, max-snippet:160, max-image-preview:large, max-video-preview:-1',
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
@@ -42,7 +47,8 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   openGraph: {
     title: 'AIFinder',
-    description: 'Descubre y compara las mejores herramientas de IA',
+    description:
+      'AIFinder: descubre y compara las mejores herramientas de IA por categorías. Reseñas claras, comparativas y filtros para decidir rápido.',
     siteName: 'AIFinder',
     url: baseUrl,
     type: 'website',
@@ -51,7 +57,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'AIFinder',
-    description: 'Descubre y compara las mejores herramientas de IA',
+    description:
+      'AIFinder: descubre y compara las mejores herramientas de IA por categorías. Reseñas claras, comparativas y filtros para decidir rápido.',
     images: ['/icons/icon-512x512.png'],
   },
 };
@@ -76,6 +83,35 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="dns-prefetch" href="https://manifest-gcp-us-east1-vop1.fastly.mux.com" />
         <link rel="preconnect" href="https://chunk-gcp-us-east1-vop1.fastly.mux.com" />
         <link rel="dns-prefetch" href="https://chunk-gcp-us-east1-vop1.fastly.mux.com" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'AIFinder',
+              url: baseUrl,
+              logo: `${baseUrl}/icons/icon-512x512.png`,
+              sameAs: ['https://x.com/aifinder_es'],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'AIFinder',
+              url: baseUrl,
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: `${baseUrl}/?q={search_term_string}`,
+                'query-input': 'required name=search_term_string',
+              },
+            }),
+          }}
+        />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}>
         <CookieConsentProvider>

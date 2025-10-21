@@ -1,7 +1,7 @@
 {
-  "name": "AIFinder - Descubre las mejores herramientas de IA",
+  "name": "AIFinder: descubre y compara las mejores herramientas de IA",
   "short_name": "AIFinder",
-  "description": "Descubre y compara las mejores herramientas de inteligencia artificial",
+  "description": "AIFinder: descubre y compara las mejores herramientas de IA por categorías. Reseñas claras, comparativas y filtros para decidir rápido.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",

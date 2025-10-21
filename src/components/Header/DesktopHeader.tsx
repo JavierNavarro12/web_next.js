@@ -225,7 +225,7 @@ export default function DesktopHeader({
             : 'relative z-20'
         }`}
       >
-        <div className="flex gap-1 ml-1">
+        <div className="flex gap-1 ml-1" data-nosnippet>
           {currentCategory.subcategories.map((subcat) => (
             <button
               key={subcat.name}
