@@ -25,7 +25,10 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: 'AIFinder',
+  title: {
+    default: 'AIFinder',
+    template: '%s | AIFinder',
+  },
   description:
     'AIFinder: descubre y compara las mejores herramientas de IA por categorías. Reseñas claras, comparativas y filtros para decidir rápido.',
   applicationName: 'AIFinder',
@@ -91,8 +94,21 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               '@type': 'Organization',
               name: 'AIFinder',
               url: baseUrl,
-              logo: `${baseUrl}/icons/icon-512x512.png`,
+              logo: {
+                '@type': 'ImageObject',
+                url: `${baseUrl}/icons/icon-512x512.png`,
+                width: 512,
+                height: 512,
+              },
               sameAs: ['https://x.com/aifinder_es'],
+              contactPoint: [
+                {
+                  '@type': 'ContactPoint',
+                  contactType: 'customer support',
+                  email: 'info@aifinder.es',
+                  availableLanguage: ['es', 'en'],
+                },
+              ],
             }),
           }}
         />

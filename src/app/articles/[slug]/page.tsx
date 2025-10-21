@@ -176,6 +176,21 @@ export default function ArticleDetailPage() {
           <h1 className="text-3xl md:text-4xl font-extrabold leading-tight mb-3">
             {article.title}
           </h1>
+          {article.categoryLabel && (
+            <div className="mt-2">
+              <button
+                className="text-blue-400 hover:underline text-sm"
+                onClick={() => {
+                  setActiveCategory(article.categoryLabel);
+                  setActiveSubcategory(null);
+                  setActiveNav('explorar');
+                  router.push(`/?category=${encodeURIComponent(article.categoryLabel)}`);
+                }}
+              >
+                Ver más en {article.categoryLabel}
+              </button>
+            </div>
+          )}
           {article.author && (
             <div className="flex items-center justify-center gap-3 text-zinc-400 text-sm">
               {article.authorImage && (

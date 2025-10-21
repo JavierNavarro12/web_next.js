@@ -20,7 +20,15 @@ import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useSubcategoryHandlers } from '../../hooks/useSubcategoryHandlers';
 import { useNavigationManager } from '../../hooks/useNavigationManager';
 
-export default function HomeContainer() {
+type HomeContainerProps = {
+  initialSearchTerm?: string;
+  initialCategory?: string;
+};
+
+export default function HomeContainer({
+  initialSearchTerm = '',
+  initialCategory = '',
+}: HomeContainerProps) {
   const { activeCategory, setActiveCategory } = useAppContextFromProviders();
   const { activeSubcategory, setActiveSubcategory } = useSubcategoryContextFromProviders();
   const { setSidebarOpen } = React.useContext(SidebarDrawerContextFromProviders);
@@ -51,7 +59,7 @@ export default function HomeContainer() {
   };
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeFilter, setActiveFilter] = useState<'all' | 'free' | 'paid'>('all');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
   const [hoveredFilter, setHoveredFilter] = useState<string | null>(null);
   const [isClient, setIsClient] = useState(false);
 
@@ -78,6 +86,14 @@ export default function HomeContainer() {
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  // Fijar categoría inicial si llega por query (?category=)
+  useEffect(() => {
+    if (initialCategory && !activeCategory) {
+      setActiveCategory(initialCategory);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialCategory]);
 
   // Al cambiar de sección principal (explorar, artículos, herramientas en home),
   // resetea el scroll y el estado isScrolled para que el hero/primera tarjeta sea visible
@@ -216,32 +232,53 @@ export default function HomeContainer() {
 
   if (!currentCategory) {
     return (
-      <ExploreView
-        currentCategory={currentCategory}
-        activeSubcategory={activeSubcategory}
-        setActiveCategory={setActiveCategory}
-        setActiveSubcategory={setActiveSubcategory}
-        setSidebarOpen={setSidebarOpen}
-        isClient={isClient}
-        tabRefs={tabRefs}
-        tabsContainerRef={tabsContainerRef}
-        onMobileSubcategoryClick={handleMobileSubcategoryClick}
-        activeNav={activeNav}
-        setActiveNav={setActiveNav}
-        isScrolled={isScrolled}
-        activeFilter={activeFilter}
-        setActiveFilter={setActiveFilter}
-        hoveredFilter={hoveredFilter}
-        setHoveredFilter={setHoveredFilter}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        headerRow1Ref={headerRow1Ref}
-        headerRow2Ref={headerRow2Ref}
-        onSubcategoryClick={handleSubcategoryClick}
-        navigateToSubcategory={navigateToSubcategory}
-        onSetShowFeedback={setShowFeedback}
-        onSetShowBugReport={setShowBugReport}
-      />
+      <>
+        {/* BreadcrumbList JSON-LD para home / explorar */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://aifinder.es' },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'Explorar',
+                  item: 'https://aifinder.es/',
+                },
+              ],
+            }),
+          }}
+        />
+        <ExploreView
+          currentCategory={currentCategory}
+          activeSubcategory={activeSubcategory}
+          setActiveCategory={setActiveCategory}
+          setActiveSubcategory={setActiveSubcategory}
+          setSidebarOpen={setSidebarOpen}
+          isClient={isClient}
+          tabRefs={tabRefs}
+          tabsContainerRef={tabsContainerRef}
+          onMobileSubcategoryClick={handleMobileSubcategoryClick}
+          activeNav={activeNav}
+          setActiveNav={setActiveNav}
+          isScrolled={isScrolled}
+          activeFilter={activeFilter}
+          setActiveFilter={setActiveFilter}
+          hoveredFilter={hoveredFilter}
+          setHoveredFilter={setHoveredFilter}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          headerRow1Ref={headerRow1Ref}
+          headerRow2Ref={headerRow2Ref}
+          onSubcategoryClick={handleSubcategoryClick}
+          navigateToSubcategory={navigateToSubcategory}
+          onSetShowFeedback={setShowFeedback}
+          onSetShowBugReport={setShowBugReport}
+        />
+      </>
     );
   }
 

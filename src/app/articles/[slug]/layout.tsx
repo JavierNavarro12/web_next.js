@@ -114,12 +114,46 @@ export default async function ArticleLayout({
       }
     : null;
 
+  // JSON-LD BreadcrumbList: Inicio > Artículos > {Título}
+  const breadcrumbJsonLd = article
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Inicio',
+            item: base,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Artículos',
+            item: `${base}/?active=articulos`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: article.title,
+            item: `${base}/articles/${article.slug}`,
+          },
+        ],
+      }
+    : null;
+
   return (
     <>
       {jsonLd && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      )}
+      {breadcrumbJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
       )}
       {children}
