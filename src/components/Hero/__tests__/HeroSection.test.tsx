@@ -41,7 +41,9 @@ describe('HeroSection', () => {
       expect(screen.getAllByText('Todas las IAs')).toHaveLength(2);
       expect(screen.getAllByText('que necesitas en un lugar.')).toHaveLength(2);
       expect(
-        screen.getAllByText('Herramientas, recursos y productos de IA. Entregado semanalmente.'),
+        screen.getAllByText(
+          'AIFinder: descubre y compara las mejores herramientas de IA por categorías. Reseñas claras, comparativas y filtros para decidir rápido.',
+        ),
       ).toHaveLength(2);
     });
 
