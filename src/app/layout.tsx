@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: '%s | AIFinder',
   },
   description:
-    'AIFinder: descubre y compara las mejores herramientas de IA por categorías. Reseñas claras, comparativas y filtros para decidir rápido.',
+    'Descubre las mejores IA para programar, escribir, generar imágenes y vídeo, voz y estudiar. Comparativas claras, pros/contras y precios en español.',
   applicationName: 'AIFinder',
   alternates: {
     canonical: baseUrl,
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'AIFinder',
     description:
-      'AIFinder: descubre y compara las mejores herramientas de IA por categorías. Reseñas claras, comparativas y filtros para decidir rápido.',
+      'Descubre las mejores IA para programar, escribir, generar imágenes y vídeo, voz y estudiar. Comparativas claras, pros/contras y precios en español.',
     siteName: 'AIFinder',
     url: baseUrl,
     type: 'website',
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AIFinder',
     description:
-      'AIFinder: descubre y compara las mejores herramientas de IA por categorías. Reseñas claras, comparativas y filtros para decidir rápido.',
+      'Descubre las mejores IA para programar, escribir, generar imágenes y vídeo, voz y estudiar. Comparativas claras, pros/contras y precios en español.',
     images: ['/icons/icon-512x512.png'],
   },
 };

@@ -70,8 +70,8 @@ export default function HeroSection() {
                 <span className="text-2xl sm:text-3xl md:text-4xl">que necesitas en un lugar.</span>
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-zinc-300 mb-4 md:mb-5 leading-relaxed">
-                AIFinder: descubre y compara las mejores herramientas de IA por categorías. Reseñas
-                claras, comparativas y filtros para decidir rápido.
+                Descubre las mejores IA para programar, escribir, generar imágenes y vídeo, voz y
+                estudiar. Comparativas claras, pros/contras y precios en español.
               </p>
 
               {/* Newsletter signup */}
@@ -112,8 +112,8 @@ export default function HeroSection() {
                 <span className="text-2xl sm:text-3xl md:text-4xl">que necesitas en un lugar.</span>
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-zinc-300 mb-4 md:mb-5 leading-relaxed">
-                AIFinder: descubre y compara las mejores herramientas de IA por categorías. Reseñas
-                claras, comparativas y filtros para decidir rápido.
+                Descubre las mejores IA para programar, escribir, generar imágenes y vídeo, voz y
+                estudiar. Comparativas claras, pros/contras y precios en español.
               </p>
 
               {/* Newsletter signup */}
