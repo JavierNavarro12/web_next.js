@@ -42,7 +42,7 @@ describe('HeroSection', () => {
       expect(screen.getAllByText('que necesitas en un lugar.')).toHaveLength(2);
       expect(
         screen.getAllByText(
-          'AIFinder: descubre y compara las mejores herramientas de IA por categorías. Reseñas claras, comparativas y filtros para decidir rápido.',
+          'Descubre las mejores IA para programar, escribir, generar imágenes y vídeo, voz y estudiar. Comparativas claras, pros/contras y precios en español.',
         ),
       ).toHaveLength(2);
     });
