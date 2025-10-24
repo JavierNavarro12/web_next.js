@@ -80,6 +80,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             __html: `(${initBrowserSentry.toString()})();`,
           }}
         />
+        {/* DataFast analytics */}
+        <script
+          defer
+          data-website-id="dfid_vDROHeJI9P2sNpr1i9WUW"
+          data-domain="www.aifinder.es"
+          src="https://datafa.st/js/script.js"
+        />
         <link rel="preconnect" href="https://mux.com" />
         <link rel="dns-prefetch" href="https://mux.com" />
         <link rel="preconnect" href="https://manifest-gcp-us-east1-vop1.fastly.mux.com" />
