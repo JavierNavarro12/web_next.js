@@ -146,24 +146,35 @@ export default function HomeContainer({
 
   useEffect(() => {
     if (currentCategory && currentCategory.subcategories.length > 0) {
-      const firstSubcategory = currentCategory.subcategories[0].name;
-      setActiveSubcategory(firstSubcategory);
-      isProgrammaticScroll.current = true;
-      const mainElement = document.querySelector('main');
-      if (mainElement) {
-        mainElement.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Si hay initialSubcategory válida para esta categoría, úsala en lugar de la primera
+      const validInitialSubcategory =
+        initialSubcategory &&
+        currentCategory.subcategories.some((sub) => sub.name === initialSubcategory);
+
+      const targetSubcategory = validInitialSubcategory
+        ? initialSubcategory
+        : currentCategory.subcategories[0].name;
+
+      // Solo actualizar si es diferente para evitar loops
+      if (activeSubcategory !== targetSubcategory) {
+        setActiveSubcategory(targetSubcategory);
+        isProgrammaticScroll.current = true;
+        const mainElement = document.querySelector('main');
+        if (mainElement) {
+          mainElement.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        setTimeout(() => {
+          isProgrammaticScroll.current = false;
+          setIsScrolled(false);
+        }, 400);
       }
-      setTimeout(() => {
-        isProgrammaticScroll.current = false;
-        setIsScrolled(false);
-      }, 400);
     } else {
       setActiveSubcategory(null);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentCategory]);
+  }, [currentCategory, initialSubcategory]);
 
   useEffect(() => {
     if (

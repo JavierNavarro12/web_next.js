@@ -38,20 +38,20 @@ describe('HeroSection', () => {
     it('should render the hero section with title and description', () => {
       render(React.createElement(HeroSection));
 
-      expect(screen.getAllByText('Todas las IAs')).toHaveLength(2);
-      expect(screen.getAllByText('que necesitas en un lugar.')).toHaveLength(2);
+      expect(screen.getByText('Todas las IAs')).toBeInTheDocument();
+      expect(screen.getByText('que necesitas en un lugar.')).toBeInTheDocument();
       expect(
-        screen.getAllByText(
+        screen.getByText(
           'Descubre las mejores IA para programar, escribir, generar imágenes y vídeo, voz y estudiar. Comparativas claras, pros/contras y precios en español.',
         ),
-      ).toHaveLength(2);
+      ).toBeInTheDocument();
     });
 
     it('should render newsletter subscription form', () => {
       render(React.createElement(HeroSection));
 
-      expect(screen.getAllByPlaceholderText('Email')).toHaveLength(2);
-      expect(screen.getAllByRole('button', { name: 'Suscribirse' })).toHaveLength(2);
+      expect(screen.getByPlaceholderText('Email')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Suscribirse' })).toBeInTheDocument();
     });
 
     it('should render FloatingCards components for both mobile and desktop', () => {
@@ -61,12 +61,12 @@ describe('HeroSection', () => {
       expect(screen.getByTestId('floating-cards-desktop')).toBeInTheDocument();
     });
 
-    it('should render both mobile and desktop layouts', () => {
+    it('should render unified responsive layout', () => {
       render(React.createElement(HeroSection));
 
-      // Both mobile and desktop versions should be present
-      const titles = screen.getAllByText('Todas las IAs');
-      expect(titles).toHaveLength(2); // One for mobile, one for desktop
+      // Single responsive title element that works for all screen sizes
+      const title = screen.getByText('Todas las IAs');
+      expect(title).toBeInTheDocument();
     });
   });
 
@@ -76,8 +76,8 @@ describe('HeroSection', () => {
 
       render(React.createElement(HeroSection));
 
-      const emailInput = screen.getAllByPlaceholderText('Email')[0]; // Use first input (mobile)
-      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      const emailInput = screen.getByPlaceholderText('Email');
+      const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
 
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.click(submitButton);
@@ -90,7 +90,7 @@ describe('HeroSection', () => {
       });
 
       await waitFor(() => {
-        expect(screen.getAllByText('¡Suscripción exitosa! Revisa tu email.')).toHaveLength(2);
+        expect(screen.getByText('¡Suscripción exitosa! Revisa tu email.')).toBeInTheDocument();
       });
     });
 
@@ -101,14 +101,14 @@ describe('HeroSection', () => {
 
       render(React.createElement(HeroSection));
 
-      const emailInput = screen.getAllByPlaceholderText('Email')[0];
-      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      const emailInput = screen.getByPlaceholderText('Email');
+      const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
 
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.click(submitButton);
 
-      expect(screen.getAllByRole('button', { name: 'Enviando...' })).toHaveLength(2);
-      expect(screen.getAllByRole('button', { name: 'Enviando...' })[0]).toBeDisabled();
+      expect(screen.getByRole('button', { name: 'Enviando...' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Enviando...' })).toBeDisabled();
     });
 
     it('should clear email input after successful subscription', async () => {
@@ -116,8 +116,8 @@ describe('HeroSection', () => {
 
       render(React.createElement(HeroSection));
 
-      const emailInput = screen.getAllByPlaceholderText('Email')[0];
-      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      const emailInput = screen.getByPlaceholderText('Email');
+      const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
 
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.click(submitButton);
@@ -132,14 +132,14 @@ describe('HeroSection', () => {
 
       render(React.createElement(HeroSection));
 
-      const emailInput = screen.getAllByPlaceholderText('Email')[0];
-      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      const emailInput = screen.getByPlaceholderText('Email');
+      const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
 
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.click(submitButton);
 
       await waitFor(() => {
-        expect(screen.getAllByText('¡Suscripción exitosa! Revisa tu email.')).toHaveLength(2);
+        expect(screen.getByText('¡Suscripción exitosa! Revisa tu email.')).toBeInTheDocument();
       });
 
       // Advance timers by 5 seconds
@@ -155,25 +155,25 @@ describe('HeroSection', () => {
     it('should show error for empty email', async () => {
       render(React.createElement(HeroSection));
 
-      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
       fireEvent.click(submitButton);
 
       await waitFor(() => {
-        expect(screen.getAllByText('Por favor ingresa tu email')).toHaveLength(2);
+        expect(screen.getByText('Por favor ingresa tu email')).toBeInTheDocument();
       });
     });
 
     it('should show error for invalid email format', async () => {
       render(React.createElement(HeroSection));
 
-      const emailInput = screen.getAllByPlaceholderText('Email')[0];
+      const emailInput = screen.getByPlaceholderText('Email');
       const form = emailInput.closest('form');
 
       fireEvent.change(emailInput, { target: { value: 'invalid-email' } });
       fireEvent.submit(form!);
 
       await waitFor(() => {
-        expect(screen.getAllByText('Por favor ingresa un email válido')).toHaveLength(2);
+        expect(screen.getByText('Por favor ingresa un email válido')).toBeInTheDocument();
       });
     });
 
@@ -182,8 +182,8 @@ describe('HeroSection', () => {
 
       render(React.createElement(HeroSection));
 
-      const emailInput = screen.getAllByPlaceholderText('Email')[0];
-      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      const emailInput = screen.getByPlaceholderText('Email');
+      const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
 
       fireEvent.change(emailInput, { target: { value: 'valid@example.com' } });
       fireEvent.click(submitButton);
@@ -204,14 +204,14 @@ describe('HeroSection', () => {
 
       render(React.createElement(HeroSection));
 
-      const emailInput = screen.getAllByPlaceholderText('Email')[0];
-      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      const emailInput = screen.getByPlaceholderText('Email');
+      const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
 
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.click(submitButton);
 
       await waitFor(() => {
-        expect(screen.getAllByText(errorMessage)).toHaveLength(2);
+        expect(screen.getByText(errorMessage)).toBeInTheDocument();
       });
     });
 
@@ -220,28 +220,28 @@ describe('HeroSection', () => {
 
       render(React.createElement(HeroSection));
 
-      const emailInput = screen.getAllByPlaceholderText('Email')[0];
-      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      const emailInput = screen.getByPlaceholderText('Email');
+      const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
 
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.click(submitButton);
 
       await waitFor(() => {
-        expect(screen.getAllByText('Error al suscribirse. Inténtalo de nuevo.')).toHaveLength(2);
+        expect(screen.getByText('Error al suscribirse. Inténtalo de nuevo.')).toBeInTheDocument();
       });
     });
 
     it('should clear error when user starts typing again', async () => {
       render(React.createElement(HeroSection));
 
-      const emailInput = screen.getAllByPlaceholderText('Email')[0];
-      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      const emailInput = screen.getByPlaceholderText('Email');
+      const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
 
       // Trigger error
       fireEvent.click(submitButton);
 
       await waitFor(() => {
-        expect(screen.getAllByText('Por favor ingresa tu email')).toHaveLength(2);
+        expect(screen.getByText('Por favor ingresa tu email')).toBeInTheDocument();
       });
 
       // Start typing to clear error
@@ -257,7 +257,7 @@ describe('HeroSection', () => {
     it('should update email input value', () => {
       render(React.createElement(HeroSection));
 
-      const emailInput = screen.getAllByPlaceholderText('Email')[0];
+      const emailInput = screen.getByPlaceholderText('Email');
 
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
 
@@ -271,8 +271,8 @@ describe('HeroSection', () => {
 
       render(React.createElement(HeroSection));
 
-      const emailInput = screen.getAllByPlaceholderText('Email')[0];
-      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      const emailInput = screen.getByPlaceholderText('Email');
+      const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
 
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.click(submitButton);
@@ -286,8 +286,8 @@ describe('HeroSection', () => {
 
       render(React.createElement(HeroSection));
 
-      const emailInput = screen.getAllByPlaceholderText('Email')[0];
-      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      const emailInput = screen.getByPlaceholderText('Email');
+      const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
 
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.click(submitButton);
@@ -303,14 +303,14 @@ describe('HeroSection', () => {
     it('should have proper form structure', () => {
       render(React.createElement(HeroSection));
 
-      const form = screen.getAllByRole('button', { name: 'Suscribirse' })[0].closest('form');
+      const form = screen.getByRole('button', { name: 'Suscribirse' }).closest('form');
       expect(form).toBeInTheDocument();
     });
 
     it('should have proper input type and placeholder', () => {
       render(React.createElement(HeroSection));
 
-      const emailInput = screen.getAllByPlaceholderText('Email')[0];
+      const emailInput = screen.getByPlaceholderText('Email');
       expect(emailInput).toHaveAttribute('type', 'email');
       expect(emailInput).toHaveAttribute('placeholder', 'Email');
     });
@@ -318,7 +318,7 @@ describe('HeroSection', () => {
     it('should have proper button type', () => {
       render(React.createElement(HeroSection));
 
-      const submitButton = screen.getAllByRole('button', { name: 'Suscribirse' })[0];
+      const submitButton = screen.getByRole('button', { name: 'Suscribirse' });
       expect(submitButton).toHaveAttribute('type', 'submit');
     });
   });
@@ -338,11 +338,11 @@ describe('HeroSection', () => {
       expect(screen.getByTestId('floating-cards-desktop')).toBeInTheDocument();
     });
 
-    it('should have multiple email inputs for different layouts', () => {
+    it('should have single unified email input for all layouts', () => {
       render(React.createElement(HeroSection));
 
-      const emailInputs = screen.getAllByPlaceholderText('Email');
-      expect(emailInputs.length).toBeGreaterThan(1); // At least mobile and desktop versions
+      const emailInput = screen.getByPlaceholderText('Email');
+      expect(emailInput).toBeInTheDocument(); // Single responsive input
     });
   });
 });
