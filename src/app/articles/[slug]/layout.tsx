@@ -130,7 +130,7 @@ export default async function ArticleLayout({
             '@type': 'ListItem',
             position: 2,
             name: 'Artículos',
-            item: `${base}/?active=articulos`,
+            item: `${base}/articulos`,
           },
           {
             '@type': 'ListItem',

@@ -62,8 +62,8 @@ export default function HeroSection() {
             {/* Tarjetas flotantes para web */}
             <FloatingCards isMobile={false} />
 
-            {/* Contenido principal - Vista móvil */}
-            <div className="md:hidden absolute top-[66%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 px-4 text-center max-w-3xl">
+            {/* Contenido principal - Un solo H1 para SEO */}
+            <div className="absolute top-[66%] md:top-[50%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 px-4 md:px-8 text-center max-w-3xl">
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 md:mb-4 leading-tight">
                 Todas las IAs
                 <br />
@@ -75,49 +75,7 @@ export default function HeroSection() {
               </p>
 
               {/* Newsletter signup */}
-              <div className="flex justify-center items-center max-w-md mx-auto mt-6">
-                <form onSubmit={handleSubscribe} className="flex w-full gap-2">
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={handleEmailChange}
-                    className="flex-1 px-4 py-3 bg-zinc-800 text-white placeholder-zinc-300 focus:outline-none border border-zinc-600 rounded-full text-sm md:text-base"
-                    disabled={isSubmitting}
-                  />
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="px-4 md:px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 disabled:cursor-not-allowed text-white font-semibold transition-colors rounded-full text-sm md:text-base whitespace-nowrap"
-                  >
-                    {isSubmitting ? 'Enviando...' : 'Suscribirse'}
-                  </button>
-                </form>
-              </div>
-
-              {/* Mensajes de éxito y error */}
-              {showSuccess && (
-                <div className="mt-3 text-green-400 text-sm">
-                  ¡Suscripción exitosa! Revisa tu email.
-                </div>
-              )}
-              {error && <div className="mt-3 text-red-400 text-sm">{error}</div>}
-            </div>
-
-            {/* Contenido principal - Vista web */}
-            <div className="hidden md:block absolute top-[50%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 px-8 text-center max-w-3xl">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 md:mb-4 leading-tight">
-                Todas las IAs
-                <br />
-                <span className="text-2xl sm:text-3xl md:text-4xl">que necesitas en un lugar.</span>
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-zinc-300 mb-4 md:mb-5 leading-relaxed">
-                Descubre las mejores IA para programar, escribir, generar imágenes y vídeo, voz y
-                estudiar. Comparativas claras, pros/contras y precios en español.
-              </p>
-
-              {/* Newsletter signup */}
-              <div className="flex justify-center items-center max-w-md mx-auto">
+              <div className="flex justify-center items-center max-w-md mx-auto mt-6 md:mt-0">
                 <form onSubmit={handleSubscribe} className="flex w-full gap-2">
                   <input
                     type="email"

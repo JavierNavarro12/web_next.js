@@ -26,19 +26,50 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'AIFinder',
+    default: 'AIFinder - Directorio de Herramientas de IA',
     template: '%s | AIFinder',
   },
   description:
     'Descubre las mejores IA para programar, escribir, generar imágenes y vídeo, voz y estudiar. Comparativas claras, pros/contras y precios en español.',
+  keywords: [
+    'inteligencia artificial',
+    'IA',
+    'herramientas IA',
+    'ChatGPT',
+    'Claude',
+    'Gemini',
+    'Midjourney',
+    'DALL-E',
+    'generador de imágenes IA',
+    'chatbot IA',
+    'IA para programar',
+    'IA español',
+  ],
+  authors: [{ name: 'AIFinder', url: baseUrl }],
+  creator: 'AIFinder',
+  publisher: 'AIFinder',
   applicationName: 'AIFinder',
   alternates: {
     canonical: baseUrl,
+    languages: {
+      'es-ES': baseUrl,
+    },
   },
-  robots: 'index, follow, max-snippet:160, max-image-preview:large, max-video-preview:-1',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
+  category: 'technology',
   icons: {
     icon: [
       { url: '/icons/icon-16x16.png', sizes: '16x16', type: 'image/png' },
@@ -87,6 +118,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           data-domain="www.aifinder.es"
           src="https://datafa.st/js/script.js"
         />
+        {/* Preconnect para recursos críticos - mejora LCP */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://datafa.st" />
         <link rel="preconnect" href="https://mux.com" />
         <link rel="dns-prefetch" href="https://mux.com" />
         <link rel="preconnect" href="https://manifest-gcp-us-east1-vop1.fastly.mux.com" />

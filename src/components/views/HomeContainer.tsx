@@ -23,11 +23,13 @@ import { useNavigationManager } from '../../hooks/useNavigationManager';
 type HomeContainerProps = {
   initialSearchTerm?: string;
   initialCategory?: string;
+  initialSubcategory?: string;
 };
 
 export default function HomeContainer({
   initialSearchTerm = '',
   initialCategory = '',
+  initialSubcategory = '',
 }: HomeContainerProps) {
   const { activeCategory, setActiveCategory } = useAppContextFromProviders();
   const { activeSubcategory, setActiveSubcategory } = useSubcategoryContextFromProviders();
@@ -87,13 +89,21 @@ export default function HomeContainer({
     setIsClient(true);
   }, []);
 
-  // Fijar categoría inicial si llega por query (?category=)
+  // Fijar categoría inicial si llega por query (?category=) o por ruta
   useEffect(() => {
     if (initialCategory && !activeCategory) {
       setActiveCategory(initialCategory);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialCategory]);
+
+  // Fijar subcategoría inicial si llega por ruta (/categoria/x/subcategoria)
+  useEffect(() => {
+    if (initialSubcategory && !activeSubcategory) {
+      setActiveSubcategory(initialSubcategory);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialSubcategory]);
 
   // Al cambiar de sección principal (explorar, artículos, herramientas en home),
   // resetea el scroll y el estado isScrolled para que el hero/primera tarjeta sea visible
@@ -231,6 +241,46 @@ export default function HomeContainer({
   }
 
   if (!currentCategory) {
+    // FAQ Schema para rich snippets en Google
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: '¿Qué es AIFinder?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'AIFinder es un directorio completo de herramientas de inteligencia artificial en español. Incluye más de 200 herramientas organizadas por categorías como generación de texto, imágenes, audio, video y código.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: '¿Cuáles son las mejores IA para generar imágenes?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Las mejores IA para generar imágenes incluyen Midjourney, DALL-E 3, Stable Diffusion, Adobe Firefly, Leonardo AI y Ideogram. Cada una tiene sus fortalezas: Midjourney destaca en arte, DALL-E en precisión de prompts, y Stable Diffusion es open source.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: '¿Cuál es la mejor IA para programar?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Las mejores IAs para programar son GitHub Copilot, Claude, Cursor, y ChatGPT. GitHub Copilot se integra directamente en el IDE, mientras que Claude y ChatGPT son excelentes para explicaciones de código y debugging.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: '¿Hay herramientas de IA gratuitas?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Sí, muchas herramientas ofrecen versiones gratuitas o freemium. ChatGPT, Claude, Gemini, Stable Diffusion, y LLaMA son algunas de las IAs más populares con opciones gratuitas.',
+          },
+        },
+      ],
+    };
+
     return (
       <>
         {/* BreadcrumbList JSON-LD para home / explorar */}
@@ -251,6 +301,11 @@ export default function HomeContainer({
               ],
             }),
           }}
+        />
+        {/* FAQ Schema para rich snippets */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
         <ExploreView
           currentCategory={currentCategory}

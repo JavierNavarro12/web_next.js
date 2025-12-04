@@ -87,7 +87,7 @@ export default function ArticleDetailPage() {
         {/* Header superior con volver y navegación */}
         <div className="flex items-center justify-between mb-3">
           <button
-            onClick={() => router.push('/?active=articulos')}
+            onClick={() => router.push('/articulos')}
             className="text-zinc-300 hover:text-white ml-[-8px] md:ml-[-70px] relative top-[2px] md:top-[6px]"
           >
             ← Volver

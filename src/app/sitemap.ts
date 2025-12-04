@@ -1,5 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { articles } from '../data/articles';
+import { aiCategories } from '../data/ai-tools';
+import { slugify } from '../utils/slugify';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
@@ -19,7 +21,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'daily',
       priority: 0.9,
     },
+    {
+      url: `${base}/articulos`,
+      lastModified: now,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
   ];
+
+  // Páginas de categorías (SEO optimizado)
+  const categoryPages: MetadataRoute.Sitemap = aiCategories.map((category) => ({
+    url: `${base}/categoria/${slugify(category.name)}`,
+    lastModified: now,
+    changeFrequency: 'weekly',
+    priority: 0.85,
+  }));
+
+  // Páginas de subcategorías (SEO optimizado)
+  const subcategoryPages: MetadataRoute.Sitemap = aiCategories.flatMap((category) =>
+    category.subcategories.map((subcategory) => ({
+      url: `${base}/categoria/${slugify(category.name)}/${slugify(subcategory.name)}`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    })),
+  );
 
   // Artículos
   const articlePages: MetadataRoute.Sitemap = articles.map((article) => ({
@@ -49,13 +75,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.5,
     },
-    {
-      url: `${base}/unsubscribe`,
-      lastModified: now,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
   ];
 
-  return [...mainPages, ...articlePages, ...institutionalPages];
+  return [
+    ...mainPages,
+    ...categoryPages,
+    ...subcategoryPages,
+    ...articlePages,
+    ...institutionalPages,
+  ];
 }
