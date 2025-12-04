@@ -97,14 +97,6 @@ export default function HomeContainer({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialCategory]);
 
-  // Fijar subcategoría inicial si llega por ruta (/categoria/x/subcategoria)
-  useEffect(() => {
-    if (initialSubcategory && !activeSubcategory) {
-      setActiveSubcategory(initialSubcategory);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialSubcategory]);
-
   // Al cambiar de sección principal (explorar, artículos, herramientas en home),
   // resetea el scroll y el estado isScrolled para que el hero/primera tarjeta sea visible
   useEffect(() => {
