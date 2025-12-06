@@ -107,7 +107,13 @@ export default function HomeContainer({
 
   // Al cambiar de sección principal (explorar, artículos, herramientas en home),
   // resetea el scroll y el estado isScrolled para que el hero/primera tarjeta sea visible
+  // PERO solo si no es navegación programática (ej: click en subcategoría del sidebar)
   useEffect(() => {
+    // Si es navegación programática, no resetear el scroll
+    if (isProgrammaticScroll.current) {
+      return;
+    }
+
     // Retrasar un frame para esperar al cambio de vista/layout
     const id = requestAnimationFrame(() => {
       const mainElement = document.querySelector('main');
@@ -146,6 +152,17 @@ export default function HomeContainer({
 
   useEffect(() => {
     if (currentCategory && currentCategory.subcategories.length > 0) {
+      // Si la subcategoría activa ya es válida para esta categoría, no cambiarla
+      // Esto evita sobrescribir la subcategoría cuando se navega desde el sidebar
+      const currentSubcategoryIsValid =
+        activeSubcategory &&
+        currentCategory.subcategories.some((sub) => sub.name === activeSubcategory);
+
+      if (currentSubcategoryIsValid) {
+        // La subcategoría actual es válida, no hacer nada
+        return;
+      }
+
       // Si hay initialSubcategory válida para esta categoría, úsala en lugar de la primera
       const validInitialSubcategory =
         initialSubcategory &&

@@ -205,34 +205,54 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
 
   // Función para manejar clic en subcategoría usando el sistema centralizado
   const handleSubcategoryClick = (subcategoryName: string) => {
-    // Si estamos en feedback, primero cerrarlo
-    if (showFeedback) {
-      setShowFeedback(false);
-      // Dar tiempo para que se cierre el feedback antes de hacer scroll
-      setTimeout(() => {
-        navigateToSubcategory(subcategoryName);
-      }, 100);
-    } else if (showBugReport) {
-      setShowBugReport(false);
-      // Dar tiempo para que se cierre el reportar bug antes de hacer scroll
-      setTimeout(() => {
-        navigateToSubcategory(subcategoryName);
-      }, 100);
-    } else {
-      // Para asegurar navegación desde cualquier ruta (incluye /herramientas),
-      // establecemos la subcategoría y navegamos al home.
-      setActiveSubcategory(subcategoryName);
-      setActiveNav('explorar');
-      router.push('/');
-      // Dar un pequeño margen para que el DOM tenga el id de la sección
-      setTimeout(() => {
-        navigateToSubcategory(subcategoryName);
-      }, 100);
-    }
-
     // Si estamos en la página "Añadir una IA", cerrarla
     if (setShowAddAITool) {
       setShowAddAITool(false);
+    }
+
+    // Si estamos en feedback, primero cerrarlo
+    if (showFeedback) {
+      setShowFeedback(false);
+      setTimeout(() => {
+        navigateToSubcategory(subcategoryName);
+      }, 100);
+      return;
+    }
+
+    // Si estamos en reportar bug, primero cerrarlo
+    if (showBugReport) {
+      setShowBugReport(false);
+      setTimeout(() => {
+        navigateToSubcategory(subcategoryName);
+      }, 100);
+      return;
+    }
+
+    // Marcar scroll programático para evitar interferencias
+    isProgrammaticScroll.current = true;
+
+    // Verificar si ya estamos en la página principal
+    const isOnHomePage =
+      typeof window !== 'undefined' &&
+      (window.location.pathname === '/' || window.location.pathname === '');
+
+    if (isOnHomePage) {
+      // Ya estamos en home, solo navegar a la subcategoría
+      setActiveSubcategory(subcategoryName);
+      setActiveNav('explorar');
+      // Pequeño delay para que el estado se actualice
+      setTimeout(() => {
+        navigateToSubcategory(subcategoryName);
+      }, 50);
+    } else {
+      // Estamos en otra ruta, necesitamos navegar al home primero
+      setActiveSubcategory(subcategoryName);
+      setActiveNav('explorar');
+      router.push('/');
+      // Dar más tiempo para que el DOM se renderice tras la navegación
+      setTimeout(() => {
+        navigateToSubcategory(subcategoryName);
+      }, 300);
     }
   };
 
