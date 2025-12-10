@@ -133,6 +133,36 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // ===========================================
+      // SEO: Redirecciones 301 para URLs antiguas
+      // ===========================================
+      // URLs con parámetros antiguos → nuevas rutas
+      {
+        source: '/',
+        has: [{ type: 'query', key: 'active', value: 'articulos' }],
+        destination: '/articulos',
+        permanent: true,
+      },
+      {
+        source: '/',
+        has: [{ type: 'query', key: 'active', value: 'herramientas' }],
+        destination: '/herramientas',
+        permanent: true,
+      },
+      // URL literal errónea con {slug}
+      {
+        source: '/articles/%7Bslug%7D',
+        destination: '/articulos',
+        permanent: true,
+      },
+      {
+        source: '/articles/{slug}',
+        destination: '/articulos',
+        permanent: true,
+      },
+      // ===========================================
+      // Iconos y favicons
+      // ===========================================
       {
         source: '/apple-touch-icon.png',
         destination: '/icons/icon-192x192.png',
