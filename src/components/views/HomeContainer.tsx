@@ -270,6 +270,8 @@ export default function HomeContainer({
 
   if (!currentCategory) {
     // FAQ Schema para rich snippets en Google
+    // IMPORTANTE: Solo mostrar en la página principal, no en páginas de categoría
+    // para evitar duplicación de FAQPage que causa errores en Search Console
     const faqSchema = {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
@@ -309,32 +311,44 @@ export default function HomeContainer({
       ],
     };
 
+    // Solo renderizar schemas JSON-LD en la página principal (sin initialCategory)
+    // Esto evita duplicación cuando HomeContainer se usa en páginas de categoría
+    const isHomePage = !initialCategory;
+
     return (
       <>
-        {/* BreadcrumbList JSON-LD para home / explorar */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://aifinder.es' },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  name: 'Explorar',
-                  item: 'https://aifinder.es/',
-                },
-              ],
-            }),
-          }}
-        />
-        {/* FAQ Schema para rich snippets */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
+        {/* BreadcrumbList y FAQ Schema solo en la página principal */}
+        {isHomePage && (
+          <>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  '@context': 'https://schema.org',
+                  '@type': 'BreadcrumbList',
+                  itemListElement: [
+                    {
+                      '@type': 'ListItem',
+                      position: 1,
+                      name: 'Inicio',
+                      item: 'https://aifinder.es',
+                    },
+                    {
+                      '@type': 'ListItem',
+                      position: 2,
+                      name: 'Explorar',
+                      item: 'https://aifinder.es/',
+                    },
+                  ],
+                }),
+              }}
+            />
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+          </>
+        )}
         <ExploreView
           currentCategory={currentCategory}
           activeSubcategory={activeSubcategory}
