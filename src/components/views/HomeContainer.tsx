@@ -269,86 +269,11 @@ export default function HomeContainer({
   }
 
   if (!currentCategory) {
-    // FAQ Schema para rich snippets en Google
-    // IMPORTANTE: Solo mostrar en la página principal, no en páginas de categoría
-    // para evitar duplicación de FAQPage que causa errores en Search Console
-    const faqSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: '¿Qué es AIFinder?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'AIFinder es un directorio completo de herramientas de inteligencia artificial en español. Incluye más de 200 herramientas organizadas por categorías como generación de texto, imágenes, audio, video y código.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: '¿Cuáles son las mejores IA para generar imágenes?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Las mejores IA para generar imágenes incluyen Midjourney, DALL-E 3, Stable Diffusion, Adobe Firefly, Leonardo AI y Ideogram. Cada una tiene sus fortalezas: Midjourney destaca en arte, DALL-E en precisión de prompts, y Stable Diffusion es open source.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: '¿Cuál es la mejor IA para programar?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Las mejores IAs para programar son GitHub Copilot, Claude, Cursor, y ChatGPT. GitHub Copilot se integra directamente en el IDE, mientras que Claude y ChatGPT son excelentes para explicaciones de código y debugging.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: '¿Hay herramientas de IA gratuitas?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Sí, muchas herramientas ofrecen versiones gratuitas o freemium. ChatGPT, Claude, Gemini, Stable Diffusion, y LLaMA son algunas de las IAs más populares con opciones gratuitas.',
-          },
-        },
-      ],
-    };
-
-    // Solo renderizar schemas JSON-LD en la página principal (sin initialCategory)
-    // Esto evita duplicación cuando HomeContainer se usa en páginas de categoría
-    const isHomePage = !initialCategory;
+    // Los schemas JSON-LD (FAQPage y BreadcrumbList) se renderizan en el servidor
+    // en src/app/page.tsx para evitar duplicación y mejorar SEO
 
     return (
       <>
-        {/* BreadcrumbList y FAQ Schema solo en la página principal */}
-        {isHomePage && (
-          <>
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{
-                __html: JSON.stringify({
-                  '@context': 'https://schema.org',
-                  '@type': 'BreadcrumbList',
-                  itemListElement: [
-                    {
-                      '@type': 'ListItem',
-                      position: 1,
-                      name: 'Inicio',
-                      item: 'https://aifinder.es',
-                    },
-                    {
-                      '@type': 'ListItem',
-                      position: 2,
-                      name: 'Explorar',
-                      item: 'https://aifinder.es/',
-                    },
-                  ],
-                }),
-              }}
-            />
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-            />
-          </>
-        )}
         <ExploreView
           currentCategory={currentCategory}
           activeSubcategory={activeSubcategory}
