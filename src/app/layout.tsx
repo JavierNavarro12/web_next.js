@@ -10,6 +10,7 @@ import GoogleAnalytics from '../components/Analytics/GoogleAnalytics';
 import MicrosoftClarity from '../components/Analytics/MicrosoftClarity';
 import { CookieConsentProvider } from '../store/cookieConsent';
 import CookieBanner from '../components/Cookies/CookieBanner';
+import { getSiteUrl } from '../utils/siteUrl';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -21,7 +22,7 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
+const baseUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),

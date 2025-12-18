@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { aiCategories } from '../../../data/ai-tools';
 import { slugify, findCategoryBySlug } from '../../../utils/slugify';
 import CategoryPageClient from '../../../components/Pages/CategoryPageClient';
+import { getSiteUrl } from '../../../utils/siteUrl';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
+  const baseUrl = getSiteUrl();
   const categoryData = aiCategories.find((c) => c.name === category.name);
   const toolCount = categoryData?.subcategories.reduce((acc, sub) => acc + sub.tools.length, 0);
 
@@ -86,7 +87,7 @@ export default async function CategoryPage({ params }: Props) {
     notFound();
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
+  const baseUrl = getSiteUrl();
 
   // JSON-LD para SEO estructurado
   const jsonLd = {

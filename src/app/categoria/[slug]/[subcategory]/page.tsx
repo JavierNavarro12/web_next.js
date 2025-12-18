@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { aiCategories } from '../../../../data/ai-tools';
 import { slugify, findCategoryBySlug } from '../../../../utils/slugify';
 import CategoryPageClient from '../../../../components/Pages/CategoryPageClient';
+import { getSiteUrl } from '../../../../utils/siteUrl';
 
 type Props = {
   params: Promise<{ slug: string; subcategory: string }>;
@@ -50,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: 'Subcategoría no encontrada' };
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
+  const baseUrl = getSiteUrl();
   const toolCount = subcategory.tools.length;
 
   const title = `${subcategory.name} - ${category.name} | Herramientas de IA`;
@@ -91,7 +92,7 @@ export default async function SubcategoryPage({ params }: Props) {
     notFound();
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
+  const baseUrl = getSiteUrl();
 
   // JSON-LD para SEO estructurado
   const jsonLd = {

@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import React from 'react';
+import { getSiteUrl } from '../../utils/siteUrl';
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
+const baseUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   title: 'Artículos sobre Inteligencia Artificial',

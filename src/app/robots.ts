@@ -1,7 +1,8 @@
 import type { MetadataRoute } from 'next';
+import { getSiteUrl } from '../utils/siteUrl';
 
 export default function robots(): MetadataRoute.Robots {
-  const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
+  const base = getSiteUrl();
   return {
     rules: {
       userAgent: '*',

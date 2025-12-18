@@ -4,6 +4,7 @@
  */
 
 import { z } from 'zod';
+import { DEFAULT_SITE_URL } from '../utils/siteUrl';
 
 // Schema para variables de cliente (NEXT_PUBLIC_*)
 const clientEnvSchema = z.object({
@@ -121,7 +122,7 @@ try {
     NEXT_PUBLIC_EMAILJS_SERVICE_ID: 'test-service',
     NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: 'test-template',
     NEXT_PUBLIC_EMAILJS_FEEDBACK_TEMPLATE_ID: 'test-feedback-template',
-    NEXT_PUBLIC_SITE_URL: 'https://aifinder.es',
+    NEXT_PUBLIC_SITE_URL: DEFAULT_SITE_URL,
   };
 }
 

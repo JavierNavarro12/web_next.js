@@ -4,6 +4,7 @@ import { generateUnsubscribeToken } from '../../../utils/unsubscribeToken';
 import crypto from 'crypto';
 import { validateEmail, validateNewsletterSource } from '../../../utils/validation';
 import { logger } from '../../../utils/logger';
+import { getSiteUrl } from '../../../utils/siteUrl';
 
 // Inicializar Resend solo cuando se necesite, no durante el build
 let resend: Resend;
@@ -78,6 +79,7 @@ function isRateLimitedLegacy(ip: string | null) {
 
 export async function POST(request: NextRequest) {
   try {
+    const siteUrl = getSiteUrl();
     // Rate limit: cookie-based firmado si hay secreto; si no, fallback IP en memoria
     const clientKey = getClientKey(request);
     const bucketCookieRaw = request.cookies.get(RL_COOKIE_NAME)?.value;
@@ -245,8 +247,8 @@ export async function POST(request: NextRequest) {
                        <div style="text-align: center; margin: 32px 0;">
                          ${
                            isArticles
-                             ? '<a href="https://aifinder.es/#articulos" style="display: inline-block; padding: 12px 24px; background-color: #2563eb; color: #ffffff; text-decoration: none; border-radius: 9999px; font-size: 16px; font-weight: 600;">Leer artículos</a>'
-                             : '<a href="https://aifinder.es" style="display: inline-block; padding: 12px 24px; background-color: #2563eb; color: #ffffff; text-decoration: none; border-radius: 9999px; font-size: 16px; font-weight: 600;">Explorar herramientas</a>'
+                             ? `<a href="${siteUrl}/#articulos" style="display: inline-block; padding: 12px 24px; background-color: #2563eb; color: #ffffff; text-decoration: none; border-radius: 9999px; font-size: 16px; font-weight: 600;">Leer artículos</a>`
+                             : `<a href="${siteUrl}" style="display: inline-block; padding: 12px 24px; background-color: #2563eb; color: #ffffff; text-decoration: none; border-radius: 9999px; font-size: 16px; font-weight: 600;">Explorar herramientas</a>`
                          }
                        </div>
 
@@ -288,7 +290,7 @@ export async function POST(request: NextRequest) {
                         Este email fue enviado a ${email}
                       </p>
           <p style="margin: 0; color: #64748b; font-size: 12px;">
-            <a href="https://aifinder.es/unsubscribe?token=${unsubscribeToken}" style="color: #64748b; text-decoration: none;">Cancelar suscripción</a>
+            <a href="${siteUrl}/unsubscribe?token=${unsubscribeToken}" style="color: #64748b; text-decoration: none;">Cancelar suscripción</a>
           </p>
                       <p style="margin: 16px 0 0; color: #64748b; font-size: 12px;">
                         © 2024 AIFinder

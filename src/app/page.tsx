@@ -1,7 +1,8 @@
 import React from 'react';
 import HomeContainer from '../components/views/HomeContainer';
+import { getSiteUrl } from '../utils/siteUrl';
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
+const baseUrl = getSiteUrl();
 
 // FAQ Schema para rich snippets en Google (renderizado en servidor)
 const faqSchema = {

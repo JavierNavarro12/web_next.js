@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { getPricingText, handleToolClick, getFeaturedTools } from '../../utils/toolUtils';
+import { getSiteUrl } from '../../utils/siteUrl';
 
 export default function FeaturedToolsSection() {
   const featured = getFeaturedTools().slice(0, 8);
@@ -18,7 +19,7 @@ export default function FeaturedToolsSection() {
         description: tool.description,
         applicationCategory: 'AIApplication',
         operatingSystem: 'Web',
-        url: tool.url || 'https://aifinder.es',
+        url: tool.url || getSiteUrl(),
       },
     })),
   } as const;

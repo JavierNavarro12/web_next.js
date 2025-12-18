@@ -2,9 +2,10 @@ import type { MetadataRoute } from 'next';
 import { articles } from '../data/articles';
 import { aiCategories } from '../data/ai-tools';
 import { slugify } from '../utils/slugify';
+import { getSiteUrl } from '../utils/siteUrl';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
+  const base = getSiteUrl();
   const now = new Date();
 
   // Página principal

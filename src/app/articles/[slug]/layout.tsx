@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { articles } from '../../../data/articles';
 import React from 'react';
+import { getSiteUrl } from '../../../utils/siteUrl';
 
 type Props = { children: React.ReactNode; params: Promise<{ slug: string }> };
 
@@ -20,7 +21,7 @@ export async function generateMetadata({
   const article = articles.find((a) => a.slug === slug);
   if (!article) return {};
 
-  const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
+  const base = getSiteUrl();
 
   const title = article.title;
   const description = article.description;
@@ -77,7 +78,7 @@ export default async function ArticleLayout({
 }) {
   const { slug } = await params;
   const article = articles.find((a) => a.slug === slug);
-  const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://aifinder.es';
+  const base = getSiteUrl();
 
   // JSON-LD Article con schema enriquecido
   const jsonLd = article
