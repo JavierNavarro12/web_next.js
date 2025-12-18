@@ -68,23 +68,21 @@ function AppProvidersContent({ children }: { children: React.ReactNode }) {
         </div>
       )}
 
+      {/* Layout único (responsive) — evita renderizar {children} dos veces (SEO/Ahrefs: H1 duplicados, etc.) */}
       <div className="min-h-screen w-full flex items-start justify-center bg-black m-0 p-0">
-        {/* Contenedor bordeado que envuelve todo en desktop */}
-        <div className="hidden md:block min-h-screen w-full max-w-[1400px] mx-auto pt-2 pr-3 pb-3 pl-1">
-          <div className="flex min-h-[calc(100vh-1.25rem)] border-l border-t border-b border-zinc-800 bg-black relative overflow-hidden">
-            {/* Sidebar */}
-            <div className="min-w-[270px] max-w-[300px] flex-col border-r border-zinc-800 bg-black fixed left-[calc(4px+1px)] top-[calc(8px+1px)] h-[calc(100vh-1.25rem-2px)] z-40 overflow-hidden">
+        <div className="min-h-screen w-full md:max-w-[1400px] md:mx-auto md:pt-2 md:pr-3 md:pb-3 md:pl-1">
+          <div className="flex min-h-screen md:min-h-[calc(100vh-1.25rem)] md:border-l md:border-t md:border-b md:border-zinc-800 bg-black relative overflow-hidden">
+            {/* Sidebar (solo desktop) */}
+            <div className="hidden md:flex min-w-[270px] max-w-[300px] flex-col border-r border-zinc-800 bg-black fixed left-[calc(4px+1px)] top-[calc(8px+1px)] h-[calc(100vh-1.25rem-2px)] z-40 overflow-hidden">
               <Sidebar />
             </div>
             {/* Contenido principal */}
-            <div className="flex-1 flex flex-col bg-black border-r border-zinc-800 ml-[270px] h-[calc(100vh-1.25rem)] overflow-hidden">
-              <main className="flex-1 bg-black text-white overflow-y-auto p-0">{children}</main>
+            <div className="flex-1 flex flex-col bg-black md:border-r md:border-zinc-800 md:ml-[270px] md:h-[calc(100vh-1.25rem)] overflow-hidden">
+              <main className="flex-1 bg-black text-white p-0 min-h-[800px] md:min-h-0 md:overflow-y-auto">
+                {children}
+              </main>
             </div>
           </div>
-        </div>
-        {/* Layout móvil sin contenedor bordeado */}
-        <div className="md:hidden min-h-screen w-full flex flex-col bg-black">
-          <main className="flex-1 bg-black text-white min-h-[800px] p-0">{children}</main>
         </div>
       </div>
 
