@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import AppProviders from './providers';
 import React from 'react';
@@ -170,6 +171,50 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 target: `${baseUrl}/?q={search_term_string}`,
                 'query-input': 'required name=search_term_string',
               },
+            }),
+          }}
+        />
+        {/* FAQPage schema para rich snippets - en head para evitar duplicación RSC */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: [
+                {
+                  '@type': 'Question',
+                  name: '¿Qué es AIFinder?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'AIFinder es un directorio completo de herramientas de inteligencia artificial en español. Incluye más de 200 herramientas organizadas por categorías como generación de texto, imágenes, audio, video y código.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: '¿Cuáles son las mejores IA para generar imágenes?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Las mejores IA para generar imágenes incluyen Midjourney, DALL-E 3, Stable Diffusion, Adobe Firefly, Leonardo AI y Ideogram. Cada una tiene sus fortalezas: Midjourney destaca en arte, DALL-E en precisión de prompts, y Stable Diffusion es open source.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: '¿Cuál es la mejor IA para programar?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Las mejores IAs para programar son GitHub Copilot, Claude, Cursor, y ChatGPT. GitHub Copilot se integra directamente en el IDE, mientras que Claude y ChatGPT son excelentes para explicaciones de código y debugging.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: '¿Hay herramientas de IA gratuitas?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Sí, muchas herramientas ofrecen versiones gratuitas o freemium. ChatGPT, Claude, Gemini, Stable Diffusion, y LLaMA son algunas de las IAs más populares con opciones gratuitas.',
+                  },
+                },
+              ],
             }),
           }}
         />
