@@ -1,13 +1,20 @@
 'use client';
 
 import React from 'react';
+import dynamic from 'next/dynamic';
 import Sidebar from '../components/Navigation/Sidebar';
-import AddAIToolModal from '../components/Pages/AddAIToolModal';
-import AddAIToolPage from '../components/Pages/AddAIToolPage';
 import PWAInstallPrompt from '../components/PWA/PWAInstallPrompt';
 import PWARegistration from '../components/PWA/PWARegistration';
 import OfflineBanner from '../components/Offline/OfflineBanner';
 import { AppProvider, useAppStore, SidebarDrawerContext } from '../store/appStore';
+
+// Lazy load modales pesados (contienen @emailjs/browser ~20KB)
+const AddAIToolModal = dynamic(() => import('../components/Pages/AddAIToolModal'), {
+  ssr: false,
+});
+const AddAIToolPage = dynamic(() => import('../components/Pages/AddAIToolPage'), {
+  ssr: false,
+});
 
 // Re-export hooks para retrocompatibilidad
 export {
@@ -86,21 +93,23 @@ function AppProvidersContent({ children }: { children: React.ReactNode }) {
         </div>
       </div>
 
-      {/* Modal para añadir IA - solo en desktop */}
-      <div className="hidden md:block">
-        <AddAIToolModal isOpen={showAddAITool} onClose={() => setShowAddAITool(false)} />
-      </div>
-
-      {/* Página para añadir IA - solo en móvil */}
-      <div className="md:hidden">
-        <AddAIToolPage
-          isOpen={showAddAITool}
-          onClose={() => setShowAddAITool(false)}
-          setSidebarOpen={setSidebarOpen}
-          setActiveCategory={setActiveCategory}
-          setActiveSubcategory={setActiveSubcategory}
-        />
-      </div>
+      {/* Modal para añadir IA - solo en desktop, lazy loaded cuando se abre */}
+      {showAddAITool && (
+        <>
+          <div className="hidden md:block">
+            <AddAIToolModal isOpen={showAddAITool} onClose={() => setShowAddAITool(false)} />
+          </div>
+          <div className="md:hidden">
+            <AddAIToolPage
+              isOpen={showAddAITool}
+              onClose={() => setShowAddAITool(false)}
+              setSidebarOpen={setSidebarOpen}
+              setActiveCategory={setActiveCategory}
+              setActiveSubcategory={setActiveSubcategory}
+            />
+          </div>
+        </>
+      )}
 
       {/* PWA */}
       <PWAInstallPrompt />

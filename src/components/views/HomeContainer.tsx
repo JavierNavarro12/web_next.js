@@ -1,10 +1,17 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import dynamic from 'next/dynamic';
 import { aiCategories } from '../../data/ai-tools';
-import FeedbackPage from '../../components/Pages/FeedbackPage';
-import BugReportPage from '../../components/Pages/BugReportPage';
 import ExploreView from './home/ExploreView';
+
+// Lazy load modales pesados (contienen @emailjs/browser ~20KB)
+const FeedbackPage = dynamic(() => import('../../components/Pages/FeedbackPage'), {
+  ssr: false,
+});
+const BugReportPage = dynamic(() => import('../../components/Pages/BugReportPage'), {
+  ssr: false,
+});
 import CategoryView from './home/CategoryView';
 import {
   useAppContext as useAppContextFromProviders,

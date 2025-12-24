@@ -1,8 +1,6 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { db } from '../../config/firebase';
-import { collection, getDocs, query, where, deleteDoc } from 'firebase/firestore';
 
 export default function UnsubscribePage() {
   const [email, setEmail] = useState('');
@@ -54,8 +52,12 @@ export default function UnsubscribePage() {
         return;
       }
 
-      // Fallback: si no hay token, intentar baja manual sólo en cliente (puede fallar por reglas)
+      // Sin token: lazy load Firebase solo cuando se necesite (fallback)
       try {
+        const [{ db }, { collection, getDocs, query, where, deleteDoc }] = await Promise.all([
+          import('../../config/firebase'),
+          import('firebase/firestore'),
+        ]);
         const q = query(collection(db, 'newsletter_subscriptions'), where('email', '==', trimmed));
         const snapshot = await getDocs(q);
         if (snapshot.empty) {

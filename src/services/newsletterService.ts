@@ -1,5 +1,3 @@
-import { db } from '../config/firebase';
-import { collection, getDocs } from 'firebase/firestore';
 import { logger } from '../utils/logger';
 
 export interface NewsletterSubscription {
@@ -9,7 +7,7 @@ export interface NewsletterSubscription {
 }
 
 export const newsletterService = {
-  // Guardar suscripción en Firebase
+  // Guardar suscripción en Firebase (via API server-side)
   async subscribeToNewsletter(
     email: string,
     source: 'hero' | 'footer' | 'modal' | 'articles' = 'hero',
@@ -70,31 +68,6 @@ export const newsletterService = {
     } catch (error) {
       logger.error('Error detallado al enviar email de bienvenida', error, { email, source });
       // No lanzamos error aquí para no afectar la suscripción
-    }
-  },
-
-  // Obtener estadísticas de suscripciones
-  async getSubscriptionStats(): Promise<{ total: number; thisMonth: number }> {
-    try {
-      const snapshot = await getDocs(collection(db, 'newsletter_subscriptions'));
-      const total = snapshot.size;
-
-      const thisMonth = new Date();
-      thisMonth.setDate(1);
-      thisMonth.setHours(0, 0, 0, 0);
-
-      const thisMonthSubscriptions = snapshot.docs.filter((doc) => {
-        const data = doc.data();
-        return data.subscribedAt?.toDate() >= thisMonth;
-      });
-
-      return {
-        total,
-        thisMonth: thisMonthSubscriptions.length,
-      };
-    } catch (error) {
-      logger.error('Error al obtener estadísticas', error);
-      return { total: 0, thisMonth: 0 };
     }
   },
 };

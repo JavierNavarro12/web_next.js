@@ -8,19 +8,6 @@ jest
   );
 import { newsletterService } from './newsletterService';
 
-jest.mock('../config/firebase', () => ({
-  db: {},
-}));
-
-import { collection, addDoc, query, where, getDocs } from 'firebase/firestore';
-jest.mock('firebase/firestore', () => ({
-  collection: jest.fn(),
-  addDoc: jest.fn(),
-  query: jest.fn(),
-  where: jest.fn(),
-  getDocs: jest.fn(),
-}));
-
 describe('newsletterService', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -76,8 +63,10 @@ describe('newsletterService', () => {
     });
 
     it('should not throw if sendWelcomeEmail fails', async () => {
-      getDocs.mockResolvedValueOnce({ empty: true });
-      addDoc.mockResolvedValueOnce({});
+      global.fetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ success: true }),
+      });
       jest.spyOn(newsletterService, 'sendWelcomeEmail').mockImplementationOnce(() => {
         // Simula error pero nunca rechaza la promesa
         return Promise.resolve(undefined);
@@ -129,37 +118,6 @@ describe('newsletterService', () => {
       await expect(
         newsletterService.sendWelcomeEmail('test@example.com', 'hero'),
       ).resolves.toBeUndefined();
-    });
-  });
-
-  describe('getSubscriptionStats', () => {
-    it('should return stats correctly', async () => {
-      getDocs.mockReset();
-      const now = new Date();
-      const thisMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-      const doc1 = { data: () => ({ subscribedAt: { toDate: () => new Date(now) } }) };
-      const doc2 = { data: () => ({ subscribedAt: { toDate: () => new Date(thisMonth) } }) };
-      getDocs.mockResolvedValue({ size: 2, docs: [doc1, doc2] });
-      const stats = await newsletterService.getSubscriptionStats();
-      expect(stats.total).toBe(2);
-      expect(stats.thisMonth).toBeGreaterThanOrEqual(1);
-    });
-    it('should return zero stats on error', async () => {
-      getDocs.mockReset();
-      getDocs.mockRejectedValue(new Error('fail'));
-      const stats = await newsletterService.getSubscriptionStats();
-      expect(stats).toEqual({ total: 0, thisMonth: 0 });
-    });
-
-    it('should ignore docs without subscribedAt', async () => {
-      getDocs.mockReset();
-      const now = new Date();
-      const docWithMissing = { data: () => ({}) };
-      const docWithSub = { data: () => ({ subscribedAt: { toDate: () => new Date(now) } }) };
-      getDocs.mockResolvedValue({ size: 2, docs: [docWithMissing, docWithSub] });
-      const stats = await newsletterService.getSubscriptionStats();
-      expect(stats.total).toBe(2);
-      expect(stats.thisMonth).toBe(1);
     });
   });
 
