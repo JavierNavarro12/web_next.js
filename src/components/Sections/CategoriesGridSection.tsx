@@ -36,7 +36,7 @@ export default function CategoriesGridSection({ setActiveCategory }: CategoriesG
                 </span>
               ))}
               {category.subcategories.length > 3 && (
-                <span className="text-zinc-500 text-xs px-2 py-1">
+                <span className="text-zinc-400 text-xs px-2 py-1">
                   +{category.subcategories.length - 3} más
                 </span>
               )}

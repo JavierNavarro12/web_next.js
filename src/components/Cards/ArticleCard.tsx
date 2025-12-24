@@ -180,7 +180,7 @@ export default function ArticleCard({
         </p>
 
         {/* Meta información */}
-        <div className="flex items-center justify-between text-xs text-zinc-500">
+        <div className="flex items-center justify-between text-xs text-zinc-400">
           <div className="flex items-center gap-2">
             {article.author && (
               <>

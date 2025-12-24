@@ -131,12 +131,12 @@ export default function AIRecommendationsSection({
                         {tool.name.split(' ').slice(0, -2).join(' ')}
                         <br />
                         {tool.name.split(' ').slice(-2).join(' ')}
-                        {tool.isNew && <span className="text-zinc-500 text-xs ml-1">NEW</span>}
+                        {tool.isNew && <span className="text-zinc-400 text-xs ml-1">NEW</span>}
                       </h3>
                     ) : (
                       <h3 className="font-bold text-white text-base leading-tight transition-all">
                         {tool.name}{' '}
-                        {tool.isNew && <span className="text-zinc-500 text-xs ml-1">NEW</span>}
+                        {tool.isNew && <span className="text-zinc-400 text-xs ml-1">NEW</span>}
                       </h3>
                     )}
                   </div>
@@ -185,11 +185,11 @@ export default function AIRecommendationsSection({
                       {tool.name.split(' ').slice(0, -2).join(' ')}
                       <br />
                       {tool.name.split(' ').slice(-2).join(' ')}{' '}
-                      {tool.isNew && <span className="text-zinc-500 text-xs">NEW</span>}
+                      {tool.isNew && <span className="text-zinc-400 text-xs">NEW</span>}
                     </h3>
                   ) : (
                     <h3 className="font-bold text-white text-base leading-tight transition-all">
-                      {tool.name} {tool.isNew && <span className="text-zinc-500 text-xs">NEW</span>}
+                      {tool.name} {tool.isNew && <span className="text-zinc-400 text-xs">NEW</span>}
                     </h3>
                   )}
                 </div>

@@ -181,11 +181,11 @@ export default function AICoursesSection({ onViewAll }: AICoursesSectionProps) {
                         {course.name.split(' ').slice(0, -2).join(' ')}
                         <br />
                         {course.name.split(' ').slice(-2).join(' ')}{' '}
-                        <span className="text-zinc-500 text-xs">NEW</span>
+                        <span className="text-zinc-400 text-xs">NEW</span>
                       </h3>
                     ) : (
                       <h3 className="font-bold text-white text-base leading-tight transition-all">
-                        {course.name} <span className="text-zinc-500 text-xs">NEW</span>
+                        {course.name} <span className="text-zinc-400 text-xs">NEW</span>
                       </h3>
                     )}
                   </div>
@@ -249,11 +249,11 @@ export default function AICoursesSection({ onViewAll }: AICoursesSectionProps) {
                       {course.name.split(' ').slice(0, -2).join(' ')}
                       <br />
                       {course.name.split(' ').slice(-2).join(' ')}{' '}
-                      <span className="text-zinc-500 text-xs">NEW</span>
+                      <span className="text-zinc-400 text-xs">NEW</span>
                     </h3>
                   ) : (
                     <h3 className="font-bold text-white text-base leading-tight transition-all">
-                      {course.name} <span className="text-zinc-500 text-xs">NEW</span>
+                      {course.name} <span className="text-zinc-400 text-xs">NEW</span>
                     </h3>
                   )}
                 </div>

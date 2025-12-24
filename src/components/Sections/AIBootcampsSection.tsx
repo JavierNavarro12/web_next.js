@@ -173,11 +173,11 @@ export default function AIBootcampsSection({ onViewAll: _onViewAll }: AIBootcamp
                         {bootcamp.name.split(' ').slice(0, -3).join(' ')}
                         <br />
                         {bootcamp.name.split(' ').slice(-3).join(' ')}{' '}
-                        <span className="text-zinc-500 text-xs">NEW</span>
+                        <span className="text-zinc-400 text-xs">NEW</span>
                       </h3>
                     ) : (
                       <h3 className="font-bold text-white text-base leading-tight transition-all">
-                        {bootcamp.name} <span className="text-zinc-500 text-xs">NEW</span>
+                        {bootcamp.name} <span className="text-zinc-400 text-xs">NEW</span>
                       </h3>
                     )}
                   </div>
@@ -241,11 +241,11 @@ export default function AIBootcampsSection({ onViewAll: _onViewAll }: AIBootcamp
                       {bootcamp.name.split(' ').slice(0, -3).join(' ')}
                       <br />
                       {bootcamp.name.split(' ').slice(-3).join(' ')}{' '}
-                      <span className="text-zinc-500 text-xs">NEW</span>
+                      <span className="text-zinc-400 text-xs">NEW</span>
                     </h3>
                   ) : (
                     <h3 className="font-bold text-white text-base leading-tight transition-all">
-                      {bootcamp.name} <span className="text-zinc-500 text-xs">NEW</span>
+                      {bootcamp.name} <span className="text-zinc-400 text-xs">NEW</span>
                     </h3>
                   )}
                 </div>

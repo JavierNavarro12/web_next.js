@@ -113,12 +113,23 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             __html: `(${initBrowserSentry.toString()})();`,
           }}
         />
-        {/* DataFast analytics */}
+        {/* DataFast analytics - solo en producción y dominio correcto */}
         <script
-          defer
-          data-website-id="dfid_vDROHeJI9P2sNpr1i9WUW"
-          data-domain="www.aifinder.es"
-          src="https://datafa.st/js/script.js"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var host = window.location.hostname;
+                if (host === 'www.aifinder.es' || host === 'aifinder.es') {
+                  var s = document.createElement('script');
+                  s.defer = true;
+                  s.dataset.websiteId = 'dfid_vDROHeJI9P2sNpr1i9WUW';
+                  s.dataset.domain = 'www.aifinder.es';
+                  s.src = 'https://datafa.st/js/script.js';
+                  document.head.appendChild(s);
+                }
+              })();
+            `,
+          }}
         />
         {/* Preconnect para recursos críticos - mejora LCP */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
