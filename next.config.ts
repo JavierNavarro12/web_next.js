@@ -161,6 +161,14 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       // ===========================================
+      // URLs malformadas/basura → redirigir a home
+      // ===========================================
+      {
+        source: '/:path(\\&|\\$|%26|%24)',
+        destination: '/',
+        permanent: true,
+      },
+      // ===========================================
       // Iconos y favicons
       // ===========================================
       {
