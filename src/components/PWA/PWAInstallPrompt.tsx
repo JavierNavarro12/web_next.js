@@ -16,6 +16,10 @@ export default function PWAInstallPrompt() {
   const [showInstallPrompt, setShowInstallPrompt] = useState(false);
 
   useEffect(() => {
+    // No mostrar si el usuario ya lo cerró en esta sesión
+    const dismissed = sessionStorage.getItem('pwaPromptDismissed');
+    if (dismissed) return;
+
     const handler = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
@@ -46,6 +50,7 @@ export default function PWAInstallPrompt() {
 
   const handleDismiss = () => {
     setShowInstallPrompt(false);
+    sessionStorage.setItem('pwaPromptDismissed', '1');
   };
 
   if (!showInstallPrompt) return null;

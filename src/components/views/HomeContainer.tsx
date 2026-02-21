@@ -215,6 +215,7 @@ export default function HomeContainer({
         setActiveCategory(foundCategory.name);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- sincronizar categoría padre cuando cambia la subcategoría activa
   }, [activeSubcategory]);
 
   if (!isClient) {
