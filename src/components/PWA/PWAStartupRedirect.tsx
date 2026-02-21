@@ -53,6 +53,7 @@ export default function PWAStartupRedirect() {
         window.scrollTo({ top: 0, behavior: 'auto' });
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- solo debe ejecutarse una vez al montar (inicio de sesión PWA)
   }, []);
 
   return null;

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { useCookieConsent } from '../../store/cookieConsent';
 import { useRouter } from 'next/navigation';
@@ -34,6 +34,7 @@ export default function Footer({
   const { setShowAddAITool } = useAddAIToolContext();
   const { setShowFeedback: contextSetShowFeedback } = useFeedbackContext();
   const { setShowBugReport: contextSetShowBugReport } = useBugReportContext();
+  const { openPreferences } = useCookieConsent();
   // ActiveNav puede no estar disponible en tests; navegamos con router como fallback
 
   // Usar contextos directamente para asegurar que funcione en todas las páginas
@@ -260,9 +261,6 @@ export default function Footer({
   ];
 
   const footerClassName = `bg-black border-t border-zinc-800 ${className ?? 'mt-16'}`;
-
-  const { openPreferences, status } = useCookieConsent();
-  const [showCookieMenu, setShowCookieMenu] = useState(false);
 
   return (
     <footer className={footerClassName}>
@@ -521,7 +519,7 @@ export default function Footer({
         <div className="max-w-7xl mx-auto px-4 pt-1.5 pb-8 md:pb-4">
           {/* Mobile */}
           <div className="md:hidden text-left space-y-2 mb-6">
-            <div className="text-zinc-400 text-sm">© 2025 AIFinder</div>
+            <div className="text-zinc-400 text-sm">© 2026 AIFinder</div>
             <div className="space-y-1">
               {legalLinks.map((link) => (
                 <Link
@@ -537,7 +535,6 @@ export default function Footer({
             <div className="pt-2">
               <button
                 onClick={() => {
-                  setShowCookieMenu(false);
                   openPreferences();
                 }}
                 className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors"
@@ -558,7 +555,7 @@ export default function Footer({
           {/* Desktop */}
           <div className="hidden md:flex flex-col md:flex-row justify-between items-center relative">
             <div className="flex items-center mb-4 md:mb-0">
-              <span className="text-zinc-400 text-sm">© 2025 AIFinder</span>
+              <span className="text-zinc-400 text-sm">© 2026 AIFinder</span>
             </div>
             <div className="flex items-center space-x-4">
               {legalLinks.map((link) => (
@@ -573,7 +570,6 @@ export default function Footer({
               <div className="relative">
                 <button
                   onClick={() => {
-                    setShowCookieMenu(false);
                     openPreferences();
                   }}
                   className="text-zinc-400 hover:text-white transition-colors"

@@ -11,11 +11,17 @@ interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
 }
 
+const PWA_DISMISS_KEY = 'pwaPromptDismissed';
+
 export default function PWAInstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showInstallPrompt, setShowInstallPrompt] = useState(false);
 
   useEffect(() => {
+    // No mostrar si el usuario ya lo cerró en esta sesión
+    const dismissed = sessionStorage.getItem(PWA_DISMISS_KEY);
+    if (dismissed) return;
+
     const handler = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
@@ -31,21 +37,31 @@ export default function PWAInstallPrompt() {
 
   const handleInstallClick = async () => {
     if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (process.env.NODE_ENV !== 'production') {
-      if (outcome === 'accepted') {
-        console.log('Usuario aceptó la instalación PWA');
-      } else {
-        console.log('Usuario rechazó la instalación PWA');
+    try {
+      await deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (process.env.NODE_ENV !== 'production') {
+        if (outcome === 'accepted') {
+          console.log('Usuario aceptó la instalación PWA');
+        } else {
+          console.log('Usuario rechazó la instalación PWA');
+        }
       }
+    } catch (error) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('Error en el prompt de instalación PWA:', error);
+      }
+    } finally {
+      setDeferredPrompt(null);
+      setShowInstallPrompt(false);
+      sessionStorage.setItem(PWA_DISMISS_KEY, '1');
     }
-    setDeferredPrompt(null);
-    setShowInstallPrompt(false);
   };
 
   const handleDismiss = () => {
+    setDeferredPrompt(null);
     setShowInstallPrompt(false);
+    sessionStorage.setItem(PWA_DISMISS_KEY, '1');
   };
 
   if (!showInstallPrompt) return null;

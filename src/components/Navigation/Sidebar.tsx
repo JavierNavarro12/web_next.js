@@ -88,11 +88,6 @@ const mainSectionsDesktop = [
   { key: 'articulos', label: 'Artículos', icon: NewspaperIcon },
   { key: 'herramientas', label: 'Herramientas', icon: WrenchScrewdriverIcon },
 ];
-const mainSectionsMobile = [
-  ...mainSectionsDesktop,
-  { key: 'addtool', label: 'Añadir una IA', icon: PlusCircleIcon },
-];
-
 export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}) {
   const router = useRouter();
   const { activeCategory, setActiveCategory } = useAppContext();
