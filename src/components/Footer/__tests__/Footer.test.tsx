@@ -144,7 +144,7 @@ describe('Footer', () => {
   it('should render copyright notice', () => {
     renderWithProvider(React.createElement(Footer, defaultProps));
 
-    expect(screen.getAllByText('© 2025 AIFinder')).toHaveLength(2);
+    expect(screen.getAllByText('© 2026 AIFinder')).toHaveLength(2);
   });
 
   it('should render settings button in desktop', () => {

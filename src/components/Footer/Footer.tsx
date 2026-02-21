@@ -34,6 +34,7 @@ export default function Footer({
   const { setShowAddAITool } = useAddAIToolContext();
   const { setShowFeedback: contextSetShowFeedback } = useFeedbackContext();
   const { setShowBugReport: contextSetShowBugReport } = useBugReportContext();
+  const { openPreferences } = useCookieConsent();
   // ActiveNav puede no estar disponible en tests; navegamos con router como fallback
 
   // Usar contextos directamente para asegurar que funcione en todas las páginas
@@ -260,8 +261,6 @@ export default function Footer({
   ];
 
   const footerClassName = `bg-black border-t border-zinc-800 ${className ?? 'mt-16'}`;
-
-  const { openPreferences } = useCookieConsent();
 
   return (
     <footer className={footerClassName}>

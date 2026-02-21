@@ -8,6 +8,10 @@ import { render, screen, fireEvent, act } from '@testing-library/react';
 import PWAInstallPrompt from '../PWAInstallPrompt';
 
 describe('PWAInstallPrompt', () => {
+  beforeEach(() => {
+    sessionStorage.clear();
+  });
+
   async function dispatchBeforeInstallPrompt(overrides?: Partial<any>) {
     const event: any = new Event('beforeinstallprompt');
     (event as any).prompt = jest.fn(async () => undefined);

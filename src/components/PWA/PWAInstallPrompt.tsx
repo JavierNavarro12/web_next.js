@@ -46,6 +46,7 @@ export default function PWAInstallPrompt() {
     }
     setDeferredPrompt(null);
     setShowInstallPrompt(false);
+    sessionStorage.setItem('pwaPromptDismissed', '1');
   };
 
   const handleDismiss = () => {
