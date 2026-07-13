@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { aiCategories } from '../../../../data/ai-tools';
+import ContentPageShell from '../../../../components/Pages/ContentPageShell';
+import ToolGrid from '../../../../components/Sections/ToolGrid';
 import { slugify, findCategoryBySlug } from '../../../../utils/slugify';
-import CategoryPageClient from '../../../../components/Pages/CategoryPageClient';
 import { getSiteUrl } from '../../../../utils/siteUrl';
+import { getSubcategoryContent } from '../../../../utils/categoryContent';
+import { getToolsBySubcategory } from '../../../../utils/tools';
 
 type Props = {
   params: Promise<{ slug: string; subcategory: string }>;
@@ -53,9 +57,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const baseUrl = getSiteUrl();
   const toolCount = subcategory.tools.length;
+  const content = getSubcategoryContent(category.name, subcategory.name);
 
-  const title = `${subcategory.name} - ${category.name} | Herramientas de IA`;
-  const description = `Descubre ${toolCount} herramientas de IA en ${subcategory.name} (${category.name}). Comparativas, precios y características de las mejores opciones.`;
+  const title = content?.title || `${subcategory.name} - ${category.name} | Herramientas de IA`;
+  const description =
+    content?.intro.slice(0, 155) ||
+    `Descubre ${toolCount} herramientas de IA en ${subcategory.name} (${category.name}). Comparativas, precios y características.`;
 
   return {
     title,
@@ -64,16 +71,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: `${baseUrl}/categoria/${slug}/${subcategorySlug}`,
     },
     openGraph: {
-      title,
+      title: `${title} | AIFinder`,
       description,
       url: `${baseUrl}/categoria/${slug}/${subcategorySlug}`,
       type: 'website',
       siteName: 'AIFinder',
+      locale: 'es_ES',
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: `${title} | AIFinder`,
       description,
+      creator: '@aifinder_es',
     },
   };
 }
@@ -93,36 +102,32 @@ export default async function SubcategoryPage({ params }: Props) {
   }
 
   const baseUrl = getSiteUrl();
+  const content = getSubcategoryContent(category.name, subcategory.name);
+  const tools = getToolsBySubcategory(category.name, subcategory.name);
 
-  // JSON-LD para SEO estructurado
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: `${subcategory.name} - Herramientas de IA`,
-    description: `Herramientas de IA en ${subcategory.name}`,
+    name: content?.title || `${subcategory.name} - Herramientas de IA`,
+    description: content?.intro || `Herramientas de IA en ${subcategory.name}`,
     url: `${baseUrl}/categoria/${slug}/${subcategorySlug}`,
     mainEntity: {
       '@type': 'ItemList',
-      numberOfItems: subcategory.tools.length,
-      itemListElement: subcategory.tools.map((tool, index) => ({
+      numberOfItems: tools.length,
+      itemListElement: tools.map((tool, index) => ({
         '@type': 'ListItem',
         position: index + 1,
         name: tool.name,
+        url: `${baseUrl}/herramienta/${tool.slug}`,
       })),
     },
   };
 
-  // Breadcrumb JSON-LD
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Inicio',
-        item: baseUrl,
-      },
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: baseUrl },
       {
         '@type': 'ListItem',
         position: 2,
@@ -148,7 +153,53 @@ export default async function SubcategoryPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <CategoryPageClient categoryName={category.name} subcategoryName={subcategory.name} />
+
+      <ContentPageShell>
+        <nav aria-label="Miga de pan" className="text-sm text-zinc-400 mb-6">
+          <ol className="flex flex-wrap items-center gap-2 list-none p-0">
+            <li>
+              <Link href="/" className="hover:text-white">
+                Inicio
+              </Link>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li>
+              <Link href={`/categoria/${slug}`} className="hover:text-white">
+                {category.name}
+              </Link>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li className="text-zinc-200">{subcategory.name}</li>
+          </ol>
+        </nav>
+
+        <header className="mb-8">
+          <h1 className="text-3xl md:text-4xl font-extrabold leading-tight mb-4">
+            {content?.title || `${subcategory.name} - ${category.name}`}
+          </h1>
+          <p className="text-zinc-300 leading-relaxed mb-4">
+            {content?.intro ||
+              `Recopilamos ${tools.length} herramientas de IA en ${subcategory.name}.`}
+          </p>
+          {content?.body && <p className="text-zinc-300 leading-relaxed">{content.body}</p>}
+          <p className="text-zinc-500 text-sm mt-4">{tools.length} herramientas.</p>
+        </header>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold mb-4">
+            Herramientas de {subcategory.name.toLowerCase()}
+          </h2>
+          <ToolGrid tools={tools} />
+        </section>
+
+        <p className="text-zinc-500 text-sm">
+          Ver todas las categorías de{' '}
+          <Link href={`/categoria/${slug}`} className="text-blue-400 hover:underline">
+            {category.name}
+          </Link>
+          .
+        </p>
+      </ContentPageShell>
     </>
   );
 }

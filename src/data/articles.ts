@@ -661,9 +661,582 @@ const allArticles: Article[] = [
       },
     ],
   },
+  {
+    id: '6',
+    slug: 'mejores-ia-gratis-2026',
+    title: 'Las mejores IA gratis en 2026: 12 herramientas que puedes usar sin pagar',
+    description:
+      'Selección honesta de 12 herramientas de IA con capa gratuita real: chatbots, imágenes, voz y traducción. Qué puedes hacer sin pagar y dónde están los límites.',
+    image: '/images/articulo1.12.webp',
+    category: 'tips',
+    categoryLabel: 'Consejos',
+    date: '10 Jul 2026',
+    readTime: '9 min',
+    author: 'AIFinder',
+    contentSections: [
+      {
+        title: 'Qué significa realmente “gratis” en la IA',
+        paragraphs: [
+          'Cuando alguien busca “IA gratis” suele querer una de tres cosas distintas: una herramienta que no le pida la tarjeta nunca, una versión de prueba lo bastante generosa para trabajar, o un modelo abierto que pueda ejecutar por su cuenta. No son lo mismo, y confundirlas es la principal fuente de frustración.',
+          'En la práctica hay cuatro modelos de gratuidad. El primero es la capa gratuita permanente: puedes usar la herramienta indefinidamente, pero con límites de mensajes, de velocidad o de acceso a las funciones más potentes. El segundo es la prueba temporal: unos días o unos créditos y luego toca pagar. El tercero es el código abierto: descargas el modelo y lo ejecutas tú, sin cuota, aunque pagando en hardware, electricidad y tiempo. Y el cuarto es el freemium con marca de agua o uso no comercial, muy habitual en imagen y audio.',
+          'Esta lista se centra en el primer y el tercer caso, que son los que permiten trabajar de verdad sin sacar la tarjeta. Aun así, hay una regla que conviene interiorizar: las capas gratuitas cambian sin avisar. Lo que hoy da veinte mensajes al día mañana puede dar cinco. Trátalas como algo prestado, no como una infraestructura.',
+        ],
+      },
+      {
+        title: 'Chatbots generalistas: el terreno donde más se regala',
+        paragraphs: [
+          'Es la categoría con la capa gratuita más generosa, porque las empresas compiten por captar usuarios. ChatGPT, Claude y Gemini ofrecen acceso sin pagar a modelos que hace dos años eran de pago, con límites de uso que para una persona normal bastan de sobra. La diferencia entre gratis y pago suele estar en la cantidad de mensajes por hora, en el acceso a los modelos de razonamiento más lentos y en funciones como los proyectos o las integraciones.',
+          'A su lado han aparecido alternativas que aprietan mucho el precio. DeepSeek y Qwen ofrecen chat gratuito con modelos muy competentes, sobre todo en matemáticas y código. Mistral es una opción europea interesante, con modelos abiertos y un chat de uso libre. Grok tiene también acceso gratuito con límites, integrado en el ecosistema de X.',
+          'Consejo práctico: no busques “el mejor” chatbot gratis, ten dos abiertos. La misma pregunta hecha a dos modelos distintos revela enseguida cuándo uno se está inventando algo. Es la forma más barata de control de calidad que existe.',
+        ],
+        bullets: [
+          'ChatGPT: el más equilibrado para uso general y el que mejor maneja voz e imagen en la capa gratuita.',
+          'Claude: especialmente sólido en redacción larga, análisis de documentos y código.',
+          'Gemini: buena integración con el ecosistema de Google y ventanas de contexto amplias.',
+          'DeepSeek y Qwen: muy competentes en razonamiento y programación, con límites generosos.',
+          'Mistral: alternativa europea, con modelos abiertos que además puedes descargar.',
+        ],
+      },
+      {
+        title: 'Búsqueda con fuentes: cuando necesitas citas, no prosa',
+        paragraphs: [
+          'Un chatbot generalista responde de memoria y a veces se equivoce con aplomo. Para preguntas que dependen de datos actuales, es mejor una IA de búsqueda, que localiza páginas, las lee y responde citando de dónde ha sacado cada cosa.',
+          'Perplexity tiene una capa gratuita perfectamente utilizable para consultas diarias, y reserva para el plan de pago las búsquedas más profundas y los modelos más caros. You.com funciona con una lógica parecida. Y para preguntas técnicas, Phind está orientado específicamente a programación, con respuestas acompañadas de fuentes y fragmentos de código.',
+          'La ventaja real de estas herramientas no es que sean más listas, sino que te dan enlaces. Puedes comprobar. Cuando una respuesta va a acabar en un trabajo, un informe o una decisión, esa trazabilidad vale más que un párrafo bonito.',
+        ],
+      },
+      {
+        title: 'Imágenes sin pagar: entre el código abierto y los créditos diarios',
+        paragraphs: [
+          'Aquí lo gratis se pone más cuesta arriba, porque generar imágenes cuesta dinero de verdad en cómputo. Aun así hay caminos.',
+          'El más radical es Stable Diffusion: es abierto, puedes ejecutarlo en tu propio ordenador si tienes una tarjeta gráfica decente, y a partir de ahí generas todo lo que quieras sin límite ni cuota. El precio es la curva de aprendizaje y el hardware. A cambio obtienes control total, privacidad y la posibilidad de usar modelos y estilos de la comunidad.',
+          'Si prefieres no instalar nada, Leonardo AI y Playground AI reparten créditos gratuitos que se renuevan, suficientes para experimentar y para proyectos pequeños. Canva Magic Studio incluye generación de imágenes dentro de su plan gratuito, y es probablemente la opción más cómoda si lo que quieres es una ilustración para una presentación o un post, no una obra de arte.',
+          'Una advertencia importante que casi nadie da: revisa las condiciones de uso comercial. Varias capas gratuitas permiten generar, pero no vender ni usar el resultado en publicidad. Si el trabajo es para un cliente, léelo antes, no después.',
+        ],
+      },
+      {
+        title: 'Voz, música y audio: capas gratuitas cortas pero útiles',
+        paragraphs: [
+          'ElevenLabs ofrece una cuota mensual gratuita de caracteres para convertir texto en voz. No da para doblar un canal de YouTube, pero sí para probar voces, hacer una locución corta o comprobar si la calidad te sirve antes de decidir si merece la pena pagar.',
+          'Suno permite generar canciones completas con una cuota diaria de créditos gratuitos, normalmente con restricciones de uso comercial. Es la forma más rápida de entender de qué es capaz la generación musical actual, aunque el control fino sigue siendo limitado.',
+          'Y si buscas la vía abierta, AudioCraft es el equivalente a Stable Diffusion en audio: modelos que puedes ejecutar tú, con la misma lógica de libertad a cambio de esfuerzo técnico.',
+        ],
+      },
+      {
+        title: 'Escritura, traducción y documentos: lo gratis que más tiempo ahorra',
+        paragraphs: [
+          'Es la categoría menos vistosa y probablemente la más rentable. DeepL tiene una versión gratuita que traduce con una naturalidad muy superior a la de los traductores clásicos, con límite de caracteres por texto pero sin coste. Para trabajar entre español e inglés a diario, es difícil de superar.',
+          'Grammarly funciona bien en inglés con su plan gratuito para corregir gramática y estilo. Notion AI y Gamma incluyen algunas funciones de IA en sus planes gratuitos, útiles para resumir notas o montar una presentación en minutos. Y ChatPDF permite subir un documento y preguntarle cosas, con un límite de páginas y consultas al día que da para revisar un contrato, un artículo o unos apuntes.',
+          'Si tuvieras que quedarte solo con dos herramientas gratuitas de esta lista, probablemente serían un chatbot generalista y un traductor. El resto son mejoras marginales; esas dos cambian cómo trabajas.',
+        ],
+      },
+      {
+        title: 'Las 12 herramientas, de un vistazo',
+        paragraphs: [
+          'Resumen de lo que puedes hacer sin pagar y del principal límite de cada opción. Los límites concretos cambian con frecuencia, así que están descritos por su naturaleza, no con cifras exactas.',
+        ],
+        table: {
+          headers: ['Herramienta', 'Para qué', 'Tipo de gratuidad', 'Límite principal'],
+          rows: [
+            [
+              'ChatGPT',
+              'Chat general, voz, imagen',
+              'Capa gratuita permanente',
+              'Mensajes por hora y acceso limitado a los modelos top',
+            ],
+            [
+              'Claude',
+              'Redacción, análisis, código',
+              'Capa gratuita permanente',
+              'Cuota de uso que se reinicia por franjas',
+            ],
+            [
+              'Gemini',
+              'Chat general e integración con Google',
+              'Capa gratuita permanente',
+              'Funciones avanzadas reservadas al plan de pago',
+            ],
+            [
+              'DeepSeek',
+              'Razonamiento y programación',
+              'Capa gratuita permanente',
+              'Saturación en horas punta',
+            ],
+            [
+              'Qwen',
+              'Chat multilingüe y código',
+              'Capa gratuita permanente',
+              'Menor integración con otras apps',
+            ],
+            [
+              'Perplexity',
+              'Búsqueda con fuentes',
+              'Capa gratuita permanente',
+              'Búsquedas profundas limitadas',
+            ],
+            [
+              'Stable Diffusion',
+              'Imágenes',
+              'Código abierto',
+              'Necesitas hardware y saber configurarlo',
+            ],
+            [
+              'Leonardo AI',
+              'Imágenes y diseño',
+              'Créditos gratuitos renovables',
+              'Créditos diarios y condiciones de uso comercial',
+            ],
+            [
+              'Canva Magic Studio',
+              'Diseño e imagen rápida',
+              'Funciones en el plan gratuito',
+              'Usos limitados por mes',
+            ],
+            ['ElevenLabs', 'Voz sintética', 'Cuota mensual gratuita', 'Pocos caracteres al mes'],
+            ['Suno', 'Música', 'Créditos diarios', 'Restricciones de uso comercial'],
+            ['DeepL', 'Traducción', 'Capa gratuita permanente', 'Límite de caracteres por texto'],
+          ],
+        },
+      },
+      {
+        title: 'Lo que pagas cuando no pagas',
+        paragraphs: [
+          'Ninguna de estas herramientas es un regalo. En la mayoría de capas gratuitas, tus conversaciones pueden usarse para mejorar los modelos, salvo que lo desactives en los ajustes o uses la versión de empresa. No es necesariamente un escándalo, pero sí una razón sólida para no pegar en un chat gratuito datos de clientes, información médica, contraseñas o documentos confidenciales.',
+          'El segundo coste es la inestabilidad. Una capa gratuita puede recortarse, saturarse en horas punta o desaparecer. Si estás montando un flujo de trabajo que dependa de ello, asume que tendrás que rehacerlo.',
+          'Y el tercero, el más silencioso: el tiempo. Una herramienta gratuita que te obliga a reintentar tres veces sale más cara que una de pago que acierta a la primera, si tu hora vale algo. La pregunta correcta no es “¿es gratis?”, sino “¿cuánto me ahorra realmente?”.',
+        ],
+      },
+      {
+        title: 'Cómo montar un flujo de trabajo gratuito que funcione',
+        paragraphs: [
+          'Una combinación razonable para empezar sin gastar un euro: un chatbot generalista para redactar y pensar, una IA de búsqueda para todo lo que requiera datos verificables, DeepL para el idioma, y Canva o Leonardo AI cuando necesites una imagen. Con eso cubres el ochenta por ciento de los casos de uso de una persona normal.',
+          'Cuando notes que un límite gratuito te está frenando de forma sistemática, ese es el momento de plantearte pagar, y solo esa herramienta concreta. Pagar por cinco suscripciones a la vez es la forma más habitual de tirar el dinero en IA.',
+          'Y no te cases con ninguna. El panorama cambia cada pocos meses, y la herramienta que hoy es imprescindible puede quedarse atrás mañana. Lo único que se acumula de verdad es tu criterio para juzgar si una respuesta es buena o no.',
+        ],
+      },
+    ],
+  },
+  {
+    id: '7',
+    slug: 'mejores-ia-generar-imagenes',
+    title: 'Las mejores IA para generar imágenes: comparativa y cuál elegir',
+    description:
+      'Comparativa de Midjourney, DALL·E, Stable Diffusion, FLUX, Ideogram, Firefly y más. Diferencias reales en estilo, control, texto y licencias, y cuál te conviene.',
+    image: '/images/leonardofinal.webp',
+    category: 'comparisons',
+    categoryLabel: 'Comparaciones',
+    date: '08 Jul 2026',
+    readTime: '10 min',
+    author: 'AIFinder',
+    contentSections: [
+      {
+        title: 'Todas generan imágenes; ninguna hace lo mismo',
+        paragraphs: [
+          'Si pruebas cinco generadores con el mismo prompt, obtendrás cinco imágenes decentes y probablemente concluirás que son intercambiables. No lo son. Las diferencias no aparecen en la primera imagen, sino a la décima, cuando necesitas repetir un estilo, corregir un detalle, poner un texto legible o usar el resultado en un trabajo remunerado.',
+          'Hay cinco ejes que de verdad separan a unas de otras: el acabado estético por defecto, la fidelidad al prompt, el control sobre el resultado, la capacidad de renderizar texto dentro de la imagen y las condiciones de licencia. Casi todas las decisiones de compra se explican por uno de estos cinco.',
+          'Esta comparativa está pensada para que identifiques cuál de esos ejes te importa a ti, porque la respuesta a “cuál es la mejor” cambia por completo según seas ilustrador, community manager, diseñador de producto o alguien que solo quiere una imagen para un post.',
+        ],
+      },
+      {
+        title: 'Midjourney: el mejor acabado por defecto',
+        paragraphs: [
+          'Midjourney sigue siendo la referencia cuando lo que buscas es que la imagen sea, sencillamente, bonita. Su modelo tiene un sesgo estético muy marcado: la iluminación, la composición y el color salen bien incluso con prompts perezosos. Escribes tres palabras y te devuelve algo que parece pensado por un director de arte.',
+          'Ese sesgo es también su límite. Cuando necesitas algo deliberadamente feo, plano, técnico o corporativo, Midjourney tiende a embellecerlo. Y la fidelidad literal al prompt no es su punto más fuerte: interpreta, y a veces interpreta más de lo que le pides.',
+          'Funciona por suscripción, sin capa gratuita real, y ha ido saliendo de Discord hacia una web propia, lo que ha rebajado bastante la barrera de entrada que tenía. Es la opción natural para exploración creativa, conceptos, moodboards y todo lo que se juzgue por impacto visual.',
+        ],
+      },
+      {
+        title: 'DALL·E: entiende lo que le pides',
+        paragraphs: [
+          'La gran virtud de DALL·E es la comprensión del lenguaje natural. Puedes escribirle una frase larga y desordenada, con varios objetos, relaciones espaciales y condiciones, y hay muchas probabilidades de que las respete. Otros modelos, ante un prompt de tres frases, se quedan con la primera.',
+          'La otra ventaja es la integración: al vivir dentro de ChatGPT, puedes iterar conversando. Pides una imagen, dices “ahora quítale el sombrero y ponlo de noche”, y sigue trabajando sobre la idea sin que tengas que reescribir el prompt entero. Para quien no quiere aprender sintaxis de prompts, esto es enorme.',
+          'A cambio, su acabado es más neutro y menos espectacular que el de Midjourney, y ofrece poco control fino: no hay parámetros de peso, ni semillas, ni ajustes técnicos. Es la opción de quien quiere resultados correctos rápido, sin curva de aprendizaje.',
+        ],
+      },
+      {
+        title: 'Stable Diffusion y FLUX: control total, a cambio de trabajo',
+        paragraphs: [
+          'Stable Diffusion es el modelo abierto por excelencia. Lo puedes ejecutar en tu propio equipo, sin cuotas, sin enviar tus imágenes a ningún servidor y con acceso a un ecosistema enorme de modelos afinados, LoRAs y extensiones creados por la comunidad. Si necesitas reproducir un estilo concreto una y otra vez, o entrenar el modelo con tus propios personajes o productos, es la única vía que da control real.',
+          'FLUX ha ganado terreno como alternativa abierta con una calidad de imagen notablemente superior en fotorrealismo y anatomía, y también se puede ejecutar localmente o a través de servicios que lo alojan. Para muchos usuarios técnicos se ha convertido en el punto de partida por defecto.',
+          'El coste es evidente: necesitas una GPU decente, paciencia para configurar y tiempo para aprender. Nadie que quiera una imagen para un post debería pasar por aquí. Pero si tu trabajo depende de generar cientos de imágenes coherentes entre sí, lo que ahorras en suscripciones y lo que ganas en control compensa con creces.',
+        ],
+        bullets: [
+          'Ventajas: sin cuotas, privacidad total, control de estilo, entrenamiento propio.',
+          'Inconvenientes: hardware, instalación, curva de aprendizaje y mantenimiento.',
+          'Ideal si: produces mucho volumen, necesitas coherencia de estilo o trabajas con material confidencial.',
+        ],
+      },
+      {
+        title: 'Ideogram y Recraft: cuando la imagen lleva texto o tiene que ser vectorial',
+        paragraphs: [
+          'Durante mucho tiempo, el gran fallo de los generadores fue el texto: pedías un cartel y devolvían letras que parecían un idioma inventado. Ideogram fue de los primeros en resolverlo bien, y sigue siendo una de las opciones más fiables cuando necesitas que un rótulo, un logotipo o un envase se lean correctamente.',
+          'Recraft ataca otro problema distinto: la salida vectorial y la coherencia de estilo dentro de un sistema de diseño. Puede generar iconos, ilustraciones y elementos que después son editables, lo que lo acerca mucho más a un flujo de trabajo de diseño profesional que a la generación artística.',
+          'Son herramientas de nicho, y precisamente por eso ganan a las generalistas en su terreno. Si tu problema concreto es “necesito que el texto salga bien” o “necesito un SVG”, ir directamente a la herramienta especializada te ahorra veinte intentos frustrados en otra.',
+        ],
+      },
+      {
+        title: 'Firefly, Imagen, Leonardo AI y Canva: producción y licencias tranquilas',
+        paragraphs: [
+          'Adobe Firefly tiene un argumento que a los generalistas les cuesta igualar: está entrenado con material licenciado y se presenta como comercialmente seguro, además de estar integrado en las herramientas de Adobe. Para agencias y equipos que necesitan justificar el origen de sus imágenes ante un cliente o un departamento legal, esa tranquilidad es el producto.',
+          'Imagen, de Google, ofrece una calidad fotográfica muy alta y llega a través del ecosistema de Google, incluido Gemini. Leonardo AI se ha posicionado como una plataforma completa con créditos gratuitos, modelos entrenables y herramientas de edición, muy popular entre creadores de contenido y equipos de videojuegos. Y Canva Magic Studio es simplemente la vía más rápida de todas: generas la imagen dentro del mismo sitio donde vas a maquetar el diseño.',
+          'Una nota que casi nunca se dice en voz alta: la licencia importa tanto como la calidad. Muchas capas gratuitas permiten generar pero no usar comercialmente. Antes de entregar una imagen a un cliente, comprueba qué derechos tienes realmente sobre ella.',
+        ],
+      },
+      {
+        title: 'Comparativa directa',
+        table: {
+          headers: [
+            'Herramienta',
+            'Punto fuerte',
+            'Punto débil',
+            'Control',
+            'Texto en imagen',
+            'Mejor para',
+          ],
+          rows: [
+            [
+              'Midjourney',
+              'Estética por defecto',
+              'Interpreta más de lo que le pides',
+              'Medio',
+              'Aceptable',
+              'Concepto y dirección de arte',
+            ],
+            [
+              'DALL·E',
+              'Fidelidad al prompt e iteración conversacional',
+              'Acabado neutro, poco control fino',
+              'Bajo',
+              'Bueno',
+              'Uso general sin aprender prompts',
+            ],
+            [
+              'Stable Diffusion',
+              'Código abierto y control total',
+              'Requiere hardware y configuración',
+              'Muy alto',
+              'Regular',
+              'Volumen, estilo propio, privacidad',
+            ],
+            [
+              'FLUX',
+              'Fotorrealismo y anatomía',
+              'Igual de técnico que SD',
+              'Muy alto',
+              'Bueno',
+              'Fotorrealismo abierto',
+            ],
+            [
+              'Ideogram',
+              'Tipografía legible',
+              'Menos versátil en otros estilos',
+              'Medio',
+              'Muy bueno',
+              'Carteles, logos, packaging',
+            ],
+            [
+              'Recraft',
+              'Salida vectorial y sistemas de estilo',
+              'Menos espectacular en arte libre',
+              'Alto',
+              'Muy bueno',
+              'Diseño gráfico e iconografía',
+            ],
+            [
+              'Adobe Firefly',
+              'Licencia comercial clara e integración Adobe',
+              'Más conservador en resultados',
+              'Medio',
+              'Bueno',
+              'Agencias y entornos corporativos',
+            ],
+            [
+              'Leonardo AI',
+              'Plataforma completa con capa gratuita',
+              'Créditos limitados',
+              'Alto',
+              'Aceptable',
+              'Creadores y videojuegos',
+            ],
+            [
+              'Canva Magic Studio',
+              'Rapidez y flujo de diseño integrado',
+              'Menor calidad en usos exigentes',
+              'Bajo',
+              'Bueno',
+              'Redes sociales y presentaciones',
+            ],
+          ],
+        },
+      },
+      {
+        title: 'Cuál elegir según tu caso',
+        bullets: [
+          'Quieres una imagen bonita para un post y no vas a aprender nada nuevo: Canva Magic Studio o DALL·E dentro de ChatGPT.',
+          'Buscas impacto visual, exploración creativa o dirección de arte: Midjourney.',
+          'Necesitas repetir un estilo, entrenar con tus propios personajes o trabajar sin subir nada a la nube: Stable Diffusion o FLUX en local.',
+          'La imagen lleva texto que debe leerse: Ideogram.',
+          'Trabajas en diseño gráfico y necesitas vectores editables: Recraft.',
+          'Entregas a clientes y necesitas seguridad jurídica sobre los derechos: Adobe Firefly.',
+          'Quieres empezar sin pagar y con margen para crecer: Leonardo AI.',
+        ],
+      },
+      {
+        title: 'Tres errores que cuestan tiempo (y dinero)',
+        paragraphs: [
+          'El primero es pagar suscripciones a tres generadores a la vez “para comparar”. Se comparan gratis o con un mes de uno solo. Elige una, domínala, y solo cambia cuando algo concreto se te resista.',
+          'El segundo es culpar a la herramienta de un prompt malo. La mayoría de resultados decepcionantes vienen de descripciones vagas: sin encuadre, sin luz, sin estilo, sin contexto. Antes de cambiar de modelo, prueba a describir mejor lo que quieres.',
+          'Y el tercero, el más caro: usar comercialmente una imagen generada en una capa gratuita que no lo permite. Es un problema legal real, no una tecnicismo. Dos minutos leyendo las condiciones te ahorran un disgusto.',
+        ],
+      },
+    ],
+  },
+  {
+    id: '8',
+    slug: 'ia-para-programar-asistente-codigo',
+    title: 'IA para programar: qué asistente de código elegir según tu caso',
+    description:
+      'Copilot, Cursor, Claude, Tabnine, Codium, Bolt y los agentes asíncronos. Cómo se diferencian de verdad y qué asistente de código encaja con tu forma de trabajar.',
+    image: '/images/articulo1.1.webp',
+    category: 'comparisons',
+    categoryLabel: 'Comparaciones',
+    date: '06 Jul 2026',
+    readTime: '10 min',
+    author: 'AIFinder',
+    contentSections: [
+      {
+        title: 'No todos los asistentes hacen lo mismo',
+        paragraphs: [
+          'La expresión “IA para programar” mete en el mismo saco herramientas que resuelven problemas muy distintos. Antes de comparar productos, conviene entender que hay tres familias, y que elegir mal de familia es peor que elegir mal de marca.',
+          'La primera es el autocompletado: la IA vive dentro del editor y sugiere la siguiente línea o el siguiente bloque mientras escribes. Ahorra tecleo y reduce la fricción, pero no cambia cómo trabajas. La segunda es el chat de código: le describes un problema, le pegas contexto y te devuelve una solución razonada. Sirve para diseñar, depurar y entender código ajeno. La tercera son los agentes: le encargas una tarea y modifica varios archivos, ejecuta comandos y te devuelve un cambio completo.',
+          'La mayoría de gente empieza queriendo un agente y acaba usando un autocompletado, porque el agente exige un nivel de supervisión que no siempre compensa. Elegir bien es, sobre todo, ser honesto sobre en qué parte del trabajo pierdes realmente el tiempo.',
+        ],
+        bullets: [
+          'Autocompletado: velocidad al escribir. Bajo riesgo, ganancia moderada y constante.',
+          'Chat de código: pensar, depurar, entender. Ganancia alta en problemas concretos.',
+          'Agentes: delegar tareas completas. Ganancia enorme cuando acierta, coste alto de revisión cuando no.',
+        ],
+      },
+      {
+        title: 'GitHub Copilot: el estándar de facto',
+        paragraphs: [
+          'Copilot es la opción por defecto y, en muchos equipos, la única que pasa el filtro de compras. Está integrado en los editores principales y en el propio GitHub, tiene planes de empresa, controles de administración y un historial largo. Su autocompletado es rápido y suficientemente bueno, y su chat ha ido incorporando modelos de varios proveedores, con lo que la brecha de calidad con las alternativas se ha estrechado.',
+          'Su virtud es que estorba poco. Se instala, funciona y no te obliga a cambiar de editor ni de flujo. Para un desarrollador que ya usa VS Code o un IDE de JetBrains y quiere una mejora inmediata sin reaprender nada, es la respuesta correcta.',
+          'Su límite es precisamente ese: es una capa sobre tu editor, no un editor pensado alrededor de la IA. Cuando lo que necesitas es que la herramienta entienda el repositorio entero y opere sobre él, otras opciones van por delante.',
+        ],
+      },
+      {
+        title: 'Cursor: cuando el editor está construido alrededor de la IA',
+        paragraphs: [
+          'Cursor parte de VS Code pero reconstruye la experiencia asumiendo que la IA es el centro y no un añadido. La diferencia se nota en el manejo del contexto: puedes referenciar archivos, carpetas o el proyecto completo, y la herramienta decide qué necesita leer para responder. Sus modos de edición aplican cambios en varios archivos a la vez y te los presentan como un diff que aceptas o rechazas.',
+          'Ese enfoque lo convierte en la opción más potente para trabajar sobre bases de código existentes: refactorizaciones amplias, cambios transversales, entender un módulo que no escribiste tú. También es donde la sensación de “programar conversando” se siente más natural.',
+          'A cambio, exige un cambio de editor y una disciplina distinta: revisar diffs constantemente. Quien no revise lo que la IA propone acabará con código que funciona pero que nadie del equipo entiende, y eso es una deuda que se paga con intereses.',
+        ],
+      },
+      {
+        title: 'Claude, ChatGPT y Gemini: el chat como banco de trabajo',
+        paragraphs: [
+          'Mucha de la mejor programación asistida sigue ocurriendo fuera del editor, en un chat. Claude tiene fama merecida en código: sostiene bien conversaciones largas, mantiene el contexto de archivos extensos y explica su razonamiento, lo que lo hace especialmente útil para diseñar antes de escribir. ChatGPT es más versátil y su modo de razonamiento ayuda en problemas algorítmicos. Gemini destaca cuando necesitas meterle mucho contexto de golpe.',
+          'Hay un caso de uso que estos chats resuelven mejor que cualquier asistente integrado: entender. Pegar un fragmento incomprensible y pedir que te lo explique línea a línea, o describir un bug y razonar juntos las hipótesis. El autocompletado no piensa contigo; el chat sí.',
+          'La forma más eficaz de usarlos no es pedir “escríbeme esta función”, sino “aquí está mi contexto, estas son mis restricciones, dime tres formas de resolverlo y los inconvenientes de cada una”. La IA es mejor consejera que mecanógrafa.',
+        ],
+      },
+      {
+        title: 'Los especialistas: Tabnine, Codium, Ghostwriter, Bolt',
+        paragraphs: [
+          'No todo el mundo necesita un generalista. Tabnine tiene un argumento muy claro para empresas con requisitos de privacidad: puede desplegarse de forma que el código no salga de la organización, algo que muchos departamentos de seguridad exigen antes de aprobar cualquier asistente.',
+          'Codium se centra en algo que a casi nadie le gusta hacer: escribir tests. Genera casos de prueba a partir del código existente, incluyendo los casos límite que uno tiende a olvidar. Es una de las aplicaciones donde la IA aporta valor sin apenas riesgo, porque un test malo se detecta enseguida.',
+          'Ghostwriter vive dentro de Replit y tiene sentido si programas en el navegador o enseñas a programar. Y Bolt está en otra categoría: generar una aplicación funcional desde una descripción, ideal para prototipos y validaciones rápidas, no para código que vaya a mantenerse cinco años.',
+        ],
+      },
+      {
+        title: 'Agentes asíncronos: delegar de verdad',
+        paragraphs: [
+          'La novedad más interesante de los últimos tiempos no es que la IA escriba código más rápido, sino que lo escriba sin que estés delante. Jules, de Google, es un ejemplo de esta categoría: le asignas una tarea sobre un repositorio, trabaja por su cuenta y vuelve con una propuesta de cambios que revisas como si fuera una pull request de un compañero.',
+          'El cambio mental es grande. Dejas de teclear y empiezas a hacer de revisor. Funciona bien en tareas acotadas y bien definidas: actualizar una dependencia, migrar un patrón repetido, añadir tests, corregir un bug con reproducción clara. Funciona mal en tareas ambiguas, donde la mitad del trabajo es decidir qué hay que hacer.',
+          'La regla honesta con los agentes: si no sabrías explicarle la tarea a un compañero junior en tres frases, tampoco se la puedes encargar a un agente. Y si no vas a revisar el resultado con el mismo rigor con que revisarías el de ese junior, no lo uses.',
+        ],
+      },
+      {
+        title: 'Revisión y calidad: la otra mitad del trabajo',
+        paragraphs: [
+          'Generar código más rápido crea un problema nuevo: hay más código que revisar. Aquí las herramientas de análisis estático recuperan protagonismo. DeepSource, SonarQube, CodeClimate y CodeFactor detectan problemas de calidad, seguridad y mantenibilidad de forma automática, y se han vuelto más necesarias, no menos, desde que la IA escribe una parte creciente del código.',
+          'Merece la pena montar esta red antes de acelerar la generación. Un equipo que produce el triple de código sin haber reforzado su revisión no está siendo más productivo, solo está acumulando deuda más deprisa.',
+        ],
+      },
+      {
+        title: 'Comparativa práctica',
+        table: {
+          headers: ['Herramienta', 'Tipo', 'Punto fuerte', 'Punto débil', 'Ideal para'],
+          rows: [
+            [
+              'GitHub Copilot',
+              'Autocompletado + chat',
+              'Integración y adopción en empresa',
+              'Menos potente en cambios amplios',
+              'Equipos que quieren mejora sin cambiar de flujo',
+            ],
+            [
+              'Cursor',
+              'Editor con IA',
+              'Contexto del repositorio y edición multiarchivo',
+              'Cambiar de editor y revisar muchos diffs',
+              'Trabajo intensivo sobre código existente',
+            ],
+            [
+              'Claude',
+              'Chat de código',
+              'Razonamiento y contexto largo',
+              'Fuera del editor salvo integración',
+              'Diseñar, depurar y entender código',
+            ],
+            [
+              'Tabnine',
+              'Autocompletado',
+              'Opciones de despliegue privado',
+              'Menos brillante en tareas complejas',
+              'Empresas con exigencias de privacidad',
+            ],
+            [
+              'Codium',
+              'Testing',
+              'Genera tests y casos límite',
+              'Ámbito muy acotado',
+              'Subir cobertura sin sufrir',
+            ],
+            [
+              'Bolt',
+              'Generación de apps',
+              'Prototipos funcionales en minutos',
+              'Código poco pensado para mantener',
+              'Validar ideas y demos',
+            ],
+            [
+              'Jules',
+              'Agente asíncrono',
+              'Delegar tareas completas',
+              'Necesita tareas bien definidas',
+              'Mantenimiento y tareas repetitivas',
+            ],
+            [
+              'DeepSource / SonarQube',
+              'Análisis estático',
+              'Red de seguridad sobre el código generado',
+              'No escribe código',
+              'Equipos que producen mucho volumen',
+            ],
+          ],
+        },
+      },
+      {
+        title: 'Cómo decidir sin perder un mes probando',
+        paragraphs: [
+          'Empieza por identificar dónde se te va el tiempo. Si es tecleando código repetitivo, un autocompletado como Copilot o Tabnine te dará la mejor relación entre esfuerzo y ganancia. Si es entendiendo y depurando, un chat potente como Claude o ChatGPT rendirá mucho más. Si es haciendo cambios grandes en un repositorio que conoces a medias, Cursor. Y si es en tareas mecánicas y bien definidas, prueba un agente.',
+          'Sé escéptico con las promesas de multiplicar la productividad. Lo que los estudios y la experiencia sugieren es una mejora real pero moderada, muy dependiente del lenguaje, del tamaño de la base de código y de la experiencia de quien la usa. Los desarrolladores senior suelen sacarle más partido, porque saben distinguir una buena solución de una plausible.',
+          'Y una última cosa, que vale más que cualquier comparativa: nunca aceptes código que no entiendes. La IA acelera a quien sabe leer código; a quien no, solo le acelera la creación de problemas que descubrirá más tarde.',
+        ],
+      },
+    ],
+  },
+  {
+    id: '9',
+    slug: 'como-escribir-buenos-prompts',
+    title: 'Cómo escribir buenos prompts: guía práctica con ejemplos',
+    description:
+      'Guía práctica para escribir prompts que funcionen: estructura, contexto, ejemplos, iteración y errores frecuentes. Con casos de antes y después que puedes copiar.',
+    image: '/images/prompthero-web.webp',
+    category: 'tips',
+    categoryLabel: 'Consejos',
+    date: '03 Jul 2026',
+    readTime: '9 min',
+    author: 'AIFinder',
+    contentSections: [
+      {
+        title: 'Un prompt no es un conjuro',
+        paragraphs: [
+          'Circula la idea de que existen palabras mágicas que desbloquean respuestas mucho mejores. No es así. Los modelos actuales entienden el lenguaje natural perfectamente y no necesitan que les digas “actúa como un experto de nivel mundial” para esforzarse. Ese tipo de fórmulas eran útiles con modelos antiguos y hoy son, casi siempre, ruido.',
+          'Lo que sí cambia radicalmente el resultado es la información. Un prompt bueno no es el que está escrito con la sintaxis correcta, sino el que contiene lo que el modelo necesita saber para acertar. Y lo que necesita saber es lo mismo que necesitaría un becario competente al que le encargases la tarea sin conocer nada de tu contexto.',
+          'De ahí sale la única regla que de verdad importa: si un humano inteligente no podría hacer bien la tarea con lo que le has dicho, la IA tampoco. La mayoría de respuestas decepcionantes no son fallos del modelo, son encargos mal hechos.',
+        ],
+      },
+      {
+        title: 'La anatomía de un prompt que funciona',
+        paragraphs: [
+          'No hay una plantilla obligatoria, pero los prompts que rinden bien suelen contener cinco cosas. No hace falta que estén en este orden ni que aparezcan todas, pero cuando una respuesta sale mal, casi siempre falta alguna.',
+        ],
+        bullets: [
+          'Tarea: qué quieres exactamente. Un verbo claro. No “háblame de X”, sino “resume X en cinco puntos para alguien que no sabe nada del tema”.',
+          'Contexto: quién eres, para qué es, quién lo va a leer, qué ha pasado antes. Es lo que más se olvida y lo que más impacto tiene.',
+          'Formato: cómo quieres la salida. Lista, tabla, correo, código, número de palabras. Si no lo dices, el modelo elegirá por ti, y elegirá lo más genérico.',
+          'Restricciones: qué no quieres. Sin tecnicismos, sin adjetivos grandilocuentes, sin inventarse datos, máximo 200 palabras.',
+          'Criterio de éxito: cómo sabrás que está bien. “Tiene que poder leerlo mi jefe en un minuto y entender la decisión que le pido.”',
+        ],
+      },
+      {
+        title: 'Antes y después: la diferencia se ve enseguida',
+        paragraphs: [
+          'Prompt flojo: “Escríbeme un email para pedir un aumento de sueldo.” El resultado será correcto, genérico y probablemente inservible: no sabe cuánto llevas en la empresa, qué has conseguido, cómo es tu jefe ni qué cifra pides.',
+          'Prompt bueno: “Soy analista de datos en una consultora de 40 personas, llevo dos años y medio y en el último he liderado la migración del sistema de informes, que ha reducido en un 30% el tiempo de cierre mensual. Mi jefe es directo, no le gustan los rodeos y decide rápido. Escribe un correo de 150 palabras pidiendo una revisión salarial. Tono profesional pero cercano, sin adular, con un dato concreto de impacto y una propuesta clara de reunión. No menciones ofertas de otras empresas.”',
+          'La segunda versión no usa ningún truco. Solo dice lo que el modelo no podía saber. Y esa es toda la diferencia entre un texto que tiras y uno que envías después de retocar dos frases.',
+          'El mismo principio se aplica a cualquier ámbito. “Analiza estos datos” es un mal encargo. “Estos son los datos de ventas de los últimos seis meses, busco entender por qué cayó marzo, tengo la hipótesis de que fue por la campaña que paramos; contrasta esa hipótesis y dime si los datos la apoyan o la contradicen” es un buen encargo.',
+        ],
+      },
+      {
+        title: 'Enseñar con ejemplos: el atajo más infravalorado',
+        paragraphs: [
+          'Describir un estilo con palabras es difícil. Mostrarlo es trivial. Si quieres que la IA escriba como tú, pégale dos o tres textos tuyos y pídele que imite el tono, la longitud de frase y el vocabulario. Aprenderá más de esos ejemplos que de cualquier adjetivo que uses para describirte.',
+          'Esto vale para casi todo: si necesitas que te clasifique tickets de soporte, dale cinco ejemplos ya clasificados. Si necesitas un formato concreto de resumen, enséñale uno bien hecho. Un ejemplo real equivale a media página de instrucciones, y funciona mejor.',
+          'Cuando el resultado se desvía, la corrección más eficaz también es un ejemplo: “No, así no; así sí”, con las dos versiones delante. Es exactamente igual que enseñar a una persona.',
+        ],
+      },
+      {
+        title: 'Dale espacio para pensar',
+        paragraphs: [
+          'Para tareas que requieren razonamiento (análisis, decisiones, problemas con varios pasos), pedir directamente la conclusión suele dar peores resultados que pedir el proceso. Una instrucción tan simple como “razona paso a paso antes de dar la respuesta final” mejora de forma consistente la calidad en problemas complejos, porque obliga al modelo a construir el razonamiento en lugar de saltar a la primera respuesta plausible.',
+          'Otra técnica útil: pedir varias opciones antes de la recomendación. “Dame tres enfoques posibles con sus ventajas e inconvenientes, y luego recomienda uno justificando por qué.” Esto evita el problema clásico de que la IA se enamore de su primera idea, y de paso te da a ti material para decidir.',
+          'Y una tercera, especialmente valiosa cuando hay algo en juego: pedirle que critique su propia respuesta. “Ahora revisa lo que has escrito y señala sus tres puntos más débiles.” Suele encontrarlos, y suele tener razón.',
+        ],
+      },
+      {
+        title: 'El prompt es una conversación, no un formulario',
+        paragraphs: [
+          'La obsesión por escribir el prompt perfecto a la primera es contraproducente. Es mucho más eficiente empezar con algo razonable, ver qué falla y corregir. La segunda respuesta casi siempre es mejor que la primera, y la tercera mejor que la segunda, siempre que las correcciones sean concretas.',
+          'Corregir bien significa señalar el problema, no repetir el encargo. “Está demasiado genérico” es una mala corrección. “El segundo párrafo no dice nada que no supiera ya; sustitúyelo por un ejemplo concreto de una empresa pequeña” sí lo es.',
+          'Un hábito que ahorra mucho tiempo: pídele a la IA que te pregunte. “Antes de escribir nada, hazme las tres preguntas cuya respuesta más mejoraría el resultado.” Suele señalar exactamente los huecos de contexto que no habías visto.',
+        ],
+      },
+      {
+        title: 'Los prompts de imagen juegan con otras reglas',
+        paragraphs: [
+          'Todo lo anterior aplica a texto. Con generadores de imágenes como Midjourney, DALL·E, Stable Diffusion o Ideogram, la lógica cambia: no conversas, describes. Y lo que hay que describir no es solo el objeto, sino cómo está mirado.',
+          'Un prompt de imagen completo suele incluir sujeto, acción, entorno, encuadre, iluminación, estilo y paleta. “Un perro” da una foto de archivo. “Un perro viejo dormido en el suelo de una cocina, luz cálida de tarde entrando por una ventana lateral, plano cenital, fotografía documental, grano suave” da algo que se parece a lo que tenías en la cabeza.',
+          'Aquí sí hay diferencias entre herramientas: DALL·E interpreta mejor descripciones largas en lenguaje natural, mientras que Midjourney y Stable Diffusion responden bien a listas de atributos separados por comas. Escribir para cada una como si fuera la otra es una fuente habitual de decepciones.',
+        ],
+      },
+      {
+        title: 'Errores frecuentes',
+        bullets: [
+          'Pedir varias cosas a la vez. Un prompt, una tarea. Si necesitas cinco cosas, haz cinco peticiones.',
+          'Dar por supuesto el contexto. El modelo no sabe a qué te dedicas, quién es tu público ni qué decidiste la semana pasada.',
+          'No decir el formato ni la longitud. Después te quejas de que se enrolla.',
+          'Aceptar la primera respuesta. Casi siempre es la más genérica de las que podría haber dado.',
+          'Fiarte de los datos, fechas y citas sin comprobarlos. Un prompt bien escrito reduce los errores, pero no los elimina.',
+          'Pegar información confidencial en herramientas gratuitas cuyas conversaciones pueden usarse para entrenar.',
+        ],
+      },
+      {
+        title: 'Una plantilla que puedes reutilizar',
+        paragraphs: [
+          'Si quieres algo concreto para empezar hoy, copia esta estructura y rellena los huecos. Funciona en cualquier chatbot generalista y sirve para el noventa por ciento de las tareas de trabajo.',
+          '“Contexto: [quién eres, para qué es esto, quién lo va a leer]. Tarea: [qué quieres exactamente]. Formato: [tipo de salida y longitud]. Restricciones: [qué evitar]. Criterio: [cómo sabremos que está bien]. Si te falta información para hacerlo bien, pregúntamela antes de empezar.”',
+          'Con el tiempo dejarás de necesitar la plantilla, porque el hábito se interioriza. Escribir buenos prompts no es aprender una técnica exótica: es aprender a explicar lo que quieres con precisión, que resulta ser una habilidad bastante útil también fuera de la IA.',
+        ],
+      },
+    ],
+  },
 ];
 
-// Exportar únicamente los 5 artículos creados
+// Artículos publicados
 export const articles: Article[] = allArticles.filter((a) =>
-  ['1', '2', '13', '14', '15'].includes(a.id),
+  ['1', '2', '6', '7', '8', '9', '13', '14', '15'].includes(a.id),
 );

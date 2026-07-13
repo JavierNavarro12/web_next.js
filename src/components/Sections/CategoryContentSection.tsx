@@ -2,8 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { AITool, AICategory } from '../../data/ai-tools';
-import { filterTools, handleToolClick, getPricingText } from '../../utils/toolUtils';
+import { filterTools, getPricingText } from '../../utils/toolUtils';
+import { slugify } from '../../utils/slugify';
 import { useHighlightedToolContext } from '../../app/providers';
 
 interface CategoryContentSectionProps {
@@ -46,14 +48,14 @@ export default function CategoryContentSection({
               <div className="space-y-3">
                 {subcat.tools &&
                   filterTools(subcat.tools, activeFilter, searchTerm).map((tool: AITool) => (
-                    <div
+                    <Link
                       key={tool.name}
+                      href={`/herramienta/${slugify(tool.name)}`}
                       className={`flex items-start gap-3 py-1 pl-1 cursor-pointer hover:bg-zinc-900/50 rounded-lg transition-all duration-300 p-2 ${
                         animatingTool === tool.name
                           ? 'scale-107 bg-zinc-700/80 shadow-2xl shadow-blue-500/20'
                           : ''
                       }`}
-                      onClick={() => handleToolClick(tool)}
                     >
                       <Image
                         src={tool.logo || tool.image}
@@ -67,7 +69,7 @@ export default function CategoryContentSection({
                         <h3 className="font-bold text-white text-base mb-1">{tool.name}</h3>
                         <p className="text-zinc-400 text-sm leading-relaxed">{tool.description}</p>
                       </div>
-                    </div>
+                    </Link>
                   ))}
               </div>
             </div>
@@ -82,14 +84,14 @@ export default function CategoryContentSection({
               <div className="grid grid-cols-4 gap-4">
                 {subcat.tools &&
                   filterTools(subcat.tools, activeFilter, searchTerm).map((tool: AITool) => (
-                    <div
+                    <Link
                       key={tool.name}
-                      className={`group cursor-pointer transition-all duration-300 ${
+                      href={`/herramienta/${slugify(tool.name)}`}
+                      className={`group cursor-pointer transition-all duration-300 block ${
                         animatingTool === tool.name
                           ? 'scale-107 shadow-2xl shadow-blue-500/30 rounded-lg bg-zinc-700/50'
                           : ''
                       }`}
-                      onClick={() => handleToolClick(tool)}
                     >
                       <div className="relative aspect-video bg-zinc-800 rounded mb-3 overflow-hidden border border-[#232323]">
                         <Image
@@ -112,7 +114,7 @@ export default function CategoryContentSection({
                         </h3>
                         <p className="text-zinc-400 text-sm leading-relaxed">{tool.description}</p>
                       </div>
-                    </div>
+                    </Link>
                   ))}
               </div>
             </div>
