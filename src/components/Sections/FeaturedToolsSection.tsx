@@ -2,8 +2,10 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { getPricingText, handleToolClick, getFeaturedTools } from '../../utils/toolUtils';
+import Link from 'next/link';
+import { getPricingText, getFeaturedTools } from '../../utils/toolUtils';
 import { getSiteUrl } from '../../utils/siteUrl';
+import { slugify } from '../../utils/slugify';
 
 export default function FeaturedToolsSection() {
   const featured = getFeaturedTools().slice(0, 8);
@@ -19,7 +21,7 @@ export default function FeaturedToolsSection() {
         description: tool.description,
         applicationCategory: 'AIApplication',
         operatingSystem: 'Web',
-        url: tool.url || getSiteUrl(),
+        url: `${getSiteUrl()}/herramienta/${slugify(tool.name)}`,
       },
     })),
   } as const;
@@ -39,10 +41,10 @@ export default function FeaturedToolsSection() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
           {featured.map((tool) => (
-            <div
+            <Link
               key={tool.name}
+              href={`/herramienta/${slugify(tool.name)}`}
               className="group cursor-pointer"
-              onClick={() => handleToolClick(tool)}
             >
               <div className="relative aspect-video bg-zinc-800 rounded mb-2 md:mb-3 overflow-hidden border border-[#232323]">
                 <Image
@@ -65,7 +67,7 @@ export default function FeaturedToolsSection() {
                   {tool.description}
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

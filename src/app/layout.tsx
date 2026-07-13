@@ -87,14 +87,15 @@ export const metadata: Metadata = {
     siteName: 'AIFinder',
     url: baseUrl,
     type: 'website',
-    images: [{ url: '/icons/icon-512x512.png', width: 512, height: 512, alt: 'AIFinder' }],
+    locale: 'es_ES',
+    // La imagen 1200x630 la genera src/app/opengraph-image.tsx (convención de Next).
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AIFinder',
     description:
       'Descubre las mejores IA para programar, escribir, generar imágenes y vídeo, voz y estudiar. Comparativas claras, pros/contras y precios en español.',
-    images: ['/icons/icon-512x512.png'],
+    creator: '@aifinder_es',
   },
 };
 
@@ -176,58 +177,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               '@type': 'WebSite',
               name: 'AIFinder',
               url: baseUrl,
-              potentialAction: {
-                '@type': 'SearchAction',
-                target: `${baseUrl}/?q={search_term_string}`,
-                'query-input': 'required name=search_term_string',
-              },
+              inLanguage: 'es-ES',
+              publisher: { '@type': 'Organization', name: 'AIFinder', url: baseUrl },
             }),
           }}
         />
-        {/* FAQPage schema para rich snippets - en head para evitar duplicación RSC */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'FAQPage',
-              mainEntity: [
-                {
-                  '@type': 'Question',
-                  name: '¿Qué es AIFinder?',
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'AIFinder es un directorio completo de herramientas de inteligencia artificial en español. Incluye más de 200 herramientas organizadas por categorías como generación de texto, imágenes, audio, video y código.',
-                  },
-                },
-                {
-                  '@type': 'Question',
-                  name: '¿Cuáles son las mejores IA para generar imágenes?',
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'Las mejores IA para generar imágenes incluyen Midjourney, DALL-E 3, Stable Diffusion, Adobe Firefly, Leonardo AI y Ideogram. Cada una tiene sus fortalezas: Midjourney destaca en arte, DALL-E en precisión de prompts, y Stable Diffusion es open source.',
-                  },
-                },
-                {
-                  '@type': 'Question',
-                  name: '¿Cuál es la mejor IA para programar?',
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'Las mejores IAs para programar son GitHub Copilot, Claude, Cursor, y ChatGPT. GitHub Copilot se integra directamente en el IDE, mientras que Claude y ChatGPT son excelentes para explicaciones de código y debugging.',
-                  },
-                },
-                {
-                  '@type': 'Question',
-                  name: '¿Hay herramientas de IA gratuitas?',
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: 'Sí, muchas herramientas ofrecen versiones gratuitas o freemium. ChatGPT, Claude, Gemini, Stable Diffusion, y LLaMA son algunas de las IAs más populares con opciones gratuitas.',
-                  },
-                },
-              ],
-            }),
-          }}
-        />
+        {/* El FAQPage vive en src/app/page.tsx: aquí en el layout se inyectaba
+            en TODAS las páginas y chocaba con el FAQ propio de fichas y categorías. */}
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}>
         <CookieConsentProvider>

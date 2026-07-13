@@ -2,7 +2,8 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { handleToolClick } from '../../utils/toolUtils';
+import Link from 'next/link';
+import { slugify } from '../../utils/slugify';
 
 // Obtener las 10 herramientas más recientes (puedes modificar esta lógica)
 const getNewestTools = () => {
@@ -110,10 +111,10 @@ export default function NewestAdditionsSection() {
         {/* Grid de herramientas - Sin tarjetas individuales */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
           {newestTools.slice(0, 8).map((tool, _index) => (
-            <div
+            <Link
               key={tool.name}
+              href={`/herramienta/${slugify(tool.name)}`}
               className="group cursor-pointer p-3 hover:bg-zinc-900/30 rounded-lg transition-all duration-200"
-              onClick={() => handleToolClick(tool)}
             >
               <div className="flex items-center gap-3">
                 {/* Logo */}
@@ -142,7 +143,7 @@ export default function NewestAdditionsSection() {
                   </p>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
