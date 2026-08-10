@@ -20,6 +20,9 @@ export default function robots(): MetadataRoute.Robots {
         '/api/',
         // Bloquear página de desuscripción
         '/unsubscribe',
+        // Las imágenes de Open Graph no son páginas: Google las rastreaba como tales
+        '/*/opengraph-image',
+        '/opengraph-image',
       ],
     },
     sitemap: `${base}/sitemap.xml`,
