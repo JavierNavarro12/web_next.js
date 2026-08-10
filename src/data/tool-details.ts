@@ -5,7 +5,7 @@ import type { ToolDetail } from '../types/tool';
  * La clave es el nombre exacto de la herramienta en ai-tools.ts.
  *
  * El aviso de "consulta la web oficial" vive en la plantilla de la ficha,
- * no aquí: repetido en cada entrada era la huella de contenido de plantilla.
+ * no aqui: repetido en cada entrada era la huella de contenido de plantilla.
  */
 export const toolDetails: Record<string, ToolDetail> = {
   ChatGPT: {
@@ -49,7 +49,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿ChatGPT es gratis?',
         answer:
-          'Sí, existe una versión gratuita con acceso a las funciones principales, aunque con límites de uso y de acceso a los modelos más potentes. Para quitar esas restricciones hay suscripciones de pago mensuales. Consulta la web oficial para conocer los planes vigentes.',
+          'Sí, existe una versión gratuita con acceso a las funciones principales, aunque con límites de uso y de acceso a los modelos más potentes. Para quitar esas restricciones hay suscripciones de pago mensuales.',
       },
       {
         question: '¿ChatGPT funciona bien en español?',
@@ -99,7 +99,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Claude es gratis?',
         answer:
-          'Claude ofrece un plan gratuito con límites de uso diarios, suficiente para pruebas y tareas puntuales. Quienes lo usan a diario suelen contratar una suscripción de pago que amplía la cuota y añade funciones. Consulta su web para ver los planes actuales.',
+          'Claude ofrece un plan gratuito con límites de uso diarios, suficiente para pruebas y tareas puntuales. Quienes lo usan a diario suelen contratar una suscripción de pago que amplía la cuota y añade funciones.',
       },
       {
         question: '¿Para qué sirve Claude frente a otros chatbots?',
@@ -149,7 +149,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Gemini es gratis?',
         answer:
-          'Sí, hay una versión gratuita a la que se accede con una cuenta de Google, con límites de uso. Existen suscripciones de pago que amplían la cuota y dan acceso a los modelos más avanzados. Consulta la web oficial para conocer los planes disponibles.',
+          'Sí, hay una versión gratuita a la que se accede con una cuenta de Google, con límites de uso. Existen suscripciones de pago que amplían la cuota y dan acceso a los modelos más avanzados.',
       },
       {
         question: '¿Gemini funciona en español?',
@@ -249,7 +249,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Qwen es gratis?',
         answer:
-          'Hay versiones de Qwen con pesos abiertos que se pueden usar sin coste de licencia, aunque necesitas hardware para ejecutarlas. El acceso gestionado por API en la nube se cobra por consumo. Consulta la web oficial para conocer las condiciones vigentes.',
+          'Hay versiones de Qwen con pesos abiertos que se pueden usar sin coste de licencia, aunque necesitas hardware para ejecutarlas. El acceso gestionado por API en la nube se cobra por consumo.',
       },
       {
         question: '¿Qwen funciona en español?',
@@ -399,7 +399,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Grok es gratis?',
         answer:
-          'Grok ofrece un acceso gratuito con límites de uso. Las funciones más avanzadas y una cuota mayor suelen requerir una suscripción, habitualmente vinculada a X o a los planes de xAI. Consulta la web oficial para conocer los planes actuales.',
+          'Grok ofrece un acceso gratuito con límites de uso. Las funciones más avanzadas y una cuota mayor suelen requerir una suscripción, habitualmente vinculada a X o a los planes de xAI.',
       },
       {
         question: '¿Grok funciona en español?',
@@ -499,7 +499,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Jasper es gratis?',
         answer:
-          'No. Jasper funciona por suscripción de pago, aunque suele ofrecer un periodo de prueba para probar la herramienta antes de contratarla. Los planes varían según usuarios y funciones. Consulta la web oficial para conocer las tarifas vigentes.',
+          'No. Jasper funciona por suscripción de pago, aunque suele ofrecer un periodo de prueba para probar la herramienta antes de contratarla. Los planes varían según usuarios y funciones.',
       },
       {
         question: '¿Jasper escribe en español?',
@@ -549,7 +549,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Copy.ai es gratis?',
         answer:
-          'Copy.ai es principalmente de pago. Puede ofrecer una opción gratuita o de prueba con créditos limitados, pero el uso habitual requiere suscripción. Los planes varían según usuarios y volumen. Consulta su web para conocer las tarifas actuales.',
+          'Copy.ai es principalmente de pago. Puede ofrecer una opción gratuita o de prueba con créditos limitados, pero el uso habitual requiere suscripción. Los planes varían según usuarios y volumen.',
       },
       {
         question: '¿Copy.ai funciona en español?',
@@ -599,7 +599,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Sudowrite es gratis?',
         answer:
-          'No. Sudowrite funciona con suscripción de pago y planes según el volumen de palabras generadas, aunque suele permitir una prueba inicial limitada. Consulta la web oficial para conocer los planes y los precios vigentes antes de contratarlo.',
+          'No. Sudowrite funciona con suscripción de pago y planes según el volumen de palabras generadas, aunque suele permitir una prueba inicial limitada.',
       },
       {
         question: '¿Sudowrite escribe en español?',
@@ -649,7 +649,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿YouWrite es gratis?',
         answer:
-          'YouWrite es una herramienta de pago que funciona por suscripción, aunque puede ofrecer una prueba o créditos iniciales limitados. Los planes suelen variar según el volumen de texto generado. Consulta su web oficial para ver los precios vigentes.',
+          'YouWrite es una herramienta de pago que funciona por suscripción, aunque puede ofrecer una prueba o créditos iniciales limitados. Los planes suelen variar según el volumen de texto generado.',
       },
       {
         question: '¿Para qué sirve YouWrite?',
@@ -699,7 +699,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿DeepSeek es gratis?',
         answer:
-          'El asistente conversacional de DeepSeek se puede usar gratis con límites de uso, y varios de sus modelos son abiertos y descargables. El acceso por API se paga por consumo, con tarifas bajas. Consulta su web para conocer los precios actuales.',
+          'El asistente conversacional de DeepSeek se puede usar gratis con límites de uso, y varios de sus modelos son abiertos y descargables. El acceso por API se paga por consumo, con tarifas bajas.',
       },
       {
         question: '¿Es seguro usar DeepSeek con datos sensibles?',
@@ -749,7 +749,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Midjourney es gratis?',
         answer:
-          'No. Midjourney funciona únicamente con suscripción de pago y no ofrece un plan gratuito permanente. Los planes varían según el tiempo de generación incluido y otras opciones. Consulta la web oficial para conocer las tarifas actuales.',
+          'No. Midjourney funciona únicamente con suscripción de pago y no ofrece un plan gratuito permanente. Los planes varían según el tiempo de generación incluido y otras opciones.',
       },
       {
         question: '¿Se pueden usar las imágenes de Midjourney comercialmente?',
@@ -799,7 +799,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿DALL·E es gratis?',
         answer:
-          'Existe un acceso gratuito limitado a través de ChatGPT, con restricciones en el número de imágenes. Para un uso más intensivo hace falta una suscripción de pago o el acceso por API, facturado por imagen. Consulta la web oficial para los precios actuales.',
+          'Existe un acceso gratuito limitado a través de ChatGPT, con restricciones en el número de imágenes. Para un uso más intensivo hace falta una suscripción de pago o el acceso por API, facturado por imagen.',
       },
       {
         question: '¿Cómo se usa DALL·E?',
@@ -899,7 +899,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Adobe Firefly es gratis?',
         answer:
-          'Firefly ofrece un uso gratuito con créditos generativos limitados cada mes. Para un volumen mayor hace falta un plan de pago o una suscripción de Creative Cloud que incluya más créditos. Consulta la web de Adobe para conocer los planes vigentes.',
+          'Firefly ofrece un uso gratuito con créditos generativos limitados cada mes. Para un volumen mayor hace falta un plan de pago o una suscripción de Creative Cloud que incluya más créditos.',
       },
       {
         question: '¿Las imágenes de Firefly se pueden usar comercialmente?',
@@ -954,7 +954,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Imagen es gratis?',
         answer:
-          'Se puede generar imágenes sin coste con límites a través de la versión gratuita de Gemini. Un uso mayor requiere plan de pago, y en las plataformas cloud se factura por imagen generada. Consulta la web de Google para los precios actuales.',
+          'Se puede generar imágenes sin coste con límites a través de la versión gratuita de Gemini. Un uso mayor requiere plan de pago, y en las plataformas cloud se factura por imagen generada.',
       },
     ],
   },
@@ -1048,7 +1048,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Ideogram es gratis?',
         answer:
-          'Tiene un plan gratuito con un número limitado de generaciones, suficiente para probarlo y para usos puntuales. Si necesitas más volumen, generación más rápida o condiciones de uso comercial, hay planes de pago. Consulta su web para conocer los precios y límites actualizados.',
+          'Tiene un plan gratuito con un número limitado de generaciones, suficiente para probarlo y para usos puntuales. Si necesitas más volumen, generación más rápida o condiciones de uso comercial, hay planes de pago.',
       },
       {
         question: '¿Ideogram funciona en español?',
@@ -1102,7 +1102,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Recraft es gratis?',
         answer:
-          'Ofrece un plan gratuito con créditos limitados para probar la herramienta. Para un uso profesional continuado, con más generaciones, mayor resolución y licencia comercial, es necesario pasar a un plan de pago. Consulta su web para ver los tramos y precios actualizados.',
+          'Ofrece un plan gratuito con créditos limitados para probar la herramienta. Para un uso profesional continuado, con más generaciones, mayor resolución y licencia comercial, es necesario pasar a un plan de pago.',
       },
     ],
   },
@@ -1146,7 +1146,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Leonardo AI es gratis?',
         answer:
-          'Sí, dispone de un plan gratuito con créditos que se renuevan cada día, suficientes para experimentar. Para un uso intensivo o profesional, con más créditos y funciones avanzadas, existen planes de suscripción de pago. Consulta su web para precios y límites actualizados.',
+          'Sí, dispone de un plan gratuito con créditos que se renuevan cada día, suficientes para experimentar. Para un uso intensivo o profesional, con más créditos y funciones avanzadas, existen planes de suscripción de pago.',
       },
       {
         question: '¿Puedo usar comercialmente las imágenes de Leonardo AI?',
@@ -1195,7 +1195,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Seedream es gratis?',
         answer:
-          'El acceso al modelo suele ofrecerse sin coste a través de las interfaces públicas de su desarrollador, con posibles límites de uso. El acceso por API o en grandes volúmenes puede tener condiciones distintas. Consulta su web para conocer la disponibilidad y los precios actualizados.',
+          'El acceso al modelo suele ofrecerse sin coste a través de las interfaces públicas de su desarrollador, con posibles límites de uso. El acceso por API o en grandes volúmenes puede tener condiciones distintas.',
       },
       {
         question: '¿Para qué sirve Seedream?',
@@ -1244,7 +1244,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Aurora es gratis?',
         answer:
-          'Su acceso está vinculado al ecosistema de Grok y suele requerir una suscripción de pago, aunque puntualmente puede haber acceso limitado sin coste. Los límites y condiciones cambian con frecuencia. Consulta su web para conocer la disponibilidad y los precios actualizados.',
+          'Su acceso está vinculado al ecosistema de Grok y suele requerir una suscripción de pago, aunque puntualmente puede haber acceso limitado sin coste. Los límites y condiciones cambian con frecuencia.',
       },
       {
         question: '¿Para qué sirve Aurora?',
@@ -1293,7 +1293,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Playground AI es gratis?',
         answer:
-          'Dispone de un plan gratuito con un límite diario de imágenes, suficiente para probar la herramienta o para un uso esporádico. Los planes de pago amplían el número de generaciones y desbloquean funciones adicionales. Consulta su web para conocer los precios actualizados.',
+          'Dispone de un plan gratuito con un límite diario de imágenes, suficiente para probar la herramienta o para un uso esporádico. Los planes de pago amplían el número de generaciones y desbloquean funciones adicionales.',
       },
       {
         question: '¿Para qué sirve Playground AI?',
@@ -1347,7 +1347,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿ElevenLabs es gratis?',
         answer:
-          'Ofrece un plan gratuito con una cantidad limitada de caracteres al mes, útil para probarlo. Para producción real se necesita un plan de pago, cuyo coste depende del volumen de audio y de las funciones de clonación. Consulta su web para precios actualizados.',
+          'Ofrece un plan gratuito con una cantidad limitada de caracteres al mes, útil para probarlo. Para producción real se necesita un plan de pago, cuyo coste depende del volumen de audio y de las funciones de clonación.',
       },
     ],
   },
@@ -1391,7 +1391,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Voicemod es gratis?',
         answer:
-          'Existe una versión gratuita que da acceso a un conjunto rotatorio de voces y efectos, suficiente para probarlo. La licencia de pago desbloquea el catálogo completo y funciones adicionales. Consulta su web para conocer las modalidades y los precios actualizados.',
+          'Existe una versión gratuita que da acceso a un conjunto rotatorio de voces y efectos, suficiente para probarlo. La licencia de pago desbloquea el catálogo completo y funciones adicionales.',
       },
       {
         question: '¿Voicemod funciona con Discord?',
@@ -1445,7 +1445,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Descript es gratis?',
         answer:
-          'Tiene un plan gratuito con horas de transcripción limitadas y funciones básicas, adecuado para probarlo. Los planes de pago amplían el tiempo de transcripción, la calidad de exportación y las funciones de IA. Consulta su web para conocer los precios actualizados.',
+          'Tiene un plan gratuito con horas de transcripción limitadas y funciones básicas, adecuado para probarlo. Los planes de pago amplían el tiempo de transcripción, la calidad de exportación y las funciones de IA.',
       },
     ],
   },
@@ -1494,7 +1494,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Cuánto cuesta Resemble AI?',
         answer:
-          'Su precio depende del volumen de audio generado y de las funciones de clonación contratadas, con planes escalonados y opciones a medida para empresas. Suele existir un acceso de prueba con límites. Consulta su web para conocer los precios actualizados.',
+          'Su precio depende del volumen de audio generado y de las funciones de clonación contratadas, con planes escalonados y opciones a medida para empresas. Suele existir un acceso de prueba con límites.',
       },
     ],
   },
@@ -1543,7 +1543,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Murf es gratis?',
         answer:
-          'Dispone de un plan gratuito de prueba con límites de tiempo de voz y restricciones en la descarga del audio. Para uso profesional, con descarga sin limitaciones y más minutos, hay planes de pago por suscripción. Consulta su web para precios actualizados.',
+          'Dispone de un plan gratuito de prueba con límites de tiempo de voz y restricciones en la descarga del audio. Para uso profesional, con descarga sin limitaciones y más minutos, hay planes de pago por suscripción.',
       },
     ],
   },
@@ -1592,7 +1592,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Play.ht es gratis?',
         answer:
-          'Tiene un nivel gratuito con una cuota limitada de palabras, pensado para probar la herramienta. Para un uso continuado, con más volumen de audio, clonación de voz o acceso a la API, es necesario un plan de pago. Consulta su web para precios actualizados.',
+          'Tiene un nivel gratuito con una cuota limitada de palabras, pensado para probar la herramienta. Para un uso continuado, con más volumen de audio, clonación de voz o acceso a la API, es necesario un plan de pago.',
       },
     ],
   },
@@ -1641,7 +1641,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Speechify es gratis?',
         answer:
-          'Ofrece una versión gratuita con voces básicas y límites de velocidad, suficiente para un uso ligero. Las voces más naturales, la lectura más rápida y las funciones avanzadas requieren una suscripción de pago. Consulta su web para conocer los precios actualizados.',
+          'Ofrece una versión gratuita con voces básicas y límites de velocidad, suficiente para un uso ligero. Las voces más naturales, la lectura más rápida y las funciones avanzadas requieren una suscripción de pago.',
       },
     ],
   },
@@ -1690,7 +1690,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Lovo es gratis?',
         answer:
-          'Cuenta con un plan gratuito que ofrece un número reducido de minutos de voz al mes, útil para probarlo. Para un uso profesional continuado se necesita una suscripción de pago que amplía minutos y acceso a voces premium. Consulta su web para precios actualizados.',
+          'Cuenta con un plan gratuito que ofrece un número reducido de minutos de voz al mes, útil para probarlo. Para un uso profesional continuado se necesita una suscripción de pago que amplía minutos y acceso a voces premium.',
       },
     ],
   },
@@ -1739,7 +1739,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Dubverse es gratis?',
         answer:
-          'Dispone de una cuota gratuita de minutos que permite probar el doblaje en vídeos cortos. Para volúmenes mayores o acceso a voces de mejor calidad hay que contratar un plan de pago basado en minutos procesados. Consulta su web para precios actualizados.',
+          'Dispone de una cuota gratuita de minutos que permite probar el doblaje en vídeos cortos. Para volúmenes mayores o acceso a voces de mejor calidad hay que contratar un plan de pago basado en minutos procesados.',
       },
     ],
   },
@@ -1783,7 +1783,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Voice.ai es gratis?',
         answer:
-          'Ofrece un uso gratuito con acceso a muchas de sus funciones de cambio de voz. Determinadas opciones avanzadas o el uso sin restricciones pueden requerir una suscripción de pago. Consulta su web para conocer las condiciones y los precios actualizados.',
+          'Ofrece un uso gratuito con acceso a muchas de sus funciones de cambio de voz. Determinadas opciones avanzadas o el uso sin restricciones pueden requerir una suscripción de pago.',
       },
       {
         question: '¿Voice.ai funciona con Discord?',
@@ -1832,7 +1832,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Suno es gratis?',
         answer:
-          'Sí, cuenta con un plan gratuito que otorga créditos diarios para generar un número limitado de canciones. Los planes de pago amplían esos créditos y suelen incluir derechos de uso comercial de las pistas generadas. Consulta su web para precios actualizados.',
+          'Sí, cuenta con un plan gratuito que otorga créditos diarios para generar un número limitado de canciones. Los planes de pago amplían esos créditos y suelen incluir derechos de uso comercial de las pistas generadas.',
       },
       {
         question: '¿Puedo usar las canciones de Suno comercialmente?',
@@ -1930,7 +1930,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Colossyan es gratis?',
         answer:
-          'No es una herramienta gratuita: funciona por suscripción de pago, con planes según minutos de vídeo, avatares y usuarios. Suele existir una prueba limitada para evaluar la plataforma antes de contratarla. Consulta su web para conocer los planes y precios actualizados.',
+          'No es una herramienta gratuita: funciona por suscripción de pago, con planes según minutos de vídeo, avatares y usuarios. Suele existir una prueba limitada para evaluar la plataforma antes de contratarla.',
       },
       {
         question: '¿Colossyan funciona en español?',
@@ -1979,7 +1979,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Sora es gratis?',
         answer:
-          'Existe un acceso gratuito con límites en el número de generaciones, la duración y la resolución de los vídeos. Las suscripciones de pago del ecosistema de OpenAI amplían esas capacidades. La disponibilidad varía según el país; consulta su web para precios actualizados.',
+          'Existe un acceso gratuito con límites en el número de generaciones, la duración y la resolución de los vídeos. Las suscripciones de pago del ecosistema de OpenAI amplían esas capacidades. La disponibilidad varía según el país;',
       },
       {
         question: '¿Para qué sirve Sora?',
@@ -2028,7 +2028,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Veo es gratis?',
         answer:
-          'Suele existir un acceso gratuito con límites de uso a través de las herramientas de Google, mientras que las funciones más avanzadas se reservan a planes de pago. La disponibilidad varía según el país. Consulta su web para conocer las condiciones actualizadas.',
+          'Suele existir un acceso gratuito con límites de uso a través de las herramientas de Google, mientras que las funciones más avanzadas se reservan a planes de pago. La disponibilidad varía según el país.',
       },
       {
         question: '¿Veo funciona en español?',
@@ -2077,7 +2077,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Runway es gratis?',
         answer:
-          'Ofrece un plan gratuito con créditos limitados que permite probar las funciones básicas. Para un uso continuado hacen falta planes de pago que amplían créditos, resolución y almacenamiento. Consulta su web para precios actualizados y límites de cada plan.',
+          'Ofrece un plan gratuito con créditos limitados que permite probar las funciones básicas. Para un uso continuado hacen falta planes de pago que amplían créditos, resolución y almacenamiento.',
       },
       {
         question: '¿Para qué sirve Runway?',
@@ -2126,7 +2126,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Pika Labs es gratis?',
         answer:
-          'Tiene un plan gratuito con créditos limitados suficientes para probar la herramienta. Para un uso frecuente o comercial hay planes de pago que amplían el número de generaciones y la calidad. Consulta su web para precios actualizados.',
+          'Tiene un plan gratuito con créditos limitados suficientes para probar la herramienta. Para un uso frecuente o comercial hay planes de pago que amplían el número de generaciones y la calidad.',
       },
       {
         question: '¿Para qué sirve Pika Labs?',
@@ -2175,7 +2175,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Synthesia es gratis?',
         answer:
-          'No dispone de un plan gratuito completo. Suele ofrecer una demostración o vídeo de prueba y, a partir de ahí, planes de suscripción que limitan los minutos generados al mes. Consulta su web para precios actualizados y condiciones.',
+          'No dispone de un plan gratuito completo. Suele ofrecer una demostración o vídeo de prueba y, a partir de ahí, planes de suscripción que limitan los minutos generados al mes.',
       },
       {
         question: '¿Synthesia funciona en español?',
@@ -2224,7 +2224,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿InVideo es gratis?',
         answer:
-          'Ofrece un plan gratuito con límites de exportación y marca de agua en los vídeos. Para eliminarla y acceder a más minutos y recursos hay que pasar a un plan de pago. Consulta su web para precios actualizados.',
+          'Ofrece un plan gratuito con límites de exportación y marca de agua en los vídeos. Para eliminarla y acceder a más minutos y recursos hay que pasar a un plan de pago.',
       },
       {
         question: '¿Para qué sirve InVideo?',
@@ -2278,7 +2278,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Fliki es gratis?',
         answer:
-          'Tiene un plan gratuito con minutos limitados al mes y marca de agua. Para eliminarla, acceder a voces de mayor calidad y usar el contenido comercialmente hay que contratar un plan de pago. Consulta su web para precios actualizados.',
+          'Tiene un plan gratuito con minutos limitados al mes y marca de agua. Para eliminarla, acceder a voces de mayor calidad y usar el contenido comercialmente hay que contratar un plan de pago.',
       },
     ],
   },
@@ -2322,7 +2322,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Kling es gratis?',
         answer:
-          'Dispone de acceso gratuito mediante un sistema de créditos limitados que permite generar unos cuantos vídeos. Para un uso intensivo o mayor calidad hay planes de pago. Consulta su web para precios actualizados y disponibilidad en tu país.',
+          'Dispone de acceso gratuito mediante un sistema de créditos limitados que permite generar unos cuantos vídeos. Para un uso intensivo o mayor calidad hay planes de pago.',
       },
       {
         question: '¿Para qué sirve Kling?',
@@ -2371,7 +2371,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿MiniMax es gratis?',
         answer:
-          'Permite generar vídeo de forma gratuita con límites de uso. Para volúmenes mayores, mejor calidad o acceso por API existen opciones de pago basadas en créditos o suscripción. Consulta su web para precios actualizados.',
+          'Permite generar vídeo de forma gratuita con límites de uso. Para volúmenes mayores, mejor calidad o acceso por API existen opciones de pago basadas en créditos o suscripción.',
       },
       {
         question: '¿Para qué sirve MiniMax?',
@@ -2420,7 +2420,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿VideoFX es gratis?',
         answer:
-          'Sí, se ofrece de forma gratuita dentro de las herramientas experimentales de Google, aunque con límites de uso y disponibilidad restringida según el país. Algunas funciones avanzadas pueden requerir suscripción. Consulta su web para condiciones actualizadas.',
+          'Sí, se ofrece de forma gratuita dentro de las herramientas experimentales de Google, aunque con límites de uso y disponibilidad restringida según el país. Algunas funciones avanzadas pueden requerir suscripción.',
       },
       {
         question: '¿Para qué sirve VideoFX?',
@@ -2469,7 +2469,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿GitHub Copilot es gratis?',
         answer:
-          'Es un producto de suscripción, aunque ofrece un nivel gratuito con límites y acceso sin coste para estudiantes verificados y mantenedores de proyectos open source. El plan individual de pago suele rondar los 10 $/mes. Consulta su web para precios actualizados.',
+          'Es un producto de suscripción, aunque ofrece un nivel gratuito con límites y acceso sin coste para estudiantes verificados y mantenedores de proyectos open source. El plan individual de pago suele rondar los 10 $/mes.',
       },
       {
         question: '¿Para qué sirve GitHub Copilot?',
@@ -2518,7 +2518,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Cursor es gratis?',
         answer:
-          'Ofrece un plan gratuito con un número limitado de peticiones a los modelos avanzados, suficiente para probarlo. Para un uso continuado existe una suscripción de pago que suele rondar los 20 $/mes. Consulta su web para precios actualizados.',
+          'Ofrece un plan gratuito con un número limitado de peticiones a los modelos avanzados, suficiente para probarlo. Para un uso continuado existe una suscripción de pago que suele rondar los 20 $/mes.',
       },
       {
         question: '¿En qué se diferencia Cursor de GitHub Copilot?',
@@ -2567,7 +2567,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Tabnine es gratis?',
         answer:
-          'Dispone de un plan gratuito con autocompletado básico. Las funciones avanzadas, el chat y el despliegue privado forman parte de los planes de pago, con precios por usuario. Consulta su web para precios actualizados y condiciones para empresas.',
+          'Dispone de un plan gratuito con autocompletado básico. Las funciones avanzadas, el chat y el despliegue privado forman parte de los planes de pago, con precios por usuario.',
       },
       {
         question: '¿Tabnine es seguro para código privado?',
@@ -2616,7 +2616,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Codium es gratis?',
         answer:
-          'Cuenta con un plan gratuito orientado a desarrolladores individuales que cubre las funciones principales. Los equipos y empresas disponen de planes de pago con funciones adicionales. Consulta su web para precios actualizados.',
+          'Cuenta con un plan gratuito orientado a desarrolladores individuales que cubre las funciones principales. Los equipos y empresas disponen de planes de pago con funciones adicionales.',
       },
       {
         question: '¿Para qué sirve Codium?',
@@ -2665,7 +2665,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿AskTheCode es gratis?',
         answer:
-          'Su uso básico es gratuito, con posibles límites de volumen de consultas o restricciones sobre repositorios privados. Consulta su web para conocer las condiciones vigentes y si existen planes de pago para un uso más intensivo.',
+          'Su uso básico es gratuito, con posibles límites de volumen de consultas o restricciones sobre repositorios privados.',
       },
       {
         question: '¿Para qué sirve AskTheCode?',
@@ -2714,7 +2714,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Testim es gratis?',
         answer:
-          'Suele ofrecer un plan de entrada gratuito o un periodo de prueba con ejecuciones limitadas. El uso profesional se cubre con planes de pago para equipos y empresas, normalmente con precio a medida. Consulta su web para precios actualizados.',
+          'Suele ofrecer un plan de entrada gratuito o un periodo de prueba con ejecuciones limitadas. El uso profesional se cubre con planes de pago para equipos y empresas, normalmente con precio a medida.',
       },
       {
         question: '¿Para qué sirve Testim?',
@@ -2763,7 +2763,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Diffblue es gratis?',
         answer:
-          'Existe una versión gratuita o de comunidad con límites de uso, pensada para probar la herramienta. El uso profesional se cubre con planes empresariales de pago, normalmente con precio a medida. Consulta su web para precios actualizados.',
+          'Existe una versión gratuita o de comunidad con límites de uso, pensada para probar la herramienta. El uso profesional se cubre con planes empresariales de pago, normalmente con precio a medida.',
       },
       {
         question: '¿Diffblue funciona con otros lenguajes además de Java?',
@@ -2812,7 +2812,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Jules es gratis?',
         answer:
-          'Dispone de un nivel gratuito con un número limitado de tareas, suficiente para probarlo. Para un uso más intensivo, la capacidad ampliada se incluye en las suscripciones de IA de Google. Consulta su web para precios actualizados.',
+          'Dispone de un nivel gratuito con un número limitado de tareas, suficiente para probarlo. Para un uso más intensivo, la capacidad ampliada se incluye en las suscripciones de IA de Google.',
       },
       {
         question: '¿Para qué sirve Jules?',
@@ -2861,7 +2861,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿DeepSource es gratis?',
         answer:
-          'Es gratuito para proyectos de código abierto. Para repositorios privados y equipos ofrece planes de pago por usuario con funciones adicionales de gestión y seguridad. Consulta su web para precios actualizados y condiciones.',
+          'Es gratuito para proyectos de código abierto. Para repositorios privados y equipos ofrece planes de pago por usuario con funciones adicionales de gestión y seguridad.',
       },
       {
         question: '¿Para qué sirve DeepSource?',
@@ -2910,7 +2910,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿LangChain es gratis?',
         answer:
-          'Sí, el framework es de código abierto y su uso es gratuito. Lo que sí tiene coste es el consumo de los modelos de lenguaje que utilices y, opcionalmente, los productos comerciales de la empresa. Consulta su web para precios de esos servicios.',
+          'Sí, el framework es de código abierto y su uso es gratuito. Lo que sí tiene coste es el consumo de los modelos de lenguaje que utilices y, opcionalmente, los productos comerciales de la empresa.',
       },
       {
         question: '¿Para qué sirve LangChain?',
@@ -3008,7 +3008,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Alexa es gratis?',
         answer:
-          'El asistente y su aplicación móvil son gratuitos. Lo que se paga es el dispositivo que lo incorpora, como un altavoz Echo, y algunos servicios de suscripción opcionales de Amazon que añaden contenidos o funciones extra. Consulta su web para precios actualizados.',
+          'El asistente y su aplicación móvil son gratuitos. Lo que se paga es el dispositivo que lo incorpora, como un altavoz Echo, y algunos servicios de suscripción opcionales de Amazon que añaden contenidos o funciones extra.',
       },
       {
         question: '¿Alexa funciona en español?',
@@ -3106,7 +3106,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Pi es gratis?',
         answer:
-          'Pi funciona con un modelo freemium: hay acceso gratuito con límites de uso y opciones de pago que pueden variar. Las condiciones han evolucionado desde su lanzamiento, así que conviene consultar su web para precios actualizados antes de crear la cuenta.',
+          'Pi funciona con un modelo freemium: hay acceso gratuito con límites de uso y opciones de pago que pueden variar. Las condiciones han evolucionado desde su lanzamiento, así que conviene',
       },
       {
         question: '¿Pi funciona en español?',
@@ -3155,7 +3155,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Perplexity es gratis?',
         answer:
-          'Sí, tiene un plan gratuito con límites de uso diarios que cubre la búsqueda conversacional básica. También ofrece una suscripción de pago que amplía las consultas avanzadas y da acceso a más funciones. Consulta su web para precios actualizados.',
+          'Sí, tiene un plan gratuito con límites de uso diarios que cubre la búsqueda conversacional básica. También ofrece una suscripción de pago que amplía las consultas avanzadas y da acceso a más funciones.',
       },
       {
         question: '¿En qué se diferencia Perplexity de ChatGPT?',
@@ -3204,7 +3204,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Replika es gratis?',
         answer:
-          'Tiene una versión gratuita que permite chatear con funciones y personalización limitadas. La suscripción de pago desbloquea voz, modos de relación adicionales y más opciones de personalización del avatar. Consulta su web para precios actualizados.',
+          'Tiene una versión gratuita que permite chatear con funciones y personalización limitadas. La suscripción de pago desbloquea voz, modos de relación adicionales y más opciones de personalización del avatar.',
       },
       {
         question: '¿Replika funciona en español?',
@@ -3302,7 +3302,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Drift es gratis?',
         answer:
-          'No. Drift es una solución de pago dirigida a empresas, con tarifas habitualmente bajo presupuesto personalizado según el tamaño del equipo y las funciones necesarias. Suele requerir contactar con su equipo comercial. Consulta su web para precios actualizados.',
+          'No. Drift es una solución de pago dirigida a empresas, con tarifas habitualmente bajo presupuesto personalizado según el tamaño del equipo y las funciones necesarias. Suele requerir contactar con su equipo comercial.',
       },
       {
         question: '¿Para qué sirve Drift?',
@@ -3400,7 +3400,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿LivePerson es gratis?',
         answer:
-          'No. Es una solución empresarial de pago con precios personalizados en función del volumen de conversaciones, los canales activos y las integraciones necesarias. Requiere contacto comercial previo. Consulta su web para precios actualizados.',
+          'No. Es una solución empresarial de pago con precios personalizados en función del volumen de conversaciones, los canales activos y las integraciones necesarias. Requiere contacto comercial previo.',
       },
       {
         question: '¿Para qué sirve LivePerson?',
@@ -3449,7 +3449,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Einstein está incluido en Salesforce?',
         answer:
-          'Depende de la edición. Algunas funciones vienen incluidas en determinadas ediciones y otras requieren complementos con coste adicional por usuario o por consumo. Es habitual que se contrate como añadido a las licencias existentes. Consulta su web para precios actualizados.',
+          'Depende de la edición. Algunas funciones vienen incluidas en determinadas ediciones y otras requieren complementos con coste adicional por usuario o por consumo. Es habitual que se contrate como añadido a las licencias existentes.',
       },
       {
         question: '¿Para qué sirve Einstein?',
@@ -3547,7 +3547,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Zendesk tiene plan gratuito?',
         answer:
-          'No mantiene un plan gratuito permanente. Es una herramienta de pago con planes por agente y distintos niveles de funciones, aunque ofrece periodo de prueba. Las capacidades de IA suelen contratarse como complemento. Consulta su web para precios actualizados.',
+          'No mantiene un plan gratuito permanente. Es una herramienta de pago con planes por agente y distintos niveles de funciones, aunque ofrece periodo de prueba. Las capacidades de IA suelen contratarse como complemento.',
       },
       {
         question: '¿Zendesk funciona en español?',
@@ -3743,7 +3743,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Los agentes de ChatGPT son gratis?',
         answer:
-          'ChatGPT tiene un plan gratuito, pero las funciones agénticas suelen estar reservadas a los planes de pago, con límites de uso según el nivel contratado. Los planes individuales rondan los 20 $/mes. Consulta su web para precios actualizados.',
+          'ChatGPT tiene un plan gratuito, pero las funciones agénticas suelen estar reservadas a los planes de pago, con límites de uso según el nivel contratado. Los planes individuales rondan los 20 $/mes.',
       },
       {
         question: '¿Para qué sirven los agentes de ChatGPT?',
@@ -3792,7 +3792,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Cuánto cuestan los agentes de Copilot?',
         answer:
-          'Son de pago. Se comercializan mediante licencias de Microsoft 365 Copilot por usuario y, en ciertos escenarios, con modelos de consumo por mensaje o acción. Los precios varían según el plan y el país. Consulta su web para precios actualizados.',
+          'Son de pago. Se comercializan mediante licencias de Microsoft 365 Copilot por usuario y, en ciertos escenarios, con modelos de consumo por mensaje o acción. Los precios varían según el plan y el país.',
       },
       {
         question: '¿Para qué sirven los agentes de Copilot?',
@@ -3890,7 +3890,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Los agentes de xAI son gratis?',
         answer:
-          'Funcionan con modelo freemium: suele haber acceso gratuito con límites de uso y opciones de pago para uso intensivo o funciones avanzadas, además del consumo de API facturado por uso. Consulta su web para precios actualizados.',
+          'Funcionan con modelo freemium: suele haber acceso gratuito con límites de uso y opciones de pago para uso intensivo o funciones avanzadas, además del consumo de API facturado por uso.',
       },
       {
         question: '¿Para qué sirven los agentes de xAI?',
@@ -3939,7 +3939,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Zapier es gratis?',
         answer:
-          'Tiene un plan gratuito con un número limitado de tareas al mes y flujos sencillos, suficiente para probarlo o para automatizaciones puntuales. Para uso profesional hacen falta planes de pago que escalan según el volumen de tareas. Consulta su web para precios actualizados.',
+          'Tiene un plan gratuito con un número limitado de tareas al mes y flujos sencillos, suficiente para probarlo o para automatizaciones puntuales. Para uso profesional hacen falta planes de pago que escalan según el volumen de tareas.',
       },
       {
         question: '¿Para qué sirve Zapier?',
@@ -3988,7 +3988,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿n8n es gratis?',
         answer:
-          'La versión autoalojada de n8n es gratuita: descargas el software y lo ejecutas en tu propio servidor, pagando solo la infraestructura. Existe además una versión en la nube de pago con planes según el volumen de ejecuciones. Consulta su web para conocer los precios vigentes.',
+          'La versión autoalojada de n8n es gratuita: descargas el software y lo ejecutas en tu propio servidor, pagando solo la infraestructura. Existe además una versión en la nube de pago con planes según el volumen de ejecuciones.',
       },
       {
         question: '¿Cuál es la diferencia entre n8n y Zapier?',
@@ -4037,7 +4037,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Make es gratis?',
         answer:
-          'Make ofrece un plan gratuito con un número limitado de operaciones al mes, útil para automatizaciones pequeñas o para probar la herramienta. A partir de ahí, los planes de pago aumentan las operaciones disponibles y la frecuencia de ejecución. Consulta su web para precios actualizados.',
+          'Make ofrece un plan gratuito con un número limitado de operaciones al mes, útil para automatizaciones pequeñas o para probar la herramienta. A partir de ahí, los planes de pago aumentan las operaciones disponibles y la frecuencia de ejecución.',
       },
       {
         question: '¿Make funciona en español?',
@@ -4135,7 +4135,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿IFTTT es gratis?',
         answer:
-          'IFTTT ofrece un plan gratuito que permite tener activos unos pocos applets a la vez. Para crear más automatizaciones, usar varias acciones por applet o reducir los tiempos de ejecución, hay que pasar a un plan de pago. Consulta su web para precios actualizados.',
+          'IFTTT ofrece un plan gratuito que permite tener activos unos pocos applets a la vez. Para crear más automatizaciones, usar varias acciones por applet o reducir los tiempos de ejecución, hay que pasar a un plan de pago.',
       },
       {
         question: '¿IFTTT sirve para automatizar la domótica del hogar?',
@@ -4184,7 +4184,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Manus es gratis?',
         answer:
-          'Manus suele ofrecer créditos gratuitos para probar la herramienta, que se consumen según la complejidad de las tareas encargadas. Para un uso continuado hay que contratar un plan de pago que amplía los créditos disponibles. Consulta su web para precios actualizados.',
+          'Manus suele ofrecer créditos gratuitos para probar la herramienta, que se consumen según la complejidad de las tareas encargadas. Para un uso continuado hay que contratar un plan de pago que amplía los créditos disponibles.',
       },
       {
         question: '¿En qué se diferencia Manus de un chatbot como ChatGPT?',
@@ -4233,7 +4233,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Trigger.dev es gratis?',
         answer:
-          'Al ser código abierto, Trigger.dev puede autoalojarse sin pagar licencia, asumiendo solo el coste del servidor. Su servicio gestionado en la nube ofrece habitualmente un tramo gratuito y planes de pago según el volumen de ejecuciones. Consulta su web para precios actualizados.',
+          'Al ser código abierto, Trigger.dev puede autoalojarse sin pagar licencia, asumiendo solo el coste del servidor. Su servicio gestionado en la nube ofrece habitualmente un tramo gratuito y planes de pago según el volumen de ejecuciones.',
       },
       {
         question: '¿Para qué sirve Trigger.dev en proyectos con IA?',
@@ -4282,7 +4282,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Notion AI es gratis?',
         answer:
-          'Notion ofrece un plan gratuito para uso personal, pero las funciones de IA no están disponibles de forma ilimitada en él. Normalmente se contratan como complemento de pago por usuario o vienen incluidas en ciertos planes. Consulta su web para precios actualizados.',
+          'Notion ofrece un plan gratuito para uso personal, pero las funciones de IA no están disponibles de forma ilimitada en él. Normalmente se contratan como complemento de pago por usuario o vienen incluidas en ciertos planes.',
       },
       {
         question: '¿Notion AI funciona en español?',
@@ -4380,7 +4380,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Google Workspace Duet es gratis?',
         answer:
-          'No. Se trata de funciones de pago que se contratan como complemento por usuario sobre una licencia de Google Workspace, si bien Google ha ido incorporándolas a determinados planes de suscripción. Consulta su web para conocer los precios y el empaquetado actuales.',
+          'No. Se trata de funciones de pago que se contratan como complemento por usuario sobre una licencia de Google Workspace, si bien Google ha ido incorporándolas a determinados planes de suscripción.',
       },
       {
         question: '¿Para qué sirve la IA de Google Workspace?',
@@ -4429,7 +4429,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Gamma es gratis?',
         answer:
-          'Gamma ofrece un plan gratuito con una cantidad limitada de créditos para generar presentaciones y documentos. Cuando se agotan, hay que esperar o pasar a un plan de pago, que amplía los créditos y elimina limitaciones como la marca de agua. Consulta su web para precios actualizados.',
+          'Gamma ofrece un plan gratuito con una cantidad limitada de créditos para generar presentaciones y documentos. Cuando se agotan, hay que esperar o pasar a un plan de pago, que amplía los créditos y elimina limitaciones como la marca de agua.',
       },
       {
         question: '¿Gamma funciona en español?',
@@ -4478,7 +4478,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Magic Write es gratis?',
         answer:
-          'Canva incluye Magic Write en su cuenta gratuita con un número limitado de generaciones. Las suscripciones de pago de Canva amplían ese límite y dan acceso al resto de funciones de IA de la plataforma. Consulta su web para precios actualizados.',
+          'Canva incluye Magic Write en su cuenta gratuita con un número limitado de generaciones. Las suscripciones de pago de Canva amplían ese límite y dan acceso al resto de funciones de IA de la plataforma.',
       },
       {
         question: '¿Magic Write funciona en español?',
@@ -4527,7 +4527,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Canva Magic Studio es gratis?',
         answer:
-          'Las funciones de Magic Studio están disponibles en la cuenta gratuita de Canva, pero con límites mensuales de uso. Las suscripciones de pago amplían esos límites y desbloquean funciones y recursos adicionales. Consulta su web para precios actualizados.',
+          'Las funciones de Magic Studio están disponibles en la cuenta gratuita de Canva, pero con límites mensuales de uso. Las suscripciones de pago amplían esos límites y desbloquean funciones y recursos adicionales.',
       },
       {
         question: '¿Para qué sirve Canva Magic Studio?',
@@ -4576,7 +4576,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Power BI es gratis?',
         answer:
-          'Power BI Desktop, la aplicación para crear informes, es gratuita. Sin embargo, publicar y compartir esos informes con otros usuarios dentro de la organización requiere licencias de pago. Consulta su web para conocer los planes y precios vigentes.',
+          'Power BI Desktop, la aplicación para crear informes, es gratuita. Sin embargo, publicar y compartir esos informes con otros usuarios dentro de la organización requiere licencias de pago.',
       },
       {
         question: '¿Es difícil aprender Power BI?',
@@ -4625,7 +4625,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Tableau es gratis?',
         answer:
-          'No. Tableau es una plataforma de pago con licencias por usuario según el rol de cada persona. Existe Tableau Public, una versión gratuita, pero publica los trabajos de forma abierta, por lo que no sirve para datos confidenciales. Consulta su web para precios actualizados.',
+          'No. Tableau es una plataforma de pago con licencias por usuario según el rol de cada persona. Existe Tableau Public, una versión gratuita, pero publica los trabajos de forma abierta, por lo que no sirve para datos confidenciales.',
       },
       {
         question: '¿Qué es mejor, Tableau o Power BI?',
@@ -4674,7 +4674,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿ThoughtSpot es gratis?',
         answer:
-          'No, ThoughtSpot es una plataforma de pago orientada al ámbito empresarial. El precio depende del volumen de datos y del número de usuarios, y suele negociarse con el proveedor. Habitualmente ofrece periodos de prueba. Consulta su web para conocer las condiciones actuales.',
+          'No, ThoughtSpot es una plataforma de pago orientada al ámbito empresarial. El precio depende del volumen de datos y del número de usuarios, y suele negociarse con el proveedor. Habitualmente ofrece periodos de prueba.',
       },
       {
         question: '¿Para qué sirve ThoughtSpot en una empresa?',
@@ -4723,7 +4723,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿AlphaSense es gratis?',
         answer:
-          'No. AlphaSense es una herramienta profesional de pago con suscripciones anuales cuyo precio se acuerda con el proveedor y resulta elevado. Está orientada a firmas de inversión, analistas y equipos de estrategia. Consulta su web para solicitar información y precios actualizados.',
+          'No. AlphaSense es una herramienta profesional de pago con suscripciones anuales cuyo precio se acuerda con el proveedor y resulta elevado. Está orientada a firmas de inversión, analistas y equipos de estrategia.',
       },
       {
         question: '¿Para quién es útil AlphaSense?',
@@ -4772,7 +4772,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Kavout es gratis?',
         answer:
-          'No. Kavout funciona con suscripciones de pago, con distintos niveles según las funciones y los datos incluidos, dirigidos tanto a inversores particulares avanzados como a clientes institucionales. Consulta su web para conocer los planes y precios actualizados.',
+          'No. Kavout funciona con suscripciones de pago, con distintos niveles según las funciones y los datos incluidos, dirigidos tanto a inversores particulares avanzados como a clientes institucionales.',
       },
       {
         question: '¿Es fiable la IA para invertir en bolsa?',
@@ -4821,7 +4821,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿ClickUp es gratis?',
         answer:
-          'ClickUp ofrece un plan gratuito bastante completo, con tareas ilimitadas y funciones básicas de colaboración, suficiente para equipos pequeños. Las funciones avanzadas y el asistente de IA requieren planes de pago por usuario. Consulta su web para precios actualizados.',
+          'ClickUp ofrece un plan gratuito bastante completo, con tareas ilimitadas y funciones básicas de colaboración, suficiente para equipos pequeños. Las funciones avanzadas y el asistente de IA requieren planes de pago por usuario.',
       },
       {
         question: '¿Qué es ClickUp Brain?',
@@ -4870,7 +4870,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Asana es gratis?',
         answer:
-          'Asana ofrece un plan gratuito válido para equipos pequeños, con tareas y proyectos básicos. Las funciones avanzadas, como cronogramas, objetivos o las capacidades de inteligencia artificial, requieren planes de pago por usuario. Consulta su web para precios actualizados.',
+          'Asana ofrece un plan gratuito válido para equipos pequeños, con tareas y proyectos básicos. Las funciones avanzadas, como cronogramas, objetivos o las capacidades de inteligencia artificial, requieren planes de pago por usuario.',
       },
       {
         question: '¿Asana funciona en español?',
@@ -4919,7 +4919,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Monday.com es gratis?',
         answer:
-          'Monday.com ofrece un plan gratuito muy limitado, pensado para uso individual o pruebas. Para trabajar en equipo con funciones reales hay que contratar un plan de pago por usuario, con un mínimo de asientos. Consulta su web para precios actualizados.',
+          'Monday.com ofrece un plan gratuito muy limitado, pensado para uso individual o pruebas. Para trabajar en equipo con funciones reales hay que contratar un plan de pago por usuario, con un mínimo de asientos.',
       },
       {
         question: '¿Para qué sirve la IA de Monday.com?',
@@ -4968,7 +4968,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Trello es gratis?',
         answer:
-          'Sí, Trello tiene un plan gratuito que permite crear tableros y colaborar con otras personas, con límites en automatizaciones y ciertas funciones. Las vistas avanzadas, la administración de equipos y los límites más amplios pertenecen a los planes de pago. Consulta su web para precios actualizados.',
+          'Sí, Trello tiene un plan gratuito que permite crear tableros y colaborar con otras personas, con límites en automatizaciones y ciertas funciones. Las vistas avanzadas, la administración de equipos y los límites más amplios pertenecen a los planes de pago.',
       },
       {
         question: '¿Trello está en español?',
@@ -5017,7 +5017,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Harvey es gratis?',
         answer:
-          'No. Harvey es una herramienta de pago con modelo empresarial y no ofrece plan gratuito ni registro autoservicio. El acceso se contrata directamente con la empresa, habitualmente mediante licencias por usuario y presupuesto a medida. Consulta su web para precios actualizados.',
+          'No. Harvey es una herramienta de pago con modelo empresarial y no ofrece plan gratuito ni registro autoservicio. El acceso se contrata directamente con la empresa, habitualmente mediante licencias por usuario y presupuesto a medida.',
       },
       {
         question: '¿Harvey sustituye a un abogado?',
@@ -5071,7 +5071,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Luminance tiene versión gratuita?',
         answer:
-          'No. Es una herramienta de pago dirigida a empresas y despachos, sin plan gratuito ni registro autoservicio. El acceso se contrata mediante presupuesto personalizado, normalmente tras una demostración con su equipo comercial. Consulta su web para precios actualizados.',
+          'No. Es una herramienta de pago dirigida a empresas y despachos, sin plan gratuito ni registro autoservicio. El acceso se contrata mediante presupuesto personalizado, normalmente tras una demostración con su equipo comercial.',
       },
     ],
   },
@@ -5121,7 +5121,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿DoNotPay es gratis?',
         answer:
-          'No del todo. Aunque puedes explorar sus servicios, la mayoría de trámites requieren una suscripción de pago de importe reducido. El modelo es freemium con cuota periódica, y los importes varían por servicio y país. Consulta su web para precios actualizados.',
+          'No del todo. Aunque puedes explorar sus servicios, la mayoría de trámites requieren una suscripción de pago de importe reducido. El modelo es freemium con cuota periódica, y los importes varían por servicio y país.',
       },
     ],
   },
@@ -5170,7 +5170,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Spellbook es gratis?',
         answer:
-          'No. Spellbook es de pago y funciona con licencias por usuario. Normalmente permite solicitar una demo o una prueba antes de contratar, pero no mantiene un plan gratuito permanente. Consulta su web para precios actualizados.',
+          'No. Spellbook es de pago y funciona con licencias por usuario. Normalmente permite solicitar una demo o una prueba antes de contratar, pero no mantiene un plan gratuito permanente.',
       },
     ],
   },
@@ -5219,7 +5219,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Evisort tiene plan gratuito?',
         answer:
-          'No. Es una solución empresarial de pago, sin plan gratuito ni registro autoservicio. El acceso se contrata mediante presupuesto personalizado según usuarios, volumen de contratos y módulos. Consulta su web para precios actualizados.',
+          'No. Es una solución empresarial de pago, sin plan gratuito ni registro autoservicio. El acceso se contrata mediante presupuesto personalizado según usuarios, volumen de contratos y módulos.',
       },
     ],
   },
@@ -5268,7 +5268,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿LawGeex es gratis?',
         answer:
-          'No. Es una solución de pago dirigida a departamentos jurídicos corporativos, sin plan gratuito. El precio se ajusta al volumen de contratos y al número de usuarios, y se contrata mediante presupuesto. Consulta su web para precios actualizados.',
+          'No. Es una solución de pago dirigida a departamentos jurídicos corporativos, sin plan gratuito. El precio se ajusta al volumen de contratos y al número de usuarios, y se contrata mediante presupuesto.',
       },
     ],
   },
@@ -5312,7 +5312,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Ghostwriter es gratis?',
         answer:
-          'Replit tiene un nivel gratuito con el que se puede programar, pero las funciones de IA más completas forman parte de los planes de pago por suscripción. La oferta ha cambiado con el tiempo. Consulta su web para precios actualizados.',
+          'Replit tiene un nivel gratuito con el que se puede programar, pero las funciones de IA más completas forman parte de los planes de pago por suscripción. La oferta ha cambiado con el tiempo.',
       },
       {
         question: '¿Se puede usar Ghostwriter fuera de Replit?',
@@ -5361,7 +5361,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Bolt es gratis?',
         answer:
-          'Bolt tiene un nivel gratuito con una cantidad limitada de créditos de uso, suficiente para probar la herramienta y hacer proyectos pequeños. Para proyectos más grandes hay planes de pago que amplían los créditos disponibles. Consulta su web para precios actualizados.',
+          'Bolt tiene un nivel gratuito con una cantidad limitada de créditos de uso, suficiente para probar la herramienta y hacer proyectos pequeños. Para proyectos más grandes hay planes de pago que amplían los créditos disponibles.',
       },
       {
         question: '¿El código que genera Bolt sirve para producción?',
@@ -5415,7 +5415,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿TestingBot tiene versión gratuita?',
         answer:
-          'Ofrece una prueba gratuita para evaluar la plataforma, pero el uso continuado requiere un plan de pago. Los precios dependen de los minutos de test, la ejecución en paralelo y el acceso a dispositivos reales. Consulta su web para precios actualizados.',
+          'Ofrece una prueba gratuita para evaluar la plataforma, pero el uso continuado requiere un plan de pago. Los precios dependen de los minutos de test, la ejecución en paralelo y el acceso a dispositivos reales.',
       },
     ],
   },
@@ -5464,7 +5464,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Mabl es gratis?',
         answer:
-          'No de forma permanente. Mabl ofrece una prueba gratuita para evaluar la plataforma, pero el uso continuado requiere un plan de pago cuyo precio depende del volumen de ejecuciones y del número de usuarios. Consulta su web para precios actualizados.',
+          'No de forma permanente. Mabl ofrece una prueba gratuita para evaluar la plataforma, pero el uso continuado requiere un plan de pago cuyo precio depende del volumen de ejecuciones y del número de usuarios.',
       },
     ],
   },
@@ -5508,7 +5508,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿SonarQube es gratis?',
         answer:
-          'Sí, tiene una edición Community open source y gratuita que puedes instalar en tu propio servidor. Las ediciones de pago añaden más lenguajes, análisis de ramas y funciones avanzadas de seguridad, con precio según el tamaño del código. Consulta su web para precios actualizados.',
+          'Sí, tiene una edición Community open source y gratuita que puedes instalar en tu propio servidor. Las ediciones de pago añaden más lenguajes, análisis de ramas y funciones avanzadas de seguridad, con precio según el tamaño del código.',
       },
       {
         question: '¿Qué diferencia hay entre SonarQube y SonarCloud?',
@@ -5557,7 +5557,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Code Climate es gratis?',
         answer:
-          'Su análisis de calidad es gratuito para proyectos de código abierto. Para repositorios privados y para las funciones de métricas de equipo hay planes de pago facturados por usuario y mes. Consulta su web para precios actualizados.',
+          'Su análisis de calidad es gratuito para proyectos de código abierto. Para repositorios privados y para las funciones de métricas de equipo hay planes de pago facturados por usuario y mes.',
       },
       {
         question: '¿Qué diferencia hay entre Code Climate y SonarQube?',
@@ -5606,7 +5606,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿CodeFactor es gratis?',
         answer:
-          'Sí para repositorios públicos y proyectos de código abierto. Para repositorios privados hay planes de pago por suscripción, cuyo precio escala según el número de repositorios o usuarios. Consulta su web para precios actualizados.',
+          'Sí para repositorios públicos y proyectos de código abierto. Para repositorios privados hay planes de pago por suscripción, cuyo precio escala según el número de repositorios o usuarios.',
       },
       {
         question: '¿Para qué sirve CodeFactor?',
@@ -5660,7 +5660,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Aidoc es gratis?',
         answer:
-          'No. Es una solución de pago dirigida a hospitales y centros de diagnóstico, sin versión gratuita ni acceso para particulares. El precio se acuerda mediante contrato institucional según los algoritmos y el volumen de estudios. Consulta su web para precios actualizados.',
+          'No. Es una solución de pago dirigida a hospitales y centros de diagnóstico, sin versión gratuita ni acceso para particulares. El precio se acuerda mediante contrato institucional según los algoritmos y el volumen de estudios.',
       },
     ],
   },
@@ -5709,7 +5709,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿PathAI es gratis?',
         answer:
-          'No. Es una solución de pago dirigida a laboratorios, hospitales y compañías farmacéuticas, sin versión gratuita ni acceso para particulares. Los acuerdos se negocian de forma institucional según el proyecto. Consulta su web para precios actualizados.',
+          'No. Es una solución de pago dirigida a laboratorios, hospitales y compañías farmacéuticas, sin versión gratuita ni acceso para particulares. Los acuerdos se negocian de forma institucional según el proyecto.',
       },
     ],
   },
@@ -5753,7 +5753,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Med-PaLM es gratis?',
         answer:
-          'No es un producto de suscripción abierto al público. Se ha desarrollado como proyecto de investigación y su acceso se ha limitado a organizaciones sanitarias y socios seleccionados, canalizado a través de la plataforma cloud de Google. Consulta su web para precios actualizados.',
+          'No es un producto de suscripción abierto al público. Se ha desarrollado como proyecto de investigación y su acceso se ha limitado a organizaciones sanitarias y socios seleccionados, canalizado a través de la plataforma cloud de Google.',
       },
       {
         question: '¿Puedo usar Med-PaLM para diagnosticarme?',
@@ -5807,7 +5807,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Zebra Medical es gratis?',
         answer:
-          'No. Es una solución de pago dirigida a hospitales y sistemas de salud, sin versión gratuita ni acceso para particulares. El precio se acuerda mediante contrato institucional, habitualmente por algoritmo o por estudio analizado. Consulta su web para precios actualizados.',
+          'No. Es una solución de pago dirigida a hospitales y sistemas de salud, sin versión gratuita ni acceso para particulares. El precio se acuerda mediante contrato institucional, habitualmente por algoritmo o por estudio analizado.',
       },
     ],
   },
@@ -5856,7 +5856,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Lunit es gratis?',
         answer:
-          'No. Es una solución de pago dirigida a hospitales, centros de cribado y compañías farmacéuticas, sin versión gratuita ni acceso para particulares. El precio se acuerda por contrato según los productos y el volumen. Consulta su web para precios actualizados.',
+          'No. Es una solución de pago dirigida a hospitales, centros de cribado y compañías farmacéuticas, sin versión gratuita ni acceso para particulares. El precio se acuerda por contrato según los productos y el volumen.',
       },
     ],
   },
@@ -5905,7 +5905,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Enlitic tiene versión gratuita?',
         answer:
-          'No. Es una solución empresarial de pago dirigida a hospitales y redes sanitarias, sin plan gratuito ni acceso para particulares. El precio se acuerda por contrato en función del volumen de estudios y los módulos contratados. Consulta su web para precios actualizados.',
+          'No. Es una solución empresarial de pago dirigida a hospitales y redes sanitarias, sin plan gratuito ni acceso para particulares. El precio se acuerda por contrato en función del volumen de estudios y los módulos contratados.',
       },
     ],
   },
@@ -6000,7 +6000,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿eMed es gratis?',
         answer:
-          'eMed funciona con un modelo freemium. Algunas herramientas de orientación pueden estar disponibles sin coste, pero las consultas médicas y las pruebas supervisadas suelen ser de pago o estar cubiertas por un plan de empresa o aseguradora. Consulta su web para precios actualizados.',
+          'eMed funciona con un modelo freemium. Algunas herramientas de orientación pueden estar disponibles sin coste, pero las consultas médicas y las pruebas supervisadas suelen ser de pago o estar cubiertas por un plan de empresa o aseguradora.',
       },
       {
         question: '¿Para qué sirve eMed?',
@@ -6251,7 +6251,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿BenevolentAI es gratis?',
         answer:
-          'No. Es una solución de pago orientada a empresas farmacéuticas y centros de investigación, con acceso mediante licencias o acuerdos de colaboración. No ofrece un plan gratuito ni registro abierto para particulares. Consulta su web para solicitar precios actualizados.',
+          'No. Es una solución de pago orientada a empresas farmacéuticas y centros de investigación, con acceso mediante licencias o acuerdos de colaboración. No ofrece un plan gratuito ni registro abierto para particulares.',
       },
       {
         question: '¿Para qué sirve BenevolentAI?',
@@ -6401,7 +6401,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Scribe AI es gratis?',
         answer:
-          'Scribe tiene un plan gratuito que permite crear guías básicas, pero las funciones de IA más avanzadas, el difuminado automático y las opciones de equipo están reservadas a los planes de pago. Consulta su web para precios actualizados.',
+          'Scribe tiene un plan gratuito que permite crear guías básicas, pero las funciones de IA más avanzadas, el difuminado automático y las opciones de equipo están reservadas a los planes de pago.',
       },
       {
         question: '¿Para qué sirve Scribe AI?',
@@ -6451,7 +6451,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿MagicSchool AI es gratis?',
         answer:
-          'Dispone de un plan gratuito bastante generoso para docentes individuales, con acceso a la mayoría de herramientas. Los planes de pago añaden funciones avanzadas, gestión de centro y mayor capacidad. Consulta su web para precios actualizados.',
+          'Dispone de un plan gratuito bastante generoso para docentes individuales, con acceso a la mayoría de herramientas. Los planes de pago añaden funciones avanzadas, gestión de centro y mayor capacidad.',
       },
       {
         question: '¿MagicSchool AI funciona en español?',
@@ -6501,7 +6501,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Grammarly es gratis?',
         answer:
-          'Tiene una versión gratuita que corrige gramática, ortografía y puntuación básicas. Las sugerencias de estilo, tono, reescritura y las funciones para equipos pertenecen a los planes de pago. Consulta su web para conocer los precios actualizados.',
+          'Tiene una versión gratuita que corrige gramática, ortografía y puntuación básicas. Las sugerencias de estilo, tono, reescritura y las funciones para equipos pertenecen a los planes de pago.',
       },
       {
         question: '¿Grammarly funciona en español?',
@@ -6551,7 +6551,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Writable es gratis?',
         answer:
-          'Ofrece un acceso gratuito con funciones limitadas para docentes, mientras que el uso completo suele requerir una licencia de centro o distrito. El precio depende del número de alumnos y de las integraciones necesarias. Consulta su web para precios actualizados.',
+          'Ofrece un acceso gratuito con funciones limitadas para docentes, mientras que el uso completo suele requerir una licencia de centro o distrito. El precio depende del número de alumnos y de las integraciones necesarias.',
       },
       {
         question: '¿Para qué sirve Writable?',
@@ -6601,7 +6601,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Eduaide es gratis?',
         answer:
-          'Tiene un plan gratuito con un número limitado de generaciones, suficiente para probarlo. Para un uso intensivo hay planes de pago que amplían el límite y añaden funciones. Consulta su web para precios actualizados.',
+          'Tiene un plan gratuito con un número limitado de generaciones, suficiente para probarlo. Para un uso intensivo hay planes de pago que amplían el límite y añaden funciones.',
       },
       {
         question: '¿Eduaide funciona en español?',
@@ -6651,7 +6651,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Quizlet es gratis?',
         answer:
-          'Sí, se puede usar gratis para crear y estudiar fichas, con publicidad y algunas limitaciones. El generador de exámenes de práctica y otras funciones de IA están asociadas a la suscripción de pago. Consulta su web para precios actualizados.',
+          'Sí, se puede usar gratis para crear y estudiar fichas, con publicidad y algunas limitaciones. El generador de exámenes de práctica y otras funciones de IA están asociadas a la suscripción de pago.',
       },
       {
         question: '¿Quizlet funciona en español?',
@@ -6701,7 +6701,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿QuestionWell es gratis?',
         answer:
-          'Dispone de un plan gratuito con un límite de generaciones mensuales, suficiente para un uso ocasional. Para un volumen mayor y funciones adicionales existen planes de pago. Consulta su web para precios actualizados.',
+          'Dispone de un plan gratuito con un límite de generaciones mensuales, suficiente para un uso ocasional. Para un volumen mayor y funciones adicionales existen planes de pago.',
       },
       {
         question: '¿Para qué sirve QuestionWell?',
@@ -6751,7 +6751,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Curipod es gratis?',
         answer:
-          'Sí, tiene un plan gratuito con el que un docente puede crear y lanzar lecciones interactivas, aunque con ciertos límites. Los planes de pago añaden funciones avanzadas y gestión de centro. Consulta su web para precios actualizados.',
+          'Sí, tiene un plan gratuito con el que un docente puede crear y lanzar lecciones interactivas, aunque con ciertos límites. Los planes de pago añaden funciones avanzadas y gestión de centro.',
       },
       {
         question: '¿Curipod funciona en español?',
@@ -6801,7 +6801,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿TeachMate AI es gratis?',
         answer:
-          'Tiene un plan gratuito con acceso limitado a sus generadores, útil para probar la herramienta. El uso intensivo y las funciones para centros requieren una suscripción de pago. Consulta su web para precios actualizados.',
+          'Tiene un plan gratuito con acceso limitado a sus generadores, útil para probar la herramienta. El uso intensivo y las funciones para centros requieren una suscripción de pago.',
       },
       {
         question: '¿Para qué sirve TeachMate AI?',
@@ -6851,7 +6851,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Diffit es gratis?',
         answer:
-          'Cuenta con un plan gratuito que permite generar y adaptar materiales con ciertos límites. Los planes de pago añaden más generaciones, opciones de exportación y funciones para equipos y centros. Consulta su web para precios actualizados.',
+          'Cuenta con un plan gratuito que permite generar y adaptar materiales con ciertos límites. Los planes de pago añaden más generaciones, opciones de exportación y funciones para equipos y centros.',
       },
       {
         question: '¿Diffit funciona en español?',
@@ -7201,7 +7201,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Cleo es gratis?',
         answer:
-          'Tiene una versión gratuita que cubre el seguimiento de gastos, la categorización y los presupuestos básicos. Las funciones avanzadas están en una suscripción de pago con una cuota mensual reducida. Consulta su web para conocer los precios actualizados y la disponibilidad en tu país.',
+          'Tiene una versión gratuita que cubre el seguimiento de gastos, la categorización y los presupuestos básicos. Las funciones avanzadas están en una suscripción de pago con una cuota mensual reducida.',
       },
       {
         question: '¿Cleo funciona en España?',
@@ -7251,7 +7251,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Plum es gratis?',
         answer:
-          'Ofrece un plan gratuito con el ahorro automático básico. Las reglas avanzadas, las opciones de inversión y los análisis más detallados están en planes de suscripción de pago, con cuotas mensuales reducidas. Consulta su web para conocer los precios y planes actualizados.',
+          'Ofrece un plan gratuito con el ahorro automático básico. Las reglas avanzadas, las opciones de inversión y los análisis más detallados están en planes de suscripción de pago, con cuotas mensuales reducidas.',
       },
       {
         question: '¿Es seguro invertir con Plum?',
@@ -7300,7 +7300,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Wallet AI es gratis?',
         answer:
-          'No consta un plan gratuito de acceso libre: se trata de un servicio de pago. Los precios concretos no aparecen publicados de forma detallada, así que lo recomendable es consultar su web o contactar con la empresa para conocer las condiciones actualizadas.',
+          'No consta un plan gratuito de acceso libre: se trata de un servicio de pago. Los precios concretos no aparecen publicados de forma detallada, así que lo recomendable es',
       },
       {
         question: '¿Para qué sirve un asesor financiero con IA?',
@@ -7500,7 +7500,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Fotor es gratis?',
         answer:
-          'Tiene una versión gratuita con funciones básicas y un número limitado de créditos para las herramientas de IA, aunque algunas exportaciones llevan marca de agua. Los planes de pago eliminan esas restricciones. Consulta su web para conocer los precios actualizados.',
+          'Tiene una versión gratuita con funciones básicas y un número limitado de créditos para las herramientas de IA, aunque algunas exportaciones llevan marca de agua. Los planes de pago eliminan esas restricciones.',
       },
       {
         question: '¿Fotor funciona en español?',
@@ -7600,7 +7600,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Uizard es gratis?',
         answer:
-          'Ofrece un plan gratuito con un número limitado de proyectos y funciones, suficiente para probar la herramienta. Los planes de pago amplían proyectos, generaciones de IA y colaboración en equipo. Consulta su web para conocer los precios actualizados.',
+          'Ofrece un plan gratuito con un número limitado de proyectos y funciones, suficiente para probar la herramienta. Los planes de pago amplían proyectos, generaciones de IA y colaboración en equipo.',
       },
       {
         question: '¿Uizard sustituye a Figma?',
@@ -7700,7 +7700,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Looka es gratis?',
         answer:
-          'Puedes generar y previsualizar logos sin pagar, pero para descargar los archivos hay que comprar el logo o suscribirse al kit de marca. Es un modelo freemium en el que la exploración es gratuita y la entrega final es de pago. Consulta su web para precios actualizados.',
+          'Puedes generar y previsualizar logos sin pagar, pero para descargar los archivos hay que comprar el logo o suscribirse al kit de marca. Es un modelo freemium en el que la exploración es gratuita y la entrega final es de pago.',
       },
       {
         question: '¿Puedo usar el logo de Looka comercialmente?',
@@ -7750,7 +7750,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Brandmark es gratis?',
         answer:
-          'Generar y previsualizar los logos es gratuito, pero descargar los archivos requiere un pago único. Existen varios paquetes según los formatos y extras que incluyan. Consulta su web para conocer los precios actualizados antes de decidir.',
+          'Generar y previsualizar los logos es gratuito, pero descargar los archivos requiere un pago único. Existen varios paquetes según los formatos y extras que incluyan.',
       },
       {
         question: '¿Brandmark o Looka: cuál elegir?',
@@ -7850,7 +7850,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Durable es gratis?',
         answer:
-          'Puedes generar y previsualizar tu web sin coste, pero publicarla con dominio propio y acceder a las funciones de negocio requiere un plan de pago. Las cuotas mensuales se sitúan en el rango habitual de los constructores web. Consulta su web para precios actualizados.',
+          'Puedes generar y previsualizar tu web sin coste, pero publicarla con dominio propio y acceder a las funciones de negocio requiere un plan de pago. Las cuotas mensuales se sitúan en el rango habitual de los constructores web.',
       },
       {
         question: '¿Durable funciona en español?',
@@ -7900,7 +7900,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Wix ADI es gratis?',
         answer:
-          'Puedes crear y publicar un sitio sin pagar, pero con un subdominio de Wix y anuncios de la plataforma. Para usar dominio propio, eliminar la publicidad o vender online necesitas un plan de pago. Consulta su web para conocer los planes y precios actualizados.',
+          'Puedes crear y publicar un sitio sin pagar, pero con un subdominio de Wix y anuncios de la plataforma. Para usar dominio propio, eliminar la publicidad o vender online necesitas un plan de pago.',
       },
       {
         question: '¿Wix ADI o el editor de Wix?',
@@ -7950,7 +7950,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Framer es gratis?',
         answer:
-          'Framer tiene un plan gratuito con límites, pensado para probar la herramienta y publicar proyectos sencillos en un subdominio de la plataforma. Para usar dominio propio, más páginas o funciones avanzadas hay que pasar a un plan de pago. Consulta su web para precios actualizados.',
+          'Framer tiene un plan gratuito con límites, pensado para probar la herramienta y publicar proyectos sencillos en un subdominio de la plataforma. Para usar dominio propio, más páginas o funciones avanzadas hay que pasar a un plan de pago.',
       },
       {
         question: '¿Framer funciona en español?',
@@ -8048,7 +8048,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Cylance es gratis?',
         answer:
-          'No. Cylance se comercializa mediante licencias de pago por equipo protegido, con contratación habitualmente anual y a través de distribuidores. Puede haber pruebas o demostraciones para empresas, pero no existe una versión gratuita de uso indefinido. Consulta su web para precios actualizados.',
+          'No. Cylance se comercializa mediante licencias de pago por equipo protegido, con contratación habitualmente anual y a través de distribuidores. Puede haber pruebas o demostraciones para empresas, pero no existe una versión gratuita de uso indefinido.',
       },
       {
         question: '¿Para qué sirve Cylance?',
@@ -8200,7 +8200,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿LogRhythm es gratis?',
         answer:
-          'No. Es una solución empresarial de pago con licencias que se contratan a través del fabricante o distribuidores. No dispone de un plan gratuito permanente, aunque puede facilitar demostraciones o pruebas a organizaciones interesadas. Consulta su web para precios actualizados.',
+          'No. Es una solución empresarial de pago con licencias que se contratan a través del fabricante o distribuidores. No dispone de un plan gratuito permanente, aunque puede facilitar demostraciones o pruebas a organizaciones interesadas.',
       },
     ],
   },
@@ -8249,7 +8249,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿SentinelOne es gratis?',
         answer:
-          'No. Se comercializa mediante licencias de pago por dispositivo, con distintos niveles de producto y contratación anual. No existe un plan gratuito de uso continuado, aunque suele ofrecer pruebas y demostraciones a empresas. Consulta su web para precios actualizados.',
+          'No. Se comercializa mediante licencias de pago por dispositivo, con distintos niveles de producto y contratación anual. No existe un plan gratuito de uso continuado, aunque suele ofrecer pruebas y demostraciones a empresas.',
       },
     ],
   },
@@ -8298,7 +8298,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿CrowdStrike es gratis?',
         answer:
-          'No. Es una solución de pago por suscripción, con precio por dispositivo protegido y por módulos contratados. Ofrece pruebas gratuitas limitadas en el tiempo para evaluar la plataforma, pero no un plan gratuito permanente. Consulta su web para precios actualizados.',
+          'No. Es una solución de pago por suscripción, con precio por dispositivo protegido y por módulos contratados. Ofrece pruebas gratuitas limitadas en el tiempo para evaluar la plataforma, pero no un plan gratuito permanente.',
       },
     ],
   },
@@ -8396,7 +8396,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Predix es gratis?',
         answer:
-          'No. Es una plataforma empresarial de pago cuyo coste se determina por proyecto y suscripción, según el número de activos y las aplicaciones contratadas. No existe un plan gratuito para uso productivo. Consulta su web para conocer las condiciones actualizadas.',
+          'No. Es una plataforma empresarial de pago cuyo coste se determina por proyecto y suscripción, según el número de activos y las aplicaciones contratadas. No existe un plan gratuito para uso productivo.',
       },
     ],
   },
@@ -8445,7 +8445,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Uptake es gratis?',
         answer:
-          'No. Es un producto empresarial de pago por suscripción, con precio calculado según los activos monitorizados y los módulos elegidos. No dispone de plan gratuito, aunque ofrece demostraciones y pruebas de concepto a las empresas interesadas. Consulta su web para precios actualizados.',
+          'No. Es un producto empresarial de pago por suscripción, con precio calculado según los activos monitorizados y los módulos elegidos. No dispone de plan gratuito, aunque ofrece demostraciones y pruebas de concepto a las empresas interesadas.',
       },
     ],
   },
@@ -8494,7 +8494,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Cuánto cuesta Spot?',
         answer:
-          'Spot es un producto de gama alta cuyo precio se sitúa muy por encima del de un robot de consumo, y varía según las cargas útiles, el software y el soporte contratados. Boston Dynamics lo vende mediante presupuesto; consulta su web para precios actualizados.',
+          'Spot es un producto de gama alta cuyo precio se sitúa muy por encima del de un robot de consumo, y varía según las cargas útiles, el software y el soporte contratados. Boston Dynamics lo vende mediante presupuesto;',
       },
     ],
   },
@@ -8788,7 +8788,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿LandingLens es gratis?',
         answer:
-          'Suele ofrecer un nivel de entrada o prueba con límites de uso para evaluar la herramienta, pero el uso productivo requiere una suscripción de pago cuyo precio depende de los modelos, usuarios y dispositivos de despliegue. Consulta su web para precios actualizados.',
+          'Suele ofrecer un nivel de entrada o prueba con límites de uso para evaluar la herramienta, pero el uso productivo requiere una suscripción de pago cuyo precio depende de los modelos, usuarios y dispositivos de despliegue.',
       },
     ],
   },
@@ -8837,7 +8837,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Matroid es gratis?',
         answer:
-          'No para uso productivo. Matroid se comercializa mediante suscripción de pago, con precio ligado al número de detectores y flujos de vídeo procesados. Puede ofrecer demostraciones o pruebas limitadas para evaluar la plataforma. Consulta su web para precios actualizados.',
+          'No para uso productivo. Matroid se comercializa mediante suscripción de pago, con precio ligado al número de detectores y flujos de vídeo procesados. Puede ofrecer demostraciones o pruebas limitadas para evaluar la plataforma.',
       },
     ],
   },
@@ -8886,7 +8886,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Cognex es gratis?',
         answer:
-          'No. Cognex comercializa hardware y licencias de software de pago, cuyo precio depende del equipo y del software elegidos, además del proyecto de integración. La compra se realiza normalmente a través de distribuidores o integradores. Consulta su web para precios actualizados.',
+          'No. Cognex comercializa hardware y licencias de software de pago, cuyo precio depende del equipo y del software elegidos, además del proyecto de integración. La compra se realiza normalmente a través de distribuidores o integradores.',
       },
     ],
   },
@@ -9383,7 +9383,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Mem0 es gratis?',
         answer:
-          'Tiene una versión de código abierto que puedes desplegar por tu cuenta sin coste de licencia, y un servicio gestionado con un plan gratuito limitado y planes de pago según el uso. Consulta su web para conocer los tramos y precios actualizados.',
+          'Tiene una versión de código abierto que puedes desplegar por tu cuenta sin coste de licencia, y un servicio gestionado con un plan gratuito limitado y planes de pago según el uso.',
       },
       {
         question: '¿Para qué sirve Mem0?',
@@ -9433,7 +9433,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Zep es gratis?',
         answer:
-          'Ofrece un plan gratuito con límites de uso, pensado para desarrollo y pruebas, junto a planes de pago que escalan con el volumen. Además publica componentes de código abierto que puedes autoalojar. Consulta su web para conocer los tramos actualizados.',
+          'Ofrece un plan gratuito con límites de uso, pensado para desarrollo y pruebas, junto a planes de pago que escalan con el volumen. Además publica componentes de código abierto que puedes autoalojar.',
       },
       {
         question: '¿Para qué sirve Zep?',
@@ -9834,7 +9834,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Weights & Biases es gratis?',
         answer:
-          'Ofrece un plan gratuito pensado para uso personal y proyectos académicos, con ciertos límites de almacenamiento e historial. Para equipos y empresas dispone de planes de pago, normalmente por usuario. Consulta su web para conocer los tramos actualizados.',
+          'Ofrece un plan gratuito pensado para uso personal y proyectos académicos, con ciertos límites de almacenamiento e historial. Para equipos y empresas dispone de planes de pago, normalmente por usuario.',
       },
       {
         question: '¿Para qué sirve Weights & Biases?',
@@ -9884,7 +9884,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿ClearML es gratis?',
         answer:
-          'Su núcleo es de código abierto y puedes autoalojarlo sin coste de licencia, asumiendo el gasto de infraestructura. El servicio en la nube ofrece un plan gratuito con límites y planes de pago para equipos y empresas. Consulta su web para los tramos actualizados.',
+          'Su núcleo es de código abierto y puedes autoalojarlo sin coste de licencia, asumiendo el gasto de infraestructura. El servicio en la nube ofrece un plan gratuito con límites y planes de pago para equipos y empresas.',
       },
       {
         question: '¿Para qué sirve ClearML?',
@@ -10137,7 +10137,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿PromptLayer es gratis?',
         answer:
-          'Ofrece un plan gratuito con un límite de peticiones registradas, útil para probar la herramienta o para proyectos pequeños. Los equipos que necesitan más volumen, colaboración o retención de datos pasan a planes de pago. Consulta su web para ver los precios actualizados.',
+          'Ofrece un plan gratuito con un límite de peticiones registradas, útil para probar la herramienta o para proyectos pequeños. Los equipos que necesitan más volumen, colaboración o retención de datos pasan a planes de pago.',
       },
       {
         question: '¿Para qué sirve PromptLayer?',
@@ -10188,7 +10188,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Arize AI es gratis?',
         answer:
-          'Dispone de una opción gratuita con límites para empezar, además de componentes de código abierto para instrumentar aplicaciones. Los equipos con volúmenes altos, más retención de datos o necesidades empresariales usan planes de pago. Consulta su web para precios actualizados.',
+          'Dispone de una opción gratuita con límites para empezar, además de componentes de código abierto para instrumentar aplicaciones. Los equipos con volúmenes altos, más retención de datos o necesidades empresariales usan planes de pago.',
       },
       {
         question: '¿Para qué sirve Arize AI?',
@@ -10338,7 +10338,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Unstructured es gratis?',
         answer:
-          'La librería de código abierto es gratuita y puedes ejecutarla en tu propia infraestructura. La API y la plataforma gestionadas son de pago, normalmente en función del volumen de páginas o documentos procesados, con algún tramo gratuito para pruebas. Consulta su web para precios actualizados.',
+          'La librería de código abierto es gratuita y puedes ejecutarla en tu propia infraestructura. La API y la plataforma gestionadas son de pago, normalmente en función del volumen de páginas o documentos procesados, con algún tramo gratuito para pruebas.',
       },
       {
         question: '¿Para qué sirve Unstructured?',
@@ -10439,7 +10439,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Writesonic es gratis?',
         answer:
-          'Ofrece un plan gratuito con créditos limitados que permite probar la herramienta. Para un uso continuado hay planes de pago mensuales que escalan según el volumen de contenido y los usuarios. Consulta su web para conocer los precios actualizados.',
+          'Ofrece un plan gratuito con créditos limitados que permite probar la herramienta. Para un uso continuado hay planes de pago mensuales que escalan según el volumen de contenido y los usuarios.',
       },
       {
         question: '¿Writesonic funciona en español?',
@@ -10489,7 +10489,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Hypotenuse AI es gratis?',
         answer:
-          'Suele ofrecer una prueba gratuita con límites para evaluar la herramienta, pero el uso continuado requiere un plan de pago que escala según el volumen de contenido y los usuarios. Consulta su web para conocer los tramos y precios actualizados.',
+          'Suele ofrecer una prueba gratuita con límites para evaluar la herramienta, pero el uso continuado requiere un plan de pago que escala según el volumen de contenido y los usuarios.',
       },
       {
         question: '¿Para qué sirve Hypotenuse AI?',
@@ -10539,7 +10539,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿HubSpot AI es gratis?',
         answer:
-          'HubSpot tiene una capa gratuita de CRM que incluye algunas funciones de IA con límites de uso. Las capacidades más avanzadas están en los planes de pago, cuyo precio crece con el número de contactos y usuarios. Consulta su web para precios actualizados.',
+          'HubSpot tiene una capa gratuita de CRM que incluye algunas funciones de IA con límites de uso. Las capacidades más avanzadas están en los planes de pago, cuyo precio crece con el número de contactos y usuarios.',
       },
       {
         question: '¿Para qué sirve HubSpot AI?',
@@ -10590,7 +10590,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Salesforce Einstein AI es gratis?',
         answer:
-          'No. Es una funcionalidad de pago que se incluye en las ediciones superiores de Salesforce o se contrata como complemento sobre la licencia existente, normalmente con precio por usuario y mes. Consulta su web o a su equipo comercial para precios actualizados.',
+          'No. Es una funcionalidad de pago que se incluye en las ediciones superiores de Salesforce o se contrata como complemento sobre la licencia existente, normalmente con precio por usuario y mes.',
       },
       {
         question: '¿Para qué sirve Salesforce Einstein AI?',
@@ -10640,7 +10640,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Smart Copy es gratis?',
         answer:
-          'Ofrece una opción gratuita con un número limitado de generaciones, suficiente para probarlo. Para un uso intensivo hay planes de pago, y también está disponible dentro de las suscripciones de la plataforma Unbounce. Consulta su web para precios actualizados.',
+          'Ofrece una opción gratuita con un número limitado de generaciones, suficiente para probarlo. Para un uso intensivo hay planes de pago, y también está disponible dentro de las suscripciones de la plataforma Unbounce.',
       },
       {
         question: '¿Para qué sirve Unbounce Smart Copy?',
@@ -10690,7 +10690,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿GetResponse AI es gratis?',
         answer:
-          'GetResponse tiene un plan gratuito con funciones básicas y un límite de contactos que permite probar la plataforma. Varias capacidades de IA están asociadas a los planes de pago, cuyo precio crece con el tamaño de la lista. Consulta su web para precios actualizados.',
+          'GetResponse tiene un plan gratuito con funciones básicas y un límite de contactos que permite probar la plataforma. Varias capacidades de IA están asociadas a los planes de pago, cuyo precio crece con el tamaño de la lista.',
       },
       {
         question: '¿GetResponse AI funciona en español?',
@@ -10740,7 +10740,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Mailchimp AI es gratis?',
         answer:
-          'Mailchimp cuenta con un plan gratuito con límites de contactos y envíos que da acceso a funciones básicas. Las capacidades de IA más avanzadas suelen requerir un plan de pago, cuyo precio depende del tamaño de la lista. Consulta su web para precios actualizados.',
+          'Mailchimp cuenta con un plan gratuito con límites de contactos y envíos que da acceso a funciones básicas. Las capacidades de IA más avanzadas suelen requerir un plan de pago, cuyo precio depende del tamaño de la lista.',
       },
       {
         question: '¿Para qué sirve Mailchimp AI?',
@@ -10790,7 +10790,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿DeepL es gratis?',
         answer:
-          'Tiene una versión gratuita con límites de caracteres y de documentos traducidos al mes, suficiente para un uso ocasional. Los planes de pago añaden más volumen, glosarios ampliados y garantías de privacidad de datos. Consulta su web para precios actualizados.',
+          'Tiene una versión gratuita con límites de caracteres y de documentos traducidos al mes, suficiente para un uso ocasional. Los planes de pago añaden más volumen, glosarios ampliados y garantías de privacidad de datos.',
       },
       {
         question: '¿DeepL es mejor que Google Translate?',
@@ -10890,7 +10890,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿ModernMT es gratis?',
         answer:
-          'Ofrece una opción gratuita o de prueba con límites de caracteres, pero está orientado sobre todo al uso profesional mediante planes de pago por volumen y licencias empresariales. Consulta su web para conocer los tramos y precios actualizados.',
+          'Ofrece una opción gratuita o de prueba con límites de caracteres, pero está orientado sobre todo al uso profesional mediante planes de pago por volumen y licencias empresariales.',
       },
       {
         question: '¿Para qué sirve ModernMT?',
@@ -11088,7 +11088,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Subly es gratis?',
         answer:
-          'Ofrece un plan gratuito con un número limitado de minutos y funciones, suficiente para probarlo. Para un uso continuado hay suscripciones de pago que amplían los minutos disponibles, los idiomas y las opciones de exportación. Consulta su web para las tarifas actuales.',
+          'Ofrece un plan gratuito con un número limitado de minutos y funciones, suficiente para probarlo. Para un uso continuado hay suscripciones de pago que amplían los minutos disponibles, los idiomas y las opciones de exportación.',
       },
       {
         question: '¿Subly funciona en español?',
@@ -11338,7 +11338,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Fiddler AI es gratis?',
         answer:
-          'Ofrece una vía de acceso gratuita o de prueba con funciones limitadas, pero su uso completo es de pago y está orientado a empresas, con precios según volumen y necesidades. Consulta su web para conocer las condiciones vigentes.',
+          'Ofrece una vía de acceso gratuita o de prueba con funciones limitadas, pero su uso completo es de pago y está orientado a empresas, con precios según volumen y necesidades.',
       },
     ],
   },
@@ -11431,7 +11431,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿ChatPDF es gratis?',
         answer:
-          'Tiene un plan gratuito con límites diarios en número de documentos, páginas por archivo y preguntas. Para un uso más intensivo ofrece una suscripción de pago que amplía esos límites. Consulta su web para conocer las tarifas actuales.',
+          'Tiene un plan gratuito con límites diarios en número de documentos, páginas por archivo y preguntas. Para un uso más intensivo ofrece una suscripción de pago que amplía esos límites.',
       },
       {
         question: '¿ChatPDF funciona con documentos en español?',
@@ -11676,7 +11676,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿You.com es gratis?',
         answer:
-          'Sí, se puede usar gratis con límites en las funciones de inteligencia artificial y en el número de consultas avanzadas. Existen suscripciones de pago que amplían el uso y dan acceso a modelos más potentes. Consulta su web para las tarifas actuales.',
+          'Sí, se puede usar gratis con límites en las funciones de inteligencia artificial y en el número de consultas avanzadas. Existen suscripciones de pago que amplían el uso y dan acceso a modelos más potentes.',
       },
       {
         question: '¿You.com funciona en español?',
