@@ -31,6 +31,12 @@ export type SubcategoryContent = {
   body: string;
 };
 
+export type ComparisonSection = {
+  title: string;
+  paragraphs?: string[];
+  bullets?: string[];
+};
+
 export type Comparison = {
   slug: string;
   a: string;
@@ -41,5 +47,26 @@ export type Comparison = {
   table: { headers: string[]; rows: string[][] };
   whenA: string[];
   whenB: string[];
+  sections?: ComparisonSection[];
   faqs: ToolFaq[];
+};
+
+export type PricingPlan = {
+  name: string;
+  price: string;
+  notes?: string;
+};
+
+/**
+ * Precios verificados en la web oficial de la herramienta.
+ * Solo existen para las herramientas que hemos podido comprobar:
+ * el resto se queda con el pricingNote cualitativo de su ficha.
+ */
+export type ToolPricing = {
+  name: string;
+  model: 'free' | 'freemium' | 'paid' | 'open-source';
+  freeTier: string | null;
+  plans: PricingPlan[];
+  notes: string;
+  sourceUrl: string;
 };

@@ -1,5 +1,6 @@
 import { aiCategories, AITool } from '../data/ai-tools';
 import { toolDetails } from '../data/tool-details';
+import { discontinuedTools } from '../data/discontinued';
 import type { ToolDetail } from '../types/tool';
 import { slugify } from './slugify';
 
@@ -54,7 +55,11 @@ export function getRelatedTools(tool: ToolWithContext, limit = 6): ToolWithConte
   return getAllTools()
     .filter(
       (t) =>
-        t.slug !== tool.slug && t.category === tool.category && t.subcategory === tool.subcategory,
+        t.slug !== tool.slug &&
+        t.category === tool.category &&
+        t.subcategory === tool.subcategory &&
+        // No recomendamos como alternativa algo que ha cerrado
+        !discontinuedTools[t.name],
     )
     .slice(0, limit);
 }

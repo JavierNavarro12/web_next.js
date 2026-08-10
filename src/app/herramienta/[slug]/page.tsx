@@ -10,6 +10,8 @@ import { getPricingText } from '../../../utils/toolUtils';
 import { findToolBySlug, getAllTools, getRelatedTools, getToolDetail } from '../../../utils/tools';
 import { getComparisonsForTool } from '../../../utils/comparisons';
 import { isToolPublished, NOINDEX_ROBOTS } from '../../../utils/publishing';
+import { getToolPricing, PRICING_LAST_CHECKED } from '../../../utils/pricing';
+import { discontinuedTools } from '../../../data/discontinued';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -76,6 +78,8 @@ export default async function ToolPage({ params }: Props) {
   const baseUrl = getSiteUrl();
   const related = getRelatedTools(tool);
   const toolComparisons = getComparisonsForTool(tool.name);
+  const pricing = getToolPricing(tool.name);
+  const discontinued = discontinuedTools[tool.name];
   const categorySlug = slugify(tool.category);
   const subcategorySlug = slugify(tool.subcategory);
 
@@ -89,12 +93,17 @@ export default async function ToolPage({ params }: Props) {
     operatingSystem: 'Web',
     url: tool.url,
     image: `${baseUrl}${tool.image}`,
-    offers: {
-      '@type': 'Offer',
-      price: tool.pricing === 'paid' ? undefined : '0',
-      priceCurrency: 'EUR',
-      category: getPricingText(tool.pricing),
-    },
+    // Una herramienta cerrada no tiene oferta que anunciar
+    ...(discontinued
+      ? {}
+      : {
+          offers: {
+            '@type': 'Offer',
+            price: tool.pricing === 'paid' ? undefined : '0',
+            priceCurrency: 'EUR',
+            category: getPricingText(tool.pricing),
+          },
+        }),
   };
 
   const breadcrumbJsonLd = {
@@ -199,21 +208,57 @@ export default async function ToolPage({ params }: Props) {
           </div>
         </header>
 
-        {tool.url && (
-          <a
-            href={tool.url}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            className="inline-block mb-8 px-4 py-2 rounded-lg bg-white text-black font-semibold hover:bg-zinc-200 transition-colors"
+        {discontinued ? (
+          <div
+            role="note"
+            className="mb-8 rounded-xl border border-amber-700/60 bg-amber-950/30 p-5"
           >
-            Visitar {tool.name}
-          </a>
+            <p className="font-bold text-amber-200 mb-2">{tool.name} ya no está disponible</p>
+            <p className="text-zinc-300 leading-relaxed">{discontinued.note}</p>
+            <p className="text-zinc-400 text-sm mt-3">
+              Mantenemos esta ficha como referencia.{' '}
+              <a
+                href={discontinued.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="text-blue-400 hover:underline"
+              >
+                Consulta el anuncio oficial
+              </a>{' '}
+              o baja hasta las alternativas.
+            </p>
+          </div>
+        ) : (
+          tool.url && (
+            <a
+              href={tool.url}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="inline-block mb-8 px-4 py-2 rounded-lg bg-white text-black font-semibold hover:bg-zinc-200 transition-colors"
+            >
+              Visitar {tool.name}
+            </a>
+          )
         )}
 
         <section className="mb-8">
           <h2 className="text-2xl font-bold mb-3">¿Qué es {tool.name}?</h2>
           <p className="text-zinc-300 leading-relaxed">{detail.intro}</p>
         </section>
+
+        {/* La captura de la herramienta: antes se pisaba con el logo por el `||`. */}
+        <figure className="mb-8">
+          <Image
+            src={tool.image}
+            alt={`Captura de ${tool.name}`}
+            width={1200}
+            height={675}
+            sizes="(max-width: 768px) 100vw, 900px"
+            style={{ width: '100%', height: 'auto' }}
+            className="rounded-xl border border-zinc-800"
+          />
+          <figcaption className="text-zinc-500 text-sm mt-2">Interfaz de {tool.name}.</figcaption>
+        </figure>
 
         <section className="mb-8">
           <h2 className="text-2xl font-bold mb-3">¿Para qué sirve {tool.name}?</h2>
@@ -252,16 +297,97 @@ export default async function ToolPage({ params }: Props) {
           </div>
         </section>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-bold mb-3">Precio de {tool.name}</h2>
-          <p className="text-zinc-300 leading-relaxed">{detail.pricingNote}</p>
-        </section>
+        {/* Sin bloque de precios si la herramienta ha cerrado: contradiría el aviso. */}
+        {!discontinued && (
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold mb-3">Precio de {tool.name}</h2>
+
+            {pricing ? (
+              <>
+                {pricing.freeTier && (
+                  <p className="text-zinc-300 leading-relaxed mb-4">
+                    <strong className="text-white">Plan gratuito:</strong> {pricing.freeTier}
+                  </p>
+                )}
+
+                {pricing.plans.length > 0 && (
+                  <div className="overflow-x-auto mb-4">
+                    <table className="min-w-full text-left border-collapse border border-zinc-800">
+                      <thead>
+                        <tr className="bg-zinc-900/60">
+                          <th className="px-4 py-2 border border-zinc-800 text-zinc-200">Plan</th>
+                          <th className="px-4 py-2 border border-zinc-800 text-zinc-200">Precio</th>
+                          <th className="px-4 py-2 border border-zinc-800 text-zinc-200">
+                            Para quién
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {pricing.plans.map((plan, index) => (
+                          <tr
+                            key={plan.name}
+                            className={index % 2 === 0 ? 'bg-black' : 'bg-zinc-900/40'}
+                          >
+                            <td className="px-4 py-2 border border-zinc-800 text-zinc-200 font-semibold">
+                              {plan.name}
+                            </td>
+                            <td className="px-4 py-2 border border-zinc-800 text-zinc-300 whitespace-nowrap">
+                              {plan.price}
+                            </td>
+                            <td className="px-4 py-2 border border-zinc-800 text-zinc-300">
+                              {plan.notes}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+
+                <p className="text-zinc-300 leading-relaxed">{pricing.notes}</p>
+
+                <p className="text-zinc-500 text-sm mt-3">
+                  Precios consultados en {PRICING_LAST_CHECKED} en{' '}
+                  <a
+                    href={pricing.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    className="text-blue-400 hover:underline"
+                  >
+                    la web oficial de {tool.name}
+                  </a>
+                  . Pueden cambiar sin previo aviso.
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="text-zinc-300 leading-relaxed">{detail.pricingNote}</p>
+                {tool.url && (
+                  <p className="text-zinc-500 text-sm mt-3">
+                    No hemos verificado tarifas concretas de {tool.name}.{' '}
+                    <a
+                      href={tool.url}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                      className="text-blue-400 hover:underline"
+                    >
+                      Consulta su web oficial
+                    </a>{' '}
+                    para conocer los precios vigentes.
+                  </p>
+                )}
+              </>
+            )}
+          </section>
+        )}
 
         {related.length > 0 && (
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-3">Alternativas a {tool.name}</h2>
             <p className="text-zinc-300 leading-relaxed mb-4">
-              Otras herramientas de {tool.subcategory} que puedes comparar con {tool.name}:
+              {discontinued
+                ? `Si usabas ${tool.name}, estas herramientas de ${tool.subcategory} cubren lo mismo:`
+                : `Otras herramientas de ${tool.subcategory} que puedes comparar con ${tool.name}:`}
             </p>
             <ToolGrid tools={related} />
           </section>

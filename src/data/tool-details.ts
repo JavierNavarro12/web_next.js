@@ -3,6 +3,9 @@ import type { ToolDetail } from '../types/tool';
 /**
  * Contenido de las fichas de herramienta (/herramienta/[slug]).
  * La clave es el nombre exacto de la herramienta en ai-tools.ts.
+ *
+ * El aviso de "consulta la web oficial" vive en la plantilla de la ficha,
+ * no aquí: repetido en cada entrada era la huella de contenido de plantilla.
  */
 export const toolDetails: Record<string, ToolDetail> = {
   ChatGPT: {
@@ -36,7 +39,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El plan gratuito aplica límites de uso en horas de alta demanda',
     ],
     pricingNote:
-      'ChatGPT sigue un modelo freemium: hay un plan gratuito con acceso a las funciones básicas y límites de uso. Los planes individuales de pago suelen situarse en torno a los 20 $ al mes, con opciones superiores para equipos y empresas. El uso mediante API se factura aparte por consumo de tokens. Consulta su web para precios actualizados.',
+      'ChatGPT sigue un modelo freemium: hay un plan gratuito con acceso a las funciones básicas y límites de uso. Los planes individuales de pago suelen situarse en torno a los 20 $ al mes, con opciones superiores para equipos y empresas. El uso mediante API se factura aparte por consumo de tokens.',
     faqs: [
       {
         question: '¿Qué es ChatGPT y para qué sirve?',
@@ -86,7 +89,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Algunas capacidades llegan más tarde a determinados países',
     ],
     pricingNote:
-      'Claude funciona con un modelo freemium: hay un plan gratuito con límites de uso y suscripciones de pago que amplían la cuota y dan acceso a más funciones. Los planes individuales suelen rondar los 20 $ al mes, con opciones para equipos y empresas. El acceso por API se paga por consumo. Consulta su web para precios actualizados.',
+      'Claude funciona con un modelo freemium: hay un plan gratuito con límites de uso y suscripciones de pago que amplían la cuota y dan acceso a más funciones. Los planes individuales suelen rondar los 20 $ al mes, con opciones para equipos y empresas. El acceso por API se paga por consumo.',
     faqs: [
       {
         question: '¿Qué es Claude y quién lo desarrolla?',
@@ -136,7 +139,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Puede cometer errores factuales pese al acceso web',
     ],
     pricingNote:
-      'Gemini sigue un modelo freemium: hay una versión gratuita accesible con una cuenta de Google y planes de suscripción que desbloquean modelos más potentes y mayor cuota, a menudo ligados a los planes de almacenamiento y productividad de Google. El uso por API se factura por consumo. Consulta su web para precios actualizados.',
+      'Gemini sigue un modelo freemium: hay una versión gratuita accesible con una cuenta de Google y planes de suscripción que desbloquean modelos más potentes y mayor cuota, a menudo ligados a los planes de almacenamiento y productividad de Google. El uso por API se factura por consumo.',
     faqs: [
       {
         question: '¿Qué es Gemini de Google?',
@@ -236,7 +239,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos conocido en Europa que las alternativas estadounidenses',
     ],
     pricingNote:
-      'Qwen sigue un esquema freemium: varias versiones se publican con pesos abiertos y se pueden usar sin coste de licencia, mientras que el acceso gestionado por API en la nube se factura por consumo. Si lo ejecutas por tu cuenta, el gasto viene del hardware. Consulta su web para precios y condiciones actualizadas.',
+      'Qwen sigue un esquema freemium: varias versiones se publican con pesos abiertos y se pueden usar sin coste de licencia, mientras que el acceso gestionado por API en la nube se factura por consumo. Si lo ejecutas por tu cuenta, el gasto viene del hardware.',
     faqs: [
       {
         question: '¿Qué es Qwen?',
@@ -286,7 +289,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El despliegue propio exige perfil técnico',
     ],
     pricingNote:
-      'Mistral combina modelos open source de uso gratuito con modelos comerciales accesibles por API y facturados por consumo de tokens. También ofrece un asistente conversacional con plan gratuito y opciones de pago. El coste depende del modelo y del volumen. Consulta su web para precios actualizados.',
+      'Mistral combina modelos open source de uso gratuito con modelos comerciales accesibles por API y facturados por consumo de tokens. También ofrece un asistente conversacional con plan gratuito y opciones de pago. El coste depende del modelo y del volumen.',
     faqs: [
       {
         question: '¿Qué es Mistral AI?',
@@ -386,7 +389,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El acceso a datos de X puede arrastrar contenido poco fiable',
     ],
     pricingNote:
-      'Grok funciona con un modelo freemium: hay acceso gratuito con límites de uso y funciones ampliadas para usuarios de pago, normalmente asociadas a las suscripciones de X o de xAI. Existe además una API facturada por consumo para desarrolladores. Consulta su web para precios actualizados.',
+      'Grok funciona con un modelo freemium: hay acceso gratuito con límites de uso y funciones ampliadas para usuarios de pago, normalmente asociadas a las suscripciones de X o de xAI. Existe además una API facturada por consumo para desarrolladores.',
     faqs: [
       {
         question: '¿Qué es Grok y quién lo ha creado?',
@@ -486,7 +489,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El texto generado suele necesitar edición humana',
     ],
     pricingNote:
-      'Jasper es una herramienta de pago por suscripción, con planes por usuario y niveles según las funciones y el volumen de contenido. Los planes de entrada suelen partir de unas decenas de dólares al mes y suben en las opciones para equipos y empresas. Normalmente ofrece un periodo de prueba. Consulta su web para precios actualizados.',
+      'Jasper es una herramienta de pago por suscripción, con planes por usuario y niveles según las funciones y el volumen de contenido. Los planes de entrada suelen partir de unas decenas de dólares al mes y suben en las opciones para equipos y empresas. Normalmente ofrece un periodo de prueba.',
     faqs: [
       {
         question: '¿Qué es Jasper AI y para qué sirve?',
@@ -536,7 +539,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El coste sube rápido al ampliar usuarios y volumen',
     ],
     pricingNote:
-      'Copy.ai se comercializa mediante suscripción de pago, con planes escalonados según usuarios, volumen de generación y acceso a flujos de trabajo. Suele existir una opción de entrada de bajo coste o prueba limitada, y planes superiores para equipos y empresas. Consulta su web para precios actualizados.',
+      'Copy.ai se comercializa mediante suscripción de pago, con planes escalonados según usuarios, volumen de generación y acceso a flujos de trabajo. Suele existir una opción de entrada de bajo coste o prueba limitada, y planes superiores para equipos y empresas.',
     faqs: [
       {
         question: '¿Qué es Copy.ai?',
@@ -586,7 +589,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos afinado en español que en inglés',
     ],
     pricingNote:
-      'Sudowrite es una herramienta de pago por suscripción, con planes escalonados según el volumen de palabras generadas al mes. Los planes de entrada suelen situarse en el entorno de los 20 $ mensuales y suben para quienes escriben mucho. Suele ofrecer una prueba inicial. Consulta su web para precios actualizados.',
+      'Sudowrite es una herramienta de pago por suscripción, con planes escalonados según el volumen de palabras generadas al mes. Los planes de entrada suelen situarse en el entorno de los 20 $ mensuales y suben para quienes escriben mucho. Suele ofrecer una prueba inicial.',
     faqs: [
       {
         question: '¿Qué es Sudowrite?',
@@ -636,7 +639,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El texto generado siempre requiere revisión humana',
     ],
     pricingNote:
-      'YouWrite se ofrece mediante suscripción de pago, con planes que suelen depender del volumen de texto generado o del número de usuarios. Puede incluir una prueba inicial o créditos limitados para valorar la herramienta. Consulta su web para conocer los precios y las condiciones actualizadas.',
+      'YouWrite se ofrece mediante suscripción de pago, con planes que suelen depender del volumen de texto generado o del número de usuarios. Puede incluir una prueba inicial o créditos limitados para valorar la herramienta.',
     faqs: [
       {
         question: '¿Qué es YouWrite?',
@@ -686,7 +689,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Ha sufrido limitaciones de registro por saturación del servicio',
     ],
     pricingNote:
-      'DeepSeek sigue un modelo freemium: su asistente conversacional se puede usar de forma gratuita con límites, y varios de sus modelos se publican con pesos abiertos. El acceso por API se factura por consumo de tokens, con tarifas notablemente más bajas que las de otros grandes proveedores. Consulta su web para precios actualizados.',
+      'DeepSeek sigue un modelo freemium: su asistente conversacional se puede usar de forma gratuita con límites, y varios de sus modelos se publican con pesos abiertos. El acceso por API se factura por consumo de tokens, con tarifas notablemente más bajas que las de otros grandes proveedores.',
     faqs: [
       {
         question: '¿Qué es DeepSeek?',
@@ -736,7 +739,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El flujo desde Discord resulta poco intuitivo al principio',
     ],
     pricingNote:
-      'Midjourney es un servicio de pago por suscripción, sin plan gratuito permanente. Los planes se escalonan según el tiempo de generación y las opciones de privacidad, partiendo de unos 10 $ al mes en el nivel más básico y subiendo en los planes profesionales. Consulta su web para precios actualizados.',
+      'Midjourney es un servicio de pago por suscripción, sin plan gratuito permanente. Los planes se escalonan según el tiempo de generación y las opciones de privacidad, partiendo de unos 10 $ al mes en el nivel más básico y subiendo en los planes profesionales.',
     faqs: [
       {
         question: '¿Qué es Midjourney y para qué sirve?',
@@ -786,7 +789,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El uso amplio requiere suscripción o pago por API',
     ],
     pricingNote:
-      'DALL·E sigue un esquema freemium a través de ChatGPT: hay un acceso limitado sin coste y una generación más amplia en los planes de pago, que suelen partir de unos 20 $ al mes. El uso mediante API se factura por imagen generada. Consulta su web para precios actualizados.',
+      'DALL·E sigue un esquema freemium a través de ChatGPT: hay un acceso limitado sin coste y una generación más amplia en los planes de pago, que suelen partir de unos 20 $ al mes. El uso mediante API se factura por imagen generada.',
     faqs: [
       {
         question: '¿Qué es DALL·E?',
@@ -886,7 +889,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Calidad artística algo por detrás de rivales especializados',
     ],
     pricingNote:
-      'Firefly sigue un modelo freemium: hay un uso gratuito con un número limitado de créditos generativos al mes y planes de pago que amplían esa cuota, además de estar incluido en las suscripciones de Creative Cloud. El coste depende del plan de Adobe contratado. Consulta su web para precios actualizados.',
+      'Firefly sigue un modelo freemium: hay un uso gratuito con un número limitado de créditos generativos al mes y planes de pago que amplían esa cuota, además de estar incluido en las suscripciones de Creative Cloud. El coste depende del plan de Adobe contratado.',
     faqs: [
       {
         question: '¿Qué es Adobe Firefly?',
@@ -936,7 +939,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Filtros de contenido que restringen ciertas peticiones',
     ],
     pricingNote:
-      'Imagen se usa normalmente a través de productos de Google: dentro de Gemini hay generación gratuita con límites y mayor cuota en los planes de pago, mientras que en las plataformas cloud se factura por imagen generada. No es una herramienta con precio propio independiente. Consulta la web de Google para condiciones actualizadas.',
+      'Imagen se usa normalmente a través de productos de Google: dentro de Gemini hay generación gratuita con límites y mayor cuota en los planes de pago, mientras que en las plataformas cloud se factura por imagen generada. No es una herramienta con precio propio independiente.',
     faqs: [
       {
         question: '¿Qué es Imagen de Google?',
@@ -986,7 +989,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Las licencias varían según la versión del modelo',
     ],
     pricingNote:
-      'FLUX combina modelos con pesos abiertos, gratuitos de descargar y ejecutar, con variantes comerciales que se pagan por uso a través de API o plataformas de terceros. Algunas webs ofrecen generación gratuita limitada. Las condiciones de licencia cambian según la versión, así que consulta su web para información actualizada.',
+      'FLUX combina modelos con pesos abiertos, gratuitos de descargar y ejecutar, con variantes comerciales que se pagan por uso a través de API o plataformas de terceros. Algunas webs ofrecen generación gratuita limitada. Las condiciones de licencia cambian según la versión, así que',
     faqs: [
       {
         question: '¿Qué es FLUX en IA de imágenes?',
@@ -1035,7 +1038,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El texto largo o complejo aún puede salir con errores',
     ],
     pricingNote:
-      'Ideogram funciona con un modelo freemium: suele ofrecer un plan gratuito con un número limitado de generaciones y planes de pago con más créditos, generación más rápida y uso comercial. Los tramos de pago se mueven en el rango habitual de este tipo de servicios, en torno a unos pocos euros al mes en la entrada. Consulta su web para precios actualizados.',
+      'Ideogram funciona con un modelo freemium: suele ofrecer un plan gratuito con un número limitado de generaciones y planes de pago con más créditos, generación más rápida y uso comercial. Los tramos de pago se mueven en el rango habitual de este tipo de servicios, en torno a unos pocos euros al mes en la entrada.',
     faqs: [
       {
         question: '¿Qué es Ideogram?',
@@ -1084,7 +1087,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Los vectores generados pueden necesitar limpieza manual',
     ],
     pricingNote:
-      'Recraft sigue un modelo freemium: hay un plan gratuito con créditos diarios limitados y planes de pago por suscripción que amplían créditos, resolución y derechos de uso comercial. Los planes de entrada suelen situarse en el entorno de los precios habituales de las herramientas de diseño SaaS. Consulta su web para precios actualizados.',
+      'Recraft sigue un modelo freemium: hay un plan gratuito con créditos diarios limitados y planes de pago por suscripción que amplían créditos, resolución y derechos de uso comercial. Los planes de entrada suelen situarse en el entorno de los precios habituales de las herramientas de diseño SaaS.',
     faqs: [
       {
         question: '¿Qué es Recraft?',
@@ -1133,7 +1136,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Los tiempos de espera aumentan en horas de mucha demanda',
     ],
     pricingNote:
-      'Leonardo AI es freemium: incluye un sistema de créditos gratuitos que se renuevan a diario y varios planes de suscripción que amplían créditos, generaciones simultáneas y funciones avanzadas. Los planes de pago cubren desde uso personal hasta equipos. Consulta su web para precios actualizados.',
+      'Leonardo AI es freemium: incluye un sistema de créditos gratuitos que se renuevan a diario y varios planes de suscripción que amplían créditos, generaciones simultáneas y funciones avanzadas. Los planes de pago cubren desde uso personal hasta equipos.',
     faqs: [
       {
         question: '¿Qué es Leonardo AI?',
@@ -1182,7 +1185,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La documentación en español es escasa',
     ],
     pricingNote:
-      'Seedream se presenta como un modelo accesible de forma gratuita a través de las interfaces y productos de su desarrollador, aunque el uso vía API o en volumen puede estar sujeto a condiciones y costes específicos. Las condiciones de acceso pueden cambiar con el tiempo. Consulta su web para conocer la disponibilidad y los precios actualizados.',
+      'Seedream se presenta como un modelo accesible de forma gratuita a través de las interfaces y productos de su desarrollador, aunque el uso vía API o en volumen puede estar sujeto a condiciones y costes específicos. Las condiciones de acceso pueden cambiar con el tiempo.',
     faqs: [
       {
         question: '¿Qué es Seedream?',
@@ -1231,7 +1234,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Su disponibilidad y límites pueden cambiar con frecuencia',
     ],
     pricingNote:
-      'Aurora se ofrece dentro del ecosistema de xAI y su acceso completo está asociado a las suscripciones de pago que dan acceso a Grok. Los planes se comercializan por suscripción mensual y pueden incluir límites de generación. Consulta su web para conocer los planes y precios actualizados.',
+      'Aurora se ofrece dentro del ecosistema de xAI y su acceso completo está asociado a las suscripciones de pago que dan acceso a Grok. Los planes se comercializan por suscripción mensual y pueden incluir límites de generación.',
     faqs: [
       {
         question: '¿Qué es Aurora de xAI?',
@@ -1280,7 +1283,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La calidad depende mucho de lo bien redactado que esté el prompt',
     ],
     pricingNote:
-      'Playground AI funciona con un modelo freemium: ofrece una cuota de imágenes gratuitas al día y planes de pago que amplían generaciones, velocidad y funciones avanzadas. Los planes de suscripción se sitúan en el rango habitual de las herramientas de imagen generativa. Consulta su web para precios actualizados.',
+      'Playground AI funciona con un modelo freemium: ofrece una cuota de imágenes gratuitas al día y planes de pago que amplían generaciones, velocidad y funciones avanzadas. Los planes de suscripción se sitúan en el rango habitual de las herramientas de imagen generativa.',
     faqs: [
       {
         question: '¿Qué es Playground AI?',
@@ -1329,7 +1332,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La clonación de voz plantea cuestiones éticas y legales a vigilar',
     ],
     pricingNote:
-      'ElevenLabs es freemium: hay un plan gratuito con una cuota mensual reducida de caracteres y varios planes de pago escalonados según el volumen de audio y las funciones de clonación. Los planes de entrada arrancan en cifras bajas y suben conforme aumenta el consumo. Consulta su web para precios actualizados.',
+      'ElevenLabs es freemium: hay un plan gratuito con una cuota mensual reducida de caracteres y varios planes de pago escalonados según el volumen de audio y las funciones de clonación. Los planes de entrada arrancan en cifras bajas y suben conforme aumenta el consumo.',
     faqs: [
       {
         question: '¿Qué es ElevenLabs?',
@@ -1378,7 +1381,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El soporte para macOS es más limitado que en Windows',
     ],
     pricingNote:
-      'Voicemod tiene un modelo freemium: la versión gratuita permite usar un conjunto rotatorio de voces y efectos, mientras que la licencia de pago desbloquea el catálogo completo y funciones avanzadas. Suele comercializarse por suscripción o pago único. Consulta su web para precios actualizados.',
+      'Voicemod tiene un modelo freemium: la versión gratuita permite usar un conjunto rotatorio de voces y efectos, mientras que la licencia de pago desbloquea el catálogo completo y funciones avanzadas. Suele comercializarse por suscripción o pago único.',
     faqs: [
       {
         question: '¿Qué es Voicemod?',
@@ -1427,7 +1430,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos control fino que un editor de audio profesional',
     ],
     pricingNote:
-      'Descript funciona con un modelo freemium: el plan gratuito incluye un número limitado de horas de transcripción y funciones básicas, mientras que los planes de pago amplían la transcripción, la exportación en alta calidad y las funciones de IA. Los tramos se comercializan por usuario y mes. Consulta su web para precios actualizados.',
+      'Descript funciona con un modelo freemium: el plan gratuito incluye un número limitado de horas de transcripción y funciones básicas, mientras que los planes de pago amplían la transcripción, la exportación en alta calidad y las funciones de IA. Los tramos se comercializan por usuario y mes.',
     faqs: [
       {
         question: '¿Qué es Descript?',
@@ -1476,7 +1479,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Requiere muestras de audio de calidad para un buen clonado',
     ],
     pricingNote:
-      'Resemble AI ofrece un acceso freemium o de prueba con límites y planes de pago escalonados según el volumen de audio generado y las necesidades de clonación. Para escenarios empresariales dispone de precios a medida. Consulta su web para conocer los tramos y precios actualizados.',
+      'Resemble AI ofrece un acceso freemium o de prueba con límites y planes de pago escalonados según el volumen de audio generado y las necesidades de clonación. Para escenarios empresariales dispone de precios a medida.',
     faqs: [
       {
         question: '¿Qué es Resemble AI?',
@@ -1525,7 +1528,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El coste crece con el número de usuarios del equipo',
     ],
     pricingNote:
-      'Murf sigue un modelo freemium: ofrece una prueba gratuita con límites de tiempo de voz y descarga restringida, y planes de pago por suscripción según minutos de audio y número de usuarios. Los planes se orientan tanto a creadores individuales como a equipos. Consulta su web para precios actualizados.',
+      'Murf sigue un modelo freemium: ofrece una prueba gratuita con límites de tiempo de voz y descarga restringida, y planes de pago por suscripción según minutos de audio y número de usuarios. Los planes se orientan tanto a creadores individuales como a equipos.',
     faqs: [
       {
         question: '¿Qué es Murf?',
@@ -1574,7 +1577,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La calidad varía notablemente según la voz elegida',
     ],
     pricingNote:
-      'Play.ht es freemium: existe un nivel gratuito con una cuota reducida de palabras y planes de pago escalonados según el volumen de audio, la clonación de voz y el uso de la API. También ofrece condiciones específicas para empresas. Consulta su web para precios actualizados.',
+      'Play.ht es freemium: existe un nivel gratuito con una cuota reducida de palabras y planes de pago escalonados según el volumen de audio, la clonación de voz y el uso de la API. También ofrece condiciones específicas para empresas.',
     faqs: [
       {
         question: '¿Qué es Play.ht?',
@@ -1623,7 +1626,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La lectura de PDF con maquetación compleja puede fallar',
     ],
     pricingNote:
-      'Speechify usa un modelo freemium: la versión gratuita permite escuchar textos con voces básicas y velocidad limitada, mientras que la suscripción de pago desbloquea voces más naturales, mayor velocidad y funciones adicionales. La suscripción se comercializa de forma mensual o anual. Consulta su web para precios actualizados.',
+      'Speechify usa un modelo freemium: la versión gratuita permite escuchar textos con voces básicas y velocidad limitada, mientras que la suscripción de pago desbloquea voces más naturales, mayor velocidad y funciones adicionales. La suscripción se comercializa de forma mensual o anual.',
     faqs: [
       {
         question: '¿Qué es Speechify?',
@@ -1672,7 +1675,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El editor de vídeo es básico comparado con herramientas dedicadas',
     ],
     pricingNote:
-      'Lovo funciona con un modelo freemium: hay un plan gratuito con minutos de voz limitados y planes de pago escalonados según el volumen de audio, el acceso a voces premium y la clonación. Los tramos se comercializan por suscripción mensual o anual. Consulta su web para precios actualizados.',
+      'Lovo funciona con un modelo freemium: hay un plan gratuito con minutos de voz limitados y planes de pago escalonados según el volumen de audio, el acceso a voces premium y la clonación. Los tramos se comercializan por suscripción mensual o anual.',
     faqs: [
       {
         question: '¿Qué es Lovo?',
@@ -1721,7 +1724,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El plan gratuito limita los minutos de vídeo procesados',
     ],
     pricingNote:
-      'Dubverse sigue un modelo freemium: ofrece una cuota gratuita de minutos para probar el doblaje y planes de pago basados en el volumen de vídeo procesado y el acceso a voces premium. También dispone de opciones para empresas con necesidades de volumen. Consulta su web para precios actualizados.',
+      'Dubverse sigue un modelo freemium: ofrece una cuota gratuita de minutos para probar el doblaje y planes de pago basados en el volumen de vídeo procesado y el acceso a voces premium. También dispone de opciones para empresas con necesidades de volumen.',
     faqs: [
       {
         question: '¿Qué es Dubverse?',
@@ -1770,7 +1773,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El uso de voces de personas reales plantea problemas éticos y legales',
     ],
     pricingNote:
-      'Voice.ai emplea un modelo freemium: buena parte de sus funciones de cambio de voz están disponibles sin coste, mientras que las opciones avanzadas y el uso sin límites pueden requerir una suscripción de pago. Las condiciones han variado con el tiempo. Consulta su web para precios actualizados.',
+      'Voice.ai emplea un modelo freemium: buena parte de sus funciones de cambio de voz están disponibles sin coste, mientras que las opciones avanzadas y el uso sin límites pueden requerir una suscripción de pago. Las condiciones han variado con el tiempo.',
     faqs: [
       {
         question: '¿Qué es Voice.ai?',
@@ -1819,7 +1822,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Los derechos de uso comercial dependen del plan contratado',
     ],
     pricingNote:
-      'Suno funciona con un modelo freemium: hay un plan gratuito con créditos diarios que permiten generar unas pocas canciones, y planes de pago que amplían los créditos y otorgan derechos de uso comercial. Los planes de suscripción se ofrecen en varios tramos. Consulta su web para precios actualizados.',
+      'Suno funciona con un modelo freemium: hay un plan gratuito con créditos diarios que permiten generar unas pocas canciones, y planes de pago que amplían los créditos y otorgan derechos de uso comercial. Los planes de suscripción se ofrecen en varios tramos.',
     faqs: [
       {
         question: '¿Qué es Suno?',
@@ -1917,7 +1920,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Poca flexibilidad creativa fuera del formato de presentador',
     ],
     pricingNote:
-      'Colossyan es una herramienta de pago que se comercializa por suscripción, con planes escalonados según los minutos de vídeo generados, los avatares disponibles y el número de usuarios. Suele ofrecer una prueba limitada y precios a medida para grandes organizaciones. Consulta su web para precios actualizados.',
+      'Colossyan es una herramienta de pago que se comercializa por suscripción, con planes escalonados según los minutos de vídeo generados, los avatares disponibles y el número de usuarios. Suele ofrecer una prueba limitada y precios a medida para grandes organizaciones.',
     faqs: [
       {
         question: '¿Qué es Colossyan?',
@@ -1966,7 +1969,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Aún comete errores de física, manos y texto dentro de la escena',
     ],
     pricingNote:
-      'Sora se ofrece con acceso gratuito limitado y con más capacidad dentro de las suscripciones de pago del ecosistema de OpenAI, que amplían el número de generaciones, la duración y la resolución. Las condiciones y la disponibilidad por país cambian con frecuencia. Consulta su web para precios actualizados.',
+      'Sora se ofrece con acceso gratuito limitado y con más capacidad dentro de las suscripciones de pago del ecosistema de OpenAI, que amplían el número de generaciones, la duración y la resolución. Las condiciones y la disponibilidad por país cambian con frecuencia.',
     faqs: [
       {
         question: '¿Qué es Sora?',
@@ -2015,7 +2018,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El control fino sobre el resultado sigue siendo limitado',
     ],
     pricingNote:
-      'Veo se ofrece a través de productos de Google, normalmente con acceso gratuito limitado y funciones ampliadas dentro de suscripciones de pago. La disponibilidad y los límites de uso cambian con frecuencia. Consulta su web para precios actualizados y condiciones de acceso en tu país.',
+      'Veo se ofrece a través de productos de Google, normalmente con acceso gratuito limitado y funciones ampliadas dentro de suscripciones de pago. La disponibilidad y los límites de uso cambian con frecuencia.',
     faqs: [
       {
         question: '¿Qué es Veo?',
@@ -2064,7 +2067,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La curva de aprendizaje de las herramientas avanzadas es notable',
     ],
     pricingNote:
-      'Runway funciona con un modelo freemium basado en créditos: hay un plan gratuito con un número limitado de generaciones y varios planes de pago según el volumen y la resolución. Los planes individuales suelen situarse en el entorno de los 15-35 $/mes. Consulta su web para precios actualizados.',
+      'Runway funciona con un modelo freemium basado en créditos: hay un plan gratuito con un número limitado de generaciones y varios planes de pago según el volumen y la resolución. Los planes individuales suelen situarse en el entorno de los 15-35 $/mes.',
     faqs: [
       {
         question: '¿Qué es Runway?',
@@ -2113,7 +2116,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Los créditos gratuitos se agotan enseguida',
     ],
     pricingNote:
-      'Pika Labs sigue un modelo freemium con créditos: el plan gratuito permite un número limitado de generaciones al mes y los planes de pago amplían créditos, calidad y uso comercial. Los tramos individuales suelen rondar los 10-35 $/mes. Consulta su web para precios actualizados.',
+      'Pika Labs sigue un modelo freemium con créditos: el plan gratuito permite un número limitado de generaciones al mes y los planes de pago amplían créditos, calidad y uso comercial. Los tramos individuales suelen rondar los 10-35 $/mes.',
     faqs: [
       {
         question: '¿Qué es Pika Labs?',
@@ -2162,7 +2165,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Poco adecuado para contenido creativo o emocional',
     ],
     pricingNote:
-      'Synthesia es una herramienta de pago con planes por suscripción que limitan los minutos de vídeo generados al mes, además de planes empresariales a medida. Los tramos de entrada suelen situarse en torno a los 20-30 $/mes. Consulta su web para precios actualizados.',
+      'Synthesia es una herramienta de pago con planes por suscripción que limitan los minutos de vídeo generados al mes, además de planes empresariales a medida. Los tramos de entrada suelen situarse en torno a los 20-30 $/mes.',
     faqs: [
       {
         question: '¿Qué es Synthesia?',
@@ -2211,7 +2214,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Poco control fino para trabajos audiovisuales exigentes',
     ],
     pricingNote:
-      'InVideo funciona con un modelo freemium: hay un plan gratuito con marca de agua y límites de exportación, y varios planes de pago que amplían minutos, material de archivo y eliminan la marca. Los planes suelen rondar los 20-35 $/mes. Consulta su web para precios actualizados.',
+      'InVideo funciona con un modelo freemium: hay un plan gratuito con marca de agua y límites de exportación, y varios planes de pago que amplían minutos, material de archivo y eliminan la marca. Los planes suelen rondar los 20-35 $/mes.',
     faqs: [
       {
         question: '¿Qué es InVideo?',
@@ -2260,7 +2263,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Las voces pueden sonar planas en textos largos',
     ],
     pricingNote:
-      'Fliki es freemium: el plan gratuito incluye unos pocos minutos de generación al mes con marca de agua, y los planes de pago amplían minutos, voces premium y uso comercial. Los tramos suelen empezar en torno a los 20-30 $/mes. Consulta su web para precios actualizados.',
+      'Fliki es freemium: el plan gratuito incluye unos pocos minutos de generación al mes con marca de agua, y los planes de pago amplían minutos, voces premium y uso comercial. Los tramos suelen empezar en torno a los 20-30 $/mes.',
     faqs: [
       {
         question: '¿Qué es Fliki?',
@@ -2309,7 +2312,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El acceso y los límites cambian con frecuencia',
     ],
     pricingNote:
-      'Kling ofrece acceso gratuito con un sistema de créditos diarios o mensuales limitados, ampliables mediante planes de suscripción de pago con más generaciones y mayor calidad. Las condiciones varían según la región. Consulta su web para precios actualizados.',
+      'Kling ofrece acceso gratuito con un sistema de créditos diarios o mensuales limitados, ampliables mediante planes de suscripción de pago con más generaciones y mayor calidad. Las condiciones varían según la región.',
     faqs: [
       {
         question: '¿Qué es Kling?',
@@ -2358,7 +2361,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Los límites de uso gratuito cambian con frecuencia',
     ],
     pricingNote:
-      'MiniMax ofrece acceso gratuito con límites de uso y planes de pago o créditos para volúmenes mayores, además de tarificación por uso en su API. Las condiciones varían según el producto concreto. Consulta su web para precios actualizados.',
+      'MiniMax ofrece acceso gratuito con límites de uso y planes de pago o créditos para volúmenes mayores, además de tarificación por uso en su API. Las condiciones varían según el producto concreto.',
     faqs: [
       {
         question: '¿Qué es MiniMax?',
@@ -2407,7 +2410,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Control creativo escaso frente a suites profesionales',
     ],
     pricingNote:
-      'VideoFX se enmarca en las herramientas experimentales de Google, con acceso gratuito y límites de uso, aunque algunas funciones pueden requerir una suscripción de Google. La disponibilidad depende del país. Consulta su web para condiciones actualizadas.',
+      'VideoFX se enmarca en las herramientas experimentales de Google, con acceso gratuito y límites de uso, aunque algunas funciones pueden requerir una suscripción de Google. La disponibilidad depende del país.',
     faqs: [
       {
         question: '¿Qué es VideoFX?',
@@ -2456,7 +2459,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'No hay plan gratuito general para uso profesional',
     ],
     pricingNote:
-      'GitHub Copilot es de pago mediante suscripción, con planes individuales y de empresa, además de un nivel gratuito limitado y acceso sin coste para estudiantes y mantenedores de proyectos open source verificados. El plan individual suele rondar los 10 $/mes. Consulta su web para precios actualizados.',
+      'GitHub Copilot es de pago mediante suscripción, con planes individuales y de empresa, además de un nivel gratuito limitado y acceso sin coste para estudiantes y mantenedores de proyectos open source verificados. El plan individual suele rondar los 10 $/mes.',
     faqs: [
       {
         question: '¿Qué es GitHub Copilot?',
@@ -2505,7 +2508,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Depende de servicios en la nube, con implicaciones de privacidad',
     ],
     pricingNote:
-      'Cursor es freemium: incluye un plan gratuito con un número limitado de peticiones a los modelos más potentes y planes de pago para uso intensivo, además de opciones de equipo. El plan profesional suele rondar los 20 $/mes. Consulta su web para precios actualizados.',
+      'Cursor es freemium: incluye un plan gratuito con un número limitado de peticiones a los modelos más potentes y planes de pago para uso intensivo, además de opciones de equipo. El plan profesional suele rondar los 20 $/mes.',
     faqs: [
       {
         question: '¿Qué es Cursor?',
@@ -2554,7 +2557,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El despliegue privado requiere infraestructura y coste añadido',
     ],
     pricingNote:
-      'Tabnine es freemium: cuenta con un plan gratuito de autocompletado básico, planes de pago para desarrolladores individuales y opciones empresariales con despliegue privado. Los planes profesionales suelen rondar los 10-15 $/mes por usuario. Consulta su web para precios actualizados.',
+      'Tabnine es freemium: cuenta con un plan gratuito de autocompletado básico, planes de pago para desarrolladores individuales y opciones empresariales con despliegue privado. Los planes profesionales suelen rondar los 10-15 $/mes por usuario.',
     faqs: [
       {
         question: '¿Qué es Tabnine?',
@@ -2603,7 +2606,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'No sustituye una estrategia de testing bien diseñada',
     ],
     pricingNote:
-      'Codium sigue un modelo freemium con un plan gratuito para desarrolladores individuales y planes de pago para equipos y empresas, con funciones adicionales de colaboración y control. Consulta su web para precios actualizados y condiciones de uso comercial.',
+      'Codium sigue un modelo freemium con un plan gratuito para desarrolladores individuales y planes de pago para equipos y empresas, con funciones adicionales de colaboración y control.',
     faqs: [
       {
         question: '¿Qué es Codium?',
@@ -2652,7 +2655,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Depende de que el repositorio sea accesible',
     ],
     pricingNote:
-      'AskTheCode ofrece un uso gratuito para consultar repositorios, aunque puede aplicar límites de volumen o restricciones sobre repositorios privados. Consulta su web para conocer las condiciones y precios actualizados si necesitas un uso más intensivo.',
+      'AskTheCode ofrece un uso gratuito para consultar repositorios, aunque puede aplicar límites de volumen o restricciones sobre repositorios privados.',
     faqs: [
       {
         question: '¿Qué es AskTheCode?',
@@ -2701,7 +2704,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Requiere tiempo de configuración inicial',
     ],
     pricingNote:
-      'Testim ofrece un plan de entrada gratuito o de prueba con un número limitado de ejecuciones, y planes de pago orientados a equipos y empresas con precios a medida según volumen. Consulta su web para precios actualizados y para solicitar una demostración.',
+      'Testim ofrece un plan de entrada gratuito o de prueba con un número limitado de ejecuciones, y planes de pago orientados a equipos y empresas con precios a medida según volumen.',
     faqs: [
       {
         question: '¿Qué es Testim?',
@@ -2750,7 +2753,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Los planes empresariales son caros',
     ],
     pricingNote:
-      'Diffblue combina una versión gratuita o de comunidad con límites de uso y planes empresariales de pago con precios a medida según el tamaño del proyecto y del equipo. Consulta su web para precios actualizados y para solicitar una demostración.',
+      'Diffblue combina una versión gratuita o de comunidad con límites de uso y planes empresariales de pago con precios a medida según el tamaño del proyecto y del equipo.',
     faqs: [
       {
         question: '¿Qué es Diffblue?',
@@ -2799,7 +2802,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Su disponibilidad y límites cambian con frecuencia',
     ],
     pricingNote:
-      'Jules es freemium: ofrece un nivel gratuito con un número limitado de tareas al día y niveles superiores incluidos en las suscripciones de IA de Google, con más capacidad. Consulta su web para precios actualizados y límites vigentes.',
+      'Jules es freemium: ofrece un nivel gratuito con un número limitado de tareas al día y niveles superiores incluidos en las suscripciones de IA de Google, con más capacidad.',
     faqs: [
       {
         question: '¿Qué es Jules?',
@@ -2848,7 +2851,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Los planes de pago pueden salir caros en equipos grandes',
     ],
     pricingNote:
-      'DeepSource es freemium: gratuito para proyectos de código abierto y con planes de pago por usuario para repositorios privados y equipos. Los tramos de entrada suelen situarse en el entorno de los 10-30 $ por usuario al mes. Consulta su web para precios actualizados.',
+      'DeepSource es freemium: gratuito para proyectos de código abierto y con planes de pago por usuario para repositorios privados y equipos. Los tramos de entrada suelen situarse en el entorno de los 10-30 $ por usuario al mes.',
     faqs: [
       {
         question: '¿Qué es DeepSource?',
@@ -2897,7 +2900,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La curva de aprendizaje inicial es notable',
     ],
     pricingNote:
-      'El framework LangChain es de código abierto y gratuito. La empresa ofrece además productos comerciales complementarios de observabilidad y despliegue con planes freemium y de pago. Consulta su web para precios actualizados de esos servicios adicionales.',
+      'El framework LangChain es de código abierto y gratuito. La empresa ofrece además productos comerciales complementarios de observabilidad y despliegue con planes freemium y de pago.',
     faqs: [
       {
         question: '¿Qué es LangChain?',
@@ -2995,7 +2998,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Algunas funciones y skills solo están disponibles en inglés',
     ],
     pricingNote:
-      'El uso de Alexa como asistente no tiene coste: el software y la app son gratuitos. El gasto está en el hardware (altavoces y pantallas Echo) y, opcionalmente, en servicios de suscripción de Amazon que amplían funciones o contenidos. Consulta su web para conocer las condiciones actualizadas.',
+      'El uso de Alexa como asistente no tiene coste: el software y la app son gratuitos. El gasto está en el hardware (altavoces y pantallas Echo) y, opcionalmente, en servicios de suscripción de Amazon que amplían funciones o contenidos.',
     faqs: [
       {
         question: '¿Qué es Alexa?',
@@ -3044,7 +3047,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menor utilidad fuera del ecosistema de Google',
     ],
     pricingNote:
-      'Google Assistant es gratuito y viene incluido en los dispositivos Android y en el hardware de Google compatible. No hay suscripción para usarlo como asistente, aunque algunos servicios conectados pueden tener coste propio. Consulta su web para conocer las condiciones actualizadas.',
+      'Google Assistant es gratuito y viene incluido en los dispositivos Android y en el hardware de Google compatible. No hay suscripción para usarlo como asistente, aunque algunos servicios conectados pueden tener coste propio.',
     faqs: [
       {
         question: '¿Qué es Google Assistant?',
@@ -3093,7 +3096,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El soporte en español puede ser menos pulido que en inglés',
     ],
     pricingNote:
-      'Pi sigue un modelo freemium: suele ofrecer acceso gratuito con límites de uso y funciones básicas de conversación. Las condiciones y los posibles planes de pago han cambiado con el tiempo, así que conviene consultar su web para precios actualizados antes de decidirse.',
+      'Pi sigue un modelo freemium: suele ofrecer acceso gratuito con límites de uso y funciones básicas de conversación. Las condiciones y los posibles planes de pago han cambiado con el tiempo, así que conviene',
     faqs: [
       {
         question: '¿Qué es Pi de Inflection AI?',
@@ -3142,7 +3145,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Conviene revisar siempre las citas antes de darlas por buenas',
     ],
     pricingNote:
-      'Perplexity funciona con modelo freemium: hay un plan gratuito con límites de uso diarios y un plan de pago para particulares que amplía consultas avanzadas y acceso a modelos más potentes. Los planes de pago suelen situarse en torno a los 20 $/mes; consulta su web para precios actualizados.',
+      'Perplexity funciona con modelo freemium: hay un plan gratuito con límites de uso diarios y un plan de pago para particulares que amplía consultas avanzadas y acceso a modelos más potentes. Los planes de pago suelen situarse en torno a los 20 $/mes;',
     faqs: [
       {
         question: '¿Qué es Perplexity?',
@@ -3191,7 +3194,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Puede generar apego o dependencia si se usa de forma intensiva',
     ],
     pricingNote:
-      'Replika sigue un modelo freemium: la versión gratuita permite chatear con límites y opciones de personalización reducidas, mientras que la suscripción de pago desbloquea modos de relación, voz y personalización avanzada. Suele ofrecerse en cuotas mensuales o anuales; consulta su web para precios actualizados.',
+      'Replika sigue un modelo freemium: la versión gratuita permite chatear con límites y opciones de personalización reducidas, mientras que la suscripción de pago desbloquea modos de relación, voz y personalización avanzada. Suele ofrecerse en cuotas mensuales o anuales;',
     faqs: [
       {
         question: '¿Qué es Replika?',
@@ -3240,7 +3243,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Curva de configuración inicial notable',
     ],
     pricingNote:
-      'Intercom es una herramienta de pago con planes por puesto de agente y cargos adicionales por las resoluciones que gestiona su agente de IA. Existen descuentos para startups y periodos de prueba. Al combinarse el coste por asiento y por uso, conviene consultar su web para precios actualizados y simular el gasto.',
+      'Intercom es una herramienta de pago con planes por puesto de agente y cargos adicionales por las resoluciones que gestiona su agente de IA. Existen descuentos para startups y periodos de prueba. Al combinarse el coste por asiento y por uso, conviene',
     faqs: [
       {
         question: '¿Qué es Intercom?',
@@ -3289,7 +3292,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Requiere diseñar bien los flujos para que aporte valor',
     ],
     pricingNote:
-      'Drift es una herramienta de pago, con planes orientados a equipos de ventas y marketing y precios normalmente bajo presupuesto personalizado. No suele publicar tarifas cerradas en su web, por lo que hay que solicitar una demostración. Consulta su web para precios actualizados.',
+      'Drift es una herramienta de pago, con planes orientados a equipos de ventas y marketing y precios normalmente bajo presupuesto personalizado. No suele publicar tarifas cerradas en su web, por lo que hay que solicitar una demostración.',
     faqs: [
       {
         question: '¿Qué es Drift?',
@@ -3338,7 +3341,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Requiere inversión inicial en contenidos e integraciones',
     ],
     pricingNote:
-      'Ada es una solución de pago dirigida al segmento empresarial, con precios habitualmente personalizados según volumen de conversaciones y canales activos. No publica tarifas cerradas, por lo que hay que solicitar una demostración. Consulta su web para precios actualizados.',
+      'Ada es una solución de pago dirigida al segmento empresarial, con precios habitualmente personalizados según volumen de conversaciones y canales activos. No publica tarifas cerradas, por lo que hay que solicitar una demostración.',
     faqs: [
       {
         question: '¿Qué es Ada?',
@@ -3387,7 +3390,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Poco adecuada para equipos pequeños',
     ],
     pricingNote:
-      'LivePerson es una plataforma de pago del segmento empresarial, con precios personalizados según volumen de conversaciones, canales e integraciones. No publica tarifas cerradas y suele requerir un proceso comercial con demostración previa. Consulta su web para precios actualizados.',
+      'LivePerson es una plataforma de pago del segmento empresarial, con precios personalizados según volumen de conversaciones, canales e integraciones. No publica tarifas cerradas y suele requerir un proceso comercial con demostración previa.',
     faqs: [
       {
         question: '¿Qué es LivePerson?',
@@ -3436,7 +3439,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Su valor depende de la calidad de los datos del CRM',
     ],
     pricingNote:
-      'Einstein no es un producto independiente: se comercializa como complemento o como parte de determinadas ediciones de las nubes de Salesforce, con coste adicional por usuario o por consumo. El precio depende de la edición contratada y de los módulos activados. Consulta su web para precios actualizados.',
+      'Einstein no es un producto independiente: se comercializa como complemento o como parte de determinadas ediciones de las nubes de Salesforce, con coste adicional por usuario o por consumo. El precio depende de la edición contratada y de los módulos activados.',
     faqs: [
       {
         question: '¿Qué es Salesforce Einstein?',
@@ -3485,7 +3488,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos potente que un asistente general para tareas ajenas al CRM',
     ],
     pricingNote:
-      'ChatSpot sigue un modelo freemium ligado al ecosistema de HubSpot: es accesible para usuarios con cuenta de HubSpot, incluidas las gratuitas, y su alcance depende del plan contratado. HubSpot ha ido reorganizando sus asistentes de IA, así que conviene consultar su web para conocer la disponibilidad y precios actualizados.',
+      'ChatSpot sigue un modelo freemium ligado al ecosistema de HubSpot: es accesible para usuarios con cuenta de HubSpot, incluidas las gratuitas, y su alcance depende del plan contratado. HubSpot ha ido reorganizando sus asistentes de IA, así que conviene',
     faqs: [
       {
         question: '¿Qué es ChatSpot?',
@@ -3534,7 +3537,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Configuración avanzada con curva de aprendizaje',
     ],
     pricingNote:
-      'Zendesk es de pago, con planes por agente y varios niveles según las funciones incluidas. Las capacidades avanzadas de IA se comercializan normalmente como complemento adicional. Suele haber periodo de prueba gratuito. Consulta su web para precios actualizados, ya que la estructura de planes cambia con frecuencia.',
+      'Zendesk es de pago, con planes por agente y varios niveles según las funciones incluidas. Las capacidades avanzadas de IA se comercializan normalmente como complemento adicional. Suele haber periodo de prueba gratuito.',
     faqs: [
       {
         question: '¿Qué es Zendesk?',
@@ -3583,7 +3586,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Configuración técnica exigente para usuarios no desarrolladores',
     ],
     pricingNote:
-      'AutoGPT es software de código abierto y su uso no tiene coste de licencia. Sin embargo, para funcionar necesita claves de API de un proveedor de modelos, cuyo consumo se factura aparte y puede dispararse si el agente ejecuta muchas iteraciones. Consulta su web y la del proveedor de modelos para condiciones actualizadas.',
+      'AutoGPT es software de código abierto y su uso no tiene coste de licencia. Sin embargo, para funcionar necesita claves de API de un proveedor de modelos, cuyo consumo se factura aparte y puede dispararse si el agente ejecuta muchas iteraciones.',
     faqs: [
       {
         question: '¿Qué es AutoGPT?',
@@ -3632,7 +3635,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Consumo de tokens elevado si el agente itera mucho',
     ],
     pricingNote:
-      'AgentGPT es de código abierto y se puede usar sin coste, tanto en su versión alojada con límites como autoalojándolo. Para desbloquear más ejecuciones o modelos más potentes suele hacer falta aportar la propia clave de API, cuyo consumo se factura aparte. Consulta su web para condiciones actualizadas.',
+      'AgentGPT es de código abierto y se puede usar sin coste, tanto en su versión alojada con límites como autoalojándolo. Para desbloquear más ejecuciones o modelos más potentes suele hacer falta aportar la propia clave de API, cuyo consumo se factura aparte.',
     faqs: [
       {
         question: '¿Qué es AgentGPT?',
@@ -3681,7 +3684,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El código generado necesita revisión humana antes de usarse',
     ],
     pricingNote:
-      'MetaGPT es un proyecto de código abierto sin coste de licencia. El gasto real viene del consumo de la API del modelo de lenguaje que se configure, que se factura por uso y puede ser significativo al ejecutar varios agentes en paralelo. Consulta su repositorio y el proveedor de modelos para condiciones actualizadas.',
+      'MetaGPT es un proyecto de código abierto sin coste de licencia. El gasto real viene del consumo de la API del modelo de lenguaje que se configure, que se factura por uso y puede ser significativo al ejecutar varios agentes en paralelo.',
     faqs: [
       {
         question: '¿Qué es MetaGPT?',
@@ -3730,7 +3733,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Conviene revisar el resultado, ya que puede cometer errores',
     ],
     pricingNote:
-      'ChatGPT funciona con modelo freemium: hay un plan gratuito con funciones limitadas, mientras que las capacidades agénticas suelen estar disponibles en los planes de pago, con distintos niveles y límites de uso. Los planes individuales de pago rondan los 20 $/mes; consulta su web para precios actualizados.',
+      'ChatGPT funciona con modelo freemium: hay un plan gratuito con funciones limitadas, mientras que las capacidades agénticas suelen estar disponibles en los planes de pago, con distintos niveles y límites de uso. Los planes individuales de pago rondan los 20 $/mes;',
     faqs: [
       {
         question: '¿Qué son los agentes de ChatGPT?',
@@ -3779,7 +3782,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La calidad depende de cómo estén organizados los datos internos',
     ],
     pricingNote:
-      'Los agentes de Copilot son de pago y se comercializan mediante licencias de Microsoft 365 Copilot por usuario y, en algunos casos, con modelos de consumo por mensaje o acción. La estructura de precios de Microsoft cambia con frecuencia, así que consulta su web para precios actualizados.',
+      'Los agentes de Copilot son de pago y se comercializan mediante licencias de Microsoft 365 Copilot por usuario y, en algunos casos, con modelos de consumo por mensaje o acción. La estructura de precios de Microsoft cambia con frecuencia, así que',
     faqs: [
       {
         question: '¿Qué son los agentes de Microsoft Copilot?',
@@ -3828,7 +3831,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Puede añadir capas de abstracción innecesarias en casos simples',
     ],
     pricingNote:
-      'LangChain es una librería de código abierto y su uso no tiene coste de licencia. Los gastos vienen del consumo de la API del modelo de lenguaje elegido y, opcionalmente, de servicios de pago del ecosistema como sus herramientas de observabilidad. Consulta su web para precios actualizados de esos servicios.',
+      'LangChain es una librería de código abierto y su uso no tiene coste de licencia. Los gastos vienen del consumo de la API del modelo de lenguaje elegido y, opcionalmente, de servicios de pago del ecosistema como sus herramientas de observabilidad.',
     faqs: [
       {
         question: '¿Qué son los agentes de LangChain?',
@@ -3877,7 +3880,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Las funciones avanzadas suelen requerir suscripción',
     ],
     pricingNote:
-      'Sigue un modelo freemium: suele existir una vía de acceso gratuita con límites de uso, mientras que las capacidades avanzadas o el uso intensivo requieren suscripción o consumo de API facturado por uso. Al tratarse de un producto en evolución, consulta su web para precios actualizados antes de contratar.',
+      'Sigue un modelo freemium: suele existir una vía de acceso gratuita con límites de uso, mientras que las capacidades avanzadas o el uso intensivo requieren suscripción o consumo de API facturado por uso. Al tratarse de un producto en evolución,',
     faqs: [
       {
         question: '¿Qué son los agentes de xAI?',
@@ -3926,7 +3929,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El plan gratuito se queda corto para uso profesional',
     ],
     pricingNote:
-      'Zapier funciona con modelo freemium: hay un plan gratuito con un número limitado de tareas mensuales y flujos de un solo paso. Los planes de pago se escalonan según el volumen de tareas y las funciones avanzadas, empezando en cifras modestas y creciendo con el uso. Consulta su web para precios actualizados.',
+      'Zapier funciona con modelo freemium: hay un plan gratuito con un número limitado de tareas mensuales y flujos de un solo paso. Los planes de pago se escalonan según el volumen de tareas y las funciones avanzadas, empezando en cifras modestas y creciendo con el uso.',
     faqs: [
       {
         question: '¿Qué es Zapier?',
@@ -3975,7 +3978,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Su licencia no es completamente open source para usos comerciales revendidos',
     ],
     pricingNote:
-      'n8n se puede autoalojar de forma gratuita bajo su licencia de código abierto, asumiendo solo los costes del servidor. También ofrece una versión en la nube de pago con planes por volumen de ejecuciones. Consulta su web para precios actualizados.',
+      'n8n se puede autoalojar de forma gratuita bajo su licencia de código abierto, asumiendo solo los costes del servidor. También ofrece una versión en la nube de pago con planes por volumen de ejecuciones.',
     faqs: [
       {
         question: '¿Qué es n8n y para qué sirve?',
@@ -4024,7 +4027,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'No permite autoalojamiento',
     ],
     pricingNote:
-      'Make funciona con un modelo freemium: hay un plan gratuito con un número limitado de operaciones mensuales, suficiente para probar y automatizar tareas sencillas. Los planes de pago escalan según las operaciones consumidas y la frecuencia de ejecución. Consulta su web para precios actualizados.',
+      'Make funciona con un modelo freemium: hay un plan gratuito con un número limitado de operaciones mensuales, suficiente para probar y automatizar tareas sencillas. Los planes de pago escalan según las operaciones consumidas y la frecuencia de ejecución.',
     faqs: [
       {
         question: '¿Qué es Make y para qué sirve?',
@@ -4073,7 +4076,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Algunas capacidades avanzadas requieren licencias adicionales',
     ],
     pricingNote:
-      'Power Automate sigue un modelo freemium dentro del ecosistema Microsoft: ciertas licencias de Microsoft 365 incluyen funcionalidades básicas de automatización. Las capacidades avanzadas, como RPA o el procesamiento de documentos con IA, requieren planes de pago por usuario o por proceso. Consulta su web para precios actualizados.',
+      'Power Automate sigue un modelo freemium dentro del ecosistema Microsoft: ciertas licencias de Microsoft 365 incluyen funcionalidades básicas de automatización. Las capacidades avanzadas, como RPA o el procesamiento de documentos con IA, requieren planes de pago por usuario o por proceso.',
     faqs: [
       {
         question: '¿Qué es Power Automate?',
@@ -4122,7 +4125,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos adecuado para automatizaciones empresariales serias',
     ],
     pricingNote:
-      'IFTTT tiene un modelo freemium: el plan gratuito permite mantener activo un número reducido de applets. Los planes de pago amplían ese límite, dan acceso a applets con varias acciones y a ejecuciones más rápidas. Consulta su web para precios actualizados.',
+      'IFTTT tiene un modelo freemium: el plan gratuito permite mantener activo un número reducido de applets. Los planes de pago amplían ese límite, dan acceso a applets con varias acciones y a ejecuciones más rápidas.',
     faqs: [
       {
         question: '¿Qué es IFTTT y cómo funciona?',
@@ -4171,7 +4174,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos control fino que si ejecutas los pasos manualmente',
     ],
     pricingNote:
-      'Manus opera con un modelo freemium basado en créditos: suele ofrecer una cantidad gratuita de créditos para probar el servicio, que se consumen según la complejidad de cada tarea. Los planes de pago amplían los créditos disponibles y la ejecución simultánea. Consulta su web para precios actualizados.',
+      'Manus opera con un modelo freemium basado en créditos: suele ofrecer una cantidad gratuita de créditos para probar el servicio, que se consumen según la complejidad de cada tarea. Los planes de pago amplían los créditos disponibles y la ejecución simultánea.',
     faqs: [
       {
         question: '¿Qué es Manus?',
@@ -4220,7 +4223,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos plantillas e integraciones listas que las plataformas visuales',
     ],
     pricingNote:
-      'Trigger.dev es open source y puede autoalojarse sin coste de licencia, asumiendo la infraestructura. Su versión gestionada en la nube suele incluir un tramo gratuito y planes de pago según el uso y la concurrencia. Consulta su web para precios actualizados.',
+      'Trigger.dev es open source y puede autoalojarse sin coste de licencia, asumiendo la infraestructura. Su versión gestionada en la nube suele incluir un tramo gratuito y planes de pago según el uso y la concurrencia.',
     faqs: [
       {
         question: '¿Qué es Trigger.dev?',
@@ -4269,7 +4272,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos potente que asistentes de IA especializados en tareas concretas',
     ],
     pricingNote:
-      'Notion tiene un plan gratuito para uso personal, pero las funciones de IA suelen comercializarse como complemento de pago o incluidas en determinados planes de suscripción. El coste se calcula por usuario y mes. Consulta su web para precios actualizados.',
+      'Notion tiene un plan gratuito para uso personal, pero las funciones de IA suelen comercializarse como complemento de pago o incluidas en determinados planes de suscripción. El coste se calcula por usuario y mes.',
     faqs: [
       {
         question: '¿Qué es Notion AI y para qué sirve?',
@@ -4318,7 +4321,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La calidad depende de lo bien organizados que estén los datos internos',
     ],
     pricingNote:
-      'Microsoft 365 Copilot es un producto de pago que se factura como complemento por usuario y mes sobre una licencia de Microsoft 365 existente. Su precio se sitúa en la franja alta de los asistentes de IA empresariales. Consulta su web para precios actualizados.',
+      'Microsoft 365 Copilot es un producto de pago que se factura como complemento por usuario y mes sobre una licencia de Microsoft 365 existente. Su precio se sitúa en la franja alta de los asistentes de IA empresariales.',
     faqs: [
       {
         question: '¿Qué es Microsoft 365 Copilot?',
@@ -4367,7 +4370,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Algunas funciones llegan antes en inglés que en español',
     ],
     pricingNote:
-      'Las funciones de IA de Google Workspace son de pago y se contratan como complemento por usuario y mes sobre una licencia de Workspace, aunque Google ha ido incluyéndolas en determinados planes. Consulta su web para conocer el empaquetado y los precios actualizados.',
+      'Las funciones de IA de Google Workspace son de pago y se contratan como complemento por usuario y mes sobre una licencia de Workspace, aunque Google ha ido incluyéndolas en determinados planes.',
     faqs: [
       {
         question: '¿Qué es Google Workspace Duet?',
@@ -4416,7 +4419,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La exportación a otros formatos puede perder parte del diseño',
     ],
     pricingNote:
-      'Gamma funciona con un modelo freemium basado en créditos: el plan gratuito incluye una cantidad inicial de créditos para generar contenido, con marca de agua en algunos casos. Los planes de pago amplían los créditos y desbloquean opciones avanzadas de personalización. Consulta su web para precios actualizados.',
+      'Gamma funciona con un modelo freemium basado en créditos: el plan gratuito incluye una cantidad inicial de créditos para generar contenido, con marca de agua en algunos casos. Los planes de pago amplían los créditos y desbloquean opciones avanzadas de personalización.',
     faqs: [
       {
         question: '¿Qué es Gamma y para qué sirve?',
@@ -4465,7 +4468,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Los textos suelen requerir edición para sonar naturales',
     ],
     pricingNote:
-      'Magic Write forma parte de las funciones de IA de Canva y sigue un modelo freemium: la cuenta gratuita incluye un número limitado de usos, mientras que las suscripciones de pago de Canva amplían considerablemente ese límite. Consulta su web para precios actualizados.',
+      'Magic Write forma parte de las funciones de IA de Canva y sigue un modelo freemium: la cuenta gratuita incluye un número limitado de usos, mientras que las suscripciones de pago de Canva amplían considerablemente ese límite.',
     faqs: [
       {
         question: '¿Qué es Magic Write de Canva?',
@@ -4514,7 +4517,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Los diseños pueden parecer genéricos si se abusa de las plantillas',
     ],
     pricingNote:
-      'Canva sigue un modelo freemium: la cuenta gratuita da acceso a las funciones de Magic Studio con límites de uso mensuales. Las suscripciones de pago, como Canva Pro o Teams, amplían esos límites y añaden recursos premium. Consulta su web para precios actualizados.',
+      'Canva sigue un modelo freemium: la cuenta gratuita da acceso a las funciones de Magic Studio con límites de uso mensuales. Las suscripciones de pago, como Canva Pro o Teams, amplían esos límites y añaden recursos premium.',
     faqs: [
       {
         question: '¿Qué es Canva Magic Studio?',
@@ -4563,7 +4566,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La versión de escritorio solo está disponible para Windows',
     ],
     pricingNote:
-      'Power BI tiene un modelo freemium: Power BI Desktop se puede descargar y usar gratis para crear informes. Compartirlos y colaborar requiere licencias de pago por usuario, con planes superiores para grandes volúmenes. Consulta su web para precios actualizados.',
+      'Power BI tiene un modelo freemium: Power BI Desktop se puede descargar y usar gratis para crear informes. Compartirlos y colaborar requiere licencias de pago por usuario, con planes superiores para grandes volúmenes.',
     faqs: [
       {
         question: '¿Qué es Power BI y para qué sirve?',
@@ -4612,7 +4615,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La preparación de datos es menos fluida que en otras suites',
     ],
     pricingNote:
-      'Tableau es una plataforma de pago con licencias por usuario diferenciadas según el rol: creador, explorador o visualizador. El coste por creador se sitúa en la franja alta del mercado de BI. Consulta su web para conocer los planes y precios actualizados.',
+      'Tableau es una plataforma de pago con licencias por usuario diferenciadas según el rol: creador, explorador o visualizador. El coste por creador se sitúa en la franja alta del mercado de BI.',
     faqs: [
       {
         question: '¿Qué es Tableau?',
@@ -4661,7 +4664,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos flexible que otras herramientas para visualizaciones muy personalizadas',
     ],
     pricingNote:
-      'ThoughtSpot es una plataforma de pago dirigida principalmente al segmento empresarial, con precios que dependen del volumen de datos y del número de usuarios. Suele ofrecer periodos de prueba y ediciones diferenciadas. Consulta su web para conocer los precios actualizados.',
+      'ThoughtSpot es una plataforma de pago dirigida principalmente al segmento empresarial, con precios que dependen del volumen de datos y del número de usuarios. Suele ofrecer periodos de prueba y ediciones diferenciadas.',
     faqs: [
       {
         question: '¿Qué es ThoughtSpot?',
@@ -4710,7 +4713,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Parte del contenido premium depende de suscripciones adicionales',
     ],
     pricingNote:
-      'AlphaSense es un servicio de pago dirigido a profesionales, con suscripciones anuales cuyo precio se negocia con el proveedor y se sitúa en la franja alta del mercado. No suele existir plan gratuito, aunque sí demostraciones. Consulta su web para conocer las condiciones actuales.',
+      'AlphaSense es un servicio de pago dirigido a profesionales, con suscripciones anuales cuyo precio se negocia con el proveedor y se sitúa en la franja alta del mercado. No suele existir plan gratuito, aunque sí demostraciones.',
     faqs: [
       {
         question: '¿Qué es AlphaSense?',
@@ -4759,7 +4762,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Poca transparencia sobre el funcionamiento interno de los modelos',
     ],
     pricingNote:
-      'Kavout es un servicio de pago con suscripciones dirigidas tanto a inversores particulares avanzados como a clientes institucionales, con distintos niveles según las funciones y los datos incluidos. Consulta su web para conocer los planes y precios actualizados.',
+      'Kavout es un servicio de pago con suscripciones dirigidas tanto a inversores particulares avanzados como a clientes institucionales, con distintos niveles según las funciones y los datos incluidos.',
     faqs: [
       {
         question: '¿Qué es Kavout?',
@@ -4808,7 +4811,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El asistente de IA suele ser un complemento de pago aparte',
     ],
     pricingNote:
-      'ClickUp funciona con un modelo freemium: dispone de un plan gratuito con tareas ilimitadas y funciones básicas. Los planes de pago, por usuario y mes, añaden capacidades avanzadas, y el asistente de IA suele contratarse como complemento. Consulta su web para precios actualizados.',
+      'ClickUp funciona con un modelo freemium: dispone de un plan gratuito con tareas ilimitadas y funciones básicas. Los planes de pago, por usuario y mes, añaden capacidades avanzadas, y el asistente de IA suele contratarse como complemento.',
     faqs: [
       {
         question: '¿Qué es ClickUp y para qué sirve?',
@@ -4857,7 +4860,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos personalizable que otras plataformas más flexibles',
     ],
     pricingNote:
-      'Asana tiene un modelo freemium: el plan gratuito cubre las necesidades básicas de equipos pequeños. Las funciones avanzadas, incluidas las capacidades de IA, se incluyen en los planes de pago por usuario y mes. Consulta su web para precios actualizados.',
+      'Asana tiene un modelo freemium: el plan gratuito cubre las necesidades básicas de equipos pequeños. Las funciones avanzadas, incluidas las capacidades de IA, se incluyen en los planes de pago por usuario y mes.',
     faqs: [
       {
         question: '¿Qué es Asana y para qué sirve?',
@@ -4906,7 +4909,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Puede volverse desordenado si no se define bien la estructura inicial',
     ],
     pricingNote:
-      'Monday.com sigue un modelo freemium: dispone de un plan gratuito muy limitado en número de usuarios y elementos. Los planes de pago se facturan por usuario y mes con mínimos de asientos, y las funciones de IA se consumen mediante créditos. Consulta su web para precios actualizados.',
+      'Monday.com sigue un modelo freemium: dispone de un plan gratuito muy limitado en número de usuarios y elementos. Los planes de pago se facturan por usuario y mes con mínimos de asientos, y las funciones de IA se consumen mediante créditos.',
     faqs: [
       {
         question: '¿Qué es Monday.com?',
@@ -4955,7 +4958,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Sin informes ni métricas potentes de serie',
     ],
     pricingNote:
-      'Trello es freemium: mantiene un plan gratuito con tableros ilimitados y ciertos límites de colaboradores y automatizaciones. Los planes de pago se facturan por usuario y mes, con tramos aproximados que suelen empezar en torno a los 5-6 $ y subir según funciones (vistas avanzadas, administración, seguridad). Consulta su web para precios actualizados.',
+      'Trello es freemium: mantiene un plan gratuito con tableros ilimitados y ciertos límites de colaboradores y automatizaciones. Los planes de pago se facturan por usuario y mes, con tramos aproximados que suelen empezar en torno a los 5-6 $ y subir según funciones (vistas avanzadas, administración, seguridad).',
     faqs: [
       {
         question: '¿Qué es Trello y para qué sirve?',
@@ -5004,7 +5007,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Requiere siempre revisión de un profesional: no sustituye criterio jurídico',
     ],
     pricingNote:
-      'Harvey es una herramienta de pago con modelo empresarial: no publica tarifas abiertas ni ofrece registro autoservicio. El acceso se negocia mediante contrato con el despacho o el departamento legal, normalmente con licencias por usuario y condiciones a medida. Hay que solicitar una demo para conocer las condiciones. Consulta su web para precios actualizados.',
+      'Harvey es una herramienta de pago con modelo empresarial: no publica tarifas abiertas ni ofrece registro autoservicio. El acceso se negocia mediante contrato con el despacho o el departamento legal, normalmente con licencias por usuario y condiciones a medida. Hay que solicitar una demo para conocer las condiciones.',
     faqs: [
       {
         question: '¿Qué es Harvey AI?',
@@ -5053,7 +5056,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Los resultados necesitan siempre validación de un jurista',
     ],
     pricingNote:
-      'Luminance es una solución de pago con enfoque empresarial. No publica tarifas públicas: el precio depende del número de usuarios, los módulos contratados y el volumen documental, y se negocia mediante presupuesto tras una demo. Consulta su web para precios actualizados.',
+      'Luminance es una solución de pago con enfoque empresarial. No publica tarifas públicas: el precio depende del número de usuarios, los módulos contratados y el volumen documental, y se negocia mediante presupuesto tras una demo.',
     faqs: [
       {
         question: '¿Qué es Luminance?',
@@ -5103,7 +5106,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Ha recibido críticas y litigios sobre el alcance real de su servicio',
     ],
     pricingNote:
-      'DoNotPay funciona con un modelo freemium tirando a suscripción: permite explorar el servicio, pero para completar la mayoría de trámites hay que pagar una cuota, habitualmente mensual o trimestral de importe reducido. Los precios varían según el país y el servicio concreto. Consulta su web para precios actualizados.',
+      'DoNotPay funciona con un modelo freemium tirando a suscripción: permite explorar el servicio, pero para completar la mayoría de trámites hay que pagar una cuota, habitualmente mensual o trimestral de importe reducido. Los precios varían según el país y el servicio concreto.',
     faqs: [
       {
         question: '¿Qué es DoNotPay?',
@@ -5152,7 +5155,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Todas las sugerencias requieren revisión profesional',
     ],
     pricingNote:
-      'Spellbook es una herramienta de pago con licencias por usuario, orientada a profesionales y despachos. Suele ofrecer una prueba o demo antes de contratar, pero no un plan gratuito permanente. El precio depende del número de licencias y del plan elegido. Consulta su web para precios actualizados.',
+      'Spellbook es una herramienta de pago con licencias por usuario, orientada a profesionales y despachos. Suele ofrecer una prueba o demo antes de contratar, pero no un plan gratuito permanente. El precio depende del número de licencias y del plan elegido.',
     faqs: [
       {
         question: '¿Qué es Spellbook?',
@@ -5201,7 +5204,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Poco adecuada para despachos pequeños o autónomos',
     ],
     pricingNote:
-      'Evisort es una plataforma de pago con modelo empresarial. No publica tarifas abiertas: el precio se calcula según el número de usuarios, el volumen contractual y los módulos contratados, y se negocia mediante presupuesto tras una demostración. Consulta su web para precios actualizados.',
+      'Evisort es una plataforma de pago con modelo empresarial. No publica tarifas abiertas: el precio se calcula según el número de usuarios, el volumen contractual y los módulos contratados, y se negocia mediante presupuesto tras una demostración.',
     faqs: [
       {
         question: '¿Qué es Evisort?',
@@ -5250,7 +5253,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Coste empresarial, no orientado a pymes ni autónomos',
     ],
     pricingNote:
-      'LawGeex es de pago con modelo empresarial y no publica tarifas abiertas. El precio depende del volumen de contratos revisados, el número de usuarios y los tipos de acuerdo configurados, y se negocia por presupuesto tras una demo. Consulta su web para precios actualizados.',
+      'LawGeex es de pago con modelo empresarial y no publica tarifas abiertas. El precio depende del volumen de contratos revisados, el número de usuarios y los tipos de acuerdo configurados, y se negocia por presupuesto tras una demo.',
     faqs: [
       {
         question: '¿Qué es LawGeex?',
@@ -5299,7 +5302,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El código generado necesita revisión y pruebas',
     ],
     pricingNote:
-      'Replit funciona con un modelo freemium: hay un nivel gratuito con el que empezar a programar, y las capacidades de IA más amplias se incluyen en los planes de pago por suscripción mensual. Los tramos y los nombres de los planes han ido cambiando con el tiempo. Consulta su web para precios actualizados.',
+      'Replit funciona con un modelo freemium: hay un nivel gratuito con el que empezar a programar, y las capacidades de IA más amplias se incluyen en los planes de pago por suscripción mensual. Los tramos y los nombres de los planes han ido cambiando con el tiempo.',
     faqs: [
       {
         question: '¿Qué es Ghostwriter de Replit?',
@@ -5348,7 +5351,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos control que un flujo de desarrollo tradicional',
     ],
     pricingNote:
-      'Bolt es freemium y funciona con un sistema de créditos o tokens: hay una asignación gratuita diaria o mensual limitada, y los planes de pago amplían ese consumo. Las suscripciones suelen arrancar en torno a los 20 $/mes y escalar según el volumen. Consulta su web para precios actualizados.',
+      'Bolt es freemium y funciona con un sistema de créditos o tokens: hay una asignación gratuita diaria o mensual limitada, y los planes de pago amplían ese consumo. Las suscripciones suelen arrancar en torno a los 20 $/mes y escalar según el volumen.',
     faqs: [
       {
         question: '¿Qué es Bolt.new?',
@@ -5397,7 +5400,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Requiere conocimientos previos de automatización de tests',
     ],
     pricingNote:
-      'TestingBot funciona con un modelo freemium: ofrece una prueba gratuita y planes de pago por suscripción mensual que varían según los minutos de test, la ejecución en paralelo y el acceso a dispositivos reales. Los tramos suelen empezar en cifras modestas y escalar bastante para equipos grandes. Consulta su web para precios actualizados.',
+      'TestingBot funciona con un modelo freemium: ofrece una prueba gratuita y planes de pago por suscripción mensual que varían según los minutos de test, la ejecución en paralelo y el acceso a dispositivos reales. Los tramos suelen empezar en cifras modestas y escalar bastante para equipos grandes.',
     faqs: [
       {
         question: '¿Qué es TestingBot?',
@@ -5446,7 +5449,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La autorreparación no siempre acierta y hay que supervisarla',
     ],
     pricingNote:
-      'Mabl es freemium en la práctica: ofrece una prueba gratuita para evaluar la plataforma y planes de pago por suscripción dirigidos a equipos, con precio en función del volumen de ejecuciones y usuarios. No publica una tarifa pública detallada. Consulta su web para precios actualizados.',
+      'Mabl es freemium en la práctica: ofrece una prueba gratuita para evaluar la plataforma y planes de pago por suscripción dirigidos a equipos, con precio en función del volumen de ejecuciones y usuarios. No publica una tarifa pública detallada.',
     faqs: [
       {
         question: '¿Qué es Mabl?',
@@ -5495,7 +5498,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Puede generar mucho ruido si no se ajustan bien las reglas',
     ],
     pricingNote:
-      'SonarQube tiene una edición Community open source y gratuita que se puede autoalojar. Las ediciones de pago (Developer, Enterprise) añaden más lenguajes, análisis de ramas y funciones de seguridad, con precio según líneas de código analizadas. También existe SonarCloud como versión gestionada, gratuita para proyectos públicos. Consulta su web para precios actualizados.',
+      'SonarQube tiene una edición Community open source y gratuita que se puede autoalojar. Las ediciones de pago (Developer, Enterprise) añaden más lenguajes, análisis de ramas y funciones de seguridad, con precio según líneas de código analizadas. También existe SonarCloud como versión gestionada, gratuita para proyectos públicos.',
     faqs: [
       {
         question: '¿Qué es SonarQube y para qué sirve?',
@@ -5544,7 +5547,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Los repositorios privados requieren plan de pago',
     ],
     pricingNote:
-      'Code Climate es freemium: su análisis de calidad es gratuito para repositorios de código abierto, mientras que los repositorios privados y las funciones de métricas de equipo se facturan por usuario y mes en planes de pago. Consulta su web para precios actualizados.',
+      'Code Climate es freemium: su análisis de calidad es gratuito para repositorios de código abierto, mientras que los repositorios privados y las funciones de métricas de equipo se facturan por usuario y mes en planes de pago.',
     faqs: [
       {
         question: '¿Qué es Code Climate?',
@@ -5593,7 +5596,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Puede generar ruido si no se afinan las reglas al inicio',
     ],
     pricingNote:
-      'CodeFactor es freemium: gratuito para repositorios públicos y de código abierto, con planes de pago por suscripción para repositorios privados, normalmente escalados según el número de repositorios o de usuarios. Consulta su web para precios actualizados.',
+      'CodeFactor es freemium: gratuito para repositorios públicos y de código abierto, con planes de pago por suscripción para repositorios privados, normalmente escalados según el número de repositorios o de usuarios.',
     faqs: [
       {
         question: '¿Qué es CodeFactor?',
@@ -5642,7 +5645,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Es una ayuda al diagnóstico, no un sustituto del radiólogo',
     ],
     pricingNote:
-      'Aidoc es una solución de pago dirigida a instituciones sanitarias. No publica tarifas: el precio se negocia por contrato con el hospital o la red de centros, en función de los algoritmos contratados y el volumen de estudios. Consulta su web para precios actualizados.',
+      'Aidoc es una solución de pago dirigida a instituciones sanitarias. No publica tarifas: el precio se negocia por contrato con el hospital o la red de centros, en función de los algoritmos contratados y el volumen de estudios.',
     faqs: [
       {
         question: '¿Qué es Aidoc?',
@@ -5691,7 +5694,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Coste y despliegue de nivel institucional',
     ],
     pricingNote:
-      'PathAI es una solución de pago con modelo empresarial e institucional. No ofrece tarifas públicas ni acceso para particulares: los acuerdos se negocian con laboratorios, hospitales y compañías farmacéuticas según el proyecto. Consulta su web para precios actualizados.',
+      'PathAI es una solución de pago con modelo empresarial e institucional. No ofrece tarifas públicas ni acceso para particulares: los acuerdos se negocian con laboratorios, hospitales y compañías farmacéuticas según el proyecto.',
     faqs: [
       {
         question: '¿Qué es PathAI?',
@@ -5740,7 +5743,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Puede generar respuestas incorrectas y requiere supervisión médica',
     ],
     pricingNote:
-      'Med-PaLM es principalmente un proyecto de investigación de Google, sin un modelo comercial de suscripción abierto al público. El acceso se ha canalizado a través de programas para organizaciones sanitarias seleccionadas y de la plataforma cloud de Google, donde el uso se factura por consumo. Consulta su web para precios actualizados.',
+      'Med-PaLM es principalmente un proyecto de investigación de Google, sin un modelo comercial de suscripción abierto al público. El acceso se ha canalizado a través de programas para organizaciones sanitarias seleccionadas y de la plataforma cloud de Google, donde el uso se factura por consumo.',
     faqs: [
       {
         question: '¿Qué es Med-PaLM?',
@@ -5789,7 +5792,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Siempre requiere validación del hallazgo por un radiólogo',
     ],
     pricingNote:
-      'Zebra Medical es una solución de pago dirigida a hospitales y sistemas de salud. No publica tarifas: el modelo habitual en este sector es el contrato institucional con precio por algoritmo o por estudio analizado. Su oferta se ha integrado en la de Nanox. Consulta su web para precios actualizados.',
+      'Zebra Medical es una solución de pago dirigida a hospitales y sistemas de salud. No publica tarifas: el modelo habitual en este sector es el contrato institucional con precio por algoritmo o por estudio analizado. Su oferta se ha integrado en la de Nanox.',
     faqs: [
       {
         question: '¿Qué es Zebra Medical Vision?',
@@ -5838,7 +5841,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Herramienta de apoyo: el diagnóstico sigue siendo del médico',
     ],
     pricingNote:
-      'Lunit es una solución de pago dirigida a instituciones sanitarias y farmacéuticas. No publica tarifas públicas: el precio se acuerda mediante contrato según los productos contratados y el volumen de estudios analizados. Consulta su web para precios actualizados.',
+      'Lunit es una solución de pago dirigida a instituciones sanitarias y farmacéuticas. No publica tarifas públicas: el precio se acuerda mediante contrato según los productos contratados y el volumen de estudios analizados.',
     faqs: [
       {
         question: '¿Qué es Lunit?',
@@ -5887,7 +5890,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Coste e implantación de nivel institucional',
     ],
     pricingNote:
-      'Enlitic es una solución de pago con modelo empresarial dirigida a hospitales y redes sanitarias. No publica tarifas abiertas: el precio se negocia por contrato según el volumen de estudios y los módulos contratados, normalmente tras una demostración. Consulta su web para precios actualizados.',
+      'Enlitic es una solución de pago con modelo empresarial dirigida a hospitales y redes sanitarias. No publica tarifas abiertas: el precio se negocia por contrato según el volumen de estudios y los módulos contratados, normalmente tras una demostración.',
     faqs: [
       {
         question: '¿Qué es Enlitic?',
@@ -5937,7 +5940,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Las funciones avanzadas se orientan sobre todo a empresas y aseguradoras',
     ],
     pricingNote:
-      'Ada Health sigue un modelo freemium: la evaluación de síntomas para particulares se ofrece sin coste en su aplicación, mientras que la monetización llega por acuerdos con sistemas sanitarios, aseguradoras y empresas. No hay tarifas públicas cerradas para el uso corporativo, que se negocia caso a caso. Consulta su web para condiciones y precios actualizados.',
+      'Ada Health sigue un modelo freemium: la evaluación de síntomas para particulares se ofrece sin coste en su aplicación, mientras que la monetización llega por acuerdos con sistemas sanitarios, aseguradoras y empresas. No hay tarifas públicas cerradas para el uso corporativo, que se negocia caso a caso.',
     faqs: [
       {
         question: '¿Qué es Ada Health?',
@@ -5987,7 +5990,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'No sustituye la atención presencial en casos urgentes o complejos',
     ],
     pricingNote:
-      'eMed opera con un modelo freemium: algunas funciones de orientación pueden usarse sin coste, mientras que las consultas clínicas y las pruebas supervisadas se facturan por servicio o a través de un plan corporativo o de aseguradora. Los precios dependen del país y del tipo de servicio contratado. Consulta su web para precios actualizados.',
+      'eMed opera con un modelo freemium: algunas funciones de orientación pueden usarse sin coste, mientras que las consultas clínicas y las pruebas supervisadas se facturan por servicio o a través de un plan corporativo o de aseguradora. Los precios dependen del país y del tipo de servicio contratado.',
     faqs: [
       {
         question: '¿Qué es eMed?',
@@ -6037,7 +6040,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La versión avanzada e integrable está orientada a organizaciones',
     ],
     pricingNote:
-      'Buoy Health tiene un modelo freemium: el comprobador de síntomas es de uso gratuito para el público general, y los ingresos proceden de los acuerdos con sistemas sanitarios, aseguradoras y empresas que integran la herramienta. No publica tarifas cerradas para ese uso corporativo. Consulta su web para precios actualizados.',
+      'Buoy Health tiene un modelo freemium: el comprobador de síntomas es de uso gratuito para el público general, y los ingresos proceden de los acuerdos con sistemas sanitarios, aseguradoras y empresas que integran la herramienta. No publica tarifas cerradas para ese uso corporativo.',
     faqs: [
       {
         question: '¿Qué es Buoy Health?',
@@ -6087,7 +6090,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La disponibilidad del servicio ha variado con el tiempo',
     ],
     pricingNote:
-      'Your.MD se ha ofrecido como servicio gratuito para el usuario final, sin coste por consultar síntomas ni acceder a sus contenidos de salud. El modelo de negocio se apoya en acuerdos con terceros del sector sanitario más que en suscripciones de particulares. Consulta su web para confirmar la disponibilidad y las condiciones actuales.',
+      'Your.MD se ha ofrecido como servicio gratuito para el usuario final, sin coste por consultar síntomas ni acceder a sus contenidos de salud. El modelo de negocio se apoya en acuerdos con terceros del sector sanitario más que en suscripciones de particulares.',
     faqs: [
       {
         question: '¿Qué es Your.MD?',
@@ -6187,7 +6190,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Sus predicciones deben validarse con evidencia adicional',
     ],
     pricingNote:
-      'AlphaMissense se ha liberado como recurso gratuito para la comunidad investigadora, con acceso abierto a su catálogo de predicciones. No funciona como producto comercial con planes de suscripción, aunque determinados usos pueden estar sujetos a condiciones de licencia. Consulta la documentación oficial para conocer los términos actualizados.',
+      'AlphaMissense se ha liberado como recurso gratuito para la comunidad investigadora, con acceso abierto a su catálogo de predicciones. No funciona como producto comercial con planes de suscripción, aunque determinados usos pueden estar sujetos a condiciones de licencia.',
     faqs: [
       {
         question: '¿Qué es AlphaMissense?',
@@ -6238,7 +6241,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Precios no públicos y orientados a acuerdos corporativos',
     ],
     pricingNote:
-      'BenevolentAI es un producto de pago dirigido a la industria biofarmacéutica y a organizaciones de investigación, sin plan gratuito ni autoservicio. El acceso suele articularse mediante licencias de plataforma o acuerdos de colaboración negociados caso a caso. No publica tarifas cerradas; consulta su web para solicitar información actualizada.',
+      'BenevolentAI es un producto de pago dirigido a la industria biofarmacéutica y a organizaciones de investigación, sin plan gratuito ni autoservicio. El acceso suele articularse mediante licencias de plataforma o acuerdos de colaboración negociados caso a caso. No publica tarifas cerradas;',
     faqs: [
       {
         question: '¿Qué es BenevolentAI?',
@@ -6288,7 +6291,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Puede cometer errores en explicaciones complejas y conviene revisarlas',
     ],
     pricingNote:
-      'Khanmigo se ofrece de forma gratuita para el profesorado y, en el caso de familias y distritos escolares, ha existido una suscripción de bajo coste destinada a cubrir gastos de funcionamiento. Al tratarse de una organización sin ánimo de lucro, las condiciones pueden variar por región. Consulta su web para precios actualizados.',
+      'Khanmigo se ofrece de forma gratuita para el profesorado y, en el caso de familias y distritos escolares, ha existido una suscripción de bajo coste destinada a cubrir gastos de funcionamiento. Al tratarse de una organización sin ánimo de lucro, las condiciones pueden variar por región.',
     faqs: [
       {
         question: '¿Qué es Khanmigo?',
@@ -6388,7 +6391,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El plan gratuito tiene límites en captura y personalización',
     ],
     pricingNote:
-      'Scribe funciona con un modelo freemium: hay un plan gratuito con funciones básicas de captura y creación de guías, y planes de pago para profesionales y equipos que añaden IA avanzada, difuminado automático y controles de administración. Los planes de pago suelen partir de unos 20 $ por usuario y mes. Consulta su web para precios actualizados.',
+      'Scribe funciona con un modelo freemium: hay un plan gratuito con funciones básicas de captura y creación de guías, y planes de pago para profesionales y equipos que añaden IA avanzada, difuminado automático y controles de administración. Los planes de pago suelen partir de unos 20 $ por usuario y mes.',
     faqs: [
       {
         question: '¿Qué es Scribe AI?',
@@ -6438,7 +6441,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Las funciones de centro y administración son de pago',
     ],
     pricingNote:
-      'MagicSchool AI sigue un modelo freemium: ofrece un plan gratuito para docentes con acceso a buena parte de sus herramientas y planes de pago con más funciones, capacidad y administración para centros o distritos. Las tarifas dependen del número de usuarios. Consulta su web para precios actualizados.',
+      'MagicSchool AI sigue un modelo freemium: ofrece un plan gratuito para docentes con acceso a buena parte de sus herramientas y planes de pago con más funciones, capacidad y administración para centros o distritos. Las tarifas dependen del número de usuarios.',
     faqs: [
       {
         question: '¿Qué es MagicSchool AI?',
@@ -6488,7 +6491,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Puede sugerir cambios que alteran el estilo propio del autor',
     ],
     pricingNote:
-      'Grammarly funciona con un modelo freemium: el plan gratuito cubre correcciones básicas de gramática y ortografía, mientras que los planes de pago añaden sugerencias de estilo, tono y funciones avanzadas de IA. Las suscripciones individuales suelen rondar los 12-30 $ al mes según la modalidad, y existen planes por equipo. Consulta su web para precios actualizados.',
+      'Grammarly funciona con un modelo freemium: el plan gratuito cubre correcciones básicas de gramática y ortografía, mientras que los planes de pago añaden sugerencias de estilo, tono y funciones avanzadas de IA. Las suscripciones individuales suelen rondar los 12-30 $ al mes según la modalidad, y existen planes por equipo.',
     faqs: [
       {
         question: '¿Qué es Grammarly?',
@@ -6538,7 +6541,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Las funciones completas requieren licencia de centro',
     ],
     pricingNote:
-      'Writable opera con un modelo freemium: existe acceso gratuito con funciones limitadas para docentes y licencias de pago para centros y distritos que amplían el alcance, la integración y la administración. Las tarifas se negocian según el número de alumnos. Consulta su web para precios actualizados.',
+      'Writable opera con un modelo freemium: existe acceso gratuito con funciones limitadas para docentes y licencias de pago para centros y distritos que amplían el alcance, la integración y la administración. Las tarifas se negocian según el número de alumnos.',
     faqs: [
       {
         question: '¿Qué es Writable?',
@@ -6588,7 +6591,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La calidad en español puede ser inferior a la del inglés',
     ],
     pricingNote:
-      'Eduaide sigue un modelo freemium: dispone de un plan gratuito con un número limitado de generaciones y planes de pago con uso ampliado y funciones adicionales. Las suscripciones individuales para docentes suelen situarse en una franja asequible mensual o anual. Consulta su web para precios actualizados.',
+      'Eduaide sigue un modelo freemium: dispone de un plan gratuito con un número limitado de generaciones y planes de pago con uso ampliado y funciones adicionales. Las suscripciones individuales para docentes suelen situarse en una franja asequible mensual o anual.',
     faqs: [
       {
         question: '¿Qué es Eduaide?',
@@ -6638,7 +6641,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La versión gratuita muestra publicidad y tiene límites',
     ],
     pricingNote:
-      'Quizlet funciona con un modelo freemium: puedes crear y estudiar fichas gratis, mientras que las funciones avanzadas de IA, los exámenes de práctica ilimitados y la experiencia sin anuncios pertenecen a la suscripción de pago. Los planes individuales suelen rondar unos pocos euros al mes en su modalidad anual. Consulta su web para precios actualizados.',
+      'Quizlet funciona con un modelo freemium: puedes crear y estudiar fichas gratis, mientras que las funciones avanzadas de IA, los exámenes de práctica ilimitados y la experiencia sin anuncios pertenecen a la suscripción de pago. Los planes individuales suelen rondar unos pocos euros al mes en su modalidad anual.',
     faqs: [
       {
         question: '¿Qué es Quizlet?',
@@ -6688,7 +6691,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La calidad depende mucho del texto de partida',
     ],
     pricingNote:
-      'QuestionWell es freemium: ofrece un plan gratuito con un número limitado de generaciones al mes y planes de pago para docentes o centros que amplían el uso y añaden funciones. Los precios individuales se sitúan en una franja asequible mensual o anual. Consulta su web para precios actualizados.',
+      'QuestionWell es freemium: ofrece un plan gratuito con un número limitado de generaciones al mes y planes de pago para docentes o centros que amplían el uso y añaden funciones. Los precios individuales se sitúan en una franja asequible mensual o anual.',
     faqs: [
       {
         question: '¿Qué es QuestionWell?',
@@ -6738,7 +6741,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El contenido está más pulido en inglés que en español',
     ],
     pricingNote:
-      'Curipod es freemium: cuenta con un plan gratuito que permite crear y lanzar lecciones con límites, y planes de pago para docentes y centros que amplían las funciones, el almacenamiento y la gestión. Las tarifas dependen del tipo de licencia. Consulta su web para precios actualizados.',
+      'Curipod es freemium: cuenta con un plan gratuito que permite crear y lanzar lecciones con límites, y planes de pago para docentes y centros que amplían las funciones, el almacenamiento y la gestión. Las tarifas dependen del tipo de licencia.',
     faqs: [
       {
         question: '¿Qué es Curipod?',
@@ -6788,7 +6791,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El uso intensivo y las funciones de centro son de pago',
     ],
     pricingNote:
-      'TeachMate AI funciona con un modelo freemium: hay un plan gratuito con acceso limitado a sus generadores y suscripciones de pago para docentes y centros que amplían el uso y añaden funciones de gestión. Las tarifas varían según el tipo de licencia. Consulta su web para precios actualizados.',
+      'TeachMate AI funciona con un modelo freemium: hay un plan gratuito con acceso limitado a sus generadores y suscripciones de pago para docentes y centros que amplían el uso y añaden funciones de gestión. Las tarifas varían según el tipo de licencia.',
     faqs: [
       {
         question: '¿Qué es TeachMate AI?',
@@ -6838,7 +6841,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Los niveles de lectura siguen referencias del sistema estadounidense',
     ],
     pricingNote:
-      'Diffit es freemium: ofrece un plan gratuito con funciones básicas para docentes y planes de pago que amplían las generaciones, la exportación y las opciones de equipo o centro. Las tarifas dependen del tipo de licencia y del número de usuarios. Consulta su web para precios actualizados.',
+      'Diffit es freemium: ofrece un plan gratuito con funciones básicas para docentes y planes de pago que amplían las generaciones, la exportación y las opciones de equipo o centro. Las tarifas dependen del tipo de licencia y del número de usuarios.',
     faqs: [
       {
         question: '¿Qué es Diffit?',
@@ -6888,7 +6891,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El análisis se centra en la forma, no en el contenido del mensaje',
     ],
     pricingNote:
-      'Speaker Coach se incluye sin coste adicional dentro de PowerPoint, tanto en su versión web como en las aplicaciones asociadas a una cuenta Microsoft. No requiere una suscripción específica, aunque la disponibilidad de la función puede depender del plan de Microsoft 365 y del idioma. Consulta la documentación oficial para confirmar las condiciones actuales.',
+      'Speaker Coach se incluye sin coste adicional dentro de PowerPoint, tanto en su versión web como en las aplicaciones asociadas a una cuenta Microsoft. No requiere una suscripción específica, aunque la disponibilidad de la función puede depender del plan de Microsoft 365 y del idioma.',
     faqs: [
       {
         question: '¿Qué es Speaker Coach?',
@@ -6938,7 +6941,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Los datos están anonimizados, lo que dificulta interpretar las variables',
     ],
     pricingNote:
-      'Participar en la competición y descargar los datasets es gratuito. El componente económico está en el staking: se aporta criptomoneda propia del proyecto y se gana o se pierde según el rendimiento de las predicciones, por lo que no es una suscripción sino un modelo de riesgo y recompensa. Consulta su web para conocer las condiciones actualizadas.',
+      'Participar en la competición y descargar los datasets es gratuito. El componente económico está en el staking: se aporta criptomoneda propia del proyecto y se gana o se pierde según el rendimiento de las predicciones, por lo que no es una suscripción sino un modelo de riesgo y recompensa.',
     faqs: [
       {
         question: '¿Qué es Numerai?',
@@ -6988,7 +6991,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La lógica interna de los modelos es poco transparente para el cliente',
     ],
     pricingNote:
-      'EquBot opera con un modelo de pago orientado al mercado institucional, sin planes públicos ni versión gratuita de autoservicio. El acceso suele negociarse mediante licencia o acuerdo comercial, y el coste depende del alcance y del tipo de cliente. Consulta su web y contacta con su equipo comercial para conocer las condiciones actualizadas.',
+      'EquBot opera con un modelo de pago orientado al mercado institucional, sin planes públicos ni versión gratuita de autoservicio. El acceso suele negociarse mediante licencia o acuerdo comercial, y el coste depende del alcance y del tipo de cliente.',
     faqs: [
       {
         question: '¿Qué es EquBot?',
@@ -7038,7 +7041,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Enfoque muy centrado en el mercado estadounidense',
     ],
     pricingNote:
-      'Zest AI funciona con un modelo de pago B2B, normalmente mediante licencia o contrato de servicio con la entidad financiera. No publica tarifas ni ofrece plan gratuito, y el coste depende del volumen de operaciones y del alcance de la implantación. Consulta su web y solicita una demostración para conocer las condiciones actualizadas.',
+      'Zest AI funciona con un modelo de pago B2B, normalmente mediante licencia o contrato de servicio con la entidad financiera. No publica tarifas ni ofrece plan gratuito, y el coste depende del volumen de operaciones y del alcance de la implantación.',
     faqs: [
       {
         question: '¿Qué es Zest AI?',
@@ -7088,7 +7091,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'No es una herramienta que el usuario controle: es un producto financiero',
     ],
     pricingNote:
-      'Upstart no se vende como suscripción de software: es un producto financiero. Para el solicitante, el coste está en los intereses y en posibles comisiones de apertura, que varían según su perfil de riesgo. Para las entidades, la tecnología se contrata mediante acuerdo comercial. Consulta su web para conocer condiciones y tipos actualizados.',
+      'Upstart no se vende como suscripción de software: es un producto financiero. Para el solicitante, el coste está en los intereses y en posibles comisiones de apertura, que varían según su perfil de riesgo. Para las entidades, la tecnología se contrata mediante acuerdo comercial.',
     faqs: [
       {
         question: '¿Qué es Upstart?',
@@ -7138,7 +7141,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Producto B2B: no es utilizable por particulares',
     ],
     pricingNote:
-      'CredoLab trabaja con un modelo de pago B2B, habitualmente basado en el volumen de puntuaciones consultadas o en una licencia acordada con la entidad. No hay planes públicos ni versión gratuita para usuarios finales, aunque suele ofrecer pruebas piloto a empresas. Consulta su web para conocer las condiciones actualizadas.',
+      'CredoLab trabaja con un modelo de pago B2B, habitualmente basado en el volumen de puntuaciones consultadas o en una licencia acordada con la entidad. No hay planes públicos ni versión gratuita para usuarios finales, aunque suele ofrecer pruebas piloto a empresas.',
     faqs: [
       {
         question: '¿Qué es CredoLab?',
@@ -7188,7 +7191,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El tono informal no gusta a todo el mundo',
     ],
     pricingNote:
-      'Cleo sigue un modelo freemium: hay una versión gratuita con seguimiento de gastos y presupuestos básicos, y una suscripción de pago que desbloquea funciones adicionales de ahorro y análisis. La cuota mensual suele situarse en el entorno de unos pocos euros o dólares. Consulta su web para precios y disponibilidad actualizados.',
+      'Cleo sigue un modelo freemium: hay una versión gratuita con seguimiento de gastos y presupuestos básicos, y una suscripción de pago que desbloquea funciones adicionales de ahorro y análisis. La cuota mensual suele situarse en el entorno de unos pocos euros o dólares.',
     faqs: [
       {
         question: '¿Qué es Cleo?',
@@ -7238,7 +7241,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Invertir implica riesgo de pérdida, algo que la automatización puede hacer olvidar',
     ],
     pricingNote:
-      'Plum funciona con un modelo freemium: hay un plan gratuito con ahorro automático básico y varios niveles de suscripción que añaden reglas avanzadas, más opciones de inversión y análisis. Las cuotas mensuales suelen ser de unos pocos euros, y algunos productos de inversión llevan comisiones adicionales. Consulta su web para precios actualizados.',
+      'Plum funciona con un modelo freemium: hay un plan gratuito con ahorro automático básico y varios niveles de suscripción que añaden reglas avanzadas, más opciones de inversión y análisis. Las cuotas mensuales suelen ser de unos pocos euros, y algunos productos de inversión llevan comisiones adicionales.',
     faqs: [
       {
         question: '¿Qué es Plum?',
@@ -7337,7 +7340,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Precios no públicos y coste elevado',
     ],
     pricingNote:
-      'FICO comercializa sus soluciones de fraude con un modelo empresarial de pago, mediante licencias o contratos plurianuales adaptados a cada entidad. No hay planes públicos ni versión gratuita, y el coste depende del volumen de transacciones y de los módulos contratados. Consulta su web y contacta con su equipo comercial para conocer las condiciones actualizadas.',
+      'FICO comercializa sus soluciones de fraude con un modelo empresarial de pago, mediante licencias o contratos plurianuales adaptados a cada entidad. No hay planes públicos ni versión gratuita, y el coste depende del volumen de transacciones y de los módulos contratados.',
     faqs: [
       {
         question: '¿Qué es FICO?',
@@ -7387,7 +7390,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Precios no públicos, negociados caso por caso',
     ],
     pricingNote:
-      'Feedzai opera con un modelo de pago empresarial: licencias o contratos adaptados al volumen de transacciones y a los módulos contratados. No dispone de plan gratuito ni de tarifas publicadas. Lo habitual es solicitar una demostración y negociar las condiciones con su equipo comercial. Consulta su web para información actualizada.',
+      'Feedzai opera con un modelo de pago empresarial: licencias o contratos adaptados al volumen de transacciones y a los módulos contratados. No dispone de plan gratuito ni de tarifas publicadas. Lo habitual es solicitar una demostración y negociar las condiciones con su equipo comercial.',
     faqs: [
       {
         question: '¿Qué es Feedzai?',
@@ -7437,7 +7440,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Orientada a organizaciones con equipo de seguridad, no a usuarios individuales',
     ],
     pricingNote:
-      'Darktrace se vende con un modelo empresarial de pago mediante suscripción o licencia, con precios no publicados que dependen del tamaño de la organización, del número de dispositivos y de los módulos contratados. Suele ofrecer pruebas piloto antes de la contratación. Consulta su web y contacta con su equipo comercial para conocer las condiciones actualizadas.',
+      'Darktrace se vende con un modelo empresarial de pago mediante suscripción o licencia, con precios no publicados que dependen del tamaño de la organización, del número de dispositivos y de los módulos contratados. Suele ofrecer pruebas piloto antes de la contratación.',
     faqs: [
       {
         question: '¿Qué es Darktrace?',
@@ -7487,7 +7490,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La calidad de las imágenes generadas es irregular según el caso',
     ],
     pricingNote:
-      'Fotor sigue un modelo freemium: hay una versión gratuita con funciones básicas, créditos limitados de IA y marca de agua en algunas salidas. Los planes de pago, con cuotas mensuales que suelen situarse en el rango bajo de las herramientas de diseño, eliminan esas limitaciones y amplían plantillas y almacenamiento. Consulta su web para precios actualizados.',
+      'Fotor sigue un modelo freemium: hay una versión gratuita con funciones básicas, créditos limitados de IA y marca de agua en algunas salidas. Los planes de pago, con cuotas mensuales que suelen situarse en el rango bajo de las herramientas de diseño, eliminan esas limitaciones y amplían plantillas y almacenamiento.',
     faqs: [
       {
         question: '¿Qué es Fotor?',
@@ -7537,7 +7540,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'No sustituye el criterio de diseño ni la investigación de usuario',
     ],
     pricingNote:
-      'Figma trabaja con un modelo freemium: hay un plan gratuito con limitaciones y planes de pago por editor, cuyo precio mensual varía según el nivel. El acceso a las funciones de IA y sus límites de uso dependen del plan contratado y han ido cambiando. Consulta su web para conocer los precios y la disponibilidad actualizados.',
+      'Figma trabaja con un modelo freemium: hay un plan gratuito con limitaciones y planes de pago por editor, cuyo precio mensual varía según el nivel. El acceso a las funciones de IA y sus límites de uso dependen del plan contratado y han ido cambiando.',
     faqs: [
       {
         question: '¿Qué es Figma AI?',
@@ -7587,7 +7590,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El plan gratuito limita el número de proyectos',
     ],
     pricingNote:
-      'Uizard sigue un modelo freemium: un plan gratuito con un número limitado de proyectos y funciones, y planes de pago por usuario que amplían proyectos, generaciones de IA y opciones de colaboración. Los tramos de pago suelen situarse en el entorno de unas decenas de euros al mes por usuario. Consulta su web para precios actualizados.',
+      'Uizard sigue un modelo freemium: un plan gratuito con un número limitado de proyectos y funciones, y planes de pago por usuario que amplían proyectos, generaciones de IA y opciones de colaboración. Los tramos de pago suelen situarse en el entorno de unas decenas de euros al mes por usuario.',
     faqs: [
       {
         question: '¿Qué es Uizard?',
@@ -7687,7 +7690,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'No sustituye el trabajo estratégico de una identidad de marca real',
     ],
     pricingNote:
-      'Looka permite generar y previsualizar logos sin coste, pero la descarga de los archivos exige una compra puntual del logo o una suscripción al kit de marca. Los paquetes suelen situarse en el rango de unas decenas de euros para el logo y una cuota anual para el kit completo. Consulta su web para precios actualizados.',
+      'Looka permite generar y previsualizar logos sin coste, pero la descarga de los archivos exige una compra puntual del logo o una suscripción al kit de marca. Los paquetes suelen situarse en el rango de unas decenas de euros para el logo y una cuota anual para el kit completo.',
     faqs: [
       {
         question: '¿Qué es Looka?',
@@ -7737,7 +7740,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Personalización más limitada que en un editor profesional',
     ],
     pricingNote:
-      'Brandmark funciona con un esquema freemium: crear y previsualizar logos no cuesta nada, pero descargar los archivos requiere un pago único, con distintos paquetes según los formatos y extras incluidos. Los precios suelen situarse en el rango de unas decenas de dólares. Consulta su web para conocer los paquetes y precios actualizados.',
+      'Brandmark funciona con un esquema freemium: crear y previsualizar logos no cuesta nada, pero descargar los archivos requiere un pago único, con distintos paquetes según los formatos y extras incluidos. Los precios suelen situarse en el rango de unas decenas de dólares.',
     faqs: [
       {
         question: '¿Qué es Brandmark?',
@@ -7787,7 +7790,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'No entrega archivos vectoriales completos ni kit de marca avanzado',
     ],
     pricingNote:
-      'Hatchful es gratuito: puedes generar el logo y descargar los archivos sin pagar ni introducir tarjeta. Shopify lo ofrece como herramienta de captación para su plataforma de comercio electrónico. Al no haber planes de pago, no hay funciones premium que desbloquear. Consulta su web por si cambian las condiciones de uso.',
+      'Hatchful es gratuito: puedes generar el logo y descargar los archivos sin pagar ni introducir tarjeta. Shopify lo ofrece como herramienta de captación para su plataforma de comercio electrónico. Al no haber planes de pago, no hay funciones premium que desbloquear.',
     faqs: [
       {
         question: '¿Qué es Hatchful?',
@@ -7837,7 +7840,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Publicar con dominio propio requiere plan de pago',
     ],
     pricingNote:
-      'Durable emplea un modelo freemium: se puede generar y previsualizar la web sin coste, pero publicarla con dominio propio y usar las funciones de negocio requiere suscripción. Los planes de pago suelen situarse en el entorno de unas decenas de euros al mes, con descuento en pago anual. Consulta su web para precios actualizados.',
+      'Durable emplea un modelo freemium: se puede generar y previsualizar la web sin coste, pero publicarla con dominio propio y usar las funciones de negocio requiere suscripción. Los planes de pago suelen situarse en el entorno de unas decenas de euros al mes, con descuento en pago anual.',
     faqs: [
       {
         question: '¿Qué es Durable?',
@@ -7887,7 +7890,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos control sobre el código y el rendimiento que otras opciones',
     ],
     pricingNote:
-      'Wix funciona con un modelo freemium: puedes crear y publicar un sitio gratis con subdominio de Wix y anuncios de la plataforma. Para usar dominio propio, quitar la publicidad y activar comercio electrónico hay que contratar un plan de pago, con cuotas mensuales de un rango amplio. Consulta su web para precios actualizados.',
+      'Wix funciona con un modelo freemium: puedes crear y publicar un sitio gratis con subdominio de Wix y anuncios de la plataforma. Para usar dominio propio, quitar la publicidad y activar comercio electrónico hay que contratar un plan de pago, con cuotas mensuales de un rango amplio.',
     faqs: [
       {
         question: '¿Qué es Wix ADI?',
@@ -7937,7 +7940,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Los planes con más tráfico y funciones encarecen bastante el proyecto',
     ],
     pricingNote:
-      'Framer sigue un modelo freemium: suele ofrecer un plan gratuito con limitaciones (subdominio propio de la plataforma y límites de páginas o tráfico) y varios planes de pago mensuales según el número de sitios, visitas y funciones de CMS o colaboración. Las funciones de IA pueden estar sujetas a límites de uso según el plan. Consulta su web para precios actualizados.',
+      'Framer sigue un modelo freemium: suele ofrecer un plan gratuito con limitaciones (subdominio propio de la plataforma y límites de páginas o tráfico) y varios planes de pago mensuales según el número de sitios, visitas y funciones de CMS o colaboración. Las funciones de IA pueden estar sujetas a límites de uso según el plan.',
     faqs: [
       {
         question: '¿Qué es Framer AI?',
@@ -7986,7 +7989,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El ajuste inicial para reducir falsos positivos lleva tiempo',
     ],
     pricingNote:
-      'Vectra AI es una plataforma comercial de pago dirigida al mercado empresarial. No publica tarifas cerradas: el coste se negocia con el fabricante o un partner y depende del número de usuarios, sensores, volumen de tráfico y módulos contratados. Lo habitual es solicitar una demostración y una propuesta a medida. Consulta su web para información actualizada.',
+      'Vectra AI es una plataforma comercial de pago dirigida al mercado empresarial. No publica tarifas cerradas: el coste se negocia con el fabricante o un partner y depende del número de usuarios, sensores, volumen de tráfico y módulos contratados. Lo habitual es solicitar una demostración y una propuesta a medida.',
     faqs: [
       {
         question: '¿Qué es Vectra AI?',
@@ -8035,7 +8038,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Sin plan gratuito: es un producto de pago para empresas',
     ],
     pricingNote:
-      'Cylance es un producto comercial de pago con licenciamiento por endpoint y suscripción anual, normalmente contratado a través de partners o distribuidores. El precio varía según el número de equipos, los módulos incluidos y si se añade servicio gestionado. No suele publicarse una tarifa pública cerrada; consulta su web o a un partner para precios actualizados.',
+      'Cylance es un producto comercial de pago con licenciamiento por endpoint y suscripción anual, normalmente contratado a través de partners o distribuidores. El precio varía según el número de equipos, los módulos incluidos y si se añade servicio gestionado. No suele publicarse una tarifa pública cerrada;',
     faqs: [
       {
         question: '¿Qué es Cylance?',
@@ -8084,7 +8087,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El valor depende mucho de la calidad de los logs que se ingesten',
     ],
     pricingNote:
-      'Exabeam es una plataforma de pago para empresas. El precio se establece mediante presupuesto personalizado y suele depender del volumen de datos ingeridos o del número de usuarios monitorizados, además de los módulos contratados. No publica tarifas cerradas ni ofrece plan gratuito; consulta su web para información actualizada.',
+      'Exabeam es una plataforma de pago para empresas. El precio se establece mediante presupuesto personalizado y suele depender del volumen de datos ingeridos o del número de usuarios monitorizados, además de los módulos contratados. No publica tarifas cerradas ni ofrece plan gratuito;',
     faqs: [
       {
         question: '¿Qué es Exabeam?',
@@ -8133,7 +8136,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La interfaz puede resultar densa para usuarios noveles',
     ],
     pricingNote:
-      'Securonix es una solución de pago dirigida al mercado empresarial. El coste se acuerda mediante presupuesto y suele calcularse por número de identidades o volumen de datos analizados, con contratos de suscripción anuales. No existe plan gratuito público; consulta su web para conocer las opciones actualizadas.',
+      'Securonix es una solución de pago dirigida al mercado empresarial. El coste se acuerda mediante presupuesto y suele calcularse por número de identidades o volumen de datos analizados, con contratos de suscripción anuales. No existe plan gratuito público;',
     faqs: [
       {
         question: '¿Qué es Securonix?',
@@ -8182,7 +8185,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Coste de licencia y de almacenamiento de logs a largo plazo',
     ],
     pricingNote:
-      'LogRhythm se comercializa mediante licencias de pago para empresas, con modelos que han combinado el número de dispositivos o el volumen de datos procesados. El precio se solicita al fabricante o a un partner y depende de la arquitectura elegida y de los módulos contratados. Consulta su web para precios actualizados.',
+      'LogRhythm se comercializa mediante licencias de pago para empresas, con modelos que han combinado el número de dispositivos o el volumen de datos procesados. El precio se solicita al fabricante o a un partner y depende de la arquitectura elegida y de los módulos contratados.',
     faqs: [
       {
         question: '¿Qué es LogRhythm?',
@@ -8231,7 +8234,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La cantidad de módulos complica elegir la licencia adecuada',
     ],
     pricingNote:
-      'SentinelOne es un producto de pago con licenciamiento por endpoint y suscripción anual, disponible en varios niveles según las capacidades de EDR, XDR y servicios gestionados incluidos. El coste depende del número de dispositivos y de los módulos contratados, y suele negociarse con el fabricante o un partner. Consulta su web para precios actualizados.',
+      'SentinelOne es un producto de pago con licenciamiento por endpoint y suscripción anual, disponible en varios niveles según las capacidades de EDR, XDR y servicios gestionados incluidos. El coste depende del número de dispositivos y de los módulos contratados, y suele negociarse con el fabricante o un partner.',
     faqs: [
       {
         question: '¿Qué es SentinelOne?',
@@ -8280,7 +8283,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Aprovecharlo del todo exige un equipo de seguridad con experiencia',
     ],
     pricingNote:
-      'CrowdStrike se vende por suscripción con licenciamiento por endpoint y por módulos, en distintos paquetes según las capacidades incluidas (prevención, EDR, identidad, cloud, servicios gestionados). Los precios de lista existen para algunos paquetes, pero lo habitual en empresa es un presupuesto negociado. Consulta su web para precios actualizados.',
+      'CrowdStrike se vende por suscripción con licenciamiento por endpoint y por módulos, en distintos paquetes según las capacidades incluidas (prevención, EDR, identidad, cloud, servicios gestionados). Los precios de lista existen para algunos paquetes, pero lo habitual en empresa es un presupuesto negociado.',
     faqs: [
       {
         question: '¿Qué es CrowdStrike?',
@@ -8329,7 +8332,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Riesgo de dependencia del ecosistema del fabricante',
     ],
     pricingNote:
-      'Es una plataforma comercial de pago dirigida a empresas industriales. El coste depende del número de activos conectados, del volumen de datos y de los módulos o aplicaciones contratadas, y normalmente se articula mediante suscripción con presupuesto a medida. Consulta la web de Siemens para conocer las condiciones actualizadas.',
+      'Es una plataforma comercial de pago dirigida a empresas industriales. El coste depende del número de activos conectados, del volumen de datos y de los módulos o aplicaciones contratadas, y normalmente se articula mediante suscripción con presupuesto a medida.',
     faqs: [
       {
         question: '¿Qué es Siemens MindSphere?',
@@ -8378,7 +8381,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La estrategia de producto ha ido cambiando con los años',
     ],
     pricingNote:
-      'Predix es una oferta comercial de pago para empresas industriales. No publica tarifas cerradas: el coste se define por proyecto, en función de los activos conectados, el volumen de datos y las aplicaciones contratadas, normalmente con contratos de suscripción. Consulta la web de GE Digital para información actualizada.',
+      'Predix es una oferta comercial de pago para empresas industriales. No publica tarifas cerradas: el coste se define por proyecto, en función de los activos conectados, el volumen de datos y las aplicaciones contratadas, normalmente con contratos de suscripción.',
     faqs: [
       {
         question: '¿Qué es Predix?',
@@ -8427,7 +8430,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La integración con sistemas existentes puede ser laboriosa',
     ],
     pricingNote:
-      'Uptake se comercializa como solución de pago para empresas, con suscripciones cuyo precio depende del número y tipo de activos monitorizados y de los módulos contratados. No publica tarifas cerradas y lo habitual es solicitar una demostración y un presupuesto a medida. Consulta su web para información actualizada.',
+      'Uptake se comercializa como solución de pago para empresas, con suscripciones cuyo precio depende del número y tipo de activos monitorizados y de los módulos contratados. No publica tarifas cerradas y lo habitual es solicitar una demostración y un presupuesto a medida.',
     faqs: [
       {
         question: '¿Qué es Uptake?',
@@ -8476,7 +8479,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Requiere formación y trabajo de integración para aportar valor real',
     ],
     pricingNote:
-      'Spot es un producto de hardware de pago con un precio de adquisición alto, al que se suman cargas útiles, software y soporte. Boston Dynamics comercializa el robot mediante presupuesto y distribuidores, y el coste total depende de la configuración elegida. Consulta su web para conocer las condiciones y precios actualizados.',
+      'Spot es un producto de hardware de pago con un precio de adquisición alto, al que se suman cargas útiles, software y soporte. Boston Dynamics comercializa el robot mediante presupuesto y distribuidores, y el coste total depende de la configuración elegida.',
     faqs: [
       {
         question: '¿Qué es Spot de Boston Dynamics?',
@@ -8525,7 +8528,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Su futuro depende de los movimientos corporativos recientes',
     ],
     pricingNote:
-      'Covariant no es un producto de consumo con tarifa pública, sino una solución industrial de pago que se implanta mediante proyecto e integración con el hardware robótico del cliente. El coste depende del número de estaciones, del hardware y del alcance del despliegue. Consulta con la empresa para conocer las condiciones actualizadas.',
+      'Covariant no es un producto de consumo con tarifa pública, sino una solución industrial de pago que se implanta mediante proyecto e integración con el hardware robótico del cliente. El coste depende del número de estaciones, del hardware y del alcance del despliegue.',
     faqs: [
       {
         question: '¿Qué es Covariant?',
@@ -8574,7 +8577,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Depende de una integración cuidadosa con el flujo logístico',
     ],
     pricingNote:
-      'Osaro es una solución industrial de pago que se comercializa mediante proyecto y presupuesto personalizado, en función del número de estaciones robotizadas, el hardware empleado y el alcance de la integración. No publica tarifas públicas ni ofrece versión gratuita. Consulta su web para información actualizada.',
+      'Osaro es una solución industrial de pago que se comercializa mediante proyecto y presupuesto personalizado, en función del número de estaciones robotizadas, el hardware empleado y el alcance de la integración. No publica tarifas públicas ni ofrece versión gratuita.',
     faqs: [
       {
         question: '¿Qué es Osaro?',
@@ -8623,7 +8626,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Necesita un periodo de aprendizaje antes de rendir al máximo',
     ],
     pricingNote:
-      'Augury se comercializa como servicio de pago que combina hardware (sensores) y suscripción al software de diagnóstico. El precio suele calcularse por máquina monitorizada y no se publica en tarifa cerrada, por lo que hay que solicitar presupuesto. Consulta su web para conocer las condiciones actualizadas.',
+      'Augury se comercializa como servicio de pago que combina hardware (sensores) y suscripción al software de diagnóstico. El precio suele calcularse por máquina monitorizada y no se publica en tarifa cerrada, por lo que hay que solicitar presupuesto.',
     faqs: [
       {
         question: '¿Qué es Augury?',
@@ -8672,7 +8675,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Puede requerir integración con sistemas heredados de planta',
     ],
     pricingNote:
-      'Senseye Predictive Maintenance es un producto de pago por suscripción dentro del catálogo de Siemens. El coste suele depender del número de activos o máquinas monitorizadas y de los servicios de implantación asociados, y se acuerda mediante presupuesto. Consulta la web de Siemens para precios actualizados.',
+      'Senseye Predictive Maintenance es un producto de pago por suscripción dentro del catálogo de Siemens. El coste suele depender del número de activos o máquinas monitorizadas y de los servicios de implantación asociados, y se acuerda mediante presupuesto.',
     faqs: [
       {
         question: '¿Qué es Senseye?',
@@ -8721,7 +8724,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El cambio de marca a Avathon puede generar confusión',
     ],
     pricingNote:
-      'Es una solución empresarial de pago, comercializada por proyecto y suscripción. El coste depende del alcance del despliegue, de los activos analizados y de los servicios de implantación necesarios, y se acuerda mediante presupuesto. No existe plan gratuito; consulta su web para información actualizada.',
+      'Es una solución empresarial de pago, comercializada por proyecto y suscripción. El coste depende del alcance del despliegue, de los activos analizados y de los servicios de implantación necesarios, y se acuerda mediante presupuesto. No existe plan gratuito;',
     faqs: [
       {
         question: '¿Qué es SparkCognition?',
@@ -8770,7 +8773,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El uso serio requiere plan de pago y coste de despliegue',
     ],
     pricingNote:
-      'LandingLens funciona con un modelo de suscripción de pago para empresas, aunque suele existir un nivel de entrada o prueba con límites de uso para evaluar la plataforma. El precio depende del número de modelos, dispositivos de despliegue y usuarios. Consulta su web para precios actualizados.',
+      'LandingLens funciona con un modelo de suscripción de pago para empresas, aunque suele existir un nivel de entrada o prueba con límites de uso para evaluar la plataforma. El precio depende del número de modelos, dispositivos de despliegue y usuarios.',
     faqs: [
       {
         question: '¿Qué es LandingLens?',
@@ -8819,7 +8822,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Producto de pago orientado a empresas',
     ],
     pricingNote:
-      'Matroid es una plataforma comercial de pago, con planes por suscripción cuyo coste depende del número de detectores, cámaras o flujos de vídeo procesados y del tipo de despliegue. Puede facilitar pruebas o demostraciones, pero no un plan gratuito para uso productivo. Consulta su web para precios actualizados.',
+      'Matroid es una plataforma comercial de pago, con planes por suscripción cuyo coste depende del número de detectores, cámaras o flujos de vídeo procesados y del tipo de despliegue. Puede facilitar pruebas o demostraciones, pero no un plan gratuito para uso productivo.',
     faqs: [
       {
         question: '¿Qué es Matroid?',
@@ -8868,7 +8871,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Configurar inspecciones complejas requiere formación específica',
     ],
     pricingNote:
-      'Cognex vende hardware y licencias de software de pago, normalmente a través de distribuidores e integradores. El coste depende del modelo de cámara o sensor, del software de visión elegido y del proyecto de integración, sin tarifa pública única. Consulta su web o a un distribuidor para precios actualizados.',
+      'Cognex vende hardware y licencias de software de pago, normalmente a través de distribuidores e integradores. El coste depende del modelo de cámara o sensor, del software de visión elegido y del proyecto de integración, sin tarifa pública única.',
     faqs: [
       {
         question: '¿Qué es Cognex?',
@@ -8918,7 +8921,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'No incluye interfaz de usuario lista para producción',
     ],
     pricingNote:
-      'LLaVA es un proyecto de código abierto y sus pesos se distribuyen de forma gratuita, así que no hay planes ni suscripciones. El coste real es el de la infraestructura donde lo ejecutes: GPU propia o alquilada en la nube. Revisa las licencias del modelo y de los datos antes de un uso comercial y consulta su web para condiciones actualizadas.',
+      'LLaVA es un proyecto de código abierto y sus pesos se distribuyen de forma gratuita, así que no hay planes ni suscripciones. El coste real es el de la infraestructura donde lo ejecutes: GPU propia o alquilada en la nube. Revisa las licencias del modelo y de los datos antes de un uso comercial y',
     faqs: [
       {
         question: '¿Qué es LLaVA?',
@@ -8968,7 +8971,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Rendimiento inferior a los multimodales cerrados más avanzados',
     ],
     pricingNote:
-      'Fuyu se distribuye como modelo de pesos abiertos, sin suscripción ni pago por uso. El gasto proviene del hardware o del proveedor de nube en el que lo despliegues. Antes de un uso comercial conviene revisar la licencia publicada junto al modelo; consulta la ficha oficial en Hugging Face para las condiciones actualizadas.',
+      'Fuyu se distribuye como modelo de pesos abiertos, sin suscripción ni pago por uso. El gasto proviene del hardware o del proveedor de nube en el que lo despliegues. Antes de un uso comercial conviene revisar la licencia publicada junto al modelo;',
     faqs: [
       {
         question: '¿Qué es Fuyu?',
@@ -9170,7 +9173,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos soporte y actualizaciones que un producto de pago',
     ],
     pricingNote:
-      'IDEFICS se distribuye como modelo abierto y gratuito a través de Hugging Face, sin suscripción ni consumo por llamada. El coste es el de la infraestructura donde lo ejecutes, ya sea GPU propia o alquilada. Si prefieres no gestionar servidores, existen servicios de inferencia de pago; consulta la web para precios actualizados.',
+      'IDEFICS se distribuye como modelo abierto y gratuito a través de Hugging Face, sin suscripción ni consumo por llamada. El coste es el de la infraestructura donde lo ejecutes, ya sea GPU propia o alquilada. Si prefieres no gestionar servidores, existen servicios de inferencia de pago;',
     faqs: [
       {
         question: '¿Qué es IDEFICS?',
@@ -9220,7 +9223,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Las dependencias y versiones pueden dar problemas de compatibilidad',
     ],
     pricingNote:
-      'Transformers es una biblioteca de código abierto y su uso es gratuito, sin suscripción ni límites de llamadas. Hugging Face sí ofrece servicios de pago complementarios, como inferencia gestionada o funcionalidades para empresas, que se contratan aparte. Consulta su web para conocer los precios actualizados de esos servicios.',
+      'Transformers es una biblioteca de código abierto y su uso es gratuito, sin suscripción ni límites de llamadas. Hugging Face sí ofrece servicios de pago complementarios, como inferencia gestionada o funcionalidades para empresas, que se contratan aparte.',
     faqs: [
       {
         question: '¿Qué es Transformers de Hugging Face?',
@@ -9270,7 +9273,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Requiere conocimientos de MLOps para escalar bien',
     ],
     pricingNote:
-      'OpenLLM es software de código abierto y su uso no tiene coste de licencia. El gasto real está en las GPU y servidores donde despliegues los modelos. BentoML ofrece además servicios gestionados de pago para quien no quiera administrar la infraestructura; consulta su web para conocer los precios actualizados.',
+      'OpenLLM es software de código abierto y su uso no tiene coste de licencia. El gasto real está en las GPU y servidores donde despliegues los modelos. BentoML ofrece además servicios gestionados de pago para quien no quiera administrar la infraestructura;',
     faqs: [
       {
         question: '¿Qué es OpenLLM?',
@@ -9320,7 +9323,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El proyecto ha evolucionado y cambiado de nombre y alcance',
     ],
     pricingNote:
-      'MemGPT nació como proyecto de código abierto y su uso no tiene coste de licencia. Lo que sí supone gasto es el consumo del modelo de lenguaje que utilices por debajo y la base de datos donde guardes la memoria. El proyecto ha ido evolucionando hacia una plataforma con opciones alojadas: consulta su web para precios actualizados.',
+      'MemGPT nació como proyecto de código abierto y su uso no tiene coste de licencia. Lo que sí supone gasto es el consumo del modelo de lenguaje que utilices por debajo y la base de datos donde guardes la memoria. El proyecto ha ido evolucionando hacia una plataforma con opciones alojadas:',
     faqs: [
       {
         question: '¿Qué es MemGPT?',
@@ -9370,7 +9373,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Los planes gestionados tienen límites de uso en el nivel gratuito',
     ],
     pricingNote:
-      'Mem0 sigue un modelo freemium: existe una versión de código abierto que puedes autoalojar sin coste de licencia y un servicio gestionado con plan gratuito limitado y planes de pago por volumen de memorias o consultas. Los precios cambian con frecuencia, así que consulta su web para las condiciones actualizadas.',
+      'Mem0 sigue un modelo freemium: existe una versión de código abierto que puedes autoalojar sin coste de licencia y un servicio gestionado con plan gratuito limitado y planes de pago por volumen de memorias o consultas. Los precios cambian con frecuencia, así que',
     faqs: [
       {
         question: '¿Qué es Mem0?',
@@ -9420,7 +9423,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Requiere perfil técnico para sacarle partido',
     ],
     pricingNote:
-      'Zep funciona con un modelo freemium: suele ofrecer un plan gratuito con límites de uso para pruebas y desarrollo, y planes de pago escalonados según el volumen de mensajes o usuarios, además de opciones para empresas. También hay componentes de código abierto autoalojables. Consulta su web para precios actualizados.',
+      'Zep funciona con un modelo freemium: suele ofrecer un plan gratuito con límites de uso para pruebas y desarrollo, y planes de pago escalonados según el volumen de mensajes o usuarios, además de opciones para empresas. También hay componentes de código abierto autoalojables.',
     faqs: [
       {
         question: '¿Qué es Zep AI?',
@@ -9520,7 +9523,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La calidad del grafo depende mucho del texto de entrada',
     ],
     pricingNote:
-      'GraphGPT es un proyecto de código abierto sin coste de licencia ni planes de suscripción. Normalmente necesitarás aportar tu propia clave de API del modelo de lenguaje que utilice por debajo, y ese consumo sí se factura por parte del proveedor correspondiente. Consulta el repositorio para los requisitos actualizados.',
+      'GraphGPT es un proyecto de código abierto sin coste de licencia ni planes de suscripción. Normalmente necesitarás aportar tu propia clave de API del modelo de lenguaje que utilice por debajo, y ese consumo sí se factura por parte del proveedor correspondiente.',
     faqs: [
       {
         question: '¿Qué es GraphGPT?',
@@ -9570,7 +9573,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La API ha evolucionado bastante entre versiones',
     ],
     pricingNote:
-      'DSPy es un framework de código abierto y su uso no tiene coste de licencia ni suscripción. El gasto proviene del modelo de lenguaje que utilices por debajo, y conviene tenerlo en cuenta porque los procesos de optimización pueden generar bastantes llamadas a la API. Consulta la documentación oficial para las recomendaciones actualizadas.',
+      'DSPy es un framework de código abierto y su uso no tiene coste de licencia ni suscripción. El gasto proviene del modelo de lenguaje que utilices por debajo, y conviene tenerlo en cuenta porque los procesos de optimización pueden generar bastantes llamadas a la API.',
     faqs: [
       {
         question: '¿Qué es DSPy?',
@@ -9670,7 +9673,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La API ha cambiado de forma notable entre versiones',
     ],
     pricingNote:
-      'AutoGen es un framework de código abierto y su uso no tiene coste de licencia. El gasto real está en las llamadas al modelo de lenguaje que utilices, que pueden crecer bastante en sistemas con varios agentes conversando. Consulta la documentación oficial para conocer las opciones y recomendaciones actualizadas.',
+      'AutoGen es un framework de código abierto y su uso no tiene coste de licencia. El gasto real está en las llamadas al modelo de lenguaje que utilices, que pueden crecer bastante en sistemas con varios agentes conversando.',
     faqs: [
       {
         question: '¿Qué es AutoGen?',
@@ -9720,7 +9723,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Requiere saber Python y entender la lógica de agentes',
     ],
     pricingNote:
-      'El framework de CrewAI es de código abierto y puede usarse sin coste de licencia; solo pagas el consumo del modelo de lenguaje que conectes. La empresa ofrece además una plataforma comercial con funciones de despliegue y gestión para empresas. Consulta su web para conocer los planes y precios actualizados.',
+      'El framework de CrewAI es de código abierto y puede usarse sin coste de licencia; solo pagas el consumo del modelo de lenguaje que conectes. La empresa ofrece además una plataforma comercial con funciones de despliegue y gestión para empresas.',
     faqs: [
       {
         question: '¿Qué es CrewAI?',
@@ -9771,7 +9774,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Las funciones de despliegue gestionado tienen coste aparte',
     ],
     pricingNote:
-      'La librería LangGraph es de código abierto y puede usarse sin coste de licencia; el gasto es el del modelo de lenguaje que conectes. LangChain ofrece además una plataforma de despliegue y observabilidad con plan gratuito limitado y planes de pago. Consulta su web para conocer los precios actualizados.',
+      'La librería LangGraph es de código abierto y puede usarse sin coste de licencia; el gasto es el del modelo de lenguaje que conectes. LangChain ofrece además una plataforma de despliegue y observabilidad con plan gratuito limitado y planes de pago.',
     faqs: [
       {
         question: '¿Qué es LangGraph?',
@@ -9821,7 +9824,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La cantidad de funciones puede abrumar al principio',
     ],
     pricingNote:
-      'Weights & Biases sigue un modelo freemium: suele ofrecer un plan gratuito para uso personal y proyectos académicos, con límites de almacenamiento e historial, y planes de pago por usuario para equipos, además de opciones para empresas con despliegue privado. Los precios cambian con frecuencia, así que consulta su web para las condiciones actualizadas.',
+      'Weights & Biases sigue un modelo freemium: suele ofrecer un plan gratuito para uso personal y proyectos académicos, con límites de almacenamiento e historial, y planes de pago por usuario para equipos, además de opciones para empresas con despliegue privado. Los precios cambian con frecuencia, así que',
     faqs: [
       {
         question: '¿Qué es Weights & Biases?',
@@ -9871,7 +9874,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Las funciones avanzadas quedan reservadas a los planes de pago',
     ],
     pricingNote:
-      'ClearML funciona con un modelo freemium: el núcleo es de código abierto y autoalojable sin coste de licencia, y el servicio en la nube suele incluir un plan gratuito con límites y planes de pago por usuario o por capacidad, además de opciones para empresas. Consulta su web para conocer los precios actualizados.',
+      'ClearML funciona con un modelo freemium: el núcleo es de código abierto y autoalojable sin coste de licencia, y el servicio en la nube suele incluir un plan gratuito con límites y planes de pago por usuario o por capacidad, además de opciones para empresas.',
     faqs: [
       {
         question: '¿Qué es ClearML?',
@@ -9922,7 +9925,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La interfaz es funcional pero poco pulida frente a alternativas comerciales',
     ],
     pricingNote:
-      'MLflow es un proyecto de código abierto y su uso es gratuito, tanto en local como autoalojado en tu propia infraestructura. El coste real proviene de los servidores y el almacenamiento que dediques. Existen versiones gestionadas dentro de plataformas comerciales con planes de pago; consulta su web para precios actualizados.',
+      'MLflow es un proyecto de código abierto y su uso es gratuito, tanto en local como autoalojado en tu propia infraestructura. El coste real proviene de los servidores y el almacenamiento que dediques. Existen versiones gestionadas dentro de plataformas comerciales con planes de pago;',
     faqs: [
       {
         question: '¿Qué es MLflow?',
@@ -9973,7 +9976,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Genera dependencia del ecosistema de AWS',
     ],
     pricingNote:
-      'SageMaker es de pago por uso: se factura según las horas de cómputo, el almacenamiento y las peticiones de inferencia que consumas, sin cuota fija de licencia. AWS suele ofrecer una capa gratuita limitada para empezar. El coste real depende mucho del tipo de instancia; consulta su web para precios actualizados.',
+      'SageMaker es de pago por uso: se factura según las horas de cómputo, el almacenamiento y las peticiones de inferencia que consumas, sin cuota fija de licencia. AWS suele ofrecer una capa gratuita limitada para empezar. El coste real depende mucho del tipo de instancia;',
     faqs: [
       {
         question: '¿Qué es Amazon SageMaker?',
@@ -10074,7 +10077,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El autoalojamiento requiere mantenimiento propio',
     ],
     pricingNote:
-      'Helicone funciona con un modelo freemium: suele tener un plan gratuito con un límite de peticiones registradas al mes y planes de pago que crecen según el volumen y la retención de datos. Al ser open source, también puedes autoalojarlo y pagar solo la infraestructura. Consulta su web para precios actualizados.',
+      'Helicone funciona con un modelo freemium: suele tener un plan gratuito con un límite de peticiones registradas al mes y planes de pago que crecen según el volumen y la retención de datos. Al ser open source, también puedes autoalojarlo y pagar solo la infraestructura.',
     faqs: [
       {
         question: '¿Qué es Helicone?',
@@ -10124,7 +10127,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Puede ser excesivo para proyectos con muy pocos prompts',
     ],
     pricingNote:
-      'PromptLayer sigue un modelo freemium: suele ofrecer un plan gratuito con un número limitado de peticiones registradas y planes de pago por usuario o por volumen para equipos. Las funciones de colaboración y retención larga suelen estar en los planes superiores. Consulta su web para precios actualizados.',
+      'PromptLayer sigue un modelo freemium: suele ofrecer un plan gratuito con un número limitado de peticiones registradas y planes de pago por usuario o por volumen para equipos. Las funciones de colaboración y retención larga suelen estar en los planes superiores.',
     faqs: [
       {
         question: '¿Qué es PromptLayer?',
@@ -10175,7 +10178,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Requiere instrumentar la aplicación para sacarle partido',
     ],
     pricingNote:
-      'Arize AI trabaja con un modelo freemium: suele haber una opción gratuita o de código abierto con límites para empezar a instrumentar, y planes de pago para equipos y empresas con más volumen, retención y soporte. Los precios empresariales se negocian según el caso; consulta su web para información actualizada.',
+      'Arize AI trabaja con un modelo freemium: suele haber una opción gratuita o de código abierto con límites para empezar a instrumentar, y planes de pago para equipos y empresas con más volumen, retención y soporte. Los precios empresariales se negocian según el caso;',
     faqs: [
       {
         question: '¿Qué es Arize AI?',
@@ -10275,7 +10278,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Necesitas montar tú la infraestructura de vectores y despliegue',
     ],
     pricingNote:
-      'Haystack es un framework de código abierto y su uso es gratuito. Los costes vienen de la infraestructura donde lo despliegues y de las llamadas a los modelos o servicios que utilices dentro del pipeline. deepset ofrece además productos comerciales con planes de pago; consulta su web para precios actualizados.',
+      'Haystack es un framework de código abierto y su uso es gratuito. Los costes vienen de la infraestructura donde lo despliegues y de las llamadas a los modelos o servicios que utilices dentro del pipeline. deepset ofrece además productos comerciales con planes de pago;',
     faqs: [
       {
         question: '¿Qué es Haystack?',
@@ -10325,7 +10328,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La API gestionada tiene coste según el volumen procesado',
     ],
     pricingNote:
-      'Unstructured ofrece una librería de código abierto gratuita que puedes ejecutar por tu cuenta, y además una API y plataforma gestionadas de pago que suelen facturarse según el número de páginas o documentos procesados. Suele existir un tramo gratuito para probar; consulta su web para precios actualizados.',
+      'Unstructured ofrece una librería de código abierto gratuita que puedes ejecutar por tu cuenta, y además una API y plataforma gestionadas de pago que suelen facturarse según el número de páginas o documentos procesados. Suele existir un tramo gratuito para probar;',
     faqs: [
       {
         question: '¿Qué es Unstructured?',
@@ -10375,7 +10378,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Requiere programar y entender bien qué mide cada métrica',
     ],
     pricingNote:
-      'RAGAS es un proyecto de código abierto y su uso no tiene coste de licencia. El gasto proviene de las llamadas a los modelos de lenguaje que actúan como evaluadores, facturadas por el proveedor correspondiente según los tokens consumidos. Consulta su web y la de tu proveedor de modelos para costes actualizados.',
+      'RAGAS es un proyecto de código abierto y su uso no tiene coste de licencia. El gasto proviene de las llamadas a los modelos de lenguaje que actúan como evaluadores, facturadas por el proveedor correspondiente según los tokens consumidos.',
     faqs: [
       {
         question: '¿Qué es RAGAS?',
@@ -10426,7 +10429,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El plan gratuito tiene límites de uso ajustados',
     ],
     pricingNote:
-      'Writesonic funciona con un modelo freemium: suele tener un plan gratuito con créditos limitados y planes de pago mensuales que escalan según el volumen de palabras o créditos y el número de usuarios. Los planes básicos suelen situarse en unas pocas decenas de euros al mes; consulta su web para precios actualizados.',
+      'Writesonic funciona con un modelo freemium: suele tener un plan gratuito con créditos limitados y planes de pago mensuales que escalan según el volumen de palabras o créditos y el número de usuarios. Los planes básicos suelen situarse en unas pocas decenas de euros al mes;',
     faqs: [
       {
         question: '¿Qué es Writesonic?',
@@ -10476,7 +10479,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Los planes de pago pueden ser altos para usuarios individuales',
     ],
     pricingNote:
-      'Hypotenuse AI sigue un modelo freemium: suele ofrecer una prueba gratuita limitada y después planes de pago mensuales según el volumen de palabras o productos generados y el número de usuarios. Los planes para ecommerce con grandes catálogos son los más caros; consulta su web para precios actualizados.',
+      'Hypotenuse AI sigue un modelo freemium: suele ofrecer una prueba gratuita limitada y después planes de pago mensuales según el volumen de palabras o productos generados y el número de usuarios. Los planes para ecommerce con grandes catálogos son los más caros;',
     faqs: [
       {
         question: '¿Qué es Hypotenuse AI?',
@@ -10526,7 +10529,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El coste de HubSpot escala rápido al crecer los contactos',
     ],
     pricingNote:
-      'HubSpot funciona con un modelo freemium: hay herramientas gratuitas de CRM y algunas funciones de IA accesibles con límites, mientras que las capacidades avanzadas se reservan a los planes de pago, que escalan según el número de contactos y usuarios. Consulta su web para precios actualizados.',
+      'HubSpot funciona con un modelo freemium: hay herramientas gratuitas de CRM y algunas funciones de IA accesibles con límites, mientras que las capacidades avanzadas se reservan a los planes de pago, que escalan según el número de contactos y usuarios.',
     faqs: [
       {
         question: '¿Qué es HubSpot AI?',
@@ -10577,7 +10580,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Solo tiene sentido dentro del ecosistema Salesforce',
     ],
     pricingNote:
-      'Einstein AI es de pago y suele comercializarse como parte de las ediciones superiores de Salesforce o como complemento sobre la licencia existente, con precio por usuario y mes. El coste final depende mucho de la edición y de los módulos contratados; consulta su web o a su equipo comercial para precios actualizados.',
+      'Einstein AI es de pago y suele comercializarse como parte de las ediciones superiores de Salesforce o como complemento sobre la licencia existente, con precio por usuario y mes. El coste final depende mucho de la edición y de los módulos contratados;',
     faqs: [
       {
         question: '¿Qué es Salesforce Einstein AI?',
@@ -10627,7 +10630,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos versátil que un redactor de IA de propósito general',
     ],
     pricingNote:
-      'Smart Copy sigue un modelo freemium: suele haber una opción gratuita con un número limitado de generaciones y planes de pago para uso ilimitado, además de estar disponible dentro de los planes de la plataforma Unbounce. Consulta su web para precios actualizados y para ver qué incluye cada plan.',
+      'Smart Copy sigue un modelo freemium: suele haber una opción gratuita con un número limitado de generaciones y planes de pago para uso ilimitado, además de estar disponible dentro de los planes de la plataforma Unbounce.',
     faqs: [
       {
         question: '¿Qué es Unbounce Smart Copy?',
@@ -10677,7 +10680,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Los planes escalan con el tamaño de la lista de contactos',
     ],
     pricingNote:
-      'GetResponse sigue un modelo freemium: dispone de un plan gratuito con funciones básicas y límite de contactos, y planes de pago mensuales que escalan según el tamaño de la lista y las funcionalidades incluidas. Algunas capacidades de IA se reservan a los planes superiores; consulta su web para precios actualizados.',
+      'GetResponse sigue un modelo freemium: dispone de un plan gratuito con funciones básicas y límite de contactos, y planes de pago mensuales que escalan según el tamaño de la lista y las funcionalidades incluidas. Algunas capacidades de IA se reservan a los planes superiores;',
     faqs: [
       {
         question: '¿Qué es GetResponse AI?',
@@ -10727,7 +10730,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El contenido generado suele necesitar retoques',
     ],
     pricingNote:
-      'Mailchimp funciona con un modelo freemium: hay un plan gratuito con límites de contactos y envíos, y planes de pago mensuales que escalan según el tamaño de la lista y las funciones. Algunas capacidades de IA solo están en los planes superiores; consulta su web para precios actualizados.',
+      'Mailchimp funciona con un modelo freemium: hay un plan gratuito con límites de contactos y envíos, y planes de pago mensuales que escalan según el tamaño de la lista y las funciones. Algunas capacidades de IA solo están en los planes superiores;',
     faqs: [
       {
         question: '¿Qué es Mailchimp AI?',
@@ -10777,7 +10780,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Necesita revisión humana en textos técnicos o legales',
     ],
     pricingNote:
-      'DeepL sigue un modelo freemium: hay una versión gratuita con límite de caracteres y de documentos traducidos, y planes de pago por usuario y mes con más volumen, glosarios ampliados y garantías de privacidad. La API tiene también un tramo gratuito y otro de pago por uso; consulta su web para precios actualizados.',
+      'DeepL sigue un modelo freemium: hay una versión gratuita con límite de caracteres y de documentos traducidos, y planes de pago por usuario y mes con más volumen, glosarios ampliados y garantías de privacidad. La API tiene también un tramo gratuito y otro de pago por uso;',
     faqs: [
       {
         question: '¿Qué es DeepL?',
@@ -10827,7 +10830,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El uso profesional vía API sí tiene coste',
     ],
     pricingNote:
-      'Google Translate es gratuito para uso personal desde la web y la aplicación móvil, sin necesidad de suscripción. El uso profesional a través de la API de Google Cloud sí es de pago, facturado por volumen de caracteres traducidos, con un tramo gratuito inicial. Consulta su web para precios actualizados.',
+      'Google Translate es gratuito para uso personal desde la web y la aplicación móvil, sin necesidad de suscripción. El uso profesional a través de la API de Google Cloud sí es de pago, facturado por volumen de caracteres traducidos, con un tramo gratuito inicial.',
     faqs: [
       {
         question: '¿Qué es Google Translate?',
@@ -10877,7 +10880,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos conocido que los traductores generalistas',
     ],
     pricingNote:
-      'ModernMT trabaja con un modelo freemium: suele ofrecer un plan gratuito o de prueba con límites de caracteres y planes de pago por volumen, además de licencias empresariales para grandes flujos de localización. El coste depende mucho del uso previsto; consulta su web para precios actualizados.',
+      'ModernMT trabaja con un modelo freemium: suele ofrecer un plan gratuito o de prueba con límites de caracteres y planes de pago por volumen, además de licencias empresariales para grandes flujos de localización. El coste depende mucho del uso previsto;',
     faqs: [
       {
         question: '¿Qué es ModernMT?',
@@ -10927,7 +10930,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El coste puede crecer con volúmenes muy grandes',
     ],
     pricingNote:
-      'Amazon Translate sigue el modelo de pago por uso habitual de AWS: se factura según el volumen de caracteres traducidos. AWS suele ofrecer un nivel gratuito inicial con un límite mensual de caracteres durante los primeros meses. Consulta su web para precios actualizados y para calcular el coste según tu volumen.',
+      'Amazon Translate sigue el modelo de pago por uso habitual de AWS: se factura según el volumen de caracteres traducidos. AWS suele ofrecer un nivel gratuito inicial con un límite mensual de caracteres durante los primeros meses.',
     faqs: [
       {
         question: '¿Qué es Amazon Translate?',
@@ -10976,7 +10979,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La voz sintética puede no encajar en contenido muy expresivo',
     ],
     pricingNote:
-      'Papercup trabaja con un modelo de pago orientado a empresas, normalmente mediante presupuesto a medida según el volumen de vídeo y los idiomas necesarios. No suele publicar tarifas cerradas ni ofrecer un plan gratuito de autoservicio. Consulta su web para pedir información y precios actualizados.',
+      'Papercup trabaja con un modelo de pago orientado a empresas, normalmente mediante presupuesto a medida según el volumen de vídeo y los idiomas necesarios. No suele publicar tarifas cerradas ni ofrecer un plan gratuito de autoservicio.',
     faqs: [
       {
         question: '¿Qué es Papercup?',
@@ -11026,7 +11029,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El resultado puede sonar artificial en contenidos muy expresivos',
     ],
     pricingNote:
-      'HeyGen funciona con un modelo freemium: suele ofrecer un plan gratuito con un número limitado de vídeos y marca de agua, y planes de pago por suscripción con más minutos, avatares y funciones. Las tarifas de entrada suelen situarse en el entorno de unas decenas de euros al mes. Consulta su web para precios actualizados.',
+      'HeyGen funciona con un modelo freemium: suele ofrecer un plan gratuito con un número limitado de vídeos y marca de agua, y planes de pago por suscripción con más minutos, avatares y funciones. Las tarifas de entrada suelen situarse en el entorno de unas decenas de euros al mes.',
     faqs: [
       {
         question: '¿Qué es HeyGen?',
@@ -11075,7 +11078,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La precisión baja con audios ruidosos o acentos marcados',
     ],
     pricingNote:
-      'Subly usa un modelo freemium: suele haber un plan gratuito con una cantidad limitada de minutos de transcripción al mes y planes de pago por suscripción que amplían minutos, idiomas y funciones de exportación. Los planes de entrada rondan las pocas decenas de euros mensuales. Consulta su web para precios actualizados.',
+      'Subly usa un modelo freemium: suele haber un plan gratuito con una cantidad limitada de minutos de transcripción al mes y planes de pago por suscripción que amplían minutos, idiomas y funciones de exportación. Los planes de entrada rondan las pocas decenas de euros mensuales.',
     faqs: [
       {
         question: '¿Qué es Subly?',
@@ -11124,7 +11127,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Ninguna detección de IA es infalible: hay falsos positivos',
     ],
     pricingNote:
-      'Hive es un servicio de pago orientado a empresas, con precios normalmente basados en el volumen de contenido procesado y presupuestos a medida. No suele ofrecer un plan gratuito abierto, aunque sí permite probar algunos modelos. Consulta su web para condiciones y precios actualizados.',
+      'Hive es un servicio de pago orientado a empresas, con precios normalmente basados en el volumen de contenido procesado y presupuestos a medida. No suele ofrecer un plan gratuito abierto, aunque sí permite probar algunos modelos.',
     faqs: [
       {
         question: '¿Qué es Hive AI?',
@@ -11173,7 +11176,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El resultado es una estimación, no una prueba concluyente',
     ],
     pricingNote:
-      'AI or Not funciona con un modelo freemium: suele permitir un número limitado de comprobaciones gratuitas y ofrece planes de pago con más análisis mensuales y acceso a la API. Los planes de entrada suelen ser económicos, en el entorno de unos pocos euros al mes. Consulta su web para precios actualizados.',
+      'AI or Not funciona con un modelo freemium: suele permitir un número limitado de comprobaciones gratuitas y ofrece planes de pago con más análisis mensuales y acceso a la API. Los planes de entrada suelen ser económicos, en el entorno de unos pocos euros al mes.',
     faqs: [
       {
         question: '¿Qué es AI or Not?',
@@ -11222,7 +11225,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Requiere integración técnica para aprovecharlo del todo',
     ],
     pricingNote:
-      'Sensity AI es un servicio de pago dirigido a empresas, con planes normalmente a medida según el volumen de análisis y los módulos contratados. No suele publicar tarifas cerradas ni ofrecer un plan gratuito abierto, aunque permite solicitar demostraciones. Consulta su web para precios actualizados.',
+      'Sensity AI es un servicio de pago dirigido a empresas, con planes normalmente a medida según el volumen de análisis y los módulos contratados. No suele publicar tarifas cerradas ni ofrecer un plan gratuito abierto, aunque permite solicitar demostraciones.',
     faqs: [
       {
         question: '¿Qué es Sensity AI?',
@@ -11271,7 +11274,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Los planes completos están pensados para empresas',
     ],
     pricingNote:
-      'TruEra ha ofrecido un modelo freemium, con una versión gratuita o de prueba limitada para equipos pequeños y planes de pago para empresas con más volumen y funciones de gobernanza. Las tarifas empresariales suelen negociarse a medida. Consulta su web para precios actualizados y disponibilidad de la versión gratuita.',
+      'TruEra ha ofrecido un modelo freemium, con una versión gratuita o de prueba limitada para equipos pequeños y planes de pago para empresas con más volumen y funciones de gobernanza. Las tarifas empresariales suelen negociarse a medida.',
     faqs: [
       {
         question: '¿Qué es TruEra?',
@@ -11320,7 +11323,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Requiere integrar la plataforma con tu infraestructura',
     ],
     pricingNote:
-      'Fiddler AI combina una versión de acceso gratuito o de prueba con planes de pago empresariales cuyo precio depende del número de modelos, el volumen de datos y las funciones de gobernanza. Las tarifas suelen acordarse mediante presupuesto. Consulta su web para precios actualizados.',
+      'Fiddler AI combina una versión de acceso gratuito o de prueba con planes de pago empresariales cuyo precio depende del número de modelos, el volumen de datos y las funciones de gobernanza. Las tarifas suelen acordarse mediante presupuesto.',
     faqs: [
       {
         question: '¿Qué es Fiddler AI?',
@@ -11369,7 +11372,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Exige un esfuerzo interno de documentación y proceso',
     ],
     pricingNote:
-      'Credo AI se dirige principalmente a empresas y trabaja con planes a medida según el número de sistemas de IA y las necesidades de gobernanza. Suele existir alguna vía de acceso gratuito o de prueba para explorar la plataforma. Consulta su web para precios actualizados y condiciones.',
+      'Credo AI se dirige principalmente a empresas y trabaja con planes a medida según el número de sistemas de IA y las necesidades de gobernanza. Suele existir alguna vía de acceso gratuito o de prueba para explorar la plataforma.',
     faqs: [
       {
         question: '¿Qué es Credo AI?',
@@ -11418,7 +11421,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'No sustituye la lectura completa en documentos críticos',
     ],
     pricingNote:
-      'ChatPDF sigue un modelo freemium: ofrece un plan gratuito con límites diarios de documentos, páginas y preguntas, y una suscripción de pago que amplía esos límites. El plan de pago suele situarse en el entorno de unos pocos euros al mes. Consulta su web para precios actualizados.',
+      'ChatPDF sigue un modelo freemium: ofrece un plan gratuito con límites diarios de documentos, páginas y preguntas, y una suscripción de pago que amplía esos límites. El plan de pago suele situarse en el entorno de unos pocos euros al mes.',
     faqs: [
       {
         question: '¿Qué es ChatPDF?',
@@ -11467,7 +11470,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Conviene verificar las respuestas en usos críticos',
     ],
     pricingNote:
-      'AskYourPDF funciona con un modelo freemium: hay un plan gratuito con límites en número de documentos, tamaño y preguntas, y planes de suscripción que amplían capacidad y dan acceso a la API. Los planes de pago suelen situarse en unos pocos euros al mes. Consulta su web para precios actualizados.',
+      'AskYourPDF funciona con un modelo freemium: hay un plan gratuito con límites en número de documentos, tamaño y preguntas, y planes de suscripción que amplían capacidad y dan acceso a la API. Los planes de pago suelen situarse en unos pocos euros al mes.',
     faqs: [
       {
         question: '¿Qué es AskYourPDF?',
@@ -11516,7 +11519,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El coste por usuario puede ser elevado en plantillas grandes',
     ],
     pricingNote:
-      'Glean es una plataforma orientada a empresas, con precios habitualmente por usuario y presupuestos a medida según el número de conectores y el tamaño de la organización. No suele haber un plan gratuito de autoservicio, sino demostraciones y pruebas guiadas. Consulta su web para precios actualizados.',
+      'Glean es una plataforma orientada a empresas, con precios habitualmente por usuario y presupuestos a medida según el número de conectores y el tamaño de la organización. No suele haber un plan gratuito de autoservicio, sino demostraciones y pruebas guiadas.',
     faqs: [
       {
         question: '¿Qué es Glean?',
@@ -11565,7 +11568,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Añade una capa más de dependencia externa',
     ],
     pricingNote:
-      'Klu emplea un modelo freemium: suele ofrecer un plan gratuito con límites de uso para probar la plataforma y planes de pago por suscripción según el volumen y las funciones de equipo. Las tarifas de entrada rondan las pocas decenas de euros al mes. Consulta su web para precios actualizados.',
+      'Klu emplea un modelo freemium: suele ofrecer un plan gratuito con límites de uso para probar la plataforma y planes de pago por suscripción según el volumen y las funciones de equipo. Las tarifas de entrada rondan las pocas decenas de euros al mes.',
     faqs: [
       {
         question: '¿Qué es Klu?',
@@ -11614,7 +11617,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos pulido que las alternativas comerciales cerradas',
     ],
     pricingNote:
-      'Danswer es un proyecto de código abierto, por lo que el software puede usarse sin coste de licencia si se autoaloja; los gastos vienen de la infraestructura y de los modelos que se utilicen. Suele existir además una opción gestionada en la nube de pago. Consulta su web para precios actualizados.',
+      'Danswer es un proyecto de código abierto, por lo que el software puede usarse sin coste de licencia si se autoaloja; los gastos vienen de la infraestructura y de los modelos que se utilicen. Suele existir además una opción gestionada en la nube de pago.',
     faqs: [
       {
         question: '¿Qué es Danswer?',
@@ -11663,7 +11666,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El índice web es menor que el de los grandes buscadores',
     ],
     pricingNote:
-      'You.com funciona con un modelo freemium: ofrece búsqueda gratuita con límites en las funciones de IA y planes de suscripción que dan más consultas y acceso a modelos avanzados. Los planes de pago suelen rondar los 15-20 euros al mes. Consulta su web para precios actualizados.',
+      'You.com funciona con un modelo freemium: ofrece búsqueda gratuita con límites en las funciones de IA y planes de suscripción que dan más consultas y acceso a modelos avanzados. Los planes de pago suelen rondar los 15-20 euros al mes.',
     faqs: [
       {
         question: '¿Qué es You.com?',
@@ -11712,7 +11715,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos útil fuera del ámbito técnico',
     ],
     pricingNote:
-      'Phind sigue un modelo freemium: permite un número de búsquedas gratuitas al día y ofrece una suscripción de pago con más consultas y acceso a modelos más potentes. El plan de pago suele situarse en torno a los 20 euros mensuales. Consulta su web para precios actualizados.',
+      'Phind sigue un modelo freemium: permite un número de búsquedas gratuitas al día y ofrece una suscripción de pago con más consultas y acceso a modelos más potentes. El plan de pago suele situarse en torno a los 20 euros mensuales.',
     faqs: [
       {
         question: '¿Qué es Phind?',
