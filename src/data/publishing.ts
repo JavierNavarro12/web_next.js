@@ -7,7 +7,7 @@
  *
  * Para publicar la siguiente tanda: sube PUBLISHED_BATCHES en 1 y redespliega.
  */
-export const PUBLISHED_BATCHES = 1;
+export const PUBLISHED_BATCHES = 2;
 
 /** Tanda 1: herramientas conocidas (las que aparecen en comparativas y destacados). */
 export const toolBatches: string[][] = [
@@ -83,7 +83,6 @@ export const toolBatches: string[][] = [
     'Falcon',
     'BioGPT',
     'Sudowrite',
-    'YouWrite',
     'DeepSeek',
     'Imagen',
     'Recraft',
@@ -103,7 +102,7 @@ export const toolBatches: string[][] = [
     'Fliki',
     'Kling',
     'MiniMax',
-    'VideoFX',
+    'Google Flow',
   ],
   // Tanda 3 (25 herramientas)
   [

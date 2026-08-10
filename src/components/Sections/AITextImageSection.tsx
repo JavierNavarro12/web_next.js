@@ -29,19 +29,13 @@ export default function AITextImageSection({
       name: 'Falcon',
       logo: '/logos/falcon-movil.jpeg',
       description: 'Modelo open source',
-      url: 'https://falcons.ai',
+      url: 'https://falconllm.tii.ae',
     },
     {
       name: 'BioGPT',
       logo: '/logos/biogpt-movil.png',
       description: 'Texto biomédico',
       url: 'https://github.com/microsoft/BioGPT',
-    },
-    {
-      name: 'YouWrite',
-      logo: '/logos/youwrite-movil.jpg',
-      description: 'Generador de texto',
-      url: 'https://youwrite.ai',
     },
     {
       name: 'DeepSeek',

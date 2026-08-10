@@ -1811,4 +1811,264 @@ export const toolPricing: Record<string, ToolPricing> = {
       'El precio es por uso, con descuentos por volumen y ahorro adicional en contratos anuales. La página oficial de precios ya solo recoge las APIs para desarrolladores: no aparece ninguna suscripción de consumidor.',
     sourceUrl: 'https://you.com/pricing',
   },
+  DeepSeek: {
+    name: 'DeepSeek',
+    model: 'freemium',
+    freeTier:
+      'Chat gratuito en chat.deepseek.com para usuarios individuales sin límite anunciado; 5 millones de tokens de crédito gratuito para cuentas nuevas de desarrollador (válidos 30 días)',
+    plans: [
+      {
+        name: 'deepseek-v4-flash',
+        price:
+          'Input (cache hit): 0,0028 USD/1M tokens · Input (cache miss): 0,14 USD/1M tokens · Output: 0,28 USD/1M tokens',
+        notes:
+          'Precio en USD, pago por uso. Sin periodicidad fija: se deduce del saldo de la cuenta según consumo.',
+      },
+      {
+        name: 'deepseek-v4-pro',
+        price:
+          'Input (cache hit): 0,003625 USD/1M tokens · Input (cache miss): 0,435 USD/1M tokens · Output: 0,87 USD/1M tokens',
+        notes:
+          'Precio en USD, pago por uso. La documentación advierte de un aumento de precio próximo.',
+      },
+    ],
+    notes:
+      'Los precios son por millón de tokens en USD, pago por uso puro, sin planes mensuales. Ambos modelos soportan hasta 1M tokens de contexto y 384K tokens de salida máxima. La propia documentación avisa de que los precios están sujetos a cambio.',
+    sourceUrl: 'https://api-docs.deepseek.com/quick_start/pricing/',
+  },
+  Suno: {
+    name: 'Suno',
+    model: 'freemium',
+    freeTier:
+      '50 créditos diarios (se renuevan cada día), equivalentes a unas 10 canciones al día; sin uso comercial permitido',
+    plans: [
+      {
+        name: 'Free',
+        price: '0 USD/mes',
+        notes: '50 créditos/día renovables, acceso al modelo v4.5, sin licencia comercial',
+      },
+      {
+        name: 'Pro',
+        price:
+          '8 USD/mes (mensual) · 5,33 USD/mes facturado anualmente (64 USD/año, ahorro del 20 %)',
+        notes:
+          '2500 créditos/mes, modelo v5.5, derechos comerciales sobre canciones creadas, cola prioritaria (10 canciones simultáneas)',
+      },
+      {
+        name: 'Premier',
+        price:
+          '24 USD/mes (mensual) · 16 USD/mes facturado anualmente (192 USD/año, ahorro del 20 %)',
+        notes:
+          '10 000 créditos/mes, acceso completo a Suno Studio, separación de stems, todos los modelos y herramientas avanzadas',
+      },
+    ],
+    notes:
+      'El dominio oficial es suno.com; suno.ai redirige allí con un 307. Los créditos de las suscripciones no se acumulan al mes siguiente; solo los créditos comprados por separado se conservan mientras la suscripción esté activa.',
+    sourceUrl: 'https://suno.com/pricing',
+  },
+  Descript: {
+    name: 'Descript',
+    model: 'freemium',
+    freeTier:
+      '60 minutos de media al mes, 100 créditos de IA de por vida (no se renuevan), exportación en 720p y 5 GB de almacenamiento',
+    plans: [
+      {
+        name: 'Free',
+        price: '0 USD/mes',
+        notes: '60 min/mes de media, 100 créditos IA únicos, exportación 720p, 5 GB',
+      },
+      {
+        name: 'Hobbyist',
+        price: '24 USD/mes (mensual) · 16 USD/mes facturado anualmente (192 USD/año)',
+        notes: '10 horas/mes de media, 400 créditos IA/mes, exportación 1080p, 100 GB',
+      },
+      {
+        name: 'Creator',
+        price: '35 USD/mes (mensual) · 24 USD/mes facturado anualmente (288 USD/año)',
+        notes: '30 horas/mes de media, 800 créditos IA/mes, exportación 4K, 1 TB',
+      },
+      {
+        name: 'Business',
+        price: '65 USD/mes (mensual) · 50 USD/mes facturado anualmente (600 USD/año)',
+        notes:
+          '40 horas/mes de media, 1500 créditos IA/mes, exportación 4K, 2 TB, funciones de equipo',
+      },
+      {
+        name: 'Enterprise',
+        price: 'Precio personalizado (contactar con ventas)',
+        notes: 'Horas de media y créditos personalizables, seguridad avanzada, SSO/SCIM',
+      },
+    ],
+    notes:
+      'La web muestra por defecto el precio mensual al pagar mes a mes. El plan anual supone hasta un 35 % de ahorro. Los 100 créditos del plan gratuito son vitalicios y no se renuevan mensualmente.',
+    sourceUrl: 'https://www.descript.com/pricing',
+  },
+  Speechify: {
+    name: 'Speechify',
+    model: 'freemium',
+    freeTier:
+      'Voces básicas (10 voces sintéticas), velocidad máxima de 1,5x; sin límite declarado de minutos ni palabras en la página oficial',
+    plans: [
+      {
+        name: 'Free',
+        price: '0 USD/mes',
+        notes: '10 voces básicas, velocidad hasta 1,5x, text-to-speech estándar',
+      },
+      {
+        name: 'Premium',
+        price:
+          '29 USD/mes (mensual) · ~11,58 USD/mes facturado anualmente (~139 USD/año, ahorro del 60 %)',
+        notes:
+          'Más de 1000 voces de alta calidad, más de 60 idiomas, velocidad hasta 5x, resúmenes IA, integración con Drive/Dropbox/OneDrive, dictado y podcasts IA',
+      },
+    ],
+    notes:
+      'La web muestra 29 USD/mes como precio destacado, que corresponde a la facturación mensual. El precio anual equivale a unos 11,58 USD/mes (139 USD/año). Speechify también tiene productos separados (Speechify Studio y API) con precios distintos no incluidos aquí.',
+    sourceUrl: 'https://speechify.com/pricing',
+  },
+  Imagen: {
+    name: 'Imagen',
+    model: 'paid',
+    freeTier: null,
+    plans: [
+      {
+        name: 'Imagen 4 Fast',
+        price: '0,02 $ por imagen',
+        notes: 'Generación estándar, resolución normal, facturado por uso en Google Cloud',
+      },
+      {
+        name: 'Imagen 4 (Standard)',
+        price: '0,04 $ por imagen',
+        notes: 'Calidad mejorada respecto a Fast',
+      },
+      {
+        name: 'Imagen 4 Ultra',
+        price: '0,06 $ por imagen',
+        notes: 'Mayor calidad y resolución',
+      },
+      {
+        name: 'Escalado de imagen (upscaling)',
+        price: '0,06 $ por imagen',
+        notes: 'Servicio adicional de mejora de resolución',
+      },
+    ],
+    notes:
+      'Imagen no es un producto independiente: es el modelo de generación de imágenes de Google, accesible exclusivamente a través de Vertex AI o la API de Gemini. El precio es por imagen generada, sin suscripción mensual, y se factura dentro de la cuenta de Google Cloud. No existe capa gratuita; sí existe un crédito de 300 $ para nuevas cuentas de Google Cloud.',
+    sourceUrl: 'https://cloud.google.com/vertex-ai/generative-ai/pricing',
+  },
+  Aurora: {
+    name: 'Aurora (Grok Imagine)',
+    model: 'paid',
+    freeTier: null,
+    plans: [
+      {
+        name: 'X Premium (acceso limitado vía Grok)',
+        price: '8 $/mes',
+        notes: 'Incluye acceso básico a Grok con generación de imágenes limitada.',
+      },
+      {
+        name: 'SuperGrok Lite',
+        price: '10 $/mes',
+        notes: 'Acceso básico a generación de imágenes con Aurora (texto a imagen).',
+      },
+      {
+        name: 'SuperGrok',
+        price: '30 $/mes',
+        notes:
+          'Acceso completo a Grok Imagine: mayor resolución, edición de imágenes, generación de vídeo, procesamiento prioritario.',
+      },
+      {
+        name: 'API de xAI (grok-imagine-image)',
+        price: '0,02 $ por imagen',
+        notes:
+          'Para desarrolladores. El modelo de alta calidad (grok-imagine-image-quality) cuesta 0,05 $ por imagen. Sin suscripción mínima.',
+      },
+    ],
+    notes:
+      'Aurora es el nombre del modelo interno de generación de imágenes de xAI, no un producto separado. Se consume a través de Grok Imagine, que forma parte de la aplicación Grok. Desde abril de 2026 la generación de imágenes ya no está disponible en el plan gratuito de Grok. Los desarrolladores pueden acceder directamente vía API de xAI con precios por imagen.',
+    sourceUrl: 'https://docs.x.ai/developers/models/grok-imagine-image',
+  },
+  Seedream: {
+    name: 'Seedream',
+    model: 'paid',
+    freeTier: 'Acceso gratuito limitado a través de Dreamina (app de ByteDance para consumidores)',
+    plans: [
+      {
+        name: 'Seedream 3.0 vía Together AI',
+        price: '0,018 $ por megapixel',
+        notes:
+          'Una imagen de 1024×1024 (aprox. 1 MP) cuesta alrededor de 0,018 $. Disponible en la plataforma Together AI.',
+      },
+      {
+        name: 'Seedream 4.5 vía OpenRouter',
+        price: '0,04 $ por imagen',
+        notes: 'Precio fijo por imagen independientemente del tamaño. Disponible en OpenRouter.',
+      },
+      {
+        name: 'Seedream 5.0 Pro vía API de ByteDance',
+        price: '0,075 $ por imagen hasta 2,36 MP / 0,15 $ por imagen superior a 2,36 MP',
+        notes:
+          'Modelo más reciente (julio 2026). 0,005 $ adicionales por imagen de referencia de entrada.',
+      },
+    ],
+    notes:
+      'Seedream es el modelo de generación de imágenes de ByteDance: no existe como producto de consumo propio con suscripción. Se accede vía API a través de plataformas como Together AI, OpenRouter o Atlas Cloud. Los consumidores pueden usarlo indirectamente a través de Dreamina o CapCut (apps de ByteDance). La URL del catálogo apunta a Seedream 3.0; el modelo ha evolucionado hasta la versión 5.0 Pro a fecha de agosto de 2026.',
+    sourceUrl: 'https://www.together.ai/models/bytedance-seedream-3-0',
+  },
+  'Google Flow': {
+    name: 'Google Flow',
+    model: 'freemium',
+    freeTier:
+      '50 créditos de Flow al día, renovables diariamente. Acceso a generación de vídeo con Veo 3.1 e imágenes sin necesidad de suscripción.',
+    plans: [
+      {
+        name: 'Google AI Plus',
+        price: '4,99 USD/mes',
+        notes: '200 créditos de Flow al mes. Acceso mejorado a modelos de imagen y vídeo.',
+      },
+      {
+        name: 'Google AI Pro',
+        price: '19,99 USD/mes',
+        notes:
+          '1.000 créditos de Flow al mes. Procesamiento prioritario e integración completa con Google Workspace.',
+      },
+      {
+        name: 'Google AI Ultra',
+        price: '99,99 USD/mes o 199,99 USD/mes',
+        notes:
+          '10.000 créditos/mes en el plan a 99,99 USD; 25.000 créditos/mes en el plan a 199,99 USD. Máxima prioridad y acceso anticipado a nuevas funciones.',
+      },
+    ],
+    notes:
+      'Google Flow es la evolución de VideoFX, lanzada en mayo de 2025, e integrada en febrero de 2026 con Whisk e ImageFX en un único estudio creativo. Los créditos de Flow son distintos de los créditos de Gemini; el número de segundos de vídeo por crédito varía según el modelo empleado (Veo 3.1 consume más que los modelos de imagen). La URL labs.google/fx/tools/flow sigue siendo válida.',
+    sourceUrl: 'https://labs.google/fx/tools/flow',
+  },
+  Falcon: {
+    name: 'Falcon LLM',
+    model: 'open-source',
+    freeTier: 'Todos los modelos son de descarga gratuita desde Hugging Face sin coste por token',
+    plans: [],
+    notes:
+      'Falcon es una familia de modelos de lenguaje de código abierto del Technology Innovation Institute (TII) de Abu Dabi. Los modelos Falcon 40B y 180B se publican bajo licencia Apache 2.0, lo que permite uso comercial. Los modelos más recientes (Falcon 3, H1) tienen sus propios términos de uso de TII. Los proveedores de hosting que quieran ofrecer Falcon como API de pago a terceros necesitan un acuerdo separado con TII.',
+    sourceUrl: 'https://falconllm.tii.ae/',
+  },
+  BioGPT: {
+    name: 'BioGPT',
+    model: 'open-source',
+    freeTier:
+      'Pesos del modelo descargables gratuitamente; código de entrenamiento e inferencia disponible sin coste',
+    plans: [],
+    notes:
+      'BioGPT es un modelo de lenguaje de Microsoft Research preentrenado sobre 15 millones de resúmenes de PubMed, orientado a tareas de NLP biomédico. Es un proyecto de investigación sin producto comercial ni API pública de pago. El repositorio no muestra actividad relevante desde 2022-2023 y funciona en modo mantenimiento. El código y los pesos preentrenados están disponibles bajo licencia MIT.',
+    sourceUrl: 'https://github.com/microsoft/BioGPT',
+  },
+  AudioCraft: {
+    name: 'AudioCraft',
+    model: 'open-source',
+    freeTier: 'Código y pesos descargables gratuitamente; sin API de pago ni suscripción',
+    plans: [],
+    notes:
+      'AudioCraft es una biblioteca de investigación de Meta (Facebook Research) para generación de audio y música mediante IA, que incluye MusicGen, AudioGen y EnCodec. El código está bajo licencia MIT, pero los pesos de los modelos se publican bajo CC-BY-NC 4.0, lo que prohíbe el uso comercial directo sin autorización de Meta. El repositorio sigue activo: el último commit registrado es de marzo de 2025 y se añadió el modelo JASCO en enero de 2025.',
+    sourceUrl: 'https://github.com/facebookresearch/audiocraft',
+  },
 };

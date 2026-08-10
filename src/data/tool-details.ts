@@ -608,56 +608,6 @@ export const toolDetails: Record<string, ToolDetail> = {
       },
     ],
   },
-  YouWrite: {
-    name: 'YouWrite',
-    tagline: 'Generador de texto con IA para redactar contenidos de forma rápida',
-    intro:
-      'YouWrite es una herramienta de generación de texto con inteligencia artificial pensada para crear contenidos escritos a partir de indicaciones sencillas. Se enmarca dentro de las plataformas de asistencia a la redacción, orientadas a producir borradores de artículos, textos comerciales o comunicaciones sin partir de una página en blanco. Está dirigida a perfiles que necesitan generar contenido con frecuencia y quieren acelerar la fase de redacción.',
-    useCases: [
-      'Redactar borradores de artículos a partir de un tema',
-      'Generar textos comerciales y descripciones breves',
-      'Reescribir contenidos existentes con otro enfoque',
-      'Producir ideas y esquemas antes de escribir',
-      'Adaptar un texto a distintos tonos o públicos',
-    ],
-    features: [
-      'Generación de texto a partir de indicaciones del usuario',
-      'Ajuste del tono y del estilo de la redacción',
-      'Reescritura y ampliación de contenidos existentes',
-      'Interfaz web sin necesidad de instalar nada',
-      'Formatos y plantillas para distintos tipos de contenido',
-    ],
-    pros: [
-      'Acelera la fase de borrador y evita la página en blanco',
-      'Interfaz sencilla, sin conocimientos técnicos previos',
-      'Útil para producir contenido de forma recurrente',
-      'Permite ajustar tono y estilo del resultado',
-    ],
-    cons: [
-      'Herramienta de pago, sin plan gratuito estable',
-      'Menos conocida que las alternativas de referencia',
-      'El texto generado siempre requiere revisión humana',
-    ],
-    pricingNote:
-      'YouWrite se ofrece mediante suscripción de pago, con planes que suelen depender del volumen de texto generado o del número de usuarios. Puede incluir una prueba inicial o créditos limitados para valorar la herramienta.',
-    faqs: [
-      {
-        question: '¿Qué es YouWrite?',
-        answer:
-          'YouWrite es una herramienta de generación de texto con inteligencia artificial. Permite crear borradores de artículos, textos comerciales y otros contenidos escritos a partir de indicaciones sencillas, con opciones para ajustar el tono y reescribir textos ya existentes.',
-      },
-      {
-        question: '¿YouWrite es gratis?',
-        answer:
-          'YouWrite es una herramienta de pago que funciona por suscripción, aunque puede ofrecer una prueba o créditos iniciales limitados. Los planes suelen variar según el volumen de texto generado.',
-      },
-      {
-        question: '¿Para qué sirve YouWrite?',
-        answer:
-          'Sirve para acelerar la redacción de contenidos: generar borradores, reescribir textos, proponer esquemas y adaptar el tono a distintos públicos. Está pensada para quienes producen contenido con frecuencia y quieren reducir el tiempo de la primera versión.',
-      },
-    ],
-  },
   DeepSeek: {
     name: 'DeepSeek',
     tagline: 'Modelos de IA de alto rendimiento con versiones abiertas y bajo coste',
@@ -2380,52 +2330,57 @@ export const toolDetails: Record<string, ToolDetail> = {
       },
     ],
   },
-  VideoFX: {
-    name: 'VideoFX',
-    tagline: 'Herramienta experimental de Google para generar vídeo a partir de texto',
+  'Google Flow': {
+    name: 'Google Flow',
+    tagline: 'El estudio de vídeo con IA de Google, movido por los modelos Veo',
     intro:
-      'VideoFX es una de las herramientas experimentales de Google Labs pensadas para explorar la generación de vídeo con inteligencia artificial. Permite describir una escena con texto y obtener un clip generado por los modelos de vídeo de Google. Su enfoque es exploratorio: sirve para probar ideas, entender qué es capaz de hacer la tecnología y crear piezas cortas de carácter creativo.',
+      'Google Flow es el estudio de creación de vídeo con inteligencia artificial de Google Labs. Nació en mayo de 2025 como sucesor de VideoFX y en febrero de 2026 absorbió a Whisk e ImageFX para unificar en un mismo sitio la generación de imagen y de vídeo. Se describe una escena con texto, o se parte de una imagen, y los modelos Veo devuelven un clip con movimiento de cámara y sonido. A diferencia de la herramienta experimental de la que viene, Flow está pensado para encadenar planos y construir una secuencia, no solo para generar clips sueltos.',
     useCases: [
-      'Generar clips de vídeo a partir de una descripción',
-      'Explorar ideas visuales antes de producirlas',
-      'Crear material creativo corto para presentaciones',
-      'Probar distintos estilos visuales de forma rápida',
-      'Experimentar con la generación de vídeo sin coste',
+      'Generar clips de vídeo a partir de una descripción escrita',
+      'Animar una imagen fija y darle movimiento de cámara',
+      'Encadenar varios planos para montar una secuencia con continuidad',
+      'Prototipar ideas visuales antes de rodarlas de verdad',
+      'Producir piezas cortas para redes sociales sin cámara ni plató',
     ],
     features: [
-      'Generación de vídeo desde texto',
-      'Acceso a los modelos de vídeo de Google',
-      'Ajustes de estilo y encuadre en la descripción',
-      'Interfaz web sencilla y experimental',
-      'Integración con el resto de herramientas de Google Labs',
+      'Generación de vídeo con los modelos Veo, con audio incluido',
+      'Controles de cámara: paneos, zooms y ángulos definidos por texto',
+      'Gestión de escenas para mantener la coherencia entre planos',
+      'Herramientas de imagen de Whisk e ImageFX integradas en el mismo estudio',
+      'Sistema de créditos diarios que renueva sin necesidad de pagar',
     ],
     pros: [
-      'Acceso gratuito dentro de las herramientas experimentales de Google',
-      'Respaldado por los modelos de vídeo de Google DeepMind',
-      'Interfaz muy sencilla, sin configuración previa',
+      'Calidad de imagen y sonido de las más altas del mercado de vídeo generativo',
+      'Se puede probar a diario sin pagar gracias a los créditos gratuitos',
+      'Pensado para montar secuencias, no solo clips aislados',
     ],
     cons: [
-      'Al ser experimental, puede cambiar o desaparecer',
-      'Disponibilidad limitada por país y lista de espera',
-      'Control creativo escaso frente a suites profesionales',
+      'Los créditos se agotan rápido: un clip con Veo consume bastantes',
+      'La disponibilidad y los planes varían según el país',
+      'Menos control fino que una suite de edición profesional',
     ],
     pricingNote:
-      'VideoFX se enmarca en las herramientas experimentales de Google, con acceso gratuito y límites de uso, aunque algunas funciones pueden requerir una suscripción de Google. La disponibilidad depende del país.',
+      'Google Flow se usa con un sistema de créditos que se renuevan cada día sin coste. Para producir más volumen hay que pasar por una suscripción de Google AI, cuyos planes suben el número de créditos y dan acceso a los modelos Veo más capaces.',
     faqs: [
       {
-        question: '¿Qué es VideoFX?',
+        question: '¿Qué es Google Flow?',
         answer:
-          'VideoFX es una herramienta experimental de Google Labs que genera vídeo a partir de descripciones de texto usando los modelos de vídeo de Google. Está pensada para explorar la tecnología y crear clips cortos de carácter creativo.',
+          'Google Flow es el estudio de vídeo con inteligencia artificial de Google Labs. Genera clips a partir de una descripción escrita o de una imagen usando los modelos Veo, y permite encadenar planos para construir una secuencia con continuidad entre ellos.',
       },
       {
-        question: '¿VideoFX es gratis?',
+        question: '¿Google Flow es lo mismo que VideoFX?',
         answer:
-          'Sí, se ofrece de forma gratuita dentro de las herramientas experimentales de Google, aunque con límites de uso y disponibilidad restringida según el país. Algunas funciones avanzadas pueden requerir suscripción.',
+          'Es su sucesor. VideoFX fue la herramienta experimental de Google Labs para generar vídeo desde texto, y en mayo de 2025 pasó a llamarse Flow con bastantes más funciones. En febrero de 2026 absorbió además Whisk e ImageFX, así que hoy Flow cubre tanto imagen como vídeo.',
       },
       {
-        question: '¿Para qué sirve VideoFX?',
+        question: '¿Google Flow es gratis?',
         answer:
-          'Sirve para generar clips de vídeo describiendo una escena con palabras, sin cámara ni edición. Es útil para probar ideas visuales, crear material creativo corto y entender las posibilidades actuales de la generación de vídeo con IA.',
+          'Tiene una capa gratuita con créditos que se renuevan a diario, suficiente para probarlo y generar algunos clips cada día. Para un uso continuado hace falta una suscripción de Google AI, que amplía los créditos y desbloquea los modelos de vídeo más potentes.',
+      },
+      {
+        question: '¿Para qué sirve Google Flow?',
+        answer:
+          'Sirve para producir vídeo sin cámara: describes la escena y obtienes el plano ya montado con sonido. Encaja bien para prototipar ideas visuales, animar imágenes fijas y crear piezas cortas para redes, y su gestión de escenas lo hace útil cuando necesitas varios planos que encajen entre sí.',
       },
     ],
   },

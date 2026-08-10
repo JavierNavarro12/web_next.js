@@ -469,7 +469,7 @@ export const subcategoryContent: SubcategoryContent[] = [
     sub: 'Video',
     title: 'Las mejores IA para crear vídeos',
     intro:
-      'Generar vídeo con IA ya no es una demo: se producen clips desde una descripción escrita, se anima una imagen fija y se crean presentadores sintéticos que hablan a cámara en varios idiomas. Aquí conviven dos enfoques distintos. El generativo puro, con Sora, Veo, Runway, Pika Labs, Kling, MiniMax o VideoFX, orientado a crear planos desde cero. Y el corporativo, con Synthesia, Colossyan, InVideo o Fliki, pensado para convertir un guion o un artículo en un vídeo formativo con avatar y subtítulos, sin cámara ni plató.',
+      'Generar vídeo con IA ya no es una demo: se producen clips desde una descripción escrita, se anima una imagen fija y se crean presentadores sintéticos que hablan a cámara en varios idiomas. Aquí conviven dos enfoques distintos. El generativo puro, con Sora, Veo, Runway, Pika Labs, Kling, MiniMax o Google Flow, orientado a crear planos desde cero. Y el corporativo, con Synthesia, Colossyan, InVideo o Fliki, pensado para convertir un guion o un artículo en un vídeo formativo con avatar y subtítulos, sin cámara ni plató.',
     body: 'Piensa primero qué necesitas producir. Para formación interna, tutoriales o comunicación corporativa, un generador con avatar te da un resultado utilizable en minutos y sin equipo de rodaje. Para piezas creativas o publicitarias, los motores generativos dan planos impactantes pero exigen muchas iteraciones y todavía se les resiste la coherencia entre tomas y la duración larga. Mira siempre el límite de segundos por clip, la resolución de exportación y si el plan permite usar el resultado comercialmente.',
   },
   {
