@@ -30,7 +30,7 @@ export const filterTools = (
   let filtered = tools;
   if (activeFilter === 'free') filtered = filtered.filter((t) => t.pricing === 'free');
   if (activeFilter === 'paid') filtered = filtered.filter((t) => t.pricing === 'paid');
-  
+
   const trimmedSearchTerm = searchTerm.trim();
   if (trimmedSearchTerm) {
     filtered = filtered.filter(
@@ -80,7 +80,7 @@ export const getFeaturedTools = (): AITool[] => {
     'Claude', // #2 - Anthropic, competidor directo de ChatGPT
     'Midjourney', // #3 - Líder en generación de imágenes
     'DALL·E', // #4 - OpenAI, pionero en generación de imágenes
-    'Sora', // #5 - OpenAI, líder en generación de video
+    'Runway', // #5 - Generación y edición de vídeo (sustituye a Sora, descatalogada)
     'Gemini', // #6 - Google, competidor principal
     'Stable Diffusion', // #7 - Open source, muy popular
     'ElevenLabs', // #8 - Líder en síntesis de voz y audio IA
