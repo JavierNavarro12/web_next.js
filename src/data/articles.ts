@@ -162,7 +162,7 @@ const allArticles: Article[] = [
     image: '/images/articulo2.webp',
     category: 'spotlight',
     categoryLabel: 'A FONDO',
-    date: '08 Aug 2025',
+    date: '08 Ago 2025',
     readTime: '9 min',
     author: 'Jose Montes',
     authorImage: '/images/articulo2autor.webp',
@@ -408,7 +408,7 @@ const allArticles: Article[] = [
     image: '/images/articulo4.webp',
     category: 'news',
     categoryLabel: 'Noticias',
-    date: '06 Aug 2025',
+    date: '06 Ago 2025',
     readTime: '4 min',
     author: 'Antonio Cáceres Flores',
     authorImage: '/images/articulo3autor.webp',
@@ -571,7 +571,7 @@ const allArticles: Article[] = [
     image: '/images/articulo5.webp',
     category: 'spotlight',
     categoryLabel: 'A FONDO',
-    date: '01 Aug 2025',
+    date: '01 Ago 2025',
     readTime: '8 min',
     author: 'Keumars Afifi-Sabet',
     authorImage: '/images/articulo5autor.webp',
@@ -671,7 +671,7 @@ const allArticles: Article[] = [
     category: 'tips',
     categoryLabel: 'Consejos',
     date: '10 Jul 2026',
-    featured: true,
+    featured: false,
     featuredOrder: 1,
     readTime: '9 min',
     author: 'AIFinder',
@@ -828,7 +828,7 @@ const allArticles: Article[] = [
     category: 'comparisons',
     categoryLabel: 'Comparaciones',
     date: '08 Jul 2026',
-    featured: true,
+    featured: false,
     featuredOrder: 2,
     readTime: '10 min',
     author: 'AIFinder',
@@ -1005,7 +1005,7 @@ const allArticles: Article[] = [
     category: 'comparisons',
     categoryLabel: 'Comparaciones',
     date: '06 Jul 2026',
-    featured: true,
+    featured: false,
     featuredOrder: 3,
     readTime: '10 min',
     author: 'AIFinder',
@@ -1154,7 +1154,7 @@ const allArticles: Article[] = [
     category: 'tips',
     categoryLabel: 'Consejos',
     date: '03 Jul 2026',
-    featured: true,
+    featured: false,
     featuredOrder: 4,
     readTime: '9 min',
     author: 'AIFinder',
@@ -1242,9 +1242,320 @@ const allArticles: Article[] = [
       },
     ],
   },
+  {
+    id: '16',
+    slug: 'google-flow-que-es-como-funciona',
+    title: 'Google Flow: qué es, cómo funciona y qué puedes hacer gratis',
+    description:
+      'Guía de Google Flow, el estudio de vídeo con IA de Google: cómo funciona, qué dan los 50 créditos gratis diarios, qué cuesta cada plan y para qué sirve de verdad.',
+    image: '/images/videofx-web.webp',
+    category: 'spotlight',
+    categoryLabel: 'A FONDO',
+    date: '18 Ago 2026',
+    featured: true,
+    featuredOrder: 1,
+    readTime: '8 min',
+    author: 'AIFinder',
+    contentSections: [
+      {
+        title: 'Qué es Google Flow (y de dónde viene)',
+        paragraphs: [
+          'Google Flow es el estudio de creación de vídeo con inteligencia artificial de Google Labs. Escribes una escena, o partes de una imagen, y los modelos Veo devuelven un clip con movimiento de cámara y sonido. La palabra importante es estudio: Flow no está pensado para generar clips sueltos y ya está, sino para encadenar planos y construir una secuencia con continuidad entre ellos.',
+          'Su historia explica por qué de repente lo busca tanta gente. Nació en mayo de 2025 como sucesor de VideoFX, la herramienta experimental de Google Labs, y en febrero de 2026 absorbió a Whisk e ImageFX, de modo que hoy la generación de imagen y la de vídeo de Google Labs viven en el mismo sitio. Y hay un tercer motivo, menos amable: el cierre de Sora de OpenAI en la primavera de 2026 dejó a mucha gente buscando dónde seguir generando vídeo. Flow es, ahora mismo, la respuesta más accesible.',
+          'Se usa desde el navegador en labs.google/fx/tools/flow, con una cuenta de Google normal. No hay que instalar nada ni apuntarse a ninguna lista de espera en los países donde está disponible, España incluida.',
+        ],
+      },
+      {
+        title: 'Cómo funciona: créditos, escenas y modelos',
+        paragraphs: [
+          'Todo en Flow se paga con créditos. Cada generación consume una cantidad que depende del modelo: crear una imagen es barato, generar un clip con Veo 3.1 —el modelo de vídeo más capaz— es lo que más consume. La cuenta gratuita recibe 50 créditos al día que se renuevan solos, suficientes para unas cuantas imágenes o para probar el vídeo con cuentagotas.',
+          'El flujo de trabajo tiene tres entradas: texto a vídeo (describes el plano y la cámara), imagen a vídeo (subes o generas un fotograma y Flow lo anima) e ingredientes, que es la más interesante: le das personajes, objetos o escenarios de referencia y los reutiliza entre planos, que es justo lo que necesita cualquier pieza de más de un clip para que el protagonista no cambie de cara entre plano y plano.',
+          'El gestor de escenas es lo que separa a Flow de un simple generador. Puedes extender un clip, cortar a otro plano manteniendo el estilo y construir una secuencia entera dentro de la herramienta. El sonido viene incluido: Veo genera audio coherente con la escena, desde ambiente hasta diálogo.',
+        ],
+        bullets: [
+          'Texto a vídeo: describes escena, estilo y movimiento de cámara, y Flow genera el clip.',
+          'Imagen a vídeo: animas un fotograma fijo, tuyo o generado en el propio Flow.',
+          'Ingredientes: referencias de personaje, objeto o escenario que se mantienen entre planos.',
+          'Escenas: encadenas y extiendes clips para montar una secuencia con continuidad.',
+        ],
+      },
+      {
+        title: 'Cuánto cuesta: lo gratis y los tres planes',
+        paragraphs: [
+          'Flow no se contrata por separado: los créditos van dentro de las suscripciones Google AI, las mismas que dan acceso a Gemini. A agosto de 2026, con precios de la página oficial, el escalado es este:',
+        ],
+        table: {
+          headers: ['Plan', 'Precio', 'Qué supone en Flow'],
+          rows: [
+            ['Gratis', '0 $', '50 créditos al día renovables; Veo con límites, marca de agua'],
+            [
+              'Google AI Plus',
+              '4,99 $/mes',
+              'Más créditos mensuales; suficiente para uso ocasional',
+            ],
+            [
+              'Google AI Pro',
+              '19,99 $/mes',
+              'Bolsa de créditos amplia y acceso a los modelos Veo más capaces',
+            ],
+            [
+              'Google AI Ultra',
+              'desde 99,99 $/mes',
+              'Para producción intensiva: la mayor asignación de créditos y novedades antes',
+            ],
+          ],
+        },
+      },
+      {
+        title: 'Qué hace bien y dónde se queda corto',
+        paragraphs: [
+          'Lo que hace bien: la calidad de imagen y sonido de Veo está entre lo mejor del vídeo generativo actual, los controles de cámara responden de verdad (un paneo pedido es un paneo hecho), y la continuidad entre planos con ingredientes es de lo más resuelto que hay para construir piezas narrativas. Para prototipar una idea, montar una pieza corta para redes o animar una imagen fija, es difícil encontrar algo mejor por menos dinero.',
+          'Dónde se queda corto: los créditos vuelan. Un clip de Veo en calidad alta consume una parte importante de la asignación diaria gratuita, así que la cuenta gratis sirve para aprender y probar, no para producir. El control fino sigue siendo el de la IA generativa: conseguirás el plano que quieres, pero quizá a la tercera o cuarta generación, y cada intento cuesta créditos. Y los clips siguen siendo cortos; una pieza de un minuto es un proyecto de montaje, no una generación.',
+          'También conviene saber que los créditos de Flow son distintos de los límites de Gemini, aunque vengan en la misma suscripción, y que el número de segundos por crédito varía según el modelo. Antes de pagar, gasta unos días de créditos gratis en comprobar que el tipo de plano que necesitas sale bien.',
+        ],
+      },
+      {
+        title: '¿Merece la pena en 2026?',
+        paragraphs: [
+          'Si generas vídeo con IA de forma ocasional, sí, y probablemente sin pagar: los 50 créditos diarios dan para mantener el pulso a la herramienta y sacar alguna pieza puntual con paciencia. Si produces contenido con regularidad, el plan Pro de 19,99 $ es el punto razonable: créditos de sobra para trabajar y acceso a los modelos buenos, por menos de lo que cuestan las herramientas de vídeo especializadas.',
+          'La comparación honesta: Runway sigue dando más control profesional de edición, Kling compite de tú a tú en calidad de imagen, y para avatares corporativos lo suyo es Synthesia o HeyGen, que son otra categoría. Pero como estudio generalista de texto e imagen a vídeo, con sonido incluido y capa gratuita real, Flow es hoy el punto de entrada más sensato. En nuestra ficha de Google Flow tienes los precios al detalle, y en el directorio, sus alternativas por categoría.',
+        ],
+      },
+    ],
+  },
+  {
+    id: '17',
+    slug: 'crear-musica-con-ia-suno',
+    title: 'Crear música con IA: cómo funciona Suno y qué te da gratis',
+    description:
+      'Cómo crear canciones completas con Suno: qué da el plan gratis de verdad, qué cuestan Pro y Premier, de quién son los derechos de lo que generas y consejos para que no suene a karaoke de plástico.',
+    image: '/images/suno-web.webp',
+    category: 'tips',
+    categoryLabel: 'Consejos',
+    date: '18 Ago 2026',
+    featured: true,
+    featuredOrder: 2,
+    readTime: '9 min',
+    author: 'AIFinder',
+    contentSections: [
+      {
+        title: 'Qué es Suno y por qué se ha puesto por delante',
+        paragraphs: [
+          'Suno genera canciones completas —voz, letra, instrumental, estructura— a partir de una descripción en texto. Escribes «balada pop en español, voz femenina, piano y cuerdas, sobre despedirse de una ciudad» y en un minuto tienes dos versiones de una canción que no existía. No un loop ni un fondo instrumental: una canción con estrofas, estribillo y final.',
+          'De las herramientas de música generativa que despegaron en 2024, Suno es la que ha llegado a 2026 en cabeza. La razón es prosaica: es la más fácil de usar y la que mejor entiende instrucciones en lenguaje natural, español incluido, tanto en la descripción del estilo como en las letras. Su rival directo sigue siendo Udio, con un enfoque algo más de estudio; para música instrumental libre de derechos también compite Mubert, y en el mundo abierto está AudioCraft de Meta, que es otra liga en cuanto a fricción.',
+          'Se usa desde suno.com con una cuenta gratuita. Ojo con el dominio: suno.ai, que aparece en muchos artículos antiguos, redirige al oficial.',
+        ],
+      },
+      {
+        title: 'El plan gratis, sin letra pequeña',
+        paragraphs: [
+          'La cuenta gratuita recibe 50 créditos al día, que dan para unas 10 canciones diarias. Se renuevan cada día y no se acumulan: lo que no gastas hoy no lo tienes mañana. Para aprender, experimentar con estilos y hacerte una biblioteca personal, es de lo más generoso que hay ahora mismo en IA generativa.',
+          'La letra pequeña está en el uso: lo generado con la cuenta gratis no se puede usar comercialmente. Nada de monetizarlo en YouTube, meterlo en un podcast con patrocinio o subirlo a Spotify. Es para uso personal. Si lo tuyo va en serio, necesitas un plan de pago, y no por los créditos, sino por los derechos.',
+        ],
+      },
+      {
+        title: 'Precios: Pro y Premier',
+        paragraphs: ['Los precios de la página oficial, a agosto de 2026:'],
+        table: {
+          headers: ['Plan', 'Precio', 'Para quién'],
+          rows: [
+            ['Free', '0 $', 'Unas 10 canciones al día, solo uso personal'],
+            [
+              'Pro',
+              '8 $/mes (5,33 $/mes si pagas el año)',
+              '2.500 créditos al mes, uso comercial y cola prioritaria',
+            ],
+            [
+              'Premier',
+              '24 $/mes (16 $/mes si pagas el año)',
+              '10.000 créditos al mes para producción en volumen',
+            ],
+          ],
+        },
+      },
+      {
+        title: 'De quién es la canción que acabas de generar',
+        paragraphs: [
+          'La pregunta importante, y la que casi nadie responde claro. Con un plan de pago, Suno te da derechos de uso comercial sobre lo que generes mientras seas suscriptor: puedes monetizarlo, distribuirlo y usarlo en clientes. Con la cuenta gratis, no.',
+          'Ahora, los matices que conviene conocer antes de montar un negocio encima. Primero: la propiedad legal de la música generada por IA sigue siendo terreno movedizo en muchos países, porque varias jurisdicciones no reconocen autoría sin intervención humana suficiente; los derechos que te da Suno son contractuales, de la plataforma hacia ti. Segundo: Suno arrastra desde 2024 demandas de las grandes discográficas por los datos con los que se entrenó, y aunque eso no cambia lo que tú puedes hacer hoy con tus canciones, sí explica por qué las plataformas de distribución miran la música generada con lupa. Tercero: las letras las firmas tú; si le pides una letra y resulta parecerse mucho a una existente, el problema es tuyo, no de Suno. Nada de esto es motivo para no usarlo; es motivo para leer los términos si el uso es comercial.',
+        ],
+      },
+      {
+        title: 'Consejos para que no suene a karaoke de plástico',
+        paragraphs: [
+          'La diferencia entre una canción de IA genérica y una resultona está casi toda en el encargo. Los mismos principios de cualquier prompt, aplicados a música:',
+        ],
+        bullets: [
+          'Describe producción, no solo género. «Pop» da medias. «Pop de radio de los 2000, batería seca, bajo adelante, voz doblada en el estribillo» da canciones.',
+          'Escribe tú la letra, o al menos el estribillo. La letra automática es correcta y olvidable; con el modo custom pegas la tuya y el salto de calidad es inmediato.',
+          'Usa las etiquetas de estructura ([Verse], [Chorus], [Bridge], [Outro]) en el modo custom: el modelo respeta la arquitectura que le marcas.',
+          'Referencia épocas y escenas, no artistas: «rock alternativo de los 90, guitarras con fuzz» funciona mejor que citar nombres, que además Suno filtra.',
+          'Genera varias versiones y remata: extiende la buena, corta lo que sobra y regenera solo la sección floja en lugar de tirar la canción entera.',
+          'El español funciona muy bien, pero revisa la letra generada: los giros raros y las sílabas forzadas se corrigen editando el texto, no regenerando a ciegas.',
+        ],
+      },
+      {
+        title: 'Para qué da y para qué no',
+        paragraphs: [
+          'Da, y de sobra, para música de fondo de vídeos y podcasts, jingles, maquetas para enseñar una idea a una banda o a un cliente, y para el placer bastante serio de hacer canciones por hacerlas. Con letra propia y unas cuantas iteraciones salen piezas que pasan un primer filtro de radio sin sonrojo.',
+          'No da, todavía, para sustituir una producción profesional: la mezcla no es de estudio, las voces tienen artefactos si las escuchas con auriculares buenos y el control fino sobre un arreglo (súbeme el bajo aquí, cambia este acorde) no existe: rehaces, no editas. La forma sensata de usarlo es como instrumento de escritura y producción rápida, no como sustituto del estudio. En nuestra ficha de Suno tienes los precios al día, y en la categoría de audio del directorio, el resto de opciones si lo tuyo es la voz o el sonido en vez de la canción.',
+        ],
+      },
+    ],
+  },
+  {
+    id: '18',
+    slug: 'deepseek-que-es-y-como-usarlo-gratis',
+    title: 'DeepSeek: qué es, por qué cuesta tan poco y cómo usarlo gratis',
+    description:
+      'Qué es DeepSeek, por qué su API cuesta una fracción de lo que cobran OpenAI o Anthropic, qué hace bien de verdad y qué deberías saber sobre privacidad antes de usarlo.',
+    image: '/images/deepseek-web.webp',
+    category: 'spotlight',
+    categoryLabel: 'A FONDO',
+    date: '18 Ago 2026',
+    featured: true,
+    featuredOrder: 3,
+    readTime: '9 min',
+    author: 'AIFinder',
+    contentSections: [
+      {
+        title: 'Qué es DeepSeek',
+        paragraphs: [
+          'DeepSeek es un laboratorio chino de inteligencia artificial que se hizo famoso de golpe en enero de 2025, cuando publicó R1, un modelo de razonamiento comparable a los mejores del momento, entrenado por una fracción del coste y con los pesos publicados para que cualquiera lo descargara. Aquel terremoto —llegó a mover las bolsas— convirtió a una empresa casi desconocida en el tercer nombre que todo el mundo cita junto a OpenAI y Anthropic.',
+          'En 2026 la oferta se ha asentado en dos frentes: un chat gratuito en chat.deepseek.com, sin límite de mensajes anunciado, y una API para desarrolladores cuyos precios son el motivo de que media industria lo use como caballo de batalla. La familia actual de modelos es la V4, con una variante rápida y barata (flash) y otra más capaz (pro), ambas con ventana de contexto de un millón de tokens.',
+          'La otra seña de identidad se mantiene: DeepSeek publica los pesos de buena parte de sus modelos, así que además de usarlos en su nube puedes ejecutarlos en tu propia infraestructura, algo que ni OpenAI ni Anthropic ni Google ofrecen con sus modelos punteros.',
+        ],
+      },
+      {
+        title: 'Por qué es tan barato',
+        paragraphs: [
+          'No es una promoción, es ingeniería. DeepSeek entrena y sirve sus modelos con una obsesión por la eficiencia que le permite cobrar precios que en la competencia parecen erratas. Sus técnicas —arquitecturas de expertos que solo activan una parte del modelo en cada consulta, cachés agresivas, entrenamiento optimizado hasta el céntimo— están documentadas en artículos técnicos públicos que el resto de la industria lee con atención.',
+          'Los números, de su documentación oficial a agosto de 2026: el modelo flash cobra 0,14 $ por millón de tokens de entrada y 0,28 $ por el de salida; el pro, 0,435 $ y 0,87 $. Para calibrar: los modelos punteros occidentales se mueven en dólares, no en céntimos, por el mismo millón de tokens. Y si la consulta repite contexto ya visto (la caché), la entrada baja a milésimas de dólar. La propia documentación avisa, eso sí, de que hay una subida de precios anunciada sin fecha: si montas algo encima, revisa la tarifa antes.',
+          'Esa diferencia de precio explica su papel real en la industria: no es tanto el modelo con el que chateas como el motor que hace viables productos que necesitan millones de llamadas y no pueden pagar tarifas premium.',
+        ],
+      },
+      {
+        title: 'Cómo usarlo gratis',
+        paragraphs: [
+          'Para uso personal, el camino es chat.deepseek.com: cuenta gratuita, sin límite de mensajes anunciado, con el modo de razonamiento profundo (DeepThink) y búsqueda web incluidos. Como asistente diario para razonar, programar, traducir o estudiar, el nivel es de primera fila y lo gratis no es una demo recortada.',
+          'Para desarrolladores, las cuentas nuevas de la API reciben un crédito de bienvenida (5 millones de tokens, válido 30 días) con el que evaluar el modelo sin poner tarjeta. Y la vía verdaderamente libre: los pesos abiertos en Hugging Face, que puedes ejecutar en local si tienes el hardware, o a través de cualquier proveedor de inferencia que los sirva.',
+        ],
+        bullets: [
+          'Chat: chat.deepseek.com, gratis, con razonamiento y búsqueda web.',
+          'API: crédito inicial de 5M de tokens durante 30 días; después, pago por uso.',
+          'Pesos abiertos: descarga y ejecución en tu propia máquina o proveedor.',
+        ],
+      },
+      {
+        title: 'Lo que hace bien y lo que debes saber antes',
+        paragraphs: [
+          'Lo que hace bien: razonamiento y matemáticas al nivel de los grandes, programación seria, y un rendimiento en español muy sólido. En relación calidad-precio no tiene rival hoy, y esa frase no es entusiasmo: es la razón de que tantos productos lo lleven dentro sin decirlo.',
+          'Lo que debes saber, dicho sin alarmismo pero sin rodeos. Primero, privacidad: los datos del chat gratuito se procesan en servidores en China, bajo legislación china; para conversaciones personales es una decisión de cada uno, para datos de empresa europeos es directamente un problema de cumplimiento, y la vía seria en ese caso es la API o los pesos en infraestructura propia. Segundo, censura: el chat evita o recorta temas políticamente sensibles para China; si tu uso toca actualidad política, lo notarás. Tercero, estabilidad: en picos de demanda la API ha sufrido degradaciones más frecuentes que las de los proveedores occidentales, algo a considerar si necesitas disponibilidad garantizada.',
+        ],
+      },
+      {
+        title: 'Para quién sí y para quién no',
+        paragraphs: [
+          'Para quién sí: cualquiera que quiera un asistente potente gratis y sin límites artificiales; desarrolladores y equipos que necesiten inteligencia barata a volumen; y cualquier organización que quiera ejecutar un modelo puntero en su propia infraestructura, que es el terreno donde DeepSeek juega casi solo junto a LLaMA y compañía.',
+          'Para quién no: quien maneje datos sensibles o regulados y no vaya a salirse del chat gratuito; quien necesite el último uno por ciento de calidad en tareas de frontera, donde los modelos premium occidentales siguen mandando; y quien dependa de un ecosistema concreto (los GPTs de OpenAI, los artefactos de Claude, la integración de Gemini con Google), porque DeepSeek compite en modelo, no en ecosistema. En nuestra ficha de DeepSeek están los precios al detalle, y en las comparativas del directorio puedes verlo frente a ChatGPT, Claude y Gemini.',
+        ],
+      },
+    ],
+  },
+  {
+    id: '19',
+    slug: 'midjourney-precios-como-usarlo',
+    title: 'Midjourney en 2026: cuánto cuesta, cómo se usa y si hay versión gratis',
+    description:
+      'Guía al día de Midjourney: los cuatro planes con precios oficiales, si existe versión gratuita, cómo se usa desde la web sin Discord, qué da el vídeo y de quién son las imágenes.',
+    image: '/images/midjourney-web.webp',
+    category: 'tips',
+    categoryLabel: 'Consejos',
+    date: '18 Ago 2026',
+    featured: true,
+    featuredOrder: 4,
+    readTime: '9 min',
+    author: 'AIFinder',
+    contentSections: [
+      {
+        title: 'Lo primero: no, no hay Midjourney gratis',
+        paragraphs: [
+          'Es la pregunta más buscada y la respuesta corta es no. Midjourney no tiene plan gratuito ni periodo de prueba: la prueba gratis desapareció en 2023 y no ha vuelto. Cualquier web que te prometa «Midjourney gratis» en 2026 te está vendiendo otra cosa: normalmente un revendedor, un clon de dudosa procedencia o directamente una estafa. El acceso real empieza en 10 dólares al mes, y punto.',
+          'Si lo que quieres es generar imágenes sin pagar, opciones serias existen, solo que no se llaman Midjourney: el generador de imágenes de ChatGPT y el de Gemini tienen capa gratuita con límites, Leonardo AI y Playground AI regalan créditos diarios, y Stable Diffusion es directamente libre si tienes máquina para moverlo. En nuestro directorio tienes la categoría completa de generación de imágenes con lo que da gratis cada una.',
+        ],
+      },
+      {
+        title: 'Cuánto cuesta: los cuatro planes',
+        paragraphs: [
+          'Los precios oficiales, contrastados con la documentación de Midjourney a agosto de 2026. Pagando el año entero, el precio mensual baja un 20 %:',
+        ],
+        table: {
+          headers: ['Plan', 'Precio', 'Lo que marca la diferencia'],
+          rows: [
+            [
+              'Basic',
+              '10 $/mes (8 $/mes anual)',
+              '~3,3 h de generación rápida al mes; sin modo relax',
+            ],
+            [
+              'Standard',
+              '30 $/mes (24 $/mes anual)',
+              '15 h rápidas + imágenes ilimitadas en modo relax',
+            ],
+            [
+              'Pro',
+              '60 $/mes (48 $/mes anual)',
+              '30 h rápidas, modo incógnito (stealth) y vídeo ilimitado en relax',
+            ],
+            [
+              'Mega',
+              '120 $/mes (96 $/mes anual)',
+              '60 h rápidas; lo anterior, a escala de estudio',
+            ],
+          ],
+        },
+      },
+      {
+        title: 'La mecánica de los créditos: fast y relax',
+        paragraphs: [
+          'Midjourney no cuenta por imágenes sino por tiempo de GPU. Cada plan incluye horas de generación rápida (fast): cada imagen consume un puñado de segundos de esa bolsa, y cuando se agota puedes comprar horas extra a 4 $ o esperar al mes siguiente.',
+          'La clave del asunto está en el modo relax: desde el plan Standard hacia arriba, las imágenes en relax son ilimitadas. Tardan más —tu petición entra en cola—, pero no gastan bolsa. Por eso el plan Basic, que no tiene relax, se queda corto enseguida para cualquiera que genere en serio: es el plan para decidir si Midjourney es lo tuyo, no para trabajar. El dulce está en Standard: quince horas rápidas para cuando corre prisa e ilimitado en relax para todo lo demás.',
+        ],
+      },
+      {
+        title: 'Cómo se usa en 2026: la web, sin Discord',
+        paragraphs: [
+          'Si dejaste Midjourney en la época en que era un bot de Discord, esto ha cambiado por completo. Desde midjourney.com funciona todo: escribes el prompt en la caja, recibes cuatro propuestas, y de cada una puedes pedir variaciones, reescalar, editar zonas concretas o usarla como referencia para la siguiente. Discord sigue existiendo como vía paralela —cada entorno conserva alguna función propia—, pero ya no es necesario para nada esencial.',
+          'El modelo actual es V8.2, activo por defecto desde julio de 2026, y el salto respecto a lo que recuerdes de V6 o V7 es notable en manos, texto dentro de la imagen y coherencia general. Dos funciones merecen mención aparte: la personalización, que aprende tu gusto estético a partir de tus valoraciones y lo aplica a tus generaciones; y los perfiles de estilo, que mantienen una estética consistente entre sesiones, la diferencia entre generar imágenes sueltas y construir una identidad visual.',
+          'Los consejos de prompt de siempre aplican, con un matiz propio: Midjourney responde mejor a atributos concretos separados por comas (luz, lente, época, textura) que a párrafos narrativos, y castiga menos la brevedad que otros generadores.',
+        ],
+      },
+      {
+        title: 'El vídeo: qué da y en qué planes',
+        paragraphs: [
+          'Desde junio de 2025 Midjourney también anima: le das una imagen —generada o subida— y produce clips de 5 segundos extensibles hasta 21. No es texto a vídeo puro como Google Flow o Kling: es imagen a vídeo, pensado para dar movimiento a esa estética Midjourney que ya tienes en la imagen fija.',
+          'Está disponible en todos los planes de pago con horas rápidas, pero el vídeo consume mucha más bolsa que la imagen; el vídeo ilimitado en relax (en definición estándar) es cosa de Pro y Mega. Si tu interés principal es el vídeo generativo, probablemente te compense más una herramienta nativa de vídeo; si es darle vida puntual a tus imágenes, esto lo resuelve sin salir de casa.',
+        ],
+      },
+      {
+        title: 'De quién son las imágenes',
+        paragraphs: [
+          'Con cualquier plan de pago puedes usar comercialmente lo que generes, con una excepción que casi nadie lee: las empresas que facturan más de un millón de dólares al año necesitan Pro o Mega para uso comercial. Para un autónomo o una pyme, cualquier plan vale.',
+          'Dos matices honestos. Por defecto todo lo que generas es público en la galería de la comunidad: si trabajas para clientes y no quieres que tus encargos se vean, el modo incógnito existe, pero solo en Pro y Mega, y conviene saberlo antes de elegir plan. Y como con toda la imagen generativa, la propiedad intelectual plena de una imagen hecha por IA sigue discutiéndose en los tribunales de medio mundo: los derechos que tienes son los que te da el contrato de Midjourney, que para uso comercial normal son suficientes.',
+        ],
+      },
+      {
+        title: '¿Merece la pena frente a las alternativas?',
+        paragraphs: [
+          'Midjourney sigue siendo la referencia en una cosa concreta: acabado estético. Para ilustración, concept art, moda, interiorismo y cualquier encargo donde la imagen tenga que ser bonita antes que literal, sigue sin tener rival claro, y V8.2 ha limado sus puntos débiles históricos.',
+          'Pero ya no es la respuesta universal. Si necesitas que la imagen obedezca instrucciones largas y precisas, el generador de ChatGPT interpreta mejor. Si necesitas texto perfecto dentro de la imagen (carteles, packaging), Ideogram nació para eso. Si quieres gratis o control total, FLUX y Stable Diffusion. Y si lo tuyo es el diseño con capas y vectores, Recraft juega otra liga. En nuestras comparativas tienes Midjourney frente a DALL·E, Stable Diffusion, Firefly, FLUX e Ideogram, con tablas y veredicto; y en su ficha, los planes al detalle. La decisión corta: si vienes por la estética, paga Standard y no mires atrás; si vienes por otra cosa, mira antes la comparativa de tu caso.',
+        ],
+      },
+    ],
+  },
 ];
 
 // Artículos publicados
 export const articles: Article[] = allArticles.filter((a) =>
-  ['1', '2', '6', '7', '8', '9', '13', '14', '15'].includes(a.id),
+  ['1', '2', '6', '7', '8', '9', '13', '14', '15', '16', '17', '18', '19'].includes(a.id),
 );
