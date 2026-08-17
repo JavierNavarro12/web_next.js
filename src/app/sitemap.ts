@@ -56,15 +56,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  // Páginas de subcategorías (SEO optimizado)
-  const subcategoryPages: MetadataRoute.Sitemap = aiCategories.flatMap((category) =>
-    category.subcategories.map((subcategory) => ({
-      url: `${base}/categoria/${slugify(category.name)}/${slugify(subcategory.name)}`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    })),
-  );
+  // Las subcategorías se quedan fuera del sitemap: van con noindex porque su
+  // texto propio es demasiado corto para sostener una página por sí solo.
 
   // Fichas de herramienta: solo las tandas ya publicadas (el resto va con noindex)
   const toolPages: MetadataRoute.Sitemap = getAllTools()
@@ -119,7 +112,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...mainPages,
     ...categoryPages,
-    ...subcategoryPages,
     ...toolPages,
     ...comparisonPages,
     ...articlePages,

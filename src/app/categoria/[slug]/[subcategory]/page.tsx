@@ -8,6 +8,7 @@ import { slugify, findCategoryBySlug } from '../../../../utils/slugify';
 import { getSiteUrl } from '../../../../utils/siteUrl';
 import { getSubcategoryContent } from '../../../../utils/categoryContent';
 import { getToolsBySubcategory } from '../../../../utils/tools';
+import { NOINDEX_ROBOTS } from '../../../../utils/publishing';
 
 type Props = {
   params: Promise<{ slug: string; subcategory: string }>;
@@ -67,6 +68,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
+    // Las subcategorías son índices de enlaces con poco texto propio: se
+    // rastrean y se siguen sus enlaces, pero no compiten por entrar al índice.
+    robots: NOINDEX_ROBOTS,
     alternates: {
       canonical: `${baseUrl}/categoria/${slug}/${subcategorySlug}`,
     },
