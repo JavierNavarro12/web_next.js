@@ -79,6 +79,20 @@ const nextConfig: NextConfig = {
   async headers() {
     const isProd = process.env.NODE_ENV === 'production';
     return [
+      // Imágenes y logos: nombre fijo sin hash, pero cambian rarísimo.
+      // Sin esto Vercel sirve max-age=0 y el navegador revalida en cada visita.
+      {
+        source: '/images/:path*.webp',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+      {
+        source: '/images/:path*.avif',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+      {
+        source: '/logos/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
       // Headers específicos para archivos HLS (.m3u8)
       {
         source: '/images/:path*.m3u8',

@@ -174,6 +174,7 @@ export default async function ComparisonPage({ params }: Props) {
                 width={56}
                 height={56}
                 className="w-14 h-14 object-contain rounded-lg mb-2"
+                priority
               />
               <span className="font-bold text-lg">{name}</span>
               <span className="text-zinc-400 text-sm">{tool.description}</span>

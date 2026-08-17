@@ -107,6 +107,18 @@ export default function HomeContainer({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialCategory]);
 
+  // Leer ?q= y ?category= de la URL en el navegador. Antes los leía page.tsx
+  // vía searchParams, pero eso volvía dinámica toda la home (sin caché de edge)
+  // para unos valores que solo se usan tras hidratar.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get('q');
+    const category = params.get('category');
+    if (q) setSearchTerm(q);
+    if (category && !activeCategory) setActiveCategory(category);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // Fijar subcategoría inicial si llega por ruta (/categoria/x/subcategoria)
   useEffect(() => {
     if (initialSubcategory && !activeSubcategory) {

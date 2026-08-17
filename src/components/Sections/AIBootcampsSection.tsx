@@ -96,10 +96,6 @@ export default function AIBootcampsSection({ onViewAll: _onViewAll }: AIBootcamp
 
   const displayedBootcamps = allBootcamps.slice(0, displayCount);
 
-  const handleBootcampClick = (url: string) => {
-    window.open(url, '_blank');
-  };
-
   const handleLoadMore = () => {
     if (displayCount === 3) {
       setDisplayCount(6);
@@ -124,10 +120,7 @@ export default function AIBootcampsSection({ onViewAll: _onViewAll }: AIBootcamp
       <div className="bg-zinc-950 rounded-xl p-4 border border-zinc-800">
         {/* Header con título */}
         <div className="flex items-center justify-between mb-8">
-          <h2
-            className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
-            style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-          >
+          <h2 className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
             Bootcamps
           </h2>
         </div>
@@ -136,10 +129,12 @@ export default function AIBootcampsSection({ onViewAll: _onViewAll }: AIBootcamp
         <div className="md:hidden">
           <div className="space-y-6">
             {displayedBootcamps.map((bootcamp) => (
-              <div
+              <a
                 key={bootcamp.name}
+                href={bootcamp.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group cursor-pointer"
-                onClick={() => handleBootcampClick(bootcamp.url)}
               >
                 {/* Imagen del bootcamp */}
                 <div className="relative aspect-video bg-zinc-800 rounded-lg mb-3 overflow-hidden border border-[#232323]">
@@ -196,7 +191,7 @@ export default function AIBootcampsSection({ onViewAll: _onViewAll }: AIBootcamp
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -204,10 +199,12 @@ export default function AIBootcampsSection({ onViewAll: _onViewAll }: AIBootcamp
         {/* Vista desktop: Grid de tarjetas */}
         <div className="hidden md:grid md:grid-cols-3 gap-6">
           {displayedBootcamps.map((bootcamp) => (
-            <div
+            <a
               key={bootcamp.name}
+              href={bootcamp.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group cursor-pointer"
-              onClick={() => handleBootcampClick(bootcamp.url)}
             >
               {/* Contenedor de imagen separado */}
               <div className="relative aspect-video bg-zinc-800 rounded mb-3 overflow-hidden border border-[#232323]">
@@ -264,7 +261,7 @@ export default function AIBootcampsSection({ onViewAll: _onViewAll }: AIBootcamp
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
 

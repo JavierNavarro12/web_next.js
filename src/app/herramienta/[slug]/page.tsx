@@ -256,6 +256,7 @@ export default async function ToolPage({ params }: Props) {
             sizes="(max-width: 768px) 100vw, 900px"
             style={{ width: '100%', height: 'auto' }}
             className="rounded-xl border border-zinc-800"
+            priority
           />
           <figcaption className="text-zinc-500 text-sm mt-2">Interfaz de {tool.name}.</figcaption>
         </figure>

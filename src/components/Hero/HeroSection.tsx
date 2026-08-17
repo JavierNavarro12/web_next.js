@@ -80,6 +80,7 @@ export default function HeroSection() {
                   <input
                     type="email"
                     placeholder="Email"
+                    aria-label="Tu email para la newsletter"
                     value={email}
                     onChange={handleEmailChange}
                     className="flex-1 px-4 py-3 bg-zinc-800 text-white placeholder-zinc-300 focus:outline-none border border-zinc-600 rounded-full text-sm md:text-base"

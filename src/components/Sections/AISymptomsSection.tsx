@@ -51,20 +51,13 @@ export default function AISymptomsSection({ onViewAll }: AISymptomsSectionProps)
 
   const displayedTools = symptomsTools.slice(0, displayCount);
 
-  const handleToolClick = (url: string) => {
-    window.open(url, '_blank');
-  };
-
   return (
     <div className="py-4 px-4 max-w-7xl mx-auto">
       {/* Contenedor principal con bordes */}
       <div className="bg-zinc-950 rounded-xl p-4 border border-zinc-800">
         {/* Header con título y botón */}
         <div className="flex items-center justify-between mb-8">
-          <h2
-            className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
-            style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-          >
+          <h2 className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
             Síntomas
           </h2>
           <button
@@ -79,10 +72,12 @@ export default function AISymptomsSection({ onViewAll }: AISymptomsSectionProps)
         <div className="md:hidden">
           <div className="space-y-6">
             {displayedTools.map((tool) => (
-              <div
+              <a
                 key={tool.name}
+                href={tool.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group cursor-pointer"
-                onClick={() => handleToolClick(tool.url)}
               >
                 {/* Imagen de la herramienta */}
                 <div className="relative aspect-video bg-zinc-800 rounded-lg mb-3 overflow-hidden border border-[#232323]">
@@ -115,7 +110,7 @@ export default function AISymptomsSection({ onViewAll }: AISymptomsSectionProps)
                     <span>{tool.description}</span>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -123,10 +118,12 @@ export default function AISymptomsSection({ onViewAll }: AISymptomsSectionProps)
         {/* Vista desktop: Grid de tarjetas con imágenes */}
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {displayedTools.map((tool) => (
-            <div
+            <a
               key={tool.name}
+              href={tool.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group cursor-pointer"
-              onClick={() => handleToolClick(tool.url)}
             >
               {/* Contenedor de imagen separado */}
               <div className="relative aspect-video bg-zinc-800 rounded mb-3 overflow-hidden border border-[#232323]">
@@ -151,7 +148,7 @@ export default function AISymptomsSection({ onViewAll }: AISymptomsSectionProps)
                 <h3 className="font-bold text-white text-base mb-1">{tool.name}</h3>
                 <p className="text-zinc-400 text-sm leading-relaxed">{tool.description}</p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>

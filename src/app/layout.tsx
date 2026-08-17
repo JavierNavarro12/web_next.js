@@ -8,6 +8,7 @@ import PWAStartupRedirect from '../components/PWA/PWAStartupRedirect';
 import { ErrorBoundary } from '../components/ErrorBoundary/ErrorBoundary';
 import GoogleAnalytics from '../components/Analytics/GoogleAnalytics';
 import MicrosoftClarity from '../components/Analytics/MicrosoftClarity';
+import DataFast from '../components/Analytics/DataFast';
 import { CookieConsentProvider } from '../store/cookieConsent';
 import CookieBanner from '../components/Cookies/CookieBanner';
 import { getSiteUrl } from '../utils/siteUrl';
@@ -113,36 +114,35 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             __html: `(${initBrowserSentry.toString()})();`,
           }}
         />
-        {/* DataFast analytics - solo en producción y dominio correcto */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var host = window.location.hostname;
-                if (host === 'www.aifinder.es' || host === 'aifinder.es') {
-                  var s = document.createElement('script');
-                  s.defer = true;
-                  s.dataset.websiteId = 'dfid_vDROHeJI9P2sNpr1i9WUW';
-                  s.dataset.domain = 'www.aifinder.es';
-                  s.src = 'https://datafa.st/js/script.js';
-                  document.head.appendChild(s);
-                }
-              })();
-            `,
-          }}
-        />
-        {/* Preconnect para recursos críticos - mejora LCP */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Los preconnect a fonts.googleapis/gstatic sobraban: next/font autoaloja
+            las fuentes en build y nunca hay petición a Google Fonts. Los de los
+            subdominios fastly de Mux también: cambian por región y solo los usan
+            los pocos artículos con vídeo. */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://datafa.st" />
-        <link rel="preconnect" href="https://mux.com" />
         <link rel="dns-prefetch" href="https://mux.com" />
-        <link rel="preconnect" href="https://manifest-gcp-us-east1-vop1.fastly.mux.com" />
-        <link rel="dns-prefetch" href="https://manifest-gcp-us-east1-vop1.fastly.mux.com" />
-        <link rel="preconnect" href="https://chunk-gcp-us-east1-vop1.fastly.mux.com" />
-        <link rel="dns-prefetch" href="https://chunk-gcp-us-east1-vop1.fastly.mux.com" />
+        {/* Prerender especulativo de fichas y comparativas al pasar el ratón:
+            navegación interna casi instantánea en navegadores que lo soportan. */}
+        <script
+          type="speculationrules"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              prerender: [
+                {
+                  where: {
+                    or: [
+                      { href_matches: '/herramienta/*' },
+                      { href_matches: '/comparativa/*' },
+                      { href_matches: '/categoria/*' },
+                    ],
+                  },
+                  eagerness: 'moderate',
+                },
+              ],
+            }),
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -189,6 +189,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <CookieConsentProvider>
           <GoogleAnalytics />
           <MicrosoftClarity />
+          <DataFast />
           <ErrorBoundary>
             <AppProviders>
               <PWAStartupRedirect />

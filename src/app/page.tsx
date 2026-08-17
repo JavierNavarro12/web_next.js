@@ -29,13 +29,9 @@ const homeFaqs = [
   },
 ];
 
-export default async function HomePage({
-  searchParams,
-}: {
-  searchParams?: Promise<{ q?: string; category?: string }>;
-}) {
-  const sp = (await searchParams) ?? {};
-  const q = sp.q ?? '';
+export default function HomePage() {
+  // Sin searchParams a propósito: leerlos aquí vuelve dinámica toda la home y
+  // pierde la caché de edge. HomeContainer los lee de la URL tras hidratar.
   const toolCount = getAllTools().length;
   const allComparisons = getAllComparisons();
   const comparisonCount = allComparisons.length;
@@ -62,7 +58,7 @@ export default async function HomePage({
       {/* La sección SEO va como children: HomeContainer la renderiza en el HTML
           del servidor (donde la app aún no se ha hidratado y Google la lee) y,
           ya en cliente, las vistas la colocan justo antes del footer. */}
-      <HomeContainer initialSearchTerm={q} initialCategory={sp.category || ''}>
+      <HomeContainer>
         <section className="bg-black text-white border-t border-zinc-800">
           <div className="max-w-5xl mx-auto px-4 py-12">
             <h1 className="text-3xl md:text-4xl font-extrabold leading-tight mb-4">
