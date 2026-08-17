@@ -293,7 +293,7 @@ export async function POST(request: NextRequest) {
             <a href="${siteUrl}/unsubscribe?token=${unsubscribeToken}" style="color: #64748b; text-decoration: none;">Cancelar suscripción</a>
           </p>
                       <p style="margin: 16px 0 0; color: #64748b; font-size: 12px;">
-                        © 2024 AIFinder
+                        © ${new Date().getFullYear()} AIFinder
                       </p>
                     </td>
                   </tr>

@@ -16,7 +16,7 @@ export default function AIRecommendationsSection({
       description: 'Editor de código IA',
       image: '/images/cursor-web.webp',
       logo: '/logos/cursor-movil.png',
-      url: 'https://cursor.sh',
+      url: 'https://cursor.com',
       isNew: true,
     },
     {
@@ -72,7 +72,7 @@ export default function AIRecommendationsSection({
       description: 'Gestión de tareas',
       image: '/images/clickup-web.webp',
       logo: '/logos/clickup-movil.jpeg',
-      url: 'https://clickup.com',
+      url: 'https://clickup.com/brain',
       isNew: true,
     },
   ];

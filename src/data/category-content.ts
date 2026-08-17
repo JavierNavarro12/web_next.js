@@ -297,7 +297,7 @@ export const categoryContent: CategoryContent[] = [
     cat: 'IA Cognitiva y Razonamiento',
     title: 'IA cognitiva: memoria, razonamiento y agentes avanzados',
     intro:
-      'Un modelo de lenguaje, por defecto, no recuerda nada de una sesión a otra y responde de forma directa aunque el problema requiera varios pasos. Esta categoría reúne las técnicas y herramientas que atacan esas dos limitaciones: sistemas de memoria persistente como MemGPT, MemO o Zep AI, que dan continuidad entre conversaciones; métodos de razonamiento estructurado como Tree-of-Thought, DSPy o GraphGPT, que fuerzan al modelo a descomponer el problema; y frameworks de agentes cognitivos como AutoGen, CrewAI o LangGraph.',
+      'Un modelo de lenguaje, por defecto, no recuerda nada de una sesión a otra y responde de forma directa aunque el problema requiera varios pasos. Esta categoría reúne las técnicas y herramientas que atacan esas dos limitaciones: sistemas de memoria persistente como Letta (antes MemGPT), MemO o Zep AI, que dan continuidad entre conversaciones; métodos de razonamiento estructurado como Tree-of-Thought, DSPy o GraphGPT, que fuerzan al modelo a descomponer el problema; y frameworks de agentes cognitivos como AutoGen, CrewAI o LangGraph.',
     body: 'Es la parte menos madura del ecosistema y conviene entrar con expectativas ajustadas. Si lo que necesitas es que un asistente recuerde preferencias entre sesiones, una capa de memoria bien diseñada aporta mucho con poco. Si lo que buscas es un sistema multiagente que se coordine solo, prepárate para depurar comportamientos difíciles de reproducir. Elige el framework por su capacidad de trazar y controlar el flujo de ejecución: sin observabilidad, cuando algo falla no sabrás por qué.',
     faqs: [
       {
@@ -417,7 +417,7 @@ export const categoryContent: CategoryContent[] = [
     cat: 'Gestión del Conocimiento',
     title: 'IA para buscar y consultar tus documentos',
     intro:
-      'El problema no suele ser que falte información, sino que está repartida entre cientos de PDF, wikis, correos y unidades compartidas donde nadie la encuentra. Esta categoría agrupa las herramientas que resuelven eso: por un lado, las que permiten preguntar directamente a tus documentos y obtener la respuesta con la cita de la página, como ChatPDF, AskYourPDF, Glean, Klu o Danswer. Por otro, los buscadores inteligentes que responden en lenguaje natural con fuentes enlazadas, como Perplexity, You.com o Phind.',
+      'El problema no suele ser que falte información, sino que está repartida entre cientos de PDF, wikis, correos y unidades compartidas donde nadie la encuentra. Esta categoría agrupa las herramientas que resuelven eso: por un lado, las que permiten preguntar directamente a tus documentos y obtener la respuesta con la cita de la página, como ChatPDF, AskYourPDF, Glean, Klu u Onyx. Por otro, los buscadores inteligentes que responden en lenguaje natural con fuentes enlazadas, como Perplexity, You.com o Phind.',
     body: 'Para consultas puntuales sobre un archivo suelto, una herramienta ligera de subir y preguntar es suficiente. Para una empresa, lo determinante es otra cosa: que se conecte a tus fuentes reales —Drive, SharePoint, Confluence, Slack— y, sobre todo, que respete los permisos de cada usuario, porque un buscador que enseña a todos lo que solo debían ver algunos es un incidente de seguridad. Exige también que cite la fuente de cada respuesta: sin cita, no hay forma de comprobar si se lo ha inventado.',
     faqs: [
       {
@@ -797,7 +797,7 @@ export const subcategoryContent: SubcategoryContent[] = [
     sub: 'Memoria a largo plazo',
     title: 'Las mejores herramientas de memoria para IA',
     intro:
-      'Los modelos de lenguaje olvidan todo al cerrar la conversación: solo existen dentro de su ventana de contexto. Estas herramientas añaden la capa que falta. MemGPT gestiona la memoria como un sistema operativo, moviendo información entre el contexto activo y un almacén externo según haga falta; MemO ofrece una capa de memoria persistente para asistentes que deben recordar preferencias y hechos del usuario entre sesiones; y Zep AI mantiene el historial de conversación con recuperación de lo relevante y gestión de la caducidad de los datos.',
+      'Los modelos de lenguaje olvidan todo al cerrar la conversación: solo existen dentro de su ventana de contexto. Estas herramientas añaden la capa que falta. Letta (antes MemGPT) gestiona la memoria como un sistema operativo, moviendo información entre el contexto activo y un almacén externo según haga falta; MemO ofrece una capa de memoria persistente para asistentes que deben recordar preferencias y hechos del usuario entre sesiones; y Zep AI mantiene el historial de conversación con recuperación de lo relevante y gestión de la caducidad de los datos.',
     body: 'Tiene sentido cuando construyes un asistente que se usa de forma continuada y donde repetir el contexto cada vez arruina la experiencia: soporte, tutoría, acompañamiento personal, agentes de trabajo. Al elegir, fíjate en cómo decide qué recordar y qué descartar, porque guardarlo todo encarece cada llamada y ensucia las respuestas. Comprueba también dónde se almacenan esos datos y si puedes borrar la memoria de un usuario concreto: la memoria persistente convierte a tu asistente en un tratamiento de datos personales.',
   },
   {
@@ -901,7 +901,7 @@ export const subcategoryContent: SubcategoryContent[] = [
     sub: 'Preguntas a Documentos',
     title: 'Las mejores IA para preguntar a tus documentos',
     intro:
-      'Buscar un dato dentro de un contrato de doscientas páginas o de una wiki abandonada es un trabajo que nadie quiere hacer. Estas herramientas lo resuelven preguntando. ChatPDF y AskYourPDF permiten subir un documento y consultarlo en lenguaje natural, con la cita de la página donde está la respuesta; Glean indexa todas las fuentes internas de una empresa —Drive, Slack, Confluence— respetando permisos; Klu y Danswer ofrecen búsqueda conversacional sobre el conocimiento de la organización, con opción de autoalojamiento.',
+      'Buscar un dato dentro de un contrato de doscientas páginas o de una wiki abandonada es un trabajo que nadie quiere hacer. Estas herramientas lo resuelven preguntando. ChatPDF y AskYourPDF permiten subir un documento y consultarlo en lenguaje natural, con la cita de la página donde está la respuesta; Glean indexa todas las fuentes internas de una empresa —Drive, Slack, Confluence— respetando permisos; Klu y Onyx (antes Danswer) ofrecen búsqueda conversacional sobre el conocimiento de la organización, con opción de autoalojamiento.',
     body: 'Para un archivo suelto, una herramienta ligera de subir y preguntar sobra. Para una empresa, lo determinante es que se conecte a tus fuentes reales y que respete los permisos de cada usuario: un buscador interno que muestra a cualquiera documentos de recursos humanos o de dirección es un incidente de seguridad, no una funcionalidad. Exige además que cite la fuente de cada afirmación. Sin cita verificable no hay forma de distinguir una respuesta correcta de una inventada con seguridad.',
   },
   {

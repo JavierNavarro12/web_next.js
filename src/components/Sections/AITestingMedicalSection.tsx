@@ -17,7 +17,7 @@ export default function AITestingMedicalSection({
       name: 'Codium',
       logo: '/logos/codium-movil.png',
       description: 'Testing IA',
-      url: 'https://www.codium.ai',
+      url: 'https://www.qodo.ai',
     },
     {
       name: 'Testim',

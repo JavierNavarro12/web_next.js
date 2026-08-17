@@ -4,93 +4,36 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { slugify } from '../../utils/slugify';
+import { aiCategories, AITool } from '../../data/ai-tools';
+import { discontinuedTools } from '../../data/discontinued';
 
-// Obtener las 10 herramientas más recientes (puedes modificar esta lógica)
+// Las últimas incorporaciones reales: fichas de la tanda publicada más
+// reciente. Solo se fijan los nombres; los datos (logo, descripción, URL)
+// salen del catálogo para que no vuelvan a divergir de él.
+const NEWEST_NAMES = [
+  'DeepSeek',
+  'Suno',
+  'Descript',
+  'Kling',
+  'Google Flow',
+  'Leonardo AI',
+  'Speechify',
+  'Recraft',
+];
+
 const getNewestTools = () => {
-  const newestTools = [
-    {
-      name: 'ChatGPT',
-      description: 'Asistente IA conversacional',
-      image: '/images/chatpgt-web.webp',
-      logo: '/logos/chatgpt-movil.png',
-      url: 'https://chatgpt.com',
-      pricing: 'freemium' as const,
-    },
-    {
-      name: 'Claude',
-      description: 'IA avanzada para conversación',
-      image: '/images/claude-web.webp',
-      logo: '/logos/claude-movil.png',
-      url: 'https://claude.ai',
-      pricing: 'freemium' as const,
-    },
-    {
-      name: 'Midjourney',
-      description: 'Generación de imágenes IA',
-      image: '/images/midjourney-web.webp',
-      logo: '/logos/midjourney-movil.png',
-      url: 'https://midjourney.com',
-      pricing: 'paid' as const,
-    },
-    {
-      name: 'GitHub Copilot',
-      description: 'Asistente de código IA',
-      image: '/images/githubcopilot-web.webp',
-      logo: '/logos/githubcopilto-movil.png',
-      url: 'https://github.com/features/copilot',
-      pricing: 'paid' as const,
-    },
-    {
-      name: 'Perplexity',
-      description: 'Buscador con IA',
-      image: '/images/perplexity-web.webp',
-      logo: '/logos/perplexity-movil.png',
-      url: 'https://perplexity.ai',
-      pricing: 'freemium' as const,
-    },
-    {
-      name: 'Cursor',
-      description: 'Editor de código IA',
-      image: '/images/cursor-web.webp',
-      logo: '/logos/cursor-movil.png',
-      url: 'https://cursor.sh',
-      pricing: 'freemium' as const,
-    },
-    {
-      name: 'Notion',
-      description: 'Workspace inteligente',
-      image: '/images/notion-web.webp',
-      logo: '/logos/notion-movil.jpg',
-      url: 'https://notion.so',
-      pricing: 'freemium' as const,
-    },
-    {
-      name: 'Gamma',
-      description: 'Presentaciones con IA',
-      image: '/images/gamma-web.webp',
-      logo: '/logos/gamma-movil.jpeg',
-      url: 'https://gamma.app',
-      pricing: 'freemium' as const,
-    },
-    {
-      name: 'Runway',
-      description: 'Video generativo IA',
-      image: '/images/runway-web.webp',
-      logo: '/logos/runway-movil.webp',
-      url: 'https://runwayml.com',
-      pricing: 'freemium' as const,
-    },
-    {
-      name: 'Jasper',
-      description: 'Escritura con IA',
-      image: '/images/jasper-web.webp',
-      logo: '/logos/jasper-movil.png',
-      url: 'https://jasper.ai',
-      pricing: 'paid' as const,
-    },
-  ];
-
-  return newestTools;
+  const byName = new Map<string, AITool>();
+  for (const category of aiCategories) {
+    for (const subcategory of category.subcategories) {
+      for (const tool of subcategory.tools) {
+        if (!byName.has(tool.name)) byName.set(tool.name, tool);
+      }
+    }
+  }
+  return NEWEST_NAMES.map((name) => byName.get(name)).filter(
+    (tool): tool is AITool & { logo: string } =>
+      Boolean(tool && tool.logo && !discontinuedTools[tool.name]),
+  );
 };
 
 export default function NewestAdditionsSection() {

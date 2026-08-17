@@ -9247,11 +9247,11 @@ export const toolDetails: Record<string, ToolDetail> = {
       },
     ],
   },
-  MemGPT: {
-    name: 'MemGPT',
+  Letta: {
+    name: 'Letta',
     tagline: 'Sistema de memoria a largo plazo para agentes de IA con contexto limitado',
     intro:
-      'MemGPT es un proyecto de código abierto que aborda una de las grandes limitaciones de los modelos de lenguaje: la ventana de contexto finita. Propone gestionar la memoria de un agente por niveles, moviendo información entre el contexto activo y un almacenamiento externo, de modo que el asistente recuerde conversaciones y hechos más allá de lo que cabe en un solo prompt. Lo usan desarrolladores que construyen agentes conversacionales persistentes.',
+      'Letta (antes MemGPT) es un proyecto de código abierto que aborda una de las grandes limitaciones de los modelos de lenguaje: la ventana de contexto finita. Propone gestionar la memoria de un agente por niveles, moviendo información entre el contexto activo y un almacenamiento externo, de modo que el asistente recuerde conversaciones y hechos más allá de lo que cabe en un solo prompt. Lo usan desarrolladores que construyen agentes conversacionales persistentes.',
     useCases: [
       'Dotar de memoria persistente a un asistente conversacional',
       'Recordar preferencias del usuario entre sesiones distintas',
@@ -9278,20 +9278,20 @@ export const toolDetails: Record<string, ToolDetail> = {
       'El proyecto ha evolucionado y cambiado de nombre y alcance',
     ],
     pricingNote:
-      'MemGPT nació como proyecto de código abierto y su uso no tiene coste de licencia. Lo que sí supone gasto es el consumo del modelo de lenguaje que utilices por debajo y la base de datos donde guardes la memoria. El proyecto ha ido evolucionando hacia una plataforma con opciones alojadas:',
+      'Letta nació como proyecto de código abierto y su uso no tiene coste de licencia. Lo que sí supone gasto es el consumo del modelo de lenguaje que utilices por debajo y la base de datos donde guardes la memoria. El proyecto ha ido evolucionando hacia una plataforma con opciones alojadas:',
     faqs: [
       {
-        question: '¿Qué es MemGPT?',
+        question: '¿Qué es Letta?',
         answer:
-          'MemGPT es un sistema de código abierto que dota de memoria a largo plazo a los agentes basados en modelos de lenguaje. Gestiona la información por niveles, moviéndola entre el contexto activo y un almacén externo para superar el límite de la ventana de contexto.',
+          'Letta es un sistema de código abierto que dota de memoria a largo plazo a los agentes basados en modelos de lenguaje. Gestiona la información por niveles, moviéndola entre el contexto activo y un almacén externo para superar el límite de la ventana de contexto.',
       },
       {
-        question: '¿Para qué sirve MemGPT?',
+        question: '¿Para qué sirve Letta?',
         answer:
           'Sirve para que un asistente de IA recuerde lo hablado en sesiones anteriores, las preferencias del usuario o los detalles de documentos largos. Sin una capa así, el agente olvida todo lo que no quepa en el prompt de la conversación actual.',
       },
       {
-        question: '¿MemGPT es gratis?',
+        question: '¿Letta es gratis?',
         answer:
           'El proyecto de código abierto puede usarse sin coste de licencia. Aparte pagarás el consumo del modelo de lenguaje y el almacenamiento que uses. Si optas por una versión alojada del proyecto, esta sí puede tener planes de pago; revisa su web.',
       },
@@ -11542,11 +11542,11 @@ export const toolDetails: Record<string, ToolDetail> = {
       },
     ],
   },
-  Danswer: {
-    name: 'Danswer',
+  Onyx: {
+    name: 'Onyx',
     tagline: 'Buscador y asistente de IA de código abierto para el conocimiento interno',
     intro:
-      'Danswer es una plataforma de código abierto que permite hacer preguntas en lenguaje natural sobre el conocimiento interno de una organización. Conecta fuentes como documentación, repositorios, chats o gestores de tickets, indexa su contenido y responde citando los documentos de origen. Al ser open source, puede desplegarse en servidores propios, algo relevante para equipos con requisitos de privacidad.',
+      'Onyx (antes Danswer) es una plataforma de código abierto que permite hacer preguntas en lenguaje natural sobre el conocimiento interno de una organización. Conecta fuentes como documentación, repositorios, chats o gestores de tickets, indexa su contenido y responde citando los documentos de origen. Al ser open source, puede desplegarse en servidores propios, algo relevante para equipos con requisitos de privacidad.',
     useCases: [
       'Consultar la documentación interna en lenguaje natural',
       'Buscar respuestas en chats y tickets de soporte',
@@ -11572,20 +11572,20 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos pulido que las alternativas comerciales cerradas',
     ],
     pricingNote:
-      'Danswer es un proyecto de código abierto, por lo que el software puede usarse sin coste de licencia si se autoaloja; los gastos vienen de la infraestructura y de los modelos que se utilicen. Suele existir además una opción gestionada en la nube de pago.',
+      'Onyx es un proyecto de código abierto, por lo que el software puede usarse sin coste de licencia si se autoaloja; los gastos vienen de la infraestructura y de los modelos que se utilicen. Suele existir además una opción gestionada en la nube de pago.',
     faqs: [
       {
-        question: '¿Qué es Danswer?',
+        question: '¿Qué es Onyx?',
         answer:
-          'Danswer es una herramienta de código abierto que permite preguntar en lenguaje natural sobre el conocimiento interno de una organización. Conecta e indexa fuentes como documentación, chats o tickets, y responde citando los documentos en los que se apoya.',
+          'Onyx es una herramienta de código abierto que permite preguntar en lenguaje natural sobre el conocimiento interno de una organización. Conecta e indexa fuentes como documentación, chats o tickets, y responde citando los documentos en los que se apoya.',
       },
       {
-        question: '¿Danswer es gratis?',
+        question: '¿Onyx es gratis?',
         answer:
           'El proyecto es de código abierto y puede usarse sin coste de licencia si lo despliegas en tu propia infraestructura. Eso sí, asumes los gastos de servidores y del uso de modelos. También suele haber una versión gestionada de pago.',
       },
       {
-        question: '¿Se puede autoalojar Danswer?',
+        question: '¿Se puede autoalojar Onyx?',
         answer:
           'Sí, esa es una de sus principales ventajas. Al ser open source, puede instalarse en servidores propios, lo que resulta interesante para organizaciones con requisitos estrictos de privacidad o que prefieren no enviar su documentación interna a servicios externos.',
       },
