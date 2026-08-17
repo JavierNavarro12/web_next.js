@@ -26,4 +26,13 @@ export const discontinuedTools: Record<string, DiscontinuedTool> = {
     sourceUrl:
       'https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation',
   },
+  ChatSpot: {
+    note: 'HubSpot retiró ChatSpot como producto independiente en 2024 y lo integró en su plataforma como Breeze, su asistente de IA. El dominio chatspot.ai redirige a la página de Breeze y ya no es posible usar ChatSpot por separado.',
+    sourceUrl: 'https://www.hubspot.com/products/artificial-intelligence/breeze-ai-assistant',
+  },
+  Papercup: {
+    note: 'RWS adquirió la tecnología de Papercup en junio de 2025 y el producto dejó de operar de forma independiente. Su web redirige al servicio de doblaje con IA de RWS, donde continúa la tecnología.',
+    sourceUrl:
+      'https://www.rws.com/localization/services/translation-services/video-and-audio-translation/ai-dubbing-and-vo',
+  },
 };

@@ -230,7 +230,7 @@ export const toolBatches: string[][] = [
     'IDEFICS',
     'Transformers',
     'OpenLLM',
-    'MemGPT',
+    'Letta',
     'MemO',
     'Zep AI',
     'Tree-of-Thought',
@@ -269,7 +269,7 @@ export const toolBatches: string[][] = [
     'Credo AI',
     'Glean',
     'Klu',
-    'Danswer',
+    'Onyx',
   ],
 ];
 

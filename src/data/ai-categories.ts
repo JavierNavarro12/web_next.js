@@ -275,7 +275,7 @@ export const aiCategories = [
     subcategories: [
       {
         name: 'Memoria a largo plazo / contexto extenso',
-        tools: ['MemGPT', 'LTM Agents', 'LongChat'],
+        tools: ['Letta', 'LTM Agents', 'LongChat'],
       },
       {
         name: 'Razonamiento estructurado',
@@ -343,7 +343,7 @@ export const aiCategories = [
     id: 18,
     name: 'Gestión del Conocimiento',
     subcategories: [
-      { name: 'Document QA / RAG', tools: ['ChatPDF', 'AskYourPDF', 'Glean', 'Klu', 'Danswer'] },
+      { name: 'Document QA / RAG', tools: ['ChatPDF', 'AskYourPDF', 'Glean', 'Klu', 'Onyx'] },
       { name: 'Buscadores inteligentes', tools: ['Perplexity', 'You.com', 'Phind'] },
     ],
   },

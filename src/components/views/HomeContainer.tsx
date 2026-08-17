@@ -31,12 +31,15 @@ type HomeContainerProps = {
   initialSearchTerm?: string;
   initialCategory?: string;
   initialSubcategory?: string;
+  /** Contenido renderizado en servidor (SEO) que se coloca antes del footer. */
+  children?: React.ReactNode;
 };
 
 export default function HomeContainer({
   initialSearchTerm = '',
   initialCategory = '',
   initialSubcategory = '',
+  children,
 }: HomeContainerProps) {
   const { activeCategory, setActiveCategory } = useAppContextFromProviders();
   const { activeSubcategory, setActiveSubcategory } = useSubcategoryContextFromProviders();
@@ -219,10 +222,15 @@ export default function HomeContainer({
   }, [activeSubcategory]);
 
   if (!isClient) {
+    // El contenido SEO se renderiza también aquí: es lo que Google lee en el
+    // HTML del servidor, donde la app todavía no se ha hidratado.
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-white">Cargando...</div>
-      </div>
+      <>
+        <div className="min-h-screen bg-black flex items-center justify-center">
+          <div className="text-white">Cargando...</div>
+        </div>
+        {children}
+      </>
     );
   }
 
@@ -307,7 +315,9 @@ export default function HomeContainer({
           navigateToSubcategory={navigateToSubcategory}
           onSetShowFeedback={setShowFeedback}
           onSetShowBugReport={setShowBugReport}
-        />
+        >
+          {children}
+        </ExploreView>
       </>
     );
   }
@@ -335,6 +345,8 @@ export default function HomeContainer({
       onSubcategoryClick={handleSubcategoryClick}
       onSetShowFeedback={setShowFeedback}
       onSetShowBugReport={setShowBugReport}
-    />
+    >
+      {children}
+    </CategoryView>
   );
 }

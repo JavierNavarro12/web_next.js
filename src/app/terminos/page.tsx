@@ -33,10 +33,10 @@ export default function TermsAndConditionsPage() {
             <section>
               <h2 className="text-2xl font-bold mb-3">1. Aviso de copyright</h2>
               <p className="text-zinc-300">
-                Copyright © 2025, AIFinder. Todos los derechos reservados. Las herramientas y
-                recursos mencionados en AIFinder son propiedad de sus respectivas entidades. El
-                contenido publicado en este sitio (textos, gráficos, logotipos e imágenes) se ofrece
-                con fines meramente informativos.
+                Copyright © {new Date().getFullYear()}, AIFinder. Todos los derechos reservados.
+                Las herramientas y recursos mencionados en AIFinder son propiedad de sus respectivas
+                entidades. El contenido publicado en este sitio (textos, gráficos, logotipos e
+                imágenes) se ofrece con fines meramente informativos.
               </p>
             </section>
 

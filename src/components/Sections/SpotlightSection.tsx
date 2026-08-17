@@ -10,13 +10,13 @@ interface SpotlightSectionProps {
 export default function SpotlightSection({ onViewAll }: SpotlightSectionProps) {
   const videoTools = [
     {
-      name: 'Sora',
-      image: '/images/sora-web.webp',
-      logo: '/logos/sora-movil.png',
+      name: 'Kling',
+      image: '/images/kling-web.webp',
+      logo: '/logos/fling-movil.png',
       description: 'Video generativo',
       category: 'Generación de Video',
-      url: 'https://openai.com/sora',
-      pricing: 'Gratis',
+      url: 'https://kling.ai',
+      pricing: 'Freemium',
     },
     {
       name: 'Veo',
@@ -33,7 +33,7 @@ export default function SpotlightSection({ onViewAll }: SpotlightSectionProps) {
       logo: '/logos/runway-movil.webp',
       description: 'Edición de video',
       category: 'Edición de Video',
-      url: 'https://runwayml.com',
+      url: 'https://runway.com',
       pricing: 'Freemium',
     },
     {

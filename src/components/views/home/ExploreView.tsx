@@ -95,6 +95,7 @@ type ExploreViewProps = {
   navigateToSubcategory: (name: string) => void;
   onSetShowFeedback: (v: boolean) => void;
   onSetShowBugReport: (v: boolean) => void;
+  children?: React.ReactNode;
 };
 
 export default function ExploreView({
@@ -122,6 +123,7 @@ export default function ExploreView({
   navigateToSubcategory,
   onSetShowFeedback,
   onSetShowBugReport,
+  children,
 }: ExploreViewProps) {
   return (
     <div className="min-h-screen bg-black">
@@ -319,6 +321,7 @@ export default function ExploreView({
                   }, 100);
                 }}
               />
+              {children}
               <Footer
                 setShowFeedback={onSetShowFeedback}
                 setShowBugReport={onSetShowBugReport}

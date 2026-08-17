@@ -17,7 +17,7 @@ export default function AITextImageSection({
       name: 'Qwen',
       logo: '/logos/qwen-movil.webp',
       description: 'Modelo de texto',
-      url: 'https://qwenlm.github.io',
+      url: 'https://qwen.ai',
     },
     {
       name: 'Mistral',
@@ -62,7 +62,7 @@ export default function AITextImageSection({
       name: 'FLUX',
       logo: '/logos/flux-movil.png',
       description: 'Arte generativo',
-      url: 'https://flux1.ai/es',
+      url: 'https://bfl.ai',
     },
     {
       name: 'Ideogram',

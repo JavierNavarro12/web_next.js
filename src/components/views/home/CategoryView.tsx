@@ -40,6 +40,7 @@ type CategoryViewProps = {
   onSubcategoryClick: (name: string) => void;
   onSetShowFeedback: (v: boolean) => void;
   onSetShowBugReport: (v: boolean) => void;
+  children?: React.ReactNode;
 };
 
 export default function CategoryView({
@@ -64,6 +65,7 @@ export default function CategoryView({
   onSubcategoryClick,
   onSetShowFeedback,
   onSetShowBugReport,
+  children,
 }: CategoryViewProps) {
   return (
     <div className="min-h-screen bg-black">
@@ -99,6 +101,7 @@ export default function CategoryView({
         activeFilter={activeFilter}
         searchTerm={searchTerm}
       />
+      {children}
       <Footer
         setShowFeedback={onSetShowFeedback}
         setShowBugReport={onSetShowBugReport}

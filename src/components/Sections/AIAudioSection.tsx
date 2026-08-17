@@ -18,7 +18,7 @@ export default function AIAudioSection({ onViewAll }: AIAudioSectionProps) {
       description: 'Generación de música IA',
       image: '/images/suno-web.webp',
       logo: '/logos/suno-movil.png',
-      url: 'https://suno.ai',
+      url: 'https://suno.com',
     },
     {
       name: 'ElevenLabs',

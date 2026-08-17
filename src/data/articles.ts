@@ -24,7 +24,7 @@ const allArticles: Article[] = [
     author: 'Peter Yang',
     authorImage: '/images/articulo1autor.webp',
     url: 'https://creatoreconomy.so/p/chatgpt-vs-claude-vs-gemini-the-best-ai-model-for-each-use-case-2025',
-    featured: true,
+    featured: false,
     featuredOrder: 2,
     contentSections: [
       {
@@ -166,7 +166,7 @@ const allArticles: Article[] = [
     readTime: '9 min',
     author: 'Jose Montes',
     authorImage: '/images/articulo2autor.webp',
-    featured: true,
+    featured: false,
     featuredOrder: 1,
     contentSections: [
       // Bloque de texto entre la imagen principal (articulo2) y la imagen articulo2.1
@@ -246,7 +246,7 @@ const allArticles: Article[] = [
     readTime: '4 min',
     author: 'Redacción KeepCoding',
     authorImage: '/images/articulo3autor.webp',
-    featured: true,
+    featured: false,
     featuredOrder: 3,
     contentSections: [
       {
@@ -412,7 +412,7 @@ const allArticles: Article[] = [
     readTime: '4 min',
     author: 'Antonio Cáceres Flores',
     authorImage: '/images/articulo3autor.webp',
-    featured: true,
+    featured: false,
     featuredOrder: 4,
     contentSections: [
       {
@@ -575,7 +575,7 @@ const allArticles: Article[] = [
     readTime: '8 min',
     author: 'Keumars Afifi-Sabet',
     authorImage: '/images/articulo5autor.webp',
-    featured: true,
+    featured: false,
     featuredOrder: 5,
     contentSections: [
       {
@@ -671,6 +671,8 @@ const allArticles: Article[] = [
     category: 'tips',
     categoryLabel: 'Consejos',
     date: '10 Jul 2026',
+    featured: true,
+    featuredOrder: 1,
     readTime: '9 min',
     author: 'AIFinder',
     contentSections: [
@@ -701,7 +703,7 @@ const allArticles: Article[] = [
         title: 'Búsqueda con fuentes: cuando necesitas citas, no prosa',
         paragraphs: [
           'Un chatbot generalista responde de memoria y a veces se equivoce con aplomo. Para preguntas que dependen de datos actuales, es mejor una IA de búsqueda, que localiza páginas, las lee y responde citando de dónde ha sacado cada cosa.',
-          'Perplexity tiene una capa gratuita perfectamente utilizable para consultas diarias, y reserva para el plan de pago las búsquedas más profundas y los modelos más caros. You.com funciona con una lógica parecida. Y para preguntas técnicas, Phind está orientado específicamente a programación, con respuestas acompañadas de fuentes y fragmentos de código.',
+          'Perplexity tiene una capa gratuita perfectamente utilizable para consultas diarias, y reserva para el plan de pago las búsquedas más profundas y los modelos más caros. You.com funciona con una lógica parecida, y para preguntas técnicas de programación ambos responden con fuentes y fragmentos de código.',
           'La ventaja real de estas herramientas no es que sean más listas, sino que te dan enlaces. Puedes comprobar. Cuando una respuesta va a acabar en un trabajo, un informe o una decisión, esa trazabilidad vale más que un párrafo bonito.',
         ],
       },
@@ -826,6 +828,8 @@ const allArticles: Article[] = [
     category: 'comparisons',
     categoryLabel: 'Comparaciones',
     date: '08 Jul 2026',
+    featured: true,
+    featuredOrder: 2,
     readTime: '10 min',
     author: 'AIFinder',
     contentSections: [
@@ -1001,6 +1005,8 @@ const allArticles: Article[] = [
     category: 'comparisons',
     categoryLabel: 'Comparaciones',
     date: '06 Jul 2026',
+    featured: true,
+    featuredOrder: 3,
     readTime: '10 min',
     author: 'AIFinder',
     contentSections: [
@@ -1148,6 +1154,8 @@ const allArticles: Article[] = [
     category: 'tips',
     categoryLabel: 'Consejos',
     date: '03 Jul 2026',
+    featured: true,
+    featuredOrder: 4,
     readTime: '9 min',
     author: 'AIFinder',
     contentSections: [

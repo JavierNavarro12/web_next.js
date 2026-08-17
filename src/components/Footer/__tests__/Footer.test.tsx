@@ -76,10 +76,8 @@ describe('Footer', () => {
   it('should render tools section', () => {
     renderWithProvider(React.createElement(Footer, defaultProps));
 
+    expect(screen.getAllByText('Todas las herramientas')).toHaveLength(2);
     expect(screen.getAllByText('Comparador de IAs')).toHaveLength(2);
-    expect(screen.getAllByText('Calculadora de costos')).toHaveLength(2);
-    expect(screen.getAllByText('Generador de prompts')).toHaveLength(2);
-    expect(screen.getAllByText('Evaluador de calidad')).toHaveLength(2);
   });
 
   it('should render connect section', () => {

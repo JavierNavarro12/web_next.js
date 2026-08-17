@@ -30,7 +30,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/chatpgt-web.webp',
             description: 'Generador de texto',
             pricing: 'freemium',
-            url: 'https://chat.openai.com',
+            url: 'https://chatgpt.com',
           },
           {
             name: 'Claude',
@@ -280,7 +280,6 @@ export const aiCategories: AICategory[] = [
             image: '/images/play.ht-web.webp',
             description: 'Texto a voz',
             pricing: 'freemium',
-            url: 'https://play.ht',
           },
           {
             name: 'Speechify',
@@ -522,7 +521,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/deepsource-web.webp',
             description: 'Análisis estático',
             pricing: 'freemium',
-            url: 'https://deepsource.io',
+            url: 'https://deepsource.com',
           },
           {
             name: 'LangChain',
@@ -548,7 +547,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/chatpgt-web.webp',
             description: 'Asistente personal',
             pricing: 'freemium',
-            url: 'https://chat.openai.com',
+            url: 'https://chatgpt.com',
           },
           {
             name: 'Gemini',
@@ -665,7 +664,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/einstein-web.webp',
             description: 'Chatbot empresarial',
             pricing: 'paid',
-            url: 'https://www.salesforce.com/products/einstein/',
+            url: 'https://www.salesforce.com/artificial-intelligence/',
           },
           {
             name: 'ChatSpot',
@@ -673,7 +672,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/chatspot-web.webp',
             description: 'Chatbot empresarial',
             pricing: 'freemium',
-            url: 'https://chatspot.ai',
+            url: 'https://www.hubspot.com/products/artificial-intelligence/breeze-ai-assistant',
           },
           {
             name: 'Zendesk',
@@ -726,7 +725,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/metapgt-web.webp',
             description: 'Agente autónomo',
             pricing: 'free',
-            url: 'https://www.deepwisdom.ai',
+            url: 'https://github.com/FoundationAgents/MetaGPT',
           },
           {
             name: 'ChatGPT Agents',
@@ -758,7 +757,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/xaiagents-web.webp',
             description: 'Agente autónomo',
             pricing: 'freemium',
-            url: 'https://xaiagent.io/es/home/',
+            url: 'https://xaiagent.io',
           },
         ],
       },
@@ -816,7 +815,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/manus.webp',
             description: 'Automatización',
             pricing: 'freemium',
-            url: 'https://manus.ai',
+            url: 'https://manus.im',
           },
           {
             name: 'Trigger.dev',
@@ -1004,7 +1003,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/spellbook-web.webp',
             description: 'IA legal',
             pricing: 'paid',
-            url: 'https://www.spellbook.legal',
+            url: 'https://www.spellbook.com',
           },
           {
             name: 'Evisort',
@@ -1012,7 +1011,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/evisort-web.webp',
             description: 'IA legal',
             pricing: 'paid',
-            url: 'https://www.evisort.com',
+            url: 'https://www.workday.com',
           },
           {
             name: 'LawGeex',
@@ -1020,7 +1019,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/lawgeex-web.webp',
             description: 'IA legal',
             pricing: 'paid',
-            url: 'https://www.lawgeex.com',
+            url: 'https://www.superlegal.ai',
           },
         ],
       },
@@ -1136,7 +1135,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/deepsource-web.webp',
             description: 'Análisis estático',
             pricing: 'freemium',
-            url: 'https://deepsource.io',
+            url: 'https://deepsource.com',
           },
           {
             name: 'SonarQube',
@@ -1144,7 +1143,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/sonarqube-web.webp',
             description: 'Análisis estático',
             pricing: 'freemium',
-            url: 'https://www.sonarqube.org',
+            url: 'https://www.sonarsource.com',
           },
           {
             name: 'CodeClimate',
@@ -1202,7 +1201,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/zebra-web.webp',
             description: 'Diagnóstico IA',
             pricing: 'paid',
-            url: 'http://www.zebra-med.com',
+            url: 'https://www.nanox.vision',
           },
           {
             name: 'Lunit',
@@ -1239,7 +1238,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/zebra-web.webp',
             description: 'Imágenes médicas',
             pricing: 'paid',
-            url: 'http://www.zebra-med.com',
+            url: 'https://www.nanox.vision',
           },
           {
             name: 'Lunit',
@@ -1292,7 +1291,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/your.md-web.webp',
             description: 'Triage IA',
             pricing: 'free',
-            url: 'https://your.md',
+            url: 'https://www.livehealthily.com',
           },
         ],
       },
@@ -1321,7 +1320,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/alphamissense-web.webp',
             description: 'Investigación biomédica',
             pricing: 'free',
-            url: 'https://alphamissense.depthmind.com',
+            url: 'https://github.com/google-deepmind/alphamissense',
           },
           {
             name: 'BenevolentAI',
@@ -1363,7 +1362,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/scribe-web.webp',
             description: 'Tutor virtual',
             pricing: 'freemium',
-            url: 'https://scribehow.com/scribe-ai',
+            url: 'https://scribe.com/scribe-ai',
           },
           {
             name: 'MagicSchool AI',
@@ -1442,7 +1441,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/teachmate-web.webp',
             description: 'Asistente docentes',
             pricing: 'freemium',
-            url: 'https://teachmateai.com',
+            url: 'https://www.teachmate.com',
           },
           {
             name: 'Diffit',
@@ -1484,7 +1483,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/numerai-web.webp',
             description: 'Análisis bursátil',
             pricing: 'free',
-            url: 'https://numerai.com',
+            url: 'https://numer.ai',
           },
           {
             name: 'EquBot',
@@ -1671,7 +1670,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/hatchful-web.webp',
             description: 'Branding y logos',
             pricing: 'free',
-            url: 'https://hatchful.shopify.com',
+            url: 'https://www.shopify.com/tools/logo-maker',
           },
         ],
       },
@@ -1684,7 +1683,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/durable-web.webp',
             description: 'Diseño web',
             pricing: 'freemium',
-            url: 'https://durable.co',
+            url: 'https://durable.com',
           },
           {
             name: 'Wix ADI',
@@ -1734,7 +1733,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/cylance-web.webp',
             description: 'Detección amenazas',
             pricing: 'paid',
-            url: 'https://www.cylance.com',
+            url: 'https://arcticwolf.com/cylance',
           },
         ],
       },
@@ -1810,7 +1809,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/predix-web.webp',
             description: 'Automatización industrial',
             pricing: 'paid',
-            url: 'https://www.ge.com/digital/predix',
+            url: 'https://www.gevernova.com/software',
           },
           {
             name: 'Uptake',
@@ -1923,7 +1922,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/chatpgt-web.webp',
             description: 'IA multimodal',
             pricing: 'freemium',
-            url: 'https://chat.openai.com',
+            url: 'https://chatgpt.com',
           },
           {
             name: 'Gemini',
@@ -2089,12 +2088,12 @@ export const aiCategories: AICategory[] = [
         name: 'Memoria a largo plazo',
         tools: [
           {
-            name: 'MemGPT',
+            name: 'Letta',
             logo: '/logos/mempgt-movil.jpeg',
             image: '/images/memgpt-web.webp',
             description: 'Memoria IA',
             pricing: 'free',
-            url: 'https://memgpt.ai',
+            url: 'https://www.letta.com',
           },
           {
             name: 'MemO',
@@ -2363,7 +2362,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/salesforce-web.webp',
             description: 'CRM IA',
             pricing: 'paid',
-            url: 'https://www.salesforce.com/products/einstein/',
+            url: 'https://www.salesforce.com/artificial-intelligence/',
           },
           {
             name: 'ChatSpot',
@@ -2371,7 +2370,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/chatspot-web.webp',
             description: 'CRM IA',
             pricing: 'freemium',
-            url: 'https://chatspot.ai',
+            url: 'https://www.hubspot.com/products/artificial-intelligence/breeze-ai-assistant',
           },
         ],
       },
@@ -2587,12 +2586,12 @@ export const aiCategories: AICategory[] = [
             url: 'https://klu.ai',
           },
           {
-            name: 'Danswer',
+            name: 'Onyx',
             logo: '/logos/danswer-movil.jpg',
             image: '/images/danswer-web.webp',
             description: 'QA documentos',
             pricing: 'free',
-            url: 'https://danswer.ai',
+            url: 'https://onyx.app',
           },
         ],
       },

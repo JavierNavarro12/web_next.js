@@ -99,6 +99,7 @@ export default function Footer({
     'Marketing',
     'Traducción',
     'Ética',
+    'Conocimiento',
   ];
 
   // Mapeo de nombres del footer a nombres reales de categorías
@@ -116,10 +117,11 @@ export default function Footer({
     Multimodal: 'Multimodal',
     OpenSource: 'OpenSource',
     Cognitiva: 'IA Cognitiva y Razonamiento',
-    MLOps: 'MLOps y Desarrollo de Modelos',
-    Marketing: 'IA para Marketing y Ventas',
+    MLOps: 'Desarrollo de Modelos',
+    Marketing: 'Marketing y Ventas',
     Traducción: 'Traducción y Localización Automática',
     Ética: 'Ética y Detección de IA',
+    Conocimiento: 'Gestión del Conocimiento',
   };
 
   const handleCategoryClick = (categoryName: string) => {
@@ -163,10 +165,8 @@ export default function Footer({
   };
 
   const tools = [
-    { label: 'Comparador de IAs', onClick: () => navigateToTools() },
-    { label: 'Calculadora de costos', onClick: () => navigateToTools() },
-    { label: 'Generador de prompts', onClick: () => navigateToTools() },
-    { label: 'Evaluador de calidad', onClick: () => navigateToTools() },
+    { label: 'Todas las herramientas', onClick: () => navigateToTools() },
+    { label: 'Comparador de IAs', onClick: () => navigateToTools('/comparativas') },
   ];
 
   const openFeedback = () => {
@@ -207,7 +207,7 @@ export default function Footer({
     { label: 'Contactar', href: 'mailto:navarrojavi107@gmail.com' },
   ];
 
-  const navigateToTools = () => {
+  const navigateToTools = (destino = '/herramientas') => {
     // Cerrar overlays
     if (setShowAddAITool) setShowAddAITool(false);
     contextSetShowFeedback(false);
@@ -215,9 +215,8 @@ export default function Footer({
     // Limpiar selección de categorías
     setActiveCategory && setActiveCategory(null);
     setActiveSubcategory && setActiveSubcategory(null);
-    // Ir a Herramientas
     try {
-      router.push('/herramientas');
+      router.push(destino);
     } catch {}
   };
 
@@ -519,7 +518,7 @@ export default function Footer({
         <div className="max-w-7xl mx-auto px-4 pt-1.5 pb-8 md:pb-4">
           {/* Mobile */}
           <div className="md:hidden text-left space-y-2 mb-6">
-            <div className="text-zinc-400 text-sm">© 2026 AIFinder</div>
+            <div className="text-zinc-400 text-sm">© {new Date().getFullYear()} AIFinder</div>
             <div className="space-y-1">
               {legalLinks.map((link) => (
                 <Link
@@ -555,7 +554,7 @@ export default function Footer({
           {/* Desktop */}
           <div className="hidden md:flex flex-col md:flex-row justify-between items-center relative">
             <div className="flex items-center mb-4 md:mb-0">
-              <span className="text-zinc-400 text-sm">© 2026 AIFinder</span>
+              <span className="text-zinc-400 text-sm">© {new Date().getFullYear()} AIFinder</span>
             </div>
             <div className="flex items-center space-x-4">
               {legalLinks.map((link) => (
