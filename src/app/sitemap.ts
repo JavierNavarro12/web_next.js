@@ -90,6 +90,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Páginas institucionales
   const institutionalPages: MetadataRoute.Sitemap = [
     {
+      url: `${base}/sobre`,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.7,
+    },
+    {
       url: `${base}/directrices`,
       lastModified,
       changeFrequency: 'yearly',

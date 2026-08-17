@@ -221,6 +221,7 @@ export default function Footer({
   };
 
   const legalLinks = [
+    { label: 'Sobre AIFinder', href: '/sobre' },
     { label: 'Directrices de Listado', href: '/directrices' },
     { label: 'Política de Privacidad', href: '/privacidad' },
     { label: 'Términos y Condiciones', href: '/terminos' },

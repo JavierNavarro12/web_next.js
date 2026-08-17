@@ -337,7 +337,6 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       <div className="pt-6 pb-6 px-6 hidden md:block">
         <span
           className="font-extrabold text-2xl tracking-tight text-white font-sans cursor-pointer select-none drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.5)] transition-all duration-200"
-          style={{ fontFamily: 'Inter, Sora, sans-serif' }}
           onClick={() => {
             setActiveCategory(null);
             setActiveSubcategory(null);
@@ -411,12 +410,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
       </nav>
       {/* Título de la sección de categorías */}
       <div className="px-4 pt-2 pb-1">
-        <span
-          className="uppercase text-xs tracking-widest text-zinc-300 font-semibold"
-          style={{ fontFamily: 'Inter, Sora, sans-serif' }}
-        >
-          IAs
-        </span>
+        <span className="uppercase text-xs tracking-widest text-zinc-300 font-semibold">IAs</span>
       </div>
       {/* Recuadro de categorías con scroll interno (desktop) */}
       <div
@@ -470,7 +464,6 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
                   )}
                   <div
                     className={`flex items-center w-full py-1 font-semibold text-sm font-sans transition-colors relative z-10 ${isCategoryActive ? 'bg-zinc-800' : ''} rounded-none ${cat.subcategories.length > 0 ? 'cursor-pointer' : ''}`}
-                    style={{ fontFamily: 'Inter, Sora, sans-serif', borderRadius: 0 }}
                     onMouseEnter={() => setHoveredCategory(i)}
                     onMouseLeave={() => setHoveredCategory(null)}
                     onClick={(e) => {
@@ -490,13 +483,9 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
                     )}
                     <span
                       className={`flex items-center w-full py-1 pl-4 font-semibold text-sm font-sans transition-colors relative z-10 ${isCategoryActive ? 'bg-zinc-800' : ''} rounded-none ${cat.subcategories.length > 0 ? 'cursor-pointer' : ''}`}
-                      style={{ fontFamily: 'Inter, Sora, sans-serif', borderRadius: 0 }}
                     >
                       <Icon className="text-white w-4 h-4 mr-2" />
-                      <span
-                        className="font-semibold flex-1 truncate text-[15px] text-white"
-                        style={{ fontFamily: 'Inter, Sora, sans-serif' }}
-                      >
+                      <span className="font-semibold flex-1 truncate text-[15px] text-white">
                         {shortName}
                       </span>
                     </span>
@@ -566,7 +555,6 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void } = {}
                                   ? 'text-white'
                                   : 'text-zinc-200'
                               }`}
-                              style={{ fontFamily: 'Inter, Sora, sans-serif' }}
                             >
                               {sub.name}
                             </button>

@@ -66,10 +66,6 @@ export default function AITestingMedicalSection({
     },
   ];
 
-  const handleToolClick = (url: string) => {
-    window.open(url, '_blank');
-  };
-
   return (
     <div className="py-4 px-4 max-w-7xl mx-auto">
       {/* Vista móvil: Lista vertical con iconos */}
@@ -77,20 +73,19 @@ export default function AITestingMedicalSection({
         {/* Contenedor Testing y QA - Móvil */}
         <div className="bg-zinc-950 rounded-xl p-4 border border-zinc-800">
           <div className="mb-6">
-            <h2
-              className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
-              style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-            >
+            <h2 className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
               Testing y QA
             </h2>
           </div>
 
           <div className="space-y-3">
             {testingTools.map((tool) => (
-              <div
+              <a
                 key={tool.name}
+                href={tool.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-start gap-3 py-1 pl-1 cursor-pointer hover:bg-zinc-900/50 rounded-lg transition-colors p-2"
-                onClick={() => handleToolClick(tool.url)}
               >
                 <Image
                   src={tool.logo}
@@ -104,7 +99,7 @@ export default function AITestingMedicalSection({
                   <h3 className="font-bold text-white text-base mb-1">{tool.name}</h3>
                   <p className="text-zinc-400 text-sm leading-relaxed">{tool.description}</p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -112,20 +107,19 @@ export default function AITestingMedicalSection({
         {/* Contenedor Imágenes Médicas - Móvil */}
         <div className="bg-zinc-950 rounded-xl p-4 border border-zinc-800">
           <div className="mb-6">
-            <h2
-              className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
-              style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-            >
+            <h2 className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
               Imágenes Médicas
             </h2>
           </div>
 
           <div className="space-y-3">
             {medicalTools.map((tool) => (
-              <div
+              <a
                 key={tool.name}
+                href={tool.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-start gap-3 py-1 pl-1 cursor-pointer hover:bg-zinc-900/50 rounded-lg transition-colors p-2"
-                onClick={() => handleToolClick(tool.url)}
               >
                 <Image
                   src={tool.logo}
@@ -139,7 +133,7 @@ export default function AITestingMedicalSection({
                   <h3 className="font-bold text-white text-base mb-1">{tool.name}</h3>
                   <p className="text-zinc-400 text-sm leading-relaxed">{tool.description}</p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -150,10 +144,7 @@ export default function AITestingMedicalSection({
         {/* Contenedor Testing y QA */}
         <div className="bg-zinc-950 rounded-xl p-3 border border-zinc-800">
           <div className="mb-4">
-            <h2
-              className="text-lg md:text-xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
-              style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-            >
+            <h2 className="text-lg md:text-xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
               Testing y QA
             </h2>
           </div>
@@ -161,10 +152,12 @@ export default function AITestingMedicalSection({
           {/* Grid de 2 columnas para herramientas de testing */}
           <div className="grid grid-cols-2 gap-2">
             {testingTools.map((tool) => (
-              <div
+              <a
                 key={tool.name}
+                href={tool.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group cursor-pointer p-2 hover:bg-zinc-900/30 rounded-lg transition-all duration-200"
-                onClick={() => handleToolClick(tool.url)}
               >
                 <div className="flex items-center gap-3">
                   {/* Logo */}
@@ -187,7 +180,7 @@ export default function AITestingMedicalSection({
                     </p>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -195,10 +188,7 @@ export default function AITestingMedicalSection({
         {/* Contenedor Imágenes Médicas */}
         <div className="bg-zinc-950 rounded-xl p-3 border border-zinc-800">
           <div className="mb-4">
-            <h2
-              className="text-lg md:text-xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
-              style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-            >
+            <h2 className="text-lg md:text-xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
               Imágenes Médicas
             </h2>
           </div>
@@ -206,10 +196,12 @@ export default function AITestingMedicalSection({
           {/* Grid de 2 columnas para herramientas de imágenes médicas */}
           <div className="grid grid-cols-2 gap-2">
             {medicalTools.map((tool) => (
-              <div
+              <a
                 key={tool.name}
+                href={tool.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group cursor-pointer p-2 hover:bg-zinc-900/30 rounded-lg transition-all duration-200"
-                onClick={() => handleToolClick(tool.url)}
               >
                 <div className="flex items-center gap-3">
                   {/* Logo */}
@@ -232,7 +224,7 @@ export default function AITestingMedicalSection({
                     </p>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>

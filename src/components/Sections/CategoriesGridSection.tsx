@@ -17,8 +17,16 @@ export default function CategoriesGridSection({ setActiveCategory }: CategoriesG
         {aiCategories.slice(0, 6).map((category) => (
           <div
             key={category.name}
+            role="button"
+            tabIndex={0}
             className="group bg-gradient-to-br from-zinc-900 to-zinc-800 rounded-xl p-6 border border-zinc-700 hover:border-zinc-600 transition-all duration-300 cursor-pointer"
             onClick={() => setActiveCategory(category.name)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setActiveCategory(category.name);
+              }
+            }}
           >
             <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
               {category.name}

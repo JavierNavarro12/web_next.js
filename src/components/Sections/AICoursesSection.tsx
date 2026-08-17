@@ -96,10 +96,6 @@ export default function AICoursesSection({ onViewAll }: AICoursesSectionProps) {
 
   const displayedCourses = allCourses.slice(0, displayCount);
 
-  const handleCourseClick = (url: string) => {
-    window.open(url, '_blank');
-  };
-
   const handleLoadMore = () => {
     if (displayCount === 3) {
       setDisplayCount(6);
@@ -124,10 +120,7 @@ export default function AICoursesSection({ onViewAll }: AICoursesSectionProps) {
       <div className="bg-zinc-950 rounded-xl p-4 border border-zinc-800">
         {/* Header con título y botón */}
         <div className="flex items-center justify-between mb-8">
-          <h2
-            className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
-            style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-          >
+          <h2 className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
             Cursos IA
           </h2>
           {onViewAll && (
@@ -144,10 +137,12 @@ export default function AICoursesSection({ onViewAll }: AICoursesSectionProps) {
         <div className="md:hidden">
           <div className="space-y-6">
             {displayedCourses.map((course) => (
-              <div
+              <a
                 key={course.name}
+                href={course.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group cursor-pointer"
-                onClick={() => handleCourseClick(course.url)}
               >
                 {/* Imagen del curso */}
                 <div className="relative aspect-video bg-zinc-800 rounded-lg mb-3 overflow-hidden border border-[#232323]">
@@ -204,7 +199,7 @@ export default function AICoursesSection({ onViewAll }: AICoursesSectionProps) {
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -212,10 +207,12 @@ export default function AICoursesSection({ onViewAll }: AICoursesSectionProps) {
         {/* Vista desktop: Grid de tarjetas */}
         <div className="hidden md:grid md:grid-cols-3 gap-6">
           {displayedCourses.map((course) => (
-            <div
+            <a
               key={course.name}
+              href={course.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group cursor-pointer"
-              onClick={() => handleCourseClick(course.url)}
             >
               {/* Contenedor de imagen separado */}
               <div className="relative aspect-video bg-zinc-800 rounded mb-3 overflow-hidden border border-[#232323]">
@@ -272,7 +269,7 @@ export default function AICoursesSection({ onViewAll }: AICoursesSectionProps) {
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
 

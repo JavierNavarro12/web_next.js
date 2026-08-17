@@ -16,7 +16,12 @@ jest.mock('../../../app/layout', () => ({
 
 // Mock del componente SearchDropdown
 jest.mock('../SearchDropdown', () => {
-  return function MockSearchDropdown({ searchTerm, isVisible, onToolClick, isMobile }: {
+  return function MockSearchDropdown({
+    searchTerm,
+    isVisible,
+    onToolClick,
+    isMobile,
+  }: {
     searchTerm?: string;
     isVisible?: boolean;
     onToolClick?: (tool: { name: string }, category: string, subcategory: string) => void;
@@ -141,7 +146,7 @@ describe('MobileHeader', () => {
     render(<MobileHeader {...defaultProps} />);
 
     const searchButton = screen.getByLabelText('Buscar herramientas de IA');
-    
+
     // Abrir búsqueda
     fireEvent.click(searchButton);
     expect(screen.getByPlaceholderText('Buscar IAs')).toBeInTheDocument();
@@ -329,7 +334,7 @@ describe('MobileHeader', () => {
     render(<MobileHeader {...defaultProps} />);
 
     const searchButton = screen.getByLabelText('Buscar herramientas de IA');
-    
+
     // Botón debería mostrar lupa inicialmente
     expect(searchButton).toBeInTheDocument();
 
@@ -341,4 +346,4 @@ describe('MobileHeader', () => {
     fireEvent.click(screen.getByLabelText('Cerrar búsqueda'));
     expect(screen.getByLabelText('Buscar herramientas de IA')).toBeInTheDocument();
   });
-}); 
+});

@@ -108,10 +108,6 @@ export default function AITextImageSection({
     },
   ];
 
-  const handleToolClick = (url: string) => {
-    window.open(url, '_blank');
-  };
-
   return (
     <div className="py-4 px-4 max-w-7xl mx-auto">
       {/* Vista móvil: Lista vertical con iconos */}
@@ -119,20 +115,19 @@ export default function AITextImageSection({
         {/* Contenedor Texto - Móvil */}
         <div className="bg-zinc-950 rounded-xl p-4 border border-zinc-800">
           <div className="mb-6">
-            <h2
-              className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
-              style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-            >
+            <h2 className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
               Texto
             </h2>
           </div>
 
           <div className="space-y-3">
             {textoTools.map((tool) => (
-              <div
+              <a
                 key={tool.name}
+                href={tool.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-start gap-3 py-1 pl-1 cursor-pointer hover:bg-zinc-900/50 rounded-lg transition-colors p-2"
-                onClick={() => handleToolClick(tool.url)}
               >
                 <Image
                   src={tool.logo}
@@ -146,7 +141,7 @@ export default function AITextImageSection({
                   <h3 className="font-bold text-white text-base mb-1">{tool.name}</h3>
                   <p className="text-zinc-400 text-sm leading-relaxed">{tool.description}</p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -154,20 +149,19 @@ export default function AITextImageSection({
         {/* Contenedor Imágenes - Móvil */}
         <div className="bg-zinc-950 rounded-xl p-4 border border-zinc-800">
           <div className="mb-6">
-            <h2
-              className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
-              style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-            >
+            <h2 className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
               Imágenes
             </h2>
           </div>
 
           <div className="space-y-3">
             {imagenesTools.map((tool) => (
-              <div
+              <a
                 key={tool.name}
+                href={tool.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-start gap-3 py-1 pl-1 cursor-pointer hover:bg-zinc-900/50 rounded-lg transition-colors p-2"
-                onClick={() => handleToolClick(tool.url)}
               >
                 <Image
                   src={tool.logo}
@@ -181,7 +175,7 @@ export default function AITextImageSection({
                   <h3 className="font-bold text-white text-base mb-1">{tool.name}</h3>
                   <p className="text-zinc-400 text-sm leading-relaxed">{tool.description}</p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -192,10 +186,7 @@ export default function AITextImageSection({
         {/* Contenedor Texto */}
         <div className="bg-zinc-950 rounded-xl p-3 border border-zinc-800">
           <div className="mb-4">
-            <h2
-              className="text-lg md:text-xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
-              style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-            >
+            <h2 className="text-lg md:text-xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
               Texto
             </h2>
           </div>
@@ -203,10 +194,12 @@ export default function AITextImageSection({
           {/* Grid de 2 columnas para herramientas de texto */}
           <div className="grid grid-cols-2 gap-2">
             {textoTools.map((tool) => (
-              <div
+              <a
                 key={tool.name}
+                href={tool.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group cursor-pointer p-2 hover:bg-zinc-900/30 rounded-lg transition-all duration-200"
-                onClick={() => handleToolClick(tool.url)}
               >
                 <div className="flex items-center gap-3">
                   {/* Logo */}
@@ -229,7 +222,7 @@ export default function AITextImageSection({
                     </p>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -237,10 +230,7 @@ export default function AITextImageSection({
         {/* Contenedor Imágenes */}
         <div className="bg-zinc-950 rounded-xl p-3 border border-zinc-800">
           <div className="mb-4">
-            <h2
-              className="text-lg md:text-xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
-              style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-            >
+            <h2 className="text-lg md:text-xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
               Imágenes
             </h2>
           </div>
@@ -248,10 +238,12 @@ export default function AITextImageSection({
           {/* Grid de 2 columnas para herramientas de imágenes */}
           <div className="grid grid-cols-2 gap-2">
             {imagenesTools.map((tool) => (
-              <div
+              <a
                 key={tool.name}
+                href={tool.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group cursor-pointer p-2 hover:bg-zinc-900/30 rounded-lg transition-all duration-200"
-                onClick={() => handleToolClick(tool.url)}
               >
                 <div className="flex items-center gap-3">
                   {/* Logo */}
@@ -274,7 +266,7 @@ export default function AITextImageSection({
                     </p>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>

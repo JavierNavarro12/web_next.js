@@ -43,17 +43,14 @@ export default function NewestAdditionsSection() {
     <div className="py-6 px-4 max-w-7xl mx-auto">
       <div className="bg-black rounded-2xl border border-zinc-700 p-4 md:p-6">
         <div className="mb-6">
-          <h2
-            className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
-            style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
-          >
+          <h2 className="text-xl md:text-2xl font-semibold text-white text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
             Nuevas adiciones
           </h2>
         </div>
 
         {/* Grid de herramientas - Sin tarjetas individuales */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
-          {newestTools.slice(0, 8).map((tool, _index) => (
+          {newestTools.slice(0, 8).map((tool, index) => (
             <Link
               key={tool.name}
               href={`/herramienta/${slugify(tool.name)}`}
@@ -68,7 +65,7 @@ export default function NewestAdditionsSection() {
                     fill
                     sizes="48px"
                     className="w-full h-full object-cover rounded-lg"
-                    loading="lazy"
+                    priority={index < 4}
                   />
                 </div>
 

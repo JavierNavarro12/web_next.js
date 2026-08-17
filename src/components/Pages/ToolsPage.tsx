@@ -624,6 +624,20 @@ export default function ToolsPage() {
         {/* Espacio entre header y primera categoría */}
         <div className="pt-8 md:pt-10"></div>
 
+        {/* Estado vacío: sin él, una búsqueda sin resultados dejaba la página
+            en blanco sin explicación */}
+        {searchTerm.trim() &&
+          toolsGroups.every((group) => getFilteredToolsForGroup(group.tools).length === 0) && (
+            <div className="text-center py-16 px-4">
+              <p className="text-white font-semibold mb-2">
+                No se encontraron herramientas para «{searchTerm.trim()}»
+              </p>
+              <p className="text-zinc-400 text-sm">
+                Prueba con otro nombre o quita el filtro de precio.
+              </p>
+            </div>
+          )}
+
         {/* Renderizar todas las subcategorías */}
         {toolsGroups.map((group) => {
           const list = getFilteredToolsForGroup(group.tools);

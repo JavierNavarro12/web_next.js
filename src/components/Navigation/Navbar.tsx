@@ -33,6 +33,7 @@ export default function Navbar() {
           <input
             type="text"
             placeholder="Search Tools"
+            aria-label="Buscar herramientas de IA"
             className="bg-zinc-900 border border-zinc-700 rounded-md pl-10 pr-3 py-2 text-sm text-white placeholder-zinc-400 focus:outline-none focus:border-blue-500 transition-colors w-56"
           />
         </div>
