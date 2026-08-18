@@ -16,9 +16,10 @@ describe('Add AI Tool Tests', () => {
     cy.viewport('iphone-x');
     cy.visit('/');
 
-    // Wait for the page to load completely
+    // Wait for the page to load completely (el logo AIFinder de texto es solo
+    // desktop; en móvil el elemento fiable es el botón del menú)
     cy.get('body').should('be.visible');
-    cy.contains('AIFinder').should('be.visible');
+    cy.get('[aria-label="Abrir menú de navegación"]').should('be.visible');
 
     // Wait for React app to fully load
     cy.wait(3000);
