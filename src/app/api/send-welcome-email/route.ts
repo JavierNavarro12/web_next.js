@@ -171,7 +171,8 @@ export async function POST(request: NextRequest) {
 
     // Enviar email de bienvenida
     const result = await resend.emails.send({
-      from: 'AIFinder <newsletter@aifinder.es>',
+      // info@ es un buzón real (newsletter@ no existía): las respuestas llegan.
+      from: 'AIFinder <info@aifinder.es>',
       to: [email],
       subject,
       html: `
@@ -305,6 +306,14 @@ export async function POST(request: NextRequest) {
         </html>
       `,
     });
+
+    // El SDK de Resend no lanza excepción en errores de API: devuelve
+    // { data, error }. Sin esta comprobación, un rechazo (p. ej. 403 por
+    // dominio sin verificar) respondía success: true y se perdía en silencio.
+    if (result.error) {
+      logger.error('Resend rechazó el email de bienvenida', result.error);
+      return NextResponse.json({ error: 'No se pudo enviar el email' }, { status: 502 });
+    }
 
     const ok = NextResponse.json({ success: true, emailId: result.data?.id });
     if (cookieValue)
