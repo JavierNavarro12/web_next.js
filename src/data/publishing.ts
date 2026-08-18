@@ -7,7 +7,7 @@
  *
  * Para publicar la siguiente tanda: sube PUBLISHED_BATCHES en 1 y redespliega.
  */
-export const PUBLISHED_BATCHES = 2;
+export const PUBLISHED_BATCHES = 3;
 
 /** Tanda 1: herramientas conocidas (las que aparecen en comparativas y destacados). */
 export const toolBatches: string[][] = [

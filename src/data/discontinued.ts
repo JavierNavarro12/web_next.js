@@ -30,6 +30,10 @@ export const discontinuedTools: Record<string, DiscontinuedTool> = {
     note: 'HubSpot retiró ChatSpot como producto independiente en 2024 y lo integró en su plataforma como Breeze, su asistente de IA. El dominio chatspot.ai redirige a la página de Breeze y ya no es posible usar ChatSpot por separado.',
     sourceUrl: 'https://www.hubspot.com/products/artificial-intelligence/breeze-ai-assistant',
   },
+  Drift: {
+    note: 'Salesloft, propietaria de Drift desde 2024, anunció en marzo de 2026 la retirada gradual del producto y deriva a sus clientes a 1mind como sucesor. drift.com ya no vende el producto de forma independiente ni publica precios.',
+    sourceUrl: 'https://www.salesloft.com/company/newsroom/1-mind-partnership',
+  },
   Papercup: {
     note: 'RWS adquirió la tecnología de Papercup en junio de 2025 y el producto dejó de operar de forma independiente. Su web redirige al servicio de doblaje con IA de RWS, donde continúa la tecnología.',
     sourceUrl:

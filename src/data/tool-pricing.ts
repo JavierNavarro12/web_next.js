@@ -2071,4 +2071,308 @@ export const toolPricing: Record<string, ToolPricing> = {
       'AudioCraft es una biblioteca de investigación de Meta (Facebook Research) para generación de audio y música mediante IA, que incluye MusicGen, AudioGen y EnCodec. El código está bajo licencia MIT, pero los pesos de los modelos se publican bajo CC-BY-NC 4.0, lo que prohíbe el uso comercial directo sin autorización de Meta. El repositorio sigue activo: el último commit registrado es de marzo de 2025 y se añadió el modelo JASCO en enero de 2025.',
     sourceUrl: 'https://github.com/facebookresearch/audiocraft',
   },
+  Intercom: {
+    name: 'Intercom',
+    model: 'paid',
+    freeTier: null,
+    plans: [
+      {
+        name: 'Essential',
+        price: '29 $/asiento/mes',
+        notes: 'Mensajería, bandeja compartida, tickets y centro de ayuda; para equipos pequeños.',
+      },
+      {
+        name: 'Advanced',
+        price: '85 $/asiento/mes',
+        notes:
+          'Añade múltiples bandejas, automatización, asignación round-robin y centro de ayuda multilingüe.',
+      },
+      {
+        name: 'Expert',
+        price: '132 $/asiento/mes',
+        notes: 'Para empresas: SSO, soporte HIPAA, SLAs y Messenger multimarca.',
+      },
+      {
+        name: 'Fin AI Agent',
+        price: '0,99 $/resolución',
+        notes:
+          'El agente de IA se cobra por ticket resuelto, como añadido a los asientos o por separado.',
+      },
+    ],
+    notes:
+      'No hay plan gratuito permanente, solo prueba de 14 días sin tarjeta. El coste real depende del volumen de resoluciones de Fin y de complementos opcionales (Copilot 29 $/agente/mes, entre otros).',
+    sourceUrl: 'https://www.intercom.com/pricing',
+  },
+  Diffblue: {
+    name: 'Diffblue',
+    model: 'freemium',
+    freeTier:
+      'Diffblue Cover Community Edition es gratuita, con uso limitado (hasta 25 métodos al mes y un solo usuario) como plugin de IntelliJ.',
+    plans: [
+      {
+        name: 'Testing Agent — paquete inicial',
+        price: '1.500 $',
+        notes:
+          'Paquete de evaluación con 5.000 líneas netas de cobertura añadidas; se paga por resultado, no por asiento.',
+      },
+      {
+        name: 'Testing Agent — Enterprise',
+        price: 'Presupuesto a medida',
+        notes:
+          'Paquetes de volumen para varios repositorios, con soporte dedicado, SLA, SSO y despliegue on-premise.',
+      },
+    ],
+    notes:
+      'Diffblue ha evolucionado de su plugin clásico Cover hacia el Testing Agent, que se integra con GitHub Copilot CLI y Claude Code y cobra por líneas de cobertura conseguidas. Las ediciones clásicas Teams/Enterprise de Cover no publican cifras: solo contacto comercial.',
+    sourceUrl: 'https://www.diffblue.com/pricing/',
+  },
+  DeepSource: {
+    name: 'DeepSource',
+    model: 'freemium',
+    freeTier:
+      'Plan Open Source gratuito con repositorios públicos y miembros ilimitados, hasta 1.000 PRs revisados al mes; el AI Review y el Autofix se cobran aparte por uso.',
+    plans: [
+      {
+        name: 'Team',
+        price: '24 $/usuario/mes',
+        notes:
+          'Facturado anualmente; repos y PRs ilimitados y 100 $ de crédito anual para AI Review.',
+      },
+      {
+        name: 'Enterprise',
+        price: 'Presupuesto a medida',
+        notes: 'Nube empresarial o auto-alojado, claves API propias, SSO y soporte con SLA.',
+      },
+    ],
+    notes:
+      'El precio de Team es con facturación anual; la web oficial no muestra tarifa mensual sin compromiso. Hay prueba de 14 días con crédito de AI Review incluido, sin tarjeta.',
+    sourceUrl: 'https://deepsource.com/pricing',
+  },
+  Siri: {
+    name: 'Siri',
+    model: 'free',
+    freeTier:
+      'Siri viene incluido sin coste en iPhone, iPad, Mac, Apple Watch y HomePod: no es un producto que se contrate por separado ni tiene suscripción propia.',
+    plans: [],
+    notes:
+      'La web oficial de Apple no menciona ningún precio ni plan de pago para Siri. La versión con IA generativa más avanzada que Apple prometió sigue pendiente de lanzamiento, sin coste adicional anunciado.',
+    sourceUrl: 'https://www.apple.com/siri/',
+  },
+  Alexa: {
+    name: 'Alexa',
+    model: 'freemium',
+    freeTier:
+      'La Alexa clásica (voz, rutinas, skills) es gratuita con cualquier dispositivo Echo o la app. Sin suscripción también hay una versión de chat de texto de Alexa+ con uso limitado.',
+    plans: [
+      {
+        name: 'Alexa+ con Prime',
+        price: '0 €/mes',
+        notes: 'Incluido para los suscriptores de Amazon Prime, para todo el hogar.',
+      },
+      {
+        name: 'Alexa+ Standard',
+        price: '22,99 €/mes',
+        notes:
+          'Precio para España sin Prime tras la fase de acceso anticipado (en EE. UU., 19,99 $/mes).',
+      },
+    ],
+    notes:
+      'Alexa+ llegó a España el 23 de abril de 2026 y durante el acceso anticipado es gratuita también sin Prime. Cifras verificadas en las webs de prensa oficiales de Amazon (aboutamazon.es y aboutamazon.com) porque las páginas de producto devolvían error al consultarlas.',
+    sourceUrl:
+      'https://www.aboutamazon.es/noticias/dispositivos/alexa-disponible-espana-nueva-generacion',
+  },
+  Zendesk: {
+    name: 'Zendesk',
+    model: 'paid',
+    freeTier: null,
+    plans: [
+      {
+        name: 'Support Team',
+        price: '19 €/agente/mes',
+        notes: 'Gestión básica de tickets y correo para equipos pequeños; facturación anual.',
+      },
+      {
+        name: 'Suite Team',
+        price: '55 €/agente/mes',
+        notes:
+          'Añade agentes de IA, base de conocimiento, chat en vivo y voz omnicanal; facturación anual.',
+      },
+      {
+        name: 'Suite Professional',
+        price: '115 €/agente/mes',
+        notes:
+          'Incluye copiloto para administradores, herramientas de escritura con IA y enrutamiento por habilidades.',
+      },
+      {
+        name: 'Suite Enterprise',
+        price: 'Presupuesto a medida',
+        notes:
+          'Para grandes organizaciones: clasificación inteligente, IA de voz generativa y sandbox.',
+      },
+    ],
+    notes:
+      'Sin plan gratuito permanente; hay prueba de 14 días. Los precios en euros salen de zendesk.es, la versión oficial para España. Los añadidos de IA se cobran aparte (Copilot 50 €/agente/mes, entre otros).',
+    sourceUrl: 'https://www.zendesk.es/pricing/',
+  },
+  'Trigger.dev': {
+    name: 'Trigger.dev',
+    model: 'freemium',
+    freeTier:
+      'El plan gratuito incluye 5 $ de crédito mensual, 20 ejecuciones concurrentes, tareas ilimitadas y hasta 5 miembros de equipo.',
+    plans: [
+      {
+        name: 'Free',
+        price: '0 $/mes',
+        notes: 'Para probar la plataforma con uso limitado.',
+      },
+      {
+        name: 'Hobby',
+        price: '10 $/mes',
+        notes: 'Proyectos pequeños: 10 $ de crédito mensual y 50 ejecuciones concurrentes.',
+      },
+      {
+        name: 'Pro',
+        price: '50 $/mes',
+        notes:
+          'Equipos con más volumen: 50 $ de crédito mensual, 200+ ejecuciones concurrentes y soporte dedicado.',
+      },
+      {
+        name: 'Enterprise',
+        price: 'Presupuesto a medida',
+        notes: 'SSO, informes SOC 2 y control de accesos por roles.',
+      },
+    ],
+    notes:
+      'Además de la cuota del plan se paga el consumo por segundos de ejecución y por invocación, que es variable y no aparece en la tabla.',
+    sourceUrl: 'https://trigger.dev/pricing',
+  },
+  'LangChain Agents': {
+    name: 'LangChain Agents',
+    model: 'freemium',
+    freeTier:
+      'El framework LangChain (incluida la función create_agent) y LangGraph son código abierto con licencia MIT: gratis sin límite de uso. El coste real depende del proveedor de modelos que conectes.',
+    plans: [
+      {
+        name: 'Developer',
+        price: '0 $/mes',
+        notes: 'LangSmith para desarrollo individual: 1 puesto y hasta 5.000 trazas al mes.',
+      },
+      {
+        name: 'Plus',
+        price: '39 $/puesto/mes',
+        notes:
+          'Equipos en producción: puestos ilimitados, 10.000 trazas al mes y despliegue de agentes.',
+      },
+      {
+        name: 'Enterprise',
+        price: 'Presupuesto a medida',
+        notes: 'Despliegue autoalojado o híbrido, SSO y SLA de soporte.',
+      },
+    ],
+    notes:
+      'Lo de pago es LangSmith, la plataforma comercial de LangChain para depurar, evaluar y desplegar agentes; todos los planes suman facturación por uso aparte. Los agentes clásicos con AgentExecutor están deprecados hasta diciembre de 2026 en favor de create_agent y LangGraph.',
+    sourceUrl: 'https://www.langchain.com/pricing',
+  },
+  IFTTT: {
+    name: 'IFTTT',
+    model: 'freemium',
+    freeTier:
+      'El plan gratuito permite hasta 2 applets con ejecuciones ilimitadas, la app móvil y las integraciones sin código con más de 1.000 servicios.',
+    plans: [
+      {
+        name: 'Pro',
+        price: '2,99 $/mes',
+        notes: 'Hasta 20 applets, applets multiacción, webhooks y mayor velocidad de ejecución.',
+      },
+      {
+        name: 'Pro+',
+        price: '8,99 $/mes',
+        notes:
+          'Applets ilimitados, servicios de IA, varias cuentas por servicio y soporte prioritario.',
+      },
+    ],
+    notes:
+      'Precios confirmados en la página oficial de planes; la facturación anual mantiene el mismo precio mensual equivalente (35,88 y 107,88 $/año).',
+    sourceUrl: 'https://ifttt.com/plans',
+  },
+  Manus: {
+    name: 'Manus',
+    model: 'freemium',
+    freeTier:
+      'El plan gratuito da 300 créditos diarios, 1 tarea concurrente y 2 programadas, con el modo agente limitado a la versión Lite.',
+    plans: [
+      {
+        name: 'Pro',
+        price: 'Desde 20 $/mes',
+        notes:
+          'Tramos por créditos (4.000/mes en el primer escalón); investigación avanzada, despliegue de webs y hasta 20 tareas concurrentes.',
+      },
+      {
+        name: 'Team',
+        price: 'Desde 20 $/asiento/mes',
+        notes: 'Bolsa de créditos compartida, SSO, controles de acceso y analítica de uso.',
+      },
+    ],
+    notes:
+      'La página de precios de manus.im no muestra cifras sin JavaScript, así que se verificaron en su centro de ayuda oficial (help.manus.im). Hay un 17% de descuento en facturación anual. Un supuesto tramo "Pro Max" a 200 $/mes circula en blogs pero no está confirmado en el dominio oficial, así que no se incluye.',
+    sourceUrl:
+      'https://help.manus.im/en/articles/11711111-what-is-the-current-membership-pricing-for-manus',
+  },
+  'ChatGPT Agents': {
+    name: 'ChatGPT Agents',
+    model: 'paid',
+    freeTier: null,
+    plans: [
+      {
+        name: 'Plus',
+        price: '20 $/mes',
+        notes: 'Plan de entrada con acceso al modo agente y un cupo mensual de tareas limitado.',
+      },
+      {
+        name: 'Pro',
+        price: '100 $/mes o 200 $/mes',
+        notes: 'Cuota de agente muy superior a Plus (5x con 100 $, 20x con 200 $).',
+      },
+      {
+        name: 'Business',
+        price: '25 $/usuario/mes',
+        notes: 'Desde 2 puestos, con agente, Deep Research y Codex; más barato en anual (20 $).',
+      },
+      {
+        name: 'Enterprise / Edu',
+        price: 'Presupuesto a medida',
+        notes: 'Contacto comercial; incluye agentes de flujo de trabajo para empresa.',
+      },
+    ],
+    notes:
+      'El modo agente no está disponible en los planes Free ni Go: exige Plus o superior. openai.com devuelve 403 a la descarga directa, así que las cifras se han obtenido mediante búsqueda restringida a los dominios oficiales openai.com y help.openai.com. En julio de 2025 este modo unificó y sustituyó a Operator y a la navegación de Deep Research.',
+    sourceUrl: 'https://openai.com/chatgpt/pricing',
+  },
+  'xAI Agents': {
+    name: 'xAI Agents',
+    model: 'paid',
+    freeTier: null,
+    plans: [
+      {
+        name: 'Agent Tools API',
+        price: 'Desde 2,50 $/1.000 llamadas',
+        notes:
+          'Pago por uso para desarrolladores: búsqueda web/X y ejecución de código a 5 $/1.000 llamadas, más el coste de tokens del modelo Grok.',
+      },
+      {
+        name: 'Grok Business',
+        price: '30 $/usuario/mes',
+        notes:
+          'Plan de equipo con búsqueda agéntica sobre documentos; los agentes personalizados se anuncian como próximos.',
+      },
+      {
+        name: 'Grok Enterprise',
+        price: 'Presupuesto a medida',
+        notes: 'Contacto comercial para despliegue empresarial.',
+      },
+    ],
+    notes:
+      'El chat básico de Grok es gratuito, pero sin herramientas de agente. x.ai/pricing bloquea la descarga directa, así que solo se publican las cifras confirmadas en docs.x.ai y x.ai/news (dominio oficial); las suscripciones de consumo SuperGrok se omiten porque las fuentes externas dan cifras contradictorias. En 2026 xAI se fusionó con SpaceX bajo la marca SpaceXAI, aunque los productos Grok mantienen su nombre.',
+    sourceUrl: 'https://docs.x.ai/developers/pricing',
+  },
 };
