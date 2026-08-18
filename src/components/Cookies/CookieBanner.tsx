@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { useCookieConsent } from '../../store/cookieConsent';
 
 export default function CookieBanner() {
@@ -49,7 +50,10 @@ export default function CookieBanner() {
               <h2 className="text-white text-lg font-semibold">Tu privacidad en AIFinder</h2>
               <p className="text-zinc-300 text-sm mt-1">
                 Usamos cookies para que el sitio funcione y para medir uso. Puedes aceptar todas,
-                rechazar todas o configurar tus preferencias.
+                rechazar todas o configurar tus preferencias.{' '}
+                <Link href="/privacidad" className="text-blue-400 hover:underline">
+                  Más información
+                </Link>
               </p>
             </div>
           </div>

@@ -213,7 +213,7 @@ describe('Footer', () => {
       'href',
       'https://www.linkedin.com/in/javier-navarro-rodríguez-056023331/',
     );
-    expect(emailLinks[0]).toHaveAttribute('href', 'mailto:navarrojavi107@gmail.com');
+    expect(emailLinks[0]).toHaveAttribute('href', 'mailto:info@aifinder.es');
     expect(whatsappLinks[0]).toHaveAttribute('href', 'https://wa.me/34693744798');
   });
 

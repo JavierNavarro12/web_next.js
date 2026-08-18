@@ -24,7 +24,8 @@ export default function PrivacyPolicyPage() {
         <div className="bg-black rounded-2xl border border-zinc-800 p-6 md:p-8">
           <h1 className="text-3xl md:text-4xl font-extrabold mb-6">Política de Privacidad</h1>
           <p className="text-zinc-400 mb-8">
-            Fecha de entrada en vigor: viernes, 8 de agosto de 2025
+            Fecha de entrada en vigor: 8 de agosto de 2025 · Última actualización: 18 de agosto de
+            2026
           </p>
 
           <div className="space-y-8">
@@ -82,6 +83,21 @@ export default function PrivacyPolicyPage() {
                   </p>
                 </div>
                 <div>
+                  <h3 className="font-semibold">DataFast</h3>
+                  <p>
+                    Analítica web de tráfico y conversiones. Como el resto de herramientas de
+                    medición, solo se carga si aceptas la categoría de cookies analíticas.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-semibold">Firebase (Google) y Resend</h3>
+                  <p>
+                    Si te suscribes a la newsletter, tu email se guarda en Firebase (Google Cloud) y
+                    los correos se envían con Resend. No usamos tu email para nada más, y puedes
+                    darte de baja desde el enlace incluido en cada correo.
+                  </p>
+                </div>
+                <div>
                   <h3 className="font-semibold">Píxeles de marketing</h3>
                   <p>
                     Podemos usar píxeles de plataformas como Facebook o LinkedIn para optimizar
@@ -89,6 +105,34 @@ export default function PrivacyPolicyPage() {
                   </p>
                 </div>
               </div>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold mb-3">Cookies que utilizamos</h2>
+              <p className="text-zinc-300 mb-3">
+                Al entrar por primera vez puedes aceptar, rechazar o configurar las cookies por
+                categorías (necesarias, analíticas, marketing y preferencias). Tu elección se guarda
+                en tu navegador (clave <code>cookieConsent.v1</code>) y las herramientas de medición
+                solo se cargan si las has aceptado.
+              </p>
+              <ul className="list-disc pl-5 space-y-2 text-zinc-300">
+                <li>
+                  <strong>Google Analytics:</strong> cookies <code>_ga</code> y <code>_ga_*</code>{' '}
+                  (duración: 2 años), para estadísticas de uso.
+                </li>
+                <li>
+                  <strong>Microsoft Clarity:</strong> cookies <code>_clck</code> (1 año) y{' '}
+                  <code>_clsk</code> (1 día), para mapas de calor y análisis de navegación.
+                </li>
+                <li>
+                  <strong>DataFast:</strong> identificador anónimo de visitante para analítica de
+                  tráfico.
+                </li>
+              </ul>
+              <p className="text-zinc-300 mt-3">
+                Puedes cambiar tu elección en cualquier momento desde el enlace «Cookies» del pie de
+                página.
+              </p>
             </section>
 
             <section>
@@ -112,17 +156,16 @@ export default function PrivacyPolicyPage() {
             <section>
               <h2 className="text-2xl font-bold mb-3">Tus derechos</h2>
               <p className="text-zinc-300 mb-3">
-                Puedes optar por desactivar cookies o el seguimiento ajustando la configuración de
-                tu navegador o utilizando herramientas como el complemento de inhabilitación de
-                Google Analytics.
+                Puedes retirar tu consentimiento de cookies en cualquier momento desde el enlace
+                «Cookies» del pie de página, desactivar el seguimiento ajustando la configuración de
+                tu navegador, o utilizar herramientas como el complemento de inhabilitación de
+                Google Analytics. Si estás suscrito a la newsletter, puedes darte de baja desde el
+                enlace de cualquier correo y pedirnos que eliminemos tu email definitivamente.
               </p>
               <p className="text-zinc-300">
                 Si tienes preguntas o necesitas ayuda, contáctanos en
-                <a
-                  className="text-blue-400 hover:underline ml-1"
-                  href="mailto:navarrojavi107@gmail.com"
-                >
-                  navarrojavi107@gmail.com
+                <a className="text-blue-400 hover:underline ml-1" href="mailto:info@aifinder.es">
+                  info@aifinder.es
                 </a>
                 .
               </p>
@@ -140,11 +183,8 @@ export default function PrivacyPolicyPage() {
               <h2 className="text-2xl font-bold mb-3">Contacto</h2>
               <p className="text-zinc-300">
                 Si tienes dudas o comentarios sobre esta Política de Privacidad, escríbenos a
-                <a
-                  className="text-blue-400 hover:underline ml-1"
-                  href="mailto:navarrojavi107@gmail.com"
-                >
-                  navarrojavi107@gmail.com
+                <a className="text-blue-400 hover:underline ml-1" href="mailto:info@aifinder.es">
+                  info@aifinder.es
                 </a>
                 .
               </p>

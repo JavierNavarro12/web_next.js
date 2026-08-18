@@ -106,11 +106,8 @@ export default function ListingGuidelinesPage() {
               <p className="text-zinc-400">
                 Si estás construyendo algo con cariño y creatividad, queremos verlo. Si tienes dudas
                 sobre estas directrices o el proceso de envío, contáctanos en
-                <a
-                  className="text-blue-400 hover:underline ml-1"
-                  href="mailto:navarrojavi107@gmail.com"
-                >
-                  navarrojavi107@gmail.com
+                <a className="text-blue-400 hover:underline ml-1" href="mailto:info@aifinder.es">
+                  info@aifinder.es
                 </a>
                 .
               </p>
