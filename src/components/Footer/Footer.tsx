@@ -51,7 +51,7 @@ export default function Footer({
       ),
     },
     {
-      href: 'mailto:navarrojavi107@gmail.com',
+      href: 'mailto:info@aifinder.es',
       label: 'Enviar email',
       icon: (
         <svg
@@ -204,7 +204,7 @@ export default function Footer({
   const connectLinks = [
     { label: 'Feedback', onClick: openFeedback },
     { label: 'Reportar Bug', onClick: openBugReport },
-    { label: 'Contactar', href: 'mailto:navarrojavi107@gmail.com' },
+    { label: 'Contactar', href: 'mailto:info@aifinder.es' },
   ];
 
   const navigateToTools = (destino = '/herramientas') => {

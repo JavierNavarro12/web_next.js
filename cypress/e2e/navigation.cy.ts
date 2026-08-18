@@ -309,13 +309,8 @@ describe('Navigation Tests', () => {
 
   describe('Newsletter Signup', () => {
     it('should display newsletter signup in hero section', () => {
-      // Desktop hero newsletter
-      cy.get(
-        'div.hidden.md\\:block form input[placeholder*="Email"], div.hidden.md\\:block form input[type="email"]',
-        { timeout: 20000 },
-      )
-        .first()
-        .should('exist');
+      // El formulario del hero es responsive único (ya no hay wrapper hidden.md:block)
+      cy.get('form input[type="email"]', { timeout: 20000 }).first().should('exist');
 
       // Check for Suscribirse button - it might be hidden in mobile view on desktop
       cy.get('body').then(($body) => {
@@ -353,9 +348,15 @@ describe('Navigation Tests', () => {
   });
 
   describe('Add AI Tool Modal', () => {
+    // "Añadir una IA" solo existe en el menú móvil: estos tests usan viewport móvil
+    const openAddAIToolMobile = () => {
+      cy.viewport('iphone-x');
+      cy.get('[aria-label="Abrir menú de navegación"]:visible').click();
+      cy.contains('Añadir una IA').should('be.visible').click();
+    };
+
     it('should open "Añadir una IA" modal', () => {
-      // Click the "Añadir una IA" button
-      cy.contains('button', 'Añadir una IA').scrollIntoView().click({ force: true });
+      openAddAIToolMobile();
 
       // Wait for modal to appear
       cy.contains('Sugerir una IA', { timeout: 20000 }).should('exist');
@@ -370,7 +371,7 @@ describe('Navigation Tests', () => {
 
     it('should close modal when clicking outside or close button', () => {
       // Open modal
-      cy.contains('button', 'Añadir una IA').scrollIntoView().click({ force: true });
+      openAddAIToolMobile();
       cy.contains('Sugerir una IA', { timeout: 20000 }).should('exist');
 
       // Try to close modal (look for close button, escape key, or click outside)

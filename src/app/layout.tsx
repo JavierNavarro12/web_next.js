@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import AppProviders from './providers';
 import React from 'react';
-import { initBrowserSentry } from '../app/(sentry)/instrumentation';
 import PWAStartupRedirect from '../components/PWA/PWAStartupRedirect';
 import { ErrorBoundary } from '../components/ErrorBoundary/ErrorBoundary';
 import GoogleAnalytics from '../components/Analytics/GoogleAnalytics';
@@ -96,7 +95,7 @@ export const metadata: Metadata = {
     title: 'AIFinder',
     description:
       'Descubre las mejores IA para programar, escribir, generar imágenes y vídeo, voz y estudiar. Comparativas claras, pros/contras y precios en español.',
-    creator: '@aifinder_es',
+    // Sin creator: la cuenta @aifinder_es no existe; si algún día se crea, volver a añadirla.
   },
 };
 
@@ -108,12 +107,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="es">
       <head>
-        {/* Sentry (navegador) inicializado de forma segura en cliente */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(${initBrowserSentry.toString()})();`,
-          }}
-        />
+        {/* Sentry (navegador) se inicializa en src/instrumentation-client.ts:
+            el script inline anterior serializaba la función con toString() y su
+            import('@sentry/browser') no podía resolverse en el navegador. */}
         {/* Los preconnect a fonts.googleapis/gstatic sobraban: next/font autoaloja
             las fuentes en build y nunca hay petición a Google Fonts. Los de los
             subdominios fastly de Mux también: cambian por región y solo los usan
@@ -157,7 +153,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 width: 512,
                 height: 512,
               },
-              sameAs: ['https://x.com/aifinder_es'],
               contactPoint: [
                 {
                   '@type': 'ContactPoint',

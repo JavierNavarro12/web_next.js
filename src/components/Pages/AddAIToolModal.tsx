@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../../config/emailjs';
+import { logger } from '../../utils/logger';
 
 // Inicializar EmailJS una sola vez desde configuración (sin hardcodear claves)
 emailjs.init(EMAILJS_CONFIG.USER_ID);
@@ -44,7 +45,7 @@ export default function AddAIToolModal({ isOpen, onClose }: AddAIToolModalProps)
         onClose();
       }, 3000);
     } catch (error) {
-      console.error('Error al enviar email:', error);
+      logger.error('Error al enviar email de sugerencia', error);
       const el = document.createElement('div');
       el.textContent = 'Error al enviar la sugerencia. Por favor, inténtalo de nuevo.';
       el.className =

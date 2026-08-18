@@ -35,6 +35,12 @@ class Logger {
     if (!this.shouldLog('error')) return;
 
     if (this.isProduction) {
+      // Sin DSN configurado, Sentry.captureException sería un no-op silencioso:
+      // el error se perdería. Mejor dejarlo al menos en consola.
+      if (!process.env.NEXT_PUBLIC_SENTRY_DSN) {
+        console.error('[ERROR]', message, error, context);
+        return;
+      }
       // Enviar a Sentry en producción (lazy load para reducir bundle inicial)
       import('@sentry/browser')
         .then((Sentry) => {

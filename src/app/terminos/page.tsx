@@ -127,11 +127,8 @@ export default function TermsAndConditionsPage() {
               <h2 className="text-2xl font-bold mb-3">Contacto</h2>
               <p className="text-zinc-300">
                 Si tienes preguntas sobre estos Términos y Condiciones, escríbenos a
-                <a
-                  className="text-blue-400 hover:underline ml-1"
-                  href="mailto:navarrojavi107@gmail.com"
-                >
-                  navarrojavi107@gmail.com
+                <a className="text-blue-400 hover:underline ml-1" href="mailto:info@aifinder.es">
+                  info@aifinder.es
                 </a>
                 .
               </p>

@@ -25,6 +25,17 @@ Cypress.on('uncaught:exception', (err) => {
     if (err.message.includes('Cannot commit the same tree as before')) {
       return false;
     }
+    // Errores de hidratación (#418/#423): falso positivo bajo Cypress. Su proxy
+    // inyecta un script en el HTML y el App Router hidrata el documento entero,
+    // así que React ve un mismatch en <html>. Verificado que la app hidrata
+    // limpia en Chrome real (dev y build de producción, escritorio y móvil).
+    if (
+      err.message.includes('Minified React error #418') ||
+      err.message.includes('Minified React error #423') ||
+      err.message.includes('Hydration failed')
+    ) {
+      return false;
+    }
   }
   // Let other errors fail the test
   return undefined as unknown as boolean;

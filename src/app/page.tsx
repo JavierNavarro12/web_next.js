@@ -90,7 +90,8 @@ export default function HomePage() {
                       className="block rounded-lg border border-zinc-800 bg-zinc-900/40 px-4 py-3 hover:border-zinc-600 transition-colors"
                     >
                       <span className="font-semibold">{category.name}</span>
-                      <span className="block text-zinc-500 text-sm">{count} herramientas</span>
+                      {/* zinc-400: zinc-500 sobre este fondo no llega al contraste 4.5:1 (Lighthouse) */}
+                      <span className="block text-zinc-400 text-sm">{count} herramientas</span>
                     </Link>
                   </li>
                 );

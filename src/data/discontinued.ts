@@ -35,4 +35,9 @@ export const discontinuedTools: Record<string, DiscontinuedTool> = {
     sourceUrl:
       'https://www.rws.com/localization/services/translation-services/video-and-audio-translation/ai-dubbing-and-vo',
   },
+  Lovo: {
+    note: 'Lovo Inc. se declaró en quiebra (Chapter 7) el 27 de mayo de 2026, en plena demanda colectiva de actores de voz por clonar sus voces sin consentimiento. Su generador de voz Genny llevaba meses degradado y usuarios de pago han denunciado perder el acceso a sus cuentas. La web sigue en pie, pero no es recomendable contratar nada.',
+    sourceUrl:
+      'https://news.bloomberglaw.com/ip-law/voice-actors-suit-against-lovo-paused-amid-ai-firms-bankruptcy',
+  },
 };

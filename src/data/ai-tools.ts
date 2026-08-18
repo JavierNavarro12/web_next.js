@@ -54,7 +54,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/llama-web.webp',
             description: 'Modelo open source',
             pricing: 'free',
-            url: 'https://developer.meta.com/ai/',
+            url: 'https://www.llama.com',
           },
           {
             name: 'Qwen',
@@ -1993,7 +1993,7 @@ export const aiCategories: AICategory[] = [
             image: '/images/llama-web.webp',
             description: 'Modelo open source',
             pricing: 'free',
-            url: 'https://developer.meta.com/ai/',
+            url: 'https://www.llama.com',
           },
           {
             name: 'Mistral',

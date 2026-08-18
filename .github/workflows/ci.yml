@@ -51,6 +51,37 @@ jobs:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
         run: npm run build
 
+  e2e:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run Cypress
+        uses: cypress-io/github-action@v6
+        env:
+          NEXT_PUBLIC_EMAILJS_USER_ID: ${{ vars.NEXT_PUBLIC_EMAILJS_USER_ID }}
+          NEXT_PUBLIC_EMAILJS_SERVICE_ID: ${{ vars.NEXT_PUBLIC_EMAILJS_SERVICE_ID }}
+          NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: ${{ vars.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID }}
+          NEXT_PUBLIC_EMAILJS_FEEDBACK_TEMPLATE_ID: ${{ vars.NEXT_PUBLIC_EMAILJS_FEEDBACK_TEMPLATE_ID }}
+        with:
+          build: npm run build
+          start: npm start
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 120
+          browser: chrome
+      - name: Subir capturas de fallos
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          if-no-files-found: ignore
+
   lighthouse:
     runs-on: ubuntu-latest
     needs: build
