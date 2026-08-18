@@ -6038,4 +6038,352 @@ export const comparisons: Comparison[] = [
       },
     ],
   },
+  {
+    slug: 'make-vs-ifttt',
+    a: 'Make',
+    b: 'IFTTT',
+    title:
+      'Make vs IFTTT: automatización de un paso o flujos de trabajo multi-paso, ¿cuál necesitas?',
+    intro:
+      'Make e IFTTT comparten la etiqueta de "herramienta de automatización", pero resuelven problemas de tamaño distinto. IFTTT nació para conectar dos cosas con una regla simple: si pasa esto, haz aquello — encender una luz cuando llegas a casa, guardar en una hoja de cálculo cada foto que subes a una red social. Make permite construir escenarios con varios pasos, condiciones, routers que bifurcan el flujo según el resultado de cada acción, e iteradores que repiten una tarea sobre una lista de datos; está pensado para procesos de negocio (sincronizar un CRM con una hoja de cálculo, procesar pedidos, mover datos entre varias apps a la vez), no para gestos puntuales. La diferencia no es de calidad sino de escala: llevar un flujo de negocio complejo a IFTTT se vuelve inviable pronto, y pagar Make para encender una bombilla es gastar de más por una tarea de un solo paso. Antes de elegir, conviene tener claro qué tamaño tiene realmente la automatización que quieres montar.',
+    verdict:
+      'Si tu automatización tiene un solo paso —enciende esto cuando pase aquello— IFTTT resuelve el problema en minutos y por menos de 3 dólares al mes en su plan Pro. Si necesitas encadenar varias apps con condiciones, gestionar errores o mover datos de negocio entre sistemas, Make da ese margen, aunque cueste más y pida algo de tiempo para aprender a montar los escenarios. El error habitual va en las dos direcciones: pagar Make para tareas que resuelve un applet gratuito de IFTTT, o intentar forzar un proceso de negocio complejo dentro de IFTTT hasta que deja de ser manejable. Comprueba las tarifas vigentes en la web oficial de cada una antes de decidir, porque los límites de los planes cambian.',
+    table: {
+      headers: ['Criterio', 'Make', 'IFTTT'],
+      rows: [
+        [
+          'Enfoque',
+          'Escenarios multi-paso con lógica condicional',
+          'Applets de un paso (si esto, entonces aquello)',
+        ],
+        [
+          'Perfil ideal',
+          'Negocios y procesos con varias apps conectadas',
+          'Automatización personal y domótica',
+        ],
+        [
+          'Apps / integraciones',
+          '3.000+ apps y conectores HTTP personalizados',
+          'Más de 1.000 marcas y servicios',
+        ],
+        ['Plan gratuito', '1.000 operaciones/mes, hasta 2 escenarios activos', '2 applets activos'],
+        [
+          'Precios de pago',
+          'Core 10,59 $/mes · Pro 18,82 $/mes · Teams 34,12 $/mes',
+          'Pro 2,99 $/mes (20 applets) · Pro+ 8,99 $/mes (ilimitados)',
+        ],
+        [
+          'Lógica condicional',
+          'Routers, iteradores, agregadores',
+          'Filter code y queries solo en Pro+',
+        ],
+        [
+          'Funciones de IA',
+          'Vía apps de IA conectadas al escenario',
+          'AI services incluidos en el plan Pro+',
+        ],
+        [
+          'Curva de aprendizaje',
+          'Media-alta: hay que pensar el flujo completo',
+          'Baja: se configura en minutos',
+        ],
+      ],
+    },
+    whenA: [
+      'Necesitas conectar tres o más apps en un mismo flujo, con condiciones que decidan qué pasa según el resultado de cada paso.',
+      'Trabajas con procesos de negocio (ventas, facturación, atención al cliente) donde un fallo a mitad del flujo hay que gestionarlo, no solo detener todo.',
+      'Te faltan integraciones nativas para alguna herramienta y necesitas montar un conector HTTP genérico contra su API.',
+      'Prevés un volumen de operaciones mensual que un plan gratuito de automatización simple no podría asumir.',
+    ],
+    whenB: [
+      'Solo quieres una regla puntual: que una acción dispare otra, sin pasos intermedios ni condiciones complejas.',
+      'Quieres controlar dispositivos de domótica o sincronizar redes sociales sin tocar nada parecido a un editor de flujos.',
+      'Prefieres pagar poco, o nada, por una automatización que no va a crecer en complejidad.',
+      'Valoras configurar algo en un par de minutos, sin curva de aprendizaje previa.',
+    ],
+    sections: [
+      {
+        title: 'Applets de un paso frente a escenarios con lógica',
+        paragraphs: [
+          'IFTTT trabaja con applets: una condición dispara una acción, sin pasos intermedios ni ramificaciones. Su catálogo reúne más de 1.000 marcas y servicios, sobre todo de consumo — domótica (luces, termostatos, altavoces), redes sociales, clima, calendario. El plan Free permite tener solo 2 applets activos, algo pensado para probar la herramienta más que para usarla en el día a día; el Pro (2,99 $/mes) sube a 20 applets y añade webhooks, y el Pro+ (8,99 $/mes) los deja ilimitados e incorpora funciones adicionales como applets multi-acción, filter code y los llamados AI services.',
+          'Make trabaja con escenarios: un lienzo visual donde cada módulo es un paso, y entre medias puedes añadir routers que bifurcan el flujo según una condición, iteradores que repiten una acción sobre cada elemento de una lista, o agregadores que combinan varios resultados en uno. Ofrece más de 3.000 apps preintegradas y, cuando falta algún conector nativo, permite montar módulos HTTP genéricos contra prácticamente cualquier API con documentación pública. No es una herramienta pensada para el uso doméstico, sino para automatizar procesos que involucran a varias herramientas de trabajo a la vez.',
+        ],
+      },
+      {
+        title: 'Dónde gana cada una',
+        paragraphs: [
+          'Make gana cuando el flujo tiene varios pasos condicionales, cuando necesitas conectar apps de negocio (CRM, facturación, bases de datos, APIs propias) o cuando el volumen de operaciones es alto y hace falta control de errores y reintentos dentro del propio flujo, no solo una alerta si algo falla. También gana cuando faltan integraciones nativas: el módulo HTTP genérico cubre buena parte de lo que no viene conectado de fábrica.',
+          'IFTTT gana en domótica y automatizaciones personales — controlar dispositivos smart home, publicar en redes sociales, recibir avisos según la hora o la ubicación. Su interfaz está pensada para configurarse en un par de minutos, sin curva de aprendizaje. El plan Pro+ añade AI services dentro de los applets, pero sigue siendo una herramienta de reglas puntuales, no de procesos de negocio con varias condiciones encadenadas.',
+        ],
+      },
+      {
+        title: 'Precios: lo que paga cada perfil',
+        paragraphs: [
+          'Make tiene un plan Free con 1.000 operaciones al mes y hasta 2 escenarios activos — suficiente para probar la herramienta, no para un uso continuado. A partir de ahí, Core cuesta 10,59 $/mes, Pro 18,82 $/mes y Teams 34,12 $/mes con facturación anual, con más operaciones incluidas según el plan. IFTTT arranca gratis con solo 2 applets activos; Pro (2,99 $/mes) sube a 20 applets y añade webhooks, y Pro+ (8,99 $/mes) los deja ilimitados e incorpora los AI services y los applets multi-acción. Comprueba las tarifas vigentes en la web oficial de cada herramienta antes de contratar, porque los precios y los límites de los planes cambian con cierta frecuencia.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: '¿Puedo usar Make o IFTTT gratis?',
+        answer:
+          'Sí, ambas tienen plan gratuito, pero con límites pensados para probar la herramienta, no para uso continuado. Make Free da 1.000 operaciones al mes y hasta 2 escenarios activos; IFTTT Free se queda en solo 2 applets activos. Para un uso real casi siempre hace falta pasar a un plan de pago. Comprueba las tarifas vigentes en la web oficial antes de decidir cuál te compensa.',
+      },
+      {
+        question: '¿Puedo combinar Make e IFTTT?',
+        answer:
+          'Técnicamente sí: puedes hacer que un applet de IFTTT dispare un webhook que arranque un escenario de Make. En la práctica rara vez compensa montar dos herramientas para lo mismo; si necesitas ese nivel de integración, casi siempre el flujo completo cabe mejor solo en Make. Tiene sentido cuando ya usas IFTTT para domótica o redes sociales y quieres que un evento doméstico dispare, además, un proceso de negocio en Make.',
+      },
+      {
+        question: '¿Sirve IFTTT para procesos de negocio complejos?',
+        answer:
+          'No es lo que hace bien. Sus applets son de un paso, sin routers ni control de errores dentro del propio flujo, así que un proceso con varias condiciones encadenadas se vuelve difícil de mantener. Para eso encaja mejor Make, pensado desde el principio para escenarios multi-paso con lógica condicional.',
+      },
+      {
+        question: '¿Cuál tiene más integraciones, Make o IFTTT?',
+        answer:
+          'Make declara más de 3.000 apps, frente a algo más de 1.000 marcas y servicios en IFTTT. El número por sí solo no dice qué falta: conviene comprobar si tu herramienta concreta está entre las integraciones nativas de cada una, porque Make compensa las ausencias con conectores HTTP genéricos e IFTTT no ofrece esa vía.',
+      },
+      {
+        question: '¿Funcionan en español?',
+        answer:
+          'La interfaz de Make está en inglés (se puede recurrir a la traducción del navegador), aunque hay bastante documentación y comunidad en español fuera de la web oficial. La app de IFTTT sí incluye español entre sus idiomas disponibles. Ninguna garantiza soporte al cliente en español, así que si eso te importa conviene comprobarlo antes de contratar un plan de pago.',
+      },
+    ],
+  },
+  {
+    slug: 'gamma-vs-canva-magic-studio',
+    a: 'Gamma',
+    b: 'Canva Magic Studio',
+    title:
+      'Gamma vs Canva Magic Studio: documento generado desde cero o diseño asistido pieza a pieza',
+    intro:
+      'Gamma y Canva Magic Studio resuelven un problema parecido —usar IA para no partir de una página en blanco— pero desde puntos de partida distintos. Gamma nació como generador: le das un prompt y te devuelve una presentación, un documento o una web ya estructurados, con texto e imágenes colocados en tarjetas que luego editas. Canva Magic Studio no es una herramienta aparte, sino la capa de inteligencia artificial que Canva ha ido metiendo dentro de su editor de toda la vida: Magic Design, Magic Write, Magic Media y compañía te ayudan a crear o retocar piezas sueltas, pero el editor sigue siendo el mismo lienzo de arrastrar y soltar de siempre. La diferencia de fondo no es de calidad sino de unidad de trabajo: Gamma automatiza el documento completo; Canva asiste elemento a elemento dentro de un ecosistema de diseño mucho más amplio. Quién gana depende de si lo que necesitas es una entrega rápida sin criterio de diseño propio o piezas de marca variadas y coherentes semana tras semana.',
+    verdict:
+      'Si tienes que entregar una presentación, un documento o una landing mañana y no quieres pelearte con el diseño, Gamma te ahorra ese paso: escribes el prompt, revisas la estructura y ajustas. Si tu trabajo semanal es producir piezas de marca variadas —posts, historias, carteles, vídeos cortos— dentro de una identidad visual coherente, Canva Magic Studio tiene más sentido porque vive dentro de un editor pensado para eso, con plantillas y bibliotecas de marca. No merece la pena forzar ninguna de las dos fuera de su terreno: pedirle a Gamma piezas sueltas de redes sociales es incómodo, y pedirle a Canva que estructure un documento largo desde cero da más trabajo que partir de una plantilla. Si haces ambas cosas con cierta frecuencia, es razonable tener las dos herramientas: Gamma para el primer borrador de documentos largos, Canva para todo lo demás. Comprueba siempre las tarifas y los límites de créditos vigentes en las webs oficiales antes de decidir el plan.',
+    table: {
+      headers: ['Criterio', 'Gamma', 'Canva Magic Studio'],
+      rows: [
+        [
+          'Punto fuerte',
+          'Generar el documento entero (estructura + texto + diseño) desde un prompt',
+          'Asistir con IA dentro de un editor de diseño generalista ya maduro',
+        ],
+        [
+          'Formato de salida',
+          'Presentaciones, documentos y webs en tarjetas; se pueden publicar como web sin exportar',
+          'Cualquier pieza gráfica: posts, presentaciones, vídeos, carteles, documentos',
+        ],
+        [
+          'Función de IA clave',
+          'Generación de esquema y contenido completo a partir de un prompt',
+          'Magic Design, Magic Write, Magic Media, Magic Edit (asistencia puntual)',
+        ],
+        [
+          'Español',
+          'Interfaz y generación en español, entre los idiomas soportados',
+          'Magic Write funciona en español, entre unos 20 idiomas',
+        ],
+        [
+          'Plan gratuito',
+          'Free: 400 créditos iniciales, exporta a PPTX/PDF con marca de agua',
+          'Free: acceso a Magic Studio con créditos de IA limitados',
+        ],
+        [
+          'Precio plan intermedio',
+          'Plus: 8 $/mes (facturación anual)',
+          'No hay plan intermedio equivalente; salto directo a Business',
+        ],
+        [
+          'Precio plan superior',
+          'Pro: 20 $/mes (facturación anual)',
+          'Business (antes Canva Pro/Teams): en torno a 20 $ por persona al mes',
+        ],
+        [
+          'Perfil ideal',
+          'Quien necesita un documento largo listo rápido, sin partir de plantilla',
+          'Quien produce piezas de marca variadas con regularidad',
+        ],
+      ],
+    },
+    whenA: [
+      'Necesitas una presentación o documento largo listo en minutos y no partes de ninguna plantilla previa',
+      'Prefieres describir el contenido en un prompt y dejar que la IA proponga la estructura completa',
+      'Quieres publicar el resultado como página web directamente, sin pasar por exportación',
+      'Trabajas solo o en equipos pequeños y el precio de entrada (gratis o 8 $/mes) te compensa frente a herramientas de diseño más completas',
+    ],
+    whenB: [
+      'Ya usas Canva para el resto de piezas de marca y quieres IA integrada en el mismo editor',
+      'Necesitas variedad de formatos —redes sociales, vídeo corto, impresos— más allá de documentos y presentaciones',
+      'Tu equipo depende de bibliotecas de marca, plantillas compartidas y flujos de aprobación',
+      'Prefieres retocar elementos concretos (una imagen, un texto, un fondo) con IA en lugar de generar el documento entero de golpe',
+    ],
+    sections: [
+      {
+        title: 'La diferencia real: generar el todo frente a asistir la parte',
+        paragraphs: [
+          'Gamma parte de una idea distinta a la de un editor de diseño: en vez de darte un lienzo vacío, te pide un prompt y devuelve un documento entero ya montado en tarjetas, con jerarquía de contenido, imágenes sugeridas y una línea de diseño coherente. Editas después, pero el punto de partida es una propuesta completa, no una plantilla en blanco. Esa es la razón por la que se usa tanto para presentaciones internas, propuestas comerciales o documentos que hay que entregar rápido sin dedicar horas a maquetar.',
+          'Canva Magic Studio funciona al revés: es un conjunto de asistentes de IA (Magic Design para sugerir composiciones, Magic Write para redactar textos, Magic Media para generar imágenes o vídeo, Magic Edit para retocar elementos) que viven dentro del editor de Canva de toda la vida. No sustituye el proceso de diseño manual, lo acelera en pasos concretos. Si necesitas cuarenta piezas distintas para una campaña —post, story, banner, miniatura de vídeo— Magic Studio te ayuda en cada una, pero sigues moviendo elementos a mano en el lienzo.',
+        ],
+      },
+      {
+        title: 'Dónde gana cada una',
+        paragraphs: [
+          'Gamma gana en velocidad de arranque para documentos con mucho texto y estructura: informes, pitch decks, resúmenes de proyecto, one-pagers. La opción de publicar directamente como web, sin exportar ni subir a ningún sitio, es un plus que Canva no ofrece de forma nativa para este tipo de contenido. El límite aparece cuando necesitas control fino de marca: el sistema de tarjetas de Gamma es cómodo pero menos flexible que un editor gráfico completo para maquetaciones muy específicas.',
+          'Canva gana en todo lo que no es un documento largo: piezas sueltas de redes sociales, materiales de marketing, plantillas reutilizables con la identidad de marca ya fijada, vídeo corto. Su ventaja no es una función de IA concreta, sino el ecosistema alrededor: miles de plantillas, bibliotecas de marca, integración con programación de publicaciones y un historial de uso mucho más amplio en equipos de marketing. La desventaja frente a Gamma es que para un documento largo desde cero, Magic Studio ayuda con fragmentos (un texto aquí, una imagen allá) pero no te entrega la estructura completa como hace Gamma.',
+        ],
+      },
+      {
+        title: 'Precios: los planes que importan',
+        paragraphs: [
+          "Gamma tiene tres escalones claros: Free (0 $, 400 créditos iniciales, exportación a PDF/PPTX disponible pero con marca de agua 'Made with Gamma'), Plus (8 $/mes con facturación anual) y Pro (20 $/mes con facturación anual), que amplía créditos y quita restricciones de marca y de formato. Canva, en cambio, no tiene un escalón intermedio equivalente: el plan gratuito da acceso limitado a Magic Studio y el siguiente salto es directo a Business (el plan que sustituyó a Canva Pro/Teams para equipos), en torno a 20 $ por persona al mes, con precio final que depende del número de personas y de si pagas mes a mes o al año.",
+          'La comparación directa de cifras es engañosa porque ambas herramientas venden cosas distintas: Gamma cobra por generación y créditos de IA sobre documentos completos; Canva cobra por acceso a un editor completo del que Magic Studio es solo una parte. Los créditos de IA, los límites exactos de cada plan y el nombre comercial de los planes cambian con cierta frecuencia en ambos productos, así que conviene comprobar las tarifas vigentes en gamma.app y canva.com antes de decidir, sobre todo si vas a contratar para varias personas.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: '¿Puedo usar Gamma o Canva Magic Studio gratis?',
+        answer:
+          'Sí, las dos tienen plan gratuito. Gamma da 400 créditos iniciales que no se renuevan solos, suficientes para varias presentaciones o documentos cortos, con exportación a PDF o PowerPoint pero con marca de agua. Canva ofrece Magic Studio con créditos de IA limitados dentro de su plan Free, que incluye además todo el editor y las plantillas básicas. Para uso ocasional, cualquiera de los dos gratuitos puede bastar; comprueba los límites exactos en cada web oficial porque cambian con el tiempo.',
+      },
+      {
+        question: '¿Gamma y Canva Magic Studio funcionan bien en español?',
+        answer:
+          'Sí. Gamma tiene interfaz en español y genera presentaciones y documentos directamente en el idioma del prompt, incluido el español. Canva Magic Write, la herramienta de redacción con IA dentro de Magic Studio, funciona en unos 20 idiomas y el español está entre los soportados de forma nativa. Ninguna de las dos presenta limitaciones relevantes de idioma para un usuario que trabaje en español.',
+      },
+      {
+        question: '¿Puedo combinar Gamma y Canva Magic Studio en el mismo flujo de trabajo?',
+        answer:
+          'Sí, y es un uso habitual. Muchos equipos generan el primer borrador de un documento largo (informe, propuesta, pitch deck) en Gamma para no partir de cero, y luego usan Canva para las piezas de marca derivadas de ese contenido: los posts de redes sociales que anuncian la presentación, el banner de la web, la miniatura del vídeo resumen. No hay integración directa entre ambas, así que el traspaso es manual (exportar de una e importar en la otra), pero funciona bien como flujo en dos pasos.',
+      },
+      {
+        question: '¿Merece la pena pagar el plan superior de alguna de las dos?',
+        answer:
+          'Depende del volumen de trabajo, no de la herramienta en sí. El Pro de Gamma (20 $/mes en anual) tiene sentido si generas documentos con frecuencia y necesitas quitar la marca de agua y ampliar créditos; para un uso puntual, el gratuito suele bastar. El Business de Canva (en torno a 20 $ por persona al mes) compensa sobre todo en equipos que ya usan Canva para varias personas y quieren acceso ampliado a Magic Studio, más que para un usuario suelto. Revisa las tarifas actuales en las webs oficiales antes de contratar, porque los precios y los límites de créditos se actualizan con cierta frecuencia.',
+      },
+      {
+        question: '¿Cuál de las dos elegir si solo necesito una presentación puntual?',
+        answer:
+          'Para una presentación puntual sin plantilla previa, Gamma suele resolverlo más rápido: describes el contenido en un prompt y obtienes una estructura completa que solo hay que revisar. Canva también permite crear presentaciones, pero su punto fuerte es partir de una plantilla y editar a mano, con Magic Studio ayudando en pasos sueltos como el texto o las imágenes. Si no tienes ni plantilla ni criterio de diseño claro, Gamma te ahorra más tiempo en ese caso concreto.',
+      },
+    ],
+  },
+  {
+    slug: 'elevenlabs-vs-speechify',
+    a: 'ElevenLabs',
+    b: 'Speechify',
+    title: 'ElevenLabs vs Speechify: crear voz con IA o escuchar lo que ya tienes escrito',
+    intro:
+      'ElevenLabs y Speechify aparecen juntas en muchas búsquedas, pero nacieron para resolver problemas distintos. ElevenLabs es una herramienta para crear voz: locuciones, clonación de voz, doblaje y una API para integrar audio generado por IA en productos propios. Speechify, en su producto principal, es una herramienta para consumir voz: convierte artículos, PDF y libros en audio para escucharlos mientras haces otra cosa, con apps móviles y extensión de Chrome. Solo cuando entras en Speechify Studio, su línea para creadores, ambas empiezan a solaparse de verdad, con voiceover, clonación de voz y doblaje. La comparación tiene sentido si distingues estos dos casos de uso; si los mezclas, es fácil acabar pagando por una función que no vas a usar.',
+    verdict:
+      'Si el objetivo es publicar audio, ElevenLabs es la opción con más control sobre la calidad de voz, la clonación y la integración vía API. Si el objetivo es escuchar contenido propio o ajeno de forma más cómoda, el Speechify de lector cumple mejor y a menor coste. Speechify Studio entra en terreno de ElevenLabs para quien ya usa el ecosistema Speechify y quiere generar voiceovers sin salir de él, pero para proyectos serios de locución o doblaje ElevenLabs sigue siendo la referencia más consolidada. En bastantes casos no hace falta pagar ninguna de las dos: si solo quieres escuchar un artículo de vez en cuando, el lector gratuito de Speechify suele bastar. Comprueba siempre las tarifas vigentes en las webs oficiales antes de decidir, porque los planes cambian con frecuencia.',
+    table: {
+      headers: ['Criterio', 'ElevenLabs', 'Speechify'],
+      rows: [
+        [
+          'Qué hace',
+          'Genera voz con IA: locuciones, clonación, doblaje y API',
+          'Convierte texto en audio para escucharlo (artículos, PDF, libros)',
+        ],
+        [
+          'Función clave',
+          'Clonación de voz y modelos multilingües de alta calidad para publicar audio',
+          'Lector de contenido con apps móviles, extensión de Chrome y OCR',
+        ],
+        [
+          'Español',
+          'Distingue español de España y de Latinoamérica, con acentos específicos en su biblioteca de voces',
+          'Incluido entre sus más de 60 idiomas soportados',
+        ],
+        [
+          'Creadores de contenido',
+          'Producto nativo: locución, doblaje, audiolibros, voiceover para vídeo',
+          'Cubierto por Speechify Studio (voiceover, clonación de voz, doblaje), aparte del lector',
+        ],
+        [
+          'Modelo de precios',
+          'Por créditos/minutos de audio generado, con 6 planes de pago',
+          'Suscripción única de lector (Premium) más un producto Studio con tarifa aparte',
+        ],
+        [
+          'Plan gratuito',
+          'Free con unos 10 minutos de audio al mes, sin licencia comercial',
+          'Free con conversión de texto a voz básica, sin límite de tiempo fijo',
+        ],
+        [
+          'Precio de entrada de pago',
+          'Starter desde 6 $/mes',
+          'Premium desde 11,99 $/mes (facturación anual)',
+        ],
+        [
+          'Perfil ideal',
+          'Creadores, estudios y desarrolladores que necesitan publicar audio con voces controladas',
+          'Personas que quieren escuchar más y leer menos: estudiantes, lectores, profesionales con poco tiempo',
+        ],
+      ],
+    },
+    whenA: [
+      'Necesitas generar locuciones, audiolibros o vídeos con voces de calidad profesional en varios idiomas',
+      'Quieres clonar tu propia voz o la de un personaje para reutilizarla en distintos proyectos',
+      'Vas a integrar la generación de voz en una app o flujo propio a través de API',
+      'Trabajas en doblaje y necesitas mantener el tono y el ritmo del audio original en otro idioma',
+    ],
+    whenB: [
+      'Quieres escuchar artículos, PDF o libros mientras haces otra cosa, sin tener que leerlos',
+      'Necesitas una app móvil o extensión de navegador que lea el contenido con un solo toque',
+      'Buscas un lector que puedas acelerar bastante sin perder inteligibilidad',
+      'Solo ocasionalmente necesitas generar un voiceover sencillo y prefieres no salir de tu app de lectura habitual',
+    ],
+    sections: [
+      {
+        title: 'Dos herramientas que rara vez compiten por el mismo usuario',
+        paragraphs: [
+          'La confusión entre ambas viene del término text-to-speech, que se usa para las dos, pero con propósitos opuestos. ElevenLabs parte de la generación: le das un texto y una voz (propia, clonada o de su biblioteca) y obtienes un archivo de audio pensado para publicarse, con matices de entonación, énfasis y control de estilo que se cuidan porque el resultado va a un público. Speechify, en su producto principal, parte del consumo: coges un texto ya existente (un artículo, un PDF, un capítulo) y lo escuchas tú, normalmente a velocidad acelerada, mientras conduces, haces deporte o simplemente prefieres no leer en pantalla.',
+          'Esa diferencia de propósito explica casi todo lo demás: por qué ElevenLabs cuida tanto la clonación de voz y el control de estilo, y por qué Speechify invierte en apps móviles, extensión de Chrome y velocidades de reproducción muy altas. No es una cuestión de qué motor de voz suena mejor en abstracto, sino de si el audio que sale va dirigido a un oyente externo o solo a ti.',
+        ],
+      },
+      {
+        title: 'Dónde sí compiten: Speechify Studio frente a ElevenLabs',
+        paragraphs: [
+          'Speechify no se ha quedado solo en el lector. Su línea Studio ofrece voiceover, clonación de voz y doblaje pensados para creadores, con una biblioteca amplia de voces (incluidas voces de famosos con licencia) en más de 60 idiomas. Ahí sí entra en el terreno de ElevenLabs, que sigue siendo el producto más especializado en generación de voz de calidad para uso profesional, con modelos distintos según si priorizas la máxima fidelidad o la baja latencia.',
+          'Para quien ya paga Speechify por el lector y ocasionalmente necesita un voiceover, tiene sentido probar primero Studio antes de sumar una segunda suscripción. Para quien necesita locución o doblaje como actividad principal —estudios, agencias, desarrolladores de apps de voz—, ElevenLabs suele ofrecer más control fino sobre la voz y una API pensada para integraciones a mayor escala. La forma de saberlo no es leer comparativas, sino probar ambas con el mismo texto y comparar el resultado.',
+        ],
+      },
+      {
+        title: 'Precios: modelos distintos, no directamente comparables',
+        paragraphs: [
+          'ElevenLabs cobra por créditos, que se traducen aproximadamente en minutos de audio generado: el plan gratuito ronda los 10 minutos al mes sin licencia comercial, Starter cuesta 6 $/mes, Creator 22 $/mes, Pro 99 $/mes, y hay planes Scale (299 $/mes) y Business (990 $/mes) para volúmenes mayores. Speechify, en su producto de lector, tiene un plan Free y un Premium desde 11,99 $/mes con facturación anual, con hasta 2.500 páginas por documento, 50 documentos al día y OCR incluido; Studio se cotiza aparte.',
+          'Son estructuras pensadas para necesidades distintas: pagar por minutos generados frente a pagar por acceso a un lector con límites de uso diario. Antes de decidir conviene comprobar las tarifas vigentes en las webs oficiales de cada producto, porque tanto los precios como los límites de los planes gratuitos cambian con cierta frecuencia.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: '¿Puedo usar ElevenLabs o Speechify gratis?',
+        answer:
+          'Sí, ambas tienen plan gratuito. El de ElevenLabs incluye unos 10 minutos de audio generado al mes, sin licencia comercial y con atribución obligatoria. El de Speechify permite convertir texto en voz de forma básica sin coste. Para uso ocasional, cualquiera de los dos gratuitos puede bastar; el salto a pago llega cuando necesitas más volumen, más voces o funciones como el OCR. Conviene comprobar los límites actualizados en cada web antes de decidir.',
+      },
+      {
+        question: '¿Tiene sentido combinar ElevenLabs y Speechify?',
+        answer:
+          'Puede tenerlo si haces ambas cosas: publicar audio y consumir contenido escrito. Usar ElevenLabs para generar locuciones o audiolibros y Speechify como lector diario de artículos y PDF no es redundante, porque cubren necesidades distintas. Lo que no suele compensar es pagar Speechify Studio y ElevenLabs a la vez para la misma tarea de voiceover; ahí conviene probar los dos con el mismo texto y quedarte con el que dé mejor resultado para tu caso.',
+      },
+      {
+        question: '¿Cuál suena mejor en español?',
+        answer:
+          'Ambas ofrecen español entre sus idiomas soportados. ElevenLabs distingue español de España y variantes latinoamericanas dentro de su biblioteca de voces, con modelos orientados a máxima calidad o a baja latencia. Speechify incluye el español dentro de sus más de 60 idiomas, tanto en el lector como en Studio. La calidad percibida depende de la voz concreta elegida en cada plataforma, así que lo más fiable es probar el mismo texto en las dos antes de decidir.',
+      },
+      {
+        question: '¿Sirve Speechify para crear voiceovers como ElevenLabs?',
+        answer:
+          'El lector de Speechify no está pensado para eso, pero su producto Speechify Studio sí ofrece voiceover, clonación de voz y doblaje para creadores, con tarifa separada del plan Premium de lectura. Para proyectos puntuales puede ser suficiente, sobre todo si ya usas el ecosistema Speechify. Para locución profesional o doblaje como actividad principal, ElevenLabs suele dar más control sobre matices de voz y una API más orientada a integraciones.',
+      },
+      {
+        question: '¿Cuánto cuestan realmente?',
+        answer:
+          'ElevenLabs va por créditos: Free 0 $, Starter 6 $/mes, Creator 22 $/mes, Pro 99 $/mes, Scale 299 $/mes y Business 990 $/mes. Speechify tiene Free 0 $ y Premium desde 11,99 $/mes con facturación anual (hasta 2.500 páginas por documento y 50 documentos diarios); Studio se paga aparte. Son estructuras distintas, así que compara según tu uso real y comprueba las tarifas vigentes en las webs oficiales, porque pueden cambiar.',
+      },
+    ],
+  },
 ];
