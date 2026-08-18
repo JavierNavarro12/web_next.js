@@ -8,6 +8,9 @@ import { findToolBySlug, toolSlug } from '../../../utils/tools';
 import { findComparisonBySlug, getAllComparisons } from '../../../utils/comparisons';
 import { isComparisonPublished, NOINDEX_ROBOTS } from '../../../utils/publishing';
 import { discontinuedTools } from '../../../data/discontinued';
+import { getAffiliateLink } from '../../../data/affiliates';
+import AffiliateCta from '../../../components/Affiliate/AffiliateCta';
+import AffiliateNotice from '../../../components/Affiliate/AffiliateNotice';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -104,6 +107,13 @@ export default async function ComparisonPage({ params }: Props) {
     .filter((name) => discontinuedTools[name])
     .map((name) => ({ name, note: discontinuedTools[name].note }));
   const stillAlive = discontinuedTools[comparison.a] ? comparison.b : comparison.a;
+
+  const affiliates = [comparison.a, comparison.b]
+    .filter((name) => !discontinuedTools[name])
+    .flatMap((name) => {
+      const link = getAffiliateLink(name);
+      return link ? [{ name, link }] : [];
+    });
 
   return (
     <>
@@ -242,6 +252,24 @@ export default async function ComparisonPage({ params }: Props) {
         <section className="mb-8">
           <h2 className="text-2xl font-bold mb-3">Veredicto</h2>
           <p className="text-zinc-300 leading-relaxed">{comparison.verdict}</p>
+          {affiliates.length > 0 && (
+            <div className="mt-5">
+              <div className="flex flex-wrap gap-3">
+                {affiliates.map(({ name, link }) => (
+                  <AffiliateCta
+                    key={name}
+                    href={link.url}
+                    toolName={name}
+                    source="comparativa"
+                    className="inline-block px-4 py-2 rounded-lg bg-white text-black font-semibold hover:bg-zinc-200 transition-colors"
+                  >
+                    Probar {name} →
+                  </AffiliateCta>
+                ))}
+              </div>
+              <AffiliateNotice />
+            </div>
+          )}
         </section>
 
         <section className="mb-8 grid md:grid-cols-2 gap-4">
