@@ -6,6 +6,7 @@ import type { Article } from '../../../types/article';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import MobileHeader from '../../../components/Header/MobileHeader';
+import { findToolMention } from '../../../utils/toolMention';
 import {
   useAppContext,
   useSubcategoryContext,
@@ -18,10 +19,47 @@ type ArticleViewProps = {
   /* Solo los slugs: pasar los artículos enteros arrastraría su contenido al payload. */
   prevSlug: string | null;
   nextSlug: string | null;
+  /* Nombre → slug de las herramientas publicadas mencionadas (calculado en servidor). */
+  toolLinks: Record<string, string>;
 };
 
-export default function ArticleView({ article, prevSlug, nextSlug }: ArticleViewProps) {
+/**
+ * Enlaza la primera mención de cada herramienta a su ficha. `linked` es
+ * compartido por todo el artículo: una herramienta solo se enlaza una vez.
+ */
+function linkifyText(
+  text: string,
+  toolLinks: Record<string, string>,
+  linked: Set<string>,
+): React.ReactNode {
+  let best: { name: string; slug: string; index: number } | null = null;
+  for (const [name, slug] of Object.entries(toolLinks)) {
+    if (linked.has(name)) continue;
+    const index = findToolMention(text, name);
+    if (index !== -1 && (!best || index < best.index)) {
+      best = { name, slug, index };
+    }
+  }
+  if (!best) return text;
+
+  linked.add(best.name);
+  const after = text.slice(best.index + best.name.length);
+  return (
+    <>
+      {text.slice(0, best.index)}
+      <Link href={`/herramienta/${best.slug}`} className="text-blue-400 hover:underline">
+        {best.name}
+      </Link>
+      {linkifyText(after, toolLinks, linked)}
+    </>
+  );
+}
+
+export default function ArticleView({ article, prevSlug, nextSlug, toolLinks }: ArticleViewProps) {
   const router = useRouter();
+  // Nuevo por render: el render es una sola pasada descendente, así que la
+  // primera mención del artículo gana siempre y el resultado es determinista.
+  const linkedTools = new Set<string>();
 
   // Contextos necesarios para montar el MobileHeader fijo
   const { activeCategory: _activeCategory, setActiveCategory } = useAppContext();
@@ -213,13 +251,13 @@ export default function ArticleView({ article, prevSlug, nextSlug }: ArticleView
               )}
               {section.paragraphs?.map((p, i) => (
                 <p key={i} className="text-zinc-300 leading-relaxed mb-4">
-                  {p}
+                  {linkifyText(p, toolLinks, linkedTools)}
                 </p>
               ))}
               {section.bullets && section.bullets.length > 0 && (
                 <ul className="list-disc pl-5 space-y-2 text-zinc-300">
                   {section.bullets.map((b, i) => (
-                    <li key={i}>{b}</li>
+                    <li key={i}>{linkifyText(b, toolLinks, linkedTools)}</li>
                   ))}
                 </ul>
               )}

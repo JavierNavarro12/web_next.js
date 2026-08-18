@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { articles } from '../../../data/articles';
+import { getArticleToolLinks } from '../../../utils/articleToolLinks';
 import ArticleView from './ArticleView';
 
 type Props = {
@@ -32,5 +33,12 @@ export default async function ArticleDetailPage({ params }: Props) {
       ? featuredOrdered[idxInFeatured + 1].slug
       : null;
 
-  return <ArticleView article={article} prevSlug={prevSlug} nextSlug={nextSlug} />;
+  return (
+    <ArticleView
+      article={article}
+      prevSlug={prevSlug}
+      nextSlug={nextSlug}
+      toolLinks={getArticleToolLinks(article)}
+    />
+  );
 }
