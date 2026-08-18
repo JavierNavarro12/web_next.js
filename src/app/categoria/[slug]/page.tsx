@@ -59,7 +59,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title: `${title} | AIFinder`,
       description,
-      creator: '@aifinder_es',
     },
   };
 }

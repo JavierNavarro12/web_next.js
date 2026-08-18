@@ -34,7 +34,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Herramientas de IA - Directorio Completo | AIFinder',
     description: 'Explora nuestro directorio completo de herramientas de inteligencia artificial.',
-    creator: '@aifinder_es',
   },
 };
 

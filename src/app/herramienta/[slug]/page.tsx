@@ -31,7 +31,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const detail = getToolDetail(tool.name);
   const baseUrl = getSiteUrl();
-  const title = `${tool.name}: qué es, para qué sirve y precios`;
+  // El año se calcula en build (páginas estáticas); cada deploy lo refresca.
+  // "(2026)" en el título sube CTR en búsquedas de precios/comparativas.
+  const year = new Date().getFullYear();
+  const title = `${tool.name}: qué es, precios y alternativas (${year})`;
   const description = detail
     ? `${detail.tagline} Guía de ${tool.name}: usos, funciones, ventajas, inconvenientes, precios y alternativas.`
     : `Ficha de ${tool.name}: qué es, para qué sirve, precios y alternativas en ${tool.subcategory}.`;
@@ -56,7 +59,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title: `${title} | AIFinder`,
       description,
-      creator: '@aifinder_es',
     },
   };
 }

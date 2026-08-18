@@ -33,7 +33,6 @@ export const metadata: Metadata = {
     title: 'Artículos sobre Inteligencia Artificial | AIFinder',
     description:
       'Lee los últimos artículos, comparativas y noticias sobre herramientas de inteligencia artificial.',
-    creator: '@aifinder_es',
   },
 };
 

@@ -27,16 +27,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const baseUrl = getSiteUrl();
   const description = comparison.intro.slice(0, 155);
+  const year = new Date().getFullYear();
+  const title = `${comparison.title} (${year})`;
 
   return {
-    title: comparison.title,
+    title,
     description,
     ...(isComparisonPublished() ? {} : { robots: NOINDEX_ROBOTS }),
     alternates: {
       canonical: `${baseUrl}/comparativa/${slug}`,
     },
     openGraph: {
-      title: `${comparison.title} | AIFinder`,
+      title: `${title} | AIFinder`,
       description,
       url: `${baseUrl}/comparativa/${slug}`,
       type: 'article',
@@ -45,9 +47,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${comparison.title} | AIFinder`,
+      title: `${title} | AIFinder`,
       description,
-      creator: '@aifinder_es',
     },
   };
 }
