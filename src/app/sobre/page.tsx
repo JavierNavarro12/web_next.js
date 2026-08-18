@@ -45,7 +45,10 @@ export default function SobrePage() {
           </li>
           <li>
             <strong className="text-white">Sin patrocinios en el listado</strong>: ninguna
-            herramienta paga por aparecer, por su posición ni por el tono de su ficha.
+            herramienta paga por aparecer, por su posición ni por el tono de su ficha. Algunos
+            enlaces salientes son de afiliado y están señalados como tales: si contratas a través de
+            ellos, AIFinder recibe una comisión sin coste extra para ti. Eso no altera qué
+            herramientas se listan ni cómo se valoran.
           </li>
           <li>
             <strong className="text-white">Cada comparativa tiene veredicto</strong>, con casos

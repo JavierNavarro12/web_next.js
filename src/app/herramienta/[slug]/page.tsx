@@ -12,6 +12,9 @@ import { getComparisonsForTool } from '../../../utils/comparisons';
 import { isToolPublished, NOINDEX_ROBOTS } from '../../../utils/publishing';
 import { getToolPricing, PRICING_LAST_CHECKED } from '../../../utils/pricing';
 import { discontinuedTools } from '../../../data/discontinued';
+import { getAffiliateLink } from '../../../data/affiliates';
+import AffiliateCta from '../../../components/Affiliate/AffiliateCta';
+import AffiliateNotice from '../../../components/Affiliate/AffiliateNotice';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -82,6 +85,7 @@ export default async function ToolPage({ params }: Props) {
   const toolComparisons = getComparisonsForTool(tool.name);
   const pricing = getToolPricing(tool.name);
   const discontinued = discontinuedTools[tool.name];
+  const affiliate = discontinued ? undefined : getAffiliateLink(tool.name);
   const categorySlug = slugify(tool.category);
   const subcategorySlug = slugify(tool.subcategory);
 
@@ -229,6 +233,19 @@ export default async function ToolPage({ params }: Props) {
               </a>{' '}
               o baja hasta las alternativas.
             </p>
+          </div>
+        ) : affiliate ? (
+          <div className="mb-8">
+            <AffiliateCta
+              href={affiliate.url}
+              toolName={tool.name}
+              source="ficha"
+              className="inline-block px-4 py-2 rounded-lg bg-white text-black font-semibold hover:bg-zinc-200 transition-colors"
+            >
+              Probar {tool.name} →
+            </AffiliateCta>
+            {affiliate.perk && <p className="text-emerald-300/90 text-sm mt-2">{affiliate.perk}</p>}
+            <AffiliateNotice />
           </div>
         ) : (
           tool.url && (
