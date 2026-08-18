@@ -10,6 +10,9 @@ describe('Add AI Tool Tests', () => {
     cy.get('[aria-label="Abrir menú de navegación"]:visible').click();
     cy.contains('Añadir una IA').should('be.visible').click();
     cy.get('h2:contains("Sugerir una IA"):visible', { timeout: 15000 }).should('exist');
+    // Settle: la animación del menú y el remount del overlay provocan
+    // detachments si se interactúa inmediatamente.
+    cy.wait(1000);
   };
 
   beforeEach(() => {
@@ -71,7 +74,7 @@ describe('Add AI Tool Tests', () => {
     cy.get('input[name="toolName"]:visible').type('Test AI Tool');
     cy.get('input[name="toolUrl"]:visible').type('https://testaitool.com');
     cy.get('input[name="email"]:visible').type('test@example.com');
-    cy.contains('button:visible', 'Enviar Sugerencia').click();
+    cy.get('button:contains("Enviar Sugerencia"):visible', { timeout: 15000 }).first().click();
 
     // Wait for EmailJS request
     cy.wait('@emailJS');
@@ -84,7 +87,7 @@ describe('Add AI Tool Tests', () => {
     openAddAITool();
 
     // Try to submit without filling required fields
-    cy.contains('button:visible', 'Enviar Sugerencia').click();
+    cy.get('button:contains("Enviar Sugerencia"):visible', { timeout: 15000 }).first().click();
 
     // Check that form doesn't submit (HTML5 validation)
     cy.get('input[name="toolName"]:visible').should('exist');
