@@ -32,10 +32,44 @@ const homeFaqs = [
 export default function HomePage() {
   // Sin searchParams a propósito: leerlos aquí vuelve dinámica toda la home y
   // pierde la caché de edge. HomeContainer los lee de la URL tras hidratar.
-  const toolCount = getAllTools().length;
+  const allTools = getAllTools();
+  const toolCount = allTools.length;
   const allComparisons = getAllComparisons();
   const comparisonCount = allComparisons.length;
-  const featuredComparisons = allComparisons.slice(0, 8);
+
+  // Fichas y comparativas en posición 4-15 en Search Console ("striking
+  // distance", auditoría de agosto de 2026): enlazarlas desde la home les
+  // empuja autoridad interna para subir a top 3. Revisar en cada auditoría.
+  const featuredToolNames = [
+    'Midjourney',
+    'Adobe Firefly',
+    'Cursor',
+    'Gemini',
+    'ElevenLabs',
+    'Claude',
+    'Veo',
+    'Stable Diffusion',
+    'CrewAI',
+    'Brandmark',
+  ];
+  const featuredTools = featuredToolNames.flatMap((name) => {
+    const tool = allTools.find((t) => t.name === name);
+    return tool ? [tool] : [];
+  });
+  const featuredComparisonSlugs = [
+    'claude-vs-gemini',
+    'claude-vs-grok',
+    'chatgpt-vs-grok',
+    'midjourney-vs-dalle',
+    'llama-vs-mistral',
+    'deepl-vs-google-translate',
+    'chatgpt-vs-claude',
+    'zapier-vs-make',
+  ];
+  const featuredComparisons = featuredComparisonSlugs.flatMap((slug) => {
+    const comparison = allComparisons.find((c) => c.slug === slug);
+    return comparison ? [comparison] : [];
+  });
 
   // Los schemas Organization y WebSite están en layout.tsx <head>.
   const faqJsonLd = {
@@ -97,6 +131,26 @@ export default function HomePage() {
                 );
               })}
             </ul>
+
+            <h2 className="text-2xl font-bold mb-4">Herramientas más buscadas</h2>
+            <ul className="grid grid-cols-2 md:grid-cols-3 gap-3 list-none p-0 mb-4">
+              {featuredTools.map((tool) => (
+                <li key={tool.slug}>
+                  <Link
+                    href={`/herramienta/${tool.slug}`}
+                    className="block rounded-lg border border-zinc-800 bg-zinc-900/40 px-4 py-3 hover:border-zinc-600 transition-colors"
+                  >
+                    <span className="font-semibold">{tool.name}</span>
+                    <span className="block text-zinc-400 text-sm">{tool.description}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="text-zinc-500 text-sm mb-12">
+              <Link href="/herramientas" className="text-blue-400 hover:underline">
+                Ver las {toolCount} herramientas
+              </Link>
+            </p>
 
             <h2 className="text-2xl font-bold mb-4">Comparativas más buscadas</h2>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 list-none p-0 mb-4">
