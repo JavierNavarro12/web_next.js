@@ -520,21 +520,6 @@ export default function Footer({
           {/* Mobile */}
           <div className="md:hidden text-left space-y-2 mb-6">
             <div className="text-zinc-400 text-sm">© {new Date().getFullYear()} AIFinder</div>
-            {/* Badge de Startup Fame: requisito del alta gratuita (verifican que esté en la web) */}
-            <a
-              href="https://startupfa.me/s/aifinder?utm_source=www.aifinder.es"
-              target="_blank"
-              rel="noopener"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://startupfa.me/badges/featured/dark-small.webp"
-                alt="AIFinder - Featured on Startup Fame"
-                width={224}
-                height={36}
-                loading="lazy"
-              />
-            </a>
             <div className="space-y-1">
               {legalLinks.map((link) => (
                 <Link
@@ -569,22 +554,8 @@ export default function Footer({
 
           {/* Desktop */}
           <div className="hidden md:flex flex-col md:flex-row justify-between items-center relative">
-            <div className="flex items-center gap-4 mb-4 md:mb-0">
+            <div className="flex items-center mb-4 md:mb-0">
               <span className="text-zinc-400 text-sm">© {new Date().getFullYear()} AIFinder</span>
-              <a
-                href="https://startupfa.me/s/aifinder?utm_source=www.aifinder.es"
-                target="_blank"
-                rel="noopener"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://startupfa.me/badges/featured/dark-small.webp"
-                  alt="AIFinder - Featured on Startup Fame"
-                  width={224}
-                  height={36}
-                  loading="lazy"
-                />
-              </a>
             </div>
             <div className="flex items-center space-x-4">
               {legalLinks.map((link) => (

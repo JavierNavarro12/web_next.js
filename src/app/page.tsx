@@ -200,6 +200,26 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
+
+            {/* Badge de Startup Fame: requisito del alta gratuita en su directorio.
+                Va aquí y no en el Footer porque el footer solo se monta en cliente
+                y su verificador necesita encontrarlo en el HTML del servidor. */}
+            <p className="mt-12">
+              <a
+                href="https://startupfa.me/s/aifinder?utm_source=www.aifinder.es"
+                target="_blank"
+                rel="noopener"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://startupfa.me/badges/featured/dark-small.webp"
+                  alt="AIFinder - Featured on Startup Fame"
+                  width={224}
+                  height={36}
+                  loading="lazy"
+                />
+              </a>
+            </p>
           </div>
         </section>
       </HomeContainer>
