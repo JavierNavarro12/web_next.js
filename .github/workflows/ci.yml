@@ -82,6 +82,19 @@ jobs:
           path: cypress/screenshots
           if-no-files-found: ignore
 
+  indexnow:
+    # Solo en pushes a main: avisa a Bing/Yandex de las URLs tras el deploy.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Esperar al deploy de Vercel
+        run: sleep 180
+      - name: Enviar sitemap a IndexNow
+        run: node scripts/indexnow.mjs
+
   lighthouse:
     runs-on: ubuntu-latest
     needs: build
