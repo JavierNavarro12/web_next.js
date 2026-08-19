@@ -37,9 +37,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // El año se calcula en build (páginas estáticas); cada deploy lo refresca.
   // "(2026)" en el título sube CTR en búsquedas de precios/comparativas.
   const year = new Date().getFullYear();
-  const title = `${tool.name}: qué es, precios y alternativas (${year})`;
+  // Las consultas reales de Search Console preguntan "X es gratis o se paga":
+  // el título plantea esa pregunta y la description la responde al instante.
+  const title = discontinuedTools[tool.name]
+    ? `${tool.name}: cierre, qué pasó y alternativas (${year})`
+    : `${tool.name}: ¿es gratis? Precios y alternativas (${year})`;
+  const priceAnswer =
+    tool.pricing === 'free'
+      ? `${tool.name} es gratis.`
+      : tool.pricing === 'freemium'
+        ? `${tool.name} tiene versión gratuita y planes de pago.`
+        : tool.pricing === 'paid'
+          ? `${tool.name} es de pago, sin plan gratuito permanente.`
+          : '';
+  const tagline = detail ? detail.tagline.replace(/\.?\s*$/, '.') : '';
   const description = detail
-    ? `${detail.tagline} Guía de ${tool.name}: usos, funciones, ventajas, inconvenientes, precios y alternativas.`
+    ? `${priceAnswer ? `${priceAnswer} ` : ''}${tagline} Precios verificados, ventajas, inconvenientes y alternativas.`
     : `Ficha de ${tool.name}: qué es, para qué sirve, precios y alternativas en ${tool.subcategory}.`;
 
   return {
