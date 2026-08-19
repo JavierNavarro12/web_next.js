@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { articles } from '../data/articles';
 import { aiCategories } from '../data/ai-tools';
+import { bestOfGuides } from '../data/best-of';
 import { slugify } from './slugify';
 import { getSiteUrl } from './siteUrl';
 import { getAllTools } from './tools';
@@ -35,6 +36,12 @@ export function pageEntries(): SitemapEntries {
     })),
     // Las subcategorías se quedan fuera: van con noindex porque su texto
     // propio es demasiado corto para sostener una página por sí solo.
+    ...bestOfGuides.map((guide) => ({
+      url: `${base}/mejores/${guide.slug}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    })),
     { url: `${base}/sobre`, lastModified, changeFrequency: 'yearly', priority: 0.7 },
     { url: `${base}/directrices`, lastModified, changeFrequency: 'yearly', priority: 0.7 },
     { url: `${base}/privacidad`, lastModified, changeFrequency: 'yearly', priority: 0.5 },
