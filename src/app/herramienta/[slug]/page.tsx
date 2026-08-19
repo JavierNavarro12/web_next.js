@@ -12,6 +12,7 @@ import { getComparisonsForTool } from '../../../utils/comparisons';
 import { isToolPublished, NOINDEX_ROBOTS } from '../../../utils/publishing';
 import { getToolPricing, PRICING_LAST_CHECKED } from '../../../utils/pricing';
 import { discontinuedTools } from '../../../data/discontinued';
+import { getToolRating } from '../../../data/tool-ratings';
 import { getAffiliateLink } from '../../../data/affiliates';
 import AffiliateCta from '../../../components/Affiliate/AffiliateCta';
 import AffiliateNotice from '../../../components/Affiliate/AffiliateNotice';
@@ -99,12 +100,17 @@ export default async function ToolPage({ params }: Props) {
   const pricing = getToolPricing(tool.name);
   const discontinued = discontinuedTools[tool.name];
   const affiliate = discontinued ? undefined : getAffiliateLink(tool.name);
+  // Una herramienta cerrada no lleva nota: no tiene sentido puntuar lo que ya no se puede usar.
+  const rating = discontinued ? undefined : getToolRating(tool.name);
   const categorySlug = slugify(tool.category);
   const subcategorySlug = slugify(tool.subcategory);
 
   const appJsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+    // Con reseña editorial la entidad se tipa también como Product: los
+    // pros/contras (positiveNotes/negativeNotes) solo son elegibles para
+    // rich results sobre Product, no sobre SoftwareApplication a secas.
+    '@type': rating !== undefined ? ['SoftwareApplication', 'Product'] : 'SoftwareApplication',
     name: tool.name,
     description: detail.intro,
     applicationCategory: 'BusinessApplication',
@@ -123,6 +129,39 @@ export default async function ToolPage({ params }: Props) {
             category: getPricingText(tool.pricing),
           },
         }),
+    // Reseña editorial con autor Organization, no AggregateRating: no hay
+    // valoraciones de usuarios y simularlas incumple las políticas de review
+    // snippets de Google. Nota y pros/contras son los mismos que se ven en la página.
+    ...(rating !== undefined
+      ? {
+          review: {
+            '@type': 'Review',
+            author: { '@type': 'Organization', name: 'AIFinder', url: baseUrl },
+            reviewRating: {
+              '@type': 'Rating',
+              ratingValue: rating,
+              bestRating: 10,
+              worstRating: 1,
+            },
+            positiveNotes: {
+              '@type': 'ItemList',
+              itemListElement: detail.pros.map((pro, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                name: pro,
+              })),
+            },
+            negativeNotes: {
+              '@type': 'ItemList',
+              itemListElement: detail.cons.map((con, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                name: con,
+              })),
+            },
+          },
+        }
+      : {}),
   };
 
   const breadcrumbJsonLd = {
@@ -224,6 +263,25 @@ export default async function ToolPage({ params }: Props) {
                 {tool.subcategory}
               </span>
             </div>
+            {rating !== undefined && (
+              <div className="flex flex-wrap items-center gap-3 mt-4">
+                <span className="inline-flex items-baseline gap-1 rounded-lg bg-white text-black px-3 py-1.5">
+                  <span className="text-2xl font-extrabold leading-none">
+                    {rating.toLocaleString('es-ES', {
+                      minimumFractionDigits: 1,
+                      maximumFractionDigits: 1,
+                    })}
+                  </span>
+                  <span className="text-sm font-semibold">/10</span>
+                </span>
+                <span className="text-zinc-400 text-sm">
+                  Nota editorial de AIFinder ·{' '}
+                  <Link href="/sobre#como-puntuamos" className="text-blue-400 hover:underline">
+                    cómo puntuamos
+                  </Link>
+                </span>
+              </div>
+            )}
           </div>
         </header>
 

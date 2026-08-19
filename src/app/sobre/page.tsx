@@ -56,6 +56,40 @@ export default function SobrePage() {
           </li>
         </ul>
 
+        <h2 id="como-puntuamos" className="text-2xl font-bold mb-4">
+          Cómo puntuamos
+        </h2>
+        <p className="text-zinc-300 leading-relaxed mb-4">
+          Cada herramienta publicada lleva una{' '}
+          <strong className="text-white">nota editorial</strong> del 1 al 10. La asigna la redacción
+          de AIFinder — no es una media de valoraciones de usuarios ni un cálculo automático —
+          guiada por cuatro criterios:
+        </p>
+        <ul className="space-y-3 text-zinc-300 leading-relaxed list-disc pl-5 mb-4">
+          <li>
+            <strong className="text-white">Capacidades y resultados</strong>: qué hace y cómo de
+            bien resuelve el caso de uso para el que está pensada.
+          </li>
+          <li>
+            <strong className="text-white">Facilidad de uso</strong>: cuánto cuesta empezar y
+            sacarle partido sin ser experto.
+          </li>
+          <li>
+            <strong className="text-white">Precio frente a lo que ofrece</strong>: con los precios
+            verificados de la ficha, incluido si el plan gratuito sirve para algo real.
+          </li>
+          <li>
+            <strong className="text-white">Limitaciones</strong>: la gravedad de los inconvenientes
+            que documentamos en la propia ficha.
+          </li>
+        </ul>
+        <p className="text-zinc-300 leading-relaxed mb-8">
+          Como referencia: un 9 o más señala un referente de su categoría, un 8 una herramienta muy
+          sólida, un 7 una buena opción con peros y un 6 una herramienta correcta con limitaciones
+          serias. Las herramientas retiradas no llevan nota. Los enlaces de afiliado no influyen en
+          la puntuación, y revisamos la nota cuando una herramienta cambia de forma relevante.
+        </p>
+
         <h2 className="text-2xl font-bold mb-4">Contacto</h2>
         <p className="text-zinc-300 leading-relaxed mb-8">
           ¿Falta una herramienta, hay un precio desactualizado o algo no cuadra? Escríbenos a{' '}
