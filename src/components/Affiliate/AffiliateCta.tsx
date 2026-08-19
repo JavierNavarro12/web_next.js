@@ -9,7 +9,7 @@ declare global {
 type Props = {
   href: string;
   toolName: string;
-  source: 'ficha' | 'comparativa';
+  source: 'ficha' | 'comparativa' | 'mejores';
   className?: string;
   children: React.ReactNode;
 };

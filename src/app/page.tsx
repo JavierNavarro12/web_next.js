@@ -5,6 +5,7 @@ import { aiCategories } from '../data/ai-tools';
 import { slugify } from '../utils/slugify';
 import { getAllTools } from '../utils/tools';
 import { getAllComparisons } from '../utils/comparisons';
+import { bestOfGuides } from '../data/best-of';
 
 const homeFaqs = [
   {
@@ -172,6 +173,23 @@ export default function HomePage() {
                 Ver las {comparisonCount} comparativas
               </Link>
             </p>
+
+            <h2 className="text-2xl font-bold mb-4">Guías para elegir</h2>
+            <ul className="grid grid-cols-1 md:grid-cols-3 gap-3 list-none p-0 mb-12">
+              {bestOfGuides.map((guide) => (
+                <li key={guide.slug}>
+                  <Link
+                    href={`/mejores/${guide.slug}`}
+                    className="block rounded-lg border border-zinc-800 bg-zinc-900/40 px-4 py-3 hover:border-zinc-600 transition-colors"
+                  >
+                    <span className="font-semibold">{guide.title}</span>
+                    <span className="block text-zinc-400 text-sm">
+                      {guide.items.map((item) => item.tool).join(' · ')}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
 
             <h2 className="text-2xl font-bold mb-4">Preguntas frecuentes</h2>
             <div className="space-y-4">
