@@ -69,6 +69,10 @@ export const metadata: Metadata = {
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: {
+      // Reclamación del sitio en Pinterest (cuenta info@aifinder.es)
+      'p:domain_verify': 'b1009be82d37e1ecc8e1ece7052bae6e',
+    },
   },
   category: 'technology',
   icons: {
