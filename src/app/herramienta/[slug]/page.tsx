@@ -127,6 +127,9 @@ export default async function ToolPage({ params }: Props) {
             price: tool.pricing === 'paid' ? undefined : '0',
             priceCurrency: 'EUR',
             category: getPricingText(tool.pricing),
+            // Requerido por Google al tipar la ficha como Product (aviso en GSC
+            // "Falta el campo availability"): un SaaS operativo está disponible.
+            availability: 'https://schema.org/InStock',
           },
         }),
     // Reseña editorial con autor Organization, no AggregateRating: no hay
