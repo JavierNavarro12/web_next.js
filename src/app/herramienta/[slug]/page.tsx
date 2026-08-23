@@ -118,13 +118,16 @@ export default async function ToolPage({ params }: Props) {
     operatingSystem: 'Web',
     url: tool.url,
     image: `${baseUrl}${tool.image}`,
-    // Una herramienta cerrada no tiene oferta que anunciar
-    ...(discontinued
+    // Una herramienta cerrada no tiene oferta que anunciar. Las de pago
+    // tampoco emiten oferta: no tienen un precio único que declarar y Google
+    // exige "price" en offers al tipar Product (error en GSC 22-ago-2026);
+    // su precio real va en la tabla visible de la ficha.
+    ...(discontinued || tool.pricing === 'paid'
       ? {}
       : {
           offers: {
             '@type': 'Offer',
-            price: tool.pricing === 'paid' ? undefined : '0',
+            price: '0',
             priceCurrency: 'EUR',
             category: getPricingText(tool.pricing),
             // Requerido por Google al tipar la ficha como Product (aviso en GSC
