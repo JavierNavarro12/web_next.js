@@ -14,6 +14,7 @@ export const affiliateLinks: Record<string, AffiliateLink> = {
     url: 'https://www.make.com/en/register?pc=aifinder',
     perk: 'Con este enlace: 1 mes del plan Core gratis, con 10.000 créditos incluidos.',
   },
+  Murf: { url: 'https://get.murf.ai/6cwgu0ao4cvd' },
 };
 
 export function getAffiliateLink(toolName: string): AffiliateLink | undefined {
