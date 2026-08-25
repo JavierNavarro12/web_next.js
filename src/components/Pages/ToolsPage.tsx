@@ -342,7 +342,12 @@ const toolsGroups: ToolsGroup[] = [
   },
 ];
 
-export default function ToolsPage() {
+/**
+ * `children` es el índice del catálogo que renderiza el servidor: esta vista
+ * es de cliente, así que sus enlaces no llegan al HTML servido y Google no
+ * podía descubrir ninguna ficha desde /herramientas (mismo caso que el footer).
+ */
+export default function ToolsPage({ children }: { children?: React.ReactNode }) {
   const [activeFilter, setActiveFilter] = useState<'all' | 'free' | 'paid'>('all');
   const [activeTab, setActiveTab] = useState<string>(toolsGroups[0].name);
   const [searchTerm, setSearchTerm] = useState('');
@@ -722,6 +727,7 @@ export default function ToolsPage() {
           );
         })}
       </div>
+      {children}
       <Footer setShowFeedback={() => {}} setShowBugReport={() => {}} />
     </div>
   );
