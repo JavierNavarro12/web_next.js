@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const baseUrl = getSiteUrl();
-  const description = comparison.intro.slice(0, 155);
+  const description = `¿${comparison.a} o ${comparison.b}? Diferencias, precios y cuál elegir según el uso, con tabla comparativa y veredicto.`;
   const year = new Date().getFullYear();
   const title = `${comparison.title} (${year})`;
 
