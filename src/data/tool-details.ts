@@ -4295,52 +4295,53 @@ export const toolDetails: Record<string, ToolDetail> = {
       },
     ],
   },
-  'Google Workspace Duet': {
-    name: 'Google Workspace Duet',
-    tagline: 'Asistente de IA de Google integrado en Gmail, Docs, Sheets y Meet',
+  'Gemini para Google Workspace': {
+    name: 'Gemini para Google Workspace',
+    tagline:
+      'La IA de Google integrada en Gmail, Documentos, Hojas de cálculo, Meet y el resto de Workspace',
     intro:
-      'Google Workspace Duet fue el nombre con el que Google presentó sus funciones de inteligencia artificial generativa dentro de Workspace, integradas en Gmail, Documentos, Hojas de cálculo, Presentaciones y Meet. Ayuda a redactar correos y documentos, generar imágenes para presentaciones, organizar datos en hojas de cálculo y tomar notas en reuniones. Estas capacidades se han ido reorganizando bajo la marca Gemini para Workspace.',
+      'Gemini para Google Workspace es la IA generativa de Google integrada en las aplicaciones de trabajo de la empresa: Gmail, Documentos, Hojas de cálculo, Presentaciones, Meet, Chat y Drive. Ayuda a redactar y resumir correos y documentos, organizar datos, preparar presentaciones y tomar notas en reuniones, y da acceso a la aplicación de Gemini y a Gemini Notebook para investigar a partir de tus propios archivos. Es el producto que Google lanzó en 2023 como Duet AI y que en febrero de 2024 pasó a llamarse Gemini. Hoy viene incluido en los planes de Workspace, con más o menos funciones según el plan.',
     useCases: [
       'Redactar y responder correos en Gmail con ayuda de IA',
-      'Generar borradores de documentos a partir de un guion',
-      'Crear tablas y organizar datos en Hojas de cálculo',
-      'Generar imágenes originales para presentaciones',
-      'Tomar notas automáticas durante reuniones en Meet',
+      'Resumir hilos de correo y documentos largos',
+      'Preparar borradores de documentos y presentaciones a partir de unas indicaciones',
+      'Organizar y analizar datos en Hojas de cálculo',
+      'Tomar notas automáticas y resumir reuniones de Meet',
     ],
     features: [
-      'Asistencia de escritura en Gmail y Documentos',
-      'Generación de imágenes dentro de Presentaciones',
-      'Ayuda para clasificar y estructurar datos en Hojas de cálculo',
-      'Resúmenes y notas automáticas de reuniones',
-      'Integración con los permisos y la seguridad de Workspace',
+      'Asistente de Gemini dentro de Gmail, Documentos, Hojas de cálculo, Presentaciones y Meet',
+      'Aplicación de Gemini incluida en la cuenta de trabajo',
+      'Gemini Notebook para investigar y resumir a partir de tus propias fuentes',
+      'Gemini en Chat y en Drive en los planes superiores',
+      'Integración con los permisos y los controles de administración de Workspace',
     ],
     pros: [
+      'Viene incluido en los planes de Workspace, sin licencia aparte para lo básico',
       'Se usa dentro de las aplicaciones de Google que ya conoce el equipo',
       'Aprovecha el contexto de los archivos y correos de la organización',
-      'Cubre varios tipos de tarea: texto, datos, imágenes y reuniones',
     ],
     cons: [
-      'Requiere una licencia de pago adicional sobre Workspace',
-      'La marca y el empaquetado han cambiado, lo que genera confusión',
+      'El plan más básico lo limita a Gmail y a la aplicación de Gemini',
+      'Poco sentido si la empresa trabaja con Microsoft 365',
       'Algunas funciones llegan antes en inglés que en español',
     ],
     pricingNote:
-      'Las funciones de IA de Google Workspace son de pago y se contratan como complemento por usuario y mes sobre una licencia de Workspace, aunque Google ha ido incluyéndolas en determinados planes.',
+      'Gemini viene incluido en los planes de pago de Google Workspace, con un alcance que crece según el plan: el más básico lo limita a Gmail y a la aplicación de Gemini, y los superiores lo extienden a Documentos, Meet, Chat y Drive. Google vende aparte un complemento de acceso ampliado a la IA para quien necesite más.',
     faqs: [
       {
-        question: '¿Qué es Google Workspace Duet?',
+        question: '¿Qué es Gemini para Google Workspace?',
         answer:
-          'Duet fue la denominación de las funciones de IA generativa de Google integradas en Workspace: ayuda de escritura en Gmail y Documentos, generación de imágenes en Presentaciones, organización de datos en Hojas de cálculo y notas automáticas en Meet. Estas capacidades se han reagrupado bajo la marca Gemini.',
+          'Es la IA generativa de Google integrada en Gmail, Documentos, Hojas de cálculo, Presentaciones, Meet y el resto de aplicaciones de Workspace. Ayuda a redactar, resumir, organizar datos y tomar notas en reuniones sin salir de las herramientas de trabajo.',
       },
       {
-        question: '¿Google Workspace Duet es gratis?',
+        question: '¿Es lo mismo que Google Workspace Duet?',
         answer:
-          'No. Se trata de funciones de pago que se contratan como complemento por usuario sobre una licencia de Google Workspace, si bien Google ha ido incorporándolas a determinados planes de suscripción.',
+          'Sí. Duet AI fue el nombre con el que Google lanzó estas funciones en 2023. En febrero de 2024 pasaron a llamarse Gemini para Google Workspace y más tarde Google las incluyó en los propios planes de Workspace, en lugar de venderlas como complemento.',
       },
       {
-        question: '¿Para qué sirve la IA de Google Workspace?',
+        question: '¿Gemini para Google Workspace es gratis?',
         answer:
-          'Sirve para acelerar el trabajo de oficina: redactar correos y documentos, resumir hilos largos, crear imágenes para presentaciones, estructurar datos en hojas de cálculo y generar notas automáticas de reuniones, todo dentro de las aplicaciones de Google que el equipo ya utiliza.',
+          'No hay versión gratuita para empresas, pero ya no se paga aparte: viene incluido en los planes de pago de Workspace. El plan más básico solo trae Gemini en Gmail y la aplicación de Gemini; para tenerlo en Documentos, Meet y el resto hace falta un plan superior.',
       },
     ],
   },
@@ -4619,7 +4620,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos flexible que otras herramientas para visualizaciones muy personalizadas',
     ],
     pricingNote:
-      'ThoughtSpot es una plataforma de pago dirigida principalmente al segmento empresarial, con precios que dependen del volumen de datos y del número de usuarios. Suele ofrecer periodos de prueba y ediciones diferenciadas.',
+      'ThoughtSpot es de pago. Los planes de entrada tienen tarifa publicada por usuario y mes, con límites de usuarios y de volumen de datos, y el plan Enterprise se negocia con el proveedor. También ofrece una modalidad de pago por consumo y una edición para desarrolladores gratuita durante un año para integrar su analítica en aplicaciones propias.',
     faqs: [
       {
         question: '¿Qué es ThoughtSpot?',
@@ -4629,7 +4630,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿ThoughtSpot es gratis?',
         answer:
-          'No, ThoughtSpot es una plataforma de pago orientada al ámbito empresarial. El precio depende del volumen de datos y del número de usuarios, y suele negociarse con el proveedor. Habitualmente ofrece periodos de prueba.',
+          'No, ThoughtSpot es una plataforma de pago orientada al ámbito empresarial. Sus planes de entrada tienen precio publicado por usuario y mes, y el plan Enterprise se negocia con el proveedor. Para desarrolladores hay una edición gratuita durante un año.',
       },
       {
         question: '¿Para qué sirve ThoughtSpot en una empresa?',
@@ -4713,11 +4714,11 @@ export const toolDetails: Record<string, ToolDetail> = {
     ],
     cons: [
       'Las señales no garantizan rentabilidad y requieren criterio propio',
-      'Cobertura centrada sobre todo en el mercado estadounidense',
+      'El plan gratuito se queda en una prueba: pocos créditos y acceso limitado',
       'Poca transparencia sobre el funcionamiento interno de los modelos',
     ],
     pricingNote:
-      'Kavout es un servicio de pago con suscripciones dirigidas tanto a inversores particulares avanzados como a clientes institucionales, con distintos niveles según las funciones y los datos incluidos.',
+      'Kavout es freemium: tiene un plan gratuito con un puñado de créditos de investigación al mes y acceso limitado, y planes de pago que amplían los créditos, abren más mercados y añaden sus agentes de IA y herramientas de cartera.',
     faqs: [
       {
         question: '¿Qué es Kavout?',
@@ -4727,7 +4728,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Kavout es gratis?',
         answer:
-          'No. Kavout funciona con suscripciones de pago, con distintos niveles según las funciones y los datos incluidos, dirigidos tanto a inversores particulares avanzados como a clientes institucionales.',
+          'Tiene un plan gratuito, pero muy limitado: sirve para probar la plataforma con unos pocos créditos al mes. Para un uso real hacen falta sus planes de pago, que amplían los créditos y los mercados cubiertos.',
       },
       {
         question: '¿Es fiable la IA para invertir en bolsa?',
@@ -4815,7 +4816,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Menos personalizable que otras plataformas más flexibles',
     ],
     pricingNote:
-      'Asana tiene un modelo freemium: el plan gratuito cubre las necesidades básicas de equipos pequeños. Las funciones avanzadas, incluidas las capacidades de IA, se incluyen en los planes de pago por usuario y mes.',
+      'Asana tiene un modelo freemium: el plan gratuito está pensado para una o dos personas con proyectos propios. Para trabajar en equipo, y para las funciones de IA, hay que pasar a los planes de pago por usuario y mes.',
     faqs: [
       {
         question: '¿Qué es Asana y para qué sirve?',
@@ -4825,7 +4826,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Asana es gratis?',
         answer:
-          'Asana ofrece un plan gratuito válido para equipos pequeños, con tareas y proyectos básicos. Las funciones avanzadas, como cronogramas, objetivos o las capacidades de inteligencia artificial, requieren planes de pago por usuario.',
+          'Asana ofrece un plan gratuito para una o dos personas, con tareas y proyectos ilimitados. Para equipos más grandes y para funciones como los objetivos o la inteligencia artificial hacen falta los planes de pago por usuario.',
       },
       {
         question: '¿Asana funciona en español?',
@@ -4913,7 +4914,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Sin informes ni métricas potentes de serie',
     ],
     pricingNote:
-      'Trello es freemium: mantiene un plan gratuito con tableros ilimitados y ciertos límites de colaboradores y automatizaciones. Los planes de pago se facturan por usuario y mes, con tramos aproximados que suelen empezar en torno a los 5-6 $ y subir según funciones (vistas avanzadas, administración, seguridad).',
+      'Trello es freemium: el plan gratuito sirve para hasta 10 colaboradores por espacio de trabajo, con límites de tableros y automatizaciones. Los planes de pago se facturan por usuario y mes y añaden tableros ilimitados, funciones de IA, vistas avanzadas y administración.',
     faqs: [
       {
         question: '¿Qué es Trello y para qué sirve?',
@@ -5227,52 +5228,53 @@ export const toolDetails: Record<string, ToolDetail> = {
       },
     ],
   },
-  Ghostwriter: {
-    name: 'Ghostwriter',
-    tagline: 'Asistente de código con IA integrado en el entorno de desarrollo de Replit',
+  'Replit Agent': {
+    name: 'Replit Agent',
+    tagline:
+      'Agente de IA de Replit que crea aplicaciones y webs completas a partir de una conversación',
     intro:
-      'Ghostwriter es el asistente de código con inteligencia artificial de Replit, la plataforma de desarrollo en el navegador. Ofrece autocompletado, explicación de código, generación de funciones y ayuda para depurar, todo dentro del propio editor de Replit. Está pensado para quien programa directamente en el navegador, desde estudiantes que aprenden a programar hasta desarrolladores que montan prototipos rápidos.',
+      'Replit Agent es el agente de programación con IA de Replit, la plataforma de desarrollo en el navegador. Le describes la aplicación o la web que quieres y la construye a través del chat: escribe el código, conecta la base de datos y la autenticación de usuarios, prueba su propio trabajo en un navegador, corrige los fallos que encuentra y publica el resultado desde el mismo espacio de trabajo. Sustituyó a Ghostwriter, el asistente de código que Replit ofrecía antes, y sirve tanto a quien no programa como a desarrolladores que quieren prototipar rápido.',
     useCases: [
-      'Autocompletar código mientras escribes en el editor',
-      'Generar funciones completas a partir de una descripción',
-      'Explicar fragmentos de código ajeno o poco claros',
-      'Depurar errores con sugerencias de corrección',
-      'Aprender a programar con ayuda contextual en tiempo real',
+      'Crear un prototipo funcional de una aplicación a partir de una idea',
+      'Montar webs y páginas de aterrizaje sin escribir código',
+      'Añadir base de datos, usuarios y pagos a una aplicación',
+      'Automatizar flujos de trabajo con agentes conectados a Slack o al correo',
+      'Iterar sobre una aplicación existente pidiendo cambios en lenguaje natural',
     ],
     features: [
-      'Autocompletado de código en línea con contexto del proyecto',
-      'Chat integrado para preguntas sobre el código',
-      'Generación de código a partir de lenguaje natural',
-      'Explicación y transformación de fragmentos seleccionados',
-      'Integrado de forma nativa en el IDE web de Replit',
+      'Construcción de aplicaciones completas a partir de instrucciones en el chat',
+      'Base de datos y autenticación integradas, y conexión con servicios como Stripe',
+      'Pruebas automáticas en un navegador, con informe y corrección de errores',
+      'Modos avanzados para tareas complejas: razonamiento extendido y modelos más potentes',
+      'Publicación de la aplicación desde el mismo espacio de trabajo',
     ],
     pros: [
-      'No requiere configurar nada: funciona dentro de Replit',
-      'Muy útil para aprender y para prototipar rápido',
-      'Combina editor, ejecución y despliegue en un solo sitio',
+      'No hace falta saber programar para obtener algo que funciona',
+      'Código, base de datos, pruebas y publicación en un solo sitio',
+      'Muy rápido para pasar de una idea a un prototipo',
     ],
     cons: [
-      'Atado al ecosistema Replit: no se usa en VS Code ni en local',
-      'Las funciones de IA más completas requieren suscripción',
-      'El código generado necesita revisión y pruebas',
+      'El coste depende del esfuerzo de cada tarea y cuesta preverlo',
+      'Atado al entorno de Replit: no trabaja sobre tu editor local',
+      'El código generado necesita revisión antes de usarlo en serio',
     ],
     pricingNote:
-      'Replit funciona con un modelo freemium: hay un nivel gratuito con el que empezar a programar, y las capacidades de IA más amplias se incluyen en los planes de pago por suscripción mensual. Los tramos y los nombres de los planes han ido cambiando con el tiempo.',
+      'Replit permite empezar gratis, pero el uso continuado del agente va en los planes de pago, que incluyen un saldo mensual para los modelos más potentes. Cuando ese saldo se agota, el agente cobra según el esfuerzo que requiere cada tarea.',
     faqs: [
       {
-        question: '¿Qué es Ghostwriter de Replit?',
+        question: '¿Qué es Replit Agent?',
         answer:
-          'Ghostwriter es el asistente de código con IA de Replit. Vive dentro del editor en el navegador y ofrece autocompletado, generación de código a partir de instrucciones en lenguaje natural, explicación de fragmentos y ayuda para depurar errores.',
+          'Es el agente de IA de Replit que crea aplicaciones y webs a partir de una conversación. Le explicas lo que quieres y escribe el código, lo prueba, corrige los fallos y lo publica desde la propia plataforma.',
       },
       {
-        question: '¿Ghostwriter es gratis?',
+        question: '¿Qué pasó con Ghostwriter de Replit?',
         answer:
-          'Replit tiene un nivel gratuito con el que se puede programar, pero las funciones de IA más completas forman parte de los planes de pago por suscripción. La oferta ha cambiado con el tiempo.',
+          'Ghostwriter era el asistente de código que Replit integraba en su editor. En 2024 Replit lanzó Replit Agent y centró en él su oferta de IA: en lugar de sugerir código línea a línea, el agente construye la aplicación completa.',
       },
       {
-        question: '¿Se puede usar Ghostwriter fuera de Replit?',
+        question: '¿Replit Agent es gratis?',
         answer:
-          'No. Ghostwriter está integrado en el entorno de desarrollo de Replit y no funciona como extensión independiente para editores locales como VS Code. Si buscas un asistente para tu editor de escritorio, tendrás que usar otra alternativa.',
+          'Se puede empezar gratis, pero para usarlo de forma continuada hace falta un plan de pago. Los planes incluyen un saldo mensual para los modelos más avanzados y, cuando se agota, el uso se cobra según el esfuerzo de cada tarea.',
       },
     ],
   },
@@ -5325,8 +5327,8 @@ export const toolDetails: Record<string, ToolDetail> = {
       },
     ],
   },
-  Testbot: {
-    name: 'Testbot',
+  TestingBot: {
+    name: 'TestingBot',
     tagline: 'Plataforma cloud de testing automatizado y cross-browser para equipos de QA',
     intro:
       'TestingBot es una plataforma en la nube para ejecutar pruebas automatizadas de aplicaciones web y móviles en cientos de combinaciones de navegador, sistema operativo y dispositivo. Se integra con frameworks habituales como Selenium, Cypress o Playwright y con los sistemas de integración continua, de modo que los equipos de QA pueden lanzar sus suites sin mantener una infraestructura propia de máquinas y dispositivos.',
@@ -5355,7 +5357,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Requiere conocimientos previos de automatización de tests',
     ],
     pricingNote:
-      'TestingBot funciona con un modelo freemium: ofrece una prueba gratuita y planes de pago por suscripción mensual que varían según los minutos de test, la ejecución en paralelo y el acceso a dispositivos reales. Los tramos suelen empezar en cifras modestas y escalar bastante para equipos grandes.',
+      'TestingBot es de pago, con una prueba gratuita para evaluarlo. Hay planes por suscripción para pruebas manuales y automatizadas, que suben según los minutos de test y las ejecuciones en paralelo, y una modalidad de pago por uso con paquetes de minutos que no caducan.',
     faqs: [
       {
         question: '¿Qué es TestingBot?',
@@ -5404,7 +5406,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'La autorreparación no siempre acierta y hay que supervisarla',
     ],
     pricingNote:
-      'Mabl es freemium en la práctica: ofrece una prueba gratuita para evaluar la plataforma y planes de pago por suscripción dirigidos a equipos, con precio en función del volumen de ejecuciones y usuarios. No publica una tarifa pública detallada.',
+      'Mabl es de pago: ofrece una prueba gratuita para evaluar la plataforma y después se contrata con un presupuesto a medida según las necesidades de testing del equipo. No publica una tarifa pública.',
     faqs: [
       {
         question: '¿Qué es Mabl?',
@@ -5419,7 +5421,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Mabl es gratis?',
         answer:
-          'No de forma permanente. Mabl ofrece una prueba gratuita para evaluar la plataforma, pero el uso continuado requiere un plan de pago cuyo precio depende del volumen de ejecuciones y del número de usuarios.',
+          'No de forma permanente. Mabl ofrece una prueba gratuita para evaluar la plataforma, pero el uso continuado requiere un plan de pago con precio a medida.',
       },
     ],
   },
@@ -5443,17 +5445,17 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Panel con métricas históricas de calidad y deuda técnica',
     ],
     pros: [
-      'Edición Community open source y gratuita, autoalojable',
+      'Edición Community Build open source y gratuita, autoalojable',
       'Cobertura de lenguajes muy amplia',
       'Estándar de facto: mucha documentación y comunidad',
     ],
     cons: [
-      'La edición Community deja fuera lenguajes y análisis avanzados',
+      'La edición Community Build deja fuera lenguajes y análisis avanzados',
       'Autoalojarlo implica mantener servidor y base de datos',
       'Puede generar mucho ruido si no se ajustan bien las reglas',
     ],
     pricingNote:
-      'SonarQube tiene una edición Community open source y gratuita que se puede autoalojar. Las ediciones de pago (Developer, Enterprise) añaden más lenguajes, análisis de ramas y funciones de seguridad, con precio según líneas de código analizadas. También existe SonarCloud como versión gestionada, gratuita para proyectos públicos.',
+      'SonarQube tiene una edición gratuita y open source, Community Build, que se puede autoalojar. SonarQube Server, también autoalojado, tiene ediciones de pago (Developer, Enterprise y Data Center) con precio anual según las líneas de código analizadas. SonarQube Cloud, la versión gestionada que antes se llamaba SonarCloud, tiene un plan gratuito que no caduca y planes de pago para equipos.',
     faqs: [
       {
         question: '¿Qué es SonarQube y para qué sirve?',
@@ -5463,61 +5465,61 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿SonarQube es gratis?',
         answer:
-          'Sí, tiene una edición Community open source y gratuita que puedes instalar en tu propio servidor. Las ediciones de pago añaden más lenguajes, análisis de ramas y funciones avanzadas de seguridad, con precio según el tamaño del código.',
+          'Sí, tiene una edición Community Build open source y gratuita que puedes instalar en tu propio servidor, y SonarQube Cloud tiene un plan gratuito. Las ediciones de pago añaden más lenguajes, análisis de ramas y funciones avanzadas de seguridad.',
       },
       {
-        question: '¿Qué diferencia hay entre SonarQube y SonarCloud?',
+        question: '¿Qué diferencia hay entre SonarQube Server y SonarQube Cloud?',
         answer:
-          'SonarQube se instala y se gestiona en tu propia infraestructura, mientras que SonarCloud es la versión alojada en la nube por Sonar, sin mantenimiento por tu parte. SonarCloud suele ser gratuito para proyectos de código abierto y de pago para repositorios privados.',
+          'SonarQube Server se instala y se gestiona en tu propia infraestructura, mientras que SonarQube Cloud es la versión alojada por Sonar, sin mantenimiento por tu parte. SonarQube Cloud es el antiguo SonarCloud: Sonar lo renombró en octubre de 2024 al reunir todas sus ediciones bajo la marca SonarQube.',
       },
     ],
   },
-  CodeClimate: {
-    name: 'CodeClimate',
-    tagline: 'Análisis de calidad de código y métricas de ingeniería para equipos de desarrollo',
+  Qlty: {
+    name: 'Qlty',
+    tagline: 'Revisión automática de calidad de código y cobertura de tests en cada pull request',
     intro:
-      'Code Climate es una plataforma que combina análisis estático de código con métricas de rendimiento del equipo de ingeniería. Su producto Quality revisa cada pull request y señala problemas de mantenibilidad, complejidad, duplicidad y cobertura de tests, mientras que Velocity aporta datos sobre el flujo de trabajo del equipo. Se integra directamente con GitHub, GitLab y Bitbucket.',
+      'Qlty es una plataforma de calidad de código que revisa cada pull request y señala problemas de linting, formato, duplicidad, complejidad y seguridad, además de medir la cobertura de tests. Es el antiguo Code Climate Quality: en noviembre de 2024 Code Climate separó su producto de calidad de código en una empresa nueva, Qlty Software, y se quedó solo con sus métricas de ingeniería. El análisis corre en su nube, conectada a GitHub, y también hay una herramienta de línea de comandos gratuita para lanzarlo en local.',
     useCases: [
       'Revisar automáticamente la calidad de cada pull request',
+      'Evitar que un cambio haga bajar la cobertura de tests',
       'Controlar la complejidad y la duplicidad del código',
-      'Seguir la evolución de la cobertura de tests',
-      'Identificar los ficheros más problemáticos de un repositorio',
-      'Medir el rendimiento y los cuellos de botella del equipo',
+      'Detectar vulnerabilidades y secretos expuestos en el repositorio',
+      'Aplicar linting y formato automático en proyectos con varios lenguajes',
     ],
     features: [
-      'Análisis de mantenibilidad y complejidad del código',
-      'Comentarios automáticos en los pull requests',
-      'Seguimiento de la cobertura de tests a lo largo del tiempo',
-      'Métricas de ingeniería y flujo de trabajo (Velocity)',
-      'Integración nativa con GitHub, GitLab y Bitbucket',
+      'Comentarios y estado de aprobado o suspenso en cada pull request',
+      'Cobertura de tests con umbrales mínimos y cálculo sobre las líneas modificadas',
+      'Análisis de seguridad (SAST y SCA) y detección de secretos',
+      'Sugerencias de corrección generadas con IA',
+      'Herramienta de línea de comandos gratuita para analizar en local',
     ],
     pros: [
-      'Gratuito para proyectos de código abierto',
-      'Se integra en el flujo de pull requests sin fricción',
-      'Aporta una nota de mantenibilidad fácil de comunicar',
+      'Plan gratuito generoso, también para repositorios privados',
+      'No hace falta configurar la integración continua: el análisis corre en su nube',
+      'Reúne linting, cobertura y seguridad en una sola herramienta',
     ],
     cons: [
-      'Menos lenguajes soportados que alternativas como SonarQube',
-      'Las métricas de equipo pueden malinterpretarse como control individual',
-      'Los repositorios privados requieren plan de pago',
+      'Marca nueva y menos conocida que alternativas como SonarQube',
+      'Los minutos de análisis del plan gratuito se quedan cortos en repositorios grandes',
+      'Las correcciones propuestas por la IA hay que revisarlas antes de aceptarlas',
     ],
     pricingNote:
-      'Code Climate es freemium: su análisis de calidad es gratuito para repositorios de código abierto, mientras que los repositorios privados y las funciones de métricas de equipo se facturan por usuario y mes en planes de pago.',
+      'Qlty es freemium: el plan gratuito sirve para repositorios públicos y privados sin límite de colaboradores, con un cupo mensual de minutos de análisis y de correcciones con IA. Los planes de pago se cobran por colaborador y mes y amplían esos cupos, el historial y el soporte.',
     faqs: [
       {
-        question: '¿Qué es Code Climate?',
+        question: '¿Qué es Qlty?',
         answer:
-          'Code Climate es una plataforma de análisis de calidad de código que revisa automáticamente cada pull request y señala problemas de mantenibilidad, complejidad, duplicidad y cobertura de tests. También ofrece métricas sobre el flujo de trabajo del equipo de ingeniería.',
+          'Es una plataforma de calidad de código que revisa automáticamente cada pull request, señala problemas de linting, duplicidad, complejidad y seguridad, y mide la cobertura de tests. Se conecta a GitHub y tiene una herramienta de línea de comandos gratuita.',
       },
       {
-        question: '¿Code Climate es gratis?',
+        question: '¿Qué relación tiene Qlty con Code Climate?',
         answer:
-          'Su análisis de calidad es gratuito para proyectos de código abierto. Para repositorios privados y para las funciones de métricas de equipo hay planes de pago facturados por usuario y mes.',
+          'Qlty es el antiguo Code Climate Quality. En noviembre de 2024 Code Climate separó ese producto en una empresa nueva, Qlty Software, y se quedó solo con sus métricas de ingeniería. Si buscas el análisis de calidad de Code Climate, hoy es Qlty.',
       },
       {
-        question: '¿Qué diferencia hay entre Code Climate y SonarQube?',
+        question: '¿Qlty es gratis?',
         answer:
-          'Ambos hacen análisis estático, pero SonarQube cubre más lenguajes y puede autoalojarse, con un enfoque fuerte en seguridad. Code Climate está más orientado a la mantenibilidad y a integrarse en el flujo de pull requests, y añade métricas de rendimiento del equipo.',
+          'Tiene un plan gratuito para repositorios públicos y privados, sin límite de colaboradores, con un cupo mensual de minutos de análisis y de correcciones con IA. Los planes Pro y Enterprise se pagan por colaborador y mes.',
       },
     ],
   },
@@ -5623,7 +5625,7 @@ export const toolDetails: Record<string, ToolDetail> = {
     name: 'PathAI',
     tagline: 'IA para patología digital que asiste en el análisis de muestras histológicas',
     intro:
-      'PathAI es una empresa de inteligencia artificial aplicada a la patología digital. Desarrolla algoritmos que analizan imágenes de tejidos (portaobjetos digitalizados) para apoyar a los patólogos en la detección y cuantificación de hallazgos, y trabaja tanto con laboratorios clínicos como con farmacéuticas en el desarrollo de fármacos y ensayos clínicos. No es una herramienta de consumo: se implanta en entornos de investigación y diagnóstico profesional.',
+      'PathAI es una empresa de inteligencia artificial aplicada a la patología digital. Desarrolla algoritmos que analizan imágenes de tejidos (portaobjetos digitalizados) para apoyar a los patólogos en la detección y cuantificación de hallazgos, y trabaja tanto con laboratorios clínicos como con farmacéuticas en el desarrollo de fármacos y ensayos clínicos. No es una herramienta de consumo: se implanta en entornos de investigación y diagnóstico profesional. En mayo de 2026 Roche firmó un acuerdo para comprarla, con el cierre previsto para la segunda mitad del año.',
     useCases: [
       'Analizar portaobjetos digitalizados en patología digital',
       'Cuantificar biomarcadores en muestras de tejido',
@@ -5698,7 +5700,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Puede generar respuestas incorrectas y requiere supervisión médica',
     ],
     pricingNote:
-      'Med-PaLM es principalmente un proyecto de investigación de Google, sin un modelo comercial de suscripción abierto al público. El acceso se ha canalizado a través de programas para organizaciones sanitarias seleccionadas y de la plataforma cloud de Google, donde el uso se factura por consumo.',
+      'Med-PaLM es un proyecto de investigación de Google, sin un modelo comercial de suscripción abierto al público. Su vía comercial fue MedLM, en la plataforma cloud de Google y facturado por consumo, que Google retiró en septiembre de 2025.',
     faqs: [
       {
         question: '¿Qué es Med-PaLM?',
@@ -5708,7 +5710,7 @@ export const toolDetails: Record<string, ToolDetail> = {
       {
         question: '¿Med-PaLM es gratis?',
         answer:
-          'No es un producto de suscripción abierto al público. Se ha desarrollado como proyecto de investigación y su acceso se ha limitado a organizaciones sanitarias y socios seleccionados, canalizado a través de la plataforma cloud de Google.',
+          'No es un producto de suscripción abierto al público. Se desarrolló como proyecto de investigación y su acceso se limitó a organizaciones sanitarias y socios seleccionados a través de MedLM, en la plataforma cloud de Google, que se retiró en septiembre de 2025. Su sucesor es MedGemma, un modelo abierto de Google para desarrolladores del sector sanitario.',
       },
       {
         question: '¿Puedo usar Med-PaLM para diagnosticarme?',
@@ -5717,11 +5719,11 @@ export const toolDetails: Record<string, ToolDetail> = {
       },
     ],
   },
-  'Zebra Medical': {
-    name: 'Zebra Medical',
+  'Nanox AI': {
+    name: 'Nanox AI',
     tagline: 'Algoritmos de IA para el análisis automático de imágenes médicas radiológicas',
     intro:
-      'Zebra Medical Vision es una compañía de inteligencia artificial aplicada a la imagen médica. Desarrolla algoritmos que analizan radiografías, TAC y otras pruebas para detectar de forma automática hallazgos como fracturas, patología pulmonar o indicadores cardiovasculares. Sus soluciones se dirigen a hospitales y sistemas de salud, y se integran en los flujos radiológicos existentes. La empresa pasó a formar parte de Nanox.',
+      'Nanox AI (Nanox.AI) es la división de inteligencia artificial para imagen médica de Nanox y el nombre actual de Zebra Medical Vision, que se fusionó con Nanox en noviembre de 2021. Desarrolla algoritmos que analizan TAC y otras pruebas ya realizadas para detectar de forma automática hallazgos cardiacos, hepáticos u óseos que pueden pasar desapercibidos, con soluciones como HealthCCSng (corazón), HealthFLD (hígado) y HealthOST (hueso). Se dirige a hospitales y sistemas de salud y se integra en los flujos radiológicos existentes.',
     useCases: [
       'Detectar hallazgos radiológicos de forma automatizada',
       'Cribado poblacional a partir de imágenes ya existentes',
@@ -5730,9 +5732,9 @@ export const toolDetails: Record<string, ToolDetail> = {
       'Analizar de forma retrospectiva archivos de imagen hospitalarios',
     ],
     features: [
-      'Cartera de algoritmos para distintas modalidades de imagen',
+      'Soluciones específicas para hallazgos cardiacos, hepáticos y óseos',
       'Integración con sistemas PACS hospitalarios',
-      'Detección automática de hallazgos en radiografía y TAC',
+      'Detección automática de hallazgos en TAC ya realizados',
       'Aplicaciones orientadas a cribado y prevención',
       'Despliegue en la nube o en la infraestructura del hospital',
     ],
@@ -5743,24 +5745,24 @@ export const toolDetails: Record<string, ToolDetail> = {
     ],
     cons: [
       'Solo para instituciones sanitarias, no para particulares',
-      'La marca se ha integrado en Nanox y su oferta ha evolucionado',
+      'Su cartera actual se centra en unas pocas soluciones de cribado',
       'Siempre requiere validación del hallazgo por un radiólogo',
     ],
     pricingNote:
-      'Zebra Medical es una solución de pago dirigida a hospitales y sistemas de salud. No publica tarifas: el modelo habitual en este sector es el contrato institucional con precio por algoritmo o por estudio analizado. Su oferta se ha integrado en la de Nanox.',
+      'Nanox AI es una solución de pago dirigida a hospitales y sistemas de salud. No publica tarifas: el modelo habitual en este sector es el contrato institucional con precio por algoritmo o por estudio analizado.',
     faqs: [
       {
-        question: '¿Qué es Zebra Medical Vision?',
+        question: '¿Qué es Nanox AI?',
         answer:
-          'Zebra Medical Vision es una compañía de inteligencia artificial para imagen médica. Desarrolla algoritmos que analizan radiografías y TAC para detectar automáticamente hallazgos clínicos, con el fin de apoyar a los radiólogos y facilitar programas de cribado. Actualmente forma parte de Nanox.',
+          'Es la división de inteligencia artificial para imagen médica de Nanox. Sus algoritmos analizan TAC y otras pruebas ya realizadas para detectar automáticamente hallazgos cardiacos, hepáticos u óseos, como apoyo al radiólogo y para programas de cribado.',
       },
       {
-        question: '¿Para qué sirve Zebra Medical?',
+        question: '¿Qué pasó con Zebra Medical Vision?',
         answer:
-          'Sirve para analizar de forma automática pruebas de imagen ya realizadas y detectar hallazgos como fracturas, patología pulmonar o indicadores cardiovasculares. Se usa como apoyo al radiólogo y en iniciativas de cribado que aprovechan el archivo de imágenes existente.',
+          'Zebra Medical Vision se fusionó con Nanox en noviembre de 2021 y pasó a llamarse Nanox AI. Su tecnología de análisis de imagen médica continúa bajo ese nombre, dentro de la oferta de Nanox.',
       },
       {
-        question: '¿Zebra Medical es gratis?',
+        question: '¿Nanox AI es gratis?',
         answer:
           'No. Es una solución de pago dirigida a hospitales y sistemas de salud, sin versión gratuita ni acceso para particulares. El precio se acuerda mediante contrato institucional, habitualmente por algoritmo o por estudio analizado.',
       },

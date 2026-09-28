@@ -51,7 +51,7 @@ export const getOfficeTools = () => {
       [
         'Notion AI',
         'Microsoft 365 Copilot',
-        'Google Workspace Duet',
+        'Gemini para Google Workspace',
         'Gamma',
         'Magic Write',
         'Canva Magic Studio',

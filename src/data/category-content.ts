@@ -517,7 +517,7 @@ export const subcategoryContent: SubcategoryContent[] = [
     sub: 'Ofimática inteligente',
     title: 'Las mejores herramientas de IA para ofimática y productividad',
     intro:
-      'Aquí la IA no es una app aparte: vive dentro de las herramientas en las que ya trabajas. Microsoft 365 Copilot redacta en Word, resume hilos en Outlook y monta presentaciones desde un documento; Google Workspace Duet hace lo propio en Docs, Gmail y Sheets; Notion AI resume, traduce y estructura dentro de tus páginas; Gamma convierte un texto en una presentación presentable; Magic Write acelera la escritura en Canva; y Canva Magic Studio cubre la parte visual sin salir del mismo lienzo.',
+      'Aquí la IA no es una app aparte: vive dentro de las herramientas en las que ya trabajas. Microsoft 365 Copilot redacta en Word, resume hilos en Outlook y monta presentaciones desde un documento; Gemini para Google Workspace hace lo propio en Docs, Gmail y Sheets; Notion AI resume, traduce y estructura dentro de tus páginas; Gamma convierte un texto en una presentación presentable; Magic Write acelera la escritura en Canva; y Canva Magic Studio cubre la parte visual sin salir del mismo lienzo.',
     body: 'El criterio principal es dónde tienes ya los documentos y el correo, porque el valor de estas herramientas nace de acceder a tu contexto real: tus archivos, tus reuniones, tus hilos. Una IA ofimática desconectada de tus datos no pasa de asistente genérico. Valora también el coste por usuario y mes, que en despliegues grandes se acumula rápido, y haz una prueba con un equipo pequeño antes de comprar licencias para toda la plantilla: la adopción real suele ser menor de lo previsto.',
   },
   {
@@ -541,7 +541,7 @@ export const subcategoryContent: SubcategoryContent[] = [
     sub: 'IA legal',
     title: 'Las mejores herramientas de IA para el sector legal',
     intro:
-      'La IA legal ataca el cuello de botella del despacho: revisar cantidades enormes de documentación. Harvey trabaja sobre investigación jurídica y redacción para grandes firmas; Luminance analiza contratos en due diligence y detecta cláusulas anómalas en un volumen que ningún equipo podría leer entero; Spellbook asiste en la redacción y negociación de contratos dentro del propio procesador de textos; Evisort y LawGeex automatizan la revisión y el ciclo de vida contractual; y DoNotPay se orienta al usuario particular en trámites y reclamaciones cotidianas.',
+      'La IA legal ataca el cuello de botella del despacho: revisar cantidades enormes de documentación. Harvey trabaja sobre investigación jurídica y redacción para grandes firmas; Luminance analiza contratos en due diligence y detecta cláusulas anómalas en un volumen que ningún equipo podría leer entero; Spellbook asiste en la redacción y negociación de contratos dentro del propio procesador de textos; LawGeex automatiza la revisión de contratos y Evisort, hoy integrada en Workday, el ciclo de vida contractual; y DoNotPay se orienta al usuario particular en trámites y reclamaciones cotidianas.',
     body: 'Aquí el criterio es la verificabilidad. Una IA legal solo sirve si cita la fuente exacta —la cláusula, el artículo, la sentencia— y permite comprobarla en un clic, porque la responsabilidad profesional sigue siendo del abogado. Comprueba también el encaje con el derecho español y europeo: muchas herramientas están entrenadas principalmente con derecho anglosajón y su utilidad aquí es limitada. Y valora el tratamiento de la confidencialidad del cliente: los documentos que subes no deberían alimentar el modelo de nadie.',
   },
   {
@@ -549,7 +549,7 @@ export const subcategoryContent: SubcategoryContent[] = [
     sub: 'Asistentes de código',
     title: 'Los mejores asistentes de IA para programar',
     intro:
-      'Un asistente de código vive dentro de tu editor y trabaja con el contexto de tu proyecto: completa lo que estás escribiendo, propone la función entera, la refactoriza cuando se lo pides y explica un fragmento ajeno. GitHub Copilot es el más extendido y el que mejor se integra en los editores habituales; Cursor reconstruye el propio IDE alrededor del modelo; Claude destaca en tareas largas que exigen razonar sobre varios archivos; Tabnine ofrece despliegue privado; y Ghostwriter o Bolt apuntan a prototipar rápido desde el navegador.',
+      'Un asistente de código vive dentro de tu editor y trabaja con el contexto de tu proyecto: completa lo que estás escribiendo, propone la función entera, la refactoriza cuando se lo pides y explica un fragmento ajeno. GitHub Copilot es el más extendido y el que mejor se integra en los editores habituales; Cursor reconstruye el propio IDE alrededor del modelo; Claude destaca en tareas largas que exigen razonar sobre varios archivos; Tabnine ofrece despliegue privado; y Replit Agent o Bolt apuntan a prototipar rápido desde el navegador.',
     body: 'Lo que más se nota en el día a día es cuánto contexto del repositorio ve la herramienta: un asistente que solo lee el archivo abierto sugiere código que ignora tus convenciones y tus utilidades ya existentes. Valora también la latencia, porque una sugerencia que llega tarde estorba más que ayuda, y la política de datos si tu código es privado. Con equipos grandes, acordar cómo se revisa el código generado importa más que la herramienta elegida: el cuello de botella se desplaza a la revisión.',
   },
   {
@@ -557,7 +557,7 @@ export const subcategoryContent: SubcategoryContent[] = [
     sub: 'Testing y QA',
     title: 'Las mejores herramientas de IA para testing y QA',
     intro:
-      'Escribir tests es lo primero que se sacrifica cuando aprieta la fecha de entrega, y ahí es donde la IA aporta valor real. Codium analiza tu código y propone tests que cubren casos límite que no habías considerado; Diffblue genera tests unitarios para Java de forma automática; Testim y Mabl se ocupan del extremo a extremo, manteniendo los tests de interfaz cuando la UI cambia y evitando que se rompan por un selector movido; y Testbot cubre la automatización de pruebas dentro del flujo de trabajo del equipo.',
+      'Escribir tests es lo primero que se sacrifica cuando aprieta la fecha de entrega, y ahí es donde la IA aporta valor real. Codium analiza tu código y propone tests que cubren casos límite que no habías considerado; Diffblue genera tests unitarios para Java de forma automática; Testim y Mabl se ocupan del extremo a extremo, manteniendo los tests de interfaz cuando la UI cambia y evitando que se rompan por un selector movido; y TestingBot ejecuta las suites automatizadas en la nube sobre muchas combinaciones de navegador y dispositivo.',
     body: 'Decide primero dónde está tu dolor. Si tienes cobertura baja en lógica de negocio, un generador de tests unitarios te da recorrido inmediato. Si tus tests de interfaz se rompen cada semana por cambios triviales, una herramienta de mantenimiento automático de selectores ahorra más. Y recuerda que la IA genera tests que reflejan lo que el código hace, no lo que debería hacer: si hay un bug, puede fijarlo como comportamiento esperado. Los tests generados también se revisan.',
   },
   {
@@ -565,7 +565,7 @@ export const subcategoryContent: SubcategoryContent[] = [
     sub: 'Análisis estático',
     title: 'Las mejores herramientas de análisis estático con IA',
     intro:
-      'El análisis estático revisa el código sin ejecutarlo, buscando errores, vulnerabilidades, duplicidad y deuda técnica antes de que lleguen a producción. SonarQube es el referente en entornos empresariales, con reglas para prácticamente cualquier lenguaje y despliegue autoalojado; DeepSource añade una capa de detección más inteligente y correcciones automáticas de los problemas más comunes; y CodeClimate o CodeFactor puntúan la salud del repositorio e integran el análisis en cada pull request para bloquear lo que empeora la base.',
+      'El análisis estático revisa el código sin ejecutarlo, buscando errores, vulnerabilidades, duplicidad y deuda técnica antes de que lleguen a producción. SonarQube es el referente en entornos empresariales, con reglas para prácticamente cualquier lenguaje y despliegue autoalojado; DeepSource añade una capa de detección más inteligente y correcciones automáticas de los problemas más comunes; y Qlty o CodeFactor puntúan la salud del repositorio e integran el análisis en cada pull request para bloquear lo que empeora la base.',
     body: 'El problema clásico de estas herramientas es el ruido: si el primer análisis te devuelve miles de avisos en un proyecto con años de historia, el equipo los ignorará todos. La estrategia que funciona es aplicar la regla solo al código nuevo o modificado, dejando la deuda antigua congelada, y endurecer los criterios poco a poco. Al elegir, comprueba la cobertura de tus lenguajes, la integración con tu CI y si puedes ajustar las reglas: una configuración por defecto rara vez encaja con tu proyecto.',
   },
   {
@@ -573,7 +573,7 @@ export const subcategoryContent: SubcategoryContent[] = [
     sub: 'Diagnóstico asistido',
     title: 'Las mejores IA para diagnóstico médico asistido',
     intro:
-      'Estos sistemas no diagnostican: dan al clínico una segunda lectura y ordenan su trabajo. Aidoc revisa estudios de urgencias y sube al principio de la lista los casos con hallazgos críticos, para que el radiólogo los vea antes; PathAI aporta análisis de anatomía patológica sobre muestras digitalizadas; Lunit y Zebra Medical detectan hallazgos en radiografía y TAC; y MedPaLM representa la línea de modelos de lenguaje entrenados específicamente sobre conocimiento médico y preguntas clínicas.',
+      'Estos sistemas no diagnostican: dan al clínico una segunda lectura y ordenan su trabajo. Aidoc revisa estudios de urgencias y sube al principio de la lista los casos con hallazgos críticos, para que el radiólogo los vea antes; PathAI aporta análisis de anatomía patológica sobre muestras digitalizadas; Lunit detecta hallazgos en radiografía y Nanox AI en TAC ya realizados; y MedPaLM abrió la línea de modelos de lenguaje entrenados específicamente sobre conocimiento médico, que Google continúa hoy con sus modelos abiertos MedGemma.',
     body: 'El criterio de selección aquí es regulatorio antes que técnico: comprueba si el sistema tiene marcado CE para la indicación concreta que le vas a dar y si existen estudios que lo validen en poblaciones comparables a la tuya. Después viene la integración: una herramienta que obligue a exportar imágenes manualmente no se usará. Y define desde el principio el papel del sistema, que debe ser el de apoyo y priorización, con el juicio clínico y la responsabilidad siempre en manos del profesional.',
   },
   {
@@ -581,7 +581,7 @@ export const subcategoryContent: SubcategoryContent[] = [
     sub: 'Imágenes médicas',
     title: 'Las mejores IA para análisis de imágenes médicas',
     intro:
-      'La imagen médica es el terreno donde la IA sanitaria lleva más recorrido, porque es una tarea de reconocimiento de patrones con datos abundantes y bien etiquetados. Aidoc se centra en la detección de hallazgos urgentes en TAC; Lunit y Zebra Medical trabajan sobre radiografía y cribado, con especial peso en mama y tórax; Enlitic organiza y clasifica automáticamente los estudios que entran en el PACS; y PathAI lleva el mismo enfoque a la patología digital sobre muestras de tejido.',
+      'La imagen médica es el terreno donde la IA sanitaria lleva más recorrido, porque es una tarea de reconocimiento de patrones con datos abundantes y bien etiquetados. Aidoc se centra en la detección de hallazgos urgentes en TAC; Lunit trabaja sobre radiografía y cribado, con especial peso en mama y tórax; Nanox AI busca hallazgos cardiacos, hepáticos y óseos en TAC ya realizados; Enlitic organiza y clasifica automáticamente los estudios que entran en el PACS; y PathAI lleva el mismo enfoque a la patología digital sobre muestras de tejido.',
     body: 'Al valorar una solución, mira el rendimiento sobre tu población y tu equipamiento: un modelo entrenado con imágenes de otros escáneres y otra demografía puede caer notablemente en tu servicio. Exige métricas de sensibilidad y especificidad para la indicación concreta, no cifras globales de marketing. Y valora el impacto real en el flujo: el beneficio no suele estar en detectar lo que el radiólogo vería igualmente, sino en reordenar la lista de trabajo para que lo urgente se lea primero.',
   },
   {
