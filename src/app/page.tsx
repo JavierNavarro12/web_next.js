@@ -39,19 +39,19 @@ export default function HomePage() {
   const comparisonCount = allComparisons.length;
 
   // Fichas y comparativas en posición 4-15 en Search Console ("striking
-  // distance", auditoría de agosto de 2026): enlazarlas desde la home les
-  // empuja autoridad interna para subir a top 3. Revisar en cada auditoría.
+  // distance", auditorías de agosto y septiembre de 2026): enlazarlas desde la
+  // home les empuja autoridad interna para subir a top 3. Revisar en cada auditoría.
   const featuredToolNames = [
     'Midjourney',
+    'Google Flow',
     'Adobe Firefly',
     'Cursor',
-    'Gemini',
-    'ElevenLabs',
-    'Claude',
     'Veo',
-    'Stable Diffusion',
-    'CrewAI',
-    'Brandmark',
+    'Grok',
+    'ElevenLabs',
+    'Gemini',
+    'Claude',
+    'GitHub Copilot',
   ];
   const featuredTools = featuredToolNames.flatMap((name) => {
     const tool = allTools.find((t) => t.name === name);
@@ -63,7 +63,7 @@ export default function HomePage() {
     'chatgpt-vs-grok',
     'midjourney-vs-dalle',
     'llama-vs-mistral',
-    'deepl-vs-google-translate',
+    'chatgpt-vs-gemini',
     'chatgpt-vs-claude',
     'zapier-vs-make',
   ];

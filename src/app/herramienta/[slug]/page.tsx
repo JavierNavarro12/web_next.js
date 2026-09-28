@@ -9,6 +9,7 @@ import { slugify } from '../../../utils/slugify';
 import { getPricingText } from '../../../utils/toolUtils';
 import { findToolBySlug, getAllTools, getRelatedTools, getToolDetail } from '../../../utils/tools';
 import { getComparisonsForTool } from '../../../utils/comparisons';
+import { getToolArticles } from '../../../utils/articleToolLinks';
 import { isToolPublished, NOINDEX_ROBOTS } from '../../../utils/publishing';
 import { getToolPricing, PRICING_LAST_CHECKED } from '../../../utils/pricing';
 import { discontinuedTools } from '../../../data/discontinued';
@@ -97,6 +98,7 @@ export default async function ToolPage({ params }: Props) {
   const baseUrl = getSiteUrl();
   const related = getRelatedTools(tool);
   const toolComparisons = getComparisonsForTool(tool.name);
+  const toolArticles = getToolArticles(tool.name);
   const pricing = getToolPricing(tool.name);
   const discontinued = discontinuedTools[tool.name];
   const affiliate = discontinued ? undefined : getAffiliateLink(tool.name);
@@ -503,6 +505,24 @@ export default async function ToolPage({ params }: Props) {
                     <span className="font-semibold">
                       {comparison.a} vs {comparison.b}
                     </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {toolArticles.length > 0 && (
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold mb-3">Artículos sobre {tool.name}</h2>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 list-none p-0">
+              {toolArticles.map((article) => (
+                <li key={article.slug}>
+                  <Link
+                    href={`/articles/${article.slug}`}
+                    className="block rounded-lg border border-zinc-800 bg-zinc-900/40 px-4 py-3 hover:border-zinc-600 transition-colors"
+                  >
+                    <span className="font-semibold">{article.title}</span>
                   </Link>
                 </li>
               ))}

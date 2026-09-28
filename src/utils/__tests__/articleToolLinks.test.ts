@@ -1,5 +1,5 @@
 import { findToolMention } from '../toolMention';
-import { getArticleToolLinks } from '../articleToolLinks';
+import { getArticleToolLinks, getToolArticles } from '../articleToolLinks';
 import type { Article } from '../../types/article';
 
 describe('findToolMention', () => {
@@ -53,5 +53,20 @@ describe('getArticleToolLinks', () => {
 
   it('devuelve vacío sin secciones', () => {
     expect(getArticleToolLinks({ ...baseArticle, contentSections: undefined })).toEqual({});
+  });
+});
+
+describe('getToolArticles', () => {
+  it('pone primero los artículos con la herramienta en el título', () => {
+    expect(getToolArticles('Google Flow')[0].slug).toBe('google-flow-que-es-como-funciona');
+    expect(getToolArticles('Midjourney')[0].title).toContain('Midjourney');
+  });
+
+  it('devuelve como mucho 3 artículos', () => {
+    expect(getToolArticles('ChatGPT')).toHaveLength(3);
+  });
+
+  it('no devuelve nada para una herramienta sin publicar', () => {
+    expect(getToolArticles('Lunit')).toEqual([]);
   });
 });
