@@ -7,7 +7,7 @@
  *
  * Para publicar la siguiente tanda: sube PUBLISHED_BATCHES en 1 y redespliega.
  */
-export const PUBLISHED_BATCHES = 3;
+export const PUBLISHED_BATCHES = 4;
 
 /** Tanda 1: herramientas conocidas (las que aparecen en comparativas y destacados). */
 export const toolBatches: string[][] = [
@@ -134,7 +134,7 @@ export const toolBatches: string[][] = [
   ],
   // Tanda 4 (25 herramientas)
   [
-    'Google Workspace Duet',
+    'Gemini para Google Workspace',
     'Magic Write',
     'ThoughtSpot',
     'AlphaSense',
@@ -149,16 +149,16 @@ export const toolBatches: string[][] = [
     'Spellbook',
     'Evisort',
     'LawGeex',
-    'Ghostwriter',
-    'Testbot',
+    'Replit Agent',
+    'TestingBot',
     'Mabl',
     'SonarQube',
-    'CodeClimate',
+    'Qlty',
     'CodeFactor',
     'Aidoc',
     'PathAI',
     'MedPaLM',
-    'Zebra Medical',
+    'Nanox AI',
   ],
   // Tanda 5 (25 herramientas)
   [

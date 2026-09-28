@@ -27,7 +27,7 @@ export default function HerramientasPage() {
     }))
     .filter((category) => category.tools.length > 0);
 
-  const total = index.reduce((acc, category) => acc + category.tools.length, 0);
+  const total = new Set(index.flatMap((category) => category.tools.map((tool) => tool.slug))).size;
 
   return (
     <ToolsPage>

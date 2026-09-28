@@ -44,4 +44,13 @@ export const discontinuedTools: Record<string, DiscontinuedTool> = {
     sourceUrl:
       'https://news.bloomberglaw.com/ip-law/voice-actors-suit-against-lovo-paused-amid-ai-firms-bankruptcy',
   },
+  Evisort: {
+    note: 'Workday compró Evisort (acuerdo anunciado en septiembre de 2024) y desde marzo de 2025 su tecnología se vende integrada en Workday Contract Lifecycle Management. evisort.com redirige a la web de Workday y ya no se puede contratar Evisort como producto independiente.',
+    sourceUrl:
+      'https://newsroom.workday.com/2025-03-27-Evisort-AI-Powered-Contract-Intelligence-Now-Available-Through-Workday',
+  },
+  MedPaLM: {
+    note: 'Google retiró MedLM, la versión comercial de Med-PaLM en su plataforma cloud: el acceso terminó el 29 de septiembre de 2025. Med-PaLM sigue solo como proyecto de investigación, y el sucesor para desarrollar con IA médica de Google es MedGemma, una familia de modelos abiertos.',
+    sourceUrl: 'https://docs.cloud.google.com/vertex-ai/generative-ai/docs/release-notes',
+  },
 };

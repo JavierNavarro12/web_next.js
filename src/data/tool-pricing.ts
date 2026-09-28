@@ -2375,4 +2375,335 @@ export const toolPricing: Record<string, ToolPricing> = {
       'El chat básico de Grok es gratuito, pero sin herramientas de agente. x.ai/pricing bloquea la descarga directa, así que solo se publican las cifras confirmadas en docs.x.ai y x.ai/news (dominio oficial); las suscripciones de consumo SuperGrok se omiten porque las fuentes externas dan cifras contradictorias. En 2026 xAI se fusionó con SpaceX bajo la marca SpaceXAI, aunque los productos Grok mantienen su nombre.',
     sourceUrl: 'https://docs.x.ai/developers/pricing',
   },
+  'Gemini para Google Workspace': {
+    name: 'Gemini para Google Workspace',
+    model: 'paid',
+    freeTier: null,
+    plans: [
+      {
+        name: 'Starter',
+        price: '6,80 €/usuario/mes',
+        notes: 'Gemini en Gmail y acceso a la aplicación de Gemini.',
+      },
+      {
+        name: 'Standard',
+        price: '13,60 €/usuario/mes',
+        notes:
+          'Añade Gemini en Documentos, Meet y el resto de aplicaciones, y más uso de Gemini Notebook.',
+      },
+      {
+        name: 'Plus',
+        price: '21,10 €/usuario/mes',
+        notes: 'Todo lo anterior con más acceso, incluido Gemini en Chat y en Drive.',
+      },
+      {
+        name: 'Enterprise',
+        price: 'Presupuesto a medida',
+        notes: 'Para grandes organizaciones; se contrata con el equipo comercial.',
+      },
+    ],
+    notes:
+      'No hay plan gratuito para empresas, pero Gemini ya viene incluido en el precio de cada plan de Workspace: no se paga aparte. Los importes son los de la web española de Google, sin la promoción temporal de los primeros meses. Google vende aparte un complemento de acceso ampliado a la IA, sin precio publicado en esa página.',
+    sourceUrl: 'https://workspace.google.com/intl/es/pricing.html',
+    checkedAt: 'septiembre de 2026',
+  },
+  ClickUp: {
+    name: 'ClickUp',
+    model: 'freemium',
+    freeTier:
+      'El plan Free Forever es gratuito para siempre, con tareas y miembros ilimitados, 60 MB de almacenamiento y acceso de prueba a las funciones de IA.',
+    plans: [
+      {
+        name: 'Free Forever',
+        price: '0 $',
+        notes: 'Tareas ilimitadas, documentos colaborativos, tableros kanban y calendario.',
+      },
+      {
+        name: 'Unlimited',
+        price: '7 $/usuario/mes',
+        notes:
+          'Facturación anual (10 $ al mes sin compromiso). Espacios, integraciones y almacenamiento ilimitados.',
+      },
+      {
+        name: 'Business',
+        price: '12 $/usuario/mes',
+        notes:
+          'Facturación anual (19 $ al mes sin compromiso). Paneles avanzados e historial de mensajes y vistas ilimitados.',
+      },
+      {
+        name: 'Enterprise',
+        price: 'Presupuesto a medida',
+        notes: 'Para grandes organizaciones; se contrata con el equipo comercial.',
+      },
+      {
+        name: 'Brain AI (complemento)',
+        price: '9 $/usuario/mes',
+        notes:
+          'Asistente y agente de IA ilimitados, chat con Claude, ChatGPT y Gemini, y búsqueda en todo el espacio de trabajo.',
+      },
+      {
+        name: 'Everything AI (complemento)',
+        price: '28 $/usuario/mes',
+        notes:
+          'La suite completa de IA: respuestas automáticas, notas de reuniones, generación de imágenes y automatizaciones con IA.',
+      },
+    ],
+    notes:
+      'La IA completa no viene en los planes: se contrata como complemento por usuario y mes, aparte del plan elegido.',
+    sourceUrl: 'https://clickup.com/pricing',
+    checkedAt: 'septiembre de 2026',
+  },
+  Asana: {
+    name: 'Asana',
+    model: 'freemium',
+    freeTier:
+      'El plan Personal es gratuito para siempre, pensado para una o dos personas, con tareas y proyectos ilimitados.',
+    plans: [
+      {
+        name: 'Personal',
+        price: '0 $',
+        notes: 'Hasta 2 usuarios, para proyectos y tareas personales.',
+      },
+      {
+        name: 'Starter',
+        price: '10,99 $/usuario/mes',
+        notes:
+          'Facturación anual (13,49 $ al mes sin compromiso). Para equipos pequeños que siguen el avance de sus proyectos.',
+      },
+      {
+        name: 'Advanced',
+        price: '24,99 $/usuario/mes',
+        notes:
+          'Facturación anual (30,49 $ al mes sin compromiso). Objetivos, planificación de la capacidad del equipo y más control.',
+      },
+      {
+        name: 'Enterprise',
+        price: 'Presupuesto a medida',
+        notes: 'Para grandes organizaciones; se contrata con el equipo comercial.',
+      },
+    ],
+    notes:
+      'Los planes de pago incluyen la IA de Asana (AI Teammates y Asana Dash) con 5 solicitudes por usuario y mes, hasta un máximo de 50 por cuenta.',
+    sourceUrl: 'https://asana.com/pricing',
+    checkedAt: 'septiembre de 2026',
+  },
+  'Monday.com': {
+    name: 'Monday.com',
+    model: 'freemium',
+    freeTier:
+      'El plan Free es gratuito para siempre para hasta 2 usuarios y 3 tableros, sin funciones de IA.',
+    plans: [
+      {
+        name: 'Free',
+        price: '0 €',
+        notes: 'Hasta 2 usuarios, 3 tableros y 3 documentos.',
+      },
+      {
+        name: 'Basic',
+        price: '9 €/usuario/mes',
+        notes: 'Facturación anual. Primer plan con funciones de IA, con créditos incluidos.',
+      },
+      {
+        name: 'Standard',
+        price: '12 €/usuario/mes',
+        notes: 'Facturación anual. Más créditos de IA y más funciones de colaboración.',
+      },
+      {
+        name: 'Pro',
+        price: '19 €/usuario/mes',
+        notes: 'Facturación anual. El plan más popular, con más créditos de IA.',
+      },
+      {
+        name: 'Enterprise',
+        price: 'Presupuesto a medida',
+        notes: 'Para grandes organizaciones; se contrata con el equipo comercial.',
+      },
+    ],
+    notes:
+      'Las funciones de IA se consumen con créditos: en el cálculo de la web para 10 usuarios, Basic, Standard y Pro incluyen 1.000, 2.000 y 3.000 créditos, y se pueden comprar más. Pagar mes a mes sale más caro que la facturación anual.',
+    sourceUrl: 'https://monday.com/pricing',
+    checkedAt: 'septiembre de 2026',
+  },
+  Trello: {
+    name: 'Trello',
+    model: 'freemium',
+    freeTier: 'El plan Free es gratuito para hasta 10 colaboradores por espacio de trabajo.',
+    plans: [
+      {
+        name: 'Free',
+        price: '0 $',
+        notes: 'Para personas o equipos pequeños que quieren organizar su trabajo.',
+      },
+      {
+        name: 'Standard',
+        price: '5 $/usuario/mes',
+        notes:
+          'Facturación anual (6 $ al mes sin compromiso). Funciones de IA, tableros ilimitados y tarjetas reflejadas.',
+      },
+      {
+        name: 'Premium',
+        price: '10 $/usuario/mes',
+        notes:
+          'Facturación anual (12,50 $ al mes sin compromiso). Para equipos de hasta 100 personas que siguen varios proyectos con distintas vistas.',
+      },
+      {
+        name: 'Enterprise',
+        price: '17,50 $/usuario/mes',
+        notes:
+          'Solo con facturación anual (210 $ por usuario y año). Administración y control para grandes organizaciones.',
+      },
+    ],
+    notes: 'La IA viene incluida desde el plan Standard, sin coste aparte.',
+    sourceUrl: 'https://trello.com/pricing',
+    checkedAt: 'septiembre de 2026',
+  },
+  ThoughtSpot: {
+    name: 'ThoughtSpot',
+    model: 'paid',
+    freeTier: null,
+    plans: [
+      {
+        name: 'Essentials',
+        price: 'Desde 25 $/usuario/mes',
+        notes:
+          'Facturación anual. De 5 a 50 usuarios y hasta 25 millones de filas; cuadros de mando interactivos.',
+      },
+      {
+        name: 'Pro',
+        price: 'Desde 50 $/usuario/mes',
+        notes:
+          'Facturación anual. Hasta 1.000 usuarios y 250 millones de filas; búsqueda en lenguaje natural y agentes de IA Spotter (25 consultas por usuario y mes).',
+      },
+      {
+        name: 'Enterprise',
+        price: 'Presupuesto a medida',
+        notes: 'Usuarios y datos ilimitados, con gobierno de datos empresarial.',
+      },
+    ],
+    notes:
+      'Además de la tarifa por usuario hay una modalidad por consumo desde 0,10 $ por crédito. Para integrar su analítica en aplicaciones propias, la edición Developer de ThoughtSpot Embedded es gratuita durante un año, con hasta 10 usuarios. Los tokens de los modelos de IA no se cobran aparte.',
+    sourceUrl: 'https://www.thoughtspot.com/pricing',
+    checkedAt: 'septiembre de 2026',
+  },
+  Kavout: {
+    name: 'Kavout',
+    model: 'freemium',
+    freeTier:
+      'El plan Free incluye 10 créditos de investigación al mes y acceso limitado a acciones y ETF de EE. UU., cripto y divisas.',
+    plans: [
+      {
+        name: 'Free',
+        price: '0 $/mes',
+        notes: 'Para probar las herramientas básicas antes de pagar.',
+      },
+      {
+        name: 'Pro',
+        price: '16 $/mes',
+        notes:
+          'Facturación anual (192 $ al año). 1.000 créditos al mes, más de 30 mercados, agentes de IA y señales en tiempo real.',
+      },
+      {
+        name: 'Premium',
+        price: '39 $/mes',
+        notes:
+          'Facturación anual (468 $ al año). 3.000 créditos al mes y herramientas para construir y optimizar carteras.',
+      },
+    ],
+    notes:
+      'La facturación anual ahorra un 20 % frente al pago mensual, y se pueden comprar créditos extra en cualquier momento.',
+    sourceUrl: 'https://www.kavout.com/pricing-plans',
+    checkedAt: 'septiembre de 2026',
+  },
+  'Replit Agent': {
+    name: 'Replit Agent',
+    model: 'freemium',
+    freeTier: 'Se puede empezar gratis, pero la página de precios solo detalla los planes de pago.',
+    plans: [
+      {
+        name: 'Core',
+        price: '18 $/mes',
+        notes:
+          'Facturación anual (20 $ al mes sin compromiso). Incluye 20 $ de saldo para los modelos más potentes y modo de planificación.',
+      },
+      {
+        name: 'Pro',
+        price: '90 $/mes',
+        notes:
+          'Facturación anual (100 $ al mes sin compromiso). 10 agentes en paralelo, 100 $ de saldo y hasta 15 colaboradores.',
+      },
+      {
+        name: 'Enterprise',
+        price: 'Presupuesto a medida',
+        notes: 'Seguridad empresarial, SSO/SAML y entornos dedicados.',
+      },
+    ],
+    notes:
+      'Cuando se agota el saldo incluido, el agente se cobra por uso según el esfuerzo que requiere cada tarea. Los precios pueden llevar impuestos según el país.',
+    sourceUrl: 'https://replit.com/pricing',
+    checkedAt: 'septiembre de 2026',
+  },
+  TestingBot: {
+    name: 'TestingBot',
+    model: 'paid',
+    freeTier: null,
+    plans: [
+      {
+        name: 'Live',
+        price: '20 €/mes',
+        notes:
+          'Facturación anual (30 € al mes sin compromiso). Pruebas manuales de webs y apps, para 1 usuario.',
+      },
+      {
+        name: 'Automated',
+        price: '50 €/mes',
+        notes:
+          'Facturación anual (70 € al mes sin compromiso). 1 test en paralelo y 1.000 minutos al mes.',
+      },
+      {
+        name: 'Automated Pro',
+        price: '90 €/mes',
+        notes:
+          'Facturación anual (120 € al mes sin compromiso). 1 test en paralelo con minutos ilimitados.',
+      },
+      {
+        name: 'Pago por uso',
+        price: 'Desde 60 € por 1.000 minutos',
+        notes:
+          'Paquetes de 1.000 a 15.000 minutos (600 €) sin suscripción; los minutos no caducan.',
+      },
+    ],
+    notes:
+      'El precio de cada suscripción sube al añadir usuarios o tests en paralelo. Se puede empezar gratis para probar la plataforma.',
+    sourceUrl: 'https://testingbot.com/pricing',
+    checkedAt: 'septiembre de 2026',
+  },
+  Qlty: {
+    name: 'Qlty',
+    model: 'freemium',
+    freeTier:
+      'El plan Free es gratuito para repositorios públicos y privados sin límite de colaboradores, con 1.000 minutos de análisis y 100 correcciones con IA al mes.',
+    plans: [
+      {
+        name: 'Free',
+        price: '0 $/mes',
+        notes: 'Linting y formato, cobertura de tests, mantenibilidad y duplicidad.',
+      },
+      {
+        name: 'Pro',
+        price: '20 $/colaborador/mes',
+        notes:
+          'Configuraciones compartidas, tendencias con un año de historial, 20.000 minutos y 5.000 correcciones con IA al mes.',
+      },
+      {
+        name: 'Enterprise',
+        price: '30 $/colaborador/mes',
+        notes:
+          'Analítica avanzada, políticas de organización, soporte prioritario con SLA y 75.000 minutos al mes.',
+      },
+    ],
+    notes:
+      'Los minutos de análisis adicionales se pagan por uso, a 0,01 $ por minuto. Es el antiguo Code Climate Quality: codeclimate.com/pricing redirige a esta página.',
+    sourceUrl: 'https://qlty.sh/pricing',
+    checkedAt: 'septiembre de 2026',
+  },
 };

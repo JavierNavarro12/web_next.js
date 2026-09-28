@@ -32,7 +32,7 @@ export default function AITestingMedicalSection({
       url: 'https://www.diffblue.com',
     },
     {
-      name: 'Testbot',
+      name: 'TestingBot',
       logo: '/logos/testingbot-movil.svg',
       description: 'Testing IA',
       url: 'https://testingbot.com',
@@ -53,10 +53,10 @@ export default function AITestingMedicalSection({
       url: 'https://pathai.com',
     },
     {
-      name: 'Zebra Medical',
+      name: 'Nanox AI',
       logo: '/logos/zebra-movil.png',
       description: 'Imágenes médicas',
-      url: 'http://www.zebra-med.com',
+      url: 'https://www.nanox.vision/ai/',
     },
     {
       name: 'Lunit',

@@ -69,4 +69,6 @@ export type ToolPricing = {
   plans: PricingPlan[];
   notes: string;
   sourceUrl: string;
+  /** Mes de la comprobación cuando no coincide con PRICING_LAST_CHECKED. */
+  checkedAt?: string;
 };

@@ -444,7 +444,7 @@ export default async function ToolPage({ params }: Props) {
                 <p className="text-zinc-300 leading-relaxed">{pricing.notes}</p>
 
                 <p className="text-zinc-500 text-sm mt-3">
-                  Precios consultados en {PRICING_LAST_CHECKED} en{' '}
+                  Precios consultados en {pricing.checkedAt ?? PRICING_LAST_CHECKED} en{' '}
                   <a
                     href={pricing.sourceUrl}
                     target="_blank"
